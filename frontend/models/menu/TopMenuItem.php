@@ -8,6 +8,7 @@
 
 namespace frontend\models\menu;
 
+use frontend\components\AppHelper;
 use \yii\helpers\Html;
 
 /**
@@ -69,8 +70,14 @@ class TopMenuItem
 
     public function getHTML()
     {
+        $url = $this->absoluteUrl ? $this->url : ('/' . ltrim($this->url,'/'));
+        $domain = AppHelper::getDomain();
+        if (!$this->absoluteUrl) {
+            $url = '/' . ltrim(str_replace($domain->base_url, '', $url), '/');
+        }
+
         return HTML::tag('a', Html::encode($this->title), [
-            'href' => $this->absoluteUrl ? $this->url : ('/' . ltrim($this->url,'/'))
+            'href' => $url
         ]);
     }
 

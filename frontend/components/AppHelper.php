@@ -8,12 +8,26 @@
 
 namespace frontend\components;
 
+use frontend\models\Domain;
 use frontend\models\Texts;
 use yii;
 use yii\helpers\Html;
 
 class AppHelper
 {
+    private static $_domain = null;
+
+    /**
+     * @return array|null|Domain
+     */
+    public static function getDomain()
+    {
+        if (is_null(self::$_domain)) {
+            self::$_domain = Domain::find()->where('domain = :domain', [':domain' => $_SERVER['HTTP_HOST']])->one();
+        }
+
+        return self::$_domain;
+    }
 
     /**
      * Доступные языки
