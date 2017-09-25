@@ -1,11 +1,23 @@
 .tab-list-element {
 	li {
 		.content {
-			padding-top: 22px;
-			display: none;
+			padding-top: 2px;
+			-webkit-transition: max-height .5s cubic-bezier(0, 1.05, 0, 1);
+			transition: max-height .5s cubic-bezier(0, 1.05, 0, 1);
+			max-height: 0;
+			overflow: hidden;
+
+			& p:first-child {
+				padding-top: 22px;
+			}
+
+			& p:last-child {
+				padding-bottom: 17px;
+			}
 		}
 
 		.link {
+			background-color: #efe7cd;
 			display: block;
 			width: 100%;
 			padding: 19px 29px;
@@ -27,6 +39,9 @@
 		&.active {
 			.content {
 				display: block;
+				-webkit-transition: max-height .5s;
+				transition: max-height .5s;
+				max-height: 700px;
 			}
 
 			.link {

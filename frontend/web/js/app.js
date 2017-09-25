@@ -3,11 +3,11 @@
  */
 
 $(document).ready(function(){
-	$('.slider').slider({
+	/*$('.slider').slider({
 		height: 657,
 		interval: 1000000,
 		transition: 1000
-	});
+	});*/
 
 	$('.slider-group').each(function(i, elem) {
 		var $elem    = $(elem);

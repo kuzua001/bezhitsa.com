@@ -52,10 +52,4 @@
 			</div>
 		</div>
 	</footer>
-
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-	<!--<script type="text/javascript" async defer-->
-	<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfNPNg4M7uT3PqOFIyGpHZx9f8jTqbKUg&callback=initMap">-->
-	<!--</script>-->
 </div>

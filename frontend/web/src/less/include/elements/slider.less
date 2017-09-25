@@ -1,4 +1,16 @@
 .slider-element {
+  min-height: 617px;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+
+  ul.slides {
+    height: 100%;
+  }
 
   &.one-slide {
     height: 100%;
@@ -9,7 +21,19 @@
     }
   }
 
-  margin-bottom: -40px;
+  li.previous {
+    opacity: 0;
+    -webkit-transition: opacity 1.5s;
+  }
+
+  li.active {
+    opacity: 1;
+    -webkit-transition: opacity 1.5s;
+
+    img {
+      height: 100%;
+    }
+  }
 
   .indicators {
     bottom: 62px;

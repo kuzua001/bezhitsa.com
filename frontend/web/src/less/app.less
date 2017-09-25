@@ -97,6 +97,17 @@ body > .content {
     padding-left: 13px;
     padding-right: 5px;
   }
+
+  @media screen and (max-width: (@desktop-width - 1px)) {
+    padding: 0!important;
+  }
+
+  @media screen and (max-width: @menu-max-width) {
+    &.row-flex-desktop {
+      display: inherit!important;
+    }
+  }
+
 }
 
 .row.clear {
@@ -109,14 +120,6 @@ body > .content {
 
 
 @media screen and (max-width: (@desktop-width - 1px)) {
-  .row-flex {
-    padding: 0!important;
-  }
-
-  .row-flex.row-flex-desktop {
-    display: inherit!important;
-  }
-
   .content-wrapper {
     width: 100%;
     text-align: center;

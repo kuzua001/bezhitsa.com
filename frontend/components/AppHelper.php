@@ -27,6 +27,10 @@ class AppHelper
 
         if (is_null(self::$_domain)) {
             self::$_domain = Domain::find()->where('domain = :domain', [':domain' => $domain])->one();
+
+            if (is_null(self::$_domain)) {
+                self::$_domain = Domain::find()->where('is_main = 1')->one();
+            }
         }
 
         return self::$_domain;

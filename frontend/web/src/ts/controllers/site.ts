@@ -1,6 +1,7 @@
 /// <reference path="../../../../../typings/modules/angular/index.d.ts"/>
 import * as ng from 'angular'
 
+import * as jQuery from 'jquery';
 
 /**
  * Created by ivan on 6/20/17.
