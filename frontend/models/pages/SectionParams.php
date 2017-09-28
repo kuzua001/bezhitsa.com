@@ -30,6 +30,23 @@ class SectionParams extends PageParams
     public $hasDetailButton;
 
     /**
+     * @var $detailButtonIsColored
+     * @title Кастомный цвет кнопки
+     * @default
+     * @type checkbox
+     */
+    public $detailButtonIsColored;
+
+    /**
+     * @var $hasDetailButton
+     * @title Цвет фона кнопки в формате #fff
+     * @default
+     * @type string
+     */
+    public $detailButtonBgColor;
+
+
+    /**
      * @var $detailButtonLink string
      * @title Ссылка по кнопке 'подробнее'
      * @default

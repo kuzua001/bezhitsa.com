@@ -18,17 +18,20 @@ class DetailButton extends Widget
     public $detailButtonLink;
     public $detailButtonText;
     public $blackText;
+    public $isColored;
+    public $bgColor;
 
 
     public function run()
     {
 
         return $this->hasDetailButton ? Html::tag('a', Html::tag('button', !empty($this->detailButtonText) ? $this->detailButtonText : 'подробнее', [
-                    'class' => 'detail-button-element' . ($this->blackText ? ' black-text' : '')
+                    'class' => 'detail-button-element' . ($this->blackText ? ' black-text' : ''),
+                    'style' => $this->isColored ? 'background-color: ' . $this->bgColor : ''
                 ]
             ),
             [
-                'href' => $this->detailButtonLink
+                'href' => $this->detailButtonLink,
             ]
         ) : '';
     }

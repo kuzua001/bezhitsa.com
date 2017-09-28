@@ -53,6 +53,8 @@ $sectionParams = $widget->sectionParams;
                         'hasDetailButton'  => $sectionParams->hasDetailButton,
                         'detailButtonText' => $sectionParams->detailButtonText,
                         'detailButtonLink' => $sectionParams->detailButtonLink,
+                        'isColored'        => $sectionParams->detailButtonIsColored,
+                        'bgColor'          => $sectionParams->detailButtonBgColor,
                         'blackText'        => true,
 					]); ?>
 				</div>

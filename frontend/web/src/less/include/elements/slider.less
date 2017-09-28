@@ -1,3 +1,5 @@
+@import '../sizes';
+
 .slider-element {
   min-height: 617px;
 
@@ -21,17 +23,43 @@
     }
   }
 
-  li.previous {
-    opacity: 0;
-    -webkit-transition: opacity 1.5s;
+  .wrapper {
+    height: 100%;
+    width: 5000px;
+    position: absolute;
+    text-align: center;
+    margin-left: -2500px;
+    left: 50%;
+
+    @media (max-width: (@menu-max-width + 1px)) {
+      height: auto;
+      width: auto;
+      position: relative;
+      text-align: center;
+      margin-left: 0;
+      left: 0;
+    }
   }
 
-  li.active {
-    opacity: 1;
-    -webkit-transition: opacity 1.5s;
-
+  li {
     img {
       height: 100%;
+      width: auto!important;
+
+      @media (max-width: (@menu-max-width + 1px)) {
+        width: 100vw!important;
+        height: auto!important;
+      }
+    }
+
+    &.previous {
+      opacity: 0;
+      -webkit-transition: opacity 1.5s;
+    }
+
+    &.active {
+      opacity: 1;
+      -webkit-transition: opacity 1.5s;
     }
   }
 
