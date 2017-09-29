@@ -65,26 +65,11 @@ $sectionParams = $widget->sectionParams;
 						</div>
 					</div>
 				</div>
-				<div class="mobile-only">
+				<div class="mobile-only slider-element">
 					<ul class="slides">
 						<li ng-repeat="slide in slider.slides">
 							<div class="wrapper">
 								<img src="{{ slide.image }}">
-								<div ng-if="slide.hasCard" class="caption left-align">
-									<h3 class="elegant-title-element small black-text">
-										<span class="first">{{ slide.cardTitleFirst }}</span>
-										<span class="second">{{ slide.cardTitleSecond }}</span>
-										<span class="third">{{ slide.cardTitleThird }}</span>
-									</h3>
-									<div class="property-item-element">
-										<i class="property-icon" style="background-image: url('/img/icons/clock.png'); width: 22px; height: 27px;"></i>
-										<span class="property-description">Круглосуточно</span>
-									</div>
-									<div class="property-item-element">
-										<i class="property-icon" style="background-image: url('/img/icons/phone.png'); width: 22px; height: 27px;"></i>
-										<span class="property-description">8(4832)40-00-00</span>
-									</div>
-								</div>
 							</div>
 							<div class="elegant-card-element">
 								<div class="tab-list-element">
