@@ -15,7 +15,7 @@ class AppAsset extends AssetBundle
         'https://fonts.googleapis.com/css?family=Open+Sans:600,300,400|Prata|Lora:400,700|Josefin+Sans|Cormorant+Garamond:400i',
         'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
         'css/built/admin.css',
-        'css/spectrum.css'
+        'css/legacy/spectrum.css'
     ];
 
     public $js = [
