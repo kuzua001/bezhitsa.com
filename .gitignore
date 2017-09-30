@@ -1,8 +1,9 @@
 /frontend/web/css
 /frontend/web/js/built
 /frontend/web/js/typings
+/frontend/web/uploads/
 /frontend/web/js/package-lock.json
-/backend/web/css
+/backend/web/css/built
 /backend/web/js/built
 /backend/web/js/typings
 /backend/web/js/package-lock.json
@@ -47,3 +48,4 @@ phpunit.phar
 # npm packages
 /node_modules
 /frontend/web/css/
+!/backend/web/css/legacy/
