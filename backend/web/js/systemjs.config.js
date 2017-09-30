@@ -9,6 +9,7 @@
 		'lodash':                     '/admin/js/node_modules/lodash',
 		jquery :                      '/admin/js/node_modules/jquery/dist/jquery.min.js',
 		bootstrap :                   '/admin/js/bootstrap.min.js',
+		spectrum :                    '/admin/js/spectrum.js',
 		jqueryui :                    '/admin/js/jqueryui.min.js',
 	};
 

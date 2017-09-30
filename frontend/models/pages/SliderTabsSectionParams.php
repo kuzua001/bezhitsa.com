@@ -45,7 +45,7 @@ class SliderTabsSectionParams extends SectionParams
     /**
      * @var $bgColor string
      * @title Цвет в формате #ffffff
-     * @type string
+     * @type color
      */
     public $bgColor;
 }

@@ -8,6 +8,7 @@ declare let CKEDITOR: any;
 import $ from 'jquery';
 import 'bootstrap';
 import 'jqueryui';
+import 'spectrum';
 
 @Directive({ selector: '[interfaceElement]' })
 export class InterfaceDirective {
@@ -154,6 +155,11 @@ export class InterfaceDirective {
 						$input = $('<input type="checkbox">');
 						$input.prop('checked', value);
 						break;
+					case 'color':
+						$input = $('<input type="text" class="color-picker">');
+						$input.val(value);
+						break;
+
 					case 'image':
 						$input = $('<div data-image-id="' + itemId + '" class="input-group image-preview">\
 								<span class="input-group-btn">\
@@ -174,6 +180,7 @@ export class InterfaceDirective {
 
 				if (item.type == 'checkbox') {
 					$input.addClass('checkbox').addClass('checkbox-inline');
+				} else if (item.type == 'color') {
 				} else {
 					$input.addClass('form-control');
 				}
@@ -275,6 +282,12 @@ export class InterfaceDirective {
 		this.templateCounter = 0;
 		this.ckEditorIds = [];
 		$interface.append(this.generateInterface(this.interfaceSettings.params, this.interfaceSettings.values, ''));
+
+		$('.color-picker').spectrum({
+			showInput: true,
+			allowEmpty:true,
+			preferredFormat: "hex"
+		});
 
 		for (let i in this.ckEditorIds) {
 			CKEDITOR.replace(this.ckEditorIds[i]);

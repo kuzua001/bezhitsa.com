@@ -41,7 +41,7 @@ class SectionParams extends PageParams
      * @var $hasDetailButton
      * @title Цвет фона кнопки в формате #fff
      * @default
-     * @type string
+     * @type color
      */
     public $detailButtonBgColor;
 
