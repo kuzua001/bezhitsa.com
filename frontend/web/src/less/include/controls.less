@@ -1,0 +1,31 @@
+div.custom-select-control {
+	display: inline-block;
+}
+
+div.custom-select-control {
+	position: relative;
+
+	&.large {
+		height: 50px;
+		line-height: 50px;
+
+		.dropdown {
+			position: absolute;
+			content: '';
+			background: url('/img/controls/select.png') no-repeat;
+			display: block;
+			width: 50px;
+			height: 50px;
+		}
+
+		select {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background: none;
+			border: none;
+			padding-left: 5px;
+			margin-left: 60px;
+		}
+	}
+}

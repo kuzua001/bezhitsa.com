@@ -26,7 +26,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'images'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -51,7 +51,15 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->view->params['isStaticContent'] = false;
+        $this->view->params['mainTag'] = 'my-ng-pages';
         return $this->render('index', ['content' => '']);
+    }
+
+    public function actionImages()
+    {
+        $this->view->params['isStaticContent'] = false;
+        $this->view->params['mainTag'] = 'my-ng-images';
+        return $this->render('images', ['content' => '']);
     }
 
     /**

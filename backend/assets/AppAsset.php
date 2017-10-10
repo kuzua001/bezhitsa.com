@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'https://code.jquery.com/jquery-3.2.1.min.js',
         '//cdn.ckeditor.com/4.7.2/basic/ckeditor.js',
         'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js',
+        'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
     ];
 
     public $jsOptions = [

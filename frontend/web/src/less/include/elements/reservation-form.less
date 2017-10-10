@@ -1,7 +1,16 @@
 .reservation-form-element {
   margin: 39px 9px 0 11px;
-  background-color: #fff;
   overflow: hidden;
+
+  &:not(.nobg) {
+    background-color: #fff;
+  }
+
+  &.nobg{
+    input[type=text] {
+      background-color: #fff;
+    }
+  }
 
   header {
     background-color: #eae4cf;
@@ -25,32 +34,44 @@
   }
 
   .content {
-    padding-top: 4px;
-    padding-left: 7px;
-    padding-right: 5px;
-    margin: 20px 10px;
+    &:not([class*=col]) {
+      padding-top: 4px;
+      padding-left: 7px;
+      padding-right: 5px;
+      margin: 20px 10px;
+    }
+
     .dates {
       white-space: nowrap;
       input[type=text] {
         height: 38px;
         width: calc(~'50% - 6px');
-        background: url('../img/icons/dates.png') no-repeat calc(~'100% - 10px') 9px;
+        background-image: url('/img/icons/dates.png');
+        background-repeat: no-repeat;
+        background-position: calc(~'100% - 10px') 9px;
       }
     }
 
-    .people {
+    &:not(.row) .people {
       margin-top: 10px;
+    }
+
+    .people {
       input.select {
         height: 38px;
         width: 100%;
-        background: url('../img/icons/plus.png') no-repeat calc(~'100% - 11px') 11px;
+        background-image: url('/img/icons/plus.png');
+        background-repeat: no-repeat;
+        background-position: calc(~'100% - 11px') 11px;
       }
     }
   }
 
   footer {
-    margin: 26px 10px 10px 10px;
-    padding: 0 7px 7px 8px;
+    &:not([class*=col]) {
+      margin: 26px 10px 10px 10px;
+      padding: 0 7px 7px 8px;
+    }
 
     .apply {
       text-transform: uppercase;

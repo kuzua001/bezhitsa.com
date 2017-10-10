@@ -201,6 +201,8 @@ body > .content {
 @import 'include/mixins.less';
 @import 'include/reset.less';
 @import 'include/custom';
+@import 'include/utils';
+@import 'include/controls';
 @import 'include/elements/dummy-text';
 @import 'include/elements/header';
 @import 'include/elements/contacts';
@@ -239,3 +241,12 @@ body > .content {
 @import 'include/sections/section-fitness-spa';
 @import 'include/sections/section-fitness-gym';
 @import 'include/sections/section-text';
+@import 'include/sections/section-booking';
+
+body > .content > section:nth-child(3) {
+  padding-top: @top-header-height;
+}
+
+.inline-contents > div {
+  display: inline-block;
+}

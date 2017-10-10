@@ -5,16 +5,25 @@
     display: inline-block;
 
     &.address {
-      background-image: url('../img/icons/address.png');
+      background-image: url('/img/icons/address.png');
       &.black-icon {
-        background-image: url('../img/icons/address_black.png');
+        background-image: url('/img/icons/address_black.png');
       }
     }
     &.phone {
-      background-image: url('../img/icons/phone.png');
+      background-image: url('/img/icons/phone.png');
       &.black-icon {
-        background-image: url('../img/icons/phone_black.png');
+        background-image: url('/img/icons/phone_black.png');
       }
+    }
+  }
+
+  &.inline{
+    & dt, & dd {
+      display: inline-block;
+      clear: none;
+      float: none;
+      vertical-align: top;
     }
   }
 

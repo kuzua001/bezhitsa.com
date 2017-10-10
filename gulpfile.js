@@ -34,6 +34,24 @@ gulp.task('bundle', function() {
 	});
 });
 
+gulp.task('css-back', function () {
+	return gulp.src('backend/web/src/less/admin.less')
+		.pipe(less({
+			paths: [ 'backend/web/src/less/' ]
+		}))
+		.pipe(gulp.dest('backend/web/css/built'));
+});
+
+gulp.task('ts-back', function () {
+	var tscConfig    = require('./backend/tsconfig.json');
+
+	return gulp
+		.src('backend/web/src/ts/**/*.ts')
+		.pipe(typescript(tscConfig.compilerOptions))
+		.pipe(gulp.dest('backend/web/js/built'));
+});
+
+
 gulp.task('css-front', function () {
 	return gulp.src('frontend/web/src/less/**/*.less')
 		.pipe(less({
@@ -64,18 +82,8 @@ gulp.task('clean-back', function () {
 	);
 });
 
-gulp.task('compile-back', ['clean-back'], function () {
-	var tscConfig    = require('./backend/tsconfig.json');
+gulp.task('compile-back', ['clean-back', 'css-back', 'ts-back'], function () {
 
-	return gulp
-		.src('backend/web/src/ts/**/*.ts')
-		.pipe(typescript(tscConfig.compilerOptions))
-		.pipe(gulp.dest('backend/web/js/built'))
-		.pipe(gulp.src('backend/web/src/less/**/*.less'))
-		.pipe(less({
-			paths: [ 'backend/web/src/less/' ]
-		}))
-		.pipe(gulp.dest('backend/web/css/built'));
 });
 
 gulp.task('default', ['compile', 'compile-back']);

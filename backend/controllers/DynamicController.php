@@ -24,6 +24,11 @@ class DynamicController extends Controller
         return $this->render('index');
     }
 
+    public function actionImages()
+    {
+        return $this->render('images');
+    }
+
     public function actionPageEdit($pageId)
     {
         return $this->render('page/edit');

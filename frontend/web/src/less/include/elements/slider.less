@@ -1,9 +1,45 @@
 @import '../sizes';
+@import '../mixins';
 
 .slider-element {
 
-  &.mobile-only {
+  .caption {
+    color: #000;
+    height: 70px;
+    background-color: #f9f1dc;
+    padding: 10px 25px;
+    .box-sizing(border-box);
 
+    & > div {
+      vertical-align: top;
+    }
+
+    h3 {
+      float: left;
+      line-height: 50px;
+    }
+
+    .swipe-buttons {
+      float: right;
+      display: inline-block;
+      line-height: 50px;
+      vertical-align: middle;
+
+      button {
+        border: 1px solid #000;
+        background: none;
+        display: inline-block;
+        line-height: initial;
+        padding: 5px 25px;
+        font-family: "Open Sans", serif;
+        font-size: 13px;
+        text-transform: uppercase;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &.mobile-only {
     ul.slides {
       li {
         margin-bottom: 20px;
@@ -21,6 +57,7 @@
   }
 
   min-height: 617px;
+  height: inherit!important; /* @todo убрать materialize */
 
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -30,7 +67,19 @@
 
 
   ul.slides {
-    height: 100%;
+    &.sticky-content {
+      position: relative;
+    }
+
+    & :not(.sticky-content) {
+      height: 100%;
+    }
+
+    &.sticky-content {
+      li {
+        height: 100%;
+      }
+    }
   }
 
   &.one-slide {
@@ -45,7 +94,7 @@
   .wrapper {
     height: 100%;
     width: 5000px;
-    position: absolute;
+    position: relative;
     text-align: center;
     margin-left: -2500px;
     left: 50%;

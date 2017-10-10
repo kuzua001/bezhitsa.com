@@ -13,6 +13,7 @@ use common\widgets\Alert;
 AppAsset::register($this);
 
 $isStaticContent = isset($this->params['isStaticContent']) ? $this->params['isStaticContent'] : false;
+$mainTag = isset($this->params['mainTag']) ? $this->params['mainTag'] : 'ng-app';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -47,7 +48,8 @@ $isStaticContent = isset($this->params['isStaticContent']) ? $this->params['isSt
 		],
 	]);
 	$menuItems = [
-		['label' => 'Home', 'url' => ['/site/index']],
+		['label' => 'Pages', 'url' => ['/site/index']],
+		['label' => 'Images', 'url' => ['/site/images']],
 	];
 	if (Yii::$app->user->isGuest) {
 		$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -68,7 +70,7 @@ $isStaticContent = isset($this->params['isStaticContent']) ? $this->params['isSt
 	NavBar::end();
 	?>
 
-	<div class="container">
+	<div class="container admin-wrapper-element">
 		<?= Breadcrumbs::widget([
 			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		]) ?>
@@ -76,7 +78,7 @@ $isStaticContent = isset($this->params['isStaticContent']) ? $this->params['isSt
 		<?php if ($isStaticContent) { ?>
 			<?= $content?>
 		<?php } else { ?>
-			<ng-app><?= $content?></ng-app>
+			<<?= $mainTag ?>><?= $content?></<?= $mainTag ?>>
 		<?php } ?>
 	</div>
 </div>
