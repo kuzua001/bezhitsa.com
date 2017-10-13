@@ -8,9 +8,11 @@
 
 namespace frontend\widgets\section;
 
+use frontend\assets\AppAsset;
 use frontend\models\pages\SectionParams;
 use frontend\models\SectionItem;
 use yii\base\Widget;
+use frontend\assets\BootstrapAsset;
 
 class Section extends Widget
 {
@@ -20,11 +22,14 @@ class Section extends Widget
     const TYPE_HOTEL_SERVICE = 'hotel_service';
     const TYPE_SLIDER_TABS   = 'slider_tabs';
     const TYPE_TEXT_PAGE     = 'text_page';
+    const TYPE_ABOUT_PAGE    = 'about_page';
 
     /**
      * @var SectionParams Параметры секции (объект любого унаследованного класса)
      */
     public $sectionParams;
+
+    public $customView;
 
     public function run()
     {
@@ -39,6 +44,11 @@ class Section extends Widget
                 return $this->render('common/slider_tabs');
             case self::TYPE_TEXT_PAGE:
                 return $this->render('common/text_page');
+            case self::TYPE_ABOUT_PAGE:
+                BootstrapAsset::register($this->customView);
+                //AppAsset::re
+                return $this->render('common/about_page');
+                break;
         }
     }
 }

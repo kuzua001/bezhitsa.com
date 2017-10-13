@@ -17,7 +17,7 @@ class LandingPageParams extends CmsPageParams
     /**
      * @var $sectionsParams (SectionParams)[]
      * @title Параметры секций
-     * @type (HotelMainSectionParams|SliderTabsSectionParams|FitnessMainSectionParams|FitnessStyleSectionParams|TextPageParams)[]
+     * @type (HotelMainSectionParams|SliderTabsSectionParams|AboutSectionParams|FitnessMainSectionParams|FitnessStyleSectionParams|TextPageParams)[]
      */
     public $sectionsParams;
 

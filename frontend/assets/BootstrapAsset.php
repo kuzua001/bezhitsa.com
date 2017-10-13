@@ -11,7 +11,7 @@ class BootstrapAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'];
+    public $css = ['css/bootstrap.css'];
 
     public $js = [];
 

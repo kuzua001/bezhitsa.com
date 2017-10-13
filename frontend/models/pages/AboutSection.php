@@ -8,17 +8,21 @@
 
 namespace frontend\models\pages;
 
-use frontend\models\Page;
 
-class BookingPage extends Page
+use Faker\Provider\Text;
+use frontend\models\Page;
+use frontend\models\PageParams;
+use frontend\models\ParamField;
+
+class AboutSection extends Page
 {
     /**
-     * @var BookingPageParams $pageParams
+     * @var AboutSectionParams $pageParams
      */
     public $pageParams;
 
     protected function initPageParams()
     {
-        $this->pageParams = new BookingPageParams();
+        $this->pageParams = new AboutSectionParams();
     }
 }

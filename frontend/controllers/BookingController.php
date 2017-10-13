@@ -12,4 +12,9 @@ class BookingController extends CmsController
     {
         return $this->render('index.php', ['page' => $this->page]);
     }
+
+    public function actionList()
+    {
+        return $this->render('list.php', ['page' => $this->page]);
+    }
 }

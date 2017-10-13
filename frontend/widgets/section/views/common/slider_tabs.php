@@ -32,12 +32,12 @@ $sectionParams = $widget->sectionParams;
 								<ul class="slides">
 									<li ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
 										<div class="wrapper">
-											<img src="{{ slide.image }}">
+											<img src="{{slide.image}}">
 											<div ng-if="slide.hasCard" class="caption left-align">
 												<h3 class="elegant-title-element small black-text">
-													<span class="first">{{ slide.cardTitleFirst }}</span>
-													<span class="second">{{ slide.cardTitleSecond }}</span>
-													<span class="third">{{ slide.cardTitleThird }}</span>
+													<span class="first">{{slide.cardTitleFirst}}</span>
+													<span class="second">{{slide.cardTitleSecond}}</span>
+													<span class="third">{{slide.cardTitleThird}}</span>
 												</h3>
 												<div class="property-item-element">
 													<i class="property-icon" style="background-image: url('/img/icons/clock.png'); width: 22px; height: 27px;"></i>
@@ -57,7 +57,7 @@ $sectionParams = $widget->sectionParams;
 							<div class="elegant-card-element">
 								<ul class="tab-list-element">
 									<li ng-click="slider.changeSlide($index)" ng-repeat="slide in slider.slides" ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
-										<span class="link" ng-cloak>{{ slide.tabTitle }}</span>
+										<span class="link" ng-cloak>{{slide.tabTitle}}</span>
 										<section class="content" ng-bind-html="slide.tabContent | html">{{slide.tabContent}}</section>
 									</li>
 								</ul>
@@ -69,12 +69,12 @@ $sectionParams = $widget->sectionParams;
 					<ul class="slides">
 						<li ng-repeat="slide in slider.slides">
 							<div class="wrapper">
-								<img src="{{ slide.image }}">
+								<img src="{{slide.image }}">
 							</div>
 							<div class="elegant-card-element">
 								<div class="tab-list-element">
 									<div>
-										<span class="link" ng-cloak>{{ slide.tabTitle }}</span>
+										<span class="link" ng-cloak>{{slide.tabTitle}}</span>
 										<section class="content" ng-bind-html="slide.tabContent | html">{{slide.tabContent}}</section>
 									</div>
 								</div>

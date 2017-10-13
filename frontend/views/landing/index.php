@@ -9,7 +9,8 @@ use frontend\models\pages\LandingPage;
 <?php if (is_array($page->pageParams->getSectionsParams())) { ?>
     <?php foreach ($page->pageParams->getSectionsParams() as $sectionParams) { ?>
         <?= Section::widget([
-            'sectionParams' => $sectionParams
+            'sectionParams' => $sectionParams,
+			'customView'  => $this
         ]) ?>
     <?php } ?>
 <?php } ?>

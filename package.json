@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -58,7 +59,11 @@
     "lodash": "^4.17.4",
     "ng2-restangular": "^0.1.30",
     "ngx-restangular": "^1.0.11",
+    "path": "^0.12.7",
     "require": "^2.4.20",
-    "typescript": "^2.4.0"
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.4.0",
+    "webpack": "^3.7.1",
+    "webpack-stream": "^4.0.0"
   }
 }

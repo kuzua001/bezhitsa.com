@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    /*"target": "es5",
     "module": "system",
     "strict": true,
-    "noImplicitAny": false,
-    "sourceMap" : false,
-    "moduleResolution": "node",
+    "noImplicitAny": false,*/
+    "sourceMap" : false
+    /*"moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck" : true,
     "rootDir": "./frontend/web/src/ts",
-    "outDir": "./web/js/built"
+    "outDir": "./web/js/built"*/
   },
   "exclude": [
-	  "../node_modules",
+	/*  "../node_modules",*/
     "typings/main.d.ts",
     "typings/main"
   ]
