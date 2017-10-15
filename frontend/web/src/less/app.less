@@ -27,7 +27,7 @@ section .bg {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0;
 }
 
 @media screen and (min-width: @desktop-width) {
@@ -73,27 +73,27 @@ body > .content {
   padding-right: 47px;
   display: flex;
 
-  .l8 {order: 0;}
-  .l4 {order: 1;}
+  .col-lg-8 {order: 0;}
+  .col-lg-4 {order: 1;}
 
   &.reverse-order {
-    .l8 {order: 1;}
-    .l4 {order: 0;}
+    .col-lg-8 {order: 1;}
+    .col-lg-4 {order: 0;}
   }
 
-  .l8 + .l4 {
+  .col-lg-8 + .col-lg-4 {
     padding-left: 7px;
   }
 
-  .l8:first-child {
+  .col-lg-8:first-child {
     padding-right: 14px;
   }
 
-  .l8:last-child {
+  .col-lg-8:last-child {
     padding-left: 15px;
   }
 
-  .l4:first-child {
+  .col-lg-4:first-child {
     padding-left: 13px;
     padding-right: 5px;
   }
@@ -131,45 +131,10 @@ body > .content {
     }
   }
 
-  .container {
-    overflow: hidden;
-  }
-
   section {
     min-height: inherit!important;
   }
 }
-
-
-@media screen and (max-width: (@desktop-width - 1px)) {
-  .content-wrapper {
-
-    &:before {
-      display: inline-block;
-      content: '';
-      width: 10000px;
-      position: absolute;
-      height: 100%;
-      top: 0;
-      left: 50%;
-      margin-left: -5000px;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: -1;
-    }
-
-    .bg {
-      display: none;
-    }
-  }
-}
-
-@media screen and (max-width: @large-content-width) {
-  .content-wrapper:before {
-    background-size: auto 100%;
-  }
-}
-
 
 @media screen and (min-width: (@menu-max-width + 1px)) {
   .mobile-only {
@@ -249,4 +214,46 @@ body > .content > section:nth-child(3) {
 
 .inline-contents > div {
   display: inline-block;
+}
+
+.slider .slides li img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.slider .slides {
+  background-color: #9e9e9e;
+  margin: 0;
+  height: 400px;
+}
+
+ul:not(.browser-default) {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.slider {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+.slider .slides li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
+}
+
+.slider .slides li.active {
+  z-index: 2;
+}
+
+.black-text {
+  color: #000000 !important;
 }

@@ -15,7 +15,8 @@ use frontend\widgets\section\Section;
 class SliderTabsSectionParams extends SectionParams
 {
 
-    protected $sectionType = Section::TYPE_SLIDER_TABS;
+    protected $sectionType  = Section::TYPE_SLIDER_TABS;
+    protected $sectionClass = 'events';
 
     /**
      * @var $detailButtonText string

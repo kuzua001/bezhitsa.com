@@ -45,3 +45,28 @@
 		opacity: 1;
 	}
 }
+
+.sidebar-nav > .affix {
+	width: 275px;
+}
+
+.interface-tab {
+	display: none;
+	&.active {
+		display: inherit;
+	}
+}
+
+.interface-tab-list {
+	position: absolute;
+	right: 30px;
+	top: 5px;
+	list-style: none;
+	.interface-tab-title {
+		display: inline-block;
+		margin: 0 10px;
+		&.active {
+			font-weight: bold;
+		}
+	}
+}

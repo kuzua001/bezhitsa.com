@@ -14,6 +14,6 @@ use frontend\widgets\section\Section;
 
 class FitnessMainSectionParams extends HotelMainSectionParams
 {
-
-    protected $sectionType = Section::TYPE_FITNESS_MAIN;
+    protected $sectionType  = Section::TYPE_FITNESS_MAIN;
+    protected $sectionClass = 'fitness-main';
 }

@@ -9,14 +9,14 @@ $this->title = 'My Yii Application';
         <img class="bg" src="/img/top-bg.jpg">
         <div class="container container-90">
             <div class="row clear indent indent-large">
-                <div class="col l4 center desktop-only">
+                <div class="col-lg-4 center desktop-only">
                     <img class="logo" src="/img/big-logo.png">
                     <h1>
                         <span class="name">Bezhitsa</span><br>
                         <span class="type">гранд отель</span>
                     </h1>
                 </div>
-                <div class="col l5 greeting">
+                <div class="col-lg-5 greeting">
                     <p class="header">
                         <b>Добро пожаловать!</b>
                     </p>
@@ -24,7 +24,7 @@ $this->title = 'My Yii Application';
                         Получите удовольствие, выбрав восхитительную<br>атмосферу премиум комплекса «Бежица».
                     </p>
                 </div>
-                <div class="col l3">
+                <div class="col-lg-3">
                     <dl class="contacts-element">
                         <dt title="Адрес">
                             <i class="address"></i>
@@ -44,7 +44,7 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
             <div class="row clear indent indent-large middle-row">
-                <div class="col l4 m4 center">
+                <div class="col-lg-4 col-md-4 center">
                     <section class="reservation-form-element">
                         <header>
                             Забронировать проживание
@@ -65,7 +65,7 @@ $this->title = 'My Yii Application';
                         </footer>
                     </section>
                 </div>
-                <div class="col l8 m8">
+                <div class="col-lg-8 col-md-8">
                     <h2 class="main-slogan elegant-title-element">
                         <span class="first">Ваш</span>
                         <span class="second">изысканный и комфортный отдых</span>
@@ -74,7 +74,7 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
             <div class="row clear">
-                <div class="col push-l6 ml6 push-m4 m8">
+                <div class="col-lg-push-6 col-lg-6 col-md-push-4 col-md-8">
                     <div class="right-content-block-element">
                         <h3>Харакетристики отеля</h3>
                         <p>
@@ -91,7 +91,7 @@ $this->title = 'My Yii Application';
         <img class="bg" src="/img/section2-bg.jpg">
         <div class="container container-90">
             <div class="row indent indent-large">
-                <div class="col l6">
+                <div class="col-lg-6">
                     <h2 class="elegant-title-element">
                         <span class="first">Роскошный</span>
                         <span class="second">сервис для</span>
@@ -101,7 +101,7 @@ $this->title = 'My Yii Application';
                         подробнее про отель
                     </button>
                 </div>
-                <div class="col l6">
+                <div class="col-lg-6">
                     <div class="right-content-block-element">
                         <h3>Обслуживание гостей</h3>
                         <p>
@@ -158,14 +158,14 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
             <div class="row">
-                <div class="col l12 m12 s12">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <h3 class="centered-title-element rooms">
                         Номера
                     </h3>
                 </div>
             </div>
             <div class="row rooms-row">
-                <div class="col l4 m12 s12 rooms-first-col">
+                <div class="col-lg-4 col-md-12 col-sm-12 rooms-first-col">
                     <div class="card-element">
                         <header class="pale">
                             Сведения об отеле
@@ -195,9 +195,9 @@ $this->title = 'My Yii Application';
                         </section>
                     </div>
                 </div>
-                <div class="col l8 m12 s12 rooms-list-element">
+                <div class="col-lg-8 col-md-12 col-sm-12 rooms-list-element">
                     <div class="row">
-                        <div class="col l6 m6 s12">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="room-card-element">
                                 <header>
                                     <img src="/img/room1.png" />
@@ -223,7 +223,7 @@ $this->title = 'My Yii Application';
                                 </footer>
                             </div>
                         </div>
-                        <div class="col l6 m6 s12">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="room-card-element">
                                 <header>
                                     <img src="/img/room2.png" />
@@ -249,7 +249,7 @@ $this->title = 'My Yii Application';
                                 </footer>
                             </div>
                         </div>
-                        <div class="col l6 m6 s12">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="room-card-element">
                                 <header>
                                     <img src="/img/room1.png" />
@@ -275,7 +275,7 @@ $this->title = 'My Yii Application';
                                 </footer>
                             </div>
                         </div>
-                        <div class="col l6 m6 s12">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="room-card-element">
                                 <header>
                                     <img src="/img/room1.png" />
@@ -305,7 +305,7 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
             <div class="row more-row">
-                <div class="col l12 center">
+                <div class="col-lg-12 center">
                     <button class="detail-button-element">все номера номера</button>
                 </div>
             </div>
@@ -316,14 +316,14 @@ $this->title = 'My Yii Application';
     <div class="content-wrapper">
         <div class="container container-90">
             <div class="row">
-                <div class="col l12 m12 s12">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <h2 class="centered-title-element black-text">
                         Мероприятия и свадьбы
                     </h2>
                 </div>
             </div>
             <div class="row row-flex row-flex-desktop">
-                <div class="col l8 m12 s12">
+                <div class="col-lg-8 col-md-12 col-sm-12">
                     <div class="slider slider-element">
                         <ul class="slides">
                             <li>
@@ -383,7 +383,7 @@ $this->title = 'My Yii Application';
                         </ul>
                     </div>
                 </div>
-                <div class="col l4  m12 s12">
+                <div class="col-lg-4  col-md-12 col-sm-12">
                     <div class="elegant-card-element">
 						<ul class="tab-list-element">
 							<li>
@@ -425,7 +425,7 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
             <div class="row more-row">
-                <div class="col l12 center">
+                <div class="col-lg-12 center">
                     <button class="detail-button-element black-text">узнать больше</button>
                 </div>
             </div>
@@ -436,14 +436,14 @@ $this->title = 'My Yii Application';
     <div class="content-wrapper">
         <div class="container container-90">
             <div class="row">
-                <div class="col l12 m12 s12">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <h2 class="centered-title-element black-text">
                         Фитнес центр
                     </h2>
                 </div>
             </div>
             <div class="row row-flex row-flex-desktop reverse-order">
-                <div class="col l4 m12 s12">
+                <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="card-element">
                         <header class="pale">
                             Фитнес центр
@@ -464,7 +464,7 @@ $this->title = 'My Yii Application';
                         </section>
                     </div>
                 </div>
-                <div class="col l8  m12 s12">
+                <div class="col-lg-8  col-md-12 col-sm-12">
                     <div class="slider slider-element">
                         <ul class="slides">
                             <li>
@@ -508,7 +508,7 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
             <div class="row more-row">
-                <div class="col l12 center">
+                <div class="col-lg-12 center">
                     <a href="http://bzfit.ru">
 						<button class="detail-button-element black-text">узнать больше</button>
 					</a>

@@ -15,7 +15,8 @@ use frontend\widgets\section\Section;
 class HotelMainSectionParams extends SectionParams
 {
 
-    protected $sectionType = Section::TYPE_HOTEL_MAIN;
+    protected $sectionType  = Section::TYPE_HOTEL_MAIN;
+    protected $sectionClass = 'main';
     /**
      * @var $mainHeaderTypePart string
      * @title Часть заголовка под логотипом (гранд отель, фитнес и т.д.)

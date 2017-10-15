@@ -1,3 +1,5 @@
+@import '../sizes';
+
 .card-element {
 
   font-family: "Open Sans", sans-serif;
@@ -110,6 +112,10 @@
   }
 
   padding-bottom: 25px;
+
+  @media screen and (max-width: @menu-max-width) {
+    max-width: none!important;
+  }
 }
 
 .rooms-first-col {

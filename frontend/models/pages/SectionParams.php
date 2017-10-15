@@ -17,6 +17,7 @@ class SectionParams extends PageParams
      * @var $title
      * @title Заголовок секции
      * @separated
+     * @tab [Параметры секции]
      * @type string
      */
     public $title;
@@ -24,7 +25,7 @@ class SectionParams extends PageParams
     /**
      * @var $hasDetailButton
      * @title Показывать кнопку 'подробнее'
-     * @default
+     * @tab [Параметры секции]
      * @type checkbox
      */
     public $hasDetailButton;
@@ -32,7 +33,7 @@ class SectionParams extends PageParams
     /**
      * @var $detailButtonIsColored
      * @title Кастомный цвет кнопки
-     * @default
+     * @tab [Кнопка подробнее]
      * @type checkbox
      */
     public $detailButtonIsColored;
@@ -40,7 +41,7 @@ class SectionParams extends PageParams
     /**
      * @var $hasDetailButton
      * @title Цвет фона кнопки в формате #fff
-     * @default
+     * @tab [Кнопка подробнее]
      * @type color
      */
     public $detailButtonBgColor;
@@ -49,7 +50,7 @@ class SectionParams extends PageParams
     /**
      * @var $detailButtonLink string
      * @title Ссылка по кнопке 'подробнее'
-     * @default
+     * @tab [Кнопка подробнее]
      * @type string
      */
     public $detailButtonLink;
@@ -57,7 +58,7 @@ class SectionParams extends PageParams
     /**
      * @var $detailButtonText string
      * @title Текст кнопки 'подробнее'
-     * @default
+     * @tab [Кнопка подробнее]
      * @type string
      */
     public $detailButtonText;
@@ -65,7 +66,7 @@ class SectionParams extends PageParams
     /**
      * @var $detailButtonIsBlack boolean
      * @title Кнопка должна быть черной
-     * @default
+     * @tab [Кнопка подробнее]
      * @type checkbox
      */
     public $detailButtonIsBlack;
@@ -78,10 +79,34 @@ class SectionParams extends PageParams
      */
     protected $sectionType;
 
+    /**
+     * Класс секции
+     * @var $sectionClass
+     */
+    protected $sectionClass = '';
+
+
+    /**
+     * @var $bgItems SectionBgSizeParams[]
+     * @title Параметры фона
+     * @tab [Параметры секции]
+     * @type (SectionBgSizeParams)[]
+     */
+    public $bgItems;
+    /**
+     * @var $bgColor string
+     * @title цвет фона
+     * @tab [Параметры секции]
+     * @type color
+     */
+    public $bgColor;
+
+
     public function varyingField()
     {
         return 'sectionType';
     }
+
 
     /**
      * Возвращает тип секции
@@ -90,5 +115,14 @@ class SectionParams extends PageParams
     public function getSectionType()
     {
         return $this->sectionType;
+    }
+
+    /**
+     * Возвращает класс секции
+     * @return string
+     */
+    public function getSectionClass()
+    {
+        return $this->sectionClass;
     }
 }

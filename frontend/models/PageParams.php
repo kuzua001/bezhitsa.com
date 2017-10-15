@@ -153,20 +153,26 @@ class PageParams
 
             preg_match('/@type\s+(.+)\s?\n/', $comment, $typeMatch);
             preg_match('/@title\s+(.+)\s?\n/', $comment, $titleMatch);
-            preg_match('/@default\s+(.+)\s?\n/', $comment, $defaultMatch);
+            preg_match('/@default(\s+(.+)\s?)?\n/', $comment, $defaultMatch);
             preg_match('/@separated.?\n/', $comment, $separatedMatch);
+            preg_match('/@tab\s+\[(.+)\]\s?\n/', $comment, $tabMatch);
 
             $typeStr = isset($typeMatch[1]) ? $typeMatch[1] : '';
 
             $title     = isset($titleMatch[1]) ? $titleMatch[1] : '';
             $default   = isset($defaultMatch[1]) ? $defaultMatch[1] : '';
             $separated = isset($separatedMatch[0]) ? true : false;
+            $tabTitle  = isset($tabMatch[1]) ? $tabMatch[1] : false;
 
             preg_match('/\(([a-zA-Z\|]*)\)\[\]/', $typeStr, $multiple);
-            if (count($multiple) === 0) {
+            preg_match('/select\s?\((.*)\)/u', $typeStr, $select);
+            if (count($multiple) === 0 && !count($select)) {
                 if (ParamField::checkType($typeStr) && !$onlyComposite) {
-                    $pageFields->addField($item->name, $typeStr, $title, $default, $separated);
+                    $pageFields->addField($item->name, $typeStr, $title, $default, $separated, $tabTitle);
                 }
+            } else if (count($select)) {
+                $options = explode('|', $select[1]);
+                $pageFields->addField($item->name, ParamField::TYPE_SELECT, $title, $default, $separated, $tabTitle, $options);
             } else {
                 $classes = explode('|', $multiple[1]);
                 $multiplePageFields = [];
@@ -181,7 +187,7 @@ class PageParams
                     $multiplePageFields[$params->{$params->varyingField()}] = $asObj ? $params : $params->toPageFieldsArr($asObj);
                 }
 
-                $pageFields->addCompositeField($item->name, true, $multiplePageFields);
+                $pageFields->addCompositeField($item->name, true, $multiplePageFields, $tabTitle);
             }
         }
 

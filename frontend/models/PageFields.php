@@ -17,6 +17,7 @@ class PageFields extends Object
     protected $values = null;
 
     const TYPE_CHECKBOX      = ParamField::TYPE_CHECKBOX;
+    const TYPE_SELECT        = ParamField::TYPE_SELECT;
     const TYPE_STRING        = ParamField::TYPE_STRING;
     const TYPE_IMAGE         = ParamField::TYPE_IMAGE;
     const TYPE_TEXTAREA      = ParamField::TYPE_TEXTAREA;
@@ -29,15 +30,20 @@ class PageFields extends Object
         return $this->params;
     }
 
-    public function addField($key, $type, $title = '', $default = '', $separated = false)
+    public function addField($key, $type, $title = '', $default = '', $separated = false, $tabTitle = '', $options = [])
     {
         $this->params[$key] = [
             'key'       => $key,
             'type'      => $type,
             'title'     => $title,
             'default'   => $default,
-            'separated' => $separated
+            'separated' => $separated,
+            'tabTitle'  => $tabTitle
         ];
+
+        if (count($options)) {
+            $this->params[$key]['options'] = $options;
+        }
     }
 
     public function setupValues($values)
@@ -48,13 +54,15 @@ class PageFields extends Object
     /**
      * @param       $key
      * @param       $isArr
-     * @param array (PageFields)[] $availableInstances
+     * @param       $tabTitle
+     * @param       $availableInstances (PageFields)[]
      */
-    public function addCompositeField($key, $isArr, array $availableInstances) {
+    public function addCompositeField($key, $isArr, array $availableInstances, $tabTitle = '') {
         $this->params[$key] = [
             'key'  => $key,
             'type' => $isArr ? self::TYPE_COMPOSITE : self::TYPE_COMPOSITE_ARR,
-            'availableInstances' => $availableInstances
+            'availableInstances' => $availableInstances,
+            'tabTitle' => $tabTitle
         ];
     }
 

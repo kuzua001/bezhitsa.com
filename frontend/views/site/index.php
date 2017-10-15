@@ -11,14 +11,14 @@
         <img class="bg" src="/img/top-bg.jpg">
         <div class="container container-90">
             <div class="row clear indent">
-                <div class="col l4 center desktop-only">
+                <div class="col-lg-4 center desktop-only">
                     <img src="/img/big-logo.png">
                     <h1>
                         <span class="name">Bezhitsa</span><br>
                         <span class="type">гранд отель</span>
                     </h1>
                 </div>
-                <div class="col l5 greeting">
+                <div class="col-lg-5 greeting">
                     <p class="header">
                         <b>Добро пожаловать!</b>
                     </p>
@@ -26,7 +26,7 @@
                         Получите удовольствие, выбрав восхитительную<br>атмосферу премиум комплекса «Бежица».
                     </p>
                 </div>
-                <div class="col l3">
+                <div class="col-lg-3">
                     <dl class="contacts-element">
                         <dt title="Адрес">
                             <i class="address"></i>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="row clear">
-                <div class="dummy-text-element col l8 push-l4">
+                <div class="dummy-text-element col-lg-8 col-lg-push-4">
                     <h2 style="font-size: 50px; margin-top: 20px; line-height: 50px; margin-bottom: 40px;">СКОРО ОТКРЫТИЕ</h2>
                 </div>
             </div>

@@ -33,22 +33,32 @@ class Section extends Widget
 
     public function run()
     {
+        $html = '';
+        $html .= $this->render('section/top');
+
         switch ($this->sectionParams->getSectionType()) {
             case self::TYPE_HOTEL_MAIN:
-                return $this->render('hotel/main');
+                $html .= $this->render('hotel/main');
+                break;
             case self::TYPE_FITNESS_MAIN:
-                return $this->render('fitness/main');
+                $html .= $this->render('fitness/main');
+                break;
             case self::TYPE_FITNESS_STYLE:
-                return $this->render('fitness/style');
+                $html .= $this->render('fitness/style');
+                break;
             case self::TYPE_SLIDER_TABS:
-                return $this->render('common/slider_tabs');
+                $html .= $this->render('common/slider_tabs');
+                break;
             case self::TYPE_TEXT_PAGE:
-                return $this->render('common/text_page');
+                $html .= $this->render('common/text_page');
+                break;
             case self::TYPE_ABOUT_PAGE:
-                BootstrapAsset::register($this->customView);
-                //AppAsset::re
-                return $this->render('common/about_page');
+                $html .= $this->render('common/about_page');
                 break;
         }
+
+        $html .= $this->render('section/bottom');
+
+        return $html;
     }
 }

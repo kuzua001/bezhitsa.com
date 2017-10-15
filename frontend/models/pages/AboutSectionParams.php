@@ -14,6 +14,6 @@ use frontend\widgets\section\Section;
 
 class AboutSectionParams extends SectionParams
 {
-
-    protected $sectionType = Section::TYPE_ABOUT_PAGE;
+    protected $sectionType  = Section::TYPE_ABOUT_PAGE;
+    protected $sectionClass = 'booking';
 }

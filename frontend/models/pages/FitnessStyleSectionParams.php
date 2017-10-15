@@ -15,7 +15,8 @@ use frontend\widgets\section\Section;
 class FitnessStyleSectionParams extends SectionParams
 {
 
-    protected $sectionType = Section::TYPE_FITNESS_STYLE;
+    protected $sectionType  = Section::TYPE_FITNESS_STYLE;
+    protected $sectionClass = 'fitness-style';
 
     /**
      * @var $sloganFirst string

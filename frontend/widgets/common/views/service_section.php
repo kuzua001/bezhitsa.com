@@ -11,7 +11,7 @@ $widget = $this->context;
 		<img class="bg" src="/img/section2-bg.jpg">
 		<div class="container container-90">
 			<div class="row indent">
-				<div class="col l6 m6 s12">
+				<div class="col-lg-6 col-md-6 col-sm-12">
 					<h2 class="elegant-title-element">
 						<span class="first">Роскошный</span>
 						<span class="second">сервис для</span>
@@ -21,24 +21,24 @@ $widget = $this->context;
 						подробнее про отель
 					</button>
 				</div>
-				<div class="col l6 m6 s12">
+				<div class="col-lg-6 col-md-6 col-sm-12">
 					<?= $widget->content ?>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col l12 m12 s12">
+				<div class="col-lg-12 col-md-12 col-sm-12">
 					<h3 class="centered-title-element rooms">
 						<?= $widget->title() ?>
 					</h3>
 				</div>
 			</div>
 			<div class="row rooms-row">
-				<div class="col l4 m12 s12 rooms-first-col">
+				<div class="col-lg-4 col-md-12 col-sm-12 rooms-first-col">
 					<?= $widget->roomsDescription ?>
 				</div>
-				<div class="col l8 m12 s12 rooms-list-element">
+				<div class="col-lg-8 col-md-12 col-sm-12 rooms-list-element">
 					<div class="row">
-						<div class="col l6 m6 s12">
+						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="room-card-element">
 								<header>
 									<img src="/img/room1.png" />
@@ -64,7 +64,7 @@ $widget = $this->context;
 								</footer>
 							</div>
 						</div>
-						<div class="col l6 m6 s12">
+						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="room-card-element">
 								<header>
 									<img src="/img/room2.png" />
@@ -90,7 +90,7 @@ $widget = $this->context;
 								</footer>
 							</div>
 						</div>
-						<div class="col l6 m6 s12">
+						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="room-card-element">
 								<header>
 									<img src="/img/room1.png" />
@@ -116,7 +116,7 @@ $widget = $this->context;
 								</footer>
 							</div>
 						</div>
-						<div class="col l6 m6 s12">
+						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="room-card-element">
 								<header>
 									<img src="/img/room1.png" />
@@ -146,7 +146,7 @@ $widget = $this->context;
 				</div>
 			</div>
 			<div class="row more-row">
-				<div class="col l12 m12 s12 center">
+				<div class="col-lg-12 col-md-12 col-sm-12 center">
 					<button class="detail-button-element">все номера номера</button>
 				</div>
 			</div>

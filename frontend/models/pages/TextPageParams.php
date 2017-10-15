@@ -14,7 +14,8 @@ use frontend\widgets\section\Section;
 class TextPageParams extends SectionParams
 {
 
-    protected $sectionType = Section::TYPE_TEXT_PAGE;
+    protected $sectionType  = Section::TYPE_TEXT_PAGE;
+    protected $sectionClass = 'text';
 
     /**
      * @var $bgColor string

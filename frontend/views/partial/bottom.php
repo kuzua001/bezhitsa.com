@@ -2,7 +2,7 @@
 		<div class="content-wrapper">
 			<div class="container container-90">
 				<div class="row indent">
-					<div class="col l3">
+					<div class="col-lg-3">
 						<div class="logo-wrapper">
 							<img class="logo" src="/img/logo_small.png">
 							<p class="title">
@@ -11,7 +11,7 @@
 							</p>
 						</div>
 					</div>
-					<div class="col l5">
+					<div class="col-lg-5">
 						<nav class="scrollto-links">
 							<a href="#">Отель</a>
 							<a href="#">Номера</a>
@@ -19,7 +19,7 @@
 							<a href="#">Фитнес клуб</a>
 						</nav>
 					</div>
-					<div class="col l4">
+					<div class="col-lg-4">
 						<nav class="social">
 							<a href="https://facebook.com">
 								<i style="background-image: url('/img/social/fb.png')"></i>

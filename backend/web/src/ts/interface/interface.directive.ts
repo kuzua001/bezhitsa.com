@@ -75,6 +75,13 @@ export class InterfaceDirective {
 
 		let $interface = $('<div>');
 
+		let inputBlockTabs = [];
+		let inputBlockTabTitles = [];
+		let tabTitleCounter = 0;
+
+		inputBlockTabs[0] = [];
+		inputBlockTabTitles['Данные'] = 0;
+
 		for (let i in interfaceSettings) {
 			if (!$.isNumeric(i)) {
 				//continue;
@@ -155,6 +162,13 @@ export class InterfaceDirective {
 						$input = $('<input type="checkbox">');
 						$input.prop('checked', value);
 						break;
+					case 'select':
+						$input = $('<select>');
+						for (let i in item.options) {
+							$input.append($("<option value='" + i + "'>" + item.options[i] + "</option>"));
+						}
+						$input.val(value);
+						break;
 					case 'color':
 						$input = $('<input type="text" class="color-picker">');
 						$input.val(value);
@@ -192,15 +206,47 @@ export class InterfaceDirective {
 
 				$inputBlock.append($('<label for="' + itemId + '">' + item.title + '</label>'));
 				$inputBlock.append($input);
-
 			}
 
 			if (item.separated == true) {
 				$interface.append($('<hr class="separator">'));
 			}
 
-			$interface.append($inputBlock);
+			if (!item.tabTitle) {
+				inputBlockTabs[0].push($inputBlock);
+			} else {
+				let tabTitle = item.tabTitle;
+				if (inputBlockTabTitles[tabTitle] === undefined) {
+					inputBlockTabTitles[tabTitle] = ++tabTitleCounter;
+				}
+
+				let tabIndex = inputBlockTabTitles[tabTitle];
+				if (inputBlockTabs[tabIndex] === undefined) {
+					inputBlockTabs[tabIndex] = [];
+				}
+
+				inputBlockTabs[tabIndex].push($inputBlock);
+			}
 		}
+
+		let $tabTitles = $("<ul class='interface-tab-list'></ul>");
+		if (inputBlockTabs.length) {
+			for (let title in inputBlockTabTitles) {
+				let tabIndex = inputBlockTabTitles[title];
+				$tabTitles.append($("<li class='interface-tab-title' data-tab-index='" + tabIndex + "'>" + title + "</li>"));
+				let $tab = $("<div class='interface-tab' data-tab-index='" + tabIndex +"'></div>");
+				if (tabIndex == 0) {
+					$tab.addClass('active');
+				}
+				for (let j in inputBlockTabs[tabIndex]) {
+					$tab.append(inputBlockTabs[tabIndex][j]);
+				}
+
+				$interface.append($tab);
+			}
+		}
+
+		$interface.append($tabTitles);
 
 		return $interface;
 
@@ -282,6 +328,23 @@ export class InterfaceDirective {
 		this.templateCounter = 0;
 		this.ckEditorIds = [];
 		$interface.append(this.generateInterface(this.interfaceSettings.params, this.interfaceSettings.values, ''));
+
+		$('body').on('click', '.interface-tab-title', function(e) {
+			let $elem = $(e.currentTarget);
+			let $titleList = $elem.parent();
+			let $section = $elem.closest('.section');
+			let index = $elem.data('tab-index');
+			$section.children('.interface-tab').removeClass('active');
+			$section.children('.interface-tab[data-tab-index=' + index + ']').addClass('active');
+			$titleList.children().removeClass('active');
+			$elem.addClass('active');
+
+			$('.color-picker').spectrum({
+				showInput: true,
+				allowEmpty:true,
+				preferredFormat: "hex"
+			});
+		});
 
 		$('.color-picker').spectrum({
 			showInput: true,

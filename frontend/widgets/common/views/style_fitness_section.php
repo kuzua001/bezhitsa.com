@@ -11,7 +11,7 @@ $widget = $this->context;
 		<img class="bg large" src="/img/backgrounds/style-fitness-bg.jpg">
 		<div class="container container-90">
 			<div class="row clear">
-				<div class="col l6 s12 push-l6">
+				<div class="col-lg-6 col-sm-12 col-lg-push-6">
 					<div class="right-content-block-element">
 						<h2 class="elegant-title-element">
 							<span class="first">Новый</span>

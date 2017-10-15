@@ -97,7 +97,7 @@ BootstrapAsset::register($this);
 			<div ng-controller="SliderController as slider" ng-init="slider.slides = <?= htmlspecialchars(json_encode($sectionParams->slides))?>">
 				<div class="desktop-only">
 					<div class="row slider-group row-flex row-flex-desktop<?= $sectionParams->isRight ? ' reverse-order' : ''?>">
-						<div class="col l8 m12 s12" ng-swipe-left="slider.swipe(true)" ng-swipe-right="slider.swipe(false)">
+						<div class="col-lg-8 col-md-12 col-sm-12" ng-swipe-left="slider.swipe(true)" ng-swipe-right="slider.swipe(false)">
 							<div class="slider slider-element sticky-container">
 								<ul class="slides sticky-content">
 									<li ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
@@ -132,7 +132,7 @@ BootstrapAsset::register($this);
 								</div>
 							</div>
 						</div>
-						<div class="col l4  m12 s12">
+						<div class="col-lg-4  col-md-12 col-sm-12">
 							<div class="card-element">
 								<header class="pale">
 									Фитнес центр
@@ -174,7 +174,7 @@ BootstrapAsset::register($this);
 			</div>
 
 			<div class="row more-row">
-				<div class="col l12 center">
+				<div class="col-lg-12 center">
                     <?= DetailButton::widget([
                         'hasDetailButton'  => $sectionParams->hasDetailButton,
                         'detailButtonText' => $sectionParams->detailButtonText,

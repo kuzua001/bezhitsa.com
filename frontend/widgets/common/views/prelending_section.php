@@ -10,14 +10,14 @@ $widget = $this->context;
     <div class="content-wrapper">
         <div class="container container-90">
             <div class="row">
-                <div class="col l12 m12 s12">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <h2 class="centered-title-element black-text">
                         <?= $widget->title; ?>
                     </h2>
                 </div>
             </div>
             <div class="row row-flex row-flex-desktop">
-                <div class="col l8 s12">
+                <div class="col-lg-8 col-sm-12">
                     <div class="slider slider-element">
                         <ul class="slides">
                             <?php foreach ($widget->slideShowImages as $slide) { ?>
@@ -43,12 +43,12 @@ $widget = $this->context;
                         </ul>
                     </div>
                 </div>
-                <div class="col l4 s12">
+                <div class="col-lg-4 col-sm-12">
                     <?= $widget->cardContent ?>
                 </div>
             </div>
             <div class="row more-row">
-                <div class="col s12 center">
+                <div class="col col-sm-12 center">
                     <button class="detail-button-element black-text">узнать больше</button>
                 </div>
             </div>

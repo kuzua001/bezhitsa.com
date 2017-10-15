@@ -37,14 +37,14 @@ echo StyleFitnessSection::widget([]);
     <div class="content-wrapper">
         <div class="container container-90">
             <div class="row">
-                <div class="col l12 m12 s12">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <h2 class="centered-title-element black-text">
                         Кардио зона и тренажерный зал
                     </h2>
                 </div>
             </div>
             <div class="row row-flex row-flex-desktop">
-                <div class="col l4 m12 s12">
+                <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="card-element">
                         <header class="pale">
                             Тренажерный зал
@@ -65,7 +65,7 @@ echo StyleFitnessSection::widget([]);
                         </section>
                     </div>
                 </div>
-                <div class="col l8  m12 s12">
+                <div class="col-lg-8  col-md-12 col-sm-12">
                     <div class="slider-element one-slide">
                         <img src="/img/shutterstock/kardio.jpg">
                     </div>
@@ -78,14 +78,14 @@ echo StyleFitnessSection::widget([]);
     <div class="content-wrapper">
         <div class="container container-90">
             <div class="row">
-                <div class="col l12 m12 s12">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <h2 class="centered-title-element black-text">
                         Бассейн с зонами релаксации
                     </h2>
                 </div>
             </div>
             <div class="row row-flex row-flex-desktop reverse-order">
-                <div class="col l4 m12 s12">
+                <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="card-element">
                         <header class="pale">
                             Бассейн
@@ -98,7 +98,7 @@ echo StyleFitnessSection::widget([]);
                         </section>
                     </div>
                 </div>
-                <div class="col l8  m12 s12">
+                <div class="col-lg-8  col-md-12 col-sm-12">
                     <div class="slider-element one-slide">
                         <img src="/img/shutterstock/spa.jpg">
                     </div>

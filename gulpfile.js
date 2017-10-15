@@ -2,15 +2,16 @@
  * Created by Иван on 31.05.2017.
  */
 
-const gulp         = require('gulp');
+const gulp          = require('gulp');
 //const rev          = require('gulp-rev');
 //const revManifest  = require('gulp-revmanifest');
-const del          = require('del');
-const less         = require('gulp-less');
-const typescript   = require('gulp-typescript');
-const autoprefixer = require('gulp-autoprefixer');
-const plugins      = require('gulp-load-plugins')();
-const Builder      = require('systemjs-builder');
+const del           = require('del');
+const less          = require('gulp-less');
+const typescript    = require('gulp-typescript');
+const autoprefixer  = require('gulp-autoprefixer');
+const plugins       = require('gulp-load-plugins')();
+const webpack       = require('webpack');
+const webpackStream = require('webpack-stream');
 
 
 gulp.task('clean', function () {
@@ -61,12 +62,11 @@ gulp.task('css-front', function () {
 });
 
 gulp.task('ts-front', function () {
-	var tscConfig    = require('./frontend/tsconfig.json');
+	var webpackConfig = require('./webpack.config.js');
 	return gulp
-		.src('frontend/web/src/ts/**/*.ts')
-		.pipe(typescript(tscConfig.compilerOptions))
-		// .pipe(rev())
-		.pipe(gulp.dest('frontend/web/js/built'))
+		.src('frontend/web/src/ts/index.ts')
+		.pipe(webpackStream(webpackConfig, webpack))
+		.pipe(gulp.dest('frontend/web/js/built/'));
 });
 
 

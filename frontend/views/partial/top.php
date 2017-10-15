@@ -11,18 +11,18 @@ use \frontend\models\menu\TopMenuItem;
  */
 $defaultMenu = new TopMenu();
 $defaultMenu->addMenuItem(new TopMenuItem('http://bezhitsa.com', 'отель', true));
-$defaultMenu->addMenuItem(new TopMenuItem('http://bzfit.ru', 'ресторан', true));
-$defaultMenu->addMenuItem(new TopMenuItem('http://bzrest.ru', 'фитнес-клуб', true));
+$defaultMenu->addMenuItem(new TopMenuItem('http://bzfit.ru', 'фитнес-клуб', true));
+$defaultMenu->addMenuItem(new TopMenuItem('http://bzrest.ru', 'ресторан', true));
 
 $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 ?>
 <section class="header">
 	<div class="content-wrapper">
-		<header class="header-element">
+		<header class="header-element container container-90">
 			<div class="mobile-only">
 				<div class="slide-dummy-element" ng-swipe-right="site.setMenuState(true)"></div>
 				<div class="row">
-					<div class="col s12">
+					<div class="col col-sm-12">
 						<span class="hamburger-element" ng-click="site.toggleMenu()">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -36,12 +36,12 @@ $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 			</div>
 			<div class="desktop-only container container-90">
 				<div class="row">
-					<div class="col l4">
+					<div class="col-md-4">
 						<a class="header-logo" href="http://bezhitsa.com" title="beshitza.ru">
 							<img src="/img/logo_header.jpg">
 						</a>
 					</div>
-					<div class="header-menu col l5">
+					<div class="header-menu col-md-5">
 						<nav class="menu">
                             <?php foreach ($topMenu->getItems() as $item) { ?>
 								<?= $item->getHTML() ?>
@@ -54,7 +54,7 @@ $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 <!--							<a class="item" ng-click="site.scrollBodyTo('section#section4')">фитнес-клуб&nbsp</a>-->
 <!--						</nav>-->
 					</div>
-					<div class="lang-switcher col l3">
+					<div class="lang-switcher col-md-3">
 						<a>
 							in english
 						</a>

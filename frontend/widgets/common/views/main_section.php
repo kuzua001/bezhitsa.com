@@ -12,13 +12,13 @@ $widget = $this->context;
 		<img class="bg" src="/img/top-bg.jpg">
 		<div class="container container-90">
 			<div class="row clear indent">
-				<div class="col l4 center desktop-only">
+				<div class="col-lg-4 center desktop-only">
 					<img class="logo" src="/img/big-logo.png">
 					<h1>
                         <?= $widget->title() ?>
 					</h1>
 				</div>
-				<div class="col l5 greeting">
+				<div class="col-lg-5 greeting">
 					<p class="header">
 						<b>
 						<?= $widget->welcomeHeader ?>
@@ -28,7 +28,7 @@ $widget = $this->context;
 						<?= $widget->welcomeContent ?>
 					</p>
 				</div>
-				<div class="col l3">
+				<div class="col-lg-3">
 					<?php if (count($widget->contactsList)) { ?>
 						<dl class="contacts-element">
 							<?php foreach($widget->contactsList as $item) { ?>
@@ -44,7 +44,7 @@ $widget = $this->context;
 				</div>
 			</div>
 			<div class="row clear indent indent-large middle-row">
-				<div class="col l4 m4 center">
+				<div class="col-lg-4 col-md-4 center">
 					<section class="reservation-form-element" ng-controller="ReservationFormController as $form">
 						<header>
 							Забронировать проживание
@@ -65,7 +65,7 @@ $widget = $this->context;
 						</footer>
 					</section>
 				</div>
-				<div class="col l8 m8">
+				<div class="col-lg-8 col-md-8">
 					<h2 class="main-slogan elegant-title-element">
 						<span class="first"><?= $widget->mainSloganFirst ?></span>
 						<span class="second"><?= $widget->mainSloganSecond ?></span>
@@ -74,7 +74,7 @@ $widget = $this->context;
 				</div>
 			</div>
 			<div class="row clear">
-				<div class="col push-l6 ml6 push-m4 m8">
+				<div class="col-lg-push-6 col-lg-6 col-md-push-4 col-md-8">
 					<div class="right-content-block-element">
 						<h3>
 							<?= $widget->rightBlockHeader ?>
