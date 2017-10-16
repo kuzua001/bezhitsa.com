@@ -51,6 +51,14 @@ class SectionBgSizeParams extends PageParams
         4 => 'xl',
     ];
 
+    protected $availableViewportWidth = [
+        0 => 554,
+        1 => 768,
+        2 => 992,
+        3 => 1200,
+        4 => 1440,
+    ];
+
     /**
      * Возвращает строковое занчение префикса разрешения экрана
      * как в бутстрапе
@@ -59,5 +67,15 @@ class SectionBgSizeParams extends PageParams
     public function getViewportPrefix()
     {
         return $this->availableViewportPrefixes[$this->viewportSize];
+    }
+
+    /**
+     * Возвращает ширину заданного разрешения (по номеру)
+     * как в бутстрапе
+     * @return mixed
+     */
+    public function getViewportWidh()
+    {
+        return $this->availableViewportWidth[$this->viewportSize];
     }
 }

@@ -1,8 +1,15 @@
+/* auth */
+/* nav */
+/* swiper */
+/*# sourceMappingURL=sizes.css.map */
 .card-element {
   font-family: "Open Sans", sans-serif;
   height: 100%;
   background-color: #fff;
   padding-bottom: 25px;
+}
+.card-element .card-element > header {
+  margin-top: 20px;
 }
 .card-element header {
   background-color: #eae4cf;
@@ -56,6 +63,9 @@
   margin-top: 4px;
   margin-left: 10px;
 }
+.card-element .item-list.three-col {
+  white-space: nowrap;
+}
 .card-element .item-list.three-col .item {
   background-color: #f9f1dc;
   display: inline-block;
@@ -81,6 +91,11 @@
 }
 .card-element .item-list.three-col + p {
   margin-top: 13px;
+}
+@media screen and (max-width: 992px) {
+  .card-element {
+    max-width: none!important;
+  }
 }
 .rooms-first-col {
   position: relative;

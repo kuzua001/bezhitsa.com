@@ -30,7 +30,7 @@ class MetadataExtractor
      *
      * @return MetadataMapping|null
      */
-    private function getMapping($objectType)
+    private static function getMapping($objectType)
     {
         switch ($objectType) {
             case self::CONTROLLER_MAPPING:

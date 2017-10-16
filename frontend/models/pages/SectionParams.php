@@ -93,6 +93,7 @@ class SectionParams extends PageParams
      * @type (SectionBgSizeParams)[]
      */
     public $bgItems;
+
     /**
      * @var $bgColor string
      * @title цвет фона

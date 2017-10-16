@@ -14,22 +14,12 @@ use yii\helpers\Html;
 $widget        = $this->context;
 $sectionParams = $widget->sectionParams;
 $bgItems       = !empty($sectionParams->bgItems) ? $sectionParams->bgItems : [];
-
-usort($bgItems, function(SectionBgSizeParams $a, SectionBgSizeParams $b) {
-	return $a->viewportSize > $b->viewportSize;
-});
+$bgData        = [];
+foreach ($bgItems as $item) {
+	$bgData[] = ['(min-width: ' . $item->getViewportWidh() .'px)', $item->image];
+}
 ?>
 <section class="<?= $sectionParams->getSectionClass()?>" style="background-color: <?= !empty($sectionParams->bgColor) ? $sectionParams->bgColor : '#fff' ?>">
     <div class="content-wrapper">
-		<picture picturefill class="bg">
-			<?php foreach ($bgItems as $i => $item) { ?>
-				<?php
-				/** @var $item SectionBgSizeParams */
-				?>
-<!--				--><?php //if ($i === 0) { ?>
-<!--					<img src="--><?//= $item->image ?><!--" />-->
-<!--				--><?php //} ?>
-				<source srcset="<?= $item->image ?>" pf-media="screen-<?= $item->getViewportPrefix()?>"/>
-			<?php } ?>
-		</picture>
+		<img class="bg" bh-src-responsive='<?= json_encode($bgData);?>'>
         <div class="container container-90">
