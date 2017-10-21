@@ -15,7 +15,7 @@ $widget        = $this->context;
 $sectionParams = $widget->sectionParams;
 $bgItems       = !empty($sectionParams->bgItems) ? $sectionParams->bgItems : [];
 $bgData        = [];
-foreach ($bgItems as $item) {
+foreach (SectionBgSizeParams::getBgfForAllViewports($bgItems) as $item) {
 	$bgData[] = ['(min-width: ' . $item->getViewportWidh() .'px)', $item->image];
 }
 ?>

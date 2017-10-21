@@ -23,11 +23,12 @@
 }
 
 section .bg {
-  width: 100%;
+  min-width: 100%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
   z-index: 0;
+  margin-left: -50vw;
 }
 
 @media screen and (min-width: @desktop-width) {
@@ -125,8 +126,7 @@ body > .content {
     text-align: center;
 
     .bg {
-      width: auto!important;
-      height: 100%;
+      min-height: 100%;
       display: inline-block;
     }
   }

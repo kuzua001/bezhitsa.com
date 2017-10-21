@@ -70,29 +70,27 @@ body > footer {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     color: #fff;
+    text-align: center;
   }
+
 
   nav.legislation-links {
     margin-bottom: 10px;
     height: initial;
-  }
 
-  nav.legislation-links a:after {
-    content: ' |';
-  }
+    a {
+      color: #fff;
+      &:visited {
+        color: #fff;
+      }
 
-  nav.legislation-links a:last-child:after {
-    display: none;
-  }
+      &:after {
+        content: ' |';
+      }
 
-  /**
-  Строка со ссылками всякими
-   */
-  .row:last-child {
-    margin-top: -8px;
-    margin-left: -61px;
-    line-height: 9px;
-    letter-spacing: 0.2px;
+      &:last-child:after {
+        display: none;
+      }
+    }
   }
-
 }

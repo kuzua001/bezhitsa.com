@@ -43,7 +43,7 @@ class SectionBgSizeParams extends PageParams
         return 'itemType';
     }
 
-    protected $availableViewportPrefixes = [
+    static protected $availableViewportPrefixes = [
         0 => 'xs',
         1 => 'sm',
         2 => 'md',
@@ -51,7 +51,7 @@ class SectionBgSizeParams extends PageParams
         4 => 'xl',
     ];
 
-    protected $availableViewportWidth = [
+    static protected $availableViewportWidth = [
         0 => 554,
         1 => 768,
         2 => 992,
@@ -60,13 +60,51 @@ class SectionBgSizeParams extends PageParams
     ];
 
     /**
+     * SectionBgSizeParams constructor.
+     *
+     * @param $image string  Изображение
+     * @param $size  integer Номер размера экрана
+     */
+    public function __construct($image = "", $size = 0)
+    {
+        $this->image        = $image;
+        $this->viewportSize = $size;
+    }
+
+    /**
+     * Получить бэкгрануды для всех разрешений, если какие-то были пропущены
+     * @param (SectionBgSizeParams)[] $bgItems
+     * @return (SectionBgSizeParams)[]
+     */
+    public static function getBgfForAllViewports(array $bgItems) {
+        $ret = [];
+        $lastImage = '';
+
+        $allBgSizes = self::$availableViewportWidth;
+        $allBgSizes = array_reverse($allBgSizes);
+
+        foreach ($allBgSizes as $index => $width) {
+            foreach ($bgItems as $searchItem) {
+                if ($searchItem->getViewportWidh() == $width) {
+                    $lastImage = $searchItem->image;
+                    break;
+                }
+            }
+
+            $ret[] = new SectionBgSizeParams($lastImage, count($allBgSizes) - $index - 1);
+        }
+
+        return $ret;
+    }
+
+    /**
      * Возвращает строковое занчение префикса разрешения экрана
      * как в бутстрапе
      * @return mixed
      */
     public function getViewportPrefix()
     {
-        return $this->availableViewportPrefixes[$this->viewportSize];
+        return self::$availableViewportPrefixes[$this->viewportSize];
     }
 
     /**
@@ -76,6 +114,6 @@ class SectionBgSizeParams extends PageParams
      */
     public function getViewportWidh()
     {
-        return $this->availableViewportWidth[$this->viewportSize];
+        return self::$availableViewportWidth[$this->viewportSize];
     }
 }
