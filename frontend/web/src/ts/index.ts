@@ -4,6 +4,7 @@ import 'angular-touch';
 import 'angular-picture';
 
 import "angular-responsive-images/src/angular-responsive-images.js";
+import "./misc/app";
 
 
 import { ReservationFormController } from './controllers/reservation_form';

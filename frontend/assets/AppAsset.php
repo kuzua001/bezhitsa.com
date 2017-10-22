@@ -18,15 +18,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
-        /*'js/node_modules/core-js/client/shim.min.js',*/
-        /* 'js/node_modules/zone.js/dist/zone.js', */
-        /*'js/node_modules/reflect-metadata/Reflect.js',*/
-        /*'js/node_modules/systemjs/dist/system.src.js',*/
-        /*'js/systemjs.config.js',*/
-//        'js/built/app.js',
         'js/built/index.js',
-//         'js/app.js',
-//        'https://maps.googleapis.com/maps/api/js?key=AIzaSyAfNPNg4M7uT3PqOFIyGpHZx9f8jTqbKUg&callback=initMap'
     ];
 
     public $jsOptions = [

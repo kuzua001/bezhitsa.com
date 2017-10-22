@@ -42,6 +42,7 @@
   "devDependencies": {
     "@types/angular-mocks": "^1.5.10",
     "@types/core-js": "^0.9.34",
+    "@types/googlemaps": "^3.29.2",
     "@types/jquery": "^3.2.2",
     "@types/node": "^6.0.88",
     "angular-picture": "github:rebelliard/angular-picture",

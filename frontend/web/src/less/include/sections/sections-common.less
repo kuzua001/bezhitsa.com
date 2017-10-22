@@ -19,19 +19,19 @@ body > .content > section {
     margin-bottom: 10px;
   }
 
-  .row.indent > .col:first-child {
+  .row.indent > [class^=col]:first-child {
     padding-left: 102px;
   }
 }
 
 footer {
-  .row.indent > .col:first-child {
+  .row.indent > [class^=col]:first-child {
     padding-left: 102px;
   }
 }
 
 @media (max-width: @desktop-width) {
-  .row.indent.indent-large > .col:first-child {
+  .row.indent.indent-large > [class^=col]:first-child {
     padding-left: initial!important;
   }
 }

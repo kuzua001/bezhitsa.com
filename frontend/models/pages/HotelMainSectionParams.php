@@ -16,7 +16,7 @@ class HotelMainSectionParams extends SectionParams
 {
 
     protected $sectionType  = Section::TYPE_HOTEL_MAIN;
-    protected $sectionClass = 'main';
+    protected $sectionClass = 'main-hotel';
     /**
      * @var $mainHeaderTypePart string
      * @title Часть заголовка под логотипом (гранд отель, фитнес и т.д.)

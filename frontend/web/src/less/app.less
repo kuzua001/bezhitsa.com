@@ -29,6 +29,9 @@ section .bg {
   left: 50%;
   z-index: 0;
   margin-left: -50vw;
+  @media screen and (min-width: @desktop-width) {
+    margin-left: calc(@desktop-width / -2)!important;
+  }
 }
 
 @media screen and (min-width: @desktop-width) {
@@ -145,8 +148,7 @@ body > .content {
     display: inherit;
   }
 
-  section.main,
-  section.main .content-wrapper {
+  section[class^=main] .content-wrapper {
     padding-top: @top-header-height;
   }
 }
@@ -193,6 +195,7 @@ body > .content {
 @import 'include/sections/sections-common';
 @import 'include/sections/section-header';
 @import 'include/sections/section-main';
+@import 'include/sections/section-main-hotel';
 @import 'include/sections/section-service';
 @import 'include/sections/section-events';
 @import 'include/sections/section-fitness';
@@ -208,7 +211,7 @@ body > .content {
 @import 'include/sections/section-text';
 @import 'include/sections/section-booking';
 
-body > .content > section:nth-child(3) {
+body > .content > .slide-menu-element + section {
   padding-top: @top-header-height;
 }
 
@@ -224,7 +227,6 @@ body > .content > section:nth-child(3) {
 }
 
 .slider .slides {
-  background-color: #9e9e9e;
   margin: 0;
   height: 400px;
 }

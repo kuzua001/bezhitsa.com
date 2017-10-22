@@ -16,6 +16,7 @@ class HotelServiceSectionParams extends SectionParams
 {
 
     protected $sectionType = Section::TYPE_HOTEL_SERVICE;
+    protected $sectionClass = 'service';
 
     /**
      * @var $mainHeaderTypePart string

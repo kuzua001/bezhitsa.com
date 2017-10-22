@@ -40,6 +40,9 @@ class Section extends Widget
             case self::TYPE_HOTEL_MAIN:
                 $html .= $this->render('hotel/main');
                 break;
+            case self::TYPE_HOTEL_SERVICE:
+                $html .= $this->render('hotel/service');
+                break;
             case self::TYPE_FITNESS_MAIN:
                 $html .= $this->render('fitness/main');
                 break;

@@ -21,5 +21,7 @@ foreach (SectionBgSizeParams::getBgfForAllViewports($bgItems) as $item) {
 ?>
 <section class="<?= $sectionParams->getSectionClass()?>" style="background-color: <?= !empty($sectionParams->bgColor) ? $sectionParams->bgColor : '#fff' ?>">
     <div class="content-wrapper">
-		<img class="bg" bh-src-responsive='<?= json_encode($bgData);?>'>
+		<div class="bg-wrapper">
+			<img class="bg" bh-src-responsive='<?= json_encode($bgData);?>'>
+		</div>
         <div class="container container-90">

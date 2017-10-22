@@ -1,11 +1,3 @@
-<style>
-    @media (max-width: 992px) {
-        p.sotr {
-            text-align: left!important;
-            margin-left: 40px;
-        }
-    }
-</style>
 <section class="main" style="position: relative; box-sizing: content-box; margin-bottom: -6px; height: 791px!important;">
     <div class="content-wrapper" style="height: 100%">
         <img class="bg" src="/img/top-bg.jpg">

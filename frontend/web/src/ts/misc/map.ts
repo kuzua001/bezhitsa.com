@@ -1,41 +1,5 @@
-/**
- * Created by Иван on 09.05.2017.
- */
-
-$(document).ready(function(){
-	/*$('.slider').slider({
-		height: 657,
-		interval: 1000000,
-		transition: 1000
-	});*/
-
-	$('.slider-group').each(function(i, elem) {
-		var $elem    = $(elem);
-		var $slider  = $elem.find('.slider');
-		var $tabList = $elem.find('.tab-list-element');
-
-		$tabList.on('click', 'li', function(e) {
-			var $new     = $(e.currentTarget);
-			var $current = $tabList.find('li.active');
-			var newIndex = $new.index();
-
-			$slider.find('.indicators li').eq(newIndex).click();
-
-			$current.find('section.content').fadeOut(function() {
-				$tabList.children().removeClass('active');
-				$new.addClass('active');
-				$new.find('section.content').fadeIn();
-			});
-		});
-	});
-});
-
-
-var map;
-
-
-function initMap() {
-	var styledMapType = new google.maps.StyledMapType(
+export function initMap() {
+	let styledMapType = new google.maps.StyledMapType(
 		[
 			{
 				"featureType": "all",
@@ -360,7 +324,7 @@ function initMap() {
 		{name: 'Styled Map'});
 
 
-	var map = new google.maps.Map(document.querySelector('.map-element .map'), {
+	let map = new google.maps.Map(document.querySelector('.map-element .map'), {
 		center: {lat: 53.315590, lng: 34.282076},
 		zoom: 11,
 		mapTypeControlOptions: {
@@ -374,14 +338,14 @@ function initMap() {
 	map.setMapTypeId('styled_map');
 
 
-	bounds = new google.maps.LatLngBounds(
+	let bounds = new google.maps.LatLngBounds(
 		new google.maps.LatLng(-84.999999, -179.999999),
 		new google.maps.LatLng(84.999999, 179.999999));
 
-	var color = "#32210e";
+	let color = "#32210e";
 
-	var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-	var icons = {
+	let iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+	let icons = {
 		parking: {
 			icon: iconBase + 'parking_lot_maps.png'
 		},
@@ -393,7 +357,7 @@ function initMap() {
 		}
 	};
 
-	var features = [
+	let features = [
 		{
 			position: new google.maps.LatLng(53.315590, 34.282076),
 			type: 'library'
@@ -402,9 +366,9 @@ function initMap() {
 
 	// Create markers.
 	features.forEach(function(feature) {
-		var marker = new google.maps.Marker({
+		let marker = new google.maps.Marker({
 			position: feature.position,
-			icon: './public/img/icons/gmap.png',
+			icon: './img/icons/gmap.png',
 			map: map
 		});
 	});
