@@ -15,8 +15,12 @@ $widget        = $this->context;
 $sectionParams = $widget->sectionParams;
 $bgItems       = !empty($sectionParams->bgItems) ? $sectionParams->bgItems : [];
 $bgData        = [];
-foreach (SectionBgSizeParams::getBgfForAllViewports($bgItems) as $item) {
-	$bgData[] = ['(min-width: ' . $item->getViewportWidh() .'px)', $item->image];
+
+foreach ($bgItems as $item) {
+	$bgData[] = ['(max-width: ' . $item->getViewportWidh() .'px)', $item->image];
+	if ($item === end($bgItems)) {
+        $bgData[] = ['(min-width: ' . $item->getViewportWidh() .'px)', $item->image];
+	}
 }
 ?>
 <section class="<?= $sectionParams->getSectionClass()?>" style="background-color: <?= !empty($sectionParams->bgColor) ? $sectionParams->bgColor : '#fff' ?>">

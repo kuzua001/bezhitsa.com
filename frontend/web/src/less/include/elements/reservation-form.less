@@ -1,6 +1,9 @@
 .reservation-form-element {
-  margin: 59px 9px 0 11px;
   overflow: hidden;
+
+  @media (min-width: @menu-max-width) {
+    margin: 59px 9px 0 11px;
+  }
 
   &:not(.nobg) {
     background-color: #fff;

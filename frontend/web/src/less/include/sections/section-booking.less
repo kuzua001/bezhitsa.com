@@ -1,25 +1,31 @@
 section.booking {
+	background-color: #eae4cf;
+
 	& > header {
 		padding-top: 50px;
 		background-color: #3b2213;
 		overflow: hidden;
 	}
 
-	& > section.content {
-		background-color: #eae4cf;
-		overflow: hidden;
+	.content-wrapper {
 
-		.characteristics{
-			margin-top: 20px;
-			color: #000;
-			background-color: #fff;
-			padding: 28px 23px;
-			line-height: 50px;
-		}
+		& > section.content {
+			overflow: hidden;
 
-		.price-from {
-			float: right;
-			line-height: 50px;
+			.characteristics{
+				font-size: 16px;
+				margin-top: 20px;
+				color: #000;
+				background-color: #fff;
+				padding: 28px 23px;
+				line-height: 50px;
+				margin-bottom: 30px;
+			}
+
+			.price-from {
+				float: right;
+				line-height: 50px;
+			}
 		}
 	}
 }

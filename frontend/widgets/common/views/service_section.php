@@ -54,11 +54,11 @@ $widget = $this->context;
 								</section>
 								<footer>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/one-bed.png">
+										<i class="property-icon one-bed"></i>
 										<span class="property-description">1 двуспальная кровать</span>
 									</div>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/2people.png">
+										<i class="property-icon two-people"></i>
 										<span class="property-description">2 гостя</span>
 									</div>
 								</footer>
@@ -80,11 +80,11 @@ $widget = $this->context;
 								</section>
 								<footer>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/one-bed.png">
+										<i class="property-icon one-bed"></i>
 										<span class="property-description">1 двуспальная кровать</span>
 									</div>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/2people.png">
+										<i class="property-icon two-people"></i>
 										<span class="property-description">2 гостя</span>
 									</div>
 								</footer>
@@ -106,11 +106,11 @@ $widget = $this->context;
 								</section>
 								<footer>
 									<div class="property-item-element large-icon">
-										<img class="property-icon" src="/img/icons/two-bed.png">
+										<i class="property-icon two-bed"></i>
 										<span class="property-description">2 односпальных кровати</span>
 									</div>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/2people.png">
+										<i class="property-icon two-people"></i>
 										<span class="property-description">2 гостя</span>
 									</div>
 								</footer>
@@ -132,11 +132,11 @@ $widget = $this->context;
 								</section>
 								<footer>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/one-bed.png">
+										<i class="property-icon one-bed"></i>
 										<span class="property-description">1 двуспальная кровать</span>
 									</div>
 									<div class="property-item-element">
-										<img class="property-icon" src="/img/icons/2people.png">
+										<i class="property-icon two-people"></i>
 										<span class="property-description">2 гостя</span>
 									</div>
 								</footer>

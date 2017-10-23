@@ -5,6 +5,13 @@ body > .content > section {
   position: relative;
   overflow: hidden;
 
+
+  &:not(.header) .content-wrapper .container-90 {
+    @media (max-width: @menu-max-width-1) {
+      width: 100%;
+    }
+  }
+
   &:after {
     content: '';
     position: absolute;
@@ -19,20 +26,22 @@ body > .content > section {
     margin-bottom: 10px;
   }
 
-  .row.indent > [class^=col]:first-child {
-    padding-left: 102px;
+  .bg-wrapper {
+    position: relative;
+  }
+
+  @media (min-width: @desktop-width) {
+    .row.indent > [class^=col]:first-child {
+      padding-left: 102px;
+    }
   }
 }
 
 footer {
   .row.indent > [class^=col]:first-child {
-    padding-left: 102px;
-  }
-}
-
-@media (max-width: @desktop-width) {
-  .row.indent.indent-large > [class^=col]:first-child {
-    padding-left: initial!important;
+    @media screen and (min-width: @desktop-min-width) {
+      padding-left: 102px;
+    }
   }
 }
 

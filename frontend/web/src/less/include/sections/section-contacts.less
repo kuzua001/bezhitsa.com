@@ -1,0 +1,38 @@
+@import "../sizes";
+
+section.contacts {
+	& > .content-wrapper {
+		& > .container {
+			padding-top: 33px;
+		}
+	}
+	.contacts-wrapper {
+		padding: 42px 0 0;
+		width: 92%;
+		margin: 0 auto;
+
+		[class^=col] {
+			padding: 0 10px!important;
+		}
+
+		@media screen and (max-width: @desktop-min-width-1) and (min-width: @menu-max-width) {
+			[class^=col]:nth-child(1) {
+				.contacts-card-element {
+					float: right;
+				}
+			}
+
+			[class^=col]:nth-child(2) {
+				.contacts-card-element {
+					float: left;
+				}
+			}
+		}
+	}
+
+	& + section.map {
+		.content-wrapper {
+			display: none;
+		}
+	}
+}

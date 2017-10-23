@@ -1,7 +1,7 @@
-var path = require('path');
+var path   = require('path');
+var webpack = require('webpack');
 
 var distPath = path.join(__dirname, '/frontend/web/js/built');
-
 
 module.exports = {
 	/*devtool: 'inline-source-map',*/
@@ -20,5 +20,11 @@ module.exports = {
 // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
 			{ test: /\.tsx?$/, loader: 'ts-loader' }
 		]
-	}
+	},
+	plugins : [
+		new webpack.ProvidePlugin({
+			'window.jQuery': 'jquery',
+			'windows.$': 'jquery'
+		})
+	]
 }

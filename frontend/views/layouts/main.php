@@ -28,7 +28,7 @@ Yii::$app->language = 'ru';
 		<?php $this->beginBody() ?>
 			<div class="content" style="background-color: <?= isset($this->bgColor) ? $this->bgColor : '#fff'?>">
 				<?= $this->render("//partial/top") ?>
-					<?= $content ?>
+				<?= $content ?>
 			</div>
 			<?= $this->render("//partial/bottom") ?>
 		<?php $this->endBody() ?>

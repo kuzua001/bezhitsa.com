@@ -16,13 +16,14 @@ use frontend\assets\BootstrapAsset;
 
 class Section extends Widget
 {
-    const TYPE_HOTEL_MAIN    = 'hotel_main';
-    const TYPE_FITNESS_MAIN  = 'fitness_main';
-    const TYPE_FITNESS_STYLE = 'fitness_style';
-    const TYPE_HOTEL_SERVICE = 'hotel_service';
-    const TYPE_SLIDER_TABS   = 'slider_tabs';
-    const TYPE_TEXT_PAGE     = 'text_page';
-    const TYPE_ABOUT_PAGE    = 'about_page';
+    const TYPE_HOTEL_MAIN     = 'hotel_main';
+    const TYPE_CONTACTS_PAGE  = 'hotel_contacts';
+    const TYPE_FITNESS_MAIN   = 'fitness_main';
+    const TYPE_FITNESS_STYLE  = 'fitness_style';
+    const TYPE_HOTEL_SERVICE  = 'hotel_service';
+    const TYPE_SLIDER_TABS    = 'slider_tabs';
+    const TYPE_TEXT_PAGE      = 'text_page';
+    const TYPE_ABOUT_PAGE     = 'about_page';
 
     /**
      * @var SectionParams Параметры секции (объект любого унаследованного класса)
@@ -39,6 +40,9 @@ class Section extends Widget
         switch ($this->sectionParams->getSectionType()) {
             case self::TYPE_HOTEL_MAIN:
                 $html .= $this->render('hotel/main');
+                break;
+            case self::TYPE_CONTACTS_PAGE:
+                $html .= $this->render('common/contacts_page');
                 break;
             case self::TYPE_HOTEL_SERVICE:
                 $html .= $this->render('hotel/service');

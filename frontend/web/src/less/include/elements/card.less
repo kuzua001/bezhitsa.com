@@ -5,7 +5,6 @@
   font-family: "Open Sans", sans-serif;
   height: 100%;
 
-
   .card-element > header {
     margin-top: 20px;
   }
@@ -113,20 +112,26 @@
 
   padding-bottom: 25px;
 
-  @media screen and (max-width: @menu-max-width) {
+  @media screen and (max-width: @menu-max-width-1) {
     max-width: none!important;
   }
 }
 
 .rooms-first-col {
   position: relative;
-  left: 20px;
-  padding: 0px 18px;
+
+  @media screen and (min-width: @menu-max-width) {
+    left: 20px;
+    padding: 0px 18px;
+  }
 
   .card-element {
     padding-bottom: 14px;
-    margin-left: 2px;
-    margin-right: 3px;
+
+    @media screen and (min-width: @menu-max-width) {
+      margin-left: 2px;
+      margin-right: 3px;
+    }
 
     .content {
       padding: 0px 26px;

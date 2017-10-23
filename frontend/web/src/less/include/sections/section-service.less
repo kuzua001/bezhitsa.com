@@ -5,7 +5,10 @@ section.service {
   min-height: 1737px;
 
   .content-wrapper {
-    padding-top: 100px;
+    & > .container {
+      padding-top: 100px;
+    }
+
     &:before {
       background-image: url('/img/section2-bg.jpg');
     }
@@ -19,18 +22,25 @@ section.service {
     background-color: #9e7248;
   }
 
-  .right-content-block-element:first-child {
-    margin-top: 5px;
-    width: 447px;
+  @media screen and (min-width: @menu-max-width){
+    .right-content-block-element:first-child {
+      margin-top: 5px;
+      width: 447px;
+    }
+
+    .right-content-block-element:nth-child(2) {
+      width: 400px;
+      margin-bottom: 56px;
+    }
   }
 
-  .right-content-block-element:nth-child(2) {
-    width: 400px;
-    margin-bottom: 56px;
-  }
 
   .right-content-block-element + .card-element {
     margin: 0 72px 0 32px;
+    @media screen and (max-width: @menu-max-width-1) {
+      margin: 0;
+      margin-bottom: 20px;
+    }
   }
 
   .rooms-list-element > .row,

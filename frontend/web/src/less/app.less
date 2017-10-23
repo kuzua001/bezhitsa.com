@@ -5,6 +5,7 @@
   width: @large-content-width;
 }
 
+
 .content-wrapper p,
 .content-wrapper b,
 .content-wrapper span,
@@ -148,7 +149,7 @@ body > .content {
     display: inherit;
   }
 
-  section[class^=main] .content-wrapper {
+  section[class^=main] .content-wrapper > .container {
     padding-top: @top-header-height;
   }
 }
@@ -173,6 +174,7 @@ body > .content {
 @import 'include/elements/dummy-text';
 @import 'include/elements/header';
 @import 'include/elements/contacts';
+@import 'include/elements/contacts-card';
 @import 'include/elements/reservation-form';
 @import 'include/elements/right-content-block';
 @import 'include/elements/detail-button';
@@ -192,6 +194,7 @@ body > .content {
 @import 'include/elements/editable-text';
 @import 'include/elements/popup';
 @import 'include/elements/hamburger';
+@import 'include/elements/bezhitsa-title';
 @import 'include/sections/sections-common';
 @import 'include/sections/section-header';
 @import 'include/sections/section-main';
@@ -210,6 +213,8 @@ body > .content {
 @import 'include/sections/section-fitness-gym';
 @import 'include/sections/section-text';
 @import 'include/sections/section-booking';
+@import 'include/sections/section-contacts';
+@import '../../js/node_modules/slick-carousel/slick/slick';
 
 body > .content > .slide-menu-element + section {
   padding-top: @top-header-height;

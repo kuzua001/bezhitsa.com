@@ -5,7 +5,7 @@
             <div class="row clear indent">
                 <div class="col-lg-4 center desktop-only">
                     <img src="/img/big-logo.png">
-                    <h1>
+                    <h1 class="bezhitsa-title-element">
                         <span class="name">Bezhitsa</span><br>
                         <span class="type">гранд отель</span>
                     </h1>

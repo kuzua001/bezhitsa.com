@@ -19,7 +19,7 @@ body > footer {
     }
   }
 
-  @media screen and (min-width: calc(@menu-max-width - 1px)) {
+  @media screen and (min-width: @menu-max-width-1) {
     nav.social {
       float: right;
     }
@@ -45,6 +45,10 @@ body > footer {
       position: relative;
       left: -15px;
       letter-spacing: 0.5px;
+
+      @media screen and (max-width: @desktop-min-width-1) {
+        left: -4px;
+      }
 
       .name, .type {
         width: 200px;
@@ -85,7 +89,9 @@ body > footer {
       background-repeat: no-repeat;
       width: 30px;
       height: 30px;
-      margin-right: 6.5px;
+      &:not(:last-child) {
+        margin-right: 6.5px;
+      }
     }
   }
 

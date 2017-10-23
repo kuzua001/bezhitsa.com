@@ -61,13 +61,12 @@ BootstrapAsset::register($this);
 			<div class="row characteristics">
 				<div class="col-lg-4">
 					<div class="custom-select-control large">
-							<label for="select-room-class" class="dropdown"></label>
-							<select name="room-class" id="select-room-class">
-								<option value="1">Стандарт</option>
-								<option value="2">Комфорт</option>
-								<option value="3">Люкс</option>
-							</select>
-						</form>
+						<label for="select-room-class" class="dropdown"></label>
+						<select name="room-class" id="select-room-class">
+							<option value="1">Стандарт</option>
+							<option value="2">Комфорт</option>
+							<option value="3">Люкс</option>
+						</select>
 					</div>
 					<div class="price-from">
 						от <span class="price">5000</span> руб.
@@ -75,11 +74,11 @@ BootstrapAsset::register($this);
 				</div>
 				<div class="col-lg-8 inline-contents text-right">
 					<div class="property-item-element">
-						<img class="property-icon" src="/img/icons/one-bed.png">
+						<i class="property-icon one-bed"></i>
 						<span class="property-description">1 двуспальная кровать</span>
 					</div>
 					<div class="property-item-element">
-						<img class="property-icon" src="/img/icons/2people.png">
+						<i class="property-icon two-people"></i>
 						<span class="property-description">2 гостя</span>
 					</div>
 				</div>
