@@ -13,7 +13,7 @@ $widget = $this->context;
 $sectionParams = $widget->sectionParams;
 ?>
 <div class="row indent indent-large">
-	<div class="col-lg-6">
+	<div class="col-md-6">
 		<h2 class="elegant-title-element">
 			<span class="first">Роскошный</span>
 			<span class="second">сервис для</span>
@@ -39,7 +39,10 @@ $sectionParams = $widget->sectionParams;
 				ведь у вас есть возможность выехать из отеля позже.
 			</p>
 		</div>
-		<div class="card-element">
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-lg-6 col-lg-push-6">
+		<div class="card-element indent-desktop">
 			<header>
 				Почему стоит бронировать у нас?
 			</header>
@@ -88,33 +91,43 @@ $sectionParams = $widget->sectionParams;
 </div>
 <div class="row rooms-row">
 	<div class="col-lg-4 col-md-12 col-sm-12 rooms-first-col">
-		<div class="card-element">
-			<header class="pale">
-				Сведения об отеле
-			</header>
-			<section class="content">
-				<ul>
-					<li><span>Время заезда: 14:00. Время выезда: 12:00</span></li>
-					<li><span>214 номеров и люксов</span></li>
-					<li><span>Сейф в каждом номере</span></li>
-					<li><span>Эксклюзивный клубный лаунж Bezhitsa lobby</span></li>
-					<li><span>Бесплатный беспроводной Интернет в зонах общего пользования и номерах</span></li>
-					<li><span>Круглосуточное обслуживание в номерах</span></li>
-					<li><span>Категория SPG 4</span></li>
-				</ul>
-			</section>
-			<header class="pale">
-				Описание отеля
-			</header>
-			<section class="content">
-				<ul>
-					<li><span>Круглосуточный фитнес</span></li>
-					<li><span>Все фитнес-занятия проходят под наблюдением профессиональных инструкторов</span></li>
-					<li><span>Владеющий иностранными языками персонал</span></li>
-					<li><span>Услуги няни по предварительной договоренности</span></li>
-					<li><span>Прачечная и химчистка в тот же день</span></li>
-				</ul>
-			</section>
+		<div>
+			<div class="row">
+				<div class="col-lg-12 col-md-6">
+					<div class="card-element">
+						<header class="pale">
+							Сведения об отеле
+						</header>
+						<section class="content">
+							<ul>
+								<li><span>Время заезда: 14:00. Время выезда: 12:00</span></li>
+								<li><span>214 номеров и люксов</span></li>
+								<li><span>Сейф в каждом номере</span></li>
+								<li><span>Эксклюзивный клубный лаунж Bezhitsa lobby</span></li>
+								<li><span>Бесплатный беспроводной Интернет в зонах общего пользования и номерах</span></li>
+								<li><span>Круглосуточное обслуживание в номерах</span></li>
+								<li><span>Категория SPG 4</span></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+				<div class="col-lg-12 col-md-6">
+					<div class="card-element">
+						<header class="pale">
+							Описание отеля
+						</header>
+						<section class="content">
+							<ul>
+								<li><span>Круглосуточный фитнес</span></li>
+								<li><span>Все фитнес-занятия проходят под наблюдением профессиональных инструкторов</span></li>
+								<li><span>Владеющий иностранными языками персонал</span></li>
+								<li><span>Услуги няни по предварительной договоренности</span></li>
+								<li><span>Прачечная и химчистка в тот же день</span></li>
+							</ul>
+						</section>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-lg-8 col-md-12 col-sm-12 rooms-list-element hidden-xs hidden-sm">
@@ -225,7 +238,7 @@ $sectionParams = $widget->sectionParams;
 			</div>
 		</div>
 	</div>
-	<slick class="hidden-md hidden-lg hidden-xl" infininte slides-to-show="1" slides-to-scroll="1">
+	<slick class="hidden-md hidden-lg hidden-xl full-width" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
 		<div class="room-card-element">
 			<header>
 				<img src="/img/room1.png">

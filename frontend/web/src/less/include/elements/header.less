@@ -6,6 +6,13 @@
   position: relative;
   white-space: nowrap;
 
+  .mobile-only.container {
+    width: 100%;
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+      width: 90%;
+    }
+  }
+
   .lang-switcher {
     font-family: "Open Sans", serif;
     font-weight: 300;
@@ -26,7 +33,7 @@
     overflow: hidden;
     display: inline-block;
     @media screen and (min-width: @desktop-width) {
-      margin-left: 79px;
+      margin-left: 157px;
     }
   }
 
@@ -39,6 +46,7 @@
     font-weight: 600;
     text-transform: uppercase;
     font-size: 14px;
+
     nav.menu {
       background: none;
       margin-left: -16px;
@@ -64,12 +72,19 @@
     .hamburger-element {
       position: absolute;
       top: 9px;
-      left: 0;
+      left: 15px;
     }
 
     &> .mobile-only {
       height: 100%;
       background-color: #181407;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    .hamburger-element {
+      position: absolute;
+      left: 14px;
     }
   }
 }

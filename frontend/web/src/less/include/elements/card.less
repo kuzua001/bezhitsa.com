@@ -1,4 +1,5 @@
 @import '../sizes';
+@import '../mixins';
 
 .card-element {
 
@@ -117,10 +118,36 @@
   }
 }
 
+
+@media screen and (min-width: @desktop-min-width-1) and (max-width: @desktop-width-1) {
+  .rooms-list-element > .row {
+    margin-bottom: -30px!important;
+  }
+
+  .rooms-row {
+    &.row {
+      display: flex;
+
+      .rooms-first-col {
+        position: relative;
+
+        & > div,
+        & > div > .row {
+          height: 100%;
+        }
+
+        [class^=col] {
+          height: 50%;
+        }
+      }
+    }
+  }
+}
+
 .rooms-first-col {
   position: relative;
 
-  @media screen and (min-width: @menu-max-width) {
+  @media screen and (min-width: @desktop-width) {
     left: 20px;
     padding: 0px 18px;
   }
@@ -135,7 +162,10 @@
 
     .content {
       padding: 0px 26px;
-      margin-bottom: 63px;
+
+      @media screen and (min-width: @desktop-width) {
+        margin-bottom: 55px;
+      }
 
       ul {
         padding-left: 18px;

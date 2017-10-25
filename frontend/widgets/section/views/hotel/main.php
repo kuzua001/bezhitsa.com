@@ -13,14 +13,14 @@ $widget = $this->context;
 $sectionParams = $widget->sectionParams;
 ?>
 <div class="row clear indent indent-large">
-	<div class="col-lg-4 center desktop-only">
+	<div class="col-lg-4 col-md-6 center desktop-only logo-col">
 		<img class="logo" src="/img/big-logo.png">
 		<h1 class="bezhitsa-title-element">
 			<span class="name">Bezhitsa</span><br>
 			<span class="type"><?= Html::encode($sectionParams->mainHeaderTypePart) ?></span>
 		</h1>
 	</div>
-	<div class="col-lg-5 greeting">
+	<div class="col-lg-5 col-sm-6 col-xs2-6 greeting">
 		<p class="header">
 			<b><?= Html::encode($sectionParams->greetingHeader) ?></b>
 		</p>
@@ -28,7 +28,7 @@ $sectionParams = $widget->sectionParams;
 			<?= Html::encode($sectionParams->greetingContent) ?>
 		</p>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-lg-3 col-md-6 col-sm-6 col-xs2-6">
 		<dl class="contacts-element">
 			<dt title="Адрес">
 				<i class="address"></i>
@@ -46,12 +46,11 @@ $sectionParams = $widget->sectionParams;
 			</dd>
 		</dl>
 	</div>
-</div>
-<div class="row clear indent indent-large middle-row">
-	<div class="col-lg-4 col-md-4 center">
+	<div class="clearfix hidden-md"></div>
+	<div class="col-lg-4 col-md-6 col-sm-6 col-xs2-6 center indent">
 		<section class="reservation-form-element">
 			<header>
-				Забронировать проживание
+				Забронировать <span class="hidden-md hidden-sm hidden-xs">проживание</span>
 			</header>
 			<section class="content">
 				<div class="dates">
@@ -69,7 +68,7 @@ $sectionParams = $widget->sectionParams;
 			</footer>
 		</section>
 	</div>
-	<div class="col-lg-8 col-md-8">
+	<div class="col-lg-8 col-md-6 col-sm-6 col-xs2-6">
 		<h2 class="main-slogan elegant-title-element">
 			<span class="first"><?= Html::encode($sectionParams->sloganFirst) ?></span>
 			<span class="second"><?= Html::encode($sectionParams->sloganSecond) ?></span>
@@ -78,12 +77,54 @@ $sectionParams = $widget->sectionParams;
 	</div>
 </div>
 <div class="row clear">
-	<div class="col-lg-push-6 col-lg-6 col-md-push-4 col-md-8">
-		<div class="right-content-block-element">
-			<h3>Харакетристики отеля</h3>
-			<p>
-				Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
-			</p>
+	<slick class="content-slider-element" infininte="true" slides-to-show="3" slides-to-scroll="1" center-padding="0" center-mode="true"
+		   responsive="[
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 2,
+                        adaptiveHeight: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        adaptiveHeight: true
+                    }
+                }
+            ]">
+		<div>
+			<div class="slide-wrapper">
+				<h3>Харакетристики отеля</h3>
+				<p>
+					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
+				</p>
+			</div>
 		</div>
-	</div>
+		<div>
+			<div class="slide-wrapper">
+				<h3>Харакетристики отеля</h3>
+				<p>
+					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
+				</p>
+			</div>
+		</div>
+		<div>
+			<div class="slide-wrapper">
+				<h3>Харакетристики отеля</h3>
+				<p>
+					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
+				</p>
+			</div>
+		</div>
+		<div>
+			<div class="slide-wrapper">
+				<h3>Харакетристики отеля</h3>
+				<p>
+					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
+				</p>
+			</div>
+		</div>
+	</slick>
 </div>

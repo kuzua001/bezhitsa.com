@@ -7,7 +7,7 @@ body > .content > section {
 
 
   &:not(.header) .content-wrapper .container-90 {
-    @media (max-width: @menu-max-width-1) {
+    @media (max-width: 767px) {
       width: 100%;
     }
   }
@@ -26,12 +26,9 @@ body > .content > section {
     margin-bottom: 10px;
   }
 
-  .bg-wrapper {
-    position: relative;
-  }
-
   @media (min-width: @desktop-width) {
-    .row.indent > [class^=col]:first-child {
+    .row.indent > [class^=col]:first-child,
+    .row.indent [class^=col].indent {
       padding-left: 102px;
     }
   }

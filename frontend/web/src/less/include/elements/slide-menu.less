@@ -1,17 +1,20 @@
 @import '../mixins';
+@import '../colors';
 
 .slide-menu-element {
 	z-index: 999;
 	position: fixed;
 	top: 50px;
 	bottom: 0;
-	left: -200px;
-	width: 200px;
+	left: -320px;
+	width: 320px;
 	transition: left 0.3s;
 	.box-shadow(10px -5px 40px rgba(0, 0, 0, 0.2));
 
 	nav {
-		background-color: #191919;
+		border-right: 20px solid @menu-bg-color;
+		overflow: hidden;
+		background-color: @menu-bg-color;
 		a {
 			margin-left: 15px;
 			display: block;

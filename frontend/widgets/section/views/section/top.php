@@ -25,7 +25,9 @@ foreach ($bgItems as $item) {
 ?>
 <section class="<?= $sectionParams->getSectionClass()?>" style="background-color: <?= !empty($sectionParams->bgColor) ? $sectionParams->bgColor : '#fff' ?>">
     <div class="content-wrapper">
-		<div class="bg-wrapper">
-			<img class="bg" bh-src-responsive='<?= json_encode($bgData);?>'>
-		</div>
+		<?php if (!empty($bgData)) { ?>
+			<div class="bg-wrapper">
+				<img class="bg" bh-src-responsive='<?= json_encode($bgData);?>'>
+			</div>
+		<?php } ?>
         <div class="container container-90">

@@ -1,0 +1,62 @@
+.content-slider-element {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 28px;
+
+	@media screen and (min-width: 992px) and (max-width: 1440px) {
+		width: 100%;
+	}
+
+	.slick-slide {
+		padding: 30px;
+		outline: none;
+		cursor: pointer;
+
+
+		h3, h2 {
+			font-family: "Lora", sans-serif;
+			font-size: 18px;
+			margin-bottom: 12px;
+		}
+
+		p {
+			font-family: "Open Sans", sans-serif;
+			font-size: 13px;
+			line-height: 17.5px;
+			letter-spacing: -0.1px;
+			font-style: italic;
+		}
+	}
+
+	.slide-wrapper {
+		padding: 10px;
+		&:hover {
+			text-shadow: 3px 3px 12px rgb(0, 0, 0);
+		}
+	}
+
+	.slick-arrow {
+		position: absolute;
+		outline: none;
+		user-select: none;
+		width: 28px;
+		height: 198px;
+		top: 50%;
+		margin-top: -99px;
+		border: none;
+		background-color: transparent;
+		background-image: url(/img/icons/arrows.png);
+		background-size: 59px;
+		background-repeat: no-repeat;
+
+		&.slick-next {
+			right: -30px;
+			background-position: -29px center;
+		}
+
+		&.slick-prev {
+			left: -30px;
+			background-position: -1px center;
+		}
+	}
+}

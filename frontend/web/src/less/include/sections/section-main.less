@@ -3,9 +3,79 @@
 section[class^=main] {
   min-height: 791px;
 
-  .content-wrapper {
+  .elegant-title-element {
+    .second {
+      margin-left: 4px;
+    }
 
-    &:before {
+    .third {
+      margin-left: 7px;
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      margin-top: -28px;
+
+      .second {
+        margin-top: 15px;
+      }
+
+      .third {
+        margin-top: 13px;
+      }
+    }
+
+    @media screen and (max-width: 670px) {
+      .second {
+        margin-top: 10px;
+        font-size: 33px;
+      }
+
+      .third {
+        margin-top: -2px;
+        font-size: 26px;
+        line-height: 39px;
+      }
+    }
+
+    @media screen and (min-width: 671px) and (max-width: 850px) {
+      .second {
+        font-size: 33px;
+        margin-top: 20px;
+      }
+
+      .third {
+        margin-top: 23px;
+        font-size: 26px;
+        line-height: 39px;
+      }
+    }
+
+    @media screen and (min-width: 850px) and (max-width: 992px) {
+
+      .second {
+        margin-top: 15px;
+      }
+
+      .third {
+        margin-top: 13px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      padding-top: 30px;
+    }
+
+    @media screen and (min-width: 601px) and (max-width: 992px) {
+      padding-top: 0;
+    }
+  }
+
+  .content-wrapper {
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      margin-top: -50px;
+    }
+
+      &:before {
       background-image: url('/img/top-bg.jpg');
     }
 
@@ -32,8 +102,25 @@ section[class^=main] {
     width: 370px;
   }
 
+
   .contacts-element {
-    margin-left: 24px;
-    padding-top: 30px;
+    @media screen and (max-width: @menu-max-width-1) {
+      margin: 30px 0;
+    }
+
+    @media screen and (min-width: @menu-max-width) {
+      margin-left: 24px;
+      padding-top: 30px;
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      margin-left: -27px;
+    }
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .logo-col {
+      margin-top: 62px;
+    }
   }
 }

@@ -18,8 +18,8 @@ $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 ?>
 <section class="header">
 	<div class="content-wrapper">
-		<header class="header-element container container-90">
-			<div class="mobile-only">
+		<header class="header-element">
+			<div class="mobile-only container">
 				<div class="slide-dummy-element" ng-swipe-right="site.setMenuState(true)"></div>
 				<div class="row">
 					<div class="col col-sm-12">

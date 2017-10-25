@@ -1,11 +1,11 @@
 @import '../sizes';
 
 .rooms-list-element {
+  @media screen and (max-width: @desktop-min-width-1) {
+    margin-top: 30px;
+  }
 
-}
-
-@media (min-width: @tablet-max-width) {
-  .rooms-list-element {
+  @media (min-width: @desktop-width) {
     padding-left: 26px!important;
     padding-right: 74px!important;
   }

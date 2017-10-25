@@ -35,8 +35,17 @@ section.service {
   }
 
 
-  .right-content-block-element + .card-element {
-    margin: 0 72px 0 32px;
+  .card-element {
+    &.indent-desktop {
+      @media screen and (min-width: @desktop-min-width) {
+        margin: 0 72px 0 32px;
+      }
+
+      @media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width) {
+        margin-right: -47px;
+      }
+    }
+
     @media screen and (max-width: @menu-max-width-1) {
       margin: 0;
       margin-bottom: 20px;
@@ -54,15 +63,42 @@ section.service {
     margin-top: 18px;
     margin-left: 2px;
   }
-}
 
-@media (min-width: @tablet-max-width) {
-  .rooms-first-col {
-    padding-left: 28px!important;
+  @media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+    .rooms-first-col {
+      position: relative;
+
+      .row {
+        display: flex;
+      }
+
+      [class^=col] {
+        position: relative;
+
+        .card-element {
+          height: 100%;
+        }
+      }
+    }
   }
 
-  .centered-title-element.rooms {
-    margin-top: 109px;
-    margin-bottom: 36px;
+  @media (min-width: @desktop-width) {
+    .rooms-first-col {
+      padding-left: 28px !important;
+    }
+  }
+
+  @media (min-width: @tablet-max-width) {
+    .centered-title-element.rooms {
+      margin-top: 109px;
+      margin-bottom: 36px;
+    }
+  }
+
+  @media (max-width: @tablet-max-width-1) {
+    .centered-title-element.rooms {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
   }
 }
