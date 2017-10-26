@@ -6,6 +6,12 @@ body > .content > section {
   overflow: hidden;
 
 
+  &:not(.service) .content-wrapper > .container {
+    @media screen and (max-width: @menu-max-width-1) {
+      padding-top: 30px!important;
+    }
+  }
+
   &:not(.header) .content-wrapper .container-90 {
     @media (max-width: 767px) {
       width: 100%;

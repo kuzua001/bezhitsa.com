@@ -139,13 +139,9 @@ body > .content {
   }
 }
 
-@media screen and (min-width: (@menu-max-width + 1px)) {
+@media screen and (min-width: (@menu-max-width)) {
   .mobile-only {
     display: none!important;
-  }
-
-  .desktop-only {
-    display: inherit;
   }
 
   section[class^=main] .content-wrapper > .container {
@@ -153,11 +149,7 @@ body > .content {
   }
 }
 
-@media screen and (max-width: @menu-max-width) {
-  .mobile-only {
-    display: inherit;
-  }
-
+@media screen and (max-width: @menu-max-width-1) {
   .desktop-only {
     display: none!important;
   }

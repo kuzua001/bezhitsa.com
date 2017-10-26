@@ -78,6 +78,10 @@ body > footer {
       font-size: 14px;
       color: #fff;
       text-transform: uppercase;
+      @media screen and (max-width: 500px) {
+        display: block;
+        margin: 10px 0;
+      }
     }
   }
 
@@ -110,6 +114,15 @@ body > footer {
     white-space: nowrap;
 
     a {
+
+      @media screen and (max-width: 500px) {
+        display: block;
+        margin: 10px 0;
+        &:after {
+          display: none;
+        }
+      }
+
       color: #fff;
       &:visited {
         color: #fff;

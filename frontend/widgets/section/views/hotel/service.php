@@ -19,9 +19,11 @@ $sectionParams = $widget->sectionParams;
 			<span class="second">сервис для</span>
 			<span class="third tight">требовательных гостей</span>
 		</h2>
+		<div class="clearfix"></div>
 		<button class="detail-button-element">
 			подробнее про отель
 		</button>
+		<div class="clearfix"></div>
 	</div>
 	<div class="col-md-6">
 		<div class="right-content-block-element">
@@ -64,7 +66,7 @@ $sectionParams = $widget->sectionParams;
 						<i class="item-icon" style="background-image: url('/img/icons/service.png');"></i>
 						<p>
 							Круглосуточное<br>
-							обслуживание в номерах
+							обслуживание <span class="desktop-only">в номерах</span>
 						</p>
 					</li>
 					<li class="item">

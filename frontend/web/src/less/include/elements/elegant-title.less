@@ -2,7 +2,6 @@
 @import '../sizes';
 
 .elegant-title-element {
-  overflow: hidden;
 
   &.black-text {
     color: #000;
@@ -42,6 +41,7 @@
     font-size: 30px;
     text-transform: uppercase;
     margin-left: 13px;
+    line-height: 1.5em;
   }
 
   .third.tight {
@@ -53,6 +53,12 @@
     & .first  { font-size: 44.47px;  }
     & .second { font-size: 32.95px;  }
     & .third  { font-size: 20.75px;  }
+  }
+
+  @media screen and (max-width: 500px) {
+    .first  { font-size: 46.47px;  }
+    .second { font-size: 39.95px;  }
+    .third  { font-size: 23.75px;  }
   }
 }
 
