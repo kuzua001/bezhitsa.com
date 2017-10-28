@@ -8,8 +8,10 @@
 
 namespace frontend\controllers;
 
-use frontend\models\menu\TopMenu;
-use frontend\models\menu\TopMenuItem;
+use frontend\components\AppHelper;
+use frontend\models\cms\ux\Menu;
+use frontend\interfaces\models\menu\MenuInterface;
+use frontend\models\cms\ux\MenuItem;
 use frontend\views\CmsView;
 use yii\web\Controller;
 use yii;
@@ -35,33 +37,21 @@ class CmsController extends Controller
     protected $page       = null;
 
     /**
-     * Получить спсиок меню
-     * @return TopMenu
-     */
-    public function getTopMenu()
-    {
-        $menu     = new TopMenu();
-        $domainId = $this->page->domain_id;
-        /** @var $pages Page[] */
-        $pages = Page::find()->where(['=', 'is_enabled', '1'])
-            ->andWhere(['=', 'domain_id', $domainId])->all();
-
-        if (count($pages)) {
-            foreach ($pages as $page) {
-                $menu->addMenuItem(new TopMenuItem($page->url, $page->name));
-            }
-        }
-
-        return $menu;
-    }
-
-    /**
      * Какого цвета background сей страницы
      * @return string
      */
     public function getDefaultBgColor()
     {
         return '#fff';
+    }
+
+    /**
+     * Возвращает ID текущей старницы
+     * @return mixed
+     */
+    public function getPageID()
+    {
+        return $this->page->id;
     }
 
 
@@ -76,12 +66,11 @@ class CmsController extends Controller
         $pageId     = Yii::$app->request->queryParams['pageId'];
         $this->page = Page::id($pageId);
 
-
         $view = new CmsView();
         $view->description = $this->page->pageParams->metaDescription;
         $view->title       = $this->page->pageParams->metaTitle;
         $view->bgColor     = $this->getDefaultBgColor();
-        $view->topMenu     = $this->getTopMenu();
+        $view->topMenu     = $this->page->getMenu();
 
         //var_dump($this->getMenuList());
         //exit();

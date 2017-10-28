@@ -6,7 +6,7 @@ use yii\web\Controller;
 use yii;
 
 
-class FitnessController extends Controller
+class FitnessController extends CmsController
 {
     public function actionIndex()
     {

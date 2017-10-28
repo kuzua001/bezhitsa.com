@@ -39,6 +39,7 @@
 
   .header-menu {
     display: inline-block;
+    text-align: center;
     background-color: @header-bg-color;
     height: @top-header-height;
     line-height: @top-header-height;
@@ -49,12 +50,17 @@
 
     nav.menu {
       background: none;
-      margin-left: -16px;
+      display: inline-block;
       a {
         font-size: 14px;
         padding: 0 26.1px;
         display: inline-block;
-        height: 100%;
+        line-height: 29px;
+        text-decoration: none;
+
+        &.active, &.parent {
+          background-color: #b9a861;
+        }
       }
     }
 

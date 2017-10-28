@@ -53,6 +53,11 @@ footer {
   }
 }
 
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -70,6 +75,16 @@ body > .content {
 
 .container.container-90 {
   width: 90%;
+}
+
+
+.row-flex-desktop {
+  display: flex;
+
+  &.reverse-order {
+    .col-lg-8 {order: 1;}
+    .col-lg-4 {order: 0;}
+  }
 }
 
 .row-flex {
@@ -210,6 +225,9 @@ body > .content {
 
 body > .content > .slide-menu-element + section {
   padding-top: @top-header-height;
+  @media screen and (min-width: @menu-max-width) {
+    margin-top: @submenu-height;
+  }
 }
 
 .inline-contents > div {

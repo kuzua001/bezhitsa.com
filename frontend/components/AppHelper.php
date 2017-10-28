@@ -36,6 +36,27 @@ class AppHelper
         return self::$_domain;
     }
 
+    private static $_currentPageId = null;
+
+    /**
+     * Возвращает ID текущей старницы или null
+     * @return mixed
+     */
+    public static function getCurrentPageID()
+    {
+        if (is_null(self::$_currentPageId)) {
+            try {
+                self::$_currentPageId = Yii::$app->controller->getPageID();
+            } catch (yii\base\UnknownMethodException $ex) {
+
+            }
+        }
+
+        return self::$_currentPageId;
+    }
+
+
+
     /**
      * Доступные языки
      */
@@ -46,6 +67,17 @@ class AppHelper
     private static $_textsDefault = null;
 
     private static $_availableLanguages = [self::LANG_RU, self::LANG_EN];
+
+
+    /**
+     * проверяет, что переданное значение - валидный в теории ID
+     * @param $id
+     * @return bool
+     */
+    public static function isValidID($id)
+    {
+        return is_integer($id) && $id > 0;
+    }
 
     /**
      * Получить текст

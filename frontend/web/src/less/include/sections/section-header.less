@@ -11,4 +11,32 @@ section.header {
 	& + section {
 		padding-top: @top-header-height;
 	}
+
+	> .submenu {
+		background-color: #b9a861;
+
+		nav.submenu {
+			height: @submenu-height;
+			line-height: @submenu-line-height;
+			display: inline-block;
+			a {
+				font-size: 14px;
+				padding: 0 26.1px;
+				display: inline-block;
+				line-height: 22px;
+				font-family: "Open Sans", sans-serif;
+				color: #fff;
+				text-transform: uppercase;
+				text-decoration: none;
+
+				&:visited {
+					color: #fff;
+				}
+
+				&.active {
+					background-color: #000;
+				}
+			}
+		}
+	}
 }

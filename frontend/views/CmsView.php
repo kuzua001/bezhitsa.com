@@ -8,7 +8,7 @@
 
 namespace frontend\views;
 
-use frontend\models\menu\TopMenu;
+use frontend\models\menu\MenuInterface;
 use yii\web\View;
 
 class CmsView extends View {
@@ -26,7 +26,7 @@ class CmsView extends View {
 
     /**
      * Верхняя менюха
-     * @var TopMenu
+     * @var MenuInterface
      */
     public $topMenu;
 

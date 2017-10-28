@@ -1,20 +1,19 @@
 <?php
 
-use \yii\widgets\Menu;
-use \frontend\models\menu\TopMenu;
-use \frontend\models\menu\TopMenuItem;
+use frontend\models\cms\ux\Menu;
+use frontend\models\cms\ux\MenuItem;
 
 /** @var $this \frontend\views\CmsView*/
 
 /**
  * Меню, которое выводится, когда не знаем, что конкретно выводить в качестве меню
+ * todo переделать это, чтобы дефолтное меню возвращал контроллер, а во сьюхе всегда гарантированно был объект topMenu
  */
-$defaultMenu = new TopMenu();
-$defaultMenu->addMenuItem(new TopMenuItem('http://bezhitsa.com', 'отель', true));
-$defaultMenu->addMenuItem(new TopMenuItem('http://bzfit.ru', 'фитнес-клуб', true));
-$defaultMenu->addMenuItem(new TopMenuItem('http://bzrest.ru', 'ресторан', true));
-
-$topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
+if (empty($this->topMenu)) {
+    $topMenu = Menu::findOne(1);
+} else {
+    $topMenu = $this->topMenu;
+}
 ?>
 <section class="header">
 	<div class="content-wrapper">
@@ -22,7 +21,7 @@ $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 			<div class="mobile-only container">
 				<div class="slide-dummy-element" ng-swipe-right="site.setMenuState(true)"></div>
 				<div class="row">
-					<div class="col col-sm-12">
+					<div class="col-sm-12">
 						<span class="hamburger-element" ng-click="site.toggleMenu()">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
@@ -42,17 +41,13 @@ $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 						</a>
 					</div>
 					<div class="header-menu col-md-5">
-						<nav class="menu">
-                            <?php foreach ($topMenu->getItems() as $item) { ?>
-								<?= $item->getHTML() ?>
-							<?php } ?>
-						</nav>
-<!--						<nav class="menu">-->
-<!--							<a class="item" ng-click="site.scrollBodyTo('section#section1')">отель</a>-->
-<!--							<a class="item" ng-click="site.scrollBodyTo('section#section2')">номера</a>-->
-<!--							<a class="item" ng-click="site.scrollBodyTo('section#section3')">ресторан</a>-->
-<!--							<a class="item" ng-click="site.scrollBodyTo('section#section4')">фитнес-клуб&nbsp</a>-->
-<!--						</nav>-->
+                        <?php if (count($topMenu->getItems())) { ?>
+							<nav class="menu">
+								<?php foreach ($topMenu->getItems() as $i => $item) { ?>
+									<?= $item->getHTML() ?>
+								<?php } ?>
+							</nav>
+                        <?php } ?>
 					</div>
 					<div class="lang-switcher col-md-3">
 						<a>
@@ -62,6 +57,27 @@ $topMenu = isset($this->topMenu) ? $this->topMenu : $defaultMenu
 				</div>
 			</div>
 		</header>
+	</div>
+	<div class="desktop-only submenu">
+		<div class="content-wrapper">
+			<div class="container container-90">
+				<div class="row">
+					<div class="col-md-5 col-md-push-4 text-center">
+						<nav class="submenu">
+                            <?php foreach ($topMenu->getItems() as $i => $item) { ?>
+                                <?php if (!empty($item->getSubMenu()) || $item->page_id != $topMenu->parent_page_id) { ?>
+									<div class="item">
+                                        <?php foreach ($item->getSubMenu()->getItems() as $subItem) { ?>
+                                            <?= $subItem->getHTML() ?>
+                                        <?php } ?>
+									</div>
+                                <?php } ?>
+                            <?php } ?>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 <div class="slide-menu-element mobile-only" ng-class="{'active':site.slideMenuState}" ng-swipe-left="site.setMenuState(false)">

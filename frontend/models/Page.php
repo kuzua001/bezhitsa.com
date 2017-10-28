@@ -13,6 +13,7 @@ use frontend\components\ObjectBuilder;
 use frontend\controllers\CmsController;
 use frontend\models\pages\LandingPage;
 use frontend\models\pages\TextPage;
+use frontend\models\cms\ux\Menu;
 use yii\db\ActiveRecord;
 use yii\db\Exception;
 use yii\db\Query;
@@ -27,19 +28,20 @@ use yii\db\Query;
  * @property $pages_id    integer
  * @property $domain_id   integer
  * @property $params_data string
+ * @property $parent_id   integer
  * @property $is_enabled  boolean
  */
 class Page extends ActiveRecord
 {
     public function fields()
     {
-        return ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id'];
+        return ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id', 'parent_id'];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id']
+            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id', 'parent_id']
         ];
     }
     /**
@@ -47,6 +49,10 @@ class Page extends ActiveRecord
      */
     public $pageParams = null;
 
+    /**
+     * Пустой метод, реализуемый у всех дочерних страниц, служит заглушкой, чтобы мы могли
+     * создавать экземпляры базового класса Page
+     */
     protected function initPageParams()
     {
 
@@ -73,6 +79,12 @@ class Page extends ActiveRecord
         return 'cms_page';
     }
 
+    /**
+     * При сохранении страниц в БД сериализует параметры страницы
+     * @param bool $insert
+     *
+     * @return bool
+     */
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -113,13 +125,47 @@ class Page extends ActiveRecord
         return null;
     }
 
+    /**
+     * Возвращает url адрес текущей страницы, при необходимости формирует его на основе параматеров
+     * шаблона url
+     */
+    public function getUrl(array $params = [])
+    {
+        return $this->url;
+    }
+
+    /**
+     * Возвращает меню текущей страницы или null, если его нет
+     * @return null|Menu
+     */
+    public function getMenu()
+    {
+
+        /*$menu = Menu::findOne(['parent_page_id' => $this->id]);
+        if (empty($menu) && !empty($parentPage = Page::id($this->parent_id))) {
+            $menu = $parentPage->getMenu();
+        }
+
+        if (empty($menu)) {
+            $menu = null;
+            // @todo сделать получение дефолтного меню от контроллера текущей страницы
+        }*/
+
+        return null;
+    }
+
+    /**
+     * Возвращает маршруты всех активных старниц сайта
+     * @todo перенести в какой-то отдельный сервис
+     * @return array
+     */
     public static function getRoutes()
     {
         $routes = [];
         $pages = self::find()->all();
 
-        foreach ($pages as $page) {
 
+        foreach ($pages as $page) {
             /**
              * @var $page TextPage|LandingPage
              */

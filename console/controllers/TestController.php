@@ -37,6 +37,13 @@ class TestController extends Controller
         $mapper->updateAll();
     }
 
+
+    public function actionMenu()
+    {
+        var_dump(Page::id(20)->getMenu());
+    }
+
+
     public function actionIndex()
     {
 
