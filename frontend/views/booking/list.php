@@ -5,7 +5,7 @@ use frontend\models\Page;
 use frontend\models\pages\SliderTabsSectionParams;
 
 /**
- * @var $rooms frontend\models\Room[]
+ * @var $rooms frontend\models\data\Room[]
  */
 ?>
 <section class="booking">

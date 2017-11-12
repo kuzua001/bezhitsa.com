@@ -9,7 +9,6 @@
 namespace frontend\models;
 
 use frontend\components\MetadataExtractor;
-use frontend\components\ObjectBuilder;
 use frontend\controllers\CmsController;
 use frontend\models\pages\LandingPage;
 use frontend\models\pages\TextPage;
@@ -131,7 +130,7 @@ class Page extends ActiveRecord
      */
     public function getUrl(array $params = [])
     {
-        return $this->url;
+        return '/' . ltrim($this->url, '/');
     }
 
     /**
@@ -140,18 +139,17 @@ class Page extends ActiveRecord
      */
     public function getMenu()
     {
+        $menu = Menu::findOne(['parent_page_id' => $this->id]);
 
-        /*$menu = Menu::findOne(['parent_page_id' => $this->id]);
         if (empty($menu) && !empty($parentPage = Page::id($this->parent_id))) {
             $menu = $parentPage->getMenu();
         }
 
         if (empty($menu)) {
             $menu = null;
-            // @todo сделать получение дефолтного меню от контроллера текущей страницы
-        }*/
+        }
 
-        return null;
+        return $menu;
     }
 
     /**

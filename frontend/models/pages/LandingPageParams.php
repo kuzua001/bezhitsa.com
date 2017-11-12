@@ -17,14 +17,14 @@ class LandingPageParams extends CmsPageParams
     /**
      * @var $sectionsParams (SectionParams)[]
      * @title Параметры секций
-     * @type (HotelMainSectionParams|HotelServiceSectionParams|ContactsSectionParams|SliderTabsSectionParams|AboutSectionParams|FitnessMainSectionParams|FitnessStyleSectionParams|TextPageParams)[]
+     * @type (HotelMainSectionParams|HotelServiceSectionParams|ContactsSectionParams|SliderTabsSectionParams|AboutSectionParams|FitnessMainSectionParams|FitnessStyleSectionParams|TextPageParams|TrainersListSectionParams)[]
      */
     public $sectionsParams;
 
 
     /**
      * @var $hasContacts boolean
-     * @title Показывать контактную информацию
+     * @title Показывать контактную информацию2
      * @type checkbox
      */
     public $hasContacts;
@@ -43,3 +43,4 @@ class LandingPageParams extends CmsPageParams
         $this->sectionsParams = [];
     }
 }
+

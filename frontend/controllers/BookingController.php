@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 use frontend\components\AppHelper;
-use frontend\models\Room;
+use frontend\models\data\Room;
 use yii\web\Controller;
 use yii;
 

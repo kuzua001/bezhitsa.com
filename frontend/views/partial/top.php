@@ -62,10 +62,10 @@ if (empty($this->topMenu)) {
 		<div class="content-wrapper">
 			<div class="container container-90">
 				<div class="row">
-					<div class="col-md-5 col-md-push-4 text-center">
+					<div class="col-md-9 col-md-push-2 text-center">
 						<nav class="submenu">
                             <?php foreach ($topMenu->getItems() as $i => $item) { ?>
-                                <?php if (!empty($item->getSubMenu()) || $item->page_id != $topMenu->parent_page_id) { ?>
+                                <?php if (!empty($item->getSubMenu()) && $item->page_id == $topMenu->parent_page_id) { ?>
 									<div class="item">
                                         <?php foreach ($item->getSubMenu()->getItems() as $subItem) { ?>
                                             <?= $subItem->getHTML() ?>

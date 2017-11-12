@@ -9,6 +9,7 @@
 namespace frontend\components;
 
 
+use frontend\components\grabbers\ModelMetadataGrabber;
 use yii\db\Exception;
 use frontend\components\grabbers\ControllerMetadataGrabber;
 use frontend\components\grabbers\PagesMetadataGrabber;
@@ -18,10 +19,12 @@ class MetadataExtractor
 {
     const CONTROLLER_MAPPING  = 'controller';
     const PAGES_MAPPING       = 'pages';
+    const MODELS_MAPPING      = 'models';
 
     private static $allowedTypes = [
         self::CONTROLLER_MAPPING,
-        self::PAGES_MAPPING
+        self::PAGES_MAPPING,
+        self::MODELS_MAPPING
     ];
 
     /**
@@ -39,6 +42,8 @@ class MetadataExtractor
             case self::PAGES_MAPPING:
                 return PagesMetadataGrabber::getDefaultMapping();
 
+            case self::MODELS_MAPPING:
+                return ModelMetadataGrabber::getDefaultMapping();
         }
     }
 

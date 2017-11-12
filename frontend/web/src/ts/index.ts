@@ -11,15 +11,15 @@ import 'slick-carousel/slick/slick.min.js';
 import 'angular-slick-carousel';
 
 
-import { ReservationFormController } from './controllers/reservation_form';
 import { SiteController } from './controllers/site';
 import { SliderController } from './controllers/slider';
+import { TabsController } from './controllers/tabs';
 
 export default angular
 	.module('main', ['ngRoute', 'ngTouch', 'bhResponsiveImages', 'slickCarousel'])
-	.controller('ReservationFormController', ReservationFormController)
 	.controller('SiteController', SiteController)
 	.controller('SliderController', SliderController)
+	.controller('TabsController', TabsController)
 	.filter('html', ['$sce', ($sce) => {
 		return (htmlCode) => {
 			return $sce.trustAsHtml(htmlCode);

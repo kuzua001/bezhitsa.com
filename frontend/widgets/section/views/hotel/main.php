@@ -76,7 +76,7 @@ $sectionParams = $widget->sectionParams;
 		</h2>
 	</div>
 </div>
-<div class="row clear">
+<div class="row clear slick-wrapper">
 	<slick class="content-slider-element" infininte="true" slides-to-show="3" slides-to-scroll="1" center-padding="0" center-mode="true"
 		   responsive="[
                 {

@@ -30,7 +30,9 @@ section .bg {
   z-index: 0;
   margin-left: -50vw;
   @media screen and (min-width: @desktop-width) {
-    margin-left: calc(@desktop-width / -2)!important;
+    &:not(.large) {
+      margin-left: calc(@desktop-width / -2)!important;
+    }
   }
 }
 
@@ -177,6 +179,7 @@ body > .content {
 @import 'include/custom';
 @import 'include/utils';
 @import 'include/controls';
+
 @import 'include/elements/dummy-text';
 @import 'include/elements/header';
 @import 'include/elements/contacts';
@@ -202,6 +205,11 @@ body > .content {
 @import 'include/elements/hamburger';
 @import 'include/elements/bezhitsa-title';
 @import 'include/elements/content-slider';
+@import 'include/elements/trainer-card';
+@import 'include/elements/trainer-form';
+@import 'include/elements/trainer-description';
+@import 'include/elements/restaurant-menu';
+
 @import 'include/sections/sections-common';
 @import 'include/sections/section-header';
 @import 'include/sections/section-main';
@@ -221,6 +229,7 @@ body > .content {
 @import 'include/sections/section-text';
 @import 'include/sections/section-booking';
 @import 'include/sections/section-contacts';
+@import 'include/sections/section-trainers';
 @import '../../js/node_modules/slick-carousel/slick/slick';
 
 body > .content > .slide-menu-element + section {
@@ -306,5 +315,23 @@ slick.full-width {
 
   @media screen and (max-width: 768px) {
     margin-left: -1.5vw;
+  }
+}
+
+.form-control {
+  .border-radius(0);
+}
+
+.form-control:focus {
+  border-color: #9c8939;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(156,137,57,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(156,137,57,.6);
+}
+
+slick {
+  visibility: hidden;
+  &.slick-initialized {
+    visibility: visible;
   }
 }

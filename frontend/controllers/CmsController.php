@@ -72,9 +72,6 @@ class CmsController extends Controller
         $view->bgColor     = $this->getDefaultBgColor();
         $view->topMenu     = $this->page->getMenu();
 
-        //var_dump($this->getMenuList());
-        //exit();
-        //$view->topMenu
 
         $this->setView($view);
 

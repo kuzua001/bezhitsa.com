@@ -1,0 +1,91 @@
+.trainer-form-element {
+	background-color: #fff;
+	text-align: center;
+	font-size: 14px;
+	color: #000;
+	overflow: hidden;
+
+	h3 {
+		margin-top: 33px;
+		font-size: 28px;
+		letter-spacing: 0.6px;
+		font-family: "Acrom", sans-serif;
+		text-transform: uppercase;
+		margin-bottom: 18px;
+	}
+
+	.details {
+		margin-bottom: 24px;
+	}
+
+	[class*=col] .form-group:first-child {
+		margin-left: 14px;
+	}
+
+	.form-group {
+		margin-bottom: 7px;
+		font-family: "Open Sans", sans-serif;
+
+		input[type=text] {
+			height: 42px;
+			margin-bottom: 7px;
+			border-color: #f00;
+			padding-left: 16px;
+			letter-spacing: 0;
+			font-size: 14px;
+			line-height: 42px;
+		}
+
+		.title {
+			margin-bottom: 8px;
+			display: block;
+		}
+
+		&.required .title:after {
+			content: '*';
+		}
+
+		.title {
+			font-size: 14px;
+		}
+
+
+		&:not(.agree) {
+			text-align: left;
+		}
+
+		&.error {
+			letter-spacing: -0.2px;
+			input {
+				border-color: #f00;
+			}
+		}
+
+		&.agree {
+			input[type=checkbox] {
+				display: inline-block;
+				+ p {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+	input[type=submit] {
+		color: #fff;
+		text-transform: uppercase;
+		background-color: #9c8939;
+		border: none;
+		padding: 10px 30px;
+		font-family: "Open Sans", sans-serif;
+	}
+
+	.wrapper {
+		max-width: 640px;
+		margin: 0 auto;
+	}
+
+	.form-group.error .error {
+		color: #f00;
+	}
+}

@@ -27,7 +27,7 @@ foreach ($bgItems as $item) {
     <div class="content-wrapper">
 		<?php if (!empty($bgData)) { ?>
 			<div class="bg-wrapper">
-				<img class="bg" bh-src-responsive='<?= json_encode($bgData);?>'>
+				<img class="bg<?= $sectionParams->isBgLarge ? ' large' : ''?>" bh-src-responsive='<?= json_encode($bgData);?>'>
 			</div>
 		<?php } ?>
         <div class="container container-90">

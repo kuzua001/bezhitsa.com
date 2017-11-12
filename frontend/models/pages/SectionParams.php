@@ -31,6 +31,14 @@ class SectionParams extends PageParams
     public $hasDetailButton;
 
     /**
+     * @var $isBgLarge
+     * @title Фон крупный, на всю ширину
+     * @tab [Параметры секции]
+     * @type checkbox
+     */
+    public $isBgLarge;
+
+    /**
      * @var $detailButtonIsColored
      * @title Кастомный цвет кнопки
      * @tab [Кнопка подробнее]

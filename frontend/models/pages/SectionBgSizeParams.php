@@ -67,6 +67,7 @@ class SectionBgSizeParams extends PageParams
      */
     public function __construct($image = "", $size = 0)
     {
+        parent::__construct();
         $this->image        = $image;
         $this->viewportSize = $size;
     }

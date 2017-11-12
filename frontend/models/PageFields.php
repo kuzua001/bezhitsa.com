@@ -16,6 +16,7 @@ class PageFields extends Object
     protected $params = [];
     protected $values = null;
 
+    const TYPE_PROVIDER_CONF = ParamField::TYPE_PROVIDER_CONF;
     const TYPE_CHECKBOX      = ParamField::TYPE_CHECKBOX;
     const TYPE_SELECT        = ParamField::TYPE_SELECT;
     const TYPE_STRING        = ParamField::TYPE_STRING;

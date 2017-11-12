@@ -11,14 +11,15 @@ namespace frontend\models;
 
 class ParamField
 {
-    const TYPE_STRING   = 'string';
-    const TYPE_SELECT   = 'select';
-    const TYPE_TEXTAREA = 'textarea';
-    const TYPE_HTML     = 'html';
-    const TYPE_CHECKBOX = 'checkbox';
-    const TYPE_IMAGE    = 'image';
-    const TYPE_COLOR    = 'color';
-    const TYPE_DEFAULT  = self::TYPE_STRING;
+    const TYPE_PROVIDER_CONF = 'provider_conf';
+    const TYPE_STRING        = 'string';
+    const TYPE_SELECT        = 'select';
+    const TYPE_TEXTAREA      = 'textarea';
+    const TYPE_HTML          = 'html';
+    const TYPE_CHECKBOX      = 'checkbox';
+    const TYPE_IMAGE         = 'image';
+    const TYPE_COLOR         = 'color';
+    const TYPE_DEFAULT       = self::TYPE_STRING;
 
     private $value = null;
     private $name;
@@ -27,6 +28,7 @@ class ParamField
 
     private static $allowedTypes = [
         self::TYPE_CHECKBOX,
+        self::TYPE_PROVIDER_CONF,
         self::TYPE_SELECT,
         self::TYPE_STRING,
         self::TYPE_TEXTAREA,

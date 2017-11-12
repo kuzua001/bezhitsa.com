@@ -24,6 +24,7 @@ class Section extends Widget
     const TYPE_SLIDER_TABS    = 'slider_tabs';
     const TYPE_TEXT_PAGE      = 'text_page';
     const TYPE_ABOUT_PAGE     = 'about_page';
+    const TYPE_TRAINERS_LIST  = 'fitness_trainers';
 
     /**
      * @var SectionParams Параметры секции (объект любого унаследованного класса)
@@ -52,6 +53,9 @@ class Section extends Widget
                 break;
             case self::TYPE_FITNESS_STYLE:
                 $html .= $this->render('fitness/style');
+                break;
+            case self::TYPE_TRAINERS_LIST:
+                $html .= $this->render('fitness/trainers');
                 break;
             case self::TYPE_SLIDER_TABS:
                 $html .= $this->render('common/slider_tabs');

@@ -8,7 +8,11 @@
 
 namespace frontend\models;
 
+use frontend\models\cms\logic\DataProviderConfiguration;
+use yii\base\UnknownPropertyException;
+use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
+use yii\db\Exception;
 
 /**
  * Умеет инициализироват свои переменные из серивализованной строки, получать список параметров
@@ -18,10 +22,79 @@ use yii\db\ActiveRecord;
  */
 class PageParams
 {
-
     protected $pageParamsNamespace = 'frontend\models\pages';
 
     protected $availableInstances = [];
+
+
+    /**
+     * список значений натсроек data-провайдеров, по сути это будут настройки фильтров
+     * для получених конкретных данных
+     * todo описать это более четко, когда будет окончательно выработана концепция по привязке данных моеделей
+     * todo к классу PageParams
+     * @var array
+     */
+    protected $dataProvidersData = [];
+
+    /**
+     * Список дава провайдеров, который строится в конструкторе после их конфигурирования
+     * @var ActiveDataProvider[]
+     */
+    private $providers = [];
+
+    private static $_reserved = [
+        'reserved', 'providers', 'dataProvidersData'
+    ];
+
+    // todo разобраться че тут блин вообще происходит
+    function __construct()
+    {
+        $this->initProviders();
+    }
+
+    /**
+     * Настраивает список настроек для поставляемых провайдеров данных
+     */
+    protected static function getDataProviders()
+    {
+        return [];
+    }
+
+    private function initProviders()
+    {
+        // Настраиваем провайдеры данных, привязанные к этому экземпляру настроек страницы
+        $providersCfg = static::getDataProviders();
+
+        if (count($providersCfg)) {
+            foreach ($providersCfg as $cfg) {
+                /**@var $cfg DataProviderConfiguration  */
+                $providerName = $cfg->getProviderName();
+                $this->providers[$providerName] = $cfg->getDataProvider(isset($this->dataProvidersData[$providerName]) ? $this->dataProvidersData[$providerName] : []);
+            }
+        }
+    }
+
+    /**
+     * Переопределенный геттер, умеет возвращать магические поля дата-провайдеров
+     * @param $key
+     *
+     * @return ActiveDataProvider|object
+     * @throws UnknownPropertyException
+     */
+    public function __get($key)
+    {
+        if (property_exists($this, $key)) {
+            return $this->$key;
+        } else if (isset($this->providers[$key])) {
+            return $this->providers[$key];
+        } else {
+            return null;
+            // todo выяснить бывает ли так
+            //var_dump($key);
+            //exit();
+            //throw new UnknownPropertyException();
+        }
+    }
 
     /**
      * Получить availableInstances
@@ -60,9 +133,14 @@ class PageParams
                     } else {
                         $this->$key = $value;
                     }
+                } else if (isset($this->providers[$key])) {
+                    // Если переданы настройки для провайдера данных, то сохраняем их особым образом
+                    $this->dataProvidersData[$key] = $value;
                 }
             }
         }
+
+        $this->initProviders();
 
         return true;
     }
@@ -82,6 +160,8 @@ class PageParams
                     $this->$key = $value;
                 }
             }
+
+            $this->initProviders();
 
             return true;
         } catch (\Exception $ex) {
@@ -108,15 +188,25 @@ class PageParams
 
     public static function getValuesWithTypes($pageParams)
     {
+        // Получаем список провайдеров, чтобы потянуть и их значения тоже
+        // todo сделать не криво!
+
         $ret = [];
         foreach ($pageParams as $key => $val) {
-            if (is_array($val)) {
+            if (is_array($val) && !in_array($key, self::$_reserved)) {
                 $ret[$key] = [];
                 foreach ($val as $i => $obj) {
+                    // todo сделать вообще не такую проверку и защититься от возможного совпадения названия поля и названия провайдера
                     if (is_object($obj)) {
-                        $objArr = self::getValuesWithTypes($obj);
-                        $objArr['type'] = $obj->{$obj->varyingField()};
-                        $ret[$key][$i] = $objArr;
+                        $objArr         = self::getValuesWithTypes($obj);
+                        //if (method_exists($obj, 'varyingField')) {
+                            $objArr['type'] = $obj->{$obj->varyingField()};
+                        //} else {
+                        //    var_dump($key);
+                        //    var_dump($i);
+                        //    exit();
+                        //}
+                        $ret[$key][$i]  = $objArr;
                     } else {
                         $ret[$key][$i]  = $obj;
                     }
@@ -188,6 +278,14 @@ class PageParams
                 }
 
                 $pageFields->addCompositeField($item->name, true, $multiplePageFields, $tabTitle);
+            }
+        }
+
+        // Отдельно зададим поля для настроек дата-провайдеров и вынесем их в отдельный таб настроек "Провайдеры данных"
+        if (count(static::getDataProviders())) {
+            foreach (static::getDataProviders() as $cfg) {
+                // todo сделать нормальный title
+                $pageFields->addField($cfg->getProviderName(), ParamField::TYPE_SELECT, $cfg->getProviderName(), '[]', false, 'Провайдеры данных', $cfg->getAllModelIds());
             }
         }
 

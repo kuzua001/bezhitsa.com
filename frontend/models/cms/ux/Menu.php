@@ -89,6 +89,7 @@ class Menu extends ActiveRecord implements MenuInterface
                     // UTM-меток. У дочерних эелемнтов, которые получены автоматически UTM будут такими же как и у родителя.
                     $subItem = MenuItem::create($item->href, $page->name, $this);
                     $subItem->page_id = $page->id;
+                    $subItem->is_external = true;
                     $itemSubMenu->addMenuItem($subItem);
                 }
 

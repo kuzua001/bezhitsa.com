@@ -9,6 +9,7 @@
 namespace console\controllers;
 
 use frontend\components\grabbers\ControllerMetadataGrabber;
+use frontend\components\grabbers\ModelMetadataGrabber;
 use frontend\components\grabbers\PagesMetadataGrabber;
 use frontend\components\MetadataGrabber;
 use frontend\components\MetadataMapper;
@@ -37,10 +38,25 @@ class TestController extends Controller
         $mapper->updateAll();
     }
 
+    public function actionUpdateModels()
+    {
+        $mapper = new MetadataMapper();
+        $mapper->addGrabber(new ModelMetadataGrabber());
+        //$mapper->addGrabber(new PagesMetadataGrabber());
+        $mapper->updateAll();
+    }
+
 
     public function actionMenu()
     {
         var_dump(Page::id(20)->getMenu());
+    }
+
+
+    public function actionTestTrainers()
+    {
+        $page = Page::id(26);
+        print_r($page->pageParams);
     }
 
 

@@ -79,11 +79,24 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
     {
         $classes = [];
 
-        if ($this->is_external == 1) {
+        if (is_null($this->page_id)) {
             $url = $this->href;
         } else {
             $page = Page::id($this->page_id);
+            $url = $page->getUrl();
 
+            // Обработка урлов на других доменах
+            if ($this->is_external) {
+                $domain = Domain::findOne($page->domain_id);
+
+                if ($domain->base_url !== '/') {
+                    $url = str_replace($domain->base_url, '', $url);
+                }
+                $url = ltrim($url, '/');
+                $url = 'http://' . $domain->domain . '/' . $url . $this->href;
+            }
+
+            // Класс активного элемента меню
             if (AppHelper::getCurrentPageID() == $this->page_id) {
                 $classes[] = self::ACTIVE_CLASS;
             }
@@ -92,16 +105,6 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
             if (!empty($this->parentMenu) && $this->parentMenu->parent_page_id == $this->page_id) {
                 $classes[] = self::PARENT_CLASS;
             }
-
-            $url = '/' . $page->getUrl();
-            // Обработка урлов на других доменах
-            $domain = Domain::findOne($page->domain_id);
-
-            if ($domain->base_url !== '/') {
-                $url = str_replace($domain->base_url, '', $url);
-            }
-            $url = ltrim($url, '/');
-            $url = 'http://' . $domain->domain . '/' . $url . $this->href;
         }
 
         return HTML::tag('a', Html::encode($this->title), [
