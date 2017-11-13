@@ -8,6 +8,7 @@
 
 namespace frontend\models\data;
 
+use frontend\interfaces\models\HasUrl;
 use yii\db\ActiveRecord;
 
 /**
@@ -19,10 +20,13 @@ use yii\db\ActiveRecord;
  * @property $vk_link      string
  * @property $fb_link      string
  * @property $inst_link    string
+ * @property $alias        string
  * @package frontend\models
  */
-class Trainer extends ActiveRecord
+class Trainer extends ActiveRecord implements HasUrl
 {
+    const BASE_TRAINER_URL = '/trainers';
+
     public function fields()
     {
         return [
@@ -34,6 +38,7 @@ class Trainer extends ActiveRecord
             'vk_link',
             'fb_link',
             'inst_link',
+            'aliask',
         ];
     }
 
@@ -51,5 +56,10 @@ class Trainer extends ActiveRecord
                 'inst_link',
             ]
         ];
+    }
+
+    public function getUrl()
+    {
+        return self::BASE_TRAINER_URL . '/' . $this->alias;
     }
 }

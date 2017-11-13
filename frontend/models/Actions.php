@@ -43,6 +43,8 @@ final class Actions extends ActiveRecord
         $classParts = explode('\\', $this->controllerName);
         $classShortName = end($classParts);
         $controllerShortName = mb_strtolower(str_replace('Controller', '', $classShortName));
-        return $controllerShortName . "/" . mb_strtolower($this->action_name);
+        $actionName = mb_strtolower(preg_replace(
+            '/(?<=\d)(?=[A-Za-z])|(?<=[A-Za-z])(?=\d)|(?<=[a-z])(?=[A-Z])/', '-', $this->action_name));
+        return $controllerShortName . "/" . $actionName;
     }
 }

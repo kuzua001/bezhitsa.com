@@ -133,8 +133,8 @@ BootstrapAsset::register($this);
 													<div ng-repeat="slide in slider.slides" ng-show="slider.currentSlide == $index">
 														<h3 class="title">{{slide.tabTitle }}</h3>
 														<div class="swipe-buttons">
-															<button ng-click="slider.swipe(false);">вперед</button>
 															<button ng-click="slider.swipe(true);">назад</button>
+															<button ng-click="slider.swipe(false);">вперед</button>
 														</div>
 													</div>
 												</div>
