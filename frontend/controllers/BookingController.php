@@ -25,7 +25,6 @@ class BookingController extends CmsController
 
     public function actionItem($alias)
     {
-        var_dump($alias);
         $item = Room::find()->where('alias = :alias', [
             ':alias' => $alias
         ])->one();

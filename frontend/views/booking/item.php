@@ -189,9 +189,9 @@ BootstrapAsset::register($this);
 				<div class="row more-row">
 					<div class="col-lg-12 center">
                         <?= DetailButton::widget([
-                            'hasDetailButton'  => $sectionParams->hasDetailButton,
-                            'detailButtonText' => $sectionParams->detailButtonText,
-                            'detailButtonLink' => $sectionParams->detailButtonLink,
+                            'hasDetailButton'  => true,
+                            'detailButtonText' => 'Бронировать',
+                            'detailButtonLink' => Page::id(21)->getUrl(),
                             'isColored'        => $sectionParams->detailButtonIsColored,
                             'bgColor'          => $sectionParams->detailButtonBgColor,
                             'blackText'        => true,

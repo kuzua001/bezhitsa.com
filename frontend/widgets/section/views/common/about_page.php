@@ -1,11 +1,17 @@
 <?php
 use frontend\models\Page;
 use frontend\widgets\buttons\DetailButton;
+use frontend\models\pages\AboutSectionParams;
+use frontend\widgets\section\Section;
 
-/** @var $page \frontend\models\pages\LandingPage */
-$page = Page::id(23);
-/* @var $sectionParams SliderTabsSectionParams */
-$sectionParams = $page->pageParams->sectionsParams[1];
+/** @var Section $widget */
+
+$widget = $this->context;
+
+/**
+ * @var AboutSectionParams $sectionParams
+ */
+$sectionParams = $widget->sectionParams;
 ?>
 <div class="row slider-group">
 	<div class="col-lg-12">

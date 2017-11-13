@@ -12,7 +12,7 @@ use frontend\models\PageParams;
 use frontend\models\ParamField;
 use frontend\widgets\section\Section;
 
-class AboutSectionParams extends SectionParams
+class AboutSectionParams extends SliderTabsSectionParams
 {
     protected $sectionType  = Section::TYPE_ABOUT_PAGE;
     protected $sectionClass = 'booking';
