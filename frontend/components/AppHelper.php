@@ -56,6 +56,18 @@ class AppHelper
     }
 
 
+    public static function getAbsoluteUrl($url, $domainId)
+    {
+        $domain = Domain::getDomain($domainId);
+        if ($domain->base_url !== '/') {
+            $url = str_replace($domain->base_url, '', $url);
+        }
+        $url = ltrim($url, '/');
+        $url = 'http://' . $domain->domain . '/' . $url;
+
+        return $url;
+    }
+
 
     /**
      * Доступные языки

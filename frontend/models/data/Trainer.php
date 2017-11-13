@@ -8,8 +8,10 @@
 
 namespace frontend\models\data;
 
+use frontend\components\AppHelper;
 use frontend\interfaces\models\HasUrl;
 use yii\db\ActiveRecord;
+use frontend\models\Domain;
 
 /**
  * Class Trainer
@@ -25,7 +27,7 @@ use yii\db\ActiveRecord;
  */
 class Trainer extends ActiveRecord implements HasUrl
 {
-    const BASE_TRAINER_URL = '/trainers';
+    const BASE_TRAINER_URL = '/fitness/trainers';
 
     public function fields()
     {
@@ -60,6 +62,6 @@ class Trainer extends ActiveRecord implements HasUrl
 
     public function getUrl()
     {
-        return self::BASE_TRAINER_URL . '/' . $this->alias;
+        return AppHelper::getAbsoluteUrl(self::BASE_TRAINER_URL . '/' . $this->alias, Domain::DOMAIN_FITNESS_ID);
     }
 }

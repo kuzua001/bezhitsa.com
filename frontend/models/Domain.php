@@ -23,6 +23,16 @@ use yii\db\ActiveRecord;
  */
 class Domain extends ActiveRecord
 {
+    const DOMAIN_FITNESS_ID = 2;
+    const DOMAIN_RESTAURANT_ID = 3;
+    const DOMAIN_HOTEL_ID = 1;
+
+    public static function getDomain($domainId) {
+        return self::findOne([
+            'id' => $domainId
+        ]);
+    }
+
     public static function tableName()
     {
         return 'cms_domains';
