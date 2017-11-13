@@ -22,4 +22,21 @@ class BookingController extends CmsController
             'rooms' => $rooms,
         ]);
     }
+
+    public function actionItem($alias)
+    {
+        var_dump($alias);
+        $item = Room::find()->where('alias = :alias', [
+            ':alias' => $alias
+        ])->one();
+
+        if (empty($item)) {
+            throw new yii\web\NotFoundHttpException('Страница с таким номером не найдена');
+        }
+
+        return $this->render('item.php', [
+            'page'  => $this->page,
+            'item' => $item
+        ]);
+    }
 }

@@ -9,6 +9,7 @@
 namespace frontend\models\data;
 
 use yii\db\ActiveRecord;
+use frontend\interfaces\models\HasUrl;
 
 /**
  * Class Room
@@ -21,9 +22,10 @@ use yii\db\ActiveRecord;
  * @property $images_id    integer
  * @property $title        string
  * @property $text         string
+ * @property $alias        string
  * @package frontend\models
  */
-class Room extends ActiveRecord
+class Room extends ActiveRecord implements HasUrl
 {
     /**
      * Константы типов кроватей
@@ -72,6 +74,11 @@ class Room extends ActiveRecord
         ]
     ];
 
+    public function getUrl()
+    {
+        return '/room/' . $this->alias;
+    }
+
     /**
      * Возвращает url иконки сколько людей в номере
      * @return mixed
@@ -119,14 +126,15 @@ class Room extends ActiveRecord
             'persons_type',
             'images_id',
             'title',
-            'text'
+            'text',
+            'alias'
         ];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id']
+            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id', 'alias']
         ];
     }
 }

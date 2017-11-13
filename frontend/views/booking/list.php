@@ -98,30 +98,32 @@ use frontend\models\pages\SliderTabsSectionParams;
 				<div class="row">
 					<?php foreach ($rooms as $item) { ?>
 						<div class="col-lg-4 col-md-6">
-							<div class="room-card-element">
-								<header>
-									<img src="/img/room1.png" />
-								</header>
-								<section class="content">
-									<div class="room-type">
-										<h4 class="name"><?= $item->title ?></h4>
-										<span class="square">20-24 кв.м</span>
-									</div>
-									<div class="price-item">
-										от <span class="price"><?= $item->price_from ?></span> руб
-									</div>
-								</section>
-								<footer>
-									<div class="property-item-element">
-										<i class="property-icon one-bed"></i>
-										<span class="property-description"><?= $item->getBedTitle() ?></span>
-									</div>
-									<div class="property-item-element">
-										<i class="property-icon two-people"></i>
-										<span class="property-description"><?= $item->getPersonTitle() ?></span>
-									</div>
-								</footer>
-							</div>
+							<a href="<?= $item->getUrl() ?>">
+								<div class="room-card-element">
+									<header>
+										<img src="/img/room1.png" />
+									</header>
+									<section class="content">
+										<div class="room-type">
+											<h4 class="name"><?= $item->title ?></h4>
+											<span class="square">20-24 кв.м</span>
+										</div>
+										<div class="price-item">
+											от <span class="price"><?= $item->price_from ?></span> руб
+										</div>
+									</section>
+									<footer>
+										<div class="property-item-element">
+											<i class="property-icon one-bed"></i>
+											<span class="property-description"><?= $item->getBedTitle() ?></span>
+										</div>
+										<div class="property-item-element">
+											<i class="property-icon two-people"></i>
+											<span class="property-description"><?= $item->getPersonTitle() ?></span>
+										</div>
+									</footer>
+								</div>
+							</a>
 						</div>
 					<?php } ?>
 				</div>
