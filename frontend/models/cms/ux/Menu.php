@@ -77,12 +77,35 @@ class Menu extends ActiveRecord implements MenuInterface
         $menuItems   = MenuItem::find()->where(['menu_id' => $this->id])->all();
         $this->items = $menuItems;
 
+        // Костыль, не учитывающий дерево вообще
+        $parents = [];
+
         if ($this->append_childs == true) {
-            foreach ($this->items as $item) {
+
+            foreach ($this->items as $id => $item) {
+                if (!empty($item->parent_id)) {
+                    if (!isset($parents[$item->parent_id])) {
+                        $parents[$item->parent_id] = [];
+                    }
+
+                    $parents[$item->parent_id][] = $item;
+                    unset($this->items[$id]);
+                }
+            }
+
+            foreach ($this->items as $id => $item) {
                 $item->setParent($this);
-                $childPages = Page::find()->where(['parent_id' => $item->page_id])->all();
+                $childPages = Page::find()->where(['parent_id' => $item->page_id, 'is_enabled' => 1])->all();
 
                 $itemSubMenu = new Menu;
+
+                if (isset($parents[$item->id])) {
+                    foreach ($parents[$item->id] as $menuItem) {
+                        $itemSubMenu->addMenuItem($menuItem);
+                    }
+                }
+
+                usort($childPages, function(Page $a, Page $b) { return $a->order > $b->order; });
                 foreach ($childPages as $page) {
                     // $item->href это GET-параметры url'а, которые используются в том случае, когда элемент меню ссылается на страницу
                     // в CMS, а не просто на абстрактный ресурс, при этом к его url добавляются эти GET-параметры, например в качестве

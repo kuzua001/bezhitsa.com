@@ -41,7 +41,7 @@ $sectionParams = $widget->sectionParams;
 				</ul>
 				<div class="caption sticky-footer">
 					<div ng-repeat="slide in slider.slides" ng-show="slider.currentSlide == $index">
-						<h3 class="title"><!--{{slide.tabTitle}}-->Отель "Бежица"</h3>
+						<h3 class="title">{{slide.tabTitle}}</h3>
 						<div class="swipe-buttons">
 							<button ng-click="slider.swipe(true);">назад</button>
 							<button ng-click="slider.swipe(false);">вперед</button>
@@ -57,52 +57,15 @@ $sectionParams = $widget->sectionParams;
 		<div class="card-wrapper">
 			<div class="row">
 				<div class="col-lg-6 card-wrapper-content">
-					<h4>Обслуживание гостей</h4>
-					<p>
-						Услуги для гостей отеля «Бежица», включают удобства парковки и транспортировки из отеля в аэропорт на люкс автомобиле. Гость может воспользываться подключением беспроводного интернета, а также услугами круглосуточного обслуживания в номерах, услугами няни, и сервисом по аренде автомобилей и лимузинов. 
-					</p>
-					<h4>Обслуживание гостей</h4>
-					<p>
-						Услуги для гостей отеля «Бежица», включают удобства парковки и транспортировки из отеля в аэропорт на люкс автомобиле. Гость может воспользываться подключением беспроводного интернета, а также услугами круглосуточного обслуживания в номерах, услугами няни, и сервисом по аренде автомобилей и лимузинов. 
-					</p>
+					<?= $sectionParams->leftHTML ?>
 				</div>
 				<div class="col-lg-6">
 					<div class="card-element">
 						<header>
-							Почему стоит бронировать у нас?
+							<?= $sectionParams->title ?>
 						</header>
 						<section class="content">
-							<p>
-								Услуги для гостей отеля «Бежица», включают удобства парковки и транспортировки из отеля в аэропорт на люкс автомобиле.
-								Гость может воспользываться подключением беспроводного интернета, а также услугами <!--круглосуточного обслуживания в номерах,
-					услугами няни, и&nbsp;сервисом по аренде автомобилей и лимузинов.-->
-							</p>
-							<ul class="item-list three-col">
-								<li class="item">
-									<i class="item-icon" style="background-image: url('/img/icons/emblem.png');"></i>
-									<p>
-										Гарантия<br>
-										лучших тарифов
-									</p>
-								</li>
-								<li class="item">
-									<i class="item-icon" style="background-image: url('/img/icons/service.png');"></i>
-									<p>
-										Круглосуточное<br>
-										обслуживание в номерах
-									</p>
-								</li>
-								<li class="item">
-									<i class="item-icon" style="background-image: url('/img/icons/fitnes.png');"></i>
-									<p>
-										Оздоровительный<br>
-										финес центр
-									</p>
-								</li>
-							</ul>
-							<p>
-								Роскошный дизайн интерьеров, высокая кухня ресторана, светские и деловые события.
-							</p>
+                            <?= $sectionParams->cardHTML ?>
 						</section>
 					</div>
 				</div>
