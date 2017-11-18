@@ -38,7 +38,7 @@ class LandingController extends CmsController
 
         $firstSection = reset($page->pageParams->sectionsParams);
         /** @var $firstSection SectionParams */
-        return $firstSection->bgColor;
+        return !empty($firstSection->bgColor) ? $firstSection->bgColor : '#fff';
     }
 
     public function actionIndex()
