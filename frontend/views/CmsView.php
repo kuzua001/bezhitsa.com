@@ -35,4 +35,11 @@ class CmsView extends View {
      * @var string
      */
     public $bgColor;
+
+    /**
+     * Дефолтный цвет мобильной менюхи
+     * @var string
+     */
+    public $submenuColor;
+
 }

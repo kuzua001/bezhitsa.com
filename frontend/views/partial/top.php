@@ -14,8 +14,18 @@ if (empty($this->topMenu)) {
 } else {
     $topMenu = $this->topMenu;
 }
+
+$hasSubMenu = false;
+$subMenuItems = [];
+foreach ($topMenu->getItems() as $i => $item) {
+    if (!empty($item->getSubMenu()) && $item->page_id == $topMenu->parent_page_id && count($item->getSubMenu()->getItems())) {
+        $hasSubMenu = true;
+        $subMenuItems = $item->getSubMenu()->getItems();
+        break;
+    }
+}
 ?>
-<section class="header">
+<section class="header<?= $hasSubMenu ? ' with-sumbenu' : ''?>">
 	<div class="content-wrapper">
 		<header class="header-element">
 			<div class="mobile-only container">
@@ -58,32 +68,40 @@ if (empty($this->topMenu)) {
 			</div>
 		</header>
 	</div>
-	<div class="desktop-only submenu">
-		<div class="content-wrapper">
-			<div class="container container-90">
-				<div class="row">
-					<div class="col-md-9 col-md-push-2 text-center">
-						<nav class="submenu">
-                            <?php foreach ($topMenu->getItems() as $i => $item) { ?>
-                                <?php if (!empty($item->getSubMenu()) && $item->page_id == $topMenu->parent_page_id) { ?>
-									<div class="item">
-                                        <?php foreach ($item->getSubMenu()->getItems() as $subItem) { ?>
-                                            <?= $subItem->getHTML() ?>
-                                        <?php } ?>
-									</div>
-                                <?php } ?>
-                            <?php } ?>
-						</nav>
+    <?php if ($hasSubMenu) { ?>
+		<div class="desktop-only submenu">
+			<div class="content-wrapper">
+				<div class="container container-90">
+					<div class="row">
+						<div class="col-md-9 col-md-push-2 text-center">
+							<nav class="submenu">
+								<div class="item">
+									<?php foreach ($subMenuItems as $subItem) { ?>
+										<?= $subItem->getHTML() ?>
+									<?php } ?>
+								</div>
+							</nav>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+    <?php } ?>
 </section>
 <div class="slide-menu-element mobile-only" ng-class="{'active':site.slideMenuState}" ng-swipe-left="site.setMenuState(false)">
+	<div class="before" ng-click="site.setMenuState(false)"></div>
 	<nav class="menu">
-        <?php foreach ($topMenu->getItems() as $item) { ?>
-            <?= $item->getHTML() ?>
-        <?php } ?>
+        <div class="main">
+            <?php foreach ($topMenu->getItems() as $item) { ?>
+                <?= $item->getHTML() ?>
+            <?php } ?>
+		</div>
+        <?php if ($hasSubMenu) { ?>
+			<div class="sub" style="background-color: <?= $firstSectionColor ?>">
+				<?php foreach ($subMenuItems as $subItem) { ?>
+					<?= $subItem->getHTML() ?>
+				<?php } ?>
+			</div>
+		<?php } ?>
 	</nav>
 </div>

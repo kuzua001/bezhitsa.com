@@ -67,10 +67,11 @@ class CmsController extends Controller
         $this->page = Page::id($pageId);
 
         $view = new CmsView();
-        $view->description = $this->page->pageParams->metaDescription;
-        $view->title       = $this->page->pageParams->metaTitle;
-        $view->bgColor     = $this->getDefaultBgColor();
-        $view->topMenu     = $this->page->getMenu();
+        $view->description  = $this->page->pageParams->metaDescription;
+        $view->title        = $this->page->pageParams->metaTitle;
+        $view->bgColor      = $this->getDefaultBgColor();
+        $view->submenuColor = $this->getSubmenuColor();
+        $view->topMenu      = $this->page->getMenu();
 
 
         $this->setView($view);

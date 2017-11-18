@@ -27,7 +27,9 @@ Yii::$app->language = 'ru';
 	<body ng-app="main" ng-controller="SiteController as site">
 		<?php $this->beginBody() ?>
 			<div class="content" style="background-color: <?= isset($this->bgColor) ? $this->bgColor : '#fff'?>">
-				<?= $this->render("//partial/top") ?>
+				<?= $this->render("//partial/top", [
+					'firstSectionColor' => isset($this->submenuColor) ? $this->submenuColor : '#fff'
+				]) ?>
 				<?= $content ?>
 			</div>
 			<?= $this->render("//partial/bottom") ?>

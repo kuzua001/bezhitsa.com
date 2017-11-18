@@ -4,7 +4,7 @@ namespace frontend\controllers;
 use Faker\Provider\Base;
 use frontend\components\AppHelper;
 use frontend\models\pages\LandingPage;
-use frontend\models\pages\TextPageParams;
+use frontend\models\pages\SectionParams;
 use frontend\models\SectionItem;
 use yii\web\Controller;
 use frontend\widgets\common\Section;
@@ -23,12 +23,22 @@ class LandingController extends CmsController
         $page = $this->page;
 
         $lastSection = end($page->pageParams->sectionsParams);
-        if (is_a($lastSection, 'frontend\models\pages\TextPageParams')) {
-            /** @var $lastSection TextPageParams*/
-            return $lastSection->bgColor;
-        }
+        /** @var $lastSection SectionParams */
+        return $lastSection->bgColor;
+    }
 
-        return parent::getDefaultBgColor();
+
+    /**
+     * Вовзращает цвет для мобильного меню
+     * @return string
+     */
+    public function getSubmenuColor() {
+        /** @var $page LandingPage */
+        $page = $this->page;
+
+        $firstSection = reset($page->pageParams->sectionsParams);
+        /** @var $firstSection SectionParams */
+        return $firstSection->bgColor;
     }
 
     public function actionIndex()

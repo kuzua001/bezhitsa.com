@@ -7,30 +7,66 @@
 	top: 50px;
 	bottom: 0;
 	left: -320px;
-	width: 320px;
+	width: 250px;
 	transition: left 0.3s;
 	.box-shadow(10px -5px 40px rgba(0, 0, 0, 0.2));
 
 	nav {
-		border-right: 20px solid @menu-bg-color;
-		overflow: hidden;
 		background-color: @menu-bg-color;
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+
+		.main {
+			display: inline-block;
+			width: 100%;
+		}
+
+		.sub {
+			flex: 1 0 auto;
+			padding-top: 10px;
+			background-color: #888;
+
+			a {
+				border-bottom: none;
+				color: #000;
+				font-size: 15px;
+				line-height: 40px;
+
+				&.active {
+					font-weight: bold;
+				}
+			}
+		}
+
 		a {
-			margin-left: 15px;
+			border-bottom: 1px solid #272727;
+			text-decoration: none;
+			padding-left: 19px;
 			display: block;
 			color: gainsboro;
 			font-size: 20px;
 			text-align: left;
 			line-height: 56px;
+			width: 100%;
+			font-family: "Lora", sans-serif;
+
+			&.parent {
+				background-color: #272727;
+			}
 		}
+	}
+
+	.before {
+		display: none;
 	}
 
 	&.active {
 		left: 0;
 		transition: left 0.3s;
 
-		&:before {
-			content: '';
+		.before {
+			display: block;
 			position: fixed;
 			background-color: rgba(0, 0, 0, 0.5);
 			left: 0;
