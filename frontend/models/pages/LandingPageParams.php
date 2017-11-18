@@ -24,10 +24,36 @@ class LandingPageParams extends CmsPageParams
 
     /**
      * @var $hasContacts boolean
-     * @title Показывать контактную информацию2
+     * @title Показывать контактную информацию
+     * @tab [Контакты на странице]
      * @type checkbox
      */
     public $hasContacts;
+
+    /**
+     * @var $hasContactsDescription boolean
+     * @title Показывать текст в контактной информации
+     * @tab [Контакты на странице]
+     * @type checkbox
+     */
+    public $hasContactsDescription;
+
+    /**
+     * @var $contactsDescriptionTitle boolean
+     * @title Доп.заголовок в контактной информации
+     * @tab [Контакты на странице]
+     * @type string
+     */
+    public $contactsDescriptionTitle;
+
+    /**
+     * @var $contactsDescriptionText boolean
+     * @title Доп.текст в контактной информации
+     * @tab [Контакты на странице]
+     * @type string
+     */
+    public $contactsDescriptionText;
+
 
     public function getSectionsParams()
     {

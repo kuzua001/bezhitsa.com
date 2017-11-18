@@ -41,10 +41,12 @@ use frontend\models\pages\LandingPage;
                                 8(4832)40-00-00
                             </dd>
                         </dl>
-                        <h3>Расположение и транспорт</h3>
-                        <p>
-                            Расстояние от отеля до ближайшего аэропорта - 14км, такси стоит 1000 рублей и довезет вас до отеля всего за пол часа.
-                        </p>
+                        <?php if ($page->pageParams->hasContactsDescription)  { ?>
+							<h3><?= $page->pageParams->contactsDescriptionTitle ?></h3>
+							<p>
+								<?= $page->pageParams->contactsDescriptionText ?>
+							</p>
+						<?php } ?>
                     </div>
                 </div>
             </div>
