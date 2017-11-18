@@ -11,8 +11,10 @@ section.text {
 		text-align: justify;
 	}
 
-	.content-wrapper {
-		padding-top: 83px;
+	@media screen and (min-width: @menu-max-width) {
+		.content-wrapper {
+			padding-top: 30px;
+		}
 	}
 
 	.row:first-child {
