@@ -43,7 +43,7 @@ $contactsItens = $sectionParams->contactsItems;
 							</dt>
 							<dd class="phones">
                                 <?php if (!empty($item->phone1)) : ?><div><?= $item->phone1 ?></div><?php endif ?>
-                                <?php if (!empty($item->phone1)) : ?><div><?= $item->phone1 ?></div><?php endif ?>
+                                <?php if (!empty($item->phone2)) : ?><div><?= $item->phone2 ?></div><?php endif ?>
 							</dd>
                         <?php } ?>
                         <?php if (!empty($item->email)) { ?>
