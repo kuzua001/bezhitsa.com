@@ -39,6 +39,27 @@ class AppHelper
     private static $_currentPageId = null;
 
     /**
+     * Получить день недели отформатированный как ПН, 21.07 в кирилице
+     * @param \DateTime $date
+     * @return string
+     */
+    public static function getFormattedDayOfWeek(\DateTime $date)
+    {
+        $result = $date->format('D, m.d');
+        $replace = [
+            'Mon' => 'Пн',
+            'Tue' => 'Вт',
+            'Wed' => 'Ср',
+            'Thu' => 'Чт',
+            'Fri' => 'Пт',
+            'Sat' => 'Сб',
+            'Sun' => 'Вс'
+        ];
+
+        return str_replace(array_keys($replace), array_values($replace), $result);
+    }
+
+    /**
      * Возвращает ID текущей старницы или null
      * @return mixed
      */

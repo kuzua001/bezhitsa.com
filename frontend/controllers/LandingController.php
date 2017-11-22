@@ -28,19 +28,6 @@ class LandingController extends CmsController
     }
 
 
-    /**
-     * Вовзращает цвет для мобильного меню
-     * @return string
-     */
-    public function getSubmenuColor() {
-        /** @var $page LandingPage */
-        $page = $this->page;
-
-        $firstSection = reset($page->pageParams->sectionsParams);
-        /** @var $firstSection SectionParams */
-        return '#b9a861';//!empty($firstSection->bgColor) ? $firstSection->bgColor : '#fff';
-    }
-
     public function actionIndex()
     {
         return $this->render('index.php', ['page' => $this->page]);

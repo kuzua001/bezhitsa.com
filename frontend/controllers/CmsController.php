@@ -46,6 +46,15 @@ class CmsController extends Controller
     }
 
     /**
+     * Вовзращает цвет для мобильного меню
+     * @return string
+     */
+    public function getSubmenuColor() {
+        return '#b9a861';
+    }
+
+
+    /**
      * Возвращает ID текущей старницы
      * @return mixed
      */
