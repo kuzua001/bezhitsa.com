@@ -33,12 +33,13 @@ class TrainingItem extends Widget
         $roomNumber = $this->item->getRoom()->number;
 
         $html = Html::tag('div',
-            Html::tag('i', '', ['class' => 'training-extra']) .
+            Html::tag('i', '', ['class' => 'training-extra fire']) .
             Html::tag('h2', $activity->title, ['class' => 'title']) .
-            Html::tag('a', $trainer->name, ['class' => 'trainer-link', 'href' => $trainer->getUrl()]) .
+            Html::tag('a', $trainer->getFirstName(), ['class' => 'trainer-link', 'href' => $trainer->getUrl()]) .
             Html::tag('i', $roomNumber, ['class' => 'training-room-number']),
             [
-                'class' => 'training-item'
+                'class' => 'training-item',
+                'style' => 'border-color: ' . $activity->getActivityType()->color
             ]
         );
 

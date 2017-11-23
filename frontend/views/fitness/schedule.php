@@ -22,27 +22,29 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 			</div>
 			<div class="schedule-top">
 				<div class="row navigation">
-					<div class="col-lg-4 left">
+					<div class="col-lg-3 left">
 						<button class="arrow prev"></button>
 						Предыдующая неделя
 					</div>
-					<div class="col-lg-4">
+					<div class="col-lg-6 center">
 					<span class="header">
 						Групповые занятия с 20.11.2017 по 26.11.2017
 					</span>
 					</div>
-					<div class="col-lg-4 right">
+					<div class="col-lg-3 right">
 						Следующая неделя
 						<button class="arrow next"></button>
 					</div>
 				</div>
-				<div class="row activity-type-list">
-					<div class="col-lg-2"><i class="trainig-activity-type" style="background-color: #00aa00"></i>Аэробные тренировки</div>
-					<div class="col-lg-2"></div>
-					<div class="col-lg-2"></div>
-					<div class="col-lg-2"></div>
-					<div class="col-lg-2"></div>
-					<div class="col-lg-2"></div>
+				<div class="activity-type-list">
+					<div class="row">
+						<div class="col-lg-2"><i class="trainig-activity-type" style="background-color: #00aa00"></i>Аэробные тренировки</div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-2"></div>
+						<div class="col-lg-2"></div>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
@@ -66,7 +68,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
                                         $trainigs = isset($schedule[$day]) && isset($schedule[$day][$hour]) ? $schedule[$day][$hour] : [];
                                         $nCol = count($trainigs);
                                         ?>
-										<td class="<?= $nCol?>-col">
+										<td class="col-<?= $nCol?>">
                                             <?php foreach ($trainigs as $item) { ?>
                                                 <?php
                                                 /** @var $item \frontend\models\data\TrainingSchedule */

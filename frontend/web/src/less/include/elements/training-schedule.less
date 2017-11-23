@@ -1,29 +1,143 @@
 .training-schedule-element {
+	font-family: "Open Sans", sans-serif;
 	.row {
 		font-size: 12px;
 	}
 
 	.schedule-top {
+		padding: 15px;
+		padding-top: 0;
 		background-color: #fff;
 		color: #000;
 
 
 		.navigation {
+			height: 45px;
+			line-height: 45px;
 			.left {
 				text-align: left;
+				font-size: 14px;
 			}
 
 			.right {
 				text-align: right;
+				font-size: 14px;
+			}
+
+			button.arrow {
+				border: none;
+				background: #9c8939 no-repeat center;
+				width: 26px;
+				height: 26px;
+				display: inline-block;
+				vertical-align: middle;
+
+				&.next {
+					background-image: url('/img/controls/triangle_right.png');
+
+				}
+
+				&.prev {
+					 background-image: url('/img/controls/triangle_left.png');
+
+				}
+			}
+
+			.center {
+				text-align: center;
+				span.header {
+					font-size: 18px;
+				}
 			}
 		}
 
 		table.schedule {
-			td, th {
-				width: 200px;
-				border: 1px solid #000;
-				height: 50px;
+			td:not(.hour) {
+				width: 150px;
+				border: 2px solid #fff;
+				background-color: #f9f1dc;
+				height: 60px;
+				font-size: 0;
 			}
+
+			th, .hour {
+				background-color: #fff;
+			}
+
+			.hour {
+				width: 40px;
+				text-align: right;
+				padding-right: 15px;
+				font-weight: bold;
+				vertical-align: middle;
+			}
+
+			.day {
+				height: 40px;
+				font-weight: bold;
+				text-align: center;
+				vertical-align: middle;
+			}
+		}
+	}
+
+	.activity-type-list {
+		background-color: #eae4cf;
+		height: 35px;
+		line-height: 35px;
+		margin-bottom: 5px;
+
+		i.trainig-activity-type {
+			width: 10px;
+			height: 10px;
+			display: inline-block;
+			margin: 0 10px;
+		}
+	}
+
+	.col-1 .training-item {
+		width: 100%;
+	}
+
+	.col-2 .training-item {
+		width: 50%;
+	}
+
+	.training-item {
+		font-size: 11px;
+		position: relative;
+		border: 1px solid #fff;
+		text-align: right;
+		display: inline-block;
+		height: 100%;
+
+		* {
+			position: absolute;
+		}
+
+		h2.title {
+			font-weight: bold;
+			top: 5px;
+			right: 2px;
+		}
+
+		.trainer-link {
+			position: absolute;
+			text-decoration: none;
+			color: #000;
+			bottom: 5px;
+			right: 2px;
+		}
+
+		.training-room-number {
+			background-color: #d4c68e;
+			left: 1px;
+			bottom: 1px;
+			display: block;
+			width: 18px;
+			height: 19px;
+			line-height: 19px;
+			text-align: center;
 		}
 	}
 

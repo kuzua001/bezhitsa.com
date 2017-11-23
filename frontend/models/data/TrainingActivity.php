@@ -20,8 +20,11 @@ use yii\db\ActiveRecord;
  */
 class TrainingActivity extends ActiveRecord
 {
+    /**
+     * @return \yii\db\ActiveRecord|TrainingActivityType
+     */
     public function getActivityType()
     {
-        return $this->hasOne(TrainingActivityType::className(), ['type_id' => 'id']);
+        return $this->hasOne(TrainingActivityType::className(), ['id' => 'type_id'])->one();
     }
 }

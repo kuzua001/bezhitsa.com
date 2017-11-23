@@ -44,6 +44,16 @@ class Trainer extends ActiveRecord implements HasUrl
         ];
     }
 
+    /**
+     * Получить только имя тренера
+     * @return string
+     */
+    public function getFirstName()
+    {
+        $names = explode(' ', $this->name);
+        return $names[0];
+    }
+
     public function scenarios()
     {
         return [
