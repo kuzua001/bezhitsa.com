@@ -11,6 +11,10 @@ use frontend\widgets\fitness\TrainingItem;
 
 $interval  = new DateInterval('P1D');
 $dateRange = new DatePeriod($minDate, $interval , $maxDate);
+
+/**
+ * @var $activityTypes \frontend\models\data\TrainingActivityType[]
+ */
 ?>
 <section class="training-schedule-element" style="background-color: #eae4cf">
 	<div class="content-wrapper">
@@ -36,14 +40,12 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 						<button class="arrow next"></button>
 					</div>
 				</div>
+				<div class="clearfix"></div>
 				<div class="activity-type-list">
 					<div class="row">
-						<div class="col-lg-2"><i class="trainig-activity-type" style="background-color: #00aa00"></i>Аэробные тренировки</div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
-						<div class="col-lg-2"></div>
+						<?php foreach($activityTypes as $type) { ?>
+							<div class="col-lg-2"><i class="trainig-activity-type" style="background-color: <?= $type->color ?>"></i><?= $type->short_title ?></div>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="row">
@@ -84,12 +86,46 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 						</table>
 					</div>
 				</div>
+				<div class="row extended-title">
+					<span class="item">
+						<i class="fire"></i>Урок высокой интенсивности
+					</span>
+					<span class="item">
+						<i class="new"></i>Новыые уроки
+					</span>
+					<span class="item">
+						<i class="training-room-number">1</i>Номер зала
+					</span>
+
+				</div>
+			</div>
+			<div class="schedule-bottom">
+                <?php foreach($activityTypes as $type) { ?>
+					<div class="activity-type-element">
+						<h3 class="title">
+							<i class="activity-type" style="background-color: <?= $type->color ?>"></i>
+                            <?= $type->title ?>
+						</h3>
+						<p>
+							<?= $type->description ?>
+						</p>
+						<div class="row">
+                            <?php foreach($type->getActivities() as $activity) { ?>
+								<div class="col-lg-4">
+									<div class="card-element">
+										<header><?= $activity->title ?></header>
+										<section class="content">
+											<p>
+                                                <?= $activity->description ?>
+											</p>
+										</section>
+									</div>
+								</div>
+                            <?php } ?>
+						</div>
+					</div>
+                <?php } ?>
 			</div>
 		</div>
 	</div>
-
-    <div class="content-wrapper schedule-data">
-
-    </div>
-
 </section>

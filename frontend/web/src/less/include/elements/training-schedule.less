@@ -4,13 +4,16 @@
 		font-size: 12px;
 	}
 
+	.schedule-bottom,
 	.schedule-top {
 		padding: 15px;
 		padding-top: 0;
 		background-color: #fff;
 		color: #000;
+		margin-bottom: 20px;
+	}
 
-
+	.schedule-top {
 		.navigation {
 			height: 45px;
 			line-height: 45px;
@@ -81,6 +84,33 @@
 		}
 	}
 
+	.schedule-bottom {
+		h3.title {
+			font-size: 18px;
+			i {
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+			}
+			margin-bottom: 10px;
+		}
+		
+		.card-element {
+			header {
+				background-color: #f9f1dc;
+			}
+
+			section.content {
+				padding: 0;
+			}
+		}
+
+		@media screen and (min-width: @desktop-width) {
+			padding-top: 30px;
+		}
+	}
+
 	.activity-type-list {
 		background-color: #eae4cf;
 		height: 35px;
@@ -121,6 +151,13 @@
 			right: 2px;
 		}
 
+		.training-extra {
+			position: absolute;
+			height: 18px;
+			left: 0;
+			top: 0;
+		}
+
 		.trainer-link {
 			position: absolute;
 			text-decoration: none;
@@ -128,17 +165,36 @@
 			bottom: 5px;
 			right: 2px;
 		}
+	}
 
-		.training-room-number {
-			background-color: #d4c68e;
-			left: 1px;
-			bottom: 1px;
-			display: block;
-			width: 18px;
-			height: 19px;
-			line-height: 19px;
-			text-align: center;
-		}
+	.training-room-number {
+		font-size: 11px;
+		background-color: #d4c68e;
+		left: 1px;
+		bottom: 1px;
+		display: inline-block;
+		width: 18px;
+		height: 19px;
+		line-height: 19px;
+		text-align: center;
+	}
+
+	i.fire, i.new {
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 18px;
+		height: 30px;
+		line-height: 30px;
+		display: inline-block;
+		vertical-align: bottom;
+	}
+
+	i.fire {
+		background-image: url(/img/fitness/fire.png);
+	}
+
+	i.new {
+		background-image: url(/img/fitness/new.png);
 	}
 
 	.centered-title-element {
@@ -146,5 +202,23 @@
 		margin-bottom: 30px;
 	}
 
+	.extended-title {
+		line-height: 30px;
+		.item {
+			vertical-align: middle;
+			i {
+				margin-right: 5px;
+				margin-left: 30px;
+			}
 
+			&:first-child i {
+				margin-left: 0;
+			}
+		}
+
+		@media screen and (min-width: @desktop-width) {
+			padding-left: 60px;
+			margin-top: 10px;
+		}
+	}
 }

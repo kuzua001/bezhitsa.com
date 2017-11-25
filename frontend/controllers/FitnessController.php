@@ -4,6 +4,8 @@ namespace frontend\controllers;
 use Faker\Provider\DateTime;
 use frontend\components\AppHelper;
 use frontend\models\data\Trainer;
+use frontend\models\data\TrainingActivity;
+use frontend\models\data\TrainingActivityType;
 use frontend\models\data\TrainingSchedule;
 use yii\web\Controller;
 use yii;
@@ -75,13 +77,16 @@ class FitnessController extends CmsController
             $minHour = min($minHour, min(array_keys($timeData)));
         }
 
+        $activityTypes =TrainingActivityType::find()->all();
+
         return $this->render('schedule.php', [
-            'page'     => $this->page,
-            'schedule' => $schedule,
-            'minHour'  => $minHour,
-            'maxHour'  => $maxHour,
-            'minDate'  => new \DateTime($minDate),
-            'maxDate'  => (new \DateTime($maxDate))->modify('+1 sec'),
+            'page'          => $this->page,
+            'schedule'      => $schedule,
+            'activityTypes' => $activityTypes,
+            'minHour'       => $minHour,
+            'maxHour'       => $maxHour,
+            'minDate'       => new \DateTime($minDate),
+            'maxDate'       => (new \DateTime($maxDate))->modify('+1 sec'),
         ]);
     }
 
