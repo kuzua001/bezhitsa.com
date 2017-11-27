@@ -89,11 +89,7 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
             if ($this->is_external) {
                 $domain = Domain::findOne($page->domain_id);
 
-                if ($domain->base_url !== '/') {
-                    $url = str_replace($domain->base_url, '', $url);
-                }
-                $url = ltrim($url, '/');
-                $url = 'http://' . $domain->domain . '/' . $url . $this->href;
+                $url = $domain->getCanonicalUrl($url, $this->href);
             }
 
             // Класс активного элемента меню

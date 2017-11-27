@@ -37,4 +37,25 @@ class Domain extends ActiveRecord
     {
         return 'cms_domains';
     }
+
+    /**
+     * Привести url к каноничному виду, когда домену соответствует некое
+     * начало урла, отличное от /
+     * например http://bezhitsa.com/fitness и http://bzfit.ru эквивалентны,
+     * домену http://bzfit.ru соответствует начало урла /fitness
+     * @param $url
+     *
+     * @return mixed|string
+     */
+    public function getCanonicalUrl($url, $href = '')
+    {
+        $url = '/' . ltrim($url, '/');
+
+        if ($this->base_url !== '/') {
+            $url = str_replace($this->base_url, '', $url);
+        }
+
+        $url = 'http://' . $this->domain . '/' . ltrim($url, '/') . $href;
+        return $url;
+    }
 }

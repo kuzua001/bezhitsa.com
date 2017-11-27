@@ -9,6 +9,7 @@ use frontend\models\data\TrainingActivityType;
 use frontend\models\data\TrainingSchedule;
 use yii\web\Controller;
 use yii;
+use yii\web\NotFoundHttpException;
 
 
 class FitnessController extends CmsController
@@ -46,12 +47,20 @@ class FitnessController extends CmsController
         ]);
     }
 
-    public function actionSchedule()
+    /**
+     * Показывает раписание
+     * @param $weekNumber integer сдвиг от текущей недели
+     *
+     * @throws NotFoundHttpException
+     * @return string
+     */
+    public function actionSchedule($weekNumber = 0)
     {
-        /**
-         * Вначале получим начало и коней текцщей недели
-         */
-        $weekNumber = 0;
+        $weekNumber = (int) $weekNumber;
+
+        if ($weekNumber < -10) {
+            throw new NotFoundHttpException('Не найдено расписание для этой недели');
+        }
 
         $date = new \DateTime();
         if ($weekNumber > 0) {
@@ -75,9 +84,18 @@ class FitnessController extends CmsController
         foreach ($schedule as $date => $timeData) {
             $maxHour = max($maxHour, max(array_keys($timeData)));
             $minHour = min($minHour, min(array_keys($timeData)));
+
+//            print_r($date);
+//            print_r(array_keys($timeData));
+//            if (isset($timeData[13])) {
+//                print_r($date);
+//                print_r($timeData[13]);
+//            }
         }
 
-        $activityTypes =TrainingActivityType::find()->all();
+        //exit();
+
+        $activityTypes = TrainingActivityType::find()->all();
 
         return $this->render('schedule.php', [
             'page'          => $this->page,
@@ -87,6 +105,7 @@ class FitnessController extends CmsController
             'maxHour'       => $maxHour,
             'minDate'       => new \DateTime($minDate),
             'maxDate'       => (new \DateTime($maxDate))->modify('+1 sec'),
+            'weekNumber'    => $weekNumber,
         ]);
     }
 

@@ -45,7 +45,7 @@ class AppHelper
      */
     public static function getFormattedDayOfWeek(\DateTime $date)
     {
-        $result = $date->format('D, m.d');
+        $result = $date->format('D, d.m');
         $replace = [
             'Mon' => 'Пн',
             'Tue' => 'Вт',

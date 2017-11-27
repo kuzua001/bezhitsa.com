@@ -57,6 +57,15 @@ class Page extends ActiveRecord
 
     }
 
+    /**
+     * Получить относящийся к странице домен
+     * @return array|null|Domain
+     */
+    public function getDomain()
+    {
+        return $this->hasOne(Domain::className(), ['id' => 'domain_id'])->one();
+    }
+
     public function afterFind()
     {
         $this->initPageParams();
@@ -128,9 +137,20 @@ class Page extends ActiveRecord
      * Возвращает url адрес текущей страницы, при необходимости формирует его на основе параматеров
      * шаблона url
      */
-    public function getUrl(array $params = [])
+    public function getUrl(array $params = [], $canonical = false)
     {
-        return '/' . ltrim($this->url, '/');
+        $url = ltrim($this->url, '/');
+        $url = preg_replace_callback('/\<([a-zA-Z]+)\:[^\>]*\>/', function($matches) use ($params) {
+            $key = $matches[1];
+            return isset($params[$key]) ? $params[$key] : '';
+        }, $url);
+
+        if ($canonical) {
+            $domain = $this->getDomain();
+            $url = $domain->getCanonicalUrl($url);
+        }
+
+        return $url;
     }
 
     /**
