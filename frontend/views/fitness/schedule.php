@@ -47,7 +47,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="activity-type-list">
+				<div class="activity-type-list desktop-only">
 					<div class="row">
 						<?php foreach($activityTypes as $type) { ?>
 							<div class="col-lg-2"><i class="trainig-activity-type" style="background-color: <?= $type->color ?>"></i><?= $type->short_title ?></div>
@@ -56,7 +56,37 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<table class="schedule">
+						<div class="mobile-only">
+							<div class="days-of-week" ng-controller="TabsController as tabs">
+                                <?php foreach ($dateRange as $day => $date) { ?>
+									<div class="day" ng-class="selected: tabs.activeTabIndex == <?= $day?>" ng-click="tabs.setActiveTabIndex(<?= $day?>)">
+                                        <?= str_replace("\n", "<br>", AppHelper::getFormattedDayOfWeek($date, "D\nd")); ?>
+									</div>
+                                <?php } ?>
+                                <?php for ($day = 0; $day < 7; $day ++) { ?>
+                                    <?php
+                                    $trainigs = isset($schedule[$day])  ? call_user_func_array('array_merge', $schedule[$day]) : [];
+                                    ?>
+									<div class="day-events" ng-show="tabs.activeTabIndex == <?= $day?>">
+                                        <?php if (count($trainigs)) { ?>
+											<?php foreach ($trainigs as $item) { ?>
+												<?php
+												/** @var $item \frontend\models\data\TrainingSchedule */
+												echo TrainingItem::widget([
+													'item' => $item,
+													'large' => true,
+												]) ?>
+											<?php } ?>
+										<?php } else { ?>
+											<div class="no-trainigs">
+												Нет занятий
+											</div>
+										<?php } ?>
+									</div>
+                                <?php } ?>
+							</div>
+						</div>
+						<table class="schedule desktop-only">
 							<thead>
 							<tr>
 								<th></th>

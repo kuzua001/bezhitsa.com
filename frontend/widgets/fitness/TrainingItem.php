@@ -26,11 +26,22 @@ class TrainingItem extends Widget
      */
     public $item;
 
+    /**
+     * Когда плашка большая на всю ширину (мобильная версия)
+     * @var $large boolean
+     */
+    public $large;
+
     public function run()
     {
         $trainer    = $this->item->getTrainer();
         $activity   = $this->item->getActivity();
         $roomNumber = $this->item->getRoom()->number;
+        $classes    = ['training-item'];
+
+        if ($this->large) {
+            $classes[] = 'large';
+        }
 
         $html = Html::tag('div',
             Html::tag('i', '', ['class' => 'training-extra fire']) .
@@ -38,7 +49,7 @@ class TrainingItem extends Widget
             Html::tag('a', $trainer->getFirstName(), ['class' => 'trainer-link', 'href' => $trainer->getUrl()]) .
             Html::tag('i', $roomNumber, ['class' => 'training-room-number']),
             [
-                'class' => 'training-item',
+                'class' => implode(' ', $classes),
                 'style' => 'border-color: ' . $activity->getActivityType()->color
             ]
         );

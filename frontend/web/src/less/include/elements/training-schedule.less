@@ -71,6 +71,24 @@
 			}
 		}
 
+		.days-of-week {
+			font-size: 0;
+			.day {
+				font-size: 14px;
+				font-weight: bold;
+				display: inline-block;
+				width: 14.28%;
+				background-color: #f9f1dc;
+				border-right: 2px solid #fff;
+				text-align: center;
+				padding: 6px 0;
+
+				&:last-child {
+					border-right: none;
+				}
+			}
+		}
+
 		table.schedule {
 			td:not(.hour) {
 				width: 150px;

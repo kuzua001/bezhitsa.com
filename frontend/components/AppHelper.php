@@ -41,11 +41,12 @@ class AppHelper
     /**
      * Получить день недели отформатированный как ПН, 21.07 в кирилице
      * @param \DateTime $date
+     * @param $format string
      * @return string
      */
-    public static function getFormattedDayOfWeek(\DateTime $date)
+    public static function getFormattedDayOfWeek(\DateTime $date, $format = 'D, d.m')
     {
-        $result = $date->format('D, d.m');
+        $result = $date->format($format);
         $replace = [
             'Mon' => 'Пн',
             'Tue' => 'Вт',
