@@ -38,4 +38,11 @@ class BookingController extends CmsController
             'item' => $item
         ]);
     }
+
+    public function actionStart()
+    {
+        return $this->render('start.php', [
+            'page'  => $this->page,
+        ]);
+    }
 }
