@@ -14,7 +14,7 @@ use frontend\models\data\Trainer;
         <div class="container container-90">
             <div class="row">
                 <?php foreach($trainers as $trainer) { ?>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-sm-6">
                         <div class="trainer-card-element preview">
                             <img class="face" src="/img/fitness/trener1-small.jpg">
                             <h4 class="trainer-name">

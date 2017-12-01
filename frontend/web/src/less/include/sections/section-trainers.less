@@ -7,6 +7,20 @@ section.trainers {
 				width: 1170px;
 				margin-top: 35px;
 			}
+
+			@media screen and(max-width: @desktop-min-width-1) {
+				.trainer-card-element {
+					display: inline-block;
+				}
+
+				.col-sm-6:nth-child(2n+1) {
+					text-align: right;
+				}
+
+				.col-sm-6:nth-child(2n) {
+					text-align: left;
+				}
+			}
 		}
 	}
 }
