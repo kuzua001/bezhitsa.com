@@ -75,7 +75,7 @@
 			font-size: 0;
 			.day {
 				font-size: 14px;
-				font-weight: bold;
+				font-weight: 400;
 				display: inline-block;
 				width: 14.28%;
 				background-color: #f9f1dc;
@@ -85,6 +85,15 @@
 
 				&:last-child {
 					border-right: none;
+				}
+
+				&.selected {
+					background-color: #eae4cf;
+					color: #b8a761;
+				}
+
+				@media screen and (max-width: @desktop-width-1) {
+					cursor: pointer;
 				}
 			}
 		}
@@ -168,6 +177,14 @@
 		width: 50%;
 	}
 
+	.no-trainings {
+		display: block;
+		height: 100px;
+		font-size: 20px;
+		text-align: center;
+		line-height: 100px;
+	}
+
 	.training-item {
 		font-size: 11px;
 		position: relative;
@@ -199,6 +216,25 @@
 			color: #000;
 			bottom: 5px;
 			right: 2px;
+		}
+
+		&.large {
+			display: block;
+			height: 50px;
+
+			.time {
+				position: absolute;
+				font-size: 11px;
+				top: 5px;
+				left: 20px;
+			}
+
+			.title {
+				text-transform: uppercase;
+				font-weight: 800;
+			}
+
+			border: none!important;
 		}
 	}
 

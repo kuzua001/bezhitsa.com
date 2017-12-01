@@ -106,6 +106,7 @@ class FitnessController extends CmsController
             'minDate'       => new \DateTime($minDate),
             'maxDate'       => (new \DateTime($maxDate))->modify('+1 sec'),
             'weekNumber'    => $weekNumber,
+            'dayNumber'     => date('w', time()),
         ]);
     }
 

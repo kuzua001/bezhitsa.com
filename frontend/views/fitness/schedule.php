@@ -15,6 +15,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 
 /**
  * @var $weekNumber integer
+ * @var $dayNumber integer
  * @var $activityTypes \frontend\models\data\TrainingActivityType[]
  */
 ?>
@@ -57,9 +58,9 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="mobile-only">
-							<div class="days-of-week" ng-controller="TabsController as tabs">
+							<div class="days-of-week" ng-controller="TabsController as tabs" ng-model="tabs.activeTabIndex" ng-init="tabs.activeTabIndex = <?= $dayNumber?>" ng-cloak>
                                 <?php foreach ($dateRange as $day => $date) { ?>
-									<div class="day" ng-class="selected: tabs.activeTabIndex == <?= $day?>" ng-click="tabs.setActiveTabIndex(<?= $day?>)">
+									<div class="day" ng-class="{ true: 'selected'}[tabs.activeTabIndex == <?= $day?>]" ng-click="tabs.setActiveTabIndex(<?= $day?>)">
                                         <?= str_replace("\n", "<br>", AppHelper::getFormattedDayOfWeek($date, "D\nd")); ?>
 									</div>
                                 <?php } ?>
@@ -78,7 +79,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 												]) ?>
 											<?php } ?>
 										<?php } else { ?>
-											<div class="no-trainigs">
+											<div class="no-trainings">
 												Нет занятий
 											</div>
 										<?php } ?>

@@ -14,7 +14,7 @@ class AppAsset extends AssetBundle
     public $css = [
         '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
         'css/built/app.css',
-        'https://fonts.googleapis.com/css?family=Open+Sans:600,300,400|Prata|Lora:400,700|Josefin+Sans|Cormorant+Garamond:400i'
+        'https://fonts.googleapis.com/css?family=Open+Sans:800,600,400,300|Prata|Lora:400,700|Josefin+Sans|Cormorant+Garamond:400i'
     ];
 
     public $js = [
