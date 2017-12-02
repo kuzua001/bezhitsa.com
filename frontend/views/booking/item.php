@@ -6,7 +6,8 @@ use frontend\models\pages\SliderTabsSectionParams;
 
 BootstrapAsset::register($this);
 /**
- * @var $item frontend\models\data\Room
+ * @var $item  frontend\models\data\Room
+ * @var $rooms frontend\models\data\Room[]
  */
 ?>
 <section class="booking">
@@ -75,9 +76,9 @@ BootstrapAsset::register($this);
 									<div class="custom-select-control large">
 										<label for="select-room-class" class="dropdown"></label>
 										<select name="room-class" id="select-room-class">
-											<option value="1">Стандарт</option>
-											<option value="2">Комфорт</option>
-											<option value="3">Люкс</option>
+                                            <?php foreach ($rooms as $room) { ?>
+												<option<?= $item->id == $room->id ? ' selected' : '' ?> data-href="<?= $room->getUrl();?>" value="<?= $room->id?>"><?= $room->title ?></option>
+                                            <?php } ?>
 										</select>
 									</div>
 									<div class="price-from">
@@ -150,21 +151,10 @@ BootstrapAsset::register($this);
 									<div class="col-lg-4  col-md-4 col-sm-12">
 										<div class="card-element">
 											<header class="pale">
-												Фитнес центр
+												<?= $item->title ?>
 											</header>
 											<section class="content">
-												<p>
-													Современный фитнес-клуб в центре города, ориентированный на тех, кому дорого и здоровье и время.
-													Мы предлагаем стратегический подход к спорту: каждый наш специалист сделает все, чтобы вы достигли не просто кратковременных результатов, а улучшили образ жизни в целом.
-												</p>
-												<p>
-													<em>
-														Это стиль жизни, стремление быть лучше.
-													</em>
-												</p>
-												<p class="increased-margin">
-													Новые фитнес-технологии позволяют по-новому взглянуть на достижение целей, а инфраструктура спортклуба — полезно организовать время.
-												</p>
+												<?= $item->text ?>
 											</section>
 										</div>
 									</div>
@@ -195,7 +185,7 @@ BootstrapAsset::register($this);
                         <?= DetailButton::widget([
                             'hasDetailButton'  => true,
                             'detailButtonText' => 'Бронировать',
-                            'detailButtonLink' => Page::id(21)->getUrl(),
+                            'detailButtonLink' => Page::id(30)->getUrl(),
                             'isColored'        => $sectionParams->detailButtonIsColored,
                             'bgColor'          => $sectionParams->detailButtonBgColor,
                             'blackText'        => true,

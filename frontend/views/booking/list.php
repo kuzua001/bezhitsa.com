@@ -70,9 +70,9 @@ use frontend\models\pages\SliderTabsSectionParams;
 									<div class="custom-select-control large">
 										<label for="select-room-class" class="dropdown"></label>
 										<select name="room-class" id="select-room-class">
-											<option value="1">Стандарт</option>
-											<option value="2">Комфорт</option>
-											<option value="3">Люкс</option>
+											<?php foreach ($rooms as $item) { ?>
+												<option data-href="<?= $item->getUrl();?>" value="<?= $item->id?>"><?= $item->title ?></option>
+											<?php } ?>
 										</select>
 									</div>
 									<div class="price-from">

@@ -18,4 +18,10 @@ $(document).ready(function() {
 			})
 		);
 	}
+
+	$(document).on('change', '#select-room-class', function(e) {
+		let $select = $(e.currentTarget);
+		let val = $select.val();
+		window.location.href = $('#select-room-class option[value=' + val + ']').data('href');
+	})
 });

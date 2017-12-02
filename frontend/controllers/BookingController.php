@@ -25,6 +25,7 @@ class BookingController extends CmsController
 
     public function actionItem($alias)
     {
+        $rooms = Room::find()->all();
         $item = Room::find()->where('alias = :alias', [
             ':alias' => $alias
         ])->one();
@@ -35,7 +36,8 @@ class BookingController extends CmsController
 
         return $this->render('item.php', [
             'page'  => $this->page,
-            'item' => $item
+            'item'  => $item,
+            'rooms' => $rooms,
         ]);
     }
 
