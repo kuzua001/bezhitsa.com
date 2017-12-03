@@ -76,17 +76,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 										</select>
 									</div>
 									<div class="price-from">
-										от <span class="price">5000</span> руб.
-									</div>
-								</div>
-								<div class="col-sm-6 col-md-8 inline-contents text-right">
-									<div class="property-item-element">
-										<i class="property-icon one-bed"></i>
-										<span class="property-description">1 двуспальная кровать</span>
-									</div>
-									<div class="property-item-element">
-										<i class="property-icon two-people"></i>
-										<span class="property-description">2 гостя</span>
+										от <span class="price"><?= $item->price_from ?></span> руб.
 									</div>
 								</div>
 							</div>
@@ -101,12 +91,12 @@ use frontend\models\pages\SliderTabsSectionParams;
 							<a href="<?= $item->getUrl() ?>">
 								<div class="room-card-element">
 									<header>
-										<img src="/img/room1.png" />
+										<img src="<?= $item->getMainImage()->getSrc(); ?>" />
 									</header>
 									<section class="content">
 										<div class="room-type">
 											<h4 class="name"><?= $item->title ?></h4>
-											<span class="square">20-24 кв.м</span>
+											<span class="square"><?= $item->square?> кв.м</span>
 										</div>
 										<div class="price-item">
 											от <span class="price"><?= $item->price_from ?></span> руб

@@ -103,43 +103,25 @@ BootstrapAsset::register($this);
 			<div class="container container-90">
                 <?php
 
-                /** @var $page \frontend\models\pages\LandingPage */
-                $page = Page::id(12);
-                /* @var $sectionParams SliderTabsSectionParams */
-                $sectionParams = $page->pageParams->sectionsParams[1];
+                $slides = $item->getSlides();
                 ?>
 				<div class="row">
 					<div class="col-lg-12">
-						<div ng-controller="SliderController as slider" ng-init="slider.slides = <?= htmlspecialchars(json_encode($sectionParams->slides))?>">
+						<div ng-controller="SliderController as slider" ng-init="slider.slides = <?= htmlspecialchars(json_encode($slides))?>">
 							<div class="desktop-only">
-								<div class="row slider-group row-flex-desktop<?= $sectionParams->isRight ? ' reverse-order' : ''?>">
+								<div class="row slider-group row-flex-desktop">
 									<div class="col-lg-8 col-md-8 col-sm-12" ng-swipe-left="slider.swipe(true)" ng-swipe-right="slider.swipe(false)">
 										<div class="slider slider-element sticky-container">
 											<ul class="slides sticky-content">
 												<li ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
 													<div class="wrapper">
 														<img src="{{ slide.image }}">
-														<div ng-if="slide.hasCard" class="caption left-align">
-															<h3 class="elegant-title-element small black-text">
-																<span class="first">{{ slide.cardTitleFirst }}</span>
-																<span class="second">{{ slide.cardTitleSecond }}</span>
-																<span class="third">{{ slide.cardTitleThird }}</span>
-															</h3>
-															<div class="property-item-element">
-																<i class="property-icon" style="background-image: url('/img/icons/clock.png'); width: 22px; height: 27px;"></i>
-																<span class="property-description">Круглосуточно</span>
-															</div>
-															<div class="property-item-element">
-																<i class="property-icon" style="background-image: url('/img/icons/phone.png'); width: 22px; height: 27px;"></i>
-																<span class="property-description">8(4832)40-00-00</span>
-															</div>
-														</div>
 													</div>
 												</li>
 											</ul>
 											<div class="caption sticky-footer">
 												<div ng-repeat="slide in slider.slides" ng-show="slider.currentSlide == $index">
-													<h3 class="title">{{slide.tabTitle }}</h3>
+													<h3 class="title">{{slide.description }}</h3>
 													<div class="swipe-buttons">
 														<button ng-click="slider.swipe(true);">назад</button>
 														<button ng-click="slider.swipe(false);">вперед</button>
@@ -169,7 +151,7 @@ BootstrapAsset::register($this);
 										<div class="elegant-card-element">
 											<div class="tab-list-element">
 												<div>
-													<span class="link" ng-cloak>{{ slide.tabTitle }}</span>
+													<span class="link" ng-cloak>{{ slide.slides }}</span>
 													<section class="content" ng-bind-html="slide.tabContent | html">{{slide.tabContent}}</section>
 												</div>
 											</div>
@@ -186,8 +168,8 @@ BootstrapAsset::register($this);
                             'hasDetailButton'  => true,
                             'detailButtonText' => 'Бронировать',
                             'detailButtonLink' => Page::id(30)->getUrl(),
-                            'isColored'        => $sectionParams->detailButtonIsColored,
-                            'bgColor'          => $sectionParams->detailButtonBgColor,
+                            'isColored'        => false,
+                            'bgColor'          => null,
                             'blackText'        => true,
                         ]); ?>
 					</div>

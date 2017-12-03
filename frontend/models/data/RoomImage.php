@@ -17,11 +17,12 @@ use frontend\interfaces\models\HasSrc;
  * @property $img string
  * @property $is_main boolean
  * @property $room_id integer
+ * @property $descrpition string
  * @package frontend\models
  */
 class RoomImage extends ActiveRecord implements HasSrc
 {
-    const IMAGE_RELATIVE_PATH = '/img/room';
+    const IMAGE_RELATIVE_PATH = '/img/rooms';
 
     public function fields()
     {

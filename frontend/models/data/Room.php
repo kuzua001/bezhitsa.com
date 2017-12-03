@@ -74,6 +74,42 @@ class Room extends ActiveRecord implements HasUrl
         ]
     ];
 
+    /**
+     * Получить все изображения номера
+     * @return array|ActiveRecord[]|RoomImage[]
+     */
+    public function getImages()
+    {
+        return $this->hasMany(RoomImage::className(), ['room_id' => 'id'])->all();
+    }
+
+    /**
+     * Получить главное изображение номера
+     * @return array|null|ActiveRecord|RoomImage
+     */
+    public function getMainImage()
+    {
+        return $this->hasMany(RoomImage::className(), ['room_id' => 'id'])->where('is_main = 1')->one();
+    }
+
+    /**
+     * Получить все в виде массива данных удобного для слайдера
+     * @return array
+     */
+    public function getSlides()
+    {
+        $slides = [];
+        $images = $this->getImages();
+        foreach ($images as $img) {
+            $slides[] = [
+                'image' => $img->getSrc(),
+                'description' => $img->description
+            ];
+        }
+
+        return $slides;
+    }
+
     public function getUrl()
     {
         return '/room/' . $this->alias;
