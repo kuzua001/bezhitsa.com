@@ -16,7 +16,7 @@ $sectionParams = $widget->sectionParams;
 <div class="row slider-group">
 	<div class="col-lg-12">
 		<div ng-controller="SliderController as slider" ng-init="slider.slides = <?= htmlspecialchars(json_encode($sectionParams->slides))?>">
-			<div class="slider slider-element sticky-container">
+			<div class="slider slider-element sticky-container desktop-only">
 				<ul class="slides sticky-content">
 					<li ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
 						<div class="wrapper">
@@ -49,6 +49,11 @@ $sectionParams = $widget->sectionParams;
 					</div>
 				</div>
 			</div>
+			<slick class="mobile-only" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
+				<div ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
+					<img src="{{slide.image}}">
+				</div>
+			</slick>
 		</div>
 	</div>
 </div>
