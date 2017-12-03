@@ -108,7 +108,7 @@ BootstrapAsset::register($this);
 				<div class="row">
 					<div class="col-lg-12">
 						<div ng-controller="SliderController as slider" ng-init="slider.slides = <?= htmlspecialchars(json_encode($slides))?>">
-							<div class="desktop-only">
+							<div class="hidden-sm hidden-xs">
 								<div class="row slider-group row-flex-desktop">
 									<div class="col-lg-8 col-md-8 col-sm-12" ng-swipe-left="slider.swipe(true)" ng-swipe-right="slider.swipe(false)">
 										<div class="slider slider-element sticky-container">
@@ -142,22 +142,21 @@ BootstrapAsset::register($this);
 									</div>
 								</div>
 							</div>
-							<div class="mobile-only slider-element">
-								<ul class="slides">
-									<li ng-repeat="slide in slider.slides">
-										<div class="wrapper">
-											<img src="{{ slide.image }}">
-										</div>
-										<div class="elegant-card-element">
-											<div class="tab-list-element">
-												<div>
-													<span class="link" ng-cloak>{{ slide.slides }}</span>
-													<section class="content" ng-bind-html="slide.tabContent | html">{{slide.tabContent}}</section>
-												</div>
+							<slick class="hidden-md hidden-lg hidden-xl full-width" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
+								<div ng-repeat="slide in slider.slides">
+									<div class="wrapper">
+										<img src="{{ slide.image }}">
+									</div>
+									<div class="elegant-card-element">
+										<div class="tab-list-element">
+											<div>
+												<span class="link" ng-cloak>{{ slide.slides }}</span>
+												<section class="content" ng-bind-html="slide.tabContent | html">{{slide.tabContent}}</section>
 											</div>
 										</div>
-									</li>
-							</div>
+									</div>
+								</div>
+							</slick>
 						</div>
 					</div>
 				</div>
