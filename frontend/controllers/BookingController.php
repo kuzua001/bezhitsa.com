@@ -9,10 +9,6 @@ use yii;
 
 class BookingController extends CmsController
 {
-    public function actionIndex()
-    {
-        return $this->render('index.php', ['page' => $this->page]);
-    }
 
     public function actionList()
     {

@@ -66,7 +66,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 					<div class="col-lg-12">
 						<div class="characteristics">
 							<div class="row">
-								<div class="col-sm-6 col-md-4">
+								<div class="col-lg-12">
 									<div class="custom-select-control large">
 										<label for="select-room-class" class="dropdown"></label>
 										<select name="room-class" id="select-room-class">
