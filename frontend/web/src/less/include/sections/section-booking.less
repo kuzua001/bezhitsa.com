@@ -2,7 +2,16 @@ section.booking {
 	background-color: #eae4cf;
 
 	& > header {
-		padding-top: 50px;
+		padding-top: 15px;
+
+		@media screen and (min-width: @desktop-width) {
+			padding-top: 30px;
+		}
+
+		@media screen and (min-width: @menu-max-width) and (max-width: @desktop-width-1) {
+			padding-top: 15px;
+		}
+
 		background-color: #3b2213;
 		overflow: hidden;
 	}
@@ -12,10 +21,11 @@ section.booking {
 	}
 
 	.content-wrapper {
-		padding-top: 15px;
 
 		.container {
-			width: 75%;
+			@media screen and (min-width: @desktop-min-width) {
+				width: 75%;
+			}
 		}
 
 		.card-wrapper {

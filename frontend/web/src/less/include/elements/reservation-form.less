@@ -5,6 +5,33 @@
 
   @media (min-width: @menu-max-width) {
     margin: 30px 9px 0 11px;
+    &.large {
+      margin: 30px 0 0 0;
+    }
+  }
+
+  @media screen and (min-width: @tablet-max-width) and (max-width: @desktop-width-1) {
+    &.large {
+     margin-bottom: -25px;
+    }
+  }
+
+
+
+  @media screen and (min-width: 1098px) and (max-width: @desktop-min-width-1) {
+    &.large {
+      margin-bottom: -30px!important;
+    }
+  }
+
+  @media screen and (min-width: @desktop-min-width) and (max-width: 1433px) {
+    &.large {
+      margin-bottom: 2px!important;
+    }
+  }
+
+  &.large {
+    margin: 15px 0 15px 0;
   }
 
   &:not(.nobg) {

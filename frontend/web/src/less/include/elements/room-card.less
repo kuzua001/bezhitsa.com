@@ -1,6 +1,20 @@
 @import "../sizes";
 @import "../mixins";
 
+.rooms-row {
+  .room-card-element {
+    @media screen and (max-width: @menu-max-width-1) {
+      margin: 20px;
+      margin-top: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin: 10px;
+      margin-top: 0;
+    }
+  }
+}
+
 .room-card-element {
   color: black;
   margin-bottom: 30px;
@@ -11,16 +25,6 @@
   &:hover {
     transition: box-shadow 0.3s ease-in-out;
     .box-shadow(0, 0, 30px, rgba(0, 0, 0, 0.4));
-  }
-
-  @media screen and (max-width: @menu-max-width-1) {
-    margin: 20px;
-    margin-top: 50px;
-  }
-
-  @media screen and (max-width: 768px) {
-    margin: 10px;
-    margin-top: 0;
   }
 
 

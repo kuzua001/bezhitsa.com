@@ -13,7 +13,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 		<div class="content-wrapper">
 			<div class="row">
 				<div class="container container-90">
-					<div class="col-lg-4 center desktop-only">
+					<div class="col-lg-4 center hidden-xs hidden-sm hidden-md">
 						<img src="/img/big-logo.png">
 						<h1>
 							<span class="name">Bezhitsa</span><br>
@@ -40,7 +40,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 							</dl>
 						</div>
 						<div class="row">
-							<div class="reservation-form-element nobg">
+							<div class="reservation-form-element nobg large">
 								<div id="tl-search-form"><noindex><a href="http://www.travelline.ru/products/tl-hotel/" rel="nofollow">система онлайн-бронирования</a></noindex></div>
 								<script type="text/javascript">
 									(function(w){
