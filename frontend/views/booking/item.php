@@ -167,7 +167,7 @@ BootstrapAsset::register($this);
                         <?= DetailButton::widget([
                             'hasDetailButton'  => true,
                             'detailButtonText' => 'Бронировать',
-                            'detailButtonLink' => Page::id(30)->getUrl(),
+                            'detailButtonLink' => '/' . Page::id(30)->getUrl(),
                             'isColored'        => false,
                             'bgColor'          => null,
                             'blackText'        => true,
