@@ -22,7 +22,7 @@ use frontend\interfaces\models\HasSrc;
  */
 class RoomImage extends ActiveRecord implements HasSrc
 {
-    const IMAGE_RELATIVE_PATH = '/img/rooms';
+    const IMAGE_RELATIVE_PATH = '/uploads/rooms';
 
     public function fields()
     {
