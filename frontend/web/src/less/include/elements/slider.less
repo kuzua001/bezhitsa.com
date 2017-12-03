@@ -59,7 +59,10 @@
     }
   }
 
-  min-height: 657px;
+  @media screen and (min-width: @desktop-width) {
+    min-height: 657px;
+  }
+
   height: inherit!important; /* @todo убрать materialize */
 
   -webkit-user-select: none;
