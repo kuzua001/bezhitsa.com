@@ -13,9 +13,9 @@
 				</div>
 				<div class="col-md-6 footer-col">
 					<nav class="scrollto-links">
-						<a href="#">Отель</a>
-						<a href="#">Ресторан</a>
-						<a href="#">Фитнес клуб</a>
+						<a href="http://bezhitsa.com">Отель</a>
+						<a href="http://bzrest.ru">Ресторан</a>
+						<a href="http://bzfit.ru">Фитнес клуб</a>
 					</nav>
 				</div>
 				<div class="col-md-3 footer-col">
