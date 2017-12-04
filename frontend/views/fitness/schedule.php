@@ -64,7 +64,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
                                         <?= str_replace("\n", "<br>", AppHelper::getFormattedDayOfWeek($date, "D\nd")); ?>
 									</div>
                                 <?php } ?>
-                                <?php for ($day = 0; $day < 7; $day ++) { ?>
+                                <?php foreach ($dateRange as $day => $date) { ?>
                                     <?php
                                     $trainigs = isset($schedule[$day])  ? call_user_func_array('array_merge', $schedule[$day]) : [];
                                     ?>
@@ -102,7 +102,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
                             <?php for ($hour = $minHour; $hour <= $maxHour; $hour ++) { ?>
 								<tr>
 									<td class="hour"><?= $hour . ':00' ?></td>
-                                    <?php for ($day = 0; $day < 7; $day ++) { ?>
+                                    <?php foreach ($dateRange as $day => $date) { ?>
                                         <?php
                                         $trainigs = isset($schedule[$day]) && isset($schedule[$day][$hour]) ? $schedule[$day][$hour] : [];
                                         $nCol = count($trainigs);
