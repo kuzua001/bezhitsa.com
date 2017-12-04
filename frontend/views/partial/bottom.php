@@ -7,7 +7,7 @@
 						<img class="logo" src="/img/logo_small.png">
 						<p class="title">
 							<span class="name">Bezhitsa</span>
-							<span class="type">гранд отдель</span>
+							<span class="type">гранд отель</span>
 						</p>
 					</div>
 				</div>
