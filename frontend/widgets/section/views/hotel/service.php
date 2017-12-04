@@ -203,6 +203,6 @@ $rooms = Room::find()->limit(4)->all();
 </div>
 <div class="row more-row">
 	<div class="col-lg-12 center">
-		<button class="detail-button-element">все номера номера</button>
+		<a href="/room"><button class="detail-button-element">все номера</button></a>
 	</div>
 </div>
