@@ -117,6 +117,11 @@ use frontend\models\pages\SliderTabsSectionParams;
 							</a>
 						</div>
 					<?php } ?>
+                    <?php if ($page->pageParams->showBookingRules) { ?>
+						<div class="col-lg-12">
+							<?= $page->pageParams->bookingRulesText ?>
+						</div>
+                    <?php } ?>
 				</div>
 			</div>
 		</section>

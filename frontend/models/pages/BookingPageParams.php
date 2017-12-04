@@ -14,9 +14,18 @@ use frontend\models\ParamField;
 class BookingPageParams extends CmsPageParams
 {
      /**
-     * @var $smth boolean
-     * @title Что то тестовое
+     * @var $showBookingRules boolean
+     * @title Показывать ли правила бронирования
      * @type checkbox
      */
-    public $smth;
+    public $showBookingRules;
+
+    /**
+     * @var $bookingRulesText textarea
+     * @title Показывать ли правила бронирования
+     * @type checkbox
+     */
+    public $bookingRulesText;
+
+
 }

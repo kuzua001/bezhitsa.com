@@ -5,8 +5,11 @@ use frontend\models\Page;
 use frontend\models\pages\SliderTabsSectionParams;
 
 BootstrapAsset::register($this);
+
+
 /**
  * @var $item frontend\models\data\Room
+ * @var \frontend\models\pages\BookingPage $page
  */
 ?>
 <section class="booking">
@@ -93,7 +96,12 @@ BootstrapAsset::register($this);
 							})(window);
                         </script>
                     </div>
-                </div>
+                    <?php if ($page->pageParams->showBookingRules) { ?>
+						<div class="col-lg-12">
+								<?= $page->pageParams->bookingRulesText ?>
+						</div>
+                    <?php } ?>
+				</div>
             </div>
         </section>
     </div>
