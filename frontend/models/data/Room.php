@@ -30,9 +30,10 @@ class Room extends ActiveRecord implements HasUrl
     /**
      * Константы типов кроватей
      */
-    const BED_TYPE_ONE = 1;
-    const BED_TYPE_TWO = 2;
-    const BED_TYPE_2ONE = 3;
+    const BED_TYPE_ONE     = 1;
+    const BED_TYPE_TWO     = 2;
+    const BED_TYPE_2ONE    = 3;
+    const BED_TYPE_TWO_EXT = 4;
 
     /**
      * Доступные варианты с описанием и иконкой
@@ -51,13 +52,18 @@ class Room extends ActiveRecord implements HasUrl
             'icon'  => '',
             'title' => 'Одна двуспальная кровать'
         ],
+        self::BED_TYPE_TWO_EXT => [
+            'icon'  => '',
+            'title' => 'Одна двуспальная кровать + доп.место'
+        ],
     ];
 
     /**
      * Константы количества персон в номере
      */
-    const PERSON_TYPE_ONE = 1;
-    const PERSON_TYPE_TWO = 1;
+    const PERSON_TYPE_ONE   = 1;
+    const PERSON_TYPE_TWO   = 2;
+    const PERSON_TYPE_THREE = 3;
 
     /**
      * Доступные варианты с описанием и иконкой
@@ -71,6 +77,10 @@ class Room extends ActiveRecord implements HasUrl
         self::PERSON_TYPE_TWO => [
             'icon'  => '',
             'title' => '2 гостя'
+        ],
+        self::PERSON_TYPE_TWO => [
+            'icon'  => '',
+            'title' => '3 гостя'
         ]
     ];
 

@@ -2,6 +2,7 @@
 use frontend\widgets\section\Section;
 use frontend\models\pages\HotelMainSectionParams;
 use yii\helpers\Html;
+use \frontend\models\data\Room;
 
 /** @var Section $widget */
 
@@ -11,6 +12,7 @@ $widget = $this->context;
  * @var HotelMainSectionParams $sectionParams
  */
 $sectionParams = $widget->sectionParams;
+$rooms = Room::find()->limit(4)->all();
 ?>
 <div class="row indent indent-large">
 	<div class="col-md-6">
@@ -134,209 +136,69 @@ $sectionParams = $widget->sectionParams;
 	</div>
 	<div class="col-lg-8 col-md-12 col-sm-12 rooms-list-element hidden-xs hidden-sm">
 		<div class="row ">
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="room-card-element">
-					<header>
-						<img src="/img/room1.png">
-					</header>
-					<section class="content">
-						<div class="room-type">
-							<h4 class="name">Люкс</h4>
-							<span class="square">20-24 кв.м</span>
+			<?php foreach ($rooms as $i => $item) { ?>
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<a href="<?= $item->getUrl() ?>">
+						<div class="room-card-element">
+							<header>
+								<img src="<?= $item->getMainImage()->getSrc(); ?>" />
+							</header>
+							<section class="content">
+								<div class="room-type">
+									<h4 class="name"><?= $item->title ?></h4>
+									<span class="square"><?= $item->square?> кв.м</span>
+								</div>
+								<div class="price-item">
+									от <span class="price"><?= $item->price_from ?></span> руб
+								</div>
+							</section>
+							<footer>
+								<div class="property-item-element">
+									<i class="property-icon one-bed"></i>
+									<span class="property-description"><?= $item->getBedTitle() ?></span>
+								</div>
+								<div class="property-item-element">
+									<i class="property-icon two-people"></i>
+									<span class="property-description"><?= $item->getPersonTitle() ?></span>
+								</div>
+							</footer>
 						</div>
-						<div class="price-item">
-							от <span class="price">7 600</span> руб
-						</div>
-					</section>
-					<footer>
-						<div class="property-item-element">
-							<i class="property-icon one-bed"></i>
-							<span class="property-description">1 двуспальная кровать</span>
-						</div>
-						<div class="property-item-element">
-							<i class="property-icon two-people"></i>
-							<span class="property-description">2 гостя</span>
-						</div>
-					</footer>
+					</a>
 				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="room-card-element">
-					<header>
-						<img src="/img/room2.png">
-					</header>
-					<section class="content">
-						<div class="room-type">
-							<h4 class="name">Стандарт</h4>
-							<span class="square">30-36 кв.м</span>
-						</div>
-						<div class="price-item">
-							от <span class="price">5 000</span> руб
-						</div>
-					</section>
-					<footer>
-						<div class="property-item-element">
-							<i class="property-icon one-bed"></i>
-							<span class="property-description">1 двуспальная кровать</span>
-						</div>
-						<div class="property-item-element">
-							<i class="property-icon two-people"></i>
-							<span class="property-description">2 гостя</span>
-						</div>
-					</footer>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="room-card-element">
-					<header>
-						<img src="/img/room1.png">
-					</header>
-					<section class="content">
-						<div class="room-type">
-							<h4 class="name">Стандарт</h4>
-							<span class="square">20-24 кв.м</span>
-						</div>
-						<div class="price-item">
-							от <span class="price">6 800</span> руб
-						</div>
-					</section>
-					<footer>
-						<div class="property-item-element large-icon">
-							<i class="property-icon two-bed"></i>
-							<span class="property-description">2 односпальных кровати</span>
-						</div>
-						<div class="property-item-element">
-							<i class="property-icon two-people"></i>
-							<span class="property-description">2 гостя</span>
-						</div>
-					</footer>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-12">
-				<div class="room-card-element">
-					<header>
-						<img src="/img/room1.png">
-					</header>
-					<section class="content">
-						<div class="room-type">
-							<h4 class="name">Стандарт</h4>
-							<span class="square">20-24 кв.м</span>
-						</div>
-						<div class="price-item">
-							от <span class="price">7 600</span> руб
-						</div>
-					</section>
-					<footer>
-						<div class="property-item-element">
-							<i class="property-icon one-bed"></i>
-							<span class="property-description">1 двуспальная кровать</span>
-						</div>
-						<div class="property-item-element">
-							<i class="property-icon two-people"></i>
-							<span class="property-description">2 гостя</span>
-						</div>
-					</footer>
-				</div>
-			</div>
+			<?php } ?>
 		</div>
 	</div>
 	<slick class="hidden-md hidden-lg hidden-xl full-width" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
-		<div class="room-card-element">
-			<header>
-				<img src="/img/room1.png">
-			</header>
-			<section class="content">
-				<div class="room-type">
-					<h4 class="name">Люкс</h4>
-					<span class="square">20-24 кв.м</span>
-				</div>
-				<div class="price-item">
-					от <span class="price">7 600</span> руб
-				</div>
-			</section>
-			<footer>
-				<div class="property-item-element">
-					<i class="property-icon one-bed"></i>
-					<span class="property-description">1 двуспальная кровать</span>
-				</div>
-				<div class="property-item-element">
-					<i class="property-icon two-people"></i>
-					<span class="property-description">2 гостя</span>
-				</div>
-			</footer>
-		</div>
-		<div class="room-card-element">
-			<header>
-				<img src="/img/room1.png">
-			</header>
-			<section class="content">
-				<div class="room-type">
-					<h4 class="name">Люкс</h4>
-					<span class="square">20-24 кв.м</span>
-				</div>
-				<div class="price-item">
-					от <span class="price">7 600</span> руб
-				</div>
-			</section>
-			<footer>
-				<div class="property-item-element">
-					<i class="property-icon one-bed"></i>
-					<span class="property-description">1 двуспальная кровать</span>
-				</div>
-				<div class="property-item-element">
-					<i class="property-icon two-people"></i>
-					<span class="property-description">2 гостя</span>
-				</div>
-			</footer>
-		</div>
-		<div class="room-card-element">
-			<header>
-				<img src="/img/room1.png">
-			</header>
-			<section class="content">
-				<div class="room-type">
-					<h4 class="name">Люкс</h4>
-					<span class="square">20-24 кв.м</span>
-				</div>
-				<div class="price-item">
-					от <span class="price">7 600</span> руб
-				</div>
-			</section>
-			<footer>
-				<div class="property-item-element">
-					<i class="property-icon one-bed"></i>
-					<span class="property-description">1 двуспальная кровать</span>
-				</div>
-				<div class="property-item-element">
-					<i class="property-icon two-people"></i>
-					<span class="property-description">2 гостя</span>
-				</div>
-			</footer>
-		</div>
-		<div class="room-card-element">
-			<header>
-				<img src="/img/room1.png">
-			</header>
-			<section class="content">
-				<div class="room-type">
-					<h4 class="name">Люкс</h4>
-					<span class="square">20-24 кв.м</span>
-				</div>
-				<div class="price-item">
-					от <span class="price">7 600</span> руб
-				</div>
-			</section>
-			<footer>
-				<div class="property-item-element">
-					<i class="property-icon one-bed"></i>
-					<span class="property-description">1 двуспальная кровать</span>
-				</div>
-				<div class="property-item-element">
-					<i class="property-icon two-people"></i>
-					<span class="property-description">2 гостя</span>
-				</div>
-			</footer>
-		</div>
+        <?php foreach ($rooms as $item) { ?>
+			<div class="col-lg-4 col-md-6">
+				<a href="<?= $item->getUrl() ?>">
+					<div class="room-card-element">
+						<header>
+							<img src="<?= $item->getMainImage()->getSrc(); ?>" />
+						</header>
+						<section class="content">
+							<div class="room-type">
+								<h4 class="name"><?= $item->title ?></h4>
+								<span class="square"><?= $item->square?> кв.м</span>
+							</div>
+							<div class="price-item">
+								от <span class="price"><?= $item->price_from ?></span> руб
+							</div>
+						</section>
+						<footer>
+							<div class="property-item-element">
+								<i class="property-icon one-bed"></i>
+								<span class="property-description"><?= $item->getBedTitle() ?></span>
+							</div>
+							<div class="property-item-element">
+								<i class="property-icon two-people"></i>
+								<span class="property-description"><?= $item->getPersonTitle() ?></span>
+							</div>
+						</footer>
+					</div>
+				</a>
+			</div>
+        <?php } ?>
 	</slick>
 </div>
 <div class="row more-row">
