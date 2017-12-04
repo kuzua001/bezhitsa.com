@@ -21,9 +21,9 @@ class BookingPageParams extends CmsPageParams
     public $showBookingRules;
 
     /**
-     * @var $bookingRulesText textarea
-     * @title Показывать ли правила бронирования
-     * @type checkbox
+     * @var $bookingRulesText string
+     * @title Текст бронирования
+     * @type textarea
      */
     public $bookingRulesText;
 
