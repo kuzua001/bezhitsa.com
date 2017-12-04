@@ -85,13 +85,14 @@ use frontend\models\pages\SliderTabsSectionParams;
 				</div>
 			</div>
 			<div class="container container-90">
+				<div class="clearfix"></div>
 				<div class="row">
 					<?php foreach ($rooms as $item) { ?>
 						<div class="col-lg-4 col-md-6">
 							<a href="<?= $item->getUrl() ?>">
 								<div class="room-card-element">
 									<header>
-										<img src="<?= $item->getMainImage()->getSrc(); ?>" />
+										<img src="<?= $item->getMainImage()->getSrc(); ?>">
 									</header>
 									<section class="content">
 										<div class="room-type">
