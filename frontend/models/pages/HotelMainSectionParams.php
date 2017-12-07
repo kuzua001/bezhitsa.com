@@ -64,4 +64,52 @@ class HotelMainSectionParams extends SectionParams
      * @type string
      */
     public $sloganThird;
+
+    /**
+     * @var $title1 string
+     * @title Первый заголовок
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $title1;
+
+    /**
+     * @var $title2 string
+     * @title Второй заголовок
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $title2;
+
+    /**
+     * @var $title3 string
+     * @title Третий заголовок
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $title3;
+
+    /**
+     * @var $text1 string
+     * @title Первый текст
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $text1;
+
+    /**
+     * @var $text2 string
+     * @title Второй текст
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $text2;
+
+    /**
+     * @var $text3 string
+     * @title Третий текст
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $text3;
 }

@@ -47,7 +47,7 @@ $sectionParams = $widget->sectionParams;
 		</dl>
 	</div>
 	<div class="clearfix hidden-md"></div>
-	<div class="col-lg-4 col-md-6 col-sm-6 col-xs2-6 center indent">
+	<div class="col-lg-4 col-md-6 col-sm-6 col-xs2-6 center indent" style="display: none">
 		<section class="reservation-form-element">
 			<header>
 				Забронировать <span class="hidden-md hidden-sm hidden-xs">проживание</span>
@@ -56,19 +56,23 @@ $sectionParams = $widget->sectionParams;
 				<div class="dates">
 					<input type="text" class="from" placeholder="заезд">
 					<input type="text" class="to" placeholder="выезд">
+					<datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+						<input ng-model="date" type="text"/>
+					</datepicker>
 				</div>
 				<div class="people">
 					<input type="text" class="select" placeholder="1 Номер, 1 Взрослый, 0 Детей">
 					<!-- redmine test -->
 
 				</div>
+				<div class="custom-calendar-element"
 			</section>
 			<footer>
 				<div class="apply">Бронировать</div>
 			</footer>
 		</section>
 	</div>
-	<div class="col-lg-8 col-md-6 col-sm-6 col-xs2-6">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs2-12 center indent">
 		<h2 class="main-slogan elegant-title-element">
 			<span class="first"><?= Html::encode($sectionParams->sloganFirst) ?></span>
 			<span class="second"><?= Html::encode($sectionParams->sloganSecond) ?></span>
@@ -96,34 +100,20 @@ $sectionParams = $widget->sectionParams;
             ]">
 		<div>
 			<div class="slide-wrapper">
-				<h3>Харакетристики отеля</h3>
-				<p>
-					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
-				</p>
+				<h3><?= Html::encode($sectionParams->title1) ?></h3>
+                <?= Html::encode($sectionParams->text1) ?>
 			</div>
 		</div>
 		<div>
 			<div class="slide-wrapper">
-				<h3>Харакетристики отеля</h3>
-				<p>
-					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
-				</p>
+				<h3><?= Html::encode($sectionParams->title2) ?></h3>
+                <?= Html::encode($sectionParams->text2) ?>
 			</div>
 		</div>
 		<div>
 			<div class="slide-wrapper">
-				<h3>Харакетристики отеля</h3>
-				<p>
-					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
-				</p>
-			</div>
-		</div>
-		<div>
-			<div class="slide-wrapper">
-				<h3>Харакетристики отеля</h3>
-				<p>
-					Отель «Бежица» предлагает 48 роскошных номеров в самом центре города. Наслаждайтесь стильным интерьером, уникальным дизайном стандартных номеров, делюксов и люксов .
-				</p>
+				<h3><?= Html::encode($sectionParams->title3) ?></h3>
+                <?= Html::encode($sectionParams->text3) ?>
 			</div>
 		</div>
 	</slick>
