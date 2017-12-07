@@ -93,7 +93,7 @@ class HotelMainSectionParams extends SectionParams
      * @var $text1 string
      * @title Первый текст
      * @default МИРОВОГО КЛАССА
-     * @type string
+     * @type textarea
      */
     public $text1;
 
@@ -101,7 +101,7 @@ class HotelMainSectionParams extends SectionParams
      * @var $text2 string
      * @title Второй текст
      * @default МИРОВОГО КЛАССА
-     * @type string
+     * @type textarea
      */
     public $text2;
 
@@ -109,7 +109,7 @@ class HotelMainSectionParams extends SectionParams
      * @var $text3 string
      * @title Третий текст
      * @default МИРОВОГО КЛАССА
-     * @type string
+     * @type textarea
      */
     public $text3;
 }
