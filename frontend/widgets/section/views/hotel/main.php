@@ -101,19 +101,19 @@ $sectionParams = $widget->sectionParams;
 		<div>
 			<div class="slide-wrapper">
 				<h3><?= Html::encode($sectionParams->title1) ?></h3>
-                <?= Html::encode($sectionParams->text1) ?>
+                <?= $sectionParams->text1 ?>
 			</div>
 		</div>
 		<div>
 			<div class="slide-wrapper">
 				<h3><?= Html::encode($sectionParams->title2) ?></h3>
-                <?= Html::encode($sectionParams->text2) ?>
+                <?= $sectionParams->text2 ?>
 			</div>
 		</div>
 		<div>
 			<div class="slide-wrapper">
 				<h3><?= Html::encode($sectionParams->title3) ?></h3>
-                <?= Html::encode($sectionParams->text3) ?>
+                <?= $sectionParams->text3 ?>
 			</div>
 		</div>
 	</slick>
