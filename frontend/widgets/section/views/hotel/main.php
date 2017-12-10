@@ -34,15 +34,13 @@ $sectionParams = $widget->sectionParams;
 				<i class="address"></i>
 			</dt>
 			<dd>
-				Клинцовская, 41,<br>
-				Брянск<br>
-				Российская Федерация<br>
+				<?= $sectionParams->address ?>
 			</dd>
 			<dt title="Телефон">
 				<i class="phone"></i>
 			</dt>
 			<dd>
-				+7 (915) 117-98-77
+				<?= $sectionParams->phone ?>
 			</dd>
 		</dl>
 	</div>

@@ -112,4 +112,20 @@ class HotelMainSectionParams extends SectionParams
      * @type textarea
      */
     public $text3;
+
+    /**
+     * @var $address
+     * @title Адрес отеля
+     * @default
+     * @type textarea
+     */
+    public $address;
+
+    /**
+     * @var $phone
+     * @title Телефон отеля
+     * @default
+     * @type string
+     */
+    public $phone;
 }
