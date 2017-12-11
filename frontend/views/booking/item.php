@@ -82,7 +82,7 @@ BootstrapAsset::register($this);
 										</select>
 									</div>
 									<div class="price-from">
-										от <span class="price">5000</span> руб.
+										от <span class="price"><?= $item->price_from ?></span> руб.
 									</div>
 								</div>
 								<div class="col-sm-6 col-md-6 col-sm-8 inline-contents text-right">

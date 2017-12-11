@@ -75,8 +75,11 @@ use frontend\models\pages\SliderTabsSectionParams;
 											<?php } ?>
 										</select>
 									</div>
+									<?php
+									$first = $rooms[0];
+									?>
 									<div class="price-from">
-										от <span class="price"><?= $item->price_from ?></span> руб.
+										от <span class="price"><?= $first->price_from ?></span> руб.
 									</div>
 								</div>
 							</div>
