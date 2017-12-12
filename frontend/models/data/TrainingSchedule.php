@@ -78,6 +78,7 @@ class TrainingSchedule extends ActiveRecord
 
             $hour = $item->date_start->format('H');
             $day  = $item->date_start->format('w');
+            if ($day == 0) $day = 7;
 
             if (!isset($scheduleIndex[$day])) {
                 $scheduleIndex[$day] = [];

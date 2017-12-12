@@ -73,8 +73,8 @@ class FitnessController extends CmsController
         $start = (date('w', $ts) == 0) ? $ts : strtotime('last monday', $ts);
 
         // Получим времена начала и конца интересующей недели
-        $minDate = date('Y-m-d H:i:s', $start);
-        $maxDate = date('Y-m-d H:i:s', strtotime('next sunday', $start));
+        $minDate = date('Y-m-d 00:00:00', $start);
+        $maxDate = date('Y-m-d 23:59:59', strtotime('next sunday', $start));
 
         $schedule = TrainingSchedule::getSchedule($minDate, $maxDate);
 

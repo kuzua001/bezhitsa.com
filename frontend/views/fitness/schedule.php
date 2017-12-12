@@ -30,7 +30,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 			<div class="schedule-top">
 				<div class="row navigation">
 					<div class="col-xs-2 col-md-3 left">
-						<a href="<?= Page::id(36)->getUrl(['weekNumber' => $weekNumber - 1],true) ?>">
+						<a href="<?= Page::id(31)->getUrl(['weekNumber' => $weekNumber - 1],true) ?>">
 							<button class="arrow prev"></button>
 							<span class="label">Предыдующая неделя</span>
 						</a>
@@ -41,7 +41,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 					</span>
 					</div>
 					<div class="col-xs-2 col-md-3 right">
-						<a href="<?= Page::id(36)->getUrl(['weekNumber' => $weekNumber + 1],true) ?>">
+						<a href="<?= Page::id(31)->getUrl(['weekNumber' => $weekNumber + 1],true) ?>">
 							<span class="label">Следующая неделя</span>
 							<button class="arrow next"></button>
 						</a>
