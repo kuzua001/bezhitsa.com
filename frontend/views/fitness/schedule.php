@@ -66,7 +66,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
                                 <?php } ?>
                                 <?php foreach ($dateRange as $day => $date) { ?>
                                     <?php
-                                    $trainigs = isset($schedule[$day])  ? call_user_func_array('array_merge', $schedule[$day]) : [];
+                                    $trainigs = isset($schedule[$day + 1])  ? call_user_func_array('array_merge', $schedule[$day + 1]) : [];
                                     ?>
 									<div class="day-events" ng-show="tabs.activeTabIndex == <?= $day?>">
                                         <?php if (count($trainigs)) { ?>
@@ -104,7 +104,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 									<td class="hour"><?= $hour . ':00' ?></td>
                                     <?php foreach ($dateRange as $day => $date) { ?>
                                         <?php
-                                        $trainigs = isset($schedule[$day]) && isset($schedule[$day][$hour]) ? $schedule[$day][$hour] : [];
+                                        $trainigs = isset($schedule[$day + 1]) && isset($schedule[$day + 1][$hour]) ? $schedule[$day + 1][$hour] : [];
                                         $nCol = count($trainigs);
                                         ?>
 										<td class="col-<?= $nCol?>">

@@ -90,6 +90,9 @@ class TrainingSchedule extends ActiveRecord
             $scheduleIndex[$day][$hour][] = $item;
         }
 
+        //var_dump($scheduleIndex);
+        //exit();
+
         return $scheduleIndex;
     }
 }
