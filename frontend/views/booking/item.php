@@ -83,12 +83,12 @@ BootstrapAsset::register($this);
 								</div>
 								<div class="col-sm-6 col-md-6 col-sm-8 inline-contents text-right">
 									<div class="property-item-element">
-										<i class="property-icon one-bed"></i>
-										<span class="property-description">1 двуспальная кровать</span>
+										<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
+										<span class="property-description"><?= $item->getBedTitle() ?></span>
 									</div>
 									<div class="property-item-element">
-										<i class="property-icon two-people"></i>
-										<span class="property-description">2 гостя</span>
+										<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
+										<span class="property-description"><?= $item->getPersonTitle() ?></span>
 									</div>
 								</div>
 							</div>

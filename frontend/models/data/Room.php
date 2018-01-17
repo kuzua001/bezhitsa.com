@@ -41,20 +41,24 @@ class Room extends ActiveRecord implements HasUrl
      */
     private static $_bedTypes = [
         self::BED_TYPE_2ONE => [
-            'icon'  => '',
-            'title' => 'Две односпальных кровати'
+            'icon'        => '',
+            'icon_class'  => 'two-bed-two',
+            'title'       => 'Две односпальных кровати'
         ],
         self::BED_TYPE_ONE => [
-            'icon'  => '',
-            'title' => 'Одна односпальная кровать'
+            'icon'        => '',
+            'icon_class'  => 'one-bed',
+            'title'       => 'Одна односпальная кровать'
         ],
         self::BED_TYPE_TWO => [
-            'icon'  => '',
-            'title' => 'Одна двуспальная кровать'
+            'icon'        => '',
+            'icon_class'  => 'two-bed',
+            'title'       => 'Одна двуспальная кровать'
         ],
         self::BED_TYPE_TWO_EXT => [
-            'icon'  => '',
-            'title' => 'Одна двуспальная кровать + доп.место'
+            'icon'        => '',
+            'icon_class'  => 'two-bed-ext',
+            'title'       => 'Одна двуспальная кровать + доп.место'
         ],
     ];
 
@@ -71,16 +75,19 @@ class Room extends ActiveRecord implements HasUrl
      */
     private static $_personTypes = [
         self::PERSON_TYPE_ONE => [
-            'icon'  => '',
-            'title' => '1 гость'
+            'icon'        => '',
+            'title'       => '1 гость',
+            'icon_class'  => 'one-people',
         ],
         self::PERSON_TYPE_TWO => [
-            'icon'  => '',
-            'title' => '2 гостя'
+            'icon'        => '',
+            'title'       => '2 гостя',
+            'icon_class'  => 'two-people',
         ],
-        self::PERSON_TYPE_TWO => [
-            'icon'  => '',
-            'title' => '3 гостя'
+        self::PERSON_TYPE_THREE => [
+            'icon'        => '',
+            'title'       => '3 гостя',
+            'icon_class'  => 'three-people',
         ]
     ];
 
@@ -126,6 +133,15 @@ class Room extends ActiveRecord implements HasUrl
     }
 
     /**
+     * Возвращает класс иконки сколько людей в номере
+     * @return mixed
+     */
+    public function getPersonIconClass()
+    {
+        return self::$_personTypes[$this->persons_type]['icon_class'];
+    }
+
+    /**
      * Возвращает url иконки сколько людей в номере
      * @return mixed
      */
@@ -141,6 +157,15 @@ class Room extends ActiveRecord implements HasUrl
     public function getBedIconURL()
     {
         return self::$_bedTypes[$this->bed_type]['icon'];
+    }
+
+    /**
+     * Возвращает класс для иконки скольки спальная кровать
+     * @return mixed
+     */
+    public function getBedIconClass()
+    {
+        return self::$_bedTypes[$this->bed_type]['icon_class'];
     }
 
     /**

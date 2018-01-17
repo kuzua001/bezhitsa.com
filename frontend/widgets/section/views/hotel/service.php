@@ -13,6 +13,10 @@ $widget = $this->context;
  */
 $sectionParams = $widget->sectionParams;
 $rooms = Room::find()->limit(4)->all();
+
+/**
+ * @var $rooms Room[]
+ */
 ?>
 <div class="row indent indent-large">
 	<div class="col-md-6">
@@ -112,11 +116,11 @@ $rooms = Room::find()->limit(4)->all();
 							</section>
 							<footer>
 								<div class="property-item-element">
-									<i class="property-icon one-bed"></i>
+									<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
 									<span class="property-description"><?= $item->getBedTitle() ?></span>
 								</div>
 								<div class="property-item-element">
-									<i class="property-icon two-people"></i>
+									<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
 									<span class="property-description"><?= $item->getPersonTitle() ?></span>
 								</div>
 							</footer>
