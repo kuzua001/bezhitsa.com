@@ -35,7 +35,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 									<i class="phone"></i>
 								</dt>
 								<dd>
-									8(4832)40-00-00
+									8(4832)40-00-01
 								</dd>
 							</dl>
 						</div>
@@ -45,7 +45,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 								<script type="text/javascript">
 									(function(w){
 										var q=[
-											['setContext', 'TL-INT-bezhitsa', 'ru'],
+											['setContext', 'TL-INT-bezhitsa.new', 'ru'],
 											['embed', 'search-form', {container: 'tl-search-form'}]
 										];
 										var t=w.travelline=(w.travelline||{}),ti=t.integration=(t.integration||{});ti.__cq=ti.__cq?ti.__cq.concat(q):q;

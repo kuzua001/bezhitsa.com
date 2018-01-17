@@ -22,9 +22,11 @@ $rooms = Room::find()->limit(4)->all();
 			<span class="third tight">требовательных гостей</span>
 		</h2>
 		<div class="clearfix"></div>
-		<button class="detail-button-element">
-			подробнее про отель
-		</button>
+		<a href="http://bezhitsa.com/service">
+            <button class="detail-button-element">
+    			подробнее про отель
+		    </button>
+        </a>
 		<div class="clearfix"></div>
 	</div>
 	<div class="col-md-6">
@@ -51,37 +53,7 @@ $rooms = Room::find()->limit(4)->all();
 				Почему стоит бронировать у нас?
 			</header>
 			<section class="content">
-				<p>
-					Услуги для гостей отеля «Бежица», включают удобства парковки и транспортировки из отеля в аэропорт на люкс автомобиле.
-					Гость может воспользываться подключением беспроводного интернета, а также услугами <!--круглосуточного обслуживания в номерах,
-								услугами няни, и&nbsp;сервисом по аренде автомобилей и лимузинов.-->
-				</p>
-				<ul class="item-list three-col">
-					<li class="item">
-						<i class="item-icon" style="background-image: url('/img/icons/emblem.png');"></i>
-						<p>
-							Гарантия<br>
-							лучших тарифов
-						</p>
-					</li>
-					<li class="item">
-						<i class="item-icon" style="background-image: url('/img/icons/service.png');"></i>
-						<p>
-							Круглосуточное<br>
-							обслуживание <span class="desktop-only">в номерах</span>
-						</p>
-					</li>
-					<li class="item">
-						<i class="item-icon" style="background-image: url('/img/icons/fitnes.png');"></i>
-						<p>
-							Оздоровительный<br>
-							финес центр
-						</p>
-					</li>
-				</ul>
-				<p>
-					Роскошный дизайн интерьеров, высокая кухня ресторана, светские и деловые события.
-				</p>
+				<?= $sectionParams->whyContent ?>
 			</section>
 		</div>
 	</div>
@@ -103,15 +75,7 @@ $rooms = Room::find()->limit(4)->all();
 							Сведения об отеле
 						</header>
 						<section class="content">
-							<ul>
-								<li><span>Время заезда: 14:00. Время выезда: 12:00</span></li>
-								<li><span>214 номеров и люксов</span></li>
-								<li><span>Сейф в каждом номере</span></li>
-								<li><span>Эксклюзивный клубный лаунж Bezhitsa lobby</span></li>
-								<li><span>Бесплатный беспроводной Интернет в зонах общего пользования и номерах</span></li>
-								<li><span>Круглосуточное обслуживание в номерах</span></li>
-								<li><span>Категория SPG 4</span></li>
-							</ul>
+							<?= $sectionParams->infoContent ?>
 						</section>
 					</div>
 				</div>
@@ -121,13 +85,7 @@ $rooms = Room::find()->limit(4)->all();
 							Описание отеля
 						</header>
 						<section class="content">
-							<ul>
-								<li><span>Круглосуточный фитнес</span></li>
-								<li><span>Все фитнес-занятия проходят под наблюдением профессиональных инструкторов</span></li>
-								<li><span>Владеющий иностранными языками персонал</span></li>
-								<li><span>Услуги няни по предварительной договоренности</span></li>
-								<li><span>Прачечная и химчистка в тот же день</span></li>
-							</ul>
+							<?= $sectionParams->descriptionContent ?>
 						</section>
 					</div>
 				</div>

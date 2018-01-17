@@ -36,6 +36,11 @@ class Section extends Widget
     public function run()
     {
         $html = '';
+
+        if ($this->sectionParams->getSectionType() == self::TYPE_HOTEL_MAIN) {
+            $html .= $this->render('section/booking');        
+        }
+                
         $html .= $this->render('section/top');
 
         switch ($this->sectionParams->getSectionType()) {

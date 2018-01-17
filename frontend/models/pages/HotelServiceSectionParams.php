@@ -65,4 +65,28 @@ class HotelServiceSectionParams extends SectionParams
      * @type string
      */
     public $sloganThird;
+
+    /**
+     * @var $whyContent string
+     * @title Почему стоит бронировать у нас?
+     * @default 1
+     * @type textarea
+     */
+    public $whyContent;
+
+    /**
+     * @var $infoContent string
+     * @title Сведения об отеле
+     * @default 1
+     * @type textarea
+     */
+    public $infoContent;
+
+    /**
+     * @var $descriptionContent string
+     * @title Описание отеля
+     * @default 1
+     * @type textarea
+     */
+    public $descriptionContent;
 }

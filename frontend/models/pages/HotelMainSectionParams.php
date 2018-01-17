@@ -90,6 +90,22 @@ class HotelMainSectionParams extends SectionParams
     public $title3;
 
     /**
+     * @var $title4 string
+     * @title Четвертый заголовок
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $title4;
+
+    /**
+     * @var $title5 string
+     * @title Пятый заголовок
+     * @default МИРОВОГО КЛАССА
+     * @type string
+     */
+    public $title5;
+
+    /**
      * @var $text1 string
      * @title Первый текст
      * @default МИРОВОГО КЛАССА
@@ -112,6 +128,22 @@ class HotelMainSectionParams extends SectionParams
      * @type textarea
      */
     public $text3;
+
+    /**
+     * @var $text4 string
+     * @title Четвертый текст
+     * @default МИРОВОГО КЛАССА
+     * @type textarea
+     */
+    public $text4;
+
+    /**
+     * @var $text5 string
+     * @title Пятый текст
+     * @default МИРОВОГО КЛАССА
+     * @type textarea
+     */
+    public $text5;
 
     /**
      * @var $address

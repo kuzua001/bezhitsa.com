@@ -114,5 +114,17 @@ $sectionParams = $widget->sectionParams;
                 <?= $sectionParams->text3 ?>
 			</div>
 		</div>
+        <div>
+            <div class="slide-wrapper">
+                <h3><?= Html::encode($sectionParams->title4) ?></h3>
+                <?= $sectionParams->text4 ?>
+            </div>
+        </div>
+        <div>
+            <div class="slide-wrapper">
+                <h3><?= Html::encode($sectionParams->title5) ?></h3>
+                <?= $sectionParams->text5 ?>
+            </div>
+        </div>
 	</slick>
 </div>

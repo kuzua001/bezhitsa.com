@@ -173,14 +173,15 @@ class Room extends ActiveRecord implements HasUrl
             'images_id',
             'title',
             'text',
-            'alias'
+            'alias',
+            'tl_room_type'
         ];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id', 'alias']
+            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id', 'alias', 'tl_room_type']
         ];
     }
 }

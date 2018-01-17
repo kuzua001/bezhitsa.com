@@ -37,7 +37,7 @@ BootstrapAsset::register($this);
 									<i class="phone"></i>
 								</dt>
 								<dd>
-									8(4832)40-00-00
+									8(4832)40-00-01
 								</dd>
 							</dl>
 						</div>
@@ -47,17 +47,13 @@ BootstrapAsset::register($this);
 								<script type="text/javascript">
 									(function(w){
 										var q=[
-											['setContext', 'TL-INT-bezhitsa', 'ru'],
+											['setContext', 'TL-INT-bezhitsa.new', 'ru'],
 											['embed', 'search-form', {container: 'tl-search-form'}]
 										];
 										var t=w.travelline=(w.travelline||{}),ti=t.integration=(t.integration||{});ti.__cq=ti.__cq?ti.__cq.concat(q):q;
 										if (!ti.__loader){ti.__loader=true;var d=w.document,p=d.location.protocol,s=d.createElement('script');s.type='text/javascript';s.async=true;s.src=(p=='https:'?p:'http:')+'//ibe.tlintegration.com/integration/loader.js';(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(s);}
 									})(window);
 								</script>
-
-								<div id="tl-booking-form">&nbsp;</div>
-
-								<!-- end TL Booking form script -->
 							</div>
 						</div>
 					</div>
@@ -160,13 +156,12 @@ BootstrapAsset::register($this);
 						</div>
 					</div>
 				</div>
-
 				<div class="row more-row">
 					<div class="col-lg-12 center">
                         <?= DetailButton::widget([
                             'hasDetailButton'  => true,
                             'detailButtonText' => 'Бронировать',
-                            'detailButtonLink' => '/' . Page::id(30)->getUrl(),
+                            'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
                             'isColored'        => false,
                             'bgColor'          => null,
                             'blackText'        => true,

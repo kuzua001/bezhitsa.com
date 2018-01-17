@@ -115,7 +115,7 @@ echo MainRestaurantSection::widget([
                             <i class="phone"></i>
                         </dt>
                         <dd>
-							8(4832)40-00-00
+							8(4832)40-00-02
                         </dd>
                     </dl>
                     <h3>Расположение и транспорт</h3>

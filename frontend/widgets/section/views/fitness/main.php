@@ -35,7 +35,7 @@ $sectionParams = $widget->sectionParams;
 				<i class="phone black-icon"></i>
 			</dt>
 			<dd>
-				8(4832)40-00-00
+				<?= $sectionParams->phone ?>
 			</dd>
 		</dl>
 	</div>

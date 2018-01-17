@@ -38,7 +38,9 @@ use frontend\models\pages\LandingPage;
                                 <i class="phone"></i>
                             </dt>
                             <dd>
-                                8(4832)40-00-00
+                                8 (4832) 40-00-01 - Гранд Отель<br>
+                                8 (4832) 40-00-02 - Ресторан<br>
+                                8 (4832) 40-00-03 - Фитнес<br>
                             </dd>
                         </dl>
                         <?php if ($page->pageParams->hasContactsDescription)  { ?>
