@@ -75,14 +75,26 @@
     }
   }
 
+  .item-list {
+    &.three-col .item {
+      width: 33.33%;
+    }
 
-  .item-list.three-col {
+    &.two-col .item {
+      width: 50%;
+    }
+
+    &.full .item {
+      width: 100%;
+    }
+  }
+
+  .item-list {
     white-space: nowrap;
 
     .item {
       background-color: #f9f1dc;
       display: inline-block;
-      width: 33.33%;
       border: 2px solid #fff;
 
       @media screen and (max-width: 400px) {
