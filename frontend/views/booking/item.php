@@ -81,7 +81,7 @@ BootstrapAsset::register($this);
 										от <span class="price"><?= $item->price_from ?></span> руб.
 									</div>
 								</div>
-								<div class="col-sm-6 col-md-6 col-sm-8 inline-contents text-right">
+								<!--<div class="col-sm-6 col-md-6 col-sm-8 inline-contents text-right">
 									<div class="property-item-element">
 										<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
 										<span class="property-description"><?= $item->getBedTitle() ?></span>
@@ -90,7 +90,7 @@ BootstrapAsset::register($this);
 										<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
 										<span class="property-description"><?= $item->getPersonTitle() ?></span>
 									</div>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>

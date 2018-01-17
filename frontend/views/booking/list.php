@@ -106,7 +106,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 											от <span class="price"><?= $item->price_from ?></span> руб
 										</div>
 									</section>
-									<footer>
+									<!--<footer>
 										<div class="property-item-element">
 											<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
 											<span class="property-description"><?= $item->getBedTitle() ?></span>
@@ -115,7 +115,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 											<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
 											<span class="property-description"><?= $item->getPersonTitle() ?></span>
 										</div>
-									</footer>
+									</footer>-->
 								</div>
 							</a>
 						</div>

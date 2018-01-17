@@ -114,7 +114,7 @@ $rooms = Room::find()->limit(4)->all();
 									от <span class="price"><?= $item->price_from ?></span> руб
 								</div>
 							</section>
-							<footer>
+							<!--<footer>
 								<div class="property-item-element">
 									<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
 									<span class="property-description"><?= $item->getBedTitle() ?></span>
@@ -123,7 +123,7 @@ $rooms = Room::find()->limit(4)->all();
 									<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
 									<span class="property-description"><?= $item->getPersonTitle() ?></span>
 								</div>
-							</footer>
+							</footer>-->
 						</div>
 					</a>
 				</div>
@@ -147,7 +147,7 @@ $rooms = Room::find()->limit(4)->all();
 								от <span class="price"><?= $item->price_from ?></span> руб
 							</div>
 						</section>
-						<footer>
+						<!--<footer>
 							<div class="property-item-element">
 								<i class="property-icon one-bed"></i>
 								<span class="property-description"><?= $item->getBedTitle() ?></span>
@@ -156,7 +156,7 @@ $rooms = Room::find()->limit(4)->all();
 								<i class="property-icon two-people"></i>
 								<span class="property-description"><?= $item->getPersonTitle() ?></span>
 							</div>
-						</footer>
+						</footer>-->
 					</div>
 				</a>
 			</div>
