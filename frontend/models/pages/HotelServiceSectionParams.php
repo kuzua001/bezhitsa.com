@@ -30,7 +30,7 @@ class HotelServiceSectionParams extends SectionParams
      * @var $block1Content string
      * @title Контент первого блока
      * @default
-     * @type text
+     * @type textarea
      */
     public $block1Content;
 
@@ -46,7 +46,7 @@ class HotelServiceSectionParams extends SectionParams
      * @var $block2Content string
      * @title Контент второго блока
      * @default
-     * @type text
+     * @type textarea
      */
     public $block2Content;
 
