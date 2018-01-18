@@ -9,7 +9,7 @@ use \frontend\models\data\Room;
 $widget = $this->context;
 
 /**
- * @var HotelMainSectionParams $sectionParams
+ * @var \frontend\models\pages\HotelServiceSectionParams $sectionParams
  */
 $sectionParams = $widget->sectionParams;
 $rooms = Room::find()->limit(4)->all();
@@ -35,19 +35,12 @@ $rooms = Room::find()->limit(4)->all();
 	</div>
 	<div class="col-md-6">
 		<div class="right-content-block-element">
-			<h3>Обслуживание гостей</h3>
-			<p>
-				Услуги для гостей отеля «Бежица», включают удобства парковки и транспортировки из отеля в аэропорт на люкс автомобиле.
-				Гость может воспользываться подключением беспроводного интернета, а также услугами круглосуточного обслуживания в номерах,
-				услугами няни, и&nbsp;сервисом по аренде автомобилей и лимузинов.&nbsp;
-			</p>
+			<h3><?= $sectionParams->block1Title ?></h3>
+			<?= $sectionParams->block1Content ?>
 		</div>
 		<div class="right-content-block-element">
-			<h3>Привелегии для гостей</h3>
-			<p>
-				После прекрасного ночного отдыха в роскошных интерьерах, встречайте утро свежим завтраком и никуда не спешите,
-				ведь у вас есть возможность выехать из отеля позже.
-			</p>
+			<h3><?= $sectionParams->block2Title ?></h3>
+            <?= $sectionParams->block2Content ?>
 		</div>
 	</div>
 	<div class="clearfix"></div>

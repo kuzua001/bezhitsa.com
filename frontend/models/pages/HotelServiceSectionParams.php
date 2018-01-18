@@ -19,6 +19,38 @@ class HotelServiceSectionParams extends SectionParams
     protected $sectionClass = 'service';
 
     /**
+     * @var $block1Title string
+     * @title Заголовок первого блока
+     * @default
+     * @type string
+     */
+    public $block1Title;
+
+    /**
+     * @var $block1Content string
+     * @title Контент первого блока
+     * @default
+     * @type text
+     */
+    public $block1Content;
+
+    /**
+     * @var $block2Title string
+     * @title Заголовок второго блока
+     * @default
+     * @type string
+     */
+    public $block2Title;
+
+    /**
+     * @var $block2Content string
+     * @title Контент второго блока
+     * @default
+     * @type text
+     */
+    public $block2Content;
+
+    /**
      * @var $mainHeaderTypePart string
      * @title Часть заголовка под логотипом (гранд отель, фитнес и т.д.)
      * @default гранд отель
