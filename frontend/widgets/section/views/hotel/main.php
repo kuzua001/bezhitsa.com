@@ -14,7 +14,7 @@ $sectionParams = $widget->sectionParams;
 ?>
 <div class="row clear indent indent-large">
 	<div class="col-lg-4 col-md-6 center desktop-only logo-col">
-		<img class="logo" src="/img/big-logo.png">
+		<img class="logo" src="/img/big-logo-black.png">
 		<h1 class="bezhitsa-title-element">
 			<span class="name">Bezhitsa</span><br>
 			<span class="type"><?= Html::encode($sectionParams->mainHeaderTypePart) ?></span>
