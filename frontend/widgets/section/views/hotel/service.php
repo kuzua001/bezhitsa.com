@@ -44,7 +44,7 @@ $rooms = Room::find()->limit(4)->all();
 		</div>
 	</div>
 	<div class="clearfix"></div>
-	<div class="col-lg-6 col-lg-push-6">
+	<div class="col-lg-6">
 		<div class="card-element indent-desktop">
 			<header>
 				Почему стоит бронировать у нас?
