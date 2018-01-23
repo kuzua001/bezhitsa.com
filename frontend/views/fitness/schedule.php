@@ -125,7 +125,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 				</div>
 				<div class="extended-title hidden-sm">
 					<span class="item">
-						<i class="fire"></i>Урок высокой интенсивности
+						<i class="fire"></i>Высокой интенсивности
 					</span>
 					<span class="item">
 						<i class="new"></i>Новые уроки
