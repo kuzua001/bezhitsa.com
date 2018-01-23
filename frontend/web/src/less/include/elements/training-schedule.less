@@ -232,6 +232,7 @@
 		&.large {
 			display: block;
 			height: 50px;
+			background-color: #f9f1dc;
 
 			.time {
 				position: absolute;
@@ -245,7 +246,10 @@
 				font-weight: 800;
 			}
 
-			border: none!important;
+			border: 1.5px solid #fff!important;
+			left: -1px;
+			top: 1px;
+			padding: 2px;
 		}
 	}
 
@@ -286,11 +290,21 @@
 
 	.extended-title {
 		line-height: 30px;
+		margin-top: 10px;
+
+		&:not(.visible-sm) {
+			padding-left: 41px;
+
+			.item i {
+				margin-left: 30px;
+			}
+		}
+
 		.item {
+			font-size: 15px;
 			vertical-align: middle;
 			i {
 				margin-right: 5px;
-				margin-left: 30px;
 			}
 
 			&:first-child i {

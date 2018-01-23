@@ -123,18 +123,40 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 						</table>
 					</div>
 				</div>
-				<div class="row extended-title">
+				<div class="extended-title hidden-sm">
 					<span class="item">
 						<i class="fire"></i>Урок высокой интенсивности
 					</span>
 					<span class="item">
-						<i class="new"></i>Новыые уроки
+						<i class="new"></i>Новые уроки
 					</span>
 					<span class="item">
 						<i class="training-room-number">1</i>Номер зала
 					</span>
-
+                    <span class="item">
+						<i class="training-room-number">2</i>Номер зала
+					</span>
+                    <span class="item">
+						<i class="training-room-number">3</i>Бассейн
+					</span>
 				</div>
+                <div class="extended-title row visible-sm">
+                    <div class="item col-sm-12">
+						<i class="fire"></i>Урок высокой интенсивности
+					</div>
+                    <div class="item col-sm-12">
+						<i class="new"></i>Новые уроки
+					</div>
+                    <div class="item col-sm-12">
+						<i class="training-room-number">1</i>Номер зала
+					</div>
+                    <div class="item col-sm-12">
+						<i class="training-room-number">2</i>Номер зала
+					</div>
+                    <div class="item col-sm-12">
+						<i class="training-room-number">3</i>Бассейн
+					</div>
+                </div>
 			</div>
 			<div class="schedule-bottom">
                 <?php foreach($activityTypes as $type) { ?>

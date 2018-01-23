@@ -50,7 +50,7 @@ class TrainingItem extends Widget
         }
 
         $html = Html::tag('div',
-            Html::tag('i', '', ['class' => 'training-extra fire']) .
+            Html::tag('i', '', ['class' => 'training-extra' . $activity->getClassClass()]) .
             ($this->large ? Html::tag('span', $hourStart . ':00 - ' . $hourEnd . ':00', [
                 'class' => 'time'
             ]) : '') .

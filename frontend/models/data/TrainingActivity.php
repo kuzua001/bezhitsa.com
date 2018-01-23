@@ -16,10 +16,31 @@ use yii\db\ActiveRecord;
  * @property $type_id integer
  * @property $title string
  * @property $description string
+ * @property $training_class string
  * @package frontend\models\data
  */
 class TrainingActivity extends ActiveRecord
 {
+
+    /**
+     * Классы тренировок
+     */
+    const TYPE_NONE        = 0;
+    const TYPE_CLASS_NEW   = 1;
+    const TYPE_FAT_BURNING = 2;
+
+
+    /**
+     * Возвращает класс для класса тренировка
+     * @return string
+     */
+    public function getClassClass()
+    {
+        return $this->training_class == (self::TYPE_NONE ? '' :
+                ($this->training_class == self::TYPE_CLASS_NEW ? ' new' : ' fire'));
+
+    }
+
     /**
      * @return \yii\db\ActiveRecord|TrainingActivityType
      */
