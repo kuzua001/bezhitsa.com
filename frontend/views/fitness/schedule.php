@@ -48,7 +48,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="activity-type-list desktop-only">
+				<div class="activity-type-list desktop-only hidden-md">
 					<div class="row">
 						<?php foreach($activityTypes as $type) { ?>
 							<div class="col-lg-2"><i class="trainig-activity-type" style="background-color: <?= $type->color ?>"></i><?= $type->short_title ?></div>
