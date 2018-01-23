@@ -104,7 +104,7 @@ class FitnessController extends CmsController
             'minHour'       => $minHour,
             'maxHour'       => $maxHour,
             'minDate'       => new \DateTime($minDate),
-            'maxDate'       => (new \DateTime($maxDate))->modify('+1 sec'),
+            'maxDate'       => (new \DateTime($maxDate))->modify('+0 sec'),
             'weekNumber'    => $weekNumber,
             'dayNumber'     => date('w', time()),
         ]);
