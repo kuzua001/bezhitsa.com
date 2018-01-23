@@ -15,7 +15,13 @@ section.service {
   }
 
   .card-element .content p:first-child {
-    margin-bottom: 12px!important;
+    margin-bottom: 12px !important;
+  }
+
+  @media (min-width: 1440px) {
+    .indent > [class^= col]:first-child {
+      padding-left: 53px!important;
+    }
   }
 
   &:after {
