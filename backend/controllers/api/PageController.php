@@ -2,6 +2,7 @@
 
 namespace backend\controllers\api;
 
+use frontend\models\Page;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 
@@ -30,9 +31,10 @@ class PageController extends ApiController
         return $behaviors;
     }
 
-    public function actionIndex()
+    public function prepareDataProvider()
     {
         return new ActiveDataProvider([
+            'query' => Page::find(),
             'pagination' => false,
         ]);
     }
@@ -41,6 +43,7 @@ class PageController extends ApiController
     {
         $actions = parent::actions();
         $actions['create']['class'] = 'backend\controllers\api\page\CustomCreateAction';
+        $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
 
         return $actions;
     }
