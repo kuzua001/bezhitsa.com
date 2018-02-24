@@ -2,6 +2,7 @@
 
 namespace backend\controllers\api;
 
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 
 
@@ -27,6 +28,13 @@ class PageController extends ApiController
         ];
 
         return $behaviors;
+    }
+
+    public function actionIndex()
+    {
+        return new ActiveDataProvider([
+            'pagination' => false,
+        ]);
     }
 
     public function actions()
