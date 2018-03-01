@@ -8,6 +8,7 @@
 
 namespace frontend\models;
 
+use frontend\components\LanguageHelper;
 use frontend\components\MetadataExtractor;
 use frontend\controllers\CmsController;
 use frontend\models\pages\LandingPage;
@@ -175,9 +176,10 @@ class Page extends ActiveRecord
     /**
      * Возвращает маршруты всех активных старниц сайта
      * @todo перенести в какой-то отдельный сервис
+     * @param $multilingual boolean Дублировать ли правила для мультиязычности
      * @return array
      */
-    public static function getRoutes()
+    public static function getRoutes($multilingual = false)
     {
         $routes = [];
         $pages = self::find()->all();
@@ -191,11 +193,25 @@ class Page extends ActiveRecord
                 continue;
             }
 
+            if ($multilingual) {
+                foreach (LanguageHelper::$allowedLanguages as $langId => $code) {
+                    $routes[] = [
+                        'pattern' => '/' . $code . '/' . ltrim($page->url, '/'),
+                        'route' => Actions::id($page->action_id)->getRoute(),
+                        'defaults' => [
+                            'pageId'     => $page->id,
+                            'languageId' => $langId
+                        ]
+                    ];
+                }
+            }
+
             $routes[] = [
                 'pattern' => $page->url,
                 'route' => Actions::id($page->action_id)->getRoute(),
                 'defaults' => [
-                    'pageId' => $page->id,
+                    'pageId'     => $page->id,
+                    'languageId' => LanguageHelper::getDefaultLanguage()
                 ]
             ];
         }

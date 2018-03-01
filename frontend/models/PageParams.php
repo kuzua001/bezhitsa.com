@@ -8,6 +8,7 @@
 
 namespace frontend\models;
 
+use frontend\components\LanguageHelper;
 use frontend\models\cms\logic\DataProviderConfiguration;
 use yii\base\UnknownPropertyException;
 use yii\data\ActiveDataProvider;
@@ -23,6 +24,12 @@ use yii\db\Exception;
 class PageParams
 {
     protected $pageParamsNamespace = 'frontend\models\pages';
+
+    /**
+     * Язык в котором отображать все свойства
+     * @var null|string
+     */
+    private $language;
 
     protected $availableInstances = [];
 
@@ -42,6 +49,13 @@ class PageParams
      */
     private $providers = [];
 
+    /**
+     * Список данных для переводов, содержит в себе свойства проименованные как
+     * __en_{propertyName}, где propertyName - название исходного свойства
+     * @var array
+     */
+    protected $translationData = [];
+
     private static $_reserved = [
         'reserved', 'providers', 'dataProvidersData'
     ];
@@ -50,6 +64,7 @@ class PageParams
     function __construct()
     {
         $this->initProviders();
+        $this->language = LanguageHelper::getCurrentLanguage();
     }
 
     /**
@@ -73,6 +88,7 @@ class PageParams
             }
         }
     }
+    
 
     /**
      * Переопределенный геттер, умеет возвращать магические поля дата-провайдеров

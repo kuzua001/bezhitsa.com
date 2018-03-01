@@ -9,6 +9,7 @@
 namespace frontend\controllers;
 
 use frontend\components\AppHelper;
+use frontend\components\LanguageHelper;
 use frontend\models\cms\ux\Menu;
 use frontend\interfaces\models\menu\MenuInterface;
 use frontend\models\cms\ux\MenuItem;
@@ -73,7 +74,10 @@ class CmsController extends Controller
         }
 
         $pageId     = Yii::$app->request->queryParams['pageId'];
+        $languageId = Yii::$app->request->queryParams['languageId'];
         $this->page = Page::id($pageId);
+
+        LanguageHelper::setCurrentLanguage($languageId);
 
         $view = new CmsView();
         $view->description  = $this->page->pageParams->metaDescription;
