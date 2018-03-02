@@ -8,7 +8,9 @@
  */
 namespace backend\controllers\api\pagefields;
 
+use frontend\components\LanguageHelper;
 use frontend\models\Page;
+use Yii;
 use yii\base\Object;
 use yii\rest\ViewAction;
 
@@ -21,6 +23,10 @@ class CustomViewAction extends ViewAction
      */
     public function run($id)
     {
+        $request = Yii::$app->request;
+        $langId = $request->get('lang', LanguageHelper::getDefaultLanguage());
+        LanguageHelper::setCurrentLanguage($langId);
+
         $page = Page::id($id);
 
         return !empty($page) ? $page->getPageFields() : null;

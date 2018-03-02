@@ -21,15 +21,17 @@ use yii\db\Query;
 /**
  * Class Page
  * @package frontend\models
- * @property $id          integer
- * @property $url         string
- * @property $name        string
- * @property $action_id   integer
- * @property $pages_id    integer
- * @property $domain_id   integer
- * @property $params_data string
- * @property $parent_id   integer
- * @property $is_enabled  boolean
+ * @property $id             integer
+ * @property $url            string
+ * @property $name           string
+ * @property $action_id      integer
+ * @property $pages_id       integer
+ * @property $domain_id      integer
+ * @property $params_data    string
+ * @property $params_data_ru string
+ * @property $params_data_en string
+ * @property $parent_id      integer
+ * @property $is_enabled     boolean
  */
 class Page extends ActiveRecord
 {
@@ -67,11 +69,48 @@ class Page extends ActiveRecord
         return $this->hasOne(Domain::className(), ['id' => 'domain_id'])->one();
     }
 
+    /**
+     * Возвращает значение поля с параметрами с учетом текущего языка (выбор из разных полей)
+     * @return mixed
+     */
+    private function getParamsDataSource()
+    {
+        switch (LanguageHelper::getCurrentLanguage()) {
+            case LanguageHelper::LANG_RU:
+                return $this->params_data_ru;
+            case LanguageHelper::LANG_EN:
+                return $this->params_data_en;
+        }
+
+        return $this->params_data;
+    }
+
+    /**
+     * Сохранить значение value в одно из мультиязычных полей
+     * @param $value
+     *
+     * @return mixed
+     */
+    private function saveParamsData($value)
+    {
+        switch (LanguageHelper::getCurrentLanguage()) {
+            case LanguageHelper::LANG_RU:
+                $this->params_data_ru = $value;
+            break;
+            case LanguageHelper::LANG_EN:
+                $this->params_data_en = $value;
+            break;
+        }
+
+        // В силу того, что языков всего только 2, дефолтное значение берется из русского
+        $this->params_data = LanguageHelper::getDefaultLanguage() == LanguageHelper::LANG_EN ? $this->params_data_en : $this->params_data_ru;
+    }
+
     public function afterFind()
     {
         $this->initPageParams();
         if (!is_null($this->pageParams)) {
-            $this->pageParams->initFromSerialized($this->params_data);
+            $this->pageParams->initFromSerialized($this->getParamsDataSource());
         }
     }
 
@@ -98,7 +137,7 @@ class Page extends ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             if (!is_null($this->pageParams)) {
-                $this->params_data = $this->pageParams->toSerialized();
+                $this->saveParamsData($this->pageParams->toSerialized());
             }
 
             return true;

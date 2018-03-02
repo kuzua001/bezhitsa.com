@@ -21,15 +21,19 @@
 	<div class="modal fade" id="createPageModal">
 		<new-page (submitted)="createPage($event)"></new-page>
 	</div>
+	<div class="col-lg-12" class="language-selector">
+		<a (click)="setLang(1)" [class.active]="lang == 1">RU</a>
+		<a (click)="setLang(2)" [class.active]="lang == 2">EN</a>
+	</div>
 	<div class="col-lg-3 sidebar-nav">
 		<div class="">
 			<ul class="nav nav-list">
-				<li *ngFor="let page of pages" (click)="loadPage(page)">
+				<li *ngFor="let page of pages" (click)="loadPage(page, lang)">
 					<a [class.active]="isSelected(page)">{{ page.name }} <a href="/{{ page.url }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></a>
 				</li>
 			</ul>
 			<button class="btn btn-success" data-toggle="modal" data-target="#createPageModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
-			<button *ngIf="isLoaded()" class="btn btn-default btn-primary" (click)="savePage()">Сохранить</button>
+			<button *ngIf="isLoaded()" class="btn btn-default btn-primary" (click)="savePage(lang)">Сохранить</button>
 		</div>
 	</div>
 	<div class="col-lg-9" *ngIf="isLoaded()">

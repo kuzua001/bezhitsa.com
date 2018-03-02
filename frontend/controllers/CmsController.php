@@ -75,9 +75,12 @@ class CmsController extends Controller
 
         $pageId     = Yii::$app->request->queryParams['pageId'];
         $languageId = Yii::$app->request->queryParams['languageId'];
-        $this->page = Page::id($pageId);
 
         LanguageHelper::setCurrentLanguage($languageId);
+
+        $this->page = Page::id($pageId);
+
+
 
         $view = new CmsView();
         $view->description  = $this->page->pageParams->metaDescription;

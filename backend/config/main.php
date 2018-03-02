@@ -61,7 +61,7 @@ return [
                 [
                     'pattern' => 'page/edit/<pageId:\d+>',
                     'route' => 'dynamic/page-edit',
-                ]
+                ],
             ],
         ],
     ],

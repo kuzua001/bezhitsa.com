@@ -8,6 +8,7 @@
  */
 namespace backend\controllers\api\pagefields;
 
+use frontend\components\LanguageHelper;
 use frontend\models\Page;
 use backend\models\api\PageFieldsUpdateResponse;
 use frontend\models\PageParams;
@@ -25,6 +26,8 @@ class CustomUpdateAction extends UpdateAction
     public function run($id)
     {
         $data = json_decode(\Yii::$app->getRequest()->getRawBody(), true);
+        $langId = isset($data['lang']) ? $data['lang'] : LanguageHelper::getDefaultLanguage();
+        LanguageHelper::setCurrentLanguage($langId);
 
         $page = Page::id($id);
 

@@ -52,10 +52,20 @@ export class PageComponent {
 
 	public pages: any;
 
+	public lang: number;
+
 	public currentPage: any;
 
 	@ViewChild('start') start;
 	@ViewChild( InterfaceDirective ) directive: InterfaceDirective;
+
+	public setLang(lang: number)
+	{
+		this.lang = lang;
+		if (this.currentPage !== null) {
+			this.loadPage(this.currentPage, lang);
+		}
+	}
 
 	public isSelected(page)
 	{
@@ -67,11 +77,13 @@ export class PageComponent {
 		return this.currentPage != null;
 	}
 
-	public loadPage(page: any)
+	public loadPage(page: any, lang: number)
 	{
 		this.currentPage = page;
 		console.log(page);
-		this.restangular.one('pageFields', page.id).get().subscribe( pageFields => {
+		this.restangular.one('pageFields', page.id).customGET('', {
+			'lang' : lang
+		}).subscribe( pageFields => {
 			//console.log(pageFields);
 			this.directive.updateInterface(pageFields);
 		});
@@ -92,9 +104,9 @@ export class PageComponent {
 		this.currentPage.put();
 	}
 
-	public savePage() {
+	public savePage(lang: number) {
 		let values = this.directive.readInterfaceValues();
-		this.restangular.one('pageFields', this.currentPage.id).customPUT(values);
+		this.restangular.one('pageFields', this.currentPage.id).customPUT(Object.assign({}, values, {'lang' : lang}));
 	}
 
 	ngOnInit() {
