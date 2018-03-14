@@ -8,6 +8,7 @@
 
 namespace frontend\models;
 
+use frontend\components\LanguageHelper;
 use yii\db\ActiveRecord;
 
 /**
@@ -47,7 +48,7 @@ class Domain extends ActiveRecord
      *
      * @return mixed|string
      */
-    public function getCanonicalUrl($url, $href = '')
+    public function getCanonicalUrl($url, $href = '', $lang = LanguageHelper::LANG_RU)
     {
         $url = '/' . ltrim($url, '/');
 
@@ -55,7 +56,7 @@ class Domain extends ActiveRecord
             $url = str_replace($this->base_url, '', $url);
         }
 
-        $url = 'http://' . $this->domain . '/' . ltrim($url, '/') . $href;
+        $url = 'http://' . $this->domain . '/' . (($lang != LanguageHelper::getDefaultLanguage()) ? LanguageHelper::getLanguageCode($lang) . '/' : ''). ltrim($url, '/') . $href;
         return $url;
     }
 }

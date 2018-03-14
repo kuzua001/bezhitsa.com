@@ -1,3 +1,8 @@
+<?php
+use frontend\components\LanguageHelper;
+
+$lang = LanguageHelper::getCurrentLanguage();
+?>
 <footer>
 	<div class="content-wrapper">
 		<div class="container container-90">
@@ -7,7 +12,7 @@
 						<img class="logo" src="/img/logo_small.png">
 						<p class="title">
 							<span class="name">Bezhitsa</span>
-							<span class="type">гранд отель</span>
+							<span class="type"><?= $lang == LanguageHelper::LANG_EN ? 'grand hotel' : 'гранд отель' ?></span>
 						</p>
 					</div>
 				</div>

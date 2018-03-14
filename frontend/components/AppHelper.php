@@ -23,9 +23,9 @@ class AppHelper
      */
     public static function getDomain()
     {
-        $domain = preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']);
-
         if (is_null(self::$_domain)) {
+            $domain = preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']);
+
             self::$_domain = Domain::find()->where('domain = :domain', [':domain' => $domain])->one();
 
             if (is_null(self::$_domain)) {

@@ -67,4 +67,18 @@ class LanguageHelper
         return self::$allowedLanguages[self::$currentLanguage];
     }
 
+    /**
+     * Возвращает код языка по его идентификатору
+     * @param $lang идентификатор языка
+     *
+     * @return string|false
+     */
+    public static function getLanguageCode($lang) {
+        if (isset(self::$allowedLanguages[$lang])) {
+            return self::$allowedLanguages[$lang];
+        }
+
+        return false;
+    }
+
 }

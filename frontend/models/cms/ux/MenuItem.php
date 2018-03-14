@@ -8,6 +8,7 @@
 
 namespace frontend\models\cms\ux;
 
+use frontend\components\LanguageHelper;
 use yii\db\ActiveRecord;
 use yii\helpers\Html;
 use frontend\interfaces\models\menu\MenuItemInterface;
@@ -20,6 +21,7 @@ use frontend\models\Page;
  * Class MenuItem
  * @property $id              integer
  * @property $title           string
+ * @property $title_en        string
  * @property $page_id         boolean
  * @property $is_external     boolean
  * @property $href            string
@@ -77,6 +79,8 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
     /** @inheritdoc */
     public function getHTML()
     {
+        $lang = LanguageHelper::getCurrentLanguage();
+
         $classes = [];
 
         if (is_null($this->page_id)) {
@@ -84,13 +88,7 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
         } else {
             $page = Page::id($this->page_id);
             $url = $page->getUrl();
-
-            // Обработка урлов на других доменах
-            if ($this->is_external) {
-                $domain = Domain::findOne($page->domain_id);
-
-                $url = $domain->getCanonicalUrl($url, $this->href);
-            }
+            $url = $this->getMultilingualUrl($url, $page, $lang);
 
             // Класс активного элемента меню
             if (AppHelper::getCurrentPageID() == $this->page_id) {
@@ -103,16 +101,46 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
             }
         }
 
-        return HTML::tag('a', Html::encode($this->title), [
+        return HTML::tag('a', $lang == LanguageHelper::LANG_EN ? Html::encode($this->title_en) : Html::encode($this->title), [
             'href'  => $url,
             'class' => implode(' ', $classes)
         ]);
     }
 
-    public static function create($url, $title, $parentMenu, $isExternal = false)
+    /**
+     * Возвращает урл с учетом мультиязычного префикса
+     * @param $url string
+     * @param $page Page
+     * @param $lang integer
+     *
+     * @return string
+     */
+    private function getMultilingualUrl($url, $page, $lang) {
+
+        // Обработка урлов на других доменах
+        if ($this->is_external) {
+            $domain = Domain::findOne($page->domain_id);
+
+            $url = $domain->getCanonicalUrl($url, $this->href, $lang);
+        }
+
+        return $url;
+    }
+
+    /**
+     * @param      $url
+     * @param      $title
+     * @param      $title_en Английский перевод пункта меню
+     * @param      $parentMenu
+     * @param bool $isExternal
+     *
+     * @return MenuItem
+     */
+    public static function create($url, $title, $title_en,  $parentMenu, $isExternal = false)
     {
         $menu = new self();
         $menu->title       = $title;
+        $menu->title_en    = $title_en;
         $menu->href        = $url;
         $menu->is_external = $isExternal;
         $menu->setParent($parentMenu);

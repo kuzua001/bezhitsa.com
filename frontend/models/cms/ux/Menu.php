@@ -9,6 +9,7 @@
 namespace frontend\models\cms\ux;
 
 use frontend\components\AppHelper;
+use frontend\components\LanguageHelper;
 use frontend\interfaces\models\menu\MenuItemInterface;
 use yii\db\ActiveRecord;
 use frontend\interfaces\models\menu\MenuInterface;
@@ -72,6 +73,8 @@ class Menu extends ActiveRecord implements MenuInterface
 
     function afterFind()
     {
+        $lang = LanguageHelper::getCurrentLanguage();
+
         parent::afterFind();
 
         $menuItems   = MenuItem::find()->where(['menu_id' => $this->id])->all();
@@ -110,7 +113,7 @@ class Menu extends ActiveRecord implements MenuInterface
                     // $item->href это GET-параметры url'а, которые используются в том случае, когда элемент меню ссылается на страницу
                     // в CMS, а не просто на абстрактный ресурс, при этом к его url добавляются эти GET-параметры, например в качестве
                     // UTM-меток. У дочерних эелемнтов, которые получены автоматически UTM будут такими же как и у родителя.
-                    $subItem = MenuItem::create($item->href, $page->name, $this);
+                    $subItem = MenuItem::create($item->href, $page->name, $page->name_en, $this);
                     $subItem->page_id = $page->id;
                     $subItem->is_external = true;
                     $itemSubMenu->addMenuItem($subItem);

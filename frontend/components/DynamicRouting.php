@@ -18,6 +18,8 @@ class DynamicRouting extends Module implements BootstrapInterface
 {
     public function bootstrap($app)
     {
+        //var_dump(Page::getRoutes(true));
+        //exit();
         $app->urlManager->addRules(Page::getRoutes(true));
     }
 }

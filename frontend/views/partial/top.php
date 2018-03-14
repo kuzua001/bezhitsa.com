@@ -2,6 +2,8 @@
 
 use frontend\models\cms\ux\Menu;
 use frontend\models\cms\ux\MenuItem;
+use frontend\components\LanguageHelper;
+use frontend\components\AppHelper;
 
 /** @var $this \frontend\views\CmsView*/
 
@@ -14,6 +16,18 @@ if (empty($this->topMenu)) {
 } else {
     $topMenu = $this->topMenu;
 }
+
+$lang     = LanguageHelper::getCurrentLanguage();
+$langCode = LanguageHelper::getCurrentLanguageCode();
+$domain   = AppHelper::getDomain();
+$canonicalUrl = '/' . ltrim(str_replace($domain->base_url, '', $_SERVER['REQUEST_URI']), '/');
+if ($lang !== LanguageHelper::getDefaultLanguage()) {
+	$canonicalUrl = '/' . str_replace('/' . $langCode, '', $canonicalUrl);
+}
+
+$engUrl = '/en' . $canonicalUrl;
+
+$lang = LanguageHelper::getCurrentLanguage();
 
 $hasSubMenu = false;
 $subMenuItems = [];
@@ -60,8 +74,8 @@ foreach ($topMenu->getItems() as $i => $item) {
                         <?php } ?>
 					</div>
 					<div class="lang-switcher col-md-3">
-						<a>
-							in english
+						<a href="<?= $lang == LanguageHelper::LANG_EN ? $canonicalUrl : $engUrl ?>">
+							<?= $lang == LanguageHelper::LANG_EN ? 'на русском' : 'in english' ?>
 						</a>
 					</div>
 				</div>
