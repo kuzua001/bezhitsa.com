@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PagesService {
 
-  private pagesUrl   = 'http://bezhitsa.test/admin/api/page';
-  private domainsUrl = 'http://bezhitsa.test/admin/api/domain';
+  private pagesUrl   = '/admin/api/page';
+  private domainsUrl = '/admin/api/domain';
 
   constructor(private http: HttpClient) {}
 

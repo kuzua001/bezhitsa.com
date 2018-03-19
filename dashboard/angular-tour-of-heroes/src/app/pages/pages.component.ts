@@ -17,7 +17,7 @@ import {
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
-	groupedPages: object[];
+	groupedPages: object[][];
 	pages:   Page[];
 	domains: Domain[];
 	domainsLoaded =  false;

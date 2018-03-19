@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>{{title}}: {{currentRoute.snapshot.data.name}}</h1>
+</div>
+<nav>
+  <ul>
+    <li routerLinkActive="active">
+      <a routerLinkActive="active" routerLink="/images">Изображения</a>
+      <div class="side-menu-contaner">
+        {{imagesSideHTML}}
+      </div>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLinkActive="active" routerLink="/pages">Страницы</a>
+      <div class="side-menu-contaner">
+        {{pagesSideHTML}}
+      </div>
+    </li>
+    <li routerLinkActive="active">
+      <a routerLinkActive="active" routerLink="/dashboard">Расписание</a>
+      <div class="side-menu-contaner">
+        {{scheduleSideHTML}}
+      </div>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
