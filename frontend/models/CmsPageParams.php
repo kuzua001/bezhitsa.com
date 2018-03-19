@@ -24,4 +24,12 @@ class CmsPageParams extends PageParams
      * @type textarea
      */
     public $metaDescription;
+
+    /**
+     * @var $script
+     * @title Скрипт, рендеремый на странице
+     * @type textarea
+     */
+    public $script;
+
 }

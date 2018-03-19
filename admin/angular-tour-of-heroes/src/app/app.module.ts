@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
@@ -8,7 +9,7 @@ import { PagesService } from './pages.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ImagesComponent } from './images/images.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-      // PagesService
+    PagesService
   ],
   bootstrap: [AppComponent]
 })

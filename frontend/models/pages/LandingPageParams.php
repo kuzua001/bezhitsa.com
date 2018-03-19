@@ -51,6 +51,10 @@ class LandingPageParams extends CmsPageParams
     public $contactsDescriptionText;
 
 
+    /**
+     * возвращает параметры секции
+     * @return mixed|SectionParams
+     */
     public function getSectionsParams()
     {
         return $this->sectionsParams;

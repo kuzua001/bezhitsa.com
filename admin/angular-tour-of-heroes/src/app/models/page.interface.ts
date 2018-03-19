@@ -5,5 +5,6 @@ export interface Page {
     name: string;
     pages_id: number;
     parent_id: number;
+    domain_id: number;
     url: string;
 }

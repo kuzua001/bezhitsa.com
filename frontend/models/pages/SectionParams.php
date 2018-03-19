@@ -22,6 +22,7 @@ class SectionParams extends PageParams
      */
     public $title;
 
+
     /**
      * @var $hasDetailButton
      * @title Показывать кнопку 'подробнее'
