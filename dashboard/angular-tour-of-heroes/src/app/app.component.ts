@@ -9,9 +9,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
   title = 'Админка';
-  imagesSideHTML   = '';
-  pagesSideHTML    = '';
-  scheduleSideHTML = '';
+  currentMenuContent = null;
   currentRoute    = null;
 
   constructor(

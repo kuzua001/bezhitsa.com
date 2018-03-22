@@ -1,0 +1,4 @@
+<select [(ngModel)]="selectedDomain">
+  <option *ngFor='let domain of domains' [value]="domain.id">{{domain.title}}</option>
+</select>
+<div *ngFor='let page of groupedPages[selectedDomain]'> {{page.name}} </div>

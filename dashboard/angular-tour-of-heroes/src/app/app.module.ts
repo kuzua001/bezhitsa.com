@@ -10,13 +10,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { ImagesComponent } from './images/images.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PagesListComponent } from './pages-list/pages-list.component';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagesComponent,
     ImagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    PagesListComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
