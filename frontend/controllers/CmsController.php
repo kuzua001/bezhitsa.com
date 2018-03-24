@@ -89,6 +89,10 @@ class CmsController extends Controller
         $view->submenuColor = $this->getSubmenuColor();
         $view->topMenu      = $this->page->getMenu();
 
+        if (!empty($this->page->pageParams->html)) {
+            $view->injectedHTML = $this->page->pageParams->html;
+        }
+
         if (!empty($this->page->pageParams->script)) {
             $view->registerJs($this->page->pageParams->script, yii\web\View::POS_END);
         }

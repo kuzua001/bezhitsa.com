@@ -22,7 +22,7 @@ Yii::$app->language = 'ru';
 		<meta name="description" content="<?= isset($this->description) ? $this->description : '' ?>">
 		<?= Html::csrfMetaTags() ?>
 		<title><?= Html::encode($this->title) ?></title>
-
+		<?= $this->injectedHTML ?>
 		<!-- start TL head script -->
 		<script type="text/javascript">
 			(function(w){

@@ -32,4 +32,11 @@ class CmsPageParams extends PageParams
      */
     public $script;
 
+    /**
+     * @var $html
+     * @title HTML добавляемый к странице
+     * @type textarea
+     */
+    public $html;
+
 }

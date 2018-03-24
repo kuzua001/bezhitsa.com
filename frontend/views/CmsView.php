@@ -42,4 +42,10 @@ class CmsView extends View {
      */
     public $submenuColor;
 
+    /**
+     * HTML который вставляется на страницу перед скриптом наалитики
+     * @var string
+     */
+    public $injectedHTML;
+
 }
