@@ -1,0 +1,21 @@
+.composite-field-items page-editor {
+	display: none;
+}
+
+.composite-field-items {
+	padding-right: 30px;
+}
+
+.composite-field-items .item {
+	width: 100%;
+	height: 20px;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: rgba(247, 231, 213, 0.64);
+	margin-bottom: 5px;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
