@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import {MenuService} from "./menu.service";
+import {MenuItem} from "./models/menu-item";
 
 @Component({
   selector: 'app-root',
@@ -14,8 +16,13 @@ export class AppComponent {
 
   constructor(
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
+      private menuService: MenuService,
   ) { }
+
+  getMenuItems(): MenuItem[] {
+      return this.menuService.getItems();
+  }
 
   ngOnInit() {
     this.router.events

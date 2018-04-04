@@ -39,3 +39,63 @@ nav a:hover {
 nav a.active {
     color: #039be5;
 }
+
+/**
+бабахаем все стили прямо сюда, временно, разумеется
+*/
+
+div.menu ul {
+    list-style: none;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+body app-root {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+header.admin-header {
+    background-color: #000;
+    height: 30px;
+}
+
+.admin-content-wrapper {
+    overflow: hidden;
+    flex: 1 0 auto;
+    z-index: 1;
+    display: flex;
+}
+
+.admin-content-wrapper > .menu,
+.admin-content-wrapper > .content {
+    overflow: hidden;
+    flex-direction: row;
+    height: 100%;
+}
+
+.admin-content-wrapper > .menu {
+    width: 300px;
+    flex: 0 1 auto;
+}
+
+.admin-content-wrapper > .content {
+    flex: 1 1 auto;
+}
+
+
+footer.admin-footer {
+    background-color: #aaa;
+    height: 50px;
+    flex: 0 0 auto;
+    z-index: 1;
+}
+
+
+@import './sub-menu/sub-menu.component.css';

@@ -4,15 +4,21 @@ import * as ng from 'angular'
  * Created by ivan on 6/20/17.
  */
 export class TabsController {
-	public activeTabIndex: number;
+	private activeTabIndex: number;
 
-	setActiveTabIndex(index: number)
+	public setActiveTabIndex(index: number)
 	{
 		this.activeTabIndex = index;
 	}
 
+	public getActiveClass(index: number)
+	{
+		return (this.activeTabIndex === index) ? 'active' : '';
+	}
+
 	constructor()
 	{
+		this.activeTabIndex = 1;
 	}
 }
 

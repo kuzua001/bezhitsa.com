@@ -17,9 +17,23 @@ class PageFieldsController extends ApiController
         ];
     }
 
+    public $enableCsrfValidation = false;
+
     public function behaviors()
     {
         $behaviors = [];//parent::behaviors();
+
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
+            'cors'  => [
+                // restrict access to domains:
+                'Origin'                           => ['*'],
+                'Access-Control-Request-Method'    => ['POST', 'GET'],
+                'Access-Control-Allow-Credentials' => true,
+//                'Access-Control-Max-Age'           => 3600,
+            ]
+        ];
+
         $behaviors['verbs'] = [
             'class' => VerbFilter::className(),
             'actions' => [

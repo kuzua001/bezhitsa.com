@@ -1,7 +1,54 @@
 .restaurant-menu-element {
-	.tab-list {
-		li {
-			width: 33.3%;
+	&.desktop {
+		background-color: #fff;
+		padding: 5px;
+
+		.tab-list {
+			white-space: nowrap;
+			font-size: 0;
+
+			li {
+				display: inline-block;
+				width: 33.3%;
+				text-align: center;
+				padding: 10px;
+				background-color: #f9f1dc;
+				font-size: 20px;
+				color: #000;
+				text-transform: uppercase;
+
+				&.active {
+					background-color: #eae5cf;
+					color: #b4a878;
+				}
+			}
+		}
+
+		.content {
+			.menu-category {
+				width: 33.3%;
+				display: inline-block;
+				color: #000;
+				font-size: 18px;
+				padding: 20px;
+
+				.title {
+					text-transform: uppercase;
+					font-size: 22px;
+					margin-bottom: 20px;
+				}
+
+				.item {
+					display: flex;
+					flex-direction: row;
+					.description {
+						flex: 0 0;
+					}
+					.price {
+						flex: 0 1;
+					}
+				}
+			}
 		}
 	}
 }

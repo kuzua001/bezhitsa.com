@@ -1,27 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>{{title}}</h1>
-</div>
-<nav>
-  <ul>
-    <li routerLinkActive="active">
-      <a routerLinkActive="active" routerLink="/images">Изображения</a>
-      <div class="side-menu-contaner">
-        {{imagesSideHTML}}
-      </div>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLinkActive="active" routerLink="/pages">Страницы</a>
-      <div class="side-menu-contaner">
-        {{pagesSideHTML}}
-      </div>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLinkActive="active" routerLink="/dashboard">Расписание</a>
-      <div class="side-menu-contaner">
-        {{scheduleSideHTML}}
-      </div>
-    </li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+<header class="admin-header">
+
+</header>
+<section class="admin-content-wrapper">
+  <div class="menu">
+    <nav>
+      <ul>
+        <li *ngFor="let item of getMenuItems()">
+          <a routerLinkActive="active" routerLink="{{item.getPath()}}">{{item.getName()}}</a>
+          <div class="sub-menu-items">
+            <sub-menu [subMenu]="item.getSubmenu()"></sub-menu>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="content">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <router-outlet></router-outlet>
+  </div>
+</section>
+<footer class="admin-footer">
+  some genearl info
+</footer>
