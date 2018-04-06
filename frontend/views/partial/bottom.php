@@ -31,7 +31,7 @@ $lang = LanguageHelper::getCurrentLanguage();
 							<i style="background-image: url('/img/social/ns.png')"></i>
 						</a>
 						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
-							<i style="background-image: url('/img/social/tw.png')"></i>
+							<i style="background-image: url('/img/social/ta.png')"></i>
 						</a>
             <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
               <i style="background-image: url('/img/social/fb.png')"></i>
