@@ -27,19 +27,19 @@ $lang = LanguageHelper::getCurrentLanguage();
 				<div class="col-md-3 footer-col">
 					<nav class="social">
 
-						<a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
+						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
 							<i style="background-image: url('/img/social/ns.png')"></i>
 						</a>
-						<a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
+						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
 							<i style="background-image: url('/img/social/tw.png')"></i>
 						</a>
-            <a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
+            <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
               <i style="background-image: url('/img/social/fb.png')"></i>
             </a>
-						<a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
+						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
 							<i style="background-image: url('/img/social/vk.png')"></i>
 						</a>
-            <a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
+            <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
               <i style="background-image: url('/img/social/ok.png')"></i>
             </a>
 					</nav>
