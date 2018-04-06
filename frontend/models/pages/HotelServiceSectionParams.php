@@ -100,11 +100,19 @@ class HotelServiceSectionParams extends SectionParams
 
     /**
      * @var $whyContent string
-     * @title Почему стоит бронировать у нас?
+     * @title Почему стоит бронировать у нас? (текст)
      * @default 1
      * @type textarea
      */
     public $whyContent;
+
+    /**
+     * @var $whyHeader string
+     * @title Почему стоит бронировать у нас? (заголовок)
+     * @default 1
+     * @type string
+     */
+    public $whyHeader;
 
     /**
      * @var $infoContent string
@@ -121,4 +129,28 @@ class HotelServiceSectionParams extends SectionParams
      * @type textarea
      */
     public $descriptionContent;
+
+    /**
+     * @var $infoTitle string
+     * @title Сведения об отеле (заголовок)
+     * @default 1
+     * @type string
+     */
+    public $infoTitle;
+
+    /**
+     * @var $descriptionTitle string
+     * @title Описание отеля (заголовок)
+     * @default 1
+     * @type string
+     */
+    public $descriptionTitle;
+
+    /**
+     * @var $allRoomsButtonText string
+     * @title Текст на кнопке все номера
+     * @default 1
+     * @type string
+     */
+    public $allRoomsButtonText;
 }

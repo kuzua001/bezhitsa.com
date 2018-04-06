@@ -21,16 +21,16 @@ $rooms = Room::find()->limit(4)->all();
 <div class="row indent indent-large">
 	<div class="col-md-6">
 		<h2 class="elegant-title-element">
-			<span class="first">Роскошный</span>
-			<span class="second">сервис для</span>
-			<span class="third tight">требовательных гостей</span>
+			<span class="first"><?= $sectionParams->sloganFirst ?></span>
+			<span class="second"><?= $sectionParams->sloganSecond ?></span>
+			<span class="third tight"><?= $sectionParams->sloganThird ?></span>
 		</h2>
 		<div class="clearfix"></div>
 		<a href="http://bezhitsa.com/service">
-            <button class="detail-button-element">
-    			подробнее про отель
-		    </button>
-        </a>
+      <button class="detail-button-element">
+    			<?= $sectionParams->detailButtonText ?>
+      </button>
+    </a>
 		<div class="clearfix"></div>
 	</div>
 	<div class="col-md-6">
@@ -47,7 +47,7 @@ $rooms = Room::find()->limit(4)->all();
 	<div class="col-lg-6">
 		<div class="card-element indent-desktop">
 			<header>
-				Почему стоит бронировать у нас?
+				<?= $sectionParams->whyHeader ?>
 			</header>
 			<section class="content">
 				<?= $sectionParams->whyContent ?>
@@ -58,7 +58,7 @@ $rooms = Room::find()->limit(4)->all();
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12">
 		<h3 class="centered-title-element rooms">
-			Номера
+			<?= $sectionParams->title ?>
 		</h3>
 	</div>
 </div>
@@ -69,7 +69,7 @@ $rooms = Room::find()->limit(4)->all();
 				<div class="col-lg-12 col-md-6">
 					<div class="card-element">
 						<header class="pale">
-							Сведения об отеле
+							<?= $sectionParams->infoTitle ?>
 						</header>
 						<section class="content">
 							<?= $sectionParams->infoContent ?>
@@ -79,7 +79,7 @@ $rooms = Room::find()->limit(4)->all();
 				<div class="col-lg-12 col-md-6">
 					<div class="card-element">
 						<header class="pale">
-							Описание отеля
+							<?= $sectionParams->descriptionTitle ?>
 						</header>
 						<section class="content">
 							<?= $sectionParams->descriptionContent ?>
@@ -158,6 +158,6 @@ $rooms = Room::find()->limit(4)->all();
 </div>
 <div class="row more-row">
 	<div class="col-lg-12 center">
-		<a href="/room"><button class="detail-button-element">все номера</button></a>
+		<a href="/room"><button class="detail-button-element"><?= $sectionParams->allRoomsButtonText ?></button></a>
 	</div>
 </div>
