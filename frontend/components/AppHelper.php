@@ -15,6 +15,40 @@ use yii\helpers\Html;
 
 class AppHelper
 {
+    const FOOTER_LINK_VK = 1;
+    const FOOTER_LINK_OK = 2;
+    const FOOTER_LINK_FB = 3;
+    const FOOTER_LINK_IN = 4;
+    const FOOTER_LINK_TA = 5;
+
+    protected static $domainLimnks = [
+        Domain::DOMAIN_HOTEL_ID => [
+            self::FOOTER_LINK_FB => 'https://www.facebook.com/profile.php?id=100021657377532',
+            self::FOOTER_LINK_OK => 'https://ok.ru/profile/570782661496',
+            self::FOOTER_LINK_VK => 'https://vk.com/bzfit',
+            self::FOOTER_LINK_IN => 'https://www.instagram.com/bezhitsa_fitness/',
+            self::FOOTER_LINK_TA => 'https://www.tripadvisor.ru/Hotel_Review-g608957-d13331291-Reviews-Grand_Hotel_Bezhitsa-Bryansk_Bryansk_Oblast_Central_Russia.html',
+        ],
+        Domain::DOMAIN_FITNESS_ID => [
+            self::FOOTER_LINK_FB => 'https://www.facebook.com/profile.php?id=100021657377532',
+            self::FOOTER_LINK_OK => 'https://ok.ru/profile/570782661496',
+            self::FOOTER_LINK_VK => 'https://vk.com/bzfit',
+            self::FOOTER_LINK_IN => 'https://www.instagram.com/bezhitsa_fitness/',
+            self::FOOTER_LINK_TA => 'https://www.tripadvisor.ru/Hotel_Review-g608957-d13331291-Reviews-Grand_Hotel_Bezhitsa-Bryansk_Bryansk_Oblast_Central_Russia.html',
+        ],
+        Domain::DOMAIN_RESTAURANT_ID => [
+            self::FOOTER_LINK_FB => 'https://www.facebook.com/profile.php?id=100021657377532',
+            self::FOOTER_LINK_OK => 'https://ok.ru/profile/570782661496',
+            self::FOOTER_LINK_VK => 'https://vk.com/bzfit',
+            self::FOOTER_LINK_IN => 'https://www.instagram.com/bezhitsa_fitness/',
+            self::FOOTER_LINK_TA => 'https://www.tripadvisor.ru/Hotel_Review-g608957-d13331291-Reviews-Grand_Hotel_Bezhitsa-Bryansk_Bryansk_Oblast_Central_Russia.html',
+        ],
+    ];
+
+    public static function getFooterLink($linkType) {
+        return self::$domainLimnks[self::getDomain()->id][$linkType];
+    }
+
     private static $_domain = null;
 
     /**
@@ -34,6 +68,12 @@ class AppHelper
         }
 
         return self::$_domain;
+    }
+
+
+    public static function getFooterLinks()
+    {
+
     }
 
     private static $_currentPageId = null;

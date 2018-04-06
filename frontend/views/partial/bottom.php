@@ -1,5 +1,6 @@
 <?php
 use frontend\components\LanguageHelper;
+use \frontend\components\AppHelper;
 
 $lang = LanguageHelper::getCurrentLanguage();
 ?>
@@ -25,21 +26,22 @@ $lang = LanguageHelper::getCurrentLanguage();
 				</div>
 				<div class="col-md-3 footer-col">
 					<nav class="social">
-						<a href="https://facebook.com">
-							<i style="background-image: url('/img/social/fb.png')"></i>
-						</a>
-						<a href="https://twitter.com">
-							<i style="background-image: url('/img/social/tw.png')"></i>
-						</a>
-						<a href="https://ponominalu.ru">
-							<i style="background-image: url('/img/social/pn.png')"></i>
-						</a>
-						<a href="https://instagarm.com">
+
+						<a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
 							<i style="background-image: url('/img/social/ns.png')"></i>
 						</a>
-						<a href="https://youtube.com">
-							<i style="background-image: url('/img/social/yt.png')"></i>
+						<a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
+							<i style="background-image: url('/img/social/tw.png')"></i>
 						</a>
+            <a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
+              <i style="background-image: url('/img/social/fb.png')"></i>
+            </a>
+						<a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
+							<i style="background-image: url('/img/social/vk.png')"></i>
+						</a>
+            <a href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
+              <i style="background-image: url('/img/social/ok.png')"></i>
+            </a>
 					</nav>
 				</div>
 			</div>
