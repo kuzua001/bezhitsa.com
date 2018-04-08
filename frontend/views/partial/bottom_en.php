@@ -17,9 +17,9 @@ use \frontend\components\AppHelper;
 				</div>
 				<div class="col-md-6 footer-col">
 					<nav class="scrollto-links">
-						<a href="http://bezhitsa.com">Hotel</a>
-						<a href="http://bzrest.ru">Restaurant</a>
-						<a href="http://bzfit.ru">Fitness club</a>
+						<a href="http://bezhitsa.com/en">Hotel</a>
+						<a href="http://bzrest.ru/en">Restaurant</a>
+						<a href="http://bzfit.ru/en">Fitness club</a>
 					</nav>
 				</div>
 				<div class="col-md-3 footer-col">
