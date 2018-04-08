@@ -17,10 +17,10 @@ use frontend\models\pages\LandingPage;
 <?php } ?>
 <?php if ($page->pageParams->hasContacts) { ?>
     <?php if (($lang = LanguageHelper::getCurrentLanguage()) === LanguageHelper::LANG_RU) { ?>
-        <?= $this->render("//partial/contacts_ru") ?>
+        <?= $this->render("//partial/contacts_ru", ['page' => $page]) ?>
     <?php } else if ($lang === LanguageHelper::LANG_EN) { ?>
-        <?= $this->render("//partial/contacts_en") ?>
+        <?= $this->render("//partial/contacts_en", ['page' => $page]) ?>
     <?php } else { ?>
-        <?= $this->render("//partial/contacts") ?>
+        <?= $this->render("//partial/contacts", ['page' => $page]) ?>
     <?php } ?>
 <?php } ?>
