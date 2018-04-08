@@ -53,7 +53,7 @@ $widget = $this->context;
 						<script type="text/javascript">
 							(function(w){
 								var q=[
-									['setContext', 'TL-INT-bezhitsa', 'ru'],
+									['setContext', 'TL-INT-bezhitsa', '<?= \frontend\components\LanguageHelper::getCurrentLanguageCode(); ?>'],
 									['embed', 'search-form', {container: 'tl-search-form'}]
 								];
 								var t=w.travelline=(w.travelline||{}),ti=t.integration=(t.integration||{});ti.__cq=ti.__cq?ti.__cq.concat(q):q;

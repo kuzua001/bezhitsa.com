@@ -58,7 +58,7 @@ BootstrapAsset::register($this);
                         <script type="text/javascript">
 							(function(w) {
 								var q = [
-									['setContext', 'TL-INT-bezhitsa.new', 'ru'],
+									['setContext', 'TL-INT-bezhitsa.new', '<?= \frontend\components\LanguageHelper::getCurrentLanguageCode(); ?>'],
 									['embed', 'booking-form', {
 										container: 'tl-booking-form'
 									}]
