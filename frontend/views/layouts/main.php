@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\components\LanguageHelper;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -11,7 +12,9 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
-Yii::$app->language = 'ru';
+$lang = LanguageHelper::getCurrentLanguage();
+$langCode = LanguageHelper::getCurrentLanguageCode();
+Yii::$app->language = $langCode;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -45,7 +48,13 @@ Yii::$app->language = 'ru';
 				]) ?>
 				<?= $content ?>
 			</div>
-			<?= $this->render("//partial/bottom") ?>
+			<?php if ($lang === LanguageHelper::LANG_RU) { ?>
+        <?= $this->render("//partial/bottom_ru") ?>
+      <?php } else if ($lang === LanguageHelper::LANG_EN) { ?>
+        <?= $this->render("//partial/bottom_en") ?>
+      <?php } else { ?>
+        <?= $this->render("//partial/bottom") ?>
+      <?php } ?>
 		<?php $this->endBody() ?>
 	</body>
 </html>

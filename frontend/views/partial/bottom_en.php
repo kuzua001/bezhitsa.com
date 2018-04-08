@@ -11,15 +11,15 @@ use \frontend\components\AppHelper;
 						<img class="logo" src="/img/logo_small.png">
 						<p class="title">
 							<span class="name">Bezhitsa</span>
-							<span class="type">гранд отель</span>
+							<span class="type">grand hotel</span>
 						</p>
 					</div>
 				</div>
 				<div class="col-md-6 footer-col">
 					<nav class="scrollto-links">
-						<a href="http://bezhitsa.com">Отель</a>
-						<a href="http://bzrest.ru">Ресторан</a>
-						<a href="http://bzfit.ru">Фитнес клуб</a>
+						<a href="http://bezhitsa.com">Hotel</a>
+						<a href="http://bzrest.ru">Restaurant</a>
+						<a href="http://bzfit.ru">Fitness club</a>
 					</nav>
 				</div>
 				<div class="col-md-3 footer-col">
@@ -46,8 +46,8 @@ use \frontend\components\AppHelper;
 			<div class="row">
 				<div class="col-md-6 col-md-push-3 footer-col">
 					<nav class="legislation-links">
-						<a href="#">Условия пользования сайтом</a>
-						<a href="#">Сведения о доступности</a>
+						<a href="#">Terms</a>
+						<a href="#">Availability info</a>
 						<a href="#">Cookie Consent</a>
 					</nav>
 					<div class="copyright">
