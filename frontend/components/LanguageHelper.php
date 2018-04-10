@@ -44,6 +44,7 @@ class LanguageHelper
     public static function setCurrentLanguage($language) {
         if (isset(self::$allowedLanguages[$language])) {
             self::$currentLanguage = $language;
+            \Yii::$app->language = self::getCurrentLanguageCode();
         } else {
             throw new Exception('Указан недопустимый язык');
         }

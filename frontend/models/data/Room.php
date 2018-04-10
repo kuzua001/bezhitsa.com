@@ -8,6 +8,7 @@
 
 namespace frontend\models\data;
 
+use frontend\components\TranslatableTrait;
 use yii\db\ActiveRecord;
 use frontend\interfaces\models\HasUrl;
 
@@ -27,6 +28,21 @@ use frontend\interfaces\models\HasUrl;
  */
 class Room extends ActiveRecord implements HasUrl
 {
+    use TranslatableTrait;
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->loadTranslations();
+    }
+
+    protected function translateFields()
+    {
+        return [
+            'title'
+        ];
+    }
+
     /**
      * Константы типов кроватей
      */

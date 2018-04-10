@@ -14,7 +14,6 @@ use common\widgets\Alert;
 AppAsset::register($this);
 $lang = LanguageHelper::getCurrentLanguage();
 $langCode = LanguageHelper::getCurrentLanguageCode();
-Yii::$app->language = $langCode;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

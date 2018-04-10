@@ -6,7 +6,6 @@ use yii\helpers\Html;
 
 $widget = $this->context;
 ?>
-<?= Yii::t('message_1', 'текст на исходном языке'); ?>
 <section class="main">
 	<div class="content-wrapper">
 		<img class="bg" src="/img/top-bg.jpg">

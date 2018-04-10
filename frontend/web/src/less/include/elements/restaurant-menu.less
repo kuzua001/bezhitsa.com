@@ -1,4 +1,41 @@
 .restaurant-menu-element {
+	&.mobile {
+		background-color: #fff;
+		padding: 5px;
+
+		&>section > header {
+			text-align: center;
+			padding: 10px;
+			background-color: #f9f1dc;
+			font-size: 20px;
+			color: #000;
+			text-transform: uppercase;
+		}
+
+		.menu-category {
+			padding-left: 10px;
+			.item {
+
+				.description {
+					font-size: 20px;
+					color: #000;
+				}
+
+				.price {
+					font-size: 20px;
+					color: #000;
+				}
+			}
+
+			.title {
+				text-transform: uppercase;
+				font-size: 22px;
+				margin-bottom: 20px;
+				color: #000;
+			}
+		}
+	}
+
 	&.desktop {
 		background-color: #fff;
 		padding: 5px;
@@ -25,6 +62,10 @@
 		}
 
 		.content {
+			.tab:not(.active) {
+				display: none;
+			}
+
 			.menu-category {
 				width: 33.3%;
 				display: inline-block;

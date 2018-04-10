@@ -65,15 +65,29 @@ $renderMenuGroup = function(\frontend\models\restaurant\RestaurantMenuGroup $gro
 			</div>
 		<div class="mobile-only container container-90">
 			<div class="restaurant-menu-element mobile">
-				<header>
-					<ul class="tab-list">
-						<li>основное меню</li>
-						<li>банкетное меню</li>
-						<li>банкетная карта</li>
-					</ul>
-				</header>
-				<section class="content">
-					<div class="tab"></div>
+				<section>
+					<header>
+                        <h3><?= $menu->getMainMenu()->getTitle() ?></h3>
+					</header>
+					<section class="content">
+                        <?= $renderMenuGroup($menu->getMainMenu()) ?>
+					</section>
+				</section>
+				<section>
+					<header>
+						<h3><?= $menu->getBanketMenu()->getTitle() ?></h3>
+					</header>
+					<section class="content">
+                        <?= $renderMenuGroup($menu->getBanketMenu()) ?>
+					</section>
+				</section>
+				<section>
+					<header>
+						<h3><?= $menu->getBarMapMenu()->getTitle() ?></h3>
+					</header>
+					<section class="content">
+                        <?= $renderMenuGroup($menu->getBarMapMenu()) ?>
+					</section>
 				</section>
 			</div>
 		</div>
@@ -83,9 +97,9 @@ $renderMenuGroup = function(\frontend\models\restaurant\RestaurantMenuGroup $gro
 					<div class="restaurant-menu-element desktop" ng-controller="TabsController as tabs" ng-init="tabs.activeTabIndex = 1">
 						<header>
 							<ul class="tab-list">
-								<li ng-click="tabs.setActiveTabIndex(1)" ng-class="tabs.getActiveClass(1)"><?= $menu->getMainMenu()->getTitle() ?></li>
-								<li ng-click="tabs.setActiveTabIndex(2)" ng-class="tabs.getActiveClass(2)"><?= $menu->getBanketMenu()->getTitle() ?></li>
-								<li ng-click="tabs.setActiveTabIndex(3)" ng-class="tabs.getActiveClass(3)"><?= $menu->getBarMapMenu()->getTitle() ?></li>
+								<li ng-click="tabs.setActiveTabIndex(1)" ng-class="tabs.getActiveClass(1)"><h3><?= $menu->getMainMenu()->getTitle() ?></h3></li>
+								<li ng-click="tabs.setActiveTabIndex(2)" ng-class="tabs.getActiveClass(2)"><h3><?= $menu->getBanketMenu()->getTitle() ?></h3></li>
+								<li ng-click="tabs.setActiveTabIndex(3)" ng-class="tabs.getActiveClass(3)"><h3><?= $menu->getBarMapMenu()->getTitle() ?></h3></li>
 							</ul>
 						</header>
 						<section class="content">
