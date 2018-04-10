@@ -10,11 +10,11 @@
  * template configuration file with detailed description for each parameter.
  */
 return [
-    //'color' => null,
-    //'interactive' => true,
-    //'help' => null,
-    //'sourcePath' => '@frontend',
-    //'messagePath' => '@frontend/messages',
+    'color' => null,
+    'interactive' => true,
+    'help' => null,
+    'sourcePath' => '@frontend',
+    'messagePath' => '@frontend/messages',
     'languages' => ['en', 'ru'],
     'translator' => 'Yii::t',
     'sort' => false,

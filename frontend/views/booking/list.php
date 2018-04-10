@@ -17,7 +17,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 						<img src="/img/big-logo.png">
 						<h1>
 							<span class="name">Bezhitsa</span><br>
-							<span class="type">гранд отель</span>
+							<span class="type"><?= Yii::t('app/labels', 'гранд отель'); ?></span>
 						</h1>
 					</div>
 					<div class="col-lg-8">
@@ -27,9 +27,9 @@ use frontend\models\pages\SliderTabsSectionParams;
 									<i class="address"></i>
 								</dt>
 								<dd>
-									Клинцовская, 41,<br>
-									Брянск<br>
-									Российская Федерация<br>
+                                    <?= Yii::t('app/address', 'Клинцовская, 41,'); ?><br>
+                                    <?= Yii::t('app/labels', 'Брянск'); ?><br>
+                                    <?= Yii::t('app/labels', 'Российская Федерация'); ?><br>
 								</dd>
 								<dt title="Телефон">
 									<i class="phone"></i>
@@ -79,7 +79,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 									$first = $rooms[0];
 									?>
 									<div class="price-from">
-										от <span class="price"><?= $first->price_from ?></span> руб.
+                                        <?= Yii::t('app/labels', 'от'); ?> <span class="price"><?= $first->price_from ?></span> <?= Yii::t('app/units', 'руб'); ?>.
 									</div>
 								</div>
 							</div>
@@ -100,10 +100,10 @@ use frontend\models\pages\SliderTabsSectionParams;
 									<section class="content">
 										<div class="room-type">
 											<h4 class="name"><?= $item->title ?></h4>
-											<span class="square"><?= $item->square?> кв.м</span>
+											<span class="square"><?= $item->square?> <?= Yii::t('app/units', 'кв.м'); ?></span>
 										</div>
 										<div class="price-item">
-											от <span class="price"><?= $item->price_from ?></span> руб
+                                            <?= Yii::t('app/labels', 'от'); ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб'); ?>
 										</div>
 									</section>
 									<!--<footer>
