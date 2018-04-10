@@ -16,7 +16,7 @@ use frontend\models\pages\SliderTabsSectionParams;
 					<div class="col-lg-4 center hidden-xs hidden-sm hidden-md">
 						<img src="/img/big-logo.png">
 						<h1>
-							<span class="name">Bezhitsa</span><br>
+							<span class="name">BEZHITSA</span><br>
 							<span class="type"><?= Yii::t('app/labels', 'гранд отель'); ?></span>
 						</h1>
 					</div>

@@ -17,10 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'от' => 'from',
+    'Бронировать' => 'Reserve',
     'Брянск' => 'Bryansk',
     'Российская Федерация' => 'Russian Federation',
     'вперед' => 'next',
-    'гранд отель' => 'grand hotel',
+    'гранд отель' => 'Grand Hotel',
     'назад' => 'previous',
+    'от' => 'from',
 ];

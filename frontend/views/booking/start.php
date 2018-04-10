@@ -19,10 +19,10 @@ BootstrapAsset::register($this);
                 <div class="container container-90">
                     <div class="col-lg-4 center hidden-xs hidden-sm hidden-md">
                         <img src="/img/big-logo.png">
-                        <h1>
-                            <span class="name">Bezhitsa</span><br>
-                            <span class="type">гранд отель</span>
-                        </h1>
+						<h1>
+							<span class="name">BEZHITSA</span><br>
+							<span class="type"><?= Yii::t('app/labels', 'гранд отель'); ?></span>
+						</h1>
                     </div>
                     <div class="col-lg-8">
                         <div class="contacts">
@@ -31,9 +31,9 @@ BootstrapAsset::register($this);
                                     <i class="address"></i>
                                 </dt>
                                 <dd>
-                                    Клинцовская, 41,<br>
-                                    Брянск<br>
-                                    Российская Федерация<br>
+                                    <?= Yii::t('app/address', 'Клинцовская, 41,'); ?><br>
+                                    <?= Yii::t('app/labels', 'Брянск'); ?><br>
+                                    <?= Yii::t('app/labels', 'Российская Федерация'); ?><br>
                                 </dd>
                                 <dt title="Телефон">
                                     <i class="phone"></i>

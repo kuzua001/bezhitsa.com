@@ -18,8 +18,8 @@ BootstrapAsset::register($this);
 					<div class="col-lg-4 center hidden-xs hidden-sm hidden-md">
 						<img src="/img/big-logo.png">
 						<h1>
-							<span class="name">Bezhitsa</span><br>
-							<span class="type">гранд отель</span>
+							<span class="name">BEZHITSA</span><br>
+							<span class="type"><?= Yii::t('app/labels', 'гранд отель'); ?></span>
 						</h1>
 					</div>
 					<div class="col-lg-8">
@@ -29,9 +29,9 @@ BootstrapAsset::register($this);
 									<i class="address"></i>
 								</dt>
 								<dd>
-									Клинцовская, 41,<br>
-									Брянск<br>
-									Российская Федерация<br>
+                                    <?= Yii::t('app/address', 'Клинцовская, 41,'); ?><br>
+                                    <?= Yii::t('app/labels', 'Брянск'); ?><br>
+                                    <?= Yii::t('app/labels', 'Российская Федерация'); ?><br>
 								</dd>
 								<dt title="Телефон">
 									<i class="phone"></i>
@@ -78,7 +78,7 @@ BootstrapAsset::register($this);
 										</select>
 									</div>
 									<div class="price-from">
-										от <span class="price"><?= $item->price_from ?></span> руб.
+                                        <?= Yii::t('app/labels', 'от'); ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб'); ?>.
 									</div>
 								</div>
 								<!--<div class="col-sm-6 col-md-6 col-sm-8 inline-contents text-right">
@@ -119,8 +119,8 @@ BootstrapAsset::register($this);
 												<div ng-repeat="slide in slider.slides" ng-show="slider.currentSlide == $index">
 													<h3 class="title">{{slide.description }}</h3>
 													<div class="swipe-buttons">
-														<button ng-click="slider.swipe(true);">назад</button>
-														<button ng-click="slider.swipe(false);">вперед</button>
+														<button ng-click="slider.swipe(true);"><?= Yii::t('app/labels', 'назад'); ?></button>
+														<button ng-click="slider.swipe(false);"><?= Yii::t('app/labels', 'вперед'); ?></button>
 													</div>
 												</div>
 											</div>
@@ -160,7 +160,7 @@ BootstrapAsset::register($this);
 					<div class="col-lg-12 center">
                         <?= DetailButton::widget([
                             'hasDetailButton'  => true,
-                            'detailButtonText' => 'Бронировать',
+                            'detailButtonText' => Yii::t('app/labels', 'Бронировать'),
                             'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
                             'isColored'        => false,
                             'bgColor'          => null,
