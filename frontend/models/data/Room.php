@@ -8,6 +8,7 @@
 
 namespace frontend\models\data;
 
+use frontend\components\LanguageHelper;
 use frontend\components\TranslatableTrait;
 use yii\db\ActiveRecord;
 use frontend\interfaces\models\HasUrl;
@@ -145,7 +146,7 @@ class Room extends ActiveRecord implements HasUrl
 
     public function getUrl()
     {
-        return '/room/' . $this->alias;
+        return LanguageHelper::getBaseUrl() . 'room/' . $this->alias;
     }
 
     /**

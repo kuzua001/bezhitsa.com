@@ -29,7 +29,7 @@ class LanguageHelper
     ];
 
     public static function getBaseUrl() {
-        return '/';
+        return self::getCurrentLanguage() === self::LANG_EN ? '/en/' : '/';
     }
 
     /**

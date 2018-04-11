@@ -51,7 +51,7 @@ foreach ($topMenu->getItems() as $i => $item) {
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</span>
-						<a class="header-logo" href="<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru">
+						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru">
 							<img src="/img/logo_header_mobile.png">
 						</a>
 					</div>
@@ -60,7 +60,7 @@ foreach ($topMenu->getItems() as $i => $item) {
 			<div class="desktop-only container container-90">
 				<div class="row">
 					<div class="col-md-4">
-						<a class="header-logo" href="http://bezhitsa.com" title="beshitza.ru">
+						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru">
 							<img src="/img/logo_header.jpg">
 						</a>
 					</div>
