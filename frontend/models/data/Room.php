@@ -40,7 +40,7 @@ class Room extends ActiveRecord implements HasUrl
     protected function translateFields()
     {
         return [
-            'title'
+            'title', 'text'
         ];
     }
 
