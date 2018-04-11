@@ -23,7 +23,8 @@ foreach ($bgItems as $item) {
 	}
 }
 ?>
-<section class="<?= $sectionParams->getSectionClass()?>" style="background-color: <?= !empty($sectionParams->bgColor) ? $sectionParams->bgColor : '#fff' ?>">
+<section class="<?= $sectionParams->getSectionClass()?>" style="background-color: <?= !empty($sectionParams->bgColor) ? $sectionParams->bgColor : '#fff' ?>"
+	 data-lang="<?= \frontend\components\LanguageHelper::getCurrentLanguageCode(); ?>">
     <div class="content-wrapper">
 		<?php if (!empty($bgData)) { ?>
 			<div class="bg-wrapper">

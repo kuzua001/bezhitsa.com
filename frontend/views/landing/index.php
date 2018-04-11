@@ -11,7 +11,7 @@ use frontend\models\pages\LandingPage;
     <?php foreach ($page->pageParams->getSectionsParams() as $sectionParams) { ?>
         <?= Section::widget([
             'sectionParams' => $sectionParams,
-			      'customView'  => $this
+            'customView'  => $this
         ]) ?>
     <?php } ?>
 <?php } ?>

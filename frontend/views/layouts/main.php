@@ -10,10 +10,13 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use \frontend\components\AppHelper;
+use \frontend\models\Domain;
 
 AppAsset::register($this);
 $lang = LanguageHelper::getCurrentLanguage();
 $langCode = LanguageHelper::getCurrentLanguageCode();
+$domainId = AppHelper::getDomain()->domain;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -25,17 +28,19 @@ $langCode = LanguageHelper::getCurrentLanguageCode();
 		<?= Html::csrfMetaTags() ?>
 		<title><?= Html::encode($this->title) ?></title>
 		<?php if (property_exists($this, 'injectedHTML')) { echo $this->injectedHTML; } ?>
-		<!-- start TL head script -->
-		<script type="text/javascript">
-			(function(w){
-				var q=[
-					['setContext', 'TL-INT-bezhitsa.new', '<?= \frontend\components\LanguageHelper::getCurrentLanguageCode(); ?>']
-				];
-				var t=w.travelline=(w.travelline||{}),ti=t.integration=(t.integration||{});ti.__cq=ti.__cq?ti.__cq.concat(q):q;
-				if (!ti.__loader){ti.__loader=true;var d=w.document,p=d.location.protocol,s=d.createElement('script');s.type='text/javascript';s.async=true;s.src=(p=='https:'?p:'http:')+'//ibe.tlintegration.com/integration/loader.js';(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(s);}
-			})(window);
-		</script>
-		<!-- end TL head script -->
+		<?php if ($domainId === Domain::DOMAIN_HOTEL_ID) { ?>
+			<!-- start TL head script -->
+			<script type="text/javascript">
+				(function(w){
+					var q=[
+						['setContext', 'TL-INT-bezhitsa.new', '<?= \frontend\components\LanguageHelper::getCurrentLanguageCode(); ?>']
+					];
+					var t=w.travelline=(w.travelline||{}),ti=t.integration=(t.integration||{});ti.__cq=ti.__cq?ti.__cq.concat(q):q;
+					if (!ti.__loader){ti.__loader=true;var d=w.document,p=d.location.protocol,s=d.createElement('script');s.type='text/javascript';s.async=true;s.src=(p=='https:'?p:'http:')+'//ibe.tlintegration.com/integration/loader.js';(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(s);}
+				})(window);
+			</script>
+			<!-- end TL head script -->
+		<?php } ?>
 
 		<?php $this->head() ?>
 	</head>

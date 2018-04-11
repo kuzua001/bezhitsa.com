@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Бежица' => 'Bezhitsa',
     'Бронировать' => 'Reserve',
     'Брянск' => 'Bryansk',
     'Российская Федерация' => 'Russian Federation',

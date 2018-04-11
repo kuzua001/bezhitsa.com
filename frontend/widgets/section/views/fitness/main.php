@@ -17,7 +17,7 @@ $sectionParams = $widget->sectionParams;
 	<div class="col-lg-4 center desktop-only">
 		<img class="logo" src="/img/big-logo-black.png">
 		<h1>
-			<span class="name">Бежица</span><br>
+			<span class="name"><?= Yii::t('app/labels', 'Бежица'); ?></span><br>
 			<span class="type"><?= Html::encode($sectionParams->mainHeaderTypePart) ?></span>
 		</h1>
 	</div>
@@ -27,9 +27,7 @@ $sectionParams = $widget->sectionParams;
 				<i class="address black-icon"></i>
 			</dt>
 			<dd>
-				Клинцовская, 41,<br>
-				Брянск<br>
-				Российская Федерация<br>
+				<?= $sectionParams->address ?>
 			</dd>
 			<dt title="Телефон">
 				<i class="phone black-icon"></i>
