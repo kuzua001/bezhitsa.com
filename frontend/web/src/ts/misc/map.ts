@@ -368,7 +368,7 @@ export function initMap() {
 	features.forEach(function(feature) {
 		let marker = new google.maps.Marker({
 			position: feature.position,
-			icon: './img/icons/gmap.png',
+			icon: '/img/icons/gmap.png',
 			map: map
 		});
 	});

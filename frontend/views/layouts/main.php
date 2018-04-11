@@ -24,7 +24,7 @@ $langCode = LanguageHelper::getCurrentLanguageCode();
 		<meta name="description" content="<?= isset($this->description) ? $this->description : '' ?>">
 		<?= Html::csrfMetaTags() ?>
 		<title><?= Html::encode($this->title) ?></title>
-		<? if (property_exists($this, 'injectedHTML')) { echo $this->injectedHTML; } ?>
+		<?php if (property_exists($this, 'injectedHTML')) { echo $this->injectedHTML; } ?>
 		<!-- start TL head script -->
 		<script type="text/javascript">
 			(function(w){

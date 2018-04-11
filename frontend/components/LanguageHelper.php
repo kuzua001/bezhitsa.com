@@ -28,6 +28,10 @@ class LanguageHelper
         self::LANG_EN => 'en'
     ];
 
+    public static function getBaseUrl() {
+        return '/';
+    }
+
     /**
      * Возвращает язык по умолчанию
      * @return int
