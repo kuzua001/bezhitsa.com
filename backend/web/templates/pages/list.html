@@ -29,7 +29,7 @@
 		<div class="">
 			<ul class="nav nav-list">
 				<li *ngFor="let page of pages" (click)="loadPage(page, lang)">
-					<a [class.active]="isSelected(page)">{{ page.name }} <a href="/{{ page.url }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></a>
+					<a [class.active]="isSelected(page)">{{ page.name }} <a href="https://bezhitsa.com/{{ page.url }}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></a>
 				</li>
 			</ul>
 			<button class="btn btn-success" data-toggle="modal" data-target="#createPageModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
