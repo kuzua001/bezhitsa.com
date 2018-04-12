@@ -14,12 +14,17 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'language' => 'en-US',
-    'bootstrap' => ['log', 'DynamicRouting'],
+    'bootstrap' => ['log', 'DynamicRouting', 'debug', 'assetsAutoCompress'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'DynamicRouting' => 'frontend\components\DynamicRouting'
+        'DynamicRouting' => 'frontend\components\DynamicRouting',
+        'debug' => [
+            'class' => 'yii\debug\Module',
+            'allowedIPs' => ['*']
+        ]
     ],
     'components' => [
+        'assetsAutoCompress' => require_once (__DIR__ . '/autocompress.php'),
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',

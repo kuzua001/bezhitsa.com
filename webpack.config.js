@@ -1,7 +1,26 @@
 var path   = require('path');
 var webpack = require('webpack');
+var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
 
 var distPath = path.join(__dirname, '/frontend/web/js/built');
+
+var uglify = new webpackUglifyJsPlugin({
+	cacheFolder: distPath,
+	debug: true,
+	minimize: true,
+	sourceMap: false,
+	output: {
+		comments: false
+	},
+	compressor: {
+		warnings: false
+	}
+});
+
+var jqueryPlugin = new webpack.ProvidePlugin({
+	'window.jQuery': 'jquery',
+	'windows.$': 'jquery'
+});
 
 module.exports = {
 	/*devtool: 'inline-source-map',*/
@@ -22,9 +41,6 @@ module.exports = {
 		]
 	},
 	plugins : [
-		new webpack.ProvidePlugin({
-			'window.jQuery': 'jquery',
-			'windows.$': 'jquery'
-		})
+		jqueryPlugin, uglify
 	]
 }
