@@ -14,14 +14,10 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'language' => 'en-US',
-    'bootstrap' => ['log', 'DynamicRouting', 'debug', 'assetsAutoCompress'],
+    'bootstrap' => ['log', 'DynamicRouting', 'assetsAutoCompress'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
         'DynamicRouting' => 'frontend\components\DynamicRouting',
-        'debug' => [
-            'class' => 'yii\debug\Module',
-            'allowedIPs' => ['*']
-        ]
     ],
     'components' => [
         'assetsAutoCompress' => require_once (__DIR__ . '/autocompress.php'),
