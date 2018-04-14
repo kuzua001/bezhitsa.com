@@ -17,15 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Забронировать от ' => 'Book from ',
-    'список номеров' => 'hotel rooms',
     'Бронировать' => '@@Reserve@@',
     'Выберите номер:' => '@@Select room type:@@',
     'Бежица' => 'Bezhitsa',
     'Брянск' => 'Bryansk',
+    'Забронировать от ' => 'Book from ',
     'Российская Федерация' => 'Russian Federation',
     'вперед' => 'next',
     'гранд отель' => 'Grand Hotel',
     'назад' => 'previous',
     'от' => 'from',
+    'список номеров' => 'hotel rooms',
 ];

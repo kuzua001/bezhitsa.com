@@ -167,7 +167,7 @@ BootstrapAsset::register($this);
 								<div class="row">
 									<div class="col-lg-12" style="margin-bottom: 15px;">
 										<div class="card-element">
-											<header class="pale"><?= $room->title ?></header>
+											<header class="pale"><?= $item->title ?></header>
 											<section class="content"><?= $item->text ?></section>
 										</div>
 									</div>
