@@ -49,3 +49,4 @@ phpunit.phar
 /node_modules
 /frontend/web/css/
 !/backend/web/css/legacy/
+/frontend/config/webpack.php
