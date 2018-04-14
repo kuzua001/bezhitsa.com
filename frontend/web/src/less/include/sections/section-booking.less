@@ -1,6 +1,52 @@
 @import '../sizes';
 
 section.booking {
+
+	.slider-element {
+
+		.sticky-footer {
+			@media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+				width: 56.2vw;
+			}
+
+			@media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+				width: 47.3vw;
+			}
+		}
+
+		ul.slides {
+			&.sticky-content {
+				position: relative;
+			}
+
+			li {
+				@media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+					width: 56.2vw;
+					overflow: hidden;
+				}
+
+				@media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+					width: 47.3vw;
+					overflow: hidden;
+				}
+			}
+
+			& :not(.sticky-content) {
+				@media screen and (max-width: @menu-max-width-1) or (min-width: @desktop-width) {
+					height: 100%;
+				}
+
+				@media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+					min-width: 56.2vw;
+				}
+
+				@media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+					min-width: 47.3vw;
+				}
+			}
+		}
+	}
+
 	background-color: #eae4cf;
 
 	.detail-button-element {
