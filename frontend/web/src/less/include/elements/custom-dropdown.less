@@ -30,6 +30,21 @@
 
 	&:not(.dropdown-active) .dropdown-list {
 		display: none;
+
+		@media screen and (max-width: @menu-max-width-1) {
+			opacity: 0;
+			display: block;
+			visibility: hidden;
+			.transition(visibility 0s, opacity 0.3s);
+		}
+	}
+
+	&.dropdown-active .dropdown-list {
+		@media screen and (max-width: @menu-max-width-1) {
+			opacity: 1;
+			visibility: visible;
+			.transition(opacity 0.3s);
+		}
 	}
 
 	.dropdown-list {
