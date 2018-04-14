@@ -122,9 +122,9 @@ BootstrapAsset::register($this);
 												<footer>
                                                     <?= DetailButton::widget([
                                                         'hasDetailButton'  => true,
-                                                        'detailButtonText' => Yii::t('app/labels', 'Забронировать от ') .
-															'<span class="price">' . $item->price_from . '</span>',
-                                                        'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
+                                                        'detailButtonText' => Yii::t('app/labels', 'Забронировать от') .
+                                                            '&nbsp;<span class="price">' . number_format($item->price_from, 0, '', ' ') . '</span>&nbsp;' .
+                                                            Yii::t('app/units', 'руб'),
                                                         'isColored'        => false,
                                                         'bgColor'          => null,
                                                         'blackText'        => true,
@@ -176,8 +176,9 @@ BootstrapAsset::register($this);
 									<div class="col-lg-12">
                                         <?= DetailButton::widget([
                                             'hasDetailButton'  => true,
-                                            'detailButtonText' => Yii::t('app/labels', 'Забронировать от ') .
-                                                '<span class="price">' . $item->price_from . '</span>',
+                                            'detailButtonText' => Yii::t('app/labels', 'Забронировать от') .
+                                                '&nbsp;<span class="price">' . number_format($item->price_from, 0, '', ' ') . '</span>&nbsp;' .
+												Yii::t('app/units', 'руб'),
                                             'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
                                             'isColored'        => false,
                                             'bgColor'          => null,

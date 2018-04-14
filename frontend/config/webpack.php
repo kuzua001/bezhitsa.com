@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'build_version' => 'cb5cf1e15dc66f5d3ae957102996cdd75db4ddbb'
+    'build_version' => 'dd69461b432134a94cff56f2411a89bfc575f48f'
 ];
