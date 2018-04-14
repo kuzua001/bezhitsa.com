@@ -3,9 +3,11 @@ namespace frontend\controllers;
 
 use Faker\Provider\Base;
 use frontend\components\AppHelper;
+use frontend\models\PageParams;
 use frontend\models\pages\LandingPage;
 use frontend\models\pages\SectionParams;
 use frontend\models\SectionItem;
+use frontend\widgets\common\MainFitnessSection;
 use yii\web\Controller;
 use frontend\widgets\common\Section;
 use yii;

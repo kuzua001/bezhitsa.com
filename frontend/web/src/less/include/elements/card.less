@@ -10,6 +10,25 @@
     margin-top: 20px;
   }
 
+  &.room-item {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+
+    .price-from {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    section {
+      flex: 1 0;
+    }
+
+    footer {
+      flex: 0 0 auto;
+    }
+  }
+
   header {
     background-color: #eae4cf;
     padding: 19px 20px;
@@ -20,9 +39,18 @@
     &.pale {
       background-color: #f9f1dc;
     }
+    &.white {
+      background-color: #fff;
+    }
+    &.no-padding {
+      padding: 0;
+    }
+
   }
 
-  background-color: #fff;
+  &:not(.nobg) {
+    background-color: #fff;
+  }
 
   p {
     margin-top: 10px;

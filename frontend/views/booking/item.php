@@ -62,40 +62,7 @@ BootstrapAsset::register($this);
 		</div>
 	</header>
 	<div class="content-wrapper">
-		<section class="content">
-			<div class="container container-90">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="characteristics">
-							<div class="row">
-								<div class="col-sm-6 col-md-6 col-sm-4">
-									<div class="custom-select-control large">
-										<label for="select-room-class" class="dropdown"></label>
-										<select name="room-class" id="select-room-class">
-                                            <?php foreach ($rooms as $room) { ?>
-												<option<?= $item->id == $room->id ? ' selected' : '' ?> data-href="<?= $room->getUrl();?>" value="<?= $room->id?>"><?= $room->title ?></option>
-                                            <?php } ?>
-										</select>
-									</div>
-									<div class="price-from">
-                                        <?= Yii::t('app/labels', 'от'); ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб'); ?>.
-									</div>
-								</div>
-								<!--<div class="col-sm-6 col-md-6 col-sm-8 inline-contents text-right">
-									<div class="property-item-element">
-										<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
-										<span class="property-description"><?= $item->getBedTitle() ?></span>
-									</div>
-									<div class="property-item-element">
-										<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
-										<span class="property-description"><?= $item->getPersonTitle() ?></span>
-									</div>
-								</div>-->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<header class="content room-list">
 			<div class="container container-90">
                 <?php
 
@@ -115,7 +82,7 @@ BootstrapAsset::register($this);
 													</div>
 												</li>
 											</ul>
-											<div class="caption sticky-footer">
+											<div class="caption sticky-footer small-height">
 												<div ng-repeat="slide in slider.slides" ng-show="slider.currentSlide == $index">
 													<h3 class="title">{{slide.description }}</h3>
 													<div class="swipe-buttons">
@@ -127,45 +94,103 @@ BootstrapAsset::register($this);
 										</div>
 									</div>
 									<div class="col-lg-4  col-md-4 col-sm-12">
-										<div class="card-element">
-											<header class="pale">
-												<?= $item->title ?>
-											</header>
-											<section class="content">
-												<?= $item->text ?>
-											</section>
-										</div>
-									</div>
-								</div>
-							</div>
-							<slick class="hidden-md hidden-lg hidden-xl full-width" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
-								<div ng-repeat="slide in slider.slides">
-									<div class="wrapper">
-										<img src="{{ slide.image }}">
-									</div>
-									<div class="elegant-card-element">
-										<div class="tab-list-element">
-											<div>
-												<span class="link" ng-cloak>{{ slide.slides }}</span>
-												<section class="content" ng-bind-html="slide.tabContent | html">{{slide.tabContent}}</section>
+										<div class="room-select-wrapper-element">
+											<div class="card-element room-select-element">
+												<header class="white no-padding">
+                                                    <div class="custom-dropdown">
+                                                        <p>
+															<?= $item->title ?>
+															<img src="/img/controls/select-small.png">
+														</p>
+														<ul class="room-class dropdown-list">
+															<li class="triangle-container"></li>
+															<?php foreach ($rooms as $room) { ?>
+																<li <?= $item->id == $room->id ? 'class="active"' : '' ?>>
+																	<a href="<?= $room->getUrl();?>">
+																		<?= $room->title ?>
+																	</a>
+																</li>
+															<?php } ?>
+														</ul>
+													</div>
+												</header>
+											</div>
+											<div class="card-element room-item">
+												<section class="content">
+                                                    <?= $item->text ?>
+												</section>
+												<footer>
+                                                    <?= DetailButton::widget([
+                                                        'hasDetailButton'  => true,
+                                                        'detailButtonText' => Yii::t('app/labels', 'Забронировать от ') .
+															'<span class="price">' . $item->price_from . '</span>',
+                                                        'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
+                                                        'isColored'        => false,
+                                                        'bgColor'          => null,
+                                                        'blackText'        => true,
+                                                    ]); ?>
+													<?= $item->title ?>
+												</footer>
 											</div>
 										</div>
 									</div>
 								</div>
-							</slick>
+							</div>
+							<div class="hidden-md hidden-lg hidden-xl full-width">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="custom-dropdown">
+											<p>
+                                                <?= $item->title ?>
+												<img src="/img/controls/select-small.png">
+											</p>
+											<ul class="room-class dropdown-list">
+												<li class="triangle-container"></li>
+                                                <?php foreach ($rooms as $room) { ?>
+													<li <?= $item->id == $room->id ? 'class="active"' : '' ?>>
+														<a href="<?= $room->getUrl();?>">
+                                                            <?= $room->title ?>
+														</a>
+													</li>
+                                                <?php } ?>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<slick infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
+									<div ng-repeat="slide in slider.slides">
+										<div class="wrapper">
+											<img src="{{ slide.image }}">
+										</div>
+									</div>
+								</slick>
+								<div class="row">
+									<div class="col-lg-12" style="margin-bottom: 15px;">
+										<div class="card-element">
+											<header class="pale"><?= $room->title ?></header>
+											<section class="content"><?= $item->text ?></section>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-12">
+                                        <?= DetailButton::widget([
+                                            'hasDetailButton'  => true,
+                                            'detailButtonText' => Yii::t('app/labels', 'Забронировать от ') .
+                                                '<span class="price">' . $item->price_from . '</span>',
+                                            'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
+                                            'isColored'        => false,
+                                            'bgColor'          => null,
+                                            'blackText'        => true,
+                                        ]); ?>
+									</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row more-row">
 					<div class="col-lg-12 center">
-                        <?= DetailButton::widget([
-                            'hasDetailButton'  => true,
-                            'detailButtonText' => Yii::t('app/labels', 'Бронировать'),
-                            'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
-                            'isColored'        => false,
-                            'bgColor'          => null,
-                            'blackText'        => true,
-                        ]); ?>
+
 					</div>
 				</div>
 			</div>

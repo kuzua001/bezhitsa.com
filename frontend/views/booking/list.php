@@ -60,33 +60,10 @@ use frontend\models\pages\SliderTabsSectionParams;
 		</div>
 	</header>
 	<div class="content-wrapper">
+		<h2 class="centered-title-element black-text"><?= Yii::t('app/labels', 'список номеров');?></h2>
+	</div>
+	<div class="content-wrapper">
 		<section class="content">
-			<div class="container container-90">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="characteristics">
-							<div class="row">
-								<div class="col-lg-12">
-									<div class="custom-select-control large">
-										<label for="select-room-class" class="dropdown"></label>
-										<select name="room-class" id="select-room-class">
-											<?php foreach ($rooms as $item) { ?>
-												<option data-href="<?= $item->getUrl();?>" value="<?= $item->id?>"><?= $item->title ?></option>
-											<?php } ?>
-										</select>
-									</div>
-									<?php
-									$first = $rooms[0];
-									?>
-									<div class="price-from">
-                                        <?= Yii::t('app/labels', 'от'); ?> <span class="price"><?= $first->price_from ?></span> <?= Yii::t('app/units', 'руб'); ?>.
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="container container-90">
 				<div class="clearfix"></div>
 				<div class="row">

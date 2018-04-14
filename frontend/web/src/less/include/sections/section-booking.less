@@ -3,6 +3,19 @@
 section.booking {
 	background-color: #eae4cf;
 
+	.detail-button-element {
+		margin: 0;
+		border: none;
+		background-color: #9c8939;
+		color: #fff!important;
+		height: 56px;
+		width: 100%;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
 	h1 {
 		margin-bottom: 15px;
 	}
@@ -27,6 +40,10 @@ section.booking {
 	}
 
 	slick {
+		@media screen and (max-width: @menu-max-width-1) {
+			margin: 5px 0;
+		}
+
 		img {
 			width: 75vw;
 		}
@@ -35,9 +52,25 @@ section.booking {
 			overflow: hidden;
 			margin: 10px;
 		}
+
+		.wrapper {
+			max-height: 50vw;
+			overflow: hidden;
+		}
+
 	}
 
 	.content-wrapper {
+
+		.centered-title-element {
+			margin-top: 30px;
+			margin-bottom: 30px;
+
+			@media screen and (max-width: @menu-max-width-1) {
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+		}
 
 		.container {
 			@media screen and (min-width: @desktop-min-width) {
@@ -85,10 +118,10 @@ section.booking {
 				margin-bottom: 30px;
 			}
 
-			.price-from {
-				float: right;
-				line-height: 50px;
-			}
+			//.price-from {
+			//	float: right;
+			//	line-height: 50px;
+			//}
 		}
 	}
 }

@@ -3,12 +3,34 @@
 
 .slider-element {
 
+  .sticky-footer {
+    @media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+      width: 56.2vw;
+    }
+
+    @media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+      width: 47.3vw;
+    }
+  }
+
   .caption {
     color: #000;
     height: 70px;
     background-color: #f9f1dc;
     padding: 10px 25px;
     .box-sizing(border-box);
+
+    &.small-height {
+      height: 56px;
+
+      .swipe-buttons {
+        line-height: 46px;
+      }
+
+      h3 {
+        line-height: 35px;
+      }
+    }
 
     & > div {
       vertical-align: top;
@@ -77,8 +99,30 @@
       position: relative;
     }
 
+    li {
+      @media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+        width: 56.2vw;
+        overflow: hidden;
+      }
+
+      @media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+        width: 47.3vw;
+        overflow: hidden;
+      }
+    }
+
     & :not(.sticky-content) {
-      height: 100%;
+      @media screen and (max-width: @menu-max-width-1) or (min-width: @desktop-width) {
+        height: 100%;
+      }
+
+      @media screen and (min-width: @menu-max-width) and (max-width: @desktop-min-width-1) {
+        min-width: 56.2vw;
+      }
+
+      @media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+        min-width: 47.3vw;
+      }
     }
 
     &.sticky-content {

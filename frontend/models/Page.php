@@ -8,6 +8,7 @@
 
 namespace frontend\models;
 
+use frontend\components\AppHelper;
 use frontend\components\LanguageHelper;
 use frontend\components\MetadataExtractor;
 use frontend\controllers\CmsController;
@@ -33,6 +34,7 @@ use yii\db\Query;
  * @property $params_data_en string
  * @property $parent_id      integer
  * @property $is_enabled     boolean
+ * @property $color          string
  */
 class Page extends ActiveRecord
 {
@@ -188,7 +190,7 @@ class Page extends ActiveRecord
 
         if ($canonical) {
             $domain = $this->getDomain();
-            $url = $domain->getCanonicalUrl($url);
+            $url = $domain->getCanonicalUrl($url, LanguageHelper::getCurrentLanguage());
         }
 
         return $url;
@@ -223,7 +225,6 @@ class Page extends ActiveRecord
     {
         $routes = [];
         $pages = self::find()->all();
-
 
         foreach ($pages as $page) {
             /**

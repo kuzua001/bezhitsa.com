@@ -51,7 +51,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'test' => 'site/test'
+                'test' => 'site/test',
             ],
         ],
         'i18n' => [

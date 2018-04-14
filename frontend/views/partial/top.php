@@ -20,9 +20,10 @@ if (empty($this->topMenu)) {
 $lang     = LanguageHelper::getCurrentLanguage();
 $langCode = LanguageHelper::getCurrentLanguageCode();
 $domain   = AppHelper::getDomain();
-$canonicalUrl = '/' . ltrim(str_replace($domain->base_url, '', $_SERVER['REQUEST_URI']), '/');
+$canonicalUrl = '/' . ltrim(str_replace(ltrim($domain->base_url, '/'), '', $_SERVER['REQUEST_URI']), '/');
+
 if ($lang !== LanguageHelper::getDefaultLanguage()) {
-	$canonicalUrl = '/' . str_replace('/' . $langCode, '', $canonicalUrl);
+	$canonicalUrl = '/' . ltrim(str_replace('/' . $langCode, '', $canonicalUrl), '/');
 }
 
 $engUrl = '/en' . $canonicalUrl;

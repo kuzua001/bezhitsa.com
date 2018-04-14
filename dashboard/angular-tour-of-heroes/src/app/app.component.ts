@@ -18,7 +18,9 @@ export class AppComponent {
       private route: ActivatedRoute,
       private router: Router,
       private menuService: MenuService,
-  ) { }
+  ) {
+      alert(1);
+  }
 
   getMenuItems(): MenuItem[] {
       return this.menuService.getItems();

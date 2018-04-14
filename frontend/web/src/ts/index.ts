@@ -14,12 +14,14 @@ import 'angular-slick-carousel';
 import { SiteController } from './controllers/site';
 import { SliderController } from './controllers/slider';
 import { TabsController } from './controllers/tabs';
+import { CustomDropdown } from "./directives/dropdown";
 
 export default angular
 	.module('main', ['ngRoute', 'ngTouch', 'bhResponsiveImages', 'slickCarousel'])
 	.controller('SiteController', SiteController)
 	.controller('SliderController', SliderController)
 	.controller('TabsController', TabsController)
+	.directive('customDropdown', ['$window', '$document', ($window, $document) => new CustomDropdown($window, $document)])
 	.filter('html', ['$sce', ($sce) => {
 		return (htmlCode) => {
 			return $sce.trustAsHtml(htmlCode);
