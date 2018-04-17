@@ -125,6 +125,7 @@ BootstrapAsset::register($this);
                                                         'detailButtonText' => Yii::t('app/labels', 'Забронировать от') .
                                                             '&nbsp;<span class="price">' . number_format($item->price_from, 0, '', ' ') . '</span>&nbsp;' .
                                                             Yii::t('app/units', 'руб'),
+                                                        'detailButtonLink' => '/' . Page::id(30)->getUrl() . '/?room-type=' . $item['tl_room_type'],
                                                         'isColored'        => false,
                                                         'bgColor'          => null,
                                                         'blackText'        => true,
