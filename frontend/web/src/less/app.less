@@ -272,6 +272,11 @@ ul:not(.browser-default) {
   position: relative;
   height: 400px;
   width: 100%;
+
+  /*fix */
+  @media screen and (min-width: @desktop-min-width) and (max-width: @desktop-width-1) {
+    height: 100%!important;
+  }
 }
 
 .slider .slides li {
