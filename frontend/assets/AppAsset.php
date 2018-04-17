@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle
     public function __construct(array $config = [])
     {
         parent::__construct($config);
-        $this->js[] = 'js/built/cached_uglify/index.' . \Yii::$app->params['webpack']['build_version']  . '.js';
+        $this->js[] = 'js/built/index.js';
     }
 
     public $jsOptions = [
