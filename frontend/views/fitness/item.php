@@ -64,7 +64,7 @@ use frontend\models\data\Trainer;
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <form class="trainer-form-element">
+                    <form class="trainer-form-element" action="create-order">
                         <div class="wrapper">
                             <h3>
                                 Персональный тренинг
@@ -115,6 +115,7 @@ use frontend\models\data\Trainer;
                             </div>
                             <div class="text-center">
                                 <input type="submit" value="отправить" />
+                                <input type="hidden" name="trainer_id" value="<?= $item->id ?>"/>
                             </div>
                         </div>
                     </form>

@@ -47,6 +47,17 @@ class FitnessController extends CmsController
         ]);
     }
 
+    public function actionCreateOrder()
+    {
+        $item = Trainer::find()->where('alias = :alias', [
+            ':alias' => $alias
+        ])->one();
+
+        return $this->render('success.php', [
+            'page' => $this->page,
+        ]);
+    }
+
     /**
      * Показывает раписание
      * @param $weekNumber integer сдвиг от текущей недели

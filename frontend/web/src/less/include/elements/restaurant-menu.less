@@ -1,4 +1,26 @@
 .restaurant-menu-element {
+
+	.item {
+		@media screen and (min-width: @desktop-min-width) {
+			min-height: 70px;
+		}
+		> div {
+			display: flex;
+			flex-direction: row;
+			.description {
+				line-height: 21px;
+				flex: 0 auto;
+				font-size: 16px;
+
+			}
+			.price {
+				flex: 1 1;
+				text-align: right;
+				font-size: 16px;
+			}
+		}
+	}
+
 	&.mobile {
 		background-color: #fff;
 		padding: 5px;
@@ -38,7 +60,19 @@
 
 	&.desktop {
 		background-color: #fff;
-		padding: 5px;
+		padding: 12px;
+
+		@media screen and (min-width: @desktop-min-width) {
+			header li {
+				height: 55px;
+				line-height: 55px;
+				padding: 0!important;
+				h3 {
+					font-size: 14px;
+				}
+			}
+		}
+
 
 		.tab-list {
 			white-space: nowrap;
@@ -72,22 +106,12 @@
 				color: #000;
 				font-size: 18px;
 				padding: 20px;
+				padding-top: 35px;
 
 				.title {
 					text-transform: uppercase;
 					font-size: 22px;
-					margin-bottom: 20px;
-				}
-
-				.item {
-					display: flex;
-					flex-direction: row;
-					.description {
-						flex: 0 0;
-					}
-					.price {
-						flex: 0 1;
-					}
+					margin-bottom: 25px;
 				}
 			}
 		}
