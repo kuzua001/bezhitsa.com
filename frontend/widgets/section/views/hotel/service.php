@@ -1,4 +1,5 @@
 <?php
+use frontend\components\AppHelper;
 use frontend\widgets\section\Section;
 use frontend\models\pages\HotelMainSectionParams;
 use yii\helpers\Html;
@@ -26,11 +27,11 @@ $rooms = Room::find()->limit(4)->all();
 			<span class="third tight"><?= $sectionParams->sloganThird ?></span>
 		</h2>
 		<div class="clearfix"></div>
-		<a href="http://bezhitsa.com/service">
-      <button class="detail-button-element">
-    			<?= $sectionParams->detailButtonText ?>
-      </button>
-    </a>
+		<a href="<?= $sectionParams->detailButtonLink ?>">
+		  <button class="detail-button-element">
+				<?= $sectionParams->detailButtonText ?>
+		  </button>
+		</a>
 		<div class="clearfix"></div>
 	</div>
 	<div class="col-md-6">
@@ -158,6 +159,6 @@ $rooms = Room::find()->limit(4)->all();
 </div>
 <div class="row more-row">
 	<div class="col-lg-12 center">
-		<a href="/room"><button class="detail-button-element"><?= $sectionParams->allRoomsButtonText ?></button></a>
+		<a href="<?= AppHelper::getMultilingualLink('/room') ?>"><button class="detail-button-element"><?= $sectionParams->allRoomsButtonText ?></button></a>
 	</div>
 </div>

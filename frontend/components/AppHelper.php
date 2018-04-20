@@ -30,6 +30,15 @@ class AppHelper
 
     private static $_domain = null;
 
+    public static function getMultilingualLink($relativeUrl)
+    {
+        if (LanguageHelper::getCurrentLanguage() === LanguageHelper::LANG_EN) {
+            $relativeUrl = '/en/' . ltrim('/', $relativeUrl);
+        }
+
+        return $relativeUrl;
+    }
+
     /**
      * @return array|null|Domain
      *
