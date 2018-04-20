@@ -190,7 +190,7 @@ class Page extends ActiveRecord
 
         if ($canonical) {
             $domain = $this->getDomain();
-            $url = $domain->getCanonicalUrl($url, LanguageHelper::getCurrentLanguage());
+            $url = $domain->getCanonicalUrl($url, '', LanguageHelper::getCurrentLanguage());
         }
 
         return $url;

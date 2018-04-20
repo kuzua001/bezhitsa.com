@@ -56,7 +56,7 @@ class Domain extends ActiveRecord
             $url = str_replace($this->base_url, '', $url);
         }
 
-        $url = 'http://' . $this->domain . '/' . (($lang != LanguageHelper::getDefaultLanguage()) ? LanguageHelper::getLanguageCode($lang) . '/' : ''). ltrim($url, '/') . $href;
+        $url = 'https://' . $this->domain . '/' . (($lang != LanguageHelper::getDefaultLanguage()) ? LanguageHelper::getLanguageCode($lang) . '/' : ''). ltrim($url, '/') . $href;
         return $url;
     }
 }
