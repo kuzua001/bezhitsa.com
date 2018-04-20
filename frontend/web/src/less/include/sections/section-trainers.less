@@ -8,7 +8,35 @@ section.trainers {
 				margin-top: 35px;
 			}
 
-			@media screen and(max-width: @desktop-min-width-1) {
+			@media screen and(max-width: 600px) {
+				.trainer-card-element {
+					display: inline-block;
+				}
+
+				.col-xs1-12 {
+					text-align: center!important;
+				}
+			}
+
+			@media screen and(min-width: @menu-max-width) and(max-width: @desktop-min-width-1) {
+				.trainer-card-element {
+					display: inline-block;
+				}
+
+				.col-sm-6:nth-child(3n) {
+					text-align: right;
+				}
+
+				.col-sm-6:nth-child(3n+1) {
+					text-align: left;
+				}
+
+				.col-sm-6:nth-child(3n+2) {
+					text-align: center;
+				}
+			}
+
+			@media screen and(max-width: @menu-max-width-1) {
 				.trainer-card-element {
 					display: inline-block;
 				}
