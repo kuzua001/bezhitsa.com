@@ -33,7 +33,7 @@ class AppHelper
     public static function getMultilingualLink($relativeUrl)
     {
         if (LanguageHelper::getCurrentLanguage() === LanguageHelper::LANG_EN) {
-            $relativeUrl = '/en/' . ltrim('/', $relativeUrl);
+            $relativeUrl = '/en/' . ltrim($relativeUrl,'/');
         }
 
         return $relativeUrl;
