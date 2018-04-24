@@ -45,32 +45,27 @@ $sectionParams = $widget->sectionParams;
 		</dl>
 	</div>
 	<div class="clearfix hidden-md"></div>
-	<div class="col-lg-4 col-md-6 col-sm-6 col-xs2-6 center indent" style="display: none">
-		<section class="reservation-form-element">
+	<div class="col-lg-4 col-md-6 col-sm-6 col-xs2-6 center indent">
+		<section class="reservation-form-element" ng-controller="ReservationController as reservation">
 			<header>
 				Забронировать <span class="hidden-md hidden-sm hidden-xs">проживание</span>
 			</header>
 			<section class="content">
 				<div class="dates">
-					<input type="text" class="from" placeholder="заезд">
-					<input type="text" class="to" placeholder="выезд">
-					<datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
-						<input ng-model="date" type="text"/>
+					<datepicker date-max-limit="{{reservation.convertDate(to, -1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : from == ''}">
+						<input type="text" class="from" placeholder="заезд" ng-model="from" required>
+					</datepicker>
+					<datepicker date-min-limit="{{reservation.convertDate(from, 1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : to == ''}">
+						<input type="text" class="to" placeholder="выезд" ng-model="to" required>
 					</datepicker>
 				</div>
-				<div class="people">
-					<input type="text" class="select" placeholder="1 Номер, 1 Взрослый, 0 Детей">
-					<!-- redmine test -->
-
-				</div>
-				<div class="custom-calendar-element"
 			</section>
 			<footer>
-				<div class="apply">Бронировать</div>
+				<div class="apply" ng-click="apply()">Бронировать</div>
 			</footer>
 		</section>
 	</div>
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs2-12 center indent">
+	<div class="col-lg-8 col-md-6 col-sm-6 col-xs2-6 center indent">
 		<h2 class="main-slogan elegant-title-element">
 			<span class="first"><?= Html::encode($sectionParams->sloganFirst) ?></span>
 			<span class="second"><?= Html::encode($sectionParams->sloganSecond) ?></span>

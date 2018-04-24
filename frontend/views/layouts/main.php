@@ -28,7 +28,7 @@ $domainId = AppHelper::getDomain()->domain;
 		<?= Html::csrfMetaTags() ?>
 		<title><?= Html::encode($this->title) ?></title>
 		<?php if (property_exists($this, 'injectedHTML')) { echo $this->injectedHTML; } ?>
-		<?php if ($domainId === Domain::DOMAIN_HOTEL_ID) { ?>
+		<?php if (false && $domainId === Domain::DOMAIN_HOTEL_ID) { ?>
 			<!-- start TL head script -->
 			<script type="text/javascript">
 				(function(w){

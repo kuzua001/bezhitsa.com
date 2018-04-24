@@ -1,7 +1,7 @@
 @import "../sizes";
 
 .reservation-form-element {
-  overflow: hidden;
+  //overflow: hidden;
 
   @media (min-width: @menu-max-width) {
     margin: 30px 9px 0 11px;
@@ -67,17 +67,49 @@
 
   .content {
     &:not([class*=col]) {
-      padding-top: 4px;
+      padding-top: 24px;
       padding-left: 7px;
       padding-right: 5px;
-      margin: 20px 10px;
+      padding-bottom: 20px;
+      margin: 0 10px;
     }
 
     .dates {
+      display: block;
+      datepicker {
+        width: 100%;
+        margin-bottom: 6px;
+        float: none;
+        display: block;
+
+        input.ng-invalid:not(.ng-untouched) {
+          border: 1px solid #f00;
+        }
+
+        ._720kb-datepicker-calendar-header {
+          a {
+            position: relative;
+            top: 1px;
+          }
+
+          &:nth-child(odd) {
+            background: hsla(33, 32%, 34%, 1);
+          }
+
+          &:nth-child(even) {
+            background: hsla(33, 32%, 81%, 1);
+          }
+        }
+
+        ._720kb-datepicker-calendar-days-header {
+          background: rgb(234, 228, 207);
+        }
+      }
       white-space: nowrap;
       input[type=text] {
+        color: #000;
         height: 38px;
-        width: calc(~'50% - 6px');
+        width: 100%;
         background-image: url('/img/icons/dates.png');
         background-repeat: no-repeat;
         background-position: calc(~'100% - 10px') 9px;
@@ -101,8 +133,8 @@
 
   footer {
     &:not([class*=col]) {
-      margin: 26px 10px 10px 10px;
-      padding: 0 7px 7px 8px;
+      margin: -10px 16px 18px;
+      padding-bottom: 17px;
     }
 
     .apply {
@@ -116,6 +148,7 @@
       padding: 10px;
       height: 43px;
       line-height: 26px;
+      cursor: pointer;
     }
   }
 }

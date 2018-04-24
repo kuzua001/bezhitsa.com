@@ -2,6 +2,7 @@
 
 namespace frontend\assets;
 
+use frontend\components\LanguageHelper;
 use yii\web\AssetBundle;
 
 /**
@@ -23,6 +24,10 @@ class AppAsset extends AssetBundle
     {
         parent::__construct($config);
         $this->js[] = 'js/built/index.js';
+        if (LanguageHelper::getCurrentLanguage() === LanguageHelper::LANG_RU) {
+            $this->js[] = '/js/locale/ru.js';
+        }
+
     }
 
     public $jsOptions = [
