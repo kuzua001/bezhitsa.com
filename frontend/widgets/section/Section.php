@@ -16,15 +16,16 @@ use frontend\assets\BootstrapAsset;
 
 class Section extends Widget
 {
-    const TYPE_HOTEL_MAIN     = 'hotel_main';
-    const TYPE_CONTACTS_PAGE  = 'hotel_contacts';
-    const TYPE_FITNESS_MAIN   = 'fitness_main';
-    const TYPE_FITNESS_STYLE  = 'fitness_style';
-    const TYPE_HOTEL_SERVICE  = 'hotel_service';
-    const TYPE_SLIDER_TABS    = 'slider_tabs';
-    const TYPE_TEXT_PAGE      = 'text_page';
-    const TYPE_ABOUT_PAGE     = 'about_page';
-    const TYPE_TRAINERS_LIST  = 'fitness_trainers';
+    const TYPE_HOTEL_MAIN       = 'hotel_main';
+    const TYPE_CONTACTS_PAGE    = 'hotel_contacts';
+    const TYPE_FITNESS_MAIN     = 'fitness_main';
+    const TYPE_FITNESS_SCHEDULE = 'fitness_schedule';
+    const TYPE_FITNESS_STYLE    = 'fitness_style';
+    const TYPE_HOTEL_SERVICE    = 'hotel_service';
+    const TYPE_SLIDER_TABS      = 'slider_tabs';
+    const TYPE_TEXT_PAGE        = 'text_page';
+    const TYPE_ABOUT_PAGE       = 'about_page';
+    const TYPE_TRAINERS_LIST    = 'fitness_trainers';
 
     /**
      * @var SectionParams Параметры секции (объект любого унаследованного класса)

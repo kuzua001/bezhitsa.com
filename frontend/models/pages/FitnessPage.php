@@ -13,12 +13,12 @@ use frontend\models\Page;
 class FitnessPage extends LandingPage
 {
     /**
-     * @var LandingPageParams $pageParams
+     * @var FitnessPageParams $pageParams
      */
     public $pageParams;
 
     protected function initPageParams()
     {
-        $this->pageParams = new LandingPageParams();
+        $this->pageParams = new FitnessPageParams();
     }
 }
