@@ -19,7 +19,6 @@ export class AppComponent {
       private router: Router,
       private menuService: MenuService,
   ) {
-      alert(1);
   }
 
   getMenuItems(): MenuItem[] {

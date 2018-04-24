@@ -90,7 +90,7 @@ class CmsController extends Controller
         $view->topMenu      = $this->page->getMenu();
 
         if (!empty($this->page->pageParams->html)) {
-            if ($view instanceof CmsView) {
+            if (property_exists($view, 'injectedHTML')) {
                 $view->injectedHTML = $this->page->pageParams->html;
             }
         }
