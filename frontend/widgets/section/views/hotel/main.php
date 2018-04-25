@@ -52,10 +52,10 @@ $sectionParams = $widget->sectionParams;
 			</header>
 			<section class="content">
 				<div class="dates">
-					<datepicker date-max-limit="{{reservation.convertDate(to, -1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : from == ''}">
+					<datepicker datepicker-mobile="false" date-max-limit="{{reservation.convertDate(to, -1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : from == ''}">
 						<input type="text" class="from" placeholder="заезд" ng-model="from" required>
 					</datepicker>
-					<datepicker date-min-limit="{{reservation.convertDate(from, 1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : to == ''}">
+					<datepicker datepicker-mobile="false" date-min-limit="{{reservation.convertDate(from, 1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : to == ''}">
 						<input type="text" class="to" placeholder="выезд" ng-model="to" required>
 					</datepicker>
 				</div>
