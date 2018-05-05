@@ -48,20 +48,24 @@ $sectionParams = $widget->sectionParams;
 	<div class="col-lg-4 col-md-6 col-sm-6 col-xs2-6 center indent">
 		<section class="reservation-form-element" ng-controller="ReservationController as reservation">
 			<header>
-				Забронировать <span class="hidden-md hidden-sm hidden-xs">проживание</span>
+				<?= Yii::t('app/labels', 'Забронировать'); ?> <span class="hidden-md hidden-sm hidden-xs"><?= Yii::t('app/labels','проживание'); ?></span>
 			</header>
 			<section class="content">
 				<div class="dates">
-					<datepicker datepicker-mobile="false" date-max-limit="{{reservation.convertDate(to, -1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : from == ''}">
-						<input type="text" class="from" placeholder="заезд" ng-model="from" required>
-					</datepicker>
-					<datepicker datepicker-mobile="false" date-min-limit="{{reservation.convertDate(from, 1)}}" date-format="dd.MM.yyyy" ng-class="{'error' : to == ''}">
-						<input type="text" class="to" placeholder="выезд" ng-model="to" required>
-					</datepicker>
+          <md-datepicker
+              md-max-date="to"
+              ng-required md-placeholder="<?= Yii::t('app/labels', 'заезд'); ?>"
+              ng-model="from"
+              md-open-on-focus></md-datepicker>
+          <md-datepicker
+              md-min-date="from"
+              ng-required md-placeholder="<?= Yii::t('app/labels', 'выезд'); ?>"
+              ng-model="to"
+              md-open-on-focus></md-datepicker>
 				</div>
 			</section>
 			<footer>
-				<div class="apply" ng-click="apply()">Бронировать</div>
+				<div class="apply" ng-click="apply()"><?= Yii::t('app/labels', 'Бронировать'); ?></div>
 			</footer>
 		</section>
 	</div>

@@ -1,5 +1,30 @@
 @import "../sizes";
 
+
+.md-calendar-day-header th {
+  vertical-align: middle!important;
+}
+
+.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+  background: rgb(140, 109, 72)!important;
+}
+
+.md-calendar-date.md-focus .md-default-theme .md-calendar-date-selection-indicator, .md-calendar-date.md-focus .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date-selection-indicator:hover, .md-calendar-date-selection-indicator:hover {
+  background: rgb(234, 228, 207)!important;
+}
+
+.md-default-theme .md-calendar-day-header, .md-calendar-day-header {
+  background: rgb(234, 228, 207)!important;
+}
+
+.md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator {
+  border: 1px solid rgb(140, 109, 72)!important;
+}
+
+.md-default-theme .md-datepicker-open .md-datepicker-calendar-icon, .md-datepicker-open .md-datepicker-calendar-icon {
+  color: rgb(140, 109, 72)!important;
+}
+
 .reservation-form-element {
   //overflow: hidden;
 
@@ -76,6 +101,34 @@
 
     .dates {
       display: block;
+
+      md-datepicker {
+        width: 100%;
+        display: block;
+        position: relative;
+        padding-right: 0;
+        margin-bottom: 6px;
+
+        .md-datepicker-input-container {
+          width: 100%;
+          text-align: left;
+          padding: 5px;
+          border: 1px solid #eee;
+          margin: 0;
+        }
+
+        .md-datepicker-button.md-icon-button {
+          position: absolute;
+          right: 1px;
+          margin: 0;
+          z-index: 10;
+        }
+
+        .md-datepicker-triangle-button {
+          display: none;
+        }
+      }
+
       datepicker {
         width: 100%;
         margin-bottom: 6px;
