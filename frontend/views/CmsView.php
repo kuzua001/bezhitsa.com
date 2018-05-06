@@ -12,6 +12,19 @@ use frontend\models\menu\MenuInterface;
 use yii\web\View;
 
 class CmsView extends View {
+
+    const FITNESS_MODAL = 'fitness';
+
+    private $modals = [];
+
+    public function registerModal($modal) {
+        $this->modals[] = $modal;
+    }
+
+    public function getModals() {
+        return $this->modals;
+    }
+
     /**
      * SEO description
      * @var string

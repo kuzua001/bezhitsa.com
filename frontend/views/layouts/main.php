@@ -45,6 +45,11 @@ $domainId = AppHelper::getDomain()->domain;
 		<?php $this->head() ?>
 	</head>
 	<body ng-app="main" ng-controller="SiteController as site">
+		<?php
+			foreach ($this->getModals() as $name) {
+                echo $this->render("//modal/$name");
+			}
+		?>
 		<?php $this->beginBody() ?>
 			<div class="content" style="background-color: <?= isset($this->bgColor) ? $this->bgColor : '#fff'?>">
 				<?= $this->render("//partial/top", [

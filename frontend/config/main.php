@@ -51,7 +51,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'test' => 'site/test',
+                'fitness/ajax/create-order' => 'ajax/create-order',
             ],
         ],
         'i18n' => [

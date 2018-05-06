@@ -12,9 +12,11 @@ import 'slick-carousel/slick/slick.min.js';
 import 'angular-slick-carousel';
 import * as moment from 'moment';
 import * as ngMaterial from 'angular-material';
+import 'bootstrap/dist/js/bootstrap.js';
 
 import { SiteController } from './controllers/site';
 import { SliderController } from './controllers/slider';
+import { OrderController } from "./controllers/order";
 import { ReservationController } from './controllers/reservation';
 import { TabsController } from './controllers/tabs';
 import { CustomDropdown } from "./directives/dropdown";
@@ -28,6 +30,7 @@ export default angular
         };
     }])
 	.controller('SiteController', SiteController)
+	.controller('OrderController', ['$scope', ($scope) => new OrderController($scope)])
 	.controller('ReservationController', ['$scope', ($scope) => new ReservationController($scope)])
 	.controller('SliderController', SliderController)
 	.controller('TabsController', TabsController)

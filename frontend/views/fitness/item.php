@@ -39,7 +39,7 @@ $hasLinks = count($links) > 0;
     <div class="content-wrapper">
         <div class="container container-90">
             <div class="row">
-                <div class="col-lg-4 col-md-4">
+                <div class="col-lg-4 col-sm-4">
                     <div class="trainer-card-element">
                         <img class="face" src="<?= $item->img_url ?>">
                         <h4 class="trainer-name">
@@ -50,7 +50,7 @@ $hasLinks = count($links) > 0;
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-8">
+                <div class="col-lg-8 col-sm-8">
                     <div class="trainer-description-element">
                         <div class="wrapper">
 							<?= $item->description ?>
@@ -71,8 +71,8 @@ $hasLinks = count($links) > 0;
 						<?php } ?>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <form class="trainer-form-element" action="create-order">
+                <div class="col-sm-8">
+                    <form class="trainer-form-element" novalidate name="trainerForm" ng-controller="OrderController as order" ng-cloak ng-init="order.trainerId= <?= $item->id?>">
                         <div class="wrapper">
                             <h3>
                                 <?= Yii::t('app/fitness', 'Персональный тренинг'); ?>
@@ -83,47 +83,48 @@ $hasLinks = count($links) > 0;
                             </p>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-group required error">
+                                    <div class="form-group" ng-class="{'error': (trainerForm.$submitted || trainerForm.name.$touched) && trainerForm.name.$error.required}">
                                         <span class="title">
 											<?= Yii::t('app/fitness', 'Ваше имя') ?>;
                                         </span>
-                                        <input class="form-control" type="text" placeholder="Представьтесь, пожалуйста" />
-                                        <div class="error">
-                                            Заполните обязательные поля
+                                        <input class="form-control" type="text" name="name" ng-model="name" placeholder="Представьтесь, пожалуйста" required=""/>
+                                        <div class="error" ng-show="(trainerForm.$submitted || trainerForm.name.$touched) && trainerForm.name.$error.required">
+											<?= Yii::t('app/error', 'Введите имя'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group required">
+                                    <div class="form-group" ng-class="{'error': (trainerForm.$submitted || trainerForm.phone.$touched) && trainerForm.phone.$error.required}">
                                         <span class="title">
                                             <label for="phone"><?= Yii::t('app/fitness', 'Телефон') ?></label>
                                         </span>
-                                        <input class="form-control" type="text" id="phone" placeholder="+7(_ _ _) _ _ _ - _ _ - _ _" />
-                                        <div class="error">
+                                        <input class="form-control" type="text" id="phone" name="phone" ng-model="phone" placeholder="+7(_ _ _) _ _ _ - _ _ - _ _" required=""/>
+                                        <div class="error" ng-show="(trainerForm.$submitted || trainerForm.phone.$touched) && trainerForm.phone.$error.required">
+                                            <?= Yii::t('app/error', 'Ведите телефон'); ?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
+                                    <div class="form-group" ng-class="{'error': (trainerForm.$submitted || trainerForm.email.$touched) && trainerForm.email.$error.required}">
                                         <span class="title">
                                             <label for="email"><?= Yii::t('app/fitness', 'Электронная почта')?></label>
                                         </span>
-                                        <input class="form-control" type="text" id="email" placeholder="use@2domain.ru" />
-                                        <div class="error">
+                                        <input class="form-control" type="text" id="email" name="email" ng-model="email" placeholder="use@2domain.ru" required=""/>
+                                        <div class="error" ng-show="(trainerForm.$submitted || trainerForm.email.$touched) && trainerForm.email.$error.required">
+                                            <?= Yii::t('app/error', 'Введите email'); ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group agree required error">
-                                <input type="checkbox" class="agree" />
+                            <div class="form-group agree">
+                                <input type="checkbox" class="agree" ng-model="agree"/>
                                 <p>Я согласен на обработку персональных данных </p>
                                 <div class="error">
                                     Подтвердите согласие на обработку персональных данных
                                 </div>
                             </div>
                             <div class="text-center">
-                                <input type="submit" value="отправить" />
-                                <input type="hidden" name="trainer_id" value="<?= $item->id ?>"/>
+                                <input type="submit" value="отправить" ng-disabled="trainerForm.$invalid || !agree" ng-click="save(trainerForm)" />
                             </div>
                         </div>
                     </form>

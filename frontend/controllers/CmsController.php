@@ -14,6 +14,7 @@ use frontend\models\cms\ux\Menu;
 use frontend\interfaces\models\menu\MenuInterface;
 use frontend\models\cms\ux\MenuItem;
 use frontend\views\CmsView;
+use yii\base\Module;
 use yii\web\Controller;
 use yii;
 use yii\helpers\Url;
@@ -36,6 +37,13 @@ class CmsController extends Controller
      * @var Page
      */
     protected $page       = null;
+
+
+    public function __construct($id, Module $module, array $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->view = new CmsView();
+    }
 
     /**
      * Какого цвета background сей страницы
@@ -82,24 +90,24 @@ class CmsController extends Controller
 
 
 
-        $view = new CmsView();
-        $view->description  = $this->page->pageParams->metaDescription;
-        $view->title        = $this->page->pageParams->metaTitle;
-        $view->bgColor      = $this->getDefaultBgColor();
-        $view->submenuColor = $this->getSubmenuColor();
-        $view->topMenu      = $this->page->getMenu();
+
+        $this->view->description  = $this->page->pageParams->metaDescription;
+        $this->view->title        = $this->page->pageParams->metaTitle;
+        $this->view->bgColor      = $this->getDefaultBgColor();
+        $this->view->submenuColor = $this->getSubmenuColor();
+        $this->view->topMenu      = $this->page->getMenu();
 
         if (!empty($this->page->pageParams->html)) {
-            if ($view instanceof CmsView) {
-                $view->injectedHTML = $this->page->pageParams->html;
+            if ($this->view instanceof CmsView) {
+                $this->view->injectedHTML = $this->page->pageParams->html;
             }
         }
 
         if (!empty($this->page->pageParams->script)) {
-            $view->registerJs($this->page->pageParams->script, yii\web\View::POS_END);
+            $this->view->registerJs($this->page->pageParams->script, yii\web\View::POS_END);
         }
 
-        $this->setView($view);
+        $this->setView($this->view);
 
         return parent::beforeAction($action);
     }

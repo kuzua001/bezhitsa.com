@@ -9,6 +9,7 @@
 namespace frontend\controllers;
 
 use frontend\components\AppHelper;
+use frontend\models\data\FitnessOrder;
 use yii\web\Controller;
 use yii;
 
@@ -34,14 +35,38 @@ class AjaxController extends Controller
     }
 
 
-    /**
-     * $.ajax({'type':'post','url':'/ajax/set-text', 'data' :
-    {'key' : '1','lang':'ru','value':'azazaza'}, 'success':function(html){console.log(html);}});
-     */
-
-    public function actionSetText()
+    public function actionCreateOrder()
     {
-        $post = Yii::$app->request->post();
-        AppHelper::setText($post['key'], $post['lang'], $post['value']);
+        if (!Yii::$app->request->isPost) {
+            return;
+        }
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $name = Yii::$app->request->post('name');
+        $phone = Yii::$app->request->post('phone');
+        $email = Yii::$app->request->post('email');
+        $trainerId = Yii::$app->request->post('trainer_id');
+
+        try {
+            $order = new FitnessOrder();
+            $order->name = $name;
+            $order->phone = $phone;
+            $order->email = $email;
+            $order->trainer_id = $trainerId;
+            $order->ts_created = time();
+            $order->save();
+            $result = [
+                'status' => 'success',
+                'order_id' => $order->id,
+                'message' => 'Ваша заявка блабла бла',
+            ];
+        } catch (yii\db\Exception $ex) {
+            $result = [
+                'status' => 'error'
+            ];
+        }
+
+        return $result;
     }
 }

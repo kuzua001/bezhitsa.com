@@ -19,7 +19,10 @@ var uglify = new webpackUglifyJsPlugin({
 
 var jqueryPlugin = new webpack.ProvidePlugin({
 	'window.jQuery': 'jquery',
-	'windows.$': 'jquery'
+	'windows.$': 'jquery',
+	$: "jquery",
+	jquery: "jquery",
+	jQuery:"jquery"
 });
 
 module.exports = {

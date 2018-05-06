@@ -3,10 +3,12 @@ namespace frontend\controllers;
 
 use Faker\Provider\DateTime;
 use frontend\components\AppHelper;
+use frontend\models\data\FitnessOrder;
 use frontend\models\data\Trainer;
 use frontend\models\data\TrainingActivity;
 use frontend\models\data\TrainingActivityType;
 use frontend\models\data\TrainingSchedule;
+use frontend\views\CmsView;
 use yii\web\Controller;
 use yii;
 use yii\web\NotFoundHttpException;
@@ -37,6 +39,7 @@ class FitnessController extends CmsController
 
     public function actionTrainerItem($alias)
     {
+        $this->view->registerModal(CmsView::FITNESS_MODAL);
         $item = Trainer::find()->where('alias = :alias', [
             ':alias' => $alias
         ])->one();
@@ -44,17 +47,6 @@ class FitnessController extends CmsController
         return $this->render('item.php', [
             'page' => $this->page,
             'item' => $item
-        ]);
-    }
-
-    public function actionCreateOrder()
-    {
-        $item = Trainer::find()->where('alias = :alias', [
-            ':alias' => $alias
-        ])->one();
-
-        return $this->render('success.php', [
-            'page' => $this->page,
         ]);
     }
 
