@@ -23,6 +23,7 @@ use frontend\models\Domain;
  * @property $fb_link      string
  * @property $inst_link    string
  * @property $alias        string
+ * @property $img_url      string
  * @package frontend\models
  */
 class Trainer extends ActiveRecord implements HasUrl

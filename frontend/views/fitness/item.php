@@ -41,7 +41,7 @@ $hasLinks = count($links) > 0;
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <div class="trainer-card-element">
-                        <img class="face" src="/img/fitness/trener1.jpg">
+                        <img class="face" src="<?= $item->img_url ?>">
                         <h4 class="trainer-name">
                             <?= $item->name ?>
                         </h4>
@@ -71,11 +71,11 @@ $hasLinks = count($links) > 0;
 						<?php } ?>
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-md-12">
                     <form class="trainer-form-element" action="create-order">
                         <div class="wrapper">
                             <h3>
-                                Персональный тренинг
+                                <?= Yii::t('app/fitness', 'Персональный тренинг'); ?>
                             </h3>
                             <p class="details">
                                 Закажите консультацию — мы позвоним вам<br>
@@ -85,7 +85,7 @@ $hasLinks = count($links) > 0;
                                 <div class="col-lg-12">
                                     <div class="form-group required error">
                                         <span class="title">
-                                            Ваше имя
+											<?= Yii::t('app/fitness', 'Ваше имя') ?>;
                                         </span>
                                         <input class="form-control" type="text" placeholder="Представьтесь, пожалуйста" />
                                         <div class="error">
@@ -96,7 +96,7 @@ $hasLinks = count($links) > 0;
                                 <div class="col-lg-6">
                                     <div class="form-group required">
                                         <span class="title">
-                                            <label for="phone">Телефон</label>
+                                            <label for="phone"><?= Yii::t('app/fitness', 'Телефон') ?></label>
                                         </span>
                                         <input class="form-control" type="text" id="phone" placeholder="+7(_ _ _) _ _ _ - _ _ - _ _" />
                                         <div class="error">
@@ -106,7 +106,7 @@ $hasLinks = count($links) > 0;
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <span class="title">
-                                            <label for="email">Электронная почта</label>
+                                            <label for="email"><?= Yii::t('app/fitness', 'Электронная почта')?></label>
                                         </span>
                                         <input class="form-control" type="text" id="email" placeholder="use@2domain.ru" />
                                         <div class="error">
