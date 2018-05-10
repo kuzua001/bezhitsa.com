@@ -85,7 +85,7 @@ $hasLinks = count($links) > 0;
                                 <div class="col-lg-12">
                                     <div class="form-group" ng-class="{'error': (trainerForm.$submitted || trainerForm.name.$touched) && trainerForm.name.$error.required}">
                                         <span class="title">
-											<?= Yii::t('app/fitness', 'Ваше имя') ?>;
+											<?= Yii::t('app/fitness', 'Ваше имя') ?>
                                         </span>
                                         <input class="form-control" type="text" name="name" ng-model="name" placeholder="Представьтесь, пожалуйста" required=""/>
                                         <div class="error" ng-show="(trainerForm.$submitted || trainerForm.name.$touched) && trainerForm.name.$error.required">
