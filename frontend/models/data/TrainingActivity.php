@@ -8,6 +8,7 @@
 
 namespace frontend\models\data;
 
+use frontend\components\TranslatableTrait;
 use yii\db\ActiveRecord;
 
 /**
@@ -21,6 +22,7 @@ use yii\db\ActiveRecord;
  */
 class TrainingActivity extends ActiveRecord
 {
+    use TranslatableTrait;
 
     /**
      * Классы тренировок
@@ -28,6 +30,18 @@ class TrainingActivity extends ActiveRecord
     const TYPE_NONE        = 0;
     const TYPE_CLASS_NEW   = 1;
     const TYPE_FAT_BURNING = 2;
+
+    protected function translateFields() {
+        return [
+            'title', 'description'
+        ];
+    }
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->loadTranslations();
+    }
 
 
     /**
