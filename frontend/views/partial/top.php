@@ -52,8 +52,11 @@ foreach ($topMenu->getItems() as $i => $item) {
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</span>
-						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru">
+						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>">
 							<img src="/img/logo_header_mobile.png">
+						</a>
+						<a class='mobile-lang-switcher' href="<?= $lang == LanguageHelper::LANG_EN ? $canonicalUrl : $engUrl ?>">
+                            <?= $lang == LanguageHelper::LANG_EN ? 'RU' : 'EN' ?>
 						</a>
 					</div>
 				</div>
