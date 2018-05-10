@@ -83,6 +83,7 @@ trait TranslatableTrait
             $translation->model_id = $id;
             $translation->lang_code = $lang;
             $translation->full_field_key = $fieldKey;
+            $translation->value = $this->$field;
             $translation->save();
         }
 
