@@ -17,6 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'отправить' => '',
     'Выберите номер:' => '@@Select room type:@@',
     'Забронировать от ' => '@@Book from @@',
     'Бежица' => 'Bezhitsa',

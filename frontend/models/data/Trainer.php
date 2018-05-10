@@ -9,6 +9,7 @@
 namespace frontend\models\data;
 
 use frontend\components\AppHelper;
+use frontend\components\TranslatableTrait;
 use frontend\interfaces\models\HasUrl;
 use yii\db\ActiveRecord;
 use frontend\models\Domain;
@@ -28,6 +29,21 @@ use frontend\models\Domain;
  */
 class Trainer extends ActiveRecord implements HasUrl
 {
+
+    use TranslatableTrait;
+
+    protected function translateFields() {
+        return [
+            'description', 'name', 'position'
+        ];
+    }
+
+    public function afterFind()
+    {
+        parent::afterFind();
+        $this->loadTranslations();
+    }
+
     const BASE_TRAINER_URL = '/fitness/trainers';
 
     public function fields()

@@ -27,7 +27,7 @@ use frontend\models\data\Trainer;
                                 <?= $trainer->position ?>
                             </div>
                             <a href="<?= $trainer->getUrl() ?>">
-								<button class="detail-button-element black-text">заказать тренинг</button>
+								<button class="detail-button-element black-text"><?= Yii::t('app/fitness', 'заказать тренинг')?></button>
 							</a>
                         </div>
                     </div>

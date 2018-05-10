@@ -78,8 +78,8 @@ $hasLinks = count($links) > 0;
                                 <?= Yii::t('app/fitness', 'Персональный тренинг'); ?>
                             </h3>
                             <p class="details">
-                                Закажите консультацию — мы позвоним вам<br>
-                                с выгодным предложением по тренировкам.
+								<?= Yii::t('app/fitness','Закажите консультацию — мы позвоним вам')?><br>
+								<?= Yii::t('app/fitness','с выгодным предложением по тренировкам')?>.
                             </p>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -118,13 +118,13 @@ $hasLinks = count($links) > 0;
                             </div>
                             <div class="form-group agree">
                                 <input type="checkbox" class="agree" ng-model="agree"/>
-                                <p>Я согласен на обработку персональных данных </p>
+                                <p><?= Yii::t('app/fitness','Я согласен на обработку персональных данных')?> </p>
                                 <div class="error">
-                                    Подтвердите согласие на обработку персональных данных
+									<?= Yii::t('app/fitness','Подтвердите согласие на обработку персональных данных')?>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <input type="submit" value="отправить" ng-disabled="trainerForm.$invalid || !agree" ng-click="save(trainerForm)" />
+                                <input type="submit" value="<?= Yii::t('app/labels','отправить')?>" ng-disabled="trainerForm.$invalid || !agree" ng-click="save(trainerForm)" />
                             </div>
                         </div>
                     </form>

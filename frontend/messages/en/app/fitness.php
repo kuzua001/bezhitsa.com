@@ -17,6 +17,11 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Закажите консультацию — мы позвоним вам' => 'Order a consultation - we will call soon',
+    'Подтвердите согласие на обработку персональных данных' => 'Confirm your consent to the processing of personal data',
+    'Я согласен на обработку персональных данных' => 'I agree to the processing of personal data',
+    'заказать тренинг' => 'Order a training',
+    'с выгодным предложением по тренировкам' => 'with a profitable offer for training',
     'Ваше имя' => 'Your name',
     'Персональный тренинг' => 'Personal training',
     'Телефон' => 'Phone',
