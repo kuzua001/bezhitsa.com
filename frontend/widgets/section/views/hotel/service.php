@@ -102,10 +102,10 @@ $rooms = Room::find()->limit(4)->all();
 							<section class="content">
 								<div class="room-type">
 									<h4 class="name"><?= $item->title ?></h4>
-									<span class="square"><?= $item->square?> кв.м</span>
+									<span class="square"><?= $item->square?> <?= Yii::t('app/units', 'кв.м') ?></span>
 								</div>
 								<div class="price-item">
-									от <span class="price"><?= $item->price_from ?></span> руб
+                                    <?= Yii::t('app/units', 'от') ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб') ?>
 								</div>
 							</section>
 							<!--<footer>
@@ -135,10 +135,10 @@ $rooms = Room::find()->limit(4)->all();
 						<section class="content">
 							<div class="room-type">
 								<h4 class="name"><?= $item->title ?></h4>
-								<span class="square"><?= $item->square?> кв.м</span>
+								<span class="square"><?= $item->square?> <?= Yii::t('app/units', 'кв.м') ?></span>
 							</div>
 							<div class="price-item">
-								от <span class="price"><?= $item->price_from ?></span> руб
+                                <?= Yii::t('app/units', 'от') ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб') ?>
 							</div>
 						</section>
 						<!--<footer>

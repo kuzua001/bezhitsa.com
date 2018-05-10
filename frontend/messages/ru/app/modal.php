@@ -17,7 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'от' => 'from',
-    'кв.м' => 'sq.m',
-    'руб' => 'rub',
+    'Закрыть' => '',
+    'Спасибо, ваша заявка принята' => '',
 ];
