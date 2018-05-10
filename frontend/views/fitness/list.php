@@ -16,17 +16,17 @@ use frontend\models\data\Trainer;
                 <?php foreach($trainers as $trainer) { ?>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-xs1-12">
                         <div class="trainer-card-element preview">
-                            <img class="face" src="<?= $trainer->img_url ?>">
-                            <h4 class="trainer-name">
-                                <?php
-                                /** @var $trainer Trainer **/
-                                ?>
-                                <?= $trainer->name ?>
-                            </h4>
-                            <div class="trainer-position">
-                                <?= $trainer->position ?>
-                            </div>
-                            <a href="<?= $trainer->getUrl() ?>">
+							<a href="<?= $trainer->getUrl() ?>">
+								<img class="face" src="<?= $trainer->img_url ?>">
+								<h4 class="trainer-name">
+									<?php
+									/** @var $trainer Trainer **/
+									?>
+									<?= $trainer->name ?>
+								</h4>
+								<div class="trainer-position">
+									<?= $trainer->position ?>
+								</div>
 								<button class="detail-button-element black-text"><?= Yii::t('app/fitness', 'заказать тренинг')?></button>
 							</a>
                         </div>
