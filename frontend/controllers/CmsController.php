@@ -51,7 +51,7 @@ class CmsController extends Controller
      */
     public function getDefaultBgColor()
     {
-        return !empty($this->page->color) ? $this->page->color : '#fff';
+        return !empty($this->page->pageParams->color) ? $this->page->pageParams->color : '#fff';
     }
 
     /**
