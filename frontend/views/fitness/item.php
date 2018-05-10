@@ -117,8 +117,7 @@ $hasLinks = count($links) > 0;
                                 </div>
                             </div>
                             <div class="form-group agree">
-                                <input type="checkbox" class="agree" ng-model="agree"/>
-                                <p><?= Yii::t('app/fitness','Я согласен на обработку персональных данных')?> </p>
+                                <p><input type="checkbox" class="agree" ng-model="agree"/><?= Yii::t('app/fitness','Я согласен на обработку персональных данных')?> </p>
                                 <div class="error">
 									<?= Yii::t('app/fitness','Подтвердите согласие на обработку персональных данных')?>
                                 </div>
