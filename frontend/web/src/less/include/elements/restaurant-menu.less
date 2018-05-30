@@ -1,6 +1,8 @@
 .restaurant-menu-element {
 
 	.item {
+		margin-bottom: 10px;
+
 		@media screen and (min-width: @desktop-min-width) {
 			min-height: 70px;
 		}
@@ -10,18 +12,28 @@
 			.description {
 				line-height: 21px;
 				flex: 0 auto;
-				font-size: 16px;
-
+				font-size: 15px;
+				font-family: 'Open Sans', sans-serif;
 			}
 			.price {
 				flex: 1 1;
 				text-align: right;
-				font-size: 16px;
+				font-size: 15px;
+				font-family: 'Open Sans', sans-serif;
+				padding-right: 10px;
+				line-height: 20px;
 			}
 		}
 	}
 
+	.tab-list {
+		h3 {
+			font-family: 'Acrom-Light', sans-serif;
+		}
+	}
+
 	&.mobile {
+		margin-bottom: 18px;
 		background-color: #fff;
 		padding: 5px;
 
@@ -32,6 +44,7 @@
 			font-size: 20px;
 			color: #000;
 			text-transform: uppercase;
+			font-family: 'Acrom-Light', sans-serif;
 		}
 
 		.menu-category {
@@ -39,21 +52,24 @@
 			.item {
 
 				.description {
-					font-size: 20px;
+					font-size: 15px;
 					color: #000;
 				}
 
 				.price {
-					font-size: 20px;
+					font-size: 15px;
 					color: #000;
+					line-height: 20px;
 				}
 			}
 
 			.title {
 				text-transform: uppercase;
 				font-size: 22px;
-				margin-bottom: 20px;
+				margin: 15px 0;
 				color: #000;
+				font-family: 'Acrom-Regular', sans-serif;
+				text-align: center;
 			}
 		}
 	}
@@ -67,9 +83,6 @@
 				height: 55px;
 				line-height: 55px;
 				padding: 0!important;
-				h3 {
-					font-size: 14px;
-				}
 			}
 		}
 
@@ -83,13 +96,14 @@
 				width: 33.3%;
 				text-align: center;
 				padding: 10px;
-				background-color: #f9f1dc;
+				background-color: #eae5cf;
 				font-size: 20px;
 				color: #000;
 				text-transform: uppercase;
 
+
 				&.active {
-					background-color: #eae5cf;
+					background-color: #f9f1dc;
 					color: #b4a878;
 				}
 			}
@@ -109,7 +123,7 @@
 				display: inline-block;
 				color: #000;
 				font-size: 18px;
-				padding: 20px;
+				padding: 20px 0;
 				padding-top: 35px;
 				vertical-align: top;
 				float: right;
@@ -118,6 +132,8 @@
 					text-transform: uppercase;
 					font-size: 22px;
 					margin-bottom: 25px;
+					font-family: 'Acrom-Regular', sans-serif;
+					text-align: center;
 				}
 			}
 		}

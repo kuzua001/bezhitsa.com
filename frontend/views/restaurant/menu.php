@@ -63,7 +63,7 @@ $renderMenuGroup = function(\frontend\models\restaurant\RestaurantMenuGroup $gro
 					</h2>
 				</div>
 			</div>
-		<div class="mobile-only container">
+		<div class="mobile-only">
 			<div class="restaurant-menu-element mobile">
 				<section>
 					<header>
