@@ -26,20 +26,20 @@ use \frontend\components\AppHelper;
 					<nav class="social">
 
 						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
-							<i style="background-image: url('/img/social/ns.png')"></i>
+							<img src="/img/svg/insta.svg">
 						</a>
 						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
 							<i style="background-image: url('/img/social/ta.png')"></i>
 						</a>
-            <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
-              <i style="background-image: url('/img/social/fb.png')"></i>
-            </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
+                          <i style="background-image: url('/img/social/fb.png')"></i>
+                        </a>
 						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
 							<i style="background-image: url('/img/social/vk.png')"></i>
 						</a>
-            <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
-              <i style="background-image: url('/img/social/ok.png')"></i>
-            </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
+                            <i style="background-image: url('/img/social/ok.png')"></i>
+                        </a>
 					</nav>
 				</div>
 			</div>

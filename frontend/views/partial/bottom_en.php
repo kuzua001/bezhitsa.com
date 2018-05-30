@@ -24,22 +24,21 @@ use \frontend\components\AppHelper;
 				</div>
 				<div class="col-md-3 footer-col">
 					<nav class="social">
-
-						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
-							<i style="background-image: url('/img/social/ns.png')"></i>
-						</a>
-						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
-							<i style="background-image: url('/img/social/ta.png')"></i>
-						</a>
-            <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
-              <i style="background-image: url('/img/social/fb.png')"></i>
-            </a>
-						<a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
-							<i style="background-image: url('/img/social/vk.png')"></i>
-						</a>
-            <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
-              <i style="background-image: url('/img/social/ok.png')"></i>
-            </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
+                            <img src="/img/svg/tripadvisor.svg">
+                        </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
+                            <img src="/img/svg/insta.svg">
+                        </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
+                            <img src="/img/svg/fb.svg">
+                        </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
+                            <img src="/img/svg/vk.svg">
+                        </a>
+                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
+                            <img src="/img/svg/ok.svg">
+                        </a>
 					</nav>
 				</div>
 			</div>
