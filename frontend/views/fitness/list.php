@@ -24,7 +24,7 @@ use frontend\models\data\Trainer;
 									?>
 									<?= $trainer->name ?>
 								</h4>
-								<div class="trainer-position">
+								<div class="trainer-position" <?= $trainer->two_lines_position ? 'two-lines' : ''?>>
 									<?= $trainer->position ?>
 								</div>
 								<button class="detail-button-element black-text"><?= Yii::t('app/fitness', 'заказать тренинг')?></button>
