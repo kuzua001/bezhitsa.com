@@ -15,20 +15,20 @@ $links = [];
 if (!empty($item->vk_link)) {
 	$links[] = [
 		'link' => $item->vk_link,
-		'img' => '/img/social/fitness/vk.jpg'
+		'img' => '/img/svg/colored/vk.svg'
 	];
 }
 
 if (!empty($item->fb_link)) {
     $links[] = [
         'link' => $item->fb_link,
-        'img' => '/img/social/fitness/fb.jpg'
+        'img' => '/img/svg/colored/fb.svg'
     ];
 }
 if (!empty($item->inst_link)) {
     $links[] = [
         'link' => $item->inst_link,
-        'img' => '/img/social/fitness/inst.jpg'
+        'img' => '/img/svg/colored/insta.svg'
     ];
 }
 
@@ -45,7 +45,7 @@ $hasLinks = count($links) > 0;
                         <h4 class="trainer-name">
                             <?= $item->name ?>
                         </h4>
-                        <div class="trainer-position">
+                        <div class="trainer-position" class="<? $item->two_lines_position ? 'two-lines' : ''?>">
                             <?= $item->position ?>
                         </div>
                     </div>

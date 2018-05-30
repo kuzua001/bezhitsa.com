@@ -16,15 +16,16 @@ use frontend\models\Domain;
 
 /**
  * Class Trainer
- * @property $id           integer
- * @property $name         string
- * @property $position     string
- * @property $description  string
- * @property $vk_link      string
- * @property $fb_link      string
- * @property $inst_link    string
- * @property $alias        string
- * @property $img_url      string
+ * @property $id                 integer
+ * @property $name               string
+ * @property $position           string
+ * @property $description        string
+ * @property $vk_link            string
+ * @property $fb_link            string
+ * @property $inst_link          string
+ * @property $alias              string
+ * @property $img_url            string
+ * @property $two_lines_position boolean
  * @package frontend\models
  */
 class Trainer extends ActiveRecord implements HasUrl
@@ -57,7 +58,8 @@ class Trainer extends ActiveRecord implements HasUrl
             'vk_link',
             'fb_link',
             'inst_link',
-            'aliask',
+            'alias',
+            'two_lines_position',
         ];
     }
 
