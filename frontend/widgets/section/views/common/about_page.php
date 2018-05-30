@@ -69,7 +69,7 @@ $sectionParams = $widget->sectionParams;
 						<header>
 							<?= $sectionParams->title ?>
 						</header>
-						<section class="content">
+						<section>
                             <?= $sectionParams->cardHTML ?>
 						</section>
 					</div>

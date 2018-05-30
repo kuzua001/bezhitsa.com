@@ -263,6 +263,10 @@ body > .content > section.header.with-sumbenu + .slide-menu-element + section {
 .slider .slides {
   margin: 0;
   height: 400px;
+
+  @media screen and (max-width: @desktop-width-1) and (min-width: @desktop-min-width) {
+    height: 41vw!important;
+  }
 }
 
 ul:not(.browser-default) {
