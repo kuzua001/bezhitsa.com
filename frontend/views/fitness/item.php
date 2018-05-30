@@ -45,7 +45,7 @@ $hasLinks = count($links) > 0;
                         <h4 class="trainer-name">
                             <?= $item->name ?>
                         </h4>
-                        <div class="trainer-position" class="<?= $item->two_lines_position ? 'two-lines' : ''?>">
+                        <div class="trainer-position<?= $item->two_lines_position ? ' two-lines' : ''?>">
                             <?= $item->position ?>
                         </div>
                     </div>
