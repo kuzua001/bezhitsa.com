@@ -39,4 +39,11 @@ class CmsPageParams extends PageParams
      */
     public $html;
 
+    /**
+     * @var $color string
+     * @title Кастомный цвет страницы
+     * @type color
+     */
+    public $color;
+
 }

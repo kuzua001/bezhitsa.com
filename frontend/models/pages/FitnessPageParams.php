@@ -22,13 +22,6 @@ class FitnessPageParams extends LandingPageParams
     public $showCustomSchedule;
 
     /**
-     * @var $color string
-     * @title Кастомный цвет страницы
-     * @type color
-     */
-    public $color;
-
-    /**
      * @var $customSchedule string
      * @title HTML-код кастомного расписания
      * @type textarea
