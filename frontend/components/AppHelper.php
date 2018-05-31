@@ -23,9 +23,34 @@ class AppHelper
 
     private static $_domainLinks = null;
 
+    private static $_footerIcons = [
+        self::FOOTER_LINK_VK => '/img/svg/vk.svg',
+        self::FOOTER_LINK_OK => '/img/svg/ok.svg',
+        self::FOOTER_LINK_FB => '/img/svg/fb.svg',
+        self::FOOTER_LINK_IN => '/img/svg/insta.svg',
+        self::FOOTER_LINK_TA => '/img/svg/tripadvisor.svg',
+    ];
+
+    public static function getAvailableLinkTypes()
+    {
+        return array_keys(self::$_footerIcons);
+    }
+
     public static function getFooterLink($linkType) {
-        $domainLinks = self::getFooterLinks();
-        return $domainLinks[self::getDomain()->id][$linkType];
+        try {
+            $domainLinks = self::getFooterLinks();
+            return $domainLinks[self::getDomain()->id][$linkType];
+        } catch (\Exception $ex) {
+            return null;
+        }
+    }
+
+    public static function getFooterIconSrc($linkType) {
+        try {
+            return self::$_footerIcons[$linkType];
+        } catch (\Exception $ex) {
+            return null;
+        }
     }
 
     private static $_domain = null;

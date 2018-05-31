@@ -23,23 +23,7 @@ use \frontend\components\AppHelper;
 					</nav>
 				</div>
 				<div class="col-md-3 footer-col">
-					<nav class="social">
-                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_TA) ?>">
-                            <img src="/img/svg/tripadvisor.svg">
-                        </a>
-                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_IN) ?>">
-                            <img src="/img/svg/insta.svg">
-                        </a>
-                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_FB) ?>">
-                            <img src="/img/svg/fb.svg">
-                        </a>
-                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_VK) ?>">
-                            <img src="/img/svg/vk.svg">
-                        </a>
-                        <a target="_blank" href="<?= AppHelper::getFooterLink(AppHelper::FOOTER_LINK_OK) ?>">
-                            <img src="/img/svg/ok.svg">
-                        </a>
-					</nav>
+					<?= $this->render('social_icons'); ?>
 				</div>
 			</div>
 			<div class="row">
