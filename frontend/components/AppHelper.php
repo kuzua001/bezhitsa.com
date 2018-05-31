@@ -36,6 +36,12 @@ class AppHelper
         return array_keys(self::$_footerIcons);
     }
 
+    public static function getExistingLinkTypes()
+    {
+        return array_keys((self::getFooterLinks())[self::getDomain()->id]);
+    }
+
+
     public static function getFooterLink($linkType) {
         try {
             $domainLinks = self::getFooterLinks();
