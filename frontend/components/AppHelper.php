@@ -38,7 +38,12 @@ class AppHelper
 
     public static function getExistingLinkTypes()
     {
-        return array_keys((self::getFooterLinks())[self::getDomain()->id]);
+        try {
+            $footerLinks = self::getFooterLinks();
+            return array_keys($footerLinks[self::getDomain()->id]);
+        } catch (\Exception $ex) {
+            return [];
+        }
     }
 
 
