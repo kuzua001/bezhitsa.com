@@ -63,7 +63,7 @@ $hasLinks = count($links) > 0;
 										<div class="col-lg-4">
 											<a href="<?= $link['link'] ?>">
 												<img src="<?= $link['img'] ?>">
-												<span><?= preg_replace("/^https?:\/\//", "", $link['link']) ?></span>
+												<span><?= preg_replace("/^https?:\/\/(.*)\/([(a-z0-9A-Z)+\_\-\#\.]+)$/", "@$2", $link['link']) ?></span>
 											</a>
 										</div>
 									<?php } ?>
