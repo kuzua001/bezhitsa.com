@@ -17,7 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'отправить' => 'send',
+    'Представьтесь, пожалуйста' => 'Enter your name',
     'Выберите номер:' => '@@Select room type:@@',
     'Забронировать от ' => '@@Book from @@',
     'Бежица' => 'Bezhitsa',
@@ -32,6 +32,7 @@ return [
     'заезд' => 'arrival',
     'назад' => 'previous',
     'от' => 'from',
+    'отправить' => 'send',
     'проживание' => 'accomodation',
     'список номеров' => 'hotel rooms',
 ];

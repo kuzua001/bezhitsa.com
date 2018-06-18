@@ -9,6 +9,7 @@
 namespace frontend\models\data;
 
 use frontend\components\AppHelper;
+use frontend\components\LanguageHelper;
 use frontend\components\TranslatableTrait;
 use frontend\interfaces\models\HasUrl;
 use yii\db\ActiveRecord;
@@ -16,16 +17,17 @@ use frontend\models\Domain;
 
 /**
  * Class Trainer
- * @property $id                 integer
- * @property $name               string
- * @property $position           string
- * @property $description        string
- * @property $vk_link            string
- * @property $fb_link            string
- * @property $inst_link          string
- * @property $alias              string
- * @property $img_url            string
- * @property $two_lines_position boolean
+ * @property $id                    integer
+ * @property $name                  string
+ * @property $position              string
+ * @property $description           string
+ * @property $vk_link               string
+ * @property $fb_link               string
+ * @property $inst_link             string
+ * @property $alias                 string
+ * @property $img_url               string
+ * @property $two_lines_position    boolean
+ * @property $two_lines_position_en boolean
  * @package frontend\models
  */
 class Trainer extends ActiveRecord implements HasUrl
@@ -89,8 +91,7 @@ class Trainer extends ActiveRecord implements HasUrl
         ];
     }
 
-    public function getUrl()
-    {
-        return AppHelper::getAbsoluteUrl(self::BASE_TRAINER_URL . '/' . $this->alias, Domain::DOMAIN_FITNESS_ID);
+    public function getUrl() {
+        return AppHelper::getAbsoluteUrl( ltrim(LanguageHelper::getBaseUrl(), '/') . self::BASE_TRAINER_URL . '/' . $this->alias, Domain::DOMAIN_FITNESS_ID);
     }
 }

@@ -6,6 +6,7 @@
  * Time: 12:39 PM
  */
 
+use frontend\components\LanguageHelper;
 use frontend\models\data\Trainer;
 
 /** @var $item Trainer **/
@@ -45,7 +46,7 @@ $hasLinks = count($links) > 0;
                         <h4 class="trainer-name">
                             <?= $item->name ?>
                         </h4>
-                        <div class="trainer-position<?= $item->two_lines_position ? ' two-lines' : ''?>">
+                        <div class="trainer-position<?= (LanguageHelper::getCurrentLanguage() === LanguageHelper::LANG_RU ? $item->two_lines_position : $item->two_lines_position_en) ? ' two-lines' : ''?>">
                             <?= $item->position ?>
                         </div>
                     </div>
@@ -86,7 +87,7 @@ $hasLinks = count($links) > 0;
                                         <span class="title">
 											<?= Yii::t('app/fitness', 'Ваше имя') ?>
                                         </span>
-											<input class="form-control" type="text" name="name" ng-model="name" placeholder="Представьтесь, пожалуйста" required=""/>
+											<input class="form-control" type="text" name="name" ng-model="name" placeholder="<?= Yii::t('app/labels', 'Представьтесь, пожалуйста')?>" required=""/>
 											<div class="error" ng-show="(trainerForm.$submitted || trainerForm.name.$touched) && trainerForm.name.$error.required">
                                                 <?= Yii::t('app/error', 'Введите имя'); ?>
 											</div>
