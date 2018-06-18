@@ -25,7 +25,7 @@ $dateRange = new DatePeriod($minDate, $interval , $maxDate);
 		<div class="container container-80">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
-					<h2 class="centered-title-element black-text">Расписание</h2>
+					<h2 class="centered-title-element black-text"><?= Yii::t('app/titles', 'Расписание'); ?></h2>
 				</div>
 			</div>
 			<?php if ($page->pageParams->showCustomSchedule) { ?>
