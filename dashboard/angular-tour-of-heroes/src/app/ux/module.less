@@ -1,0 +1,32 @@
+@import "../mixins";
+
+.module-list {
+  background: #fff;
+  flex: 0 0;
+  width: 300px;
+  box-sizing: content-box;
+}
+
+
+.module-list, .module-editor {
+  .bordered-section;
+}
+
+
+.module-list .trainers-list-element,
+.module-list .toolbar-element {
+  display: block;
+}
+
+.module-editor {
+  flex: 1 0 auto;
+  background: #fff;
+
+  &.module-editor-visible:not(.visible) {
+    display: none;
+  }
+
+  &.module-editor-full {
+    margin-left: 201px;
+  }
+}

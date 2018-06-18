@@ -17,7 +17,7 @@ use frontend\models\data\Trainer;
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-xs1-12">
                         <div class="trainer-card-element preview">
 							<a href="<?= $trainer->getUrl() ?>">
-								<img class="face" src="<?= $trainer->img_url ?>">
+								<img class="face" src="<?= $trainer->getSrc() ?>">
 								<h4 class="trainer-name">
 									<?php
 									/** @var $trainer Trainer **/

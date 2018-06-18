@@ -1,32 +1,12 @@
-<form [formGroup]="form">
-  <ul>
-    <ng-template ngFor let-param [ngForOf]="pageFieldsTree.getParams()">
-      <li *ngIf="param.isValid()" class="page-node">
-        <div class="field-item" *ngIf="param.isField()">
-          <div class="param-title">
-            {{param.getTitle()}}
-          </div>
-          <div class="param-editor"  [ngSwitch]="param.getType()">
-            <div *ngSwitchCase="'string'">
-              <input type="text" [formControlName]="param.getKey()">
-            </div>
-            <div *ngSwitchCase="'textarea'">
-              <div [froalaEditor] [formControlName]="param.getKey()"></div>
-            </div>
-            <div *ngSwitchCase="'checkbox'">
-              <input type="checkbox" [formControlName]="param.getKey()">
-            </div>
-          </div>
+<accordion>
+    <accordion-group heading="{{key}}" *ngFor="let key in params">
+      <div [ngSwitch]="params[key].type">
+        <div *ngSwitchCase="'composite'">
+          <page-editor *ngFor="let section of values[key]" [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
         </div>
-        <div class="composite-field-items" *ngIf="param.isCompositeField()">
-          <div *ngFor="let childFieldsTree of param.getInstances(pageFieldsTree); let i = index" class="item" [formGroupName]="param.getKey()">
-            <div class="title">
-              Тип секции: {{childFieldsTree.getType()}}
-            </div>
-            <page-editor [formGroupName]="i" [pageFieldsTree]="childFieldsTree"></page-editor>
-          </div>
+        <div *ngSwitchDefault>
+          {{values[key]}}
         </div>
-      </li>
-    </ng-template>
-  </ul>
-</form>
+      </div>
+    </accordion-group>
+</accordion>

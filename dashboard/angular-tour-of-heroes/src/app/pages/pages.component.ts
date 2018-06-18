@@ -1,18 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PagesService } from '../pages.service';
 import { Page } from '../models/page.interface';
-import { ProcessedPage } from '../models/processed-page';
 import { Domain } from '../models/domain.interface';
 
-import { Observable } from 'rxjs/Observable';
-import { Subject }    from 'rxjs/Subject';
-import { of }         from 'rxjs/observable/of';
-
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
 import {SelectItemService} from "../select-item.service";
 import {SelectItemEvent} from "../models/select-item-event";
+import {PageFields} from "../models/page-fields.interface";
 
 @Component({
   selector: 'app-pages',
@@ -27,21 +20,13 @@ export class PagesComponent implements OnInit {
 	pagesLoaded =  false;
 	selectedDomain: number = 1;
 
-	private selectedPage = null;
+	private selectedPageFields: PageFields = null;
 
 	loadPage(pageId: number) {
 		this.pageService.getPageFields(pageId)
 			.subscribe(page => {
-				this.selectedPage = ProcessedPage.build(page);
+				this.selectedPageFields = page;
 			});
-	}
-
-	getSelectedPage() {
-		return this.selectedPage;
-	}
-
-	isPageLoaded() {
-		return this.selectedPage !== null;
 	}
 
 	constructor(
@@ -64,8 +49,6 @@ export class PagesComponent implements OnInit {
 
 				this.groupedPages[page.domain_id].push(page);
 			}
-
-			console.log(this.groupedPages);
 		}
 	};
 

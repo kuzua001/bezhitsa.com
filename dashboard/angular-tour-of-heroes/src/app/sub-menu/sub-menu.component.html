@@ -1,3 +1,4 @@
 <div class="sub-menu">
+  <div class="triangle top" *ngIf="subMenu !== null && subMenu.getType() === 'pages'"></div>
   <sub-menu-pages *ngIf="subMenu !== null && subMenu.getType() === 'pages'"></sub-menu-pages>
 </div>

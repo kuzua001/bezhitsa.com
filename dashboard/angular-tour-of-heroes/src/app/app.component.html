@@ -1,27 +1,41 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header class="admin-header">
-
+  <div class="row">
+    <div class="col-md-8">
+      <a class="header-logo" href="" title="beshitza.ru">
+        <img src="assets/img/logo_header.jpg">
+      </a>
+    </div>
+    <div class="col-md-2">
+      RU
+      <label class="switch">
+        <input type="checkbox" class="switch" id="switch-language" [ngModel]="languageEn"  (change)="toggleLanguage()">
+        <span class="slider round"></span>
+      </label>
+      EN
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
 </header>
 <section class="admin-content-wrapper">
-  <div class="menu">
-    <nav>
-      <ul>
-        <li *ngFor="let item of getMenuItems()">
-          <a routerLinkActive="active" routerLink="{{item.getPath()}}">{{item.getName()}}</a>
-          <div class="sub-menu-items">
-            <sub-menu [subMenu]="item.getSubmenu()"></sub-menu>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <div class="content">
-    <header>
-      <h1>{{title}}</h1>
-    </header>
-    <router-outlet></router-outlet>
+  <div class="wrapper">
+    <div class="menu">
+      <nav>
+        <ul class="menu-items">
+          <li *ngFor="let item of getMenuItems()" class="menu-selector-item">
+            <a routerLinkActive="active" routerLink="{{item.getPath()}}">{{item.getName()}}</a>
+            <div class="sub-menu-items">
+              <sub-menu [subMenu]="item.getSubmenu()"></sub-menu>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <header>
+      </header>
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </section>
-<footer class="admin-footer">
-  some genearl infoxjfkdjfkldj
-</footer>

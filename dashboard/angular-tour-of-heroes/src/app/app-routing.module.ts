@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PagesComponent }     from './pages/pages.component';
 import { ImagesComponent }    from './images/images.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {TrainersComponent} from "./trainers/trainers.component";
 
 const routes: Routes = [
     {
@@ -26,10 +26,10 @@ const routes: Routes = [
         },
     },
     {
-        path: 'dashboard',
-        component: DashboardComponent,
+        path: 'trainers',
+        component: TrainersComponent,
         data : {
-            name: 'Расписание'
+            name: 'Тренеры'
         }
     }
 ];

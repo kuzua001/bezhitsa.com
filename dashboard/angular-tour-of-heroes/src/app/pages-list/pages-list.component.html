@@ -1,5 +1,4 @@
-Выберите домен:
-<select [(ngModel)]="selectedDomain">
+<select [(ngModel)]="selectedDomain" class="form-control form-control-lg">
   <option *ngFor='let domain of domains' [value]="domain.id">{{domain.title}}</option>
 </select>
-<div *ngFor='let page of groupedPages[selectedDomain]' (click)="loadPage(page.id)"> {{page.name}} </div>
+<div *ngFor='let page of groupedPages[selectedDomain]' class='navbar-selector-item' (click)="loadPage(page.id)" [ngClass]="{'active':page.id==selectedPageId}"> {{page.name}} </div>

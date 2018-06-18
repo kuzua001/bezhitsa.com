@@ -3,14 +3,14 @@ import { Page } from './models/page.interface';
 import { PageFields } from './models/page-fields.interface';
 import { Domain } from './models/domain.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject, pipe } from 'rxjs';
 
 @Injectable()
 export class PagesService {
 
-  private pagesUrl      = 'http://bezhitsa.test/admin/api/page';
-  private pageFieldsUrl = 'http://bezhitsa.test/admin/api/pageFields';
-  private domainsUrl    = 'http://bezhitsa.test/admin/api/domain';
+  private pagesUrl      = 'http://hotel/admin/api/page';
+  private pageFieldsUrl = 'http://hotel/admin/api/pageFields';
+  private domainsUrl    = 'http://hotel/admin/api/domain';
 
   constructor(private http: HttpClient) {}
 

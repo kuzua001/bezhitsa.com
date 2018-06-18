@@ -3,6 +3,9 @@ import 'rxjs/add/operator/filter';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import {MenuService} from "./menu.service";
 import {MenuItem} from "./models/menu-item";
+import {SelectItemService} from "./select-item.service";
+import {SelectItemEvent} from "./models/select-item-event";
+
 
 @Component({
   selector: 'app-root',
@@ -13,12 +16,23 @@ export class AppComponent {
   title = 'Админка';
   currentMenuContent = null;
   currentRoute    = null;
+  languageEn = false;
 
   constructor(
       private route: ActivatedRoute,
       private router: Router,
       private menuService: MenuService,
+      private selectItemService: SelectItemService,
   ) {
+  }
+
+  toggleLanguage()
+  {
+      this.languageEn = !this.languageEn;
+      this.selectItemService.emit(new SelectItemEvent(SelectItemEvent.Type.LanguageChange, {
+          language : this.languageEn ? 2 : 1
+      }));
+
   }
 
   getMenuItems(): MenuItem[] {

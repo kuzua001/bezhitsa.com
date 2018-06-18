@@ -26,6 +26,18 @@ class ApiController extends ActiveController
 //        return $result;
 //    }
 
+    protected function verbs()
+    {
+        return [
+            'index' => ['GET', 'HEAD'],
+            'view' => ['GET', 'HEAD'],
+            'create' => ['POST'],
+            'update' => ['PUT', 'PATCH'],
+            'delete' => ['DELETE'],
+        ];
+    }
+
+
     public function behaviors()
     {
         $behaviors = parent::behaviors();
@@ -40,7 +52,7 @@ class ApiController extends ActiveController
             ],
         ];
 
-        $behaviors['access'] = [
+       /* $behaviors['access'] = [
             'class' => \yii\filters\AccessControl::className(),
             'only' => ['create', 'update', 'delete'],
             'rules' => [
@@ -50,7 +62,7 @@ class ApiController extends ActiveController
                     'roles' => ['@'],
                 ],
             ],
-        ];
+        ]; */
 
         // В это место мы будем добавлять поведения (читай ниже)
         return $behaviors;

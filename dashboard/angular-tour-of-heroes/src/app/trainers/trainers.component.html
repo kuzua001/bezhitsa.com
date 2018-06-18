@@ -1,0 +1,35 @@
+<div class="content">
+    <div class="module-list">
+        <ul class="trainers-list-element" *ngIf="trainers !== null" [ngClass]="{active: selectedTrainer !== null}" #trainersList>
+            <li class="trainer-item" *ngFor="let trainer of trainers" (click)="loadTrainer(trainer)" [ngClass]="{active: this.selectedTrainer && trainer.id == selectedTrainer.id}">
+                <h2 class="trainer-name">{{trainer.name | wordCountLimit: 2 }}</h2>
+            </li>
+        </ul>
+        <div class="toolbar-element">
+            <div (click)="openModal(createTrainer)"><i class="fa fa-plus"></i></div>
+            <div (click)="openModal(reorderTrainers)"><i class="fa fa-bars"></i></div>
+        </div>
+    </div>
+    <div class="module-editor module-editor-visible" [ngClass]="{'visible': selectedTrainer != null}">
+        <trainer-editor></trainer-editor>
+    </div>
+</div>
+<ng-template #createTrainer>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Создать нового тренера</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>
+            Введите имя вашего любимого тренера:
+        </div>
+        <div>
+            <input type="text" #newTrainerName>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="createNewTrainer(newTrainerName.value)">создать</button>
+        </div>
+    </div>
+</ng-template>

@@ -16,11 +16,10 @@ export class MenuService {
     this.menuItems = [];
     this.menuItems.push( new MenuItem('images', 'Изображения', null));
     this.menuItems.push( new MenuItem('pages', 'Страницы', new SubMenuPages()));
-    this.menuItems.push( new MenuItem('dashboard', 'Расписание', null));
+    this.menuItems.push( new MenuItem('trainers', 'Тренеры', null));
   }
 
   getItems(): MenuItem[] {
     return this.menuItems;
   }
-
 }

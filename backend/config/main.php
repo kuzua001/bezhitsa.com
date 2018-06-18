@@ -53,6 +53,8 @@ return [
                         'texts'      => 'api/text',
                         'page'       => 'api/page',
                         'domain'     => 'api/domain',
+                        'trainer'    => 'api/trainer',
+                        'images'     => 'api/images',
                         'pageFields' => 'api/page-fields',
                     ],
                     'prefix' => 'api'

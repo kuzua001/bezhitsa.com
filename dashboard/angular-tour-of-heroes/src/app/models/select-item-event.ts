@@ -11,6 +11,10 @@ export class SelectItemEvent {
 
 export namespace SelectItemEvent {
 	export enum Type {
-		Page
+		Page,
+		TrainerSelect,
+		TrainerRemove,
+		TrainerClose,
+		LanguageChange
 	}
 }

@@ -1,0 +1,73 @@
+/* Application-wide Styles */
+@import 'sub-menu/sub-menu.component.css';
+@import 'reset.less';
+@import 'mixins.less';
+@import 'ux/toolbar.less';
+@import 'ux/module.less';
+@import 'ux/switch.less';
+
+/**
+бабахаем все стили прямо сюда, временно, разумеется
+*/
+div.menu ul {
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    app-root {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+}
+
+header.admin-header {
+    background-color: #000;
+    height: 50px;
+}
+
+.admin-content-wrapper  {
+    background-color: #dcdcdc;
+    overflow: hidden;
+    flex: 1 0 auto;
+    z-index: 1;
+    display: flex;
+
+    .wrapper {
+        width: 100%;
+        .menu {
+            height: 100%;
+            background-color: #eee;
+            width: 200px;
+            float: left;
+        }
+    }
+}
+
+.navbar-selector-item {
+    border-bottom: 1px solid #444;
+    padding: 10px 20px;
+    text-align: left;
+
+    &:first-of-type {
+        border-top: 1px solid #444;
+    }
+
+    &.active {
+        position: relative;
+        background-color: #c5c5c5;
+        &:after {
+            .triangle(right,#fff,10px);
+        }
+    }
+}
+
+.menu-selector-item {
+    a {
+        padding: 10px 20px;
+        background-color: #d6d6d6;
+    }
+}

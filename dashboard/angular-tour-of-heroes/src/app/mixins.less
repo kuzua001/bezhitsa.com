@@ -1,0 +1,36 @@
+.noradius() {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.triangle(@color,@size) {
+  position: absolute;
+  content: '';
+  display: block;
+  width: @size;
+  height: @size;
+  background: @color;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 1;
+  margin-top: calc(~'-@{size}/2');
+}
+
+.triangle(top,@color,@size) {
+  top: 0;
+  right: 50%;
+  .triangle(@color,@size);
+}
+
+.triangle(right,@color,@size) {
+  top: 50%;
+  right: 0;
+  margin-right: calc(~'-@{size}/2');
+  .triangle(@color,@size);
+}
+
+.bordered-section {
+  border: 1px solid #444;
+  margin: 5px;
+}

@@ -18,9 +18,11 @@ export class PagesListComponent implements OnInit {
   domainsLoaded =  false;
   pagesLoaded =  false;
   selectedDomain: number = 1;
+  selectedPageId: number;
 
   loadPage(pageId: number) {
-    this.selectItemService.emit(new SelectItemEvent(
+      this.selectedPageId = pageId;
+      this.selectItemService.emit(new SelectItemEvent(
         SelectItemEvent.Type.Page,
         {
           pageId : pageId
