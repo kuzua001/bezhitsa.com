@@ -25,6 +25,7 @@ class Section extends Widget
     const TYPE_SLIDER_TABS      = 'slider_tabs';
     const TYPE_TEXT_PAGE        = 'text_page';
     const TYPE_ABOUT_PAGE       = 'about_page';
+    const TYPE_BIG_SLIDER       = 'big_slider';
     const TYPE_TRAINERS_LIST    = 'fitness_trainers';
 
     /**
@@ -71,6 +72,9 @@ class Section extends Widget
                 break;
             case self::TYPE_ABOUT_PAGE:
                 $html .= $this->render('common/about_page');
+                break;
+            case self::TYPE_BIG_SLIDER:
+                $html .= $this->render('common/big_slider');
                 break;
         }
 
