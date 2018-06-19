@@ -61,7 +61,7 @@ $hasLinks = count($links) > 0;
 								<div class="row">
 									<?php foreach ($links as $link) { ?>
 										<div class="col-lg-4">
-											<a href="<?= $link['link'] ?>">
+											<a href="<?= $link['link'] ?>" style="text-decoration: none;">
 												<img src="<?= $link['img'] ?>">
 												<span><?= preg_replace("/^(https:\/\/|http:\/\/|)(.*)\/([(a-z0-9A-Z\_\-\#\.]+)[\/]?$/", "@$3", $link['link']) ?></span>
 											</a>
