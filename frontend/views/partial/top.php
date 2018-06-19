@@ -53,7 +53,7 @@ foreach ($topMenu->getItems() as $i => $item) {
 							<span class="icon-bar"></span>
 						</span>
 						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>">
-							<img src="/img/logo_header_mobile.png">
+                            <img src="/img/svg/main_logo.svg" style="height:45px">
 						</a>
 						<a class='mobile-lang-switcher' href="<?= $lang == LanguageHelper::LANG_EN ? $canonicalUrl : $engUrl ?>">
                             <?= $lang == LanguageHelper::LANG_EN ? 'RU' : 'EN' ?>
@@ -65,7 +65,7 @@ foreach ($topMenu->getItems() as $i => $item) {
 				<div class="row">
 					<div class="col-md-4">
 						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru">
-							<img src="/img/logo_header.jpg">
+                            <img src="/img/svg/main_logo.svg" style="height:45px;vertical-align: middle;"><span style="font-size: 20px;color:#fff;vertical-align: middle;margin-left:5px;top:2px;position: relative;">BEZHITSA</span>
 						</a>
 					</div>
 					<div class="header-menu col-md-5">
