@@ -64,7 +64,7 @@ foreach ($topMenu->getItems() as $i => $item) {
 			<div class="desktop-only container container-90">
 				<div class="row">
 					<div class="col-md-4">
-						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru">
+						<a class="header-logo" href="https://bezhitsa.com<?= LanguageHelper::getBaseUrl() ?>" title="beshitza.ru" style="text-decoration: none;">
                             <img src="/img/svg/main_logo.svg" style="height:45px;vertical-align: middle;"><span style="font-size: 20px;color:#fff;vertical-align: middle;margin-left:5px;top:2px;position: relative;">BEZHITSA</span>
 						</a>
 					</div>
