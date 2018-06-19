@@ -50,6 +50,12 @@ class LandingPageParams extends CmsPageParams
      */
     public $contactsDescriptionText;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->sectionsParams = [];
+    }
+
 
     /**
      * возвращает параметры секции

@@ -1,0 +1,22 @@
+<div class="image-chooser-element">
+    <div>
+        <tabset>
+            <tab heading="Загрузите новый" id="tab1">
+
+            </tab>
+            <tab heading="Выбор из медиатеки">
+                <div class="images">
+                    <div class="content module-editor" *ngIf="images !== null">
+                        <div *ngFor="let image of images; let i = index;" class="image-card" (click)="markImage(i)">
+                            <img #imagesList src="//hotel/{{image.filename}}" (load)="detectOrientation(i)">
+                            <div class="short-description">
+                                {{image.description | wordCountLimit: 3 }}
+                            </div>
+                            <div class="tick" [class.ticked]="multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id"></div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>

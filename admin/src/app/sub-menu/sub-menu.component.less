@@ -1,0 +1,38 @@
+@import '../mixins';
+
+.sub-menu {
+	background-color: #fff;
+	position: relative;
+
+	.navbar-selector-item {
+		border: none!important;
+	}
+}
+
+.triangle.top {
+	.triangle(top,#fff,10px);
+}
+
+.sub-menu-items {
+	display: none;
+}
+
+.active + .sub-menu-items {
+	display: initial;
+}
+
+.menu-items {
+	padding-left: 0;
+	background-color: #eee;
+	li {
+		text-align: center;
+
+		a {
+			color: #444;
+			width: 100%;
+			&.active {
+				background-color: #bbb;
+			}
+		}
+	}
+}

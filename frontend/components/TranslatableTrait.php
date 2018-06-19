@@ -32,6 +32,23 @@ trait TranslatableTrait
         }
     }
 
+    /**
+     * Ожидается, что трейт будет использован только у эктиврекорда
+     * @param $insert
+     * @return mixed
+     */
+    public function beforeSave($insert)
+    {
+        $this->saveTranslations();
+        $lang = LanguageHelper::getCurrentLanguage();
+        if (intval($lang) !== LanguageHelper::getDefaultLanguage()) {
+            foreach ($this->translateFields() as $field) {
+                $this->$field = $this->oldAttributes[$field];
+            }
+        }
+        return parent::beforeSave($insert);
+    }
+
     protected function translateFields() {
         return [];
     }
@@ -96,6 +113,20 @@ trait TranslatableTrait
             foreach ($this->translateFields() as $field) {
                 $translation = $this->getTranslation($field, $lang, true);
                 $this->$field = $translation->value;
+            }
+        }
+    }
+
+    private function saveTranslations() {
+        $lang = LanguageHelper::getCurrentLanguage();
+        if ($lang !== LanguageHelper::getDefaultLanguage()) {
+            foreach ($this->translateFields() as $field) {
+                $translation = $this->getTranslation($field, $lang, true);
+                $translation->value = $this->$field;
+                try {
+                    $translation->save();
+                } catch (Exception $ex) {
+                }
             }
         }
     }

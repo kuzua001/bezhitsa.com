@@ -13,6 +13,7 @@ class PageController extends ApiController
         return [
             'index' => [ 'GET' ],
             'update' => [ 'PUT' ],
+            'create' => ['POST']
         ];
     }
 
@@ -24,7 +25,8 @@ class PageController extends ApiController
             'class' => VerbFilter::className(),
             'actions' => [
                 'index'  => ['get'],
-                'update' => ['put']
+                'update' => ['put'],
+                'create' => ['post']
             ],
         ];
 

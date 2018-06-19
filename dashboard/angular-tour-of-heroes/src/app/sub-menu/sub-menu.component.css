@@ -1,7 +1,0 @@
-.sub-menu-items {
-	display: none;
-}
-
-.active + .sub-menu-items {
-	display: initial;
-}

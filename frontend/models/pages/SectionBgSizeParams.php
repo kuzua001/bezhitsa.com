@@ -36,7 +36,9 @@ class SectionBgSizeParams extends PageParams
     public $noImage;
 
 
-    protected $itemType = 'section_bg';
+    const TYPE_SECTION_BG = 'section_bg';
+
+    protected $itemType = self::TYPE_SECTION_BG;
 
     public function varyingField()
     {
@@ -105,6 +107,9 @@ class SectionBgSizeParams extends PageParams
      */
     public function getViewportPrefix()
     {
+        if (!$this->viewportSize) {
+            $this->viewportSize = 4;
+        }
         return self::$availableViewportPrefixes[$this->viewportSize];
     }
 
@@ -115,6 +120,9 @@ class SectionBgSizeParams extends PageParams
      */
     public function getViewportWidh()
     {
+        if (!$this->viewportSize) {
+            $this->viewportSize = 4;
+        }
         return self::$availableViewportWidth[$this->viewportSize];
     }
 }

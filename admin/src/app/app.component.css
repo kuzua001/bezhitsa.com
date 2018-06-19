@@ -1,0 +1,324 @@
+/* Application-wide Styles */
+@import 'sub-menu/sub-menu.component.css';
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2,
+h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+body,
+input[text],
+button {
+  color: #888;
+  font-family: Cambria, Georgia;
+}
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+nav a {
+  text-decoration: none;
+  display: inline-block;
+  background-color: #eee;
+}
+nav a:visited,
+a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+.card-header {
+  padding: .15rem .15rem!important;
+}
+.btn-link {
+  text-decoration: none!important;
+  color: #444!important;
+}
+accordion-group .panel.card {
+  margin-bottom: 10px;
+}
+.bordered-section {
+  border: 1px solid #444;
+  margin: 5px;
+}
+.shadowed {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.put-right {
+  position: absolute;
+  right: 11px;
+  left: 350px;
+  top: 17px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.toolbar-element {
+  background-color: #fff;
+  text-align: center;
+}
+.toolbar-element div {
+  display: inline-block;
+  border: none;
+  background-color: #fff;
+  padding: 5px;
+}
+.toolbar-element div i {
+  color: #0D47A1;
+  width: 31px;
+  height: 31px;
+  position: relative;
+}
+.toolbar-element div i:before {
+  display: none;
+}
+.toolbar-element div i.fa-plus {
+  background: url('/assets/icons/plus.svg') no-repeat;
+}
+.toolbar-element div i.fa-bars {
+  background: url('/assets/icons/bars.svg') no-repeat 0 3px;
+}
+.module-list {
+  background: #fff;
+}
+.module-list .trainers-list-element,
+.module-list .toolbar-element {
+  display: block;
+}
+.module-editor {
+  background: #fff;
+}
+.module-editor.module-editor-visible:not(.visible) {
+  display: none;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  display: none;
+}
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.switch .slider.round {
+  border-radius: 34px;
+}
+.switch .slider.round:before {
+  border-radius: 50%;
+}
+.switch input:checked + .slider {
+  background-color: #97a0a7;
+}
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #97a0a7;
+}
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;
+}
+.ripple:active {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-size: 100%;
+  transition: background 0s;
+}
+/**
+бабахаем все стили прямо сюда, временно, разумеется
+*/
+div.menu ul {
+  list-style: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+body app-root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.module-wrapper-element {
+  position: relative;
+  flex: 1 1;
+  margin-left: 250px;
+  margin-top: 60px;
+}
+header.admin-header {
+  background-color: #000;
+  height: 50px;
+  right: 0;
+  top: 0;
+  position: fixed;
+  left: 0;
+  z-index: 90;
+}
+.admin-content-wrapper {
+  background-color: #dcdcdc;
+  overflow: hidden;
+  flex: 1 0 auto;
+  z-index: 1;
+  display: flex;
+}
+.admin-content-wrapper > .wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.admin-content-wrapper > .wrapper > .menu {
+  flex: 0 0;
+}
+.admin-content-wrapper > .wrapper > .content {
+  flex: 1 1;
+}
+.admin-content-wrapper .wrapper .menu {
+  height: 100%;
+  background-color: #eee;
+  min-width: 200px;
+  float: left;
+}
+.navbar-selector-item {
+  border-bottom: 1px solid #444;
+  padding: 10px 20px;
+  text-align: left;
+}
+.navbar-selector-item:first-of-type {
+  border-top: 1px solid #444;
+}
+.navbar-selector-item.active {
+  position: relative;
+  background-color: #c5c5c5;
+}
+.menu-selector-item a {
+  padding: 10px 20px;
+  background-color: #d6d6d6;
+}
+.module-menu-element {
+  width: 320px;
+}
+.module-menu-element > div:not(.module-panel) {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.module-menu-element h3 {
+  font-size: 20px;
+  margin-left: 16px;
+  margin-top: 24px;
+}
+.module-menu-element .module-panel {
+  margin-top: 10px;
+  margin-left: 15px;
+  display: inline-flex;
+  flex-direction: row;
+  width: 100%;
+}
+.module-content-element {
+  position: absolute;
+  right: 11px;
+  left: 350px;
+  top: 17px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.large-popup {
+  width: 80%;
+  max-width: none;
+}
+.admin-menu-element {
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  position: fixed;
+  width: 250px;
+  z-index: 90;
+}
+.switch {
+  top: 6px;
+}
+.language-selector-label {
+  display: inline-block;
+  top: -12px;
+  position: relative;
+  margin: 0 10px;
+}
+.module-control-button-element {
+  background-color: #fff;
+  border: none;
+  height: 52px;
+  padding: 0 20px;
+  margin-right: 18px;
+  flex: 0 0;
+  color: #000;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.module-control-button-element.default {
+  background-color: #4a90e2;
+  color: #fff;
+}
+.module-control-button-element.delete {
+  background-color: #888;
+  color: #fff;
+}
+.module-control-button-element:last-child {
+  flex: 1 1;
+  margin-right: 0;
+}
+.page-editor .module-editor {
+  position: absolute;
+  right: 11px;
+  left: 350px;
+  top: 17px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+trainers:not(.integrated) .module-list,
+rooms:not(.integrated) .module-list {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+trainers:not(.integrated) .module-editor,
+rooms:not(.integrated) .module-editor {
+  overflow: hidden;
+}

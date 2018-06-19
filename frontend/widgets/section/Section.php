@@ -8,11 +8,8 @@
 
 namespace frontend\widgets\section;
 
-use frontend\assets\AppAsset;
 use frontend\models\pages\SectionParams;
-use frontend\models\SectionItem;
 use yii\base\Widget;
-use frontend\assets\BootstrapAsset;
 
 class Section extends Widget
 {

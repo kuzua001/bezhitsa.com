@@ -8,8 +8,12 @@
 
 namespace frontend\models;
 
+use common\models\Image;
 use frontend\components\LanguageHelper;
 use frontend\models\cms\logic\DataProviderConfiguration;
+use frontend\models\pages\SectionParams;
+use frontend\models\pages\SliderItemParams;
+use Yii;
 use yii\base\UnknownPropertyException;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
@@ -32,7 +36,6 @@ class PageParams
     private $language;
 
     protected $availableInstances = [];
-
 
     /**
      * список значений натсроек data-провайдеров, по сути это будут настройки фильтров

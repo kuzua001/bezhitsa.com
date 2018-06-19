@@ -16,6 +16,7 @@ use yii\rest\UpdateAction;
 
 class CustomUpdateAction extends UpdateAction
 {
+
     /**
      * Displays a model.
      *
@@ -26,7 +27,8 @@ class CustomUpdateAction extends UpdateAction
     public function run($id)
     {
         $data = json_decode(\Yii::$app->getRequest()->getRawBody(), true);
-        $langId = isset($data['lang']) ? $data['lang'] : LanguageHelper::getDefaultLanguage();
+
+        $langId = \Yii::$app->request->get('lang', LanguageHelper::getDefaultLanguage());
         LanguageHelper::setCurrentLanguage($langId);
 
         $page = Page::id($id);

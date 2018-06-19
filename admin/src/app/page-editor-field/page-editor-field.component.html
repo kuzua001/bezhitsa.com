@@ -1,0 +1,26 @@
+<div class="field">
+  <div class="title"><label for="{{uniqId}}">{{title}}</label></div>
+  <div [ngSwitch]="params.type" class="content" [class.inline]="params.type === 'checkbox'">
+    <div *ngSwitchCase="'string'">
+      <input id={{uniqId}} type="text" [(ngModel)]="valueSet[valueKey]">
+    </div>
+    <div *ngSwitchCase="'select'">
+      <select id={{uniqId}} type="checkbox" [(ngModel)]="valueSet[valueKey]">
+        <option *ngFor="let option in params.options" [value]="option">{{params.options[option]}}</option>
+      </select>
+    </div>
+    <div *ngSwitchCase="'checkbox'">
+      <input id={{uniqId}} type="checkbox" [(ngModel)]="valueSet[valueKey]">
+    </div>
+    <div *ngSwitchCase="'textarea'">
+      <textarea id={{uniqId}} ngxTrumbowygEditor name="editorDirective" [(ngModel)]="valueSet[valueKey]"></textarea>
+    </div>
+    <div *ngSwitchCase="'color'">
+      <input id={{uniqId}} type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
+    </div>
+    <div *ngSwitchCase="'image'">
+      <img *ngIf="imageSrc !== null" width="200px" src="//hotel/{{imageSrc}}">
+      <app-image-chooser (selectedImageId)="selectImage($event)"></app-image-chooser>
+    </div>
+  </div>
+</div>

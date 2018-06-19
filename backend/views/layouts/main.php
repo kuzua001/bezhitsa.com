@@ -23,6 +23,7 @@ $mainTag = isset($this->params['mainTag']) ? $this->params['mainTag'] : 'ng-app'
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <base href="/admin/admin/dist/">
     <?php $this->head() ?>
 </head>
 <body>

@@ -1,0 +1,65 @@
+<select [(ngModel)]="selectedDomain" class="form-control form-control-lg">
+  <option *ngFor='let domain of domains' [value]="domain.id">{{domain.title}}</option>
+</select>
+<div *ngFor='let page of groupedPages[selectedDomain]' class='navbar-selector-item' (click)="loadPage(page)" [ngClass]="{'active':page.id==selectedPageId}"> {{page.name}} </div>
+<div class="toolbar-element">
+  <div (click)="openModal(createPage)"><i class="fa fa-plus"></i></div>
+</div>
+<ng-template #createPage>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Создать новую страницу</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Введите название страницы:
+    </div>
+    <div>
+      <input type="text" #newPageName>
+    </div>
+    <div>
+      Выберите домен:
+    </div>
+    <div>
+      <select #newPageDomain class="form-control form-control-lg" [value]="selectedDomain">
+        <option *ngFor='let domain of domains' [value]="domain.id">{{domain.title}}</option>
+      </select>
+    </div>
+    <div>
+      Введите url:
+    </div>
+    <div>
+      {{findDomainById(newPageDomain.value).base_url}}
+      <input type="text" #newPageUrl>
+    </div>
+    <div>
+      Показывать в меню:
+    </div>
+    <div>
+      <input type="checkbox" #showInMenu>
+    </div>
+    <div>
+      Выберите тип содержимого:
+    </div>
+    <div>
+      <select #newPagePageType class="form-control form-control-lg">
+        <option *ngFor='let pageType of pageTypes' [value]="pageType.id">{{pageType.name}}</option>
+      </select>
+    </div>
+    <div>
+      Выберите способ отображения:
+    </div>
+    <div>
+      <select #newPageAction class="form-control form-control-lg">
+        <option *ngFor='let action of actions' [value]="action.id">{{action.name}}</option>
+      </select>
+    </div>
+
+    <div>
+      <button class="btn btn-primary"
+        (click)="createNewPage(newPageName.value, newPageDomain.value, newPagePageType.value, showInMenu.value, newPageUrl.value, newPageAction.value); modalRef.hide();">создать</button>
+    </div>
+  </div>
+</ng-template>

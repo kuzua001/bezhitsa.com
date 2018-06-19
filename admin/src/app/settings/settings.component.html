@@ -1,0 +1,11 @@
+<div class="settings-container">
+    <div class="settings-sub-group" *ngFor="let subGroupTitle in groupSettings">
+        <header>{{subGroupTitle}}</header>
+        <section class="settings-list">
+            <div *ngFor="let item of groupSettings[subGroupTitle]">
+                <app-page-editor-field [title]="item.key" [params]="item" [valueSet]="item" [valueKey]="'value'"></app-page-editor-field>
+            </div>
+        </section>
+    </div>
+    <button (click)="save()">save</button>
+</div>

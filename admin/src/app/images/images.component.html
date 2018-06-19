@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="images">
+    <div class="content module-editor module-editor-full" *ngIf="images !== null">
+      <div class="image-card">
+          <div class="new-image" accept="image/*" ngxFileDropzone (fileDrop)="dropped($event)" ngxFilePicker (filePick)="dropped($event)">
+            Drop a file in this zone.<br>
+            <i class="fa fa-plus"></i><br>
+            <button accept="image/*">Browse</button>
+          </div>
+      </div>
+      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image)">
+        <img #imagesList src="//hotel/{{image.filename}}" (load)="detectOrientation(i)">
+        <div class="short-description">
+          {{image.description | wordCountLimit: 3 }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #imageEditor>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Настроить создание превью</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <section>
+      <div [ngSwitch]="imageDataForUpdateEditing === null">
+        <img src="//hotel/{{editingImage.filename}}" class="image-for-crop" *ngSwitchCase="true">
+        <img src="{{imageDataForUpdateEditing.content}}" class="image-for-crop" *ngSwitchCase="false">
+      </div>
+
+      <div class="update-image" accept="image/*" ngxFileDropzone (fileDrop)="droppedForUpdate($event)" ngxFilePicker (filePick)="droppedForUpdate($event)">
+        Заменить изображение.<br>
+        <i class="fa fa-plus"></i><br>
+        <button accept="image/*">Выбор</button>
+      </div>
+
+      <div class="cropper-zone">
+
+      </div>
+    </section>
+    <section>
+      <button class="btn btn-primary" (click)="modalRef.hide()">отмена</button>
+      <button class="btn btn-success" (click)="delete()">сохранить</button>
+    </section>
+  </div>
+</ng-template>

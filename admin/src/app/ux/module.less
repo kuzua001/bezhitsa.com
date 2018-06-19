@@ -1,0 +1,23 @@
+@import "../mixins";
+
+.module-list {
+  background: #fff;
+}
+
+
+.module-list .trainers-list-element,
+.module-list .toolbar-element {
+  display: block;
+}
+
+.module-editor {
+  background: #fff;
+
+  &.module-editor-visible:not(.visible) {
+    display: none;
+  }
+
+  &.module-editor-full {
+    //margin-left: 201px;
+  }
+}

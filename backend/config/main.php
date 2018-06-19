@@ -15,7 +15,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
-            'baseUrl' => '/admin',
+            'baseUrl' => '/',
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
             ]
@@ -53,11 +53,18 @@ return [
                         'texts'      => 'api/text',
                         'page'       => 'api/page',
                         'domain'     => 'api/domain',
+                        'trainer'    => 'api/trainer',
+                        'room'       => 'api/room',
+                        'images'     => 'api/images',
                         'pageFields' => 'api/page-fields',
+                        'settings'   => 'api/settings',
+                        'actions'    => 'api/actions',
+                        'pageTypes'  => 'api/page-types',
                     ],
                     'prefix' => 'api'
                 ],
                 'api/files' => 'api/files',
+                'reorder'   => 'api/reorder',
                 [
                     'pattern' => 'page/edit/<pageId:\d+>',
                     'route' => 'dynamic/page-edit',

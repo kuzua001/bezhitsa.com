@@ -8,11 +8,54 @@
 
 namespace frontend\models\pages;
 
+use frontend\interfaces\models\NamedTypeInterface;
 use frontend\models\PageParams;
 use frontend\models\ParamField;
+use frontend\widgets\section\Section;
 
-class SectionParams extends PageParams
+class SectionParams extends PageParams implements NamedTypeInterface
 {
+    private static $typeNames = [
+        Section::TYPE_HOTEL_MAIN             => 'Главная секция отеля',
+        Section::TYPE_CONTACTS_PAGE          => 'Контактная информация',
+        Section::TYPE_FITNESS_MAIN           => 'Главная секция фитнеса',
+        Section::TYPE_FITNESS_SCHEDULE       => 'Секция фитнеса с раписанием',
+        Section::TYPE_FITNESS_STYLE          => 'Секция фитнес - стиль жизни',
+        Section::TYPE_HOTEL_SERVICE          => 'Секция отеля сервис',
+        Section::TYPE_SLIDER_TABS            => 'Информационный слайдер',
+        Section::TYPE_ABOUT_PAGE             => 'Об отеле/фитнесе/ресторане',
+        Section::TYPE_TRAINERS_LIST          => 'Список тренеров',
+        Section::TYPE_TEXT_PAGE              => 'Текстовая секция',
+        SliderItemParams::TYPE_SLIDE         => 'Слайд',
+        SectionBgSizeParams::TYPE_SECTION_BG => 'Фон секции',
+    ];
+
+    public static function typeName($type)
+    {
+        return isset(self::$typeNames[$type]) ? self::$typeNames[$type] : '';
+    }
+
+    public function getTypeName($type)
+    {
+        return self::typeName($type);
+    }
+
+    public function __construct()
+    {
+        $this->sectionTypeName = $this->getTypeName($this->getSectionType());
+        parent::__construct();
+    }
+
+    public function __wakeup()
+    {
+        $this->sectionTypeName = $this->getTypeName($this->getSectionType());
+    }
+
+    /**
+     * @var mixed|string
+     */
+    protected $sectionTypeName;
+
     /**
      * @var $title
      * @title Заголовок секции

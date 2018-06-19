@@ -1,4 +1,6 @@
 <?php
+
+use common\models\Image;
 use frontend\assets\BootstrapAsset;
 use frontend\widgets\buttons\DetailButton;
 use frontend\models\Page;
@@ -66,7 +68,15 @@ BootstrapAsset::register($this);
 			<div class="container container-90">
                 <?php
 
-                $slides = $item->getSlides();
+                $images = $item->getImagesList();
+                $slides = [];
+                foreach ($images as $image) {
+                    /** @var Image $image  */
+                    $slides[] = [
+                            'image' => $image->getSrc(true),
+                            'description' => $image->description
+                    ];
+                }
                 ?>
 				<div class="row">
 					<div class="col-lg-12">

@@ -1,0 +1,199 @@
+/* Application-wide Styles */
+@import 'sub-menu/sub-menu.component.css';
+@import 'reset.less';
+@import 'mixins.less';
+@import 'sizes.less';
+@import 'ux/toolbar.less';
+@import 'ux/module.less';
+@import 'ux/switch.less';
+@import 'ux/material.less';
+
+/**
+бабахаем все стили прямо сюда, временно, разумеется
+*/
+div.menu ul {
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    app-root {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+}
+
+.module-wrapper-element {
+    position: relative;
+    flex: 1 1;
+
+    margin-left: @menu-width;
+    margin-top: @header-height;
+}
+
+header.admin-header {
+    background-color: #000;
+    height: 50px;
+
+    right: 0;
+    top: 0;
+    position: fixed;
+    left: 0;
+    z-index: @menus-index;
+}
+
+.admin-content-wrapper  {
+    background-color: #dcdcdc;
+    overflow: hidden;
+    flex: 1 0 auto;
+    z-index: 1;
+    display: flex;
+
+    &> .wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        &> .menu {
+            flex: 0 0;
+        }
+
+        &> .content {
+            flex: 1 1;
+        }
+    }
+
+    .wrapper {
+        .menu {
+            height: 100%;
+            background-color: #eee;
+            min-width: 200px;
+            float: left;
+        }
+    }
+}
+
+.navbar-selector-item {
+    border-bottom: 1px solid #444;
+    padding: 10px 20px;
+    text-align: left;
+
+    &:first-of-type {
+        border-top: 1px solid #444;
+    }
+
+    &.active {
+        position: relative;
+        background-color: #c5c5c5;
+    }
+}
+
+.menu-selector-item {
+    a {
+        padding: 10px 20px;
+        background-color: #d6d6d6;
+    }
+}
+
+.module-menu-element {
+    width: 320px;
+
+    &> div:not(.module-panel) {
+        box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-left: 16px;
+        margin-top: 24px;
+    }
+
+    .module-panel {
+        margin-top: 10px;
+        margin-left: 15px;
+        display: inline-flex;
+        flex-direction: row;
+        width: 100%;
+    }
+}
+
+.module-content-element {
+    .put-right;
+}
+
+
+.large-popup {
+    width: 80%;
+    max-width: none;
+}
+
+.admin-menu-element {
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    position: fixed;
+
+    width: @menu-width;
+    z-index: @menus-index;
+}
+
+.switch {
+     top: 6px;
+ }
+
+.language-selector-label {
+    display: inline-block;
+    top: -12px;
+    position: relative;
+    margin: 0 10px;
+}
+
+.module-control-button-element {
+    background-color: #fff;
+    border: none;
+    height: 52px;
+    padding: 0 20px;
+    margin-right: 18px;
+    flex: 0 0;
+    color: #000;
+    .shadowed();
+
+    &.default {
+        background-color: #4a90e2;
+        color: #fff;
+    }
+
+    &.delete {
+        background-color: #888;
+        color: #fff;
+    }
+
+    &:last-child {
+        flex: 1 1;
+        margin-right: 0;
+    }
+}
+
+.page-editor {
+    .module-editor {
+        .put-right;
+    }
+}
+
+trainers:not(.integrated),
+rooms:not(.integrated) {
+    .module-list {
+        float: left;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .module-editor {
+        overflow: hidden;
+    }
+}

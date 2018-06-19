@@ -8,6 +8,7 @@
 
 namespace frontend\models\data;
 
+use frontend\components\HasManySrcTrait;
 use frontend\components\LanguageHelper;
 use frontend\components\TranslatableTrait;
 use yii\db\ActiveRecord;
@@ -21,7 +22,7 @@ use frontend\interfaces\models\HasUrl;
  * @property $type_id      integer
  * @property $price_from   integer
  * @property $square       integer
- * @property $images_id    integer
+ * @property $image_ids    string
  * @property $title        string
  * @property $text         string
  * @property $alias        string
@@ -30,6 +31,7 @@ use frontend\interfaces\models\HasUrl;
 class Room extends ActiveRecord implements HasUrl
 {
     use TranslatableTrait;
+    use HasManySrcTrait;
 
     public function afterFind()
     {
@@ -212,7 +214,7 @@ class Room extends ActiveRecord implements HasUrl
             'square',
             'bed_type',
             'persons_type',
-            'images_id',
+            'image_ids',
             'title',
             'text',
             'alias',
@@ -223,7 +225,7 @@ class Room extends ActiveRecord implements HasUrl
     public function scenarios()
     {
         return [
-            'default' => ['id', 'url', 'action_id', 'name', 'is_enabled', 'pages_id', 'domain_id', 'alias', 'tl_room_type']
+            'default' => ['id', 'url', 'action_id', 'title', 'image_ids', 'is_enabled', 'pages_id', 'domain_id', 'alias', 'tl_room_type']
         ];
     }
 }

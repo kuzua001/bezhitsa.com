@@ -1,0 +1,11 @@
+.settings-container {
+  overflow: hidden;
+}
+.settings-sub-group {
+  width: 900px;
+  margin: 20px;
+  border: 1px solid #000;
+}
+.settings-sub-group header {
+  background: #f8efc0;
+}

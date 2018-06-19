@@ -35,18 +35,19 @@ use yii\db\Query;
  * @property $parent_id      integer
  * @property $is_enabled     boolean
  * @property $color          string
+ * @property $show_in_menu   boolean
  */
 class Page extends ActiveRecord
 {
     public function fields()
     {
-        return ['id', 'url', 'action_id', 'name', 'name_en', 'is_enabled', 'pages_id', 'domain_id', 'parent_id'];
+        return ['id', 'url', 'action_id', 'name', 'name_en', 'is_enabled', 'pages_id', 'domain_id', 'parent_id', 'show_in_menu'];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['id', 'url', 'action_id', 'name', 'name_en', 'is_enabled', 'pages_id', 'domain_id', 'parent_id']
+            'default' => ['id', 'url', 'action_id', 'name', 'name_en', 'is_enabled', 'pages_id', 'domain_id', 'parent_id', 'show_in_menu']
         ];
     }
     /**
@@ -94,7 +95,7 @@ class Page extends ActiveRecord
      *
      * @return mixed
      */
-    private function saveParamsData($value)
+    protected function saveParamsData($value)
     {
         switch (LanguageHelper::getCurrentLanguage()) {
             case LanguageHelper::LANG_RU:
@@ -115,6 +116,36 @@ class Page extends ActiveRecord
         if (!is_null($this->pageParams)) {
             $this->pageParams->initFromSerialized($this->getParamsDataSource());
         }
+    }
+
+    public static function create($name, $domainId, $pagesId, $showInMenu, $url, $actionId)
+    {
+        $pageClassName = MetadataExtractor::getClassName(MetadataExtractor::PAGES_MAPPING, $pagesId);
+
+        /** @var Page $page */
+        $page = new $pageClassName();
+        $page->name    = $name;
+        $page->name_en = $name;
+        $page->show_in_menu = $showInMenu;
+        $page->domain_id = $domainId;
+
+        $parentPage = Page::find()->where('domain_id = :domain_id and parent_id is null', [
+            'domain_id' => $domainId
+        ])->one();
+        if ($parentPage instanceof Page) {
+            $page->parent_id = $parentPage->id;
+        }
+
+        $page->pages_id = $pagesId;
+        $page->url = rtrim(Domain::getDomain($domainId)->base_url, '/') . '/' . ltrim($url,'/');
+        $page->action_id = $actionId;
+        $page->initPageParams();
+        LanguageHelper::setCurrentLanguage(LanguageHelper::LANG_RU);
+        $page->save(false);
+        LanguageHelper::setCurrentLanguage(LanguageHelper::LANG_EN);
+        $page->save(false);
+
+        return $page;
     }
 
     /**
@@ -138,6 +169,8 @@ class Page extends ActiveRecord
      */
     public function beforeSave($insert)
     {
+        echo "Saving page: " . $this->id . "\n";
+
         if (parent::beforeSave($insert)) {
             if (!is_null($this->pageParams)) {
                 $this->saveParamsData($this->pageParams->toSerialized());

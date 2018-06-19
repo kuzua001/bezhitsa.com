@@ -4,4 +4,4 @@
 
 $this->title = 'My Yii Application';
 ?>
-<ng-pages></ng-pages>
+<app-root></app-root>

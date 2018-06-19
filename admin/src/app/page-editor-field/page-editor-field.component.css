@@ -1,0 +1,17 @@
+:host .inline {
+  display: inline-block;
+}
+:host .title {
+  display: inline-block;
+  vertical-align: top;
+}
+:host .content input:not([type=checkbox]) {
+  width: 50%;
+  display: block;
+}
+:host .fr-box.fr-inline {
+  border: 1px solid #d4d4d4;
+  margin: 5px;
+  padding: 5px;
+  color: #000;
+}

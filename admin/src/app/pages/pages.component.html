@@ -1,0 +1,109 @@
+<div class="page-editor">
+    <div class="wrapper">
+
+        <div class="module-menu-element" *ngIf="selectedPageId !== null">
+            <h3 *ngIf="selectedPageId == 26">Тренеры</h3>
+            <div class="items-block" *ngIf="selectedPageId == 26">
+                <trainers class="integrated"></trainers>
+            </div>
+
+            <h3 *ngIf="selectedPageId == 19">Номера</h3>
+            <div class="items-block" *ngIf="selectedPageId == 19">
+                <rooms class="integrated"></rooms>
+            </div>
+
+
+            <h3>Список секций</h3>
+            <div class="sections-selector" *ngIf="selectedPageFieldsSections">
+                <div *ngFor="let section of selectedPageFieldsSections.values; index as sectionNumber;"
+                     (click)="selectSection(sectionNumber)" [class.selected]="sectionNumber === selectedSectionNumber" class="item">
+                    {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}
+                    <div class="delete" (click)="deleteSectionWithConfirm()"></div>
+                </div>
+                <div class="sections-panel toolbar-element" *ngIf="selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'">
+                    <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
+                        <div dropdownToggle aria-controls="dropdown-basic">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
+                            role="menu" aria-labelledby="button-triggers-manual">
+                            <li *ngFor="let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']" role="menuitem">
+                                <a class="dropdown-item" (click)="appendSection('sectionsParams', sectionType)">
+                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}
+                                </a>
+                            </li>
+                        </ul>
+                        <div (click)="reorder()"><i class="fa fa-bars"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Общие настройки</h3>
+            <div (click)="selectOther()"  class="general-info">
+                <div class="item" [class.selected]="selectOtherParams === true">Общие настройки</div>
+            </div>
+
+            <div class="module-panel" *ngIf="selectedPageFields !== null">
+                <button (click)="save()" class="ripple module-control-button-element default">Сохранить</button>
+                <a href="{{currentPage.url}}" target="_blank"><button class="ripple module-control-button-element">Просмотр</button></a>
+                <button (click)="deleteWithConfirm()" class="ripple module-control-button-element delete">Удалить</button>
+            </div>
+        </div>
+        <div class="module-content-element">
+            <accordion *ngIf="selectOtherParams == true">
+                <accordion-group heading="Параметры страницы">
+                    {{currentPage.url}}
+                </accordion-group>
+            </accordion>
+            <page-editor *ngIf="selectOtherParams == true && sectionsInited"
+                         [params]="selectedPageFieldsOther.params"
+                         [values]="selectedPageFieldsOther.values"
+                         [uniqKey]="'root'">
+            </page-editor>
+            <page-editor *ngIf="selectedSectionNumber !== null && sectionsInited"
+                         [params]="selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]"
+                         [values]="selectedPageFieldsSections.values[selectedSectionNumber]"
+                         [uniqKey]="'root'">
+            </page-editor>
+        </div>
+    </div>
+</div>
+<ng-template #confirmationDialog class="alert-box">
+    <div class="modal-header">
+        <h4 class="modal-title">Подтвердите действиe</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Удалить страницу?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Нет</button>
+    </div>
+</ng-template>
+
+<ng-template #reorderDialog>
+    <div class="modal-header">
+        <h4 class="modal-title">Поменять местами секции</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <bs-sortable *ngIf="pageFieldsSectionsOrder"
+            [(ngModel)]="pageFieldsSectionsOrder"
+            itemClass="sortable-item"
+            itemActiveClass="sortable-item-active"
+            placeholderItem="Drag here"
+            placeholderClass="placeholderStyle"
+            wrapperClass="sortable-wrapper"
+            fieldName="name"
+        ></bs-sortable>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="reorderApply()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отмена</button>
+    </div>
+</ng-template>

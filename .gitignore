@@ -3,6 +3,7 @@
 /frontend/web/js/typings
 /frontend/web/uploads/
 /frontend/web/js/package-lock.json
+/frontend/web/admin
 /backend/web/css/built
 /backend/web/js/built
 /backend/web/js/typings
@@ -50,3 +51,6 @@ phpunit.phar
 /frontend/web/css/
 !/backend/web/css/legacy/
 /frontend/config/webpack.php
+
+/admin/node_modules
+/admin/dist

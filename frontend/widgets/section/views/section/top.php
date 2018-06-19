@@ -5,6 +5,8 @@
  * Date: 10/15/17
  * Time: 8:06 PM
  */
+
+use common\models\Image;
 use frontend\widgets\section\Section;
 use frontend\models\pages\SectionBgSizeParams;
 use yii\helpers\Html;
@@ -17,9 +19,11 @@ $bgItems       = !empty($sectionParams->bgItems) ? $sectionParams->bgItems : [];
 $bgData        = [];
 
 foreach ($bgItems as $item) {
-	$bgData[] = ['(max-width: ' . $item->getViewportWidh() .'px)', $item->image];
+    $imageId = $item->image;
+    $img = Image::id($imageId);
+	$bgData[] = ['(max-width: ' . $item->getViewportWidh() .'px)', $img->getSrc(true)];
 	if ($item === end($bgItems)) {
-        $bgData[] = ['(min-width: ' . $item->getViewportWidh() .'px)', $item->image];
+        $bgData[] = ['(min-width: ' . $item->getViewportWidh() .'px)', $img->getSrc(true)];
 	}
 }
 ?>

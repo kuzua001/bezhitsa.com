@@ -1,0 +1,56 @@
+.bordered-section {
+  border: 1px solid #444;
+  margin: 5px;
+}
+.shadowed {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.put-right {
+  position: absolute;
+  right: 11px;
+  left: 350px;
+  top: 17px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.sub-menu {
+  background-color: #fff;
+  position: relative;
+}
+.sub-menu .navbar-selector-item {
+  border: none!important;
+}
+.triangle.top {
+  top: 0;
+  right: 50%;
+  position: absolute;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 1;
+  margin-top: calc(-10px/2);
+}
+.sub-menu-items {
+  display: none;
+}
+.active + .sub-menu-items {
+  display: initial;
+}
+.menu-items {
+  padding-left: 0;
+  background-color: #eee;
+}
+.menu-items li {
+  text-align: center;
+}
+.menu-items li a {
+  color: #444;
+  width: 100%;
+}
+.menu-items li a.active {
+  background-color: #bbb;
+}

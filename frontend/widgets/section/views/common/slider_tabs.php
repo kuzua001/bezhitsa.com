@@ -1,4 +1,6 @@
 <?php
+
+use common\models\Image;
 use frontend\widgets\section\Section;
 use frontend\models\pages\SliderTabsSectionParams;
 use yii\helpers\Html;
@@ -13,6 +15,9 @@ $widget = $this->context;
  * @var SliderTabsSectionParams $sectionParams
  */
 $sectionParams = $widget->sectionParams;
+foreach ($sectionParams->slides as $i => $slide) {
+    $sectionParams->slides[$i]->image = Image::id($slide->image)->getSrc(true);
+}
 ?>
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12">
