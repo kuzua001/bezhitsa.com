@@ -1,12 +1,29 @@
 <accordion>
-    <accordion-group heading="{{key}}" *ngFor="let key in params">
-      <div [ngSwitch]="params[key].type">
-        <div *ngSwitchCase="'composite'">
-          <page-editor *ngFor="let section of values[key]" [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
+    <accordion *ngIf="paramsHasGroups" class="super">
+        <accordion-group *ngFor="let group in groupedParamsSet" heading="{{groupedParamsSet[group].title}}" style="color: #f00">
+            <accordion>
+                <accordion-group heading="{{key}}" *ngFor="let key in groupedParamsSet[group].values">
+                    <div [ngSwitch]="params[key].type">
+                        <div *ngSwitchCase="'composite'">
+                            <page-editor *ngFor="let section of values[key]" [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
+                        </div>
+                        <div *ngSwitchDefault>
+                            <input type="text" [(ngModel)]="values[key]">
+                        </div>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </accordion-group>
+    </accordion>
+
+    <accordion-group heading="{{key}} {{params[key].tabTitle}}" *ngFor="let key in notGroupdParams">
+        <div [ngSwitch]="params[key].type">
+            <div *ngSwitchCase="'composite'">
+              <page-editor *ngFor="let section of values[key]" [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
+            </div>
+            <div *ngSwitchDefault>
+                <app-page-editor-field [title]="params[key].title" [type]="params[key].type" [valueSet]="values" [valueKey]="key"></app-page-editor-field>
+            </div>
         </div>
-        <div *ngSwitchDefault>
-          {{values[key]}}
-        </div>
-      </div>
     </accordion-group>
 </accordion>

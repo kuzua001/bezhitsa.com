@@ -1,4 +1,7 @@
 <div class="page-editor">
+    <div class="options-panel" *ngIf="selectedPageFields !== null">
+        <button (click)="save()">save</button>
+    </div>
     <page-editor *ngIf="selectedPageFields !== null"
         [params]="selectedPageFields.params"
         [values]="selectedPageFields.values">

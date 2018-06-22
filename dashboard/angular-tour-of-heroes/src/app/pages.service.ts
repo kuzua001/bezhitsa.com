@@ -22,6 +22,10 @@ export class PagesService {
     return this.http.get<PageFields>(this.pageFieldsUrl + '/' + pageId);
   }
 
+  savePageFields(pageId: number, pageFields: Object) {
+      return this.http.put(this.pageFieldsUrl + '/' + pageId, pageFields);
+  }
+
 
   getDomains(): Observable<Domain[]> {
       return this.http.get<Domain[]>(this.domainsUrl);

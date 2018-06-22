@@ -27,6 +27,7 @@ import {WordCountLimit} from './filters/word-count-limit';
 import { ImageChooserComponent } from './image-chooser/image-chooser.component';
 import { NgForIn } from './ng-for-in.directive';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { PageEditorFieldComponent } from './page-editor-field/page-editor-field.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     TrainerEditorComponent,
     WordCountLimit,
     ImageChooserComponent,
-    NgForIn
+    NgForIn,
+    PageEditorFieldComponent
   ],
   imports: [
     BrowserModule,

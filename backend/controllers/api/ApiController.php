@@ -8,6 +8,7 @@
 namespace backend\controllers\api;
 
 use yii\data\Pagination;
+use yii\filters\VerbFilter;
 use \yii\rest\ActiveController;
 use \yii\data\ActiveDataProvider;
 
@@ -50,6 +51,11 @@ class ApiController extends ActiveController
             'formats' => [
                 'application/json' => \yii\web\Response::FORMAT_JSON,
             ],
+        ];
+
+        $behaviors['verbFilter'] = [
+            'class' => VerbFilter::className(),
+            'actions' => $this->verbs(),
         ];
 
        /* $behaviors['access'] = [
