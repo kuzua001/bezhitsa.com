@@ -1,0 +1,36 @@
+.trainer-editor {
+  padding: 0 10px;
+  position: relative;
+}
+.trainer-editor:not(.active) .close {
+  display: none;
+}
+.trainer-editor .field * {
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+.trainer-editor .field .label {
+  width: 200px;
+  text-align: left;
+  margin-right: 20px;
+  display: inline-block;
+}
+.trainer-editor .close,
+.trainer-editor .cancel {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.image-picker {
+  position: relative;
+}
+.image-picker .img-crop img {
+  width: 400px;
+}
+.image-picker [ngxfiledropzone] {
+  border: 5px dashed #eee;
+  padding: 50px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 10px;
+}

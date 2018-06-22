@@ -1,0 +1,11 @@
+<div class="field">
+  <div class="title">{{title}}</div>
+  <div [ngSwitch]="type" class="content">
+    <div *ngSwitchCase="'string'">
+      <input type="text" [(ngModel)]="valueSet[valueKey]">
+    </div>
+    <div *ngSwitchCase="'textarea'">
+      <textarea type="text" [(ngModel)]="valueSet[valueKey]"></textarea>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.bordered-section {
+  border: 1px solid #444;
+  margin: 5px;
+}
+.module-list {
+  background: #fff;
+  flex: 0 0;
+  width: 300px;
+  box-sizing: content-box;
+}
+.module-list,
+.module-editor {
+  border: 1px solid #444;
+  margin: 5px;
+}
+.module-list .trainers-list-element,
+.module-list .toolbar-element {
+  display: block;
+}
+.module-editor {
+  flex: 1 0 auto;
+  background: #fff;
+}
+.module-editor.module-editor-visible:not(.visible) {
+  display: none;
+}
+.module-editor.module-editor-full {
+  margin-left: 201px;
+}

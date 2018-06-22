@@ -1,0 +1,25 @@
+.toolbar-element {
+  background-color: #fff;
+  text-align: center;
+}
+.toolbar-element div {
+  display: inline-block;
+  border: none;
+  background-color: #fff;
+  padding: 5px;
+}
+.toolbar-element div i {
+  color: #0D47A1;
+  width: 31px;
+  height: 31px;
+  position: relative;
+}
+.toolbar-element div i:before {
+  display: none;
+}
+.toolbar-element div i.fa-plus {
+  background: url('assets/icons/plus.svg') no-repeat;
+}
+.toolbar-element div i.fa-bars {
+  background: url('assets/icons/bars.svg') no-repeat 0 3px;
+}
