@@ -9,7 +9,9 @@
 namespace common\models;
 
 use frontend\interfaces\models\HasSrc;
+use Yii;
 use yii\db\ActiveRecord;
+use \Gumlet\ImageResize;
 
 /**
  * Class Image
@@ -30,12 +32,53 @@ use yii\db\ActiveRecord;
  */
 class Image extends ActiveRecord implements HasSrc
 {
+    private static $baseImagesPath = 'uploads/images/';
+
+    const DEFAULT_TEMPLATE = '{NAME}_{SIZE}.{EXT}';
+
+    const NAME_PLACEHOLDER = 'NAME';
+    const EXT_PLACEHOLDER  = 'EXT';
+    const SIZE_PLACEHOLDER = 'SIZE';
+
+    private $imageName;
+
+    private $imageExt;
+
+    public function afterFind()
+    {
+        $this->parseImageFilename();
+        parent::afterFind();
+    }
+
+    private function createNameFromTemplate($template, $x = 0, $y = 0)
+    {
+        $result = str_replace('{' . self::NAME_PLACEHOLDER . '}', $this->imageName, $template);
+        $result = str_replace('{' . self::EXT_PLACEHOLDER . '}', $this->imageExt, $result);
+        $result = str_replace('{' . self::SIZE_PLACEHOLDER . '}', $x . 'x' . $y, $result);
+
+        return $result;
+    }
+
+    private function parseImageFilename()
+    {
+        $this->imageName = pathinfo($this->filename, PATHINFO_FILENAME);
+        $this->imageExt = pathinfo($this->filename, PATHINFO_EXTENSION);
+    }
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
         return 'cms_images';
+    }
+
+    public static function createName($name, $ext) {
+        return self::$baseImagesPath . $name . '.' . $ext;
+    }
+
+    public function getAbsoluteFileName() {
+        return Yii::getAlias('@frontend/web/' . self::$baseImagesPath) . '/' . $this->filename;
     }
 
     /**
@@ -46,6 +89,18 @@ class Image extends ActiveRecord implements HasSrc
         return $item = self::find()->where('id = :id', [
             'id' => $imageId
         ])->one();
+    }
+
+    /**
+     * @param $x
+     * @param $y
+     * @param string $previewNameTemplate
+     * @throws \Gumlet\ImageResizeException
+     */
+    public function createPreview($x, $y, $previewNameTemplate = self::DEFAULT_TEMPLATE) {
+        $image = new ImageResize($this->getAbsoluteFileName());
+        $image->resizeToBestFit($x, $y);
+        $image->save($this->createNameFromTemplate($previewNameTemplate, $x, $y));
     }
 
     /**
