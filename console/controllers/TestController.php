@@ -25,10 +25,20 @@ use frontend\models\pages\TextPageParams;
 use frontend\models\pages\TextPage;
 use yii\console\Controller;
 use yii;
+use \Gumlet\ImageResize;
+
 
 
 class TestController extends Controller
 {
+
+    public function actionTestCrop()
+    {
+
+        $image = new ImageResize(__DIR__ . '/../../frontend/web/uploads/images/mfresh.jpeg');
+        $image->scale(50);
+        $image->save(__DIR__ . '/../../frontend/web/uploads/images/mfresh2.jpeg');
+    }
 
     public function actionUpdate()
     {

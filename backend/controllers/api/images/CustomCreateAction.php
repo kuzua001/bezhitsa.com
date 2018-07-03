@@ -59,7 +59,7 @@ class CustomCreateAction extends CreateAction
         }
 
         $img = new Image();
-        $img->filename = "uploads/images/{$nameWoExt}.{$type}";
+        $img->filename = Image::createName($nameWoExt, $type);
         $img->description = 'test';
         $img->save();
 

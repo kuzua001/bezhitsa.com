@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild, ViewChildren} from '@angular/core';
 import {ModelService} from "../model.service";
 import {Image} from "../models/image";
 import {ReadFileImpl} from "ngx-file-helpers/src/read-file-impl";
 import {ReadFile} from "ngx-file-helpers";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-images',
@@ -13,7 +14,22 @@ export class ImagesComponent implements OnInit {
 
   private images: Image[];
 
-  constructor(private modelService: ModelService) { }
+  currentImageForCrop: Image|null;
+
+  modalRef: BsModalRef;
+
+  @ViewChildren('imagesList') imageList;
+  @ViewChild('imageCropper') imageCropper: TemplateRef<any>;
+
+  constructor(
+      private modelService: ModelService,
+      private modalService: BsModalService
+  ) { }
+
+  openCropper(x: number, y: number, image: Image) {
+      this.currentImageForCrop = image;
+      this.modalRef = this.modalService.show(this.imageCropper);
+  }
 
   private loadImages()
   {
@@ -26,8 +42,18 @@ export class ImagesComponent implements OnInit {
     this.loadImages();
   }
 
+  public detectOrientation(i: number)
+  {
+      let image = this.imageList.toArray()[i].nativeElement;
+
+      if (image.naturalWidth > image.naturalHeight) {
+          image.classList.add('landscape');
+      } else if (image.naturalWidth < image.naturalHeight) {
+          image.classList.add('portrait');
+      }
+  }
+
   public dropped($event: ReadFile) {
-      console.log($event);
       let content = $event.content;
       this.modelService.createImage($event, (response) => {
           if (response.status === 'success') {
