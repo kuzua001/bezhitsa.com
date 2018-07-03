@@ -1,0 +1,21 @@
+.sections-selector {
+  background-color: #fff;
+  margin-left: 10px;
+  padding: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+}
+.sections-selector + page-editor {
+  background-color: #fff;
+  margin-left: 10px;
+  padding: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  vertical-align: top;
+}
+.sections-selector .selected {
+  background-color: #eee;
+}
+/*# sourceMappingURL=pages.component.css.map */

@@ -26,6 +26,9 @@ export class PagesService {
       return this.http.put(this.pageFieldsUrl + '/' + pageId, pageFields);
   }
 
+  deletePage(pageId: number) {
+      return this.http.delete(this.pageFieldsUrl + '/' + pageId);
+  }
 
   getDomains(): Observable<Domain[]> {
       return this.http.get<Domain[]>(this.domainsUrl);

@@ -1,9 +1,40 @@
 <div class="page-editor">
     <div class="options-panel" *ngIf="selectedPageFields !== null">
         <button (click)="save()">save</button>
+        <button (click)="delete()">save</button>
     </div>
-    <page-editor *ngIf="selectedPageFields !== null"
-        [params]="selectedPageFields.params"
-        [values]="selectedPageFields.values">
-    </page-editor>
+    <div class="wrapper">
+        <div class="sections-selector" *ngIf="selectedPageFieldsSections">
+            <div *ngFor="let sectionNumber in selectedPageFieldsSections.values"
+                 (click)="selectSection(sectionNumber)" [class.selected]="sectionNumber === selectedSectionNumber">
+                {{selectedPageFieldsSections.values[sectionNumber].type}}
+            </div>
+            <div (click)="selectOther()">
+                Общие настройки
+            </div>
+        </div>
+        <page-editor *ngIf="selectOtherParams == true"
+             [params]="selectedPageFieldsOther.params"
+             [values]="selectedPageFieldsOther.values">
+        </page-editor>
+        <page-editor *ngIf="selectedSectionNumber !== null"
+             [params]="selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]"
+             [values]="selectedPageFieldsSections.values[selectedSectionNumber]">
+        </page-editor>
+    </div>
+</div>
+<div class="alert-box">
+    <div class="modal-header">
+        <h4 class="modal-title">Confirm</h4>
+        <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Are you sure want to delete this node?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Yes</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">No</button>
+    </div>
 </div>

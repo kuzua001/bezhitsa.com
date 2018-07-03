@@ -1,0 +1,10 @@
+:host .title {
+    display: inline-block;
+    width: 300px;
+    text-align: right;
+}
+
+:host .content {
+    display: inline-block;
+    width: 500px;
+}
