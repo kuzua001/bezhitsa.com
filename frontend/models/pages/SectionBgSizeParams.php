@@ -36,7 +36,9 @@ class SectionBgSizeParams extends PageParams
     public $noImage;
 
 
-    protected $itemType = 'section_bg';
+    const TYPE_SECTION_BG = 'section_bg';
+
+    protected $itemType = self::TYPE_SECTION_BG;
 
     public function varyingField()
     {

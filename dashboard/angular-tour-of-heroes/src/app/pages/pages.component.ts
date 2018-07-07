@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import { PagesService } from '../pages.service';
 import { Page } from '../models/page.interface';
 import { Domain } from '../models/domain.interface';
@@ -26,15 +26,22 @@ export class PagesComponent implements OnInit {
 	selectedPageFields: PageFields = null;
 	selectedPageFieldsOther: any;
     selectedPageFieldsSections: any;
+    pageFieldsSectionsOrder: any;
 
     selectedSectionNumber: number;
 	selectOtherParams: boolean = false;
-    public onClose: Subject<boolean>;
+    confirmationResult: Subject<boolean>;
+	
+	
+	@ViewChild('confirmationDialog') confirmationDialog;
+	@ViewChild('reorderDialog') reorderDialog;
+    modalRef: BsModalRef;
 
 	constructor(
 		private pageService: PagesService,
 		private selectItemService: SelectItemService,
-        private modalService: BsModalService
+        private modalService: BsModalService,
+        private ref: ChangeDetectorRef
 	) {
 		selectItemService.event$.subscribe((event: SelectItemEvent) => {
 			if (event.itemType === SelectItemEvent.Type.Page) {
@@ -75,17 +82,56 @@ export class PagesComponent implements OnInit {
         this.selectedPageId = pageId;
 	}
 
+	public reorderApply(): void {
+	    let orderedSections = [];
+	    for (let realId in this.pageFieldsSectionsOrder) {
+	        orderedSections[realId] = this.selectedPageFields.values['sectionsParams'][this.pageFieldsSectionsOrder[realId].id];
+        }
+
+        this.selectedPageFields.values['sectionsParams'] = orderedSections;
+	    this.selectedPageFieldsSections.values = orderedSections;
+	    this.modalRef.hide();
+    }
+
     public onConfirm(): void {
-        this.onClose.next(true);
-        this.modalService.hide();
+        this.confirmationResult.next(true);
+        this.modalRef.hide();
     }
 
     public onCancel(): void {
-        this.onClose.next(false);
-        this.modalService.hide();
+        this.confirmationResult.next(false);
+        this.modalRef.hide();
+    }
+
+
+    public prepareSectionInstance(sectionInstance, sectionType: string, fieldName: string) {
+        let newSection = {
+            sectionType: sectionType,
+            type: sectionType,
+            sectionTypeName: this.selectedPageFields.params[fieldName]['instancesLabels'][sectionType]
+        };
+
+        for (let key in sectionInstance) {
+            if (sectionInstance[key].type !== 'composite') {
+                newSection[key] = sectionInstance[key].default;
+            } else {
+                newSection[key] = [];
+            }
+        }
+
+        return newSection;
+	}
+
+    public appendSection(fieldName: string = 'sectionsParams', sectionType: string) {
+	    let newSection = this.prepareSectionInstance(this.selectedPageFields.params[fieldName]['availableInstances'][sectionType], sectionType, fieldName);
+
+	    this.selectedPageFields.values[fieldName].push(newSection);
+
+	    this.initSectionsAndOther(this.selectedPageFields);
     }
 
     initSectionsAndOther(pageFields: PageFields) {
+        this.selectedSectionNumber = null;
         this.selectedPageFieldsOther = {
         	params: [],
 			values: []
@@ -93,20 +139,35 @@ export class PagesComponent implements OnInit {
 
         this.selectedPageFieldsSections = {
             params: {},
-            values: {},
+            values: [],
         };
 
+        this.pageFieldsSectionsOrder = [];
+
+        let orderId = 0;
     	for (let key in pageFields.params) {
     		if (key === 'sectionsParams') {
     			this.selectedPageFieldsSections = {
     				params: pageFields.params['sectionsParams'],
-    				values: pageFields.values['sectionsParams'],
-				}
+    				values: Object.values(pageFields.values['sectionsParams']),
+				};
+    			for (let sectionIndex in pageFields.values['sectionsParams']) {
+    			    let sectionName = pageFields.values['sectionsParams'][sectionIndex].type; //todo - change this name to norm.. :)
+
+                    this.pageFieldsSectionsOrder.push({
+                        id: orderId,
+                        name: sectionName
+                    });
+                    orderId ++;
+    			}
 			} else {
     			this.selectedPageFieldsOther.params.push(pageFields.params[key]);
     			this.selectedPageFieldsOther.values.push(pageFields.values[key]);
 			}
 		}
+
+		console.log('Order is:');
+		console.log(this.pageFieldsSectionsOrder);
 	}
 
     getPageFieldsValues(params, values): any {
@@ -131,15 +192,29 @@ export class PagesComponent implements OnInit {
 	}
 
 	save(): void {
+	    //for (let section)
+
 	    this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values))
             .subscribe();
     }
 
-    delete(confirm: boolean): void {
-    	if (!confirm || this.onConfirm()) {
-            this.pageService.deletePage(this.selectedPageId)
-                .subscribe();
-		}
+
+    deleteWithConfirm(): void {
+        this.modalRef = this.modalService.show(this.confirmationDialog);
+        this.confirmationResult.subscribe(result => {
+            if (result === true) {
+            	this.delete();
+			}
+        });
+	}
+
+    reorder(): void {
+        this.modalRef = this.modalService.show(this.reorderDialog);
+    }
+
+    delete(): void {
+		this.pageService.deletePage(this.selectedPageId)
+			.subscribe();
     }
 
 	groupPages(): void {
@@ -175,7 +250,9 @@ export class PagesComponent implements OnInit {
 	}
 
 	ngOnInit() {
-        this.onClose = new Subject();
+        this.confirmationResult = new Subject();
+
+        this.selectedSectionNumber = null;
 
 		this.getPages();
 		this.getDomains();

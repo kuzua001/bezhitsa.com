@@ -4,8 +4,11 @@
     <div *ngSwitchCase="'string'">
       <input type="text" [(ngModel)]="valueSet[valueKey]">
     </div>
+    <div *ngSwitchCase="'checkbox'">
+      <input type="checkbox" [(ngModel)]="valueSet[valueKey]">
+    </div>
     <div *ngSwitchCase="'textarea'">
-      <textarea type="text" [(ngModel)]="valueSet[valueKey]"></textarea>
+      <div [froalaEditor]="froalaSettings"  [(froalaModel)]="valueSet[valueKey]"></div>
     </div>
   </div>
 </div>

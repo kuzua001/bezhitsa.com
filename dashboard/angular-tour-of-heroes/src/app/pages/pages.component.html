@@ -1,15 +1,32 @@
 <div class="page-editor">
     <div class="options-panel" *ngIf="selectedPageFields !== null">
         <button (click)="save()">save</button>
-        <button (click)="delete()">save</button>
+        <button (click)="deleteWithConfirm()">delete</button>
+        <button (click)="reorder()">reorder</button>
     </div>
     <div class="wrapper">
         <div class="sections-selector" *ngIf="selectedPageFieldsSections">
-            <div *ngFor="let sectionNumber in selectedPageFieldsSections.values"
+            <div *ngFor="let section of selectedPageFieldsSections.values; index as sectionNumber;"
                  (click)="selectSection(sectionNumber)" [class.selected]="sectionNumber === selectedSectionNumber">
-                {{selectedPageFieldsSections.values[sectionNumber].type}}
+                {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}
+                <div class="delete" (click)="deleteSectionWithConfirm()"></div>
             </div>
-            <div (click)="selectOther()">
+            <div class="sections-panel" *ngIf="selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'">
+                <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
+                    <button dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic">
+                        Добавить секцию <i class="fa fa-plus"></i>
+                    </button>
+                    <ul id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu"
+                        role="menu" aria-labelledby="button-triggers-manual">
+                        <li *ngFor="let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']" role="menuitem">
+                            <a class="dropdown-item" (click)="appendSection('sectionsParams', sectionType)">
+                                {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div (click)="selectOther()"  [class.selected]="selectOtherParams === true">
                 Общие настройки
             </div>
         </div>
@@ -23,10 +40,10 @@
         </page-editor>
     </div>
 </div>
-<div class="alert-box">
+<ng-template #confirmationDialog class="alert-box">
     <div class="modal-header">
         <h4 class="modal-title">Confirm</h4>
-        <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -34,7 +51,31 @@
         Are you sure want to delete this node?
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Yes</button>
-        <button type="button" class="btn btn-secondary" (click)="onCancel()">No</button>
+        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Нет</button>
     </div>
-</div>
+</ng-template>
+
+<ng-template #reorderDialog>
+    <div class="modal-header">
+        <h4 class="modal-title">Поменять местами секции</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <bs-sortable *ngIf="pageFieldsSectionsOrder"
+                [(ngModel)]="pageFieldsSectionsOrder"
+                itemClass="sortable-item"
+                itemActiveClass="sortable-item-active"
+                placeholderItem="Drag here"
+                placeholderClass="placeholderStyle"
+                wrapperClass="sortable-wrapper"
+                fieldName="name"
+        ></bs-sortable>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="reorderApply()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отмена</button>
+    </div>
+</ng-template>

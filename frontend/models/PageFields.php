@@ -9,6 +9,7 @@
 namespace frontend\models;
 
 
+use frontend\models\pages\SectionParams;
 use yii\base\Object;
 
 class PageFields extends Object
@@ -59,10 +60,17 @@ class PageFields extends Object
      * @param       $availableInstances (PageFields)[]
      */
     public function addCompositeField($key, $isArr, array $availableInstances, $tabTitle = '') {
+        $labels = [];
+
+        foreach ($availableInstances as $type => $instance) {
+            $labels[$type] = SectionParams::typeName($type);
+        }
+
         $this->params[$key] = [
             'key'  => $key,
             'type' => $isArr ? self::TYPE_COMPOSITE : self::TYPE_COMPOSITE_ARR,
             'availableInstances' => $availableInstances,
+            'instancesLabels' => $labels,
             'tabTitle' => $tabTitle
         ];
     }

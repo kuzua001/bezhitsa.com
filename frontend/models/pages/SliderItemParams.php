@@ -8,7 +8,6 @@
 
 namespace frontend\models\pages;
 
-
 use frontend\models\PageParams;
 
 
@@ -76,9 +75,9 @@ class SliderItemParams extends PageParams
      */
     public $cardTitleThird;
 
+    const TYPE_SLIDE = 'simple_slide';
 
-
-    protected $sliderItemType = 'simple_slide';
+    protected $sliderItemType = self::TYPE_SLIDE;
 
     public function varyingField()
     {

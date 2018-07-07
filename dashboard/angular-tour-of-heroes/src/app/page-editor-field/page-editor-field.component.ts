@@ -14,6 +14,10 @@ export class PageEditorFieldComponent implements OnInit {
   @Input() type: any;
   @Input() title: any;
 
+  public froalaSettings: Object = {
+      toolbarInline: true,
+  };
+
   ngOnInit() {
   }
 

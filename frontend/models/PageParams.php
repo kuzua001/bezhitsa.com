@@ -10,6 +10,7 @@ namespace frontend\models;
 
 use frontend\components\LanguageHelper;
 use frontend\models\cms\logic\DataProviderConfiguration;
+use frontend\models\pages\SectionParams;
 use yii\base\UnknownPropertyException;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
@@ -32,7 +33,6 @@ class PageParams
     private $language;
 
     protected $availableInstances = [];
-
 
     /**
      * список значений натсроек data-провайдеров, по сути это будут настройки фильтров

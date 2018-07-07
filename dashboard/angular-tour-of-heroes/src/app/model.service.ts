@@ -68,6 +68,18 @@ export class ModelService {
             });
     }
 
+    public updateImage(imageData: ReadFile, image: Image, callback: Function) {
+        return this.http.put(this.baseUrl + Image.getApiMethodName() + '/' + image.id, {
+            content: imageData.content,
+            filename: imageData.name
+        }, httpOptions)
+            .subscribe(response => {
+                if (callback instanceof Function) {
+                    callback(response);
+                }
+            });
+    }
+
     //common
 
     private getModelListing<T>(apiMethod: string): Observable<T[]> {

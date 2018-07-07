@@ -14,21 +14,25 @@ export class ImagesComponent implements OnInit {
 
   private images: Image[];
 
-  currentImageForCrop: Image|null;
+  imageDataForUpdateEditing: ReadFile;
+
+  editingImage: Image|null;
 
   modalRef: BsModalRef;
 
   @ViewChildren('imagesList') imageList;
-  @ViewChild('imageCropper') imageCropper: TemplateRef<any>;
+  @ViewChild('imageEditor') imageEditor: TemplateRef<any>;
 
   constructor(
       private modelService: ModelService,
       private modalService: BsModalService
-  ) { }
+  ) {
+      this.imageDataForUpdateEditing = null;
+  }
 
-  openCropper(x: number, y: number, image: Image) {
-      this.currentImageForCrop = image;
-      this.modalRef = this.modalService.show(this.imageCropper);
+  openEditor(image: Image) {
+      this.editingImage = image;
+      this.modalRef = this.modalService.show(this.imageEditor);
   }
 
   private loadImages()
@@ -60,5 +64,9 @@ export class ImagesComponent implements OnInit {
               this.images.unshift(response.image);
           }
       });
+  }
+
+  public droppedForUpdate($event: ReadFile) {
+      this.imageDataForUpdateEditing = $event;
   }
 }

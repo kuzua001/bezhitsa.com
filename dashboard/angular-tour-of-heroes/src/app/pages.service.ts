@@ -27,7 +27,7 @@ export class PagesService {
   }
 
   deletePage(pageId: number) {
-      return this.http.delete(this.pageFieldsUrl + '/' + pageId);
+      return this.http.delete(this.pagesUrl + '/' + pageId);
   }
 
   getDomains(): Observable<Domain[]> {

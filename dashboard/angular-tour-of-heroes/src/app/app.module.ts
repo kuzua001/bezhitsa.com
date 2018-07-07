@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import {ModalModule, TabsModule} from 'ngx-bootstrap';
+import {ModalModule, SortableModule, TabsModule} from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { PagesComponent } from './pages/pages.component';
@@ -24,6 +24,8 @@ import { TrainerEditorComponent } from './trainer-editor/trainer-editor.componen
 import { FileHelpersModule } from 'ngx-file-helpers';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {WordCountLimit} from './filters/word-count-limit';
+import {Values} from './filters/values';
+import {Keys} from './filters/keys';
 import { ImageChooserComponent } from './image-chooser/image-chooser.component';
 import { NgForIn } from './ng-for-in.directive';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
@@ -42,6 +44,8 @@ import { PageEditorFieldComponent } from './page-editor-field/page-editor-field.
     PagesListComponent,
     TrainerEditorComponent,
     WordCountLimit,
+    Values,
+    Keys,
     ImageChooserComponent,
     NgForIn,
     PageEditorFieldComponent
@@ -58,7 +62,8 @@ import { PageEditorFieldComponent } from './page-editor-field/page-editor-field.
     FileHelpersModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    SortableModule.forRoot(),
   ],
   providers: [
     PagesService, MenuService, SelectItemService, ModelService

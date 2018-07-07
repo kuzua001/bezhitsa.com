@@ -8,7 +8,7 @@
             <button accept="image/*">Browse</button>
           </div>
       </div>
-      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openCropper(100, 100, image)">
+      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image)">
         <img #imagesList src="//hotel/{{image.filename}}" (load)="detectOrientation(i)">
         <div class="short-description">
           {{image.description | wordCountLimit: 3 }}
@@ -17,7 +17,7 @@
     </div>
   </div>
 </div>
-<ng-template #imageCropper>
+<ng-template #imageEditor>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Настроить создание превью</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -26,14 +26,24 @@
   </div>
   <div class="modal-body">
     <section>
-      <img src="//hotel/{{currentImageForCrop.filename}}" class="image-for-crop">
+      <div [ngSwitch]="imageDataForUpdateEditing === null">
+        <img src="//hotel/{{editingImage.filename}}" class="image-for-crop" *ngSwitchCase="true">
+        <img src="{{imageDataForUpdateEditing.content}}" class="image-for-crop" *ngSwitchCase="false">
+      </div>
+
+      <div class="update-image" accept="image/*" ngxFileDropzone (fileDrop)="droppedForUpdate($event)" ngxFilePicker (filePick)="droppedForUpdate($event)">
+        Заменить изображение.<br>
+        <i class="fa fa-plus"></i><br>
+        <button accept="image/*">Выбор</button>
+      </div>
+
       <div class="cropper-zone">
 
       </div>
     </section>
     <section>
       <button class="btn btn-primary" (click)="modalRef.hide()">отмена</button>
-      <button class="btn btn-danger" (click)="delete()">да, удалить</button>
+      <button class="btn btn-success" (click)="delete()">сохранить</button>
     </section>
   </div>
 </ng-template>

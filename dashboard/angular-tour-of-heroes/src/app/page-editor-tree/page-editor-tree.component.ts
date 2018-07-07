@@ -23,6 +23,33 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
     this.initGroupedParamsInfo();
   }
 
+  public prepareInstance(instanceParams, sectionType: string, fieldName: string) {
+      let newSection = {
+          sectionType: sectionType,
+          type: sectionType,
+          sectionTypeName: this.params[fieldName]['instancesLabels'][sectionType]
+      };
+
+      for (let key in instanceParams) {
+          if (instanceParams[key].type !== 'composite') {
+              newSection[key] = instanceParams[key].default;
+          } else {
+              newSection[key] = [];
+          }
+      }
+
+      return newSection;
+  }
+
+  public appendInstance(key: string, instanceType: string) {
+      console.log(key);
+      console.log(instanceType);
+
+      let newInstance = this.prepareInstance(this.params[key]['availableInstances'][instanceType], instanceType, key);
+
+      this.values[key].push(newInstance);
+  }
+
   initGroupedParamsInfo() {
     this.groupedParamsSet = {};
     this.notGroupdParams = {};
