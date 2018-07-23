@@ -30,6 +30,10 @@ import { ImageChooserComponent } from './image-chooser/image-chooser.component';
 import { NgForIn } from './ng-for-in.directive';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { PageEditorFieldComponent } from './page-editor-field/page-editor-field.component';
+import { ColorPickerModule } from 'ngx-color-picker';
+import {RoomEditorComponent} from "./room-editor/room-editor.component";
+import {RoomsComponent} from "./rooms/rooms.component";
+
 
 @NgModule({
   declarations: [
@@ -37,12 +41,14 @@ import { PageEditorFieldComponent } from './page-editor-field/page-editor-field.
     PagesComponent,
     ImagesComponent,
     TrainersComponent,
+    RoomsComponent,
     PageComponent,
     PageEditorTreeComponent,
     SubMenuComponent,
     SubMenuPagesComponent,
     PagesListComponent,
     TrainerEditorComponent,
+    RoomEditorComponent,
     WordCountLimit,
     Values,
     Keys,
@@ -64,6 +70,7 @@ import { PageEditorFieldComponent } from './page-editor-field/page-editor-field.
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
     SortableModule.forRoot(),
+    ColorPickerModule
   ],
   providers: [
     PagesService, MenuService, SelectItemService, ModelService

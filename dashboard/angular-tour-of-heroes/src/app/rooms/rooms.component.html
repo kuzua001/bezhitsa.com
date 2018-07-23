@@ -1,0 +1,35 @@
+<div class="content">
+    <div class="module-list">
+        <ul class="object-list-element" *ngIf="rooms !== null" [ngClass]="{active: selectedRoom !== null}" #trainersList>
+            <li class="object-item" *ngFor="let room of rooms" (click)="loadRoom(room)" [ngClass]="{active: this.selectedRoom && room.id == selectedRoom.id}">
+                <h2 class="object-name">{{room.title | wordCountLimit: 2 }}</h2>
+            </li>
+        </ul>
+        <div class="toolbar-element">
+            <div (click)="openModal(createRoom)"><i class="fa fa-plus"></i></div>
+            <div (click)="openModal(reorderRooms)"><i class="fa fa-bars"></i></div>
+        </div>
+    </div>
+    <div class="module-editor module-editor-visible" [ngClass]="{'visible': selectedRoom != null}">
+        <room-editor></room-editor>
+    </div>
+</div>
+<ng-template #createRoom>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Создание нового номера</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>
+            Введите название номера:
+        </div>
+        <div>
+            <input type="text" #newRoomName>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="createNewRoom(newRoomName.value)">создать</button>
+        </div>
+    </div>
+</ng-template>

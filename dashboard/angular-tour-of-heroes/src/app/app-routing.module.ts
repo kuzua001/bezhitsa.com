@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent }     from './pages/pages.component';
 import { ImagesComponent }    from './images/images.component';
 import {TrainersComponent} from "./trainers/trainers.component";
+import {RoomsComponent} from "./rooms/rooms.component";
 
 const routes: Routes = [
     {
@@ -30,6 +31,13 @@ const routes: Routes = [
         component: TrainersComponent,
         data : {
             name: 'Тренеры'
+        }
+    },
+    {
+        path: 'rooms',
+        component: RoomsComponent,
+        data : {
+            name: 'Номера'
         }
     }
 ];

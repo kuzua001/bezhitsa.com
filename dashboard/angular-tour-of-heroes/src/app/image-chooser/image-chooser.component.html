@@ -6,12 +6,13 @@
             </tab>
             <tab heading="Выбор из медиатеки">
                 <div class="images">
-                    <div class="content module-editor module-editor-full" *ngIf="images !== null">
-                        <div *ngFor="let image of images" class="image-card">
-                            <img src="//hotel/{{image.filename}}" (click)="onSelectImage(image.id)" style="width: 300px;">
+                    <div class="content module-editor" *ngIf="images !== null">
+                        <div *ngFor="let image of images; let i = index;" class="image-card" (click)="markImage(i)">
+                            <img #imagesList src="//hotel/{{image.filename}}" (load)="detectOrientation(i)">
                             <div class="short-description">
                                 {{image.description | wordCountLimit: 3 }}
                             </div>
+                            <div class="tick" [class.ticked]="multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id"></div>
                         </div>
                     </div>
                 </div>

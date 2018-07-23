@@ -5,6 +5,7 @@ import {Trainer} from "./models/trainer";
 import {Image} from "./models/image";
 import {ReadFileImpl} from "ngx-file-helpers/src/read-file-impl";
 import {ReadFile} from "ngx-file-helpers";
+import {Room} from "./models/room";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -21,6 +22,25 @@ export class ModelService {
     constructor(private http: HttpClient) {
     }
 
+
+    //rooms
+
+    public getRooms(): Observable<Room[]> {
+        return this.getModelListing<Room>(Room.getApiMethodName());
+    }
+
+    public saveRoom(room: Room) {
+        return this.http.put(this.baseUrl + Room.getApiMethodName() + '/' + room.id, room.forSave())
+            .subscribe();
+    }
+
+    public deleteRoom(room: Room) {
+        return this.http.delete(this.baseUrl + Room.getApiMethodName() + '/' + room.id);
+    }
+
+    public createRoom(room: Room): Observable<Object> {
+        return this.http.post<Room>(this.baseUrl + Room.getApiMethodName(), room, httpOptions);
+    }
 
     //trainers
 
@@ -47,8 +67,9 @@ export class ModelService {
         return this.getModelListing<Image>(Image.getApiMethodName());
     }
 
+
     public saveImage(image: Image) {
-        return this.http.put(this.baseUrl + Trainer.getApiMethodName() + '/' + image.id, image)
+        return this.http.put(this.baseUrl + Image.getApiMethodName() + '/' + image.id, image)
             .subscribe();
     }
 

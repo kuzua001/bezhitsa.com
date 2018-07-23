@@ -8,7 +8,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 @Component({
   selector: 'trainers',
   templateUrl: './trainers.component.html',
-  styleUrls: ['./trainers.component.css'],
+  styleUrls: ['../common/object-list.component.css'],
 })
 export class TrainersComponent implements OnInit {
 

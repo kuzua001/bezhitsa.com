@@ -18,6 +18,12 @@ export class PageEditorFieldComponent implements OnInit {
       toolbarInline: true,
   };
 
+  public setVal(value: any) {
+      console.log(this.valueKey);
+      console.log(value);
+      this.valueSet[this.valueKey] = value;
+  }
+
   ngOnInit() {
   }
 

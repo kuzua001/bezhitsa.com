@@ -10,5 +10,8 @@
     <div *ngSwitchCase="'textarea'">
       <div [froalaEditor]="froalaSettings"  [(froalaModel)]="valueSet[valueKey]"></div>
     </div>
+    <div *ngSwitchCase="'color'">
+      <input type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
+    </div>
   </div>
 </div>

@@ -17,6 +17,7 @@ export class MenuService {
     this.menuItems.push( new MenuItem('images', 'Изображения', null));
     this.menuItems.push( new MenuItem('pages', 'Страницы', new SubMenuPages()));
     this.menuItems.push( new MenuItem('trainers', 'Тренеры', null));
+    this.menuItems.push( new MenuItem('rooms', 'Номера', null));
   }
 
   getItems(): MenuItem[] {

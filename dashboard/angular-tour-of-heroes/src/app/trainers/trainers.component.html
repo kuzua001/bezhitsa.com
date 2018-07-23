@@ -1,8 +1,8 @@
 <div class="content">
     <div class="module-list">
-        <ul class="trainers-list-element" *ngIf="trainers !== null" [ngClass]="{active: selectedTrainer !== null}" #trainersList>
-            <li class="trainer-item" *ngFor="let trainer of trainers" (click)="loadTrainer(trainer)" [ngClass]="{active: this.selectedTrainer && trainer.id == selectedTrainer.id}">
-                <h2 class="trainer-name">{{trainer.name | wordCountLimit: 2 }}</h2>
+        <ul class="object-list-element" *ngIf="trainers !== null" [ngClass]="{active: selectedTrainer !== null}" #trainersList>
+            <li class="object-item" *ngFor="let trainer of trainers" (click)="loadTrainer(trainer)" [ngClass]="{active: this.selectedRoom && trainer.id == selectedTrainer.id}">
+                <h2 class="object-name">{{trainer.name | wordCountLimit: 2 }}</h2>
             </li>
         </ul>
         <div class="toolbar-element">

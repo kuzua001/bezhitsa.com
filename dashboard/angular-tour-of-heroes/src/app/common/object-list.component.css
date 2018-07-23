@@ -1,0 +1,48 @@
+.content {
+  display: flex;
+  flex-direction: row;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+.object-list-element {
+  padding: 0;
+  max-height: 70vh;
+  overflow-y: scroll;
+  min-width: 200px;
+}
+.object-list-element li {
+  list-style: none;
+  padding: 10px 20px;
+  height: 43px;
+}
+.object-name {
+  font-size: 17px;
+  overflow: hidden;
+}
+.object-id {
+  float: left;
+  margin-right: 8px;
+}
+.object-item.active {
+  background-color: #eee;
+}
+.object-list-element.active {
+  width: 300px;
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  transition: width 0.5s;
+}
+.object-list-element:not(.active) {
+  width: 200px;
+  -webkit-transition: width 0.5s;
+  -moz-transition: width 0.5s;
+  transition: width 0.5s;
+}

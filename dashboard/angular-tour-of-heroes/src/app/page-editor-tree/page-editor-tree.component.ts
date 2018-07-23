@@ -1,6 +1,7 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {PageFields} from "../models/page-fields.interface";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: 'page-editor',
@@ -15,6 +16,53 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
   paramsHasGroups: boolean;
   groupedParamsSet: any;
   notGroupdParams: any;
+
+  selectedInstanceOrder: Array<any>;
+  selectedInstanceKey: string;
+
+  public reorder(key: string) {
+      this.prepareSelectedInstanceOrder(key);
+      this.openModal(this.reorderDialog);
+  }
+
+  private prepareSelectedInstanceOrder(key: string) {
+      this.selectedInstanceKey = key;
+      this.selectedInstanceOrder = [];
+      let orderId = 0;
+
+      for (let instance of this.values[key]) {
+          this.selectedInstanceOrder.push({
+              id: orderId,
+              name: this.params[key]['instancesLabels'][instance.type]
+          });
+          orderId ++;
+      }
+  }
+
+  public reorderApply() {
+      let orderedSections = [];
+      for (let realId in this.selectedInstanceOrder) {
+          orderedSections[realId] = this.values[this.selectedInstanceKey][this.selectedInstanceOrder[realId].id];
+      }
+
+      this.values[this.selectedInstanceKey] = orderedSections;
+      this.modalRef.hide();
+  }
+
+  @ViewChild('reorderDialog') reorderDialog: any;
+
+  modalRef: BsModalRef;
+
+  openModal(template: TemplateRef<any>) {
+      this.modalRef = this.modalService.show(template);
+  }
+
+
+  public constructor(
+      private modalService: BsModalService
+  ) {
+
+  }
 
   ngOnInit() {
     this.initGroupedParamsInfo();
@@ -41,6 +89,16 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
       return newSection;
   }
 
+  public deleteInstanceWithConfirm(key: string, instanceIndex: number) {
+      this.deleteInstance(key, instanceIndex);
+  }
+
+  public deleteInstance(key: string, instanceIndex: number) {
+      this.values[key].splice(instanceIndex, 1);
+      console.log(this.values[key].length);
+      console.log(this.values[key]);
+  }
+
   public appendInstance(key: string, instanceType: string) {
       console.log(key);
       console.log(instanceType);
@@ -48,6 +106,7 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
       let newInstance = this.prepareInstance(this.params[key]['availableInstances'][instanceType], instanceType, key);
 
       this.values[key].push(newInstance);
+
   }
 
   initGroupedParamsInfo() {

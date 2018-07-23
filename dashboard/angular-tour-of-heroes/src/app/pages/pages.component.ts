@@ -133,7 +133,7 @@ export class PagesComponent implements OnInit {
     initSectionsAndOther(pageFields: PageFields) {
         this.selectedSectionNumber = null;
         this.selectedPageFieldsOther = {
-        	params: [],
+        	params: {},
 			values: []
 		};
 
@@ -151,8 +151,10 @@ export class PagesComponent implements OnInit {
     				params: pageFields.params['sectionsParams'],
     				values: Object.values(pageFields.values['sectionsParams']),
 				};
-    			for (let sectionIndex in pageFields.values['sectionsParams']) {
-    			    let sectionName = pageFields.values['sectionsParams'][sectionIndex].type; //todo - change this name to norm.. :)
+    			for (let section of pageFields.values['sectionsParams']) {
+    			    let sectionType = section.type;
+    			    let sectionName = pageFields.params[key]['instancesLabels'][sectionType];
+    			    console.log(sectionName);
 
                     this.pageFieldsSectionsOrder.push({
                         id: orderId,
@@ -161,8 +163,8 @@ export class PagesComponent implements OnInit {
                     orderId ++;
     			}
 			} else {
-    			this.selectedPageFieldsOther.params.push(pageFields.params[key]);
-    			this.selectedPageFieldsOther.values.push(pageFields.values[key]);
+    			this.selectedPageFieldsOther.params[key] = pageFields.params[key];
+    			this.selectedPageFieldsOther.values[key] = pageFields.values[key];
 			}
 		}
 

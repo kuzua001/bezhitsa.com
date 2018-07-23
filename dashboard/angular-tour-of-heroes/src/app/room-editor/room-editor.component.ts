@@ -1,74 +1,67 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {SelectItemEvent} from "../models/select-item-event";
 import {SelectItemService} from "../select-item.service";
-import {Trainer} from "../models/trainer";
 import {ModelService} from "../model.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {ReadFile} from 'ngx-file-helpers';
-import {MenuService} from "../menu.service";
-import {Image} from "../models/image";
+import {Room} from "../models/room";
 
 
 @Component({
-  selector: 'trainer-editor',
-  templateUrl: './trainer-editor.component.html',
+  selector: 'room-editor',
+  templateUrl: './room-editor.component.html',
   styleUrls: ['../common/object-editor.component.css'],
 })
-export class TrainerEditorComponent implements OnInit {
+export class RoomEditorComponent implements OnInit {
 
   modalRef: BsModalRef;
 
-  public trainer: Trainer;
+  private room: Room;
 
   public newImageFile: ReadFile;
 
   constructor(
       private selectItemService: SelectItemService,
       private modelService: ModelService,
-      private modalService: BsModalService,
+      private modalService: BsModalService
   ) {
-      this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
-          if (event.itemType === SelectItemEvent.Type.TrainerSelect) {
-              this.trainer = event.payload.trainer;
+      selectItemService.event$.subscribe((event: SelectItemEvent) => {
+          if (event.itemType === SelectItemEvent.Type.RoomSelect) {
+              this.room = event.payload.room;
           }
       });
 
   }
 
-  selectImage(image: Image) {
-      this.trainer.img_id = image.id;
-      this.trainer.img_src = image.filename;
-  }
-
-  openModal(template: TemplateRef<any>, options) {
-      this.modalRef = this.modalService.show(template, options);
+  openModal(template: TemplateRef<any>) {
+      this.modalRef = this.modalService.show(template);
   }
 
   public close() {
       this.selectItemService.emit(
-          new SelectItemEvent(SelectItemEvent.Type.TrainerClose, {
-              trainerId: this.trainer.id
+          new SelectItemEvent(SelectItemEvent.Type.RoomClose, {
+              roomId: this.room.id
           }));
 
-      this.trainer = null;
+      this.room = null;
   }
 
   public save()
   {
-      let trainerItem = Object.setPrototypeOf(this.trainer, Trainer.prototype);
-      this.modelService.saveTrainer(trainerItem);
+      let roomItem = Object.setPrototypeOf(this.room, Room.prototype);
+      this.modelService.saveRoom(roomItem);
   }
 
   public delete()
   {
-      this.modelService.deleteTrainer(this.trainer)
+      this.modelService.deleteRoom(this.room)
           .subscribe(() => {
-              let trainerId = this.trainer.id;
-              this.trainer = null;
+              let roomId = this.room.id;
+              this.room = null;
               this.modalRef.hide();
               this.selectItemService.emit(
                   new SelectItemEvent(SelectItemEvent.Type.RoomRemove, {
-                      trainerId: trainerId
+                      roomId: roomId
                   }));
           });
   }
@@ -92,7 +85,7 @@ export class TrainerEditorComponent implements OnInit {
 
 
   ngOnInit() {
-    this.trainer = null;
+    this.room = null;
     this.newImageFile = null;
   }
 }

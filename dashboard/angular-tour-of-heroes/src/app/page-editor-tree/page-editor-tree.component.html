@@ -3,29 +3,34 @@
         <div *ngFor="let key in groupedParamsSet[group].values">
             <div [ngSwitch]="params[key].type">
                 <div *ngSwitchCase="'composite'">
-                    <div *ngFor="let section of values[key]" class="instance-item">
+                    <div *ngFor="let section of values[key]; let i = index;" class="instance-item">
                         <div class="toolbar">
-                            <span class="close" (click)=""><i class="fa fa-close"></i></span>
+                            <span class="close" (click)="deleteInstanceWithConfirm(key, i)"><i class="fa fa-close"></i></span>
                         </div>
                         <page-editor [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
                     </div>
-                    <div [ngSwitch]="(params[key]['availableInstances'] | values).length === 1">
-                        <button *ngSwitchCase="true" dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic" #item value="{{(params[key]['availableInstances'] | keys)[0]}}" (click)="appendInstance(key, item.value)">
-                            Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class="fa fa-plus"></i>
-                        </button>
-                        <div *ngSwitchCase="false" class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
-                            <button dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic">
-                                Добавить секцию <i class="fa fa-plus"></i>
+                    <div class="toolbar">
+                        <div class="empty-wrapper" [ngSwitch]="(params[key]['availableInstances'] | values).length === 1">
+                            <button *ngSwitchCase="true" dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic" #item value="{{(params[key]['availableInstances'] | keys)[0]}}" (click)="appendInstance(key, item.value)">
+                                Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class="fa fa-plus"></i>
                             </button>
-                            <ul *dropdownMenu class="dropdown-menu"
-                                role="menu" aria-labelledby="button-triggers-manual">
-                                <li *ngFor="let instanceType in params[key]['availableInstances']" role="menuitem">
-                                    <a class="dropdown-item" (click)="appendInstance(key, instanceType)">
-                                        {{params[key]['instancesLabels'][instanceType]}}
-                                    </a>
-                                </li>
-                            </ul>
+                            <div *ngSwitchCase="false" class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
+                                <button dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic">
+                                    Добавить секцию <i class="fa fa-plus"></i>
+                                </button>
+                                <ul *dropdownMenu class="dropdown-menu"
+                                    role="menu" aria-labelledby="button-triggers-manual">
+                                    <li *ngFor="let instanceType in params[key]['availableInstances']" role="menuitem">
+                                        <a class="dropdown-item" (click)="appendInstance(key, instanceType)">
+                                            {{params[key]['instancesLabels'][instanceType]}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                        <button type="button" class="btn btn-primary" (click)="reorder(key)">
+                            Поменять местами
+                        </button>
                     </div>
                 </div>
                 <div *ngSwitchDefault>
@@ -39,29 +44,34 @@
 <div *ngFor="let key in notGroupdParams">
     <div [ngSwitch]="params[key].type">
         <div *ngSwitchCase="'composite'">
-            <div *ngFor="let section of values[key]" class="instance-item">
-                <div class="toolbar">
-                    <div class="close"><i class="fa fa-close"></i></div>
+            <div *ngFor="let section of values[key]; let i = index;" class="instance-item">
+                <div class="instance-toolbar">
+                    <span class="close" (click)="deleteInstanceWithConfirm(key, i)"><i class="fa fa-close"></i></span>
                 </div>
                 <page-editor [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
             </div>
-            <div [ngSwitch]="(params[key]['availableInstances'] | values).length === 1">
-                <button *ngSwitchCase="true" dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic" #item value="{{(params[key]['availableInstances'] | keys)[0]}}" (click)="appendInstance(key, item.value)">
-                    Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class="fa fa-plus"></i>
-                </button>
-                <div *ngSwitchCase="false" class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
-                    <button dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic">
-                        Добавить секцию <i class="fa fa-plus"></i>
+            <div class="toolbar">
+                <div class="empty-wrapper" [ngSwitch]="(params[key]['availableInstances'] | values).length === 1">
+                    <button *ngSwitchCase="true" dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic" #item value="{{(params[key]['availableInstances'] | keys)[0]}}" (click)="appendInstance(key, item.value)">
+                        Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class="fa fa-plus"></i>
                     </button>
-                    <ul *dropdownMenu class="dropdown-menu"
-                        role="menu" aria-labelledby="button-triggers-manual">
-                        <li *ngFor="let instanceType in params[key]['availableInstances']" role="menuitem">
-                            <a class="dropdown-item" (click)="appendInstance(key, instanceType)">
-                                {{params[key]['instancesLabels'][instanceType]}}
-                            </a>
-                        </li>
-                    </ul>
+                    <div *ngSwitchCase="false" class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
+                        <button dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic">
+                            Добавить секцию <i class="fa fa-plus"></i>
+                        </button>
+                        <ul *dropdownMenu class="dropdown-menu"
+                            role="menu" aria-labelledby="button-triggers-manual">
+                            <li *ngFor="let instanceType in params[key]['availableInstances']" role="menuitem">
+                                <a class="dropdown-item" (click)="appendInstance(key, instanceType)">
+                                    {{params[key]['instancesLabels'][instanceType]}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <button type="button" class="btn btn-primary" (click)="reorder(key)">
+                    Поменять местами
+                </button>
             </div>
         </div>
         <div *ngSwitchDefault>
@@ -69,3 +79,26 @@
         </div>
     </div>
 </div>
+<ng-template #reorderDialog>
+    <div class="modal-header">
+        <h4 class="modal-title">Поменять местами</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <bs-sortable *ngIf="selectedInstanceOrder"
+                     [(ngModel)]="selectedInstanceOrder"
+                     itemClass="sortable-item"
+                     itemActiveClass="sortable-item-active"
+                     placeholderItem="Drag here"
+                     placeholderClass="placeholderStyle"
+                     wrapperClass="sortable-wrapper"
+                     fieldName="name"
+        ></bs-sortable>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="reorderApply()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отмена</button>
+    </div>
+</ng-template>

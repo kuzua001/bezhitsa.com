@@ -1,4 +1,4 @@
-<div class="trainer-editor" [ngClass]="{active: trainer !== null}">
+<div class="object-editor" [ngClass]="{active: trainer !== null}">
   <div class="close" (click)="close()">
     <i class="fa fa-window-close" aria-hidden="true"></i>
   </div>
@@ -25,7 +25,7 @@
     <div class="field">
       <span class="label">Изображение</span>
       <img width="200px" src="//hotel/{{trainer.img_src}}">
-      <button (click)="openModal(imageChoose)">Browse</button>
+      <button (click)="openModal(imageChoose, {class: 'large-popup'})">Browse</button>
     </div>
 
     <div class="buttons">
@@ -43,7 +43,7 @@
   </div>
   <div class="modal-body">
     <app-image-chooser (selectedImageId)="selectImage($event)"></app-image-chooser>
-    <button class="btn btn-primary">выбор</button>
+    <button class="btn btn-primary" (click)="selectItemService.emitImageChooserEvent(); modalRef.hide();">выбор</button>
     <button class="btn btn-danger" (click)="modalRef.hide()">отмена</button>
   </div>
 </ng-template>

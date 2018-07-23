@@ -1,3 +1,5 @@
+import {MenuItem} from "./menu-item";
+
 export class SelectItemEvent {
 	itemType: SelectItemEvent.Type;
 	payload: any;
@@ -15,6 +17,10 @@ export namespace SelectItemEvent {
 		TrainerSelect,
 		TrainerRemove,
 		TrainerClose,
-		LanguageChange
+        RoomSelect,
+        RoomRemove,
+        RoomClose,
+		LanguageChange,
+		ImageChooserApply,
 	}
 }

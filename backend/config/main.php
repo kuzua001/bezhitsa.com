@@ -54,6 +54,7 @@ return [
                         'page'       => 'api/page',
                         'domain'     => 'api/domain',
                         'trainer'    => 'api/trainer',
+                        'room'       => 'api/room',
                         'images'     => 'api/images',
                         'pageFields' => 'api/page-fields',
                     ],
