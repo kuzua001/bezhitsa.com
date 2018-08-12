@@ -260,12 +260,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_list_settings_list_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./settings-list/settings-list.component */ "./src/app/settings-list/settings-list.component.ts");
 /* harmony import */ var _settings_service__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./settings.service */ "./src/app/settings.service.ts");
 /* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
+/* harmony import */ var _click_stop_propogation_directive__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./click-stop-propogation.directive */ "./src/app/click-stop-propogation.directive.ts");
+/* harmony import */ var _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./page-editor-tree-item/page-editor-tree-item.component */ "./src/app/page-editor-tree-item/page-editor-tree-item.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -330,7 +334,9 @@ var AppModule = /** @class */ (function () {
                 _filters_keys__WEBPACK_IMPORTED_MODULE_25__["Keys"],
                 _image_chooser_image_chooser_component__WEBPACK_IMPORTED_MODULE_26__["ImageChooserComponent"],
                 _ng_for_in_directive__WEBPACK_IMPORTED_MODULE_27__["NgForIn"],
-                _page_editor_field_page_editor_field_component__WEBPACK_IMPORTED_MODULE_29__["PageEditorFieldComponent"]
+                _page_editor_field_page_editor_field_component__WEBPACK_IMPORTED_MODULE_29__["PageEditorFieldComponent"],
+                _click_stop_propogation_directive__WEBPACK_IMPORTED_MODULE_37__["ClickStopPropagation"],
+                _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_38__["PageEditorTreeItemComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -371,6 +377,51 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/click-stop-propogation.directive.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/click-stop-propogation.directive.ts ***!
+  \*****************************************************/
+/*! exports provided: ClickStopPropagation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClickStopPropagation", function() { return ClickStopPropagation; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ClickStopPropagation = /** @class */ (function () {
+    function ClickStopPropagation() {
+    }
+    ClickStopPropagation.prototype.onClick = function (event) {
+        event.stopPropagation();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])("click", ["$event"]),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], ClickStopPropagation.prototype, "onClick", null);
+    ClickStopPropagation = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
+            selector: "[click-stop-propagation]"
+        })
+    ], ClickStopPropagation);
+    return ClickStopPropagation;
 }());
 
 
@@ -1179,7 +1230,7 @@ var State = /** @class */ (function () {
         this.loadState();
     }
     State.prototype.setStateProperty = function (propertyName, value) {
-        console.log('setting');
+        //console.log('setting');
         this.componentState[propertyName] = value;
         localStorage.setItem(this.componentName, JSON.stringify(Object.assign({}, this.componentState)));
     };
@@ -1382,14 +1433,14 @@ var NgForIn = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     NgForIn.prototype.ngOnChanges = function (changes) {
-        console.log("hello");
+        //console.log("hello");
         if (changes.ngForIn) {
             this.ngForOf = Object.keys(this.ngForIn);
             var change = changes.ngForIn;
             var currentValue = Object.keys(change.currentValue);
             var previousValue = change.previousValue ? Object.keys(change.previousValue) : undefined;
-            console.log(currentValue);
-            console.log(previousValue);
+            //console.log(currentValue);
+            //console.log(previousValue);
             changes.ngForOf = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["SimpleChange"](previousValue, currentValue, change.firstChange);
             _super.prototype.ngOnChanges.call(this, changes);
         }
@@ -1428,7 +1479,7 @@ module.exports = ":host .inline {\n  display: inline-block;\n}\n:host .title {\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"field\">\n  <div class=\"title\"><label for=\"{{uniqId}}\">{{title}}</label></div>\n  <div [ngSwitch]=\"params.type\" class=\"content\" [class.inline]=\"params.type === 'checkbox'\">\n    <div *ngSwitchCase=\"'string'\">\n      <input id={{uniqId}} type=\"text\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'select'\">\n      <select id={{uniqId}} type=\"checkbox\" [(ngModel)]=\"valueSet[valueKey]\">\n        <option *ngFor=\"let option in params.options\" [value]=\"option\">{{params.options[option]}}</option>\n      </select>\n    </div>\n    <div *ngSwitchCase=\"'checkbox'\">\n      <input id={{uniqId}} type=\"checkbox\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'textarea'\">\n      <textarea id={{uniqId}} ngxTrumbowygEditor name=\"editorDirective\" [(ngModel)]=\"valueSet[valueKey]\"></textarea>\n    </div>\n    <div *ngSwitchCase=\"'color'\">\n      <input id={{uniqId}} type=\"text\" (colorPickerChange)=\"setVal($event)\" [colorPicker]=\"valueSet[valueKey]\" [style.background]=\"valueSet[valueKey]\" [cpOutputFormat]=\"hex\"/>\n    </div>\n    <div *ngSwitchCase=\"'image'\">\n      <img *ngIf=\"imageSrc !== null\" width=\"200px\" src=\"//hotel/{{imageSrc}}\">\n      <app-image-chooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"field\">\n  <div class=\"title\">\n    <b *ngIf=\"params.required === 1\">\n      <label for=\"{{uniqId}}\">{{title}}</label>\n    </b>\n    <label *ngIf=\"params.required !== 1\" for=\"{{uniqId}}\">{{title}}</label>\n  </div>\n  <div [ngSwitch]=\"params.type\" class=\"content\" [class.inline]=\"params.type === 'checkbox'\">\n    <div *ngSwitchCase=\"'string'\">\n      <input id={{uniqId}} type=\"text\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'select'\">\n      <select id={{uniqId}} type=\"checkbox\" [(ngModel)]=\"valueSet[valueKey]\">\n        <option *ngFor=\"let option in params.options\" [value]=\"option\">{{params.options[option]}}</option>\n      </select>\n    </div>\n    <div *ngSwitchCase=\"'checkbox'\">\n      <input id={{uniqId}} type=\"checkbox\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'textarea'\">\n      <textarea id={{uniqId}} ngxTrumbowygEditor name=\"editorDirective\" [(ngModel)]=\"valueSet[valueKey]\"></textarea>\n    </div>\n    <div *ngSwitchCase=\"'color'\">\n      <input id={{uniqId}} type=\"text\" (colorPickerChange)=\"setVal($event)\" [colorPicker]=\"valueSet[valueKey]\" [style.background]=\"valueSet[valueKey]\" [cpOutputFormat]=\"hex\"/>\n    </div>\n    <div *ngSwitchCase=\"'image'\">\n      <img *ngIf=\"imageSrc && imageSrc.length\" width=\"200px\" src=\"//hotel/{{imageSrc}}\" (click)=\"openChooser()\">\n      <button *ngIf=\"!(imageSrc && imageSrc.length)\" (click)=\"openChooser()\">Выбор</button>\n\n      <ng-template #imageChooser>\n        <div class=\"modal-header\">\n          <h4 class=\"modal-title pull-left\">Выберите изображение</h4>\n          <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <app-image-chooser #imageChooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n          <button class=\"btn btn-primary\" (click)=\"selectItemService.emitImageChooserEvent(); modalRef.hide();\">Выбор</button>\n          <button class=\"btn btn-danger\" (click)=\"modalRef.hide()\">отмена</button>\n        </div>\n      </ng-template>\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1445,6 +1496,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _components_app_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/app-helper */ "./src/app/components/app-helper.ts");
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1457,14 +1510,22 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var PageEditorFieldComponent = /** @class */ (function () {
-    function PageEditorFieldComponent(modelService) {
+    function PageEditorFieldComponent(modelService, modalService, selectItemService) {
         this.modelService = modelService;
+        this.modalService = modalService;
+        this.selectItemService = selectItemService;
+        this.imageSrc = null;
         this.froalaSettings = {
             toolbarInline: true,
         };
         this.uniqId = _components_app_helper__WEBPACK_IMPORTED_MODULE_1__["AppHelper"].uuid();
     }
+    PageEditorFieldComponent.prototype.openChooser = function () {
+        this.modalRef = this.modalService.show(this.imageChooser);
+    };
     PageEditorFieldComponent.prototype.selectImage = function (image) {
         this.valueSet[this.valueKey] = image.id;
         this.imageSrc = image.filename;
@@ -1475,16 +1536,20 @@ var PageEditorFieldComponent = /** @class */ (function () {
     PageEditorFieldComponent.prototype.reloadImageSrc = function () {
         var _this = this;
         this.modelService.getImage(this.valueSet[this.valueKey]).subscribe(function (image) {
-            console.log('image obtained!');
+            //console.log('image obtained!');
             _this.imageSrc = image.filename;
         });
     };
     PageEditorFieldComponent.prototype.ngOnInit = function () {
         if (this.params.type === 'image') {
-            console.log('azazaza');
+            //console.log('azazaza');
             this.reloadImageSrc();
         }
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('imageChooser'),
+        __metadata("design:type", Object)
+    ], PageEditorFieldComponent.prototype, "imageChooser", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -1507,9 +1572,129 @@ var PageEditorFieldComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./page-editor-field.component.html */ "./src/app/page-editor-field/page-editor-field.component.html"),
             styles: [__webpack_require__(/*! ./page-editor-field.component.css */ "./src/app/page-editor-field/page-editor-field.component.css")]
         }),
-        __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_2__["ModelService"]])
+        __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_2__["ModelService"],
+            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsModalService"],
+            _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"]])
     ], PageEditorFieldComponent);
     return PageEditorFieldComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/page-editor-tree-item/page-editor-tree-item.component.css":
+/*!***************************************************************************!*\
+  !*** ./src/app/page-editor-tree-item/page-editor-tree-item.component.css ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".toolbar button {\n  margin: 0 5px;\n}\n.instances {\n  position: relative;\n  border: 2px solid #aaa;\n  border-radius: 5px;\n  padding: 5px;\n  margin: 5px;\n}\n.instances .instance-item {\n  position: relative;\n}\n.instances .instance-item .toolbar {\n  display: block;\n  overflow: hidden;\n}\n.instances .instance-item .instance-toolbar {\n  position: absolute;\n  top: 0;\n  right: 5px;\n  z-index: 90;\n}\n.composite-field-items {\n  padding-right: 30px;\n}\n.composite-field-items .item {\n  width: 100%;\n  height: 20px;\n  padding: 10px;\n  border-radius: 10px;\n  background-color: rgba(247, 231, 213, 0.64);\n  margin-bottom: 5px;\n}\n.empty-wrapper {\n  display: inline-block;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/page-editor-tree-item/page-editor-tree-item.component.html":
+/*!****************************************************************************!*\
+  !*** ./src/app/page-editor-tree-item/page-editor-tree-item.component.html ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div [ngSwitch]=\"params[key].type\">\n  <div *ngSwitchCase=\"'composite'\">\n    <h3>{{params[key].title}}</h3>\n    <div class=\"instances\">\n      <div *ngFor=\"let section of values[key]; let i = index;\" class=\"instance-item\">\n        <div class=\"instance-toolbar\">\n          <span class=\"close\" (click)=\"deleteInstanceWithConfirm(key, i)\"><i class=\"fa fa-close\"></i></span>\n        </div>\n        <page-editor [uniqKey]=\"uniqKey + '_' + key\" [params]=\"params[key]['availableInstances'][section.type]\" [values]=\"section\"></page-editor>\n      </div>\n      <div class=\"toolbar\">\n        <div class=\"empty-wrapper\" [ngSwitch]=\"(params[key]['availableInstances'] | values).length === 1\">\n          <button *ngSwitchCase=\"true\" dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\" #item value=\"{{(params[key]['availableInstances'] | keys)[0]}}\" (click)=\"appendInstance(key, item.value)\">\n            Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class=\"fa fa-plus\"></i>\n          </button>\n          <div *ngSwitchCase=\"false\" class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n            <button dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\">\n              Добавить секцию <i class=\"fa fa-plus\"></i>\n            </button>\n            <ul *dropdownMenu class=\"dropdown-menu\"\n                role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n              <li *ngFor=\"let instanceType in params[key]['availableInstances']\" role=\"menuitem\">\n                <a class=\"dropdown-item\" (click)=\"appendInstance(key, instanceType)\">\n                  {{params[key]['instancesLabels'][instanceType]}}\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <button *ngIf=\"values[key].length > 1\" type=\"button\" class=\"btn btn-primary\" (click)=\"reorder()\">\n          Поменять местами\n        </button>\n      </div>\n    </div>\n  </div>\n  <div *ngSwitchDefault>\n    <app-page-editor-field [title]=\"params[key].title\" [params]=\"params[key]\" [valueSet]=\"values\" [valueKey]=\"key\"></app-page-editor-field>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/page-editor-tree-item/page-editor-tree-item.component.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/page-editor-tree-item/page-editor-tree-item.component.ts ***!
+  \**************************************************************************/
+/*! exports provided: PageEditorTreeItemComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PageEditorTreeItemComponent", function() { return PageEditorTreeItemComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _page_editor_tree_page_editor_tree_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../page-editor-tree/page-editor-tree.component */ "./src/app/page-editor-tree/page-editor-tree.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PageEditorTreeItemComponent = /** @class */ (function () {
+    function PageEditorTreeItemComponent() {
+    }
+    PageEditorTreeItemComponent.prototype.ngOnInit = function () {
+    };
+    PageEditorTreeItemComponent.prototype.prepareInstance = function (instanceParams, sectionType, fieldName) {
+        var newSection = {
+            sectionType: sectionType,
+            type: sectionType,
+            sectionTypeName: this.params[fieldName]['instancesLabels'][sectionType]
+        };
+        for (var key in instanceParams) {
+            if (instanceParams[key].type !== 'composite') {
+                newSection[key] = instanceParams[key].default;
+            }
+            else {
+                newSection[key] = [];
+            }
+        }
+        return newSection;
+    };
+    PageEditorTreeItemComponent.prototype.reorder = function () {
+        this.parent.reorder(this.key);
+    };
+    PageEditorTreeItemComponent.prototype.deleteInstanceWithConfirm = function (key, instanceIndex) {
+        this.deleteInstance(key, instanceIndex);
+    };
+    PageEditorTreeItemComponent.prototype.deleteInstance = function (key, instanceIndex) {
+        this.values[key].splice(instanceIndex, 1);
+        //console.log(this.values[key].length);
+        //console.log(this.values[key]);
+    };
+    PageEditorTreeItemComponent.prototype.appendInstance = function (key, instanceType) {
+        //console.log(key);
+        //console.log(instanceType);
+        var newInstance = this.prepareInstance(this.params[key]['availableInstances'][instanceType], instanceType, key);
+        this.values[key].push(newInstance);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PageEditorTreeItemComponent.prototype, "params", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PageEditorTreeItemComponent.prototype, "key", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], PageEditorTreeItemComponent.prototype, "values", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], PageEditorTreeItemComponent.prototype, "uniqKey", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _page_editor_tree_page_editor_tree_component__WEBPACK_IMPORTED_MODULE_1__["PageEditorTreeComponent"])
+    ], PageEditorTreeItemComponent.prototype, "parent", void 0);
+    PageEditorTreeItemComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-page-editor-tree-item',
+            template: __webpack_require__(/*! ./page-editor-tree-item.component.html */ "./src/app/page-editor-tree-item/page-editor-tree-item.component.html"),
+            styles: [__webpack_require__(/*! ./page-editor-tree-item.component.css */ "./src/app/page-editor-tree-item/page-editor-tree-item.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PageEditorTreeItemComponent);
+    return PageEditorTreeItemComponent;
 }());
 
 
@@ -1523,7 +1708,7 @@ var PageEditorFieldComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n/*.composite-field-items page-editor {*/\n/*display: none;*/\n/*}*/\n:host {\n  display: block;\n}\n.empty-wrapper {\n  display: inline-block;\n}\n.toolbar button {\n  margin: 0 5px;\n}\n.instance-item {\n  position: relative;\n  border: 2px solid #aaa;\n  border-radius: 5px;\n  padding: 5px;\n  margin: 5px;\n}\n.instance-item .toolbar {\n  display: block;\n  overflow: hidden;\n}\n.instance-item .instance-toolbar {\n  position: absolute;\n  top: 0;\n  right: 5px;\n}\n.composite-field-items {\n  padding-right: 30px;\n}\n.composite-field-items .item {\n  width: 100%;\n  height: 20px;\n  padding: 10px;\n  border-radius: 10px;\n  background-color: rgba(247, 231, 213, 0.64);\n  margin-bottom: 5px;\n}\n.not-grouped-content {\n  background-color: #fff;\n}\nul {\n  list-style: none;\n  padding-left: 0;\n}\n"
+module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n/*.composite-field-items page-editor {*/\n/*display: none;*/\n/*}*/\n:host {\n  display: block;\n}\n.not-grouped-content {\n  background-color: #fff;\n}\nul {\n  list-style: none;\n  padding-left: 0;\n}\n"
 
 /***/ }),
 
@@ -1534,7 +1719,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<accordion *ngIf=\"paramsHasGroups\" class=\"super\">\n    <accordion-group *ngFor=\"let group in groupedParamsSet\" heading=\"{{groupedParamsSet[group].title}}\" style=\"color: #f00\" (isOpenChange)=\"logToggle($event, group)\">\n        <div *ngFor=\"let key in groupedParamsSet[group].values\">\n            <div [ngSwitch]=\"params[key].type\">\n                <div *ngSwitchCase=\"'composite'\">\n                    <div *ngFor=\"let section of values[key]; let i = index;\" class=\"instance-item\">\n                        <div class=\"toolbar\">\n                            <span class=\"close\" (click)=\"deleteInstanceWithConfirm(key, i)\"><i class=\"fa fa-close\"></i></span>\n                        </div>\n                        <page-editor [uniqKey]=\"uniqKey + '_' + key\" [params]=\"params[key]['availableInstances'][section.type]\" [values]=\"section\"></page-editor>\n                    </div>\n                    <div class=\"toolbar\">\n                        <div class=\"empty-wrapper\" [ngSwitch]=\"(params[key]['availableInstances'] | values).length === 1\">\n                            <button *ngSwitchCase=\"true\" dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\" #item value=\"{{(params[key]['availableInstances'] | keys)[0]}}\" (click)=\"appendInstance(key, item.value)\">\n                                Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class=\"fa fa-plus\"></i>\n                            </button>\n                            <div *ngSwitchCase=\"false\" class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                                <button dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\">\n                                    Добавить секцию <i class=\"fa fa-plus\"></i>\n                                </button>\n                                <ul *dropdownMenu class=\"dropdown-menu\"\n                                    role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                                    <li *ngFor=\"let instanceType in params[key]['availableInstances']\" role=\"menuitem\">\n                                        <a class=\"dropdown-item\" (click)=\"appendInstance(key, instanceType)\">\n                                            {{params[key]['instancesLabels'][instanceType]}}\n                                        </a>\n                                    </li>\n                                </ul>\n                            </div>\n                        </div>\n                        <button type=\"button\" class=\"btn btn-primary\" (click)=\"reorder(key)\">\n                            Поменять местами\n                        </button>\n                    </div>\n                </div>\n                <div *ngSwitchDefault>\n                    <app-page-editor-field [title]=\"params[key].title\" [params]=\"params[key]\" [valueSet]=\"values\" [valueKey]=\"key\"></app-page-editor-field>\n                </div>\n            </div>\n        </div>\n    </accordion-group>\n    <accordion-group *ngIf=\"(notGroupdParams | json) !== '{}'\" heading=\"Содержимое блока\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <div [ngSwitch]=\"params[key].type\">\n                <div *ngSwitchCase=\"'composite'\">\n                    <div *ngFor=\"let section of values[key]; let i = index;\" class=\"instance-item\">\n                        <div class=\"instance-toolbar\">\n                            <span class=\"close\" (click)=\"deleteInstanceWithConfirm(key, i)\"><i class=\"fa fa-close\"></i></span>\n                        </div>\n                        <page-editor [uniqKey]=\"uniqKey + '_' + key\" [params]=\"params[key]['availableInstances'][section.type]\" [values]=\"section\"></page-editor>\n                    </div>\n                    <div class=\"toolbar\">\n                        <div class=\"empty-wrapper\" [ngSwitch]=\"(params[key]['availableInstances'] | values).length === 1\">\n                            <button *ngSwitchCase=\"true\" dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\" #item value=\"{{(params[key]['availableInstances'] | keys)[0]}}\" (click)=\"appendInstance(key, item.value)\">\n                                Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class=\"fa fa-plus\"></i>\n                            </button>\n                            <div *ngSwitchCase=\"false\" class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                                <button dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\">\n                                    Добавить секцию <i class=\"fa fa-plus\"></i>\n                                </button>\n                                <ul *dropdownMenu class=\"dropdown-menu\"\n                                    role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                                    <li *ngFor=\"let instanceType in params[key]['availableInstances']\" role=\"menuitem\">\n                                        <a class=\"dropdown-item\" (click)=\"appendInstance(key, instanceType)\">\n                                            {{params[key]['instancesLabels'][instanceType]}}\n                                        </a>\n                                    </li>\n                                </ul>\n                            </div>\n                        </div>\n                        <button type=\"button\" class=\"btn btn-primary\" (click)=\"reorder(key)\">\n                            Поменять местами\n                        </button>\n                    </div>\n                </div>\n                <div *ngSwitchDefault>\n                    <app-page-editor-field [title]=\"params[key].title\" [params]=\"params[key]\" [valueSet]=\"values\" [valueKey]=\"key\"></app-page-editor-field>\n                </div>\n            </div>\n        </div>\n    </accordion-group>\n</accordion>\n<accordion  *ngIf=\"!paramsHasGroups\">\n    <accordion-group heading=\"Содержимое блока\" [isOpen]=\"true\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <div [ngSwitch]=\"params[key].type\">\n                <div *ngSwitchCase=\"'composite'\">\n                    <div *ngFor=\"let section of values[key]; let i = index;\" class=\"instance-item\">\n                        <div class=\"instance-toolbar\">\n                            <span class=\"close\" (click)=\"deleteInstanceWithConfirm(key, i)\"><i class=\"fa fa-close\"></i></span>\n                        </div>\n                        <page-editor [uniqKey]=\"uniqKey + '_' + key\" [params]=\"params[key]['availableInstances'][section.type]\" [values]=\"section\"></page-editor>\n                    </div>\n                    <div class=\"toolbar\">\n                        <div class=\"empty-wrapper\" [ngSwitch]=\"(params[key]['availableInstances'] | values).length === 1\">\n                            <button *ngSwitchCase=\"true\" dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\" #item value=\"{{(params[key]['availableInstances'] | keys)[0]}}\" (click)=\"appendInstance(key, item.value)\">\n                                Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class=\"fa fa-plus\"></i>\n                            </button>\n                            <div *ngSwitchCase=\"false\" class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                                <button dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\">\n                                    Добавить секцию <i class=\"fa fa-plus\"></i>\n                                </button>\n                                <ul *dropdownMenu class=\"dropdown-menu\"\n                                    role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                                    <li *ngFor=\"let instanceType in params[key]['availableInstances']\" role=\"menuitem\">\n                                        <a class=\"dropdown-item\" (click)=\"appendInstance(key, instanceType)\">\n                                            {{params[key]['instancesLabels'][instanceType]}}\n                                        </a>\n                                    </li>\n                                </ul>\n                            </div>\n                        </div>\n                        <button type=\"button\" class=\"btn btn-primary\" (click)=\"reorder(key)\">\n                            Поменять местами\n                        </button>\n                    </div>\n                </div>\n                <div *ngSwitchDefault>\n                    <app-page-editor-field [title]=\"params[key].title\" [params]=\"params[key]\" [valueSet]=\"values\" [valueKey]=\"key\"></app-page-editor-field>\n                </div>\n            </div>\n        </div>\n    </accordion-group>\n</accordion>\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"selectedInstanceOrder\"\n                     [(ngModel)]=\"selectedInstanceOrder\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
+module.exports = "<accordion *ngIf=\"paramsHasGroups\" class=\"super\">\n    <accordion-group *ngFor=\"let group in groupedParamsSet\" heading=\"{{groupedParamsSet[group].title}}\" style=\"color: #f00\" (isOpenChange)=\"logToggle($event, group)\">\n        <div *ngFor=\"let key in groupedParamsSet[group].values\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n    <accordion-group *ngIf=\"(notGroupdParams | json) !== '{}'\" heading=\"Содержимое блока\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<accordion  *ngIf=\"!paramsHasGroups\">\n    <accordion-group heading=\"Содержимое блока\" [isOpen]=\"true\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <i class=\"fa fa-close\"></i>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"selectedInstanceOrder\"\n                     [(ngModel)]=\"selectedInstanceOrder\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>"
 
 /***/ }),
 
@@ -1568,10 +1753,10 @@ var PageEditorTreeComponent = /** @class */ (function () {
         this.modalService = modalService;
     }
     PageEditorTreeComponent.prototype.logToggle = function ($event, key) {
-        console.log('Accrodion toggle event!');
-        console.log(key);
-        console.log(this.uniqKey);
-        console.log($event);
+        //console.log('Accrodion toggle event!');
+        //console.log(key);
+        //console.log(this.uniqKey);
+        //console.log($event);
     };
     PageEditorTreeComponent.prototype.reorder = function (key) {
         this.prepareSelectedInstanceOrder(key);
@@ -1607,36 +1792,6 @@ var PageEditorTreeComponent = /** @class */ (function () {
     PageEditorTreeComponent.prototype.ngOnChanges = function () {
         this.initGroupedParamsInfo();
     };
-    PageEditorTreeComponent.prototype.prepareInstance = function (instanceParams, sectionType, fieldName) {
-        var newSection = {
-            sectionType: sectionType,
-            type: sectionType,
-            sectionTypeName: this.params[fieldName]['instancesLabels'][sectionType]
-        };
-        for (var key in instanceParams) {
-            if (instanceParams[key].type !== 'composite') {
-                newSection[key] = instanceParams[key].default;
-            }
-            else {
-                newSection[key] = [];
-            }
-        }
-        return newSection;
-    };
-    PageEditorTreeComponent.prototype.deleteInstanceWithConfirm = function (key, instanceIndex) {
-        this.deleteInstance(key, instanceIndex);
-    };
-    PageEditorTreeComponent.prototype.deleteInstance = function (key, instanceIndex) {
-        this.values[key].splice(instanceIndex, 1);
-        console.log(this.values[key].length);
-        console.log(this.values[key]);
-    };
-    PageEditorTreeComponent.prototype.appendInstance = function (key, instanceType) {
-        console.log(key);
-        console.log(instanceType);
-        var newInstance = this.prepareInstance(this.params[key]['availableInstances'][instanceType], instanceType, key);
-        this.values[key].push(newInstance);
-    };
     PageEditorTreeComponent.prototype.initGroupedParamsInfo = function () {
         this.groupedParamsSet = {};
         this.notGroupdParams = {};
@@ -1658,7 +1813,6 @@ var PageEditorTreeComponent = /** @class */ (function () {
                 this.groupedParamsSet[title].values[key] = param;
             }
         }
-        console.log(this.notGroupdParams);
         this.paramsHasGroups = paramsHasGroups;
     };
     __decorate([
@@ -1864,7 +2018,7 @@ var PagesListComponent = /** @class */ (function (_super) {
                 }
                 this.groupedPages[page.domain_id].push(page);
             }
-            console.log(this.groupedPages);
+            //console.log(this.groupedPages);
         }
     };
     ;
@@ -2022,7 +2176,7 @@ var PagesService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sections-selector,\n.general-info,\n.items-block {\n  background-color: #fff;\n  margin: 15px;\n  display: block;\n  width: 100%;\n  vertical-align: top;\n}\n.sections-selector + page-editor,\n.general-info + page-editor,\n.items-block + page-editor {\n  background-color: #fff;\n  margin-left: 10px;\n  padding: 10px;\n  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);\n  display: inline-block;\n  vertical-align: top;\n}\n.sections-selector .item,\n.general-info .item,\n.items-block .item {\n  height: 35px;\n  line-height: 35px;\n  padding-left: 10px;\n}\n.sections-selector .item.selected,\n.general-info .item.selected,\n.items-block .item.selected {\n  background-color: #eee;\n}\n"
+module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sections-selector,\n.general-info,\n.items-block {\n  background-color: #fff;\n  margin: 15px;\n  display: block;\n  width: 100%;\n  vertical-align: top;\n}\n.sections-selector + page-editor,\n.general-info + page-editor,\n.items-block + page-editor {\n  background-color: #fff;\n  margin-left: 10px;\n  padding: 10px;\n  box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);\n  display: inline-block;\n  vertical-align: top;\n}\n.sections-selector .item,\n.general-info .item,\n.items-block .item {\n  height: 35px;\n  line-height: 35px;\n  padding-left: 10px;\n  position: relative;\n}\n.sections-selector .item:not(.selected) .delete,\n.general-info .item:not(.selected) .delete,\n.items-block .item:not(.selected) .delete {\n  display: none;\n}\n.sections-selector .item.selected,\n.general-info .item.selected,\n.items-block .item.selected {\n  background-color: #eee;\n}\n.sections-selector .item.selected .delete,\n.general-info .item.selected .delete,\n.items-block .item.selected .delete {\n  position: absolute;\n  top: 0;\n  right: 10px;\n}\n"
 
 /***/ }),
 
@@ -2033,7 +2187,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-editor\">\n    <div class=\"wrapper\">\n\n        <div class=\"module-menu-element\" *ngIf=\"selectedPageId !== null\">\n            <h3 *ngIf=\"selectedPageId == 26\">Тренеры</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 26\">\n                <trainers class=\"integrated\"></trainers>\n            </div>\n\n            <h3 *ngIf=\"selectedPageId == 19\">Номера</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 19\">\n                <rooms class=\"integrated\"></rooms>\n            </div>\n\n\n            <h3>Список секций</h3>\n            <div class=\"sections-selector\" *ngIf=\"selectedPageFieldsSections\">\n                <div *ngFor=\"let section of selectedPageFieldsSections.values; index as sectionNumber;\"\n                     (click)=\"selectSection(sectionNumber)\" [class.selected]=\"sectionNumber === selectedSectionNumber\" class=\"item\">\n                    {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}\n                    <div class=\"delete\" (click)=\"deleteSectionWithConfirm()\"></div>\n                </div>\n                <div class=\"sections-panel toolbar-element\" *ngIf=\"selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'\">\n                    <div class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                        <div dropdownToggle aria-controls=\"dropdown-basic\">\n                            <i class=\"fa fa-plus\"></i>\n                        </div>\n                        <ul id=\"dropdown-triggers-manual\" *dropdownMenu class=\"dropdown-menu\"\n                            role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                            <li *ngFor=\"let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']\" role=\"menuitem\">\n                                <a class=\"dropdown-item\" (click)=\"appendSection('sectionsParams', sectionType)\">\n                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}\n                                </a>\n                            </li>\n                        </ul>\n                        <div (click)=\"reorder()\"><i class=\"fa fa-bars\"></i></div>\n                    </div>\n                </div>\n            </div>\n\n            <h3>Общие настройки</h3>\n            <div (click)=\"selectOther()\"  class=\"general-info\">\n                <div class=\"item\" [class.selected]=\"selectOtherParams === true\">Общие настройки</div>\n            </div>\n\n            <div class=\"module-panel\" *ngIf=\"selectedPageFields !== null\">\n                <button (click)=\"save()\" class=\"ripple module-control-button-element default\">Сохранить</button>\n                <a href=\"{{currentPage.url}}\" target=\"_blank\"><button class=\"ripple module-control-button-element\">Просмотр</button></a>\n                <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n            </div>\n        </div>\n        <div class=\"module-content-element\">\n            <accordion *ngIf=\"selectOtherParams == true\">\n                <accordion-group heading=\"Параметры страницы\">\n                    {{currentPage.url}}\n                </accordion-group>\n            </accordion>\n            <page-editor *ngIf=\"selectOtherParams == true && sectionsInited\"\n                         [params]=\"selectedPageFieldsOther.params\"\n                         [values]=\"selectedPageFieldsOther.values\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n            <page-editor *ngIf=\"selectedSectionNumber !== null && sectionsInited\"\n                         [params]=\"selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]\"\n                         [values]=\"selectedPageFieldsSections.values[selectedSectionNumber]\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n        </div>\n    </div>\n</div>\n<ng-template #confirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить страницу?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами секции</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"pageFieldsSectionsOrder\"\n            [(ngModel)]=\"pageFieldsSectionsOrder\"\n            itemClass=\"sortable-item\"\n            itemActiveClass=\"sortable-item-active\"\n            placeholderItem=\"Drag here\"\n            placeholderClass=\"placeholderStyle\"\n            wrapperClass=\"sortable-wrapper\"\n            fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
+module.exports = "<div class=\"page-editor\">\n    <div class=\"wrapper\">\n\n        <div class=\"module-menu-element\" *ngIf=\"selectedPageId !== null\">\n            <h3 *ngIf=\"selectedPageId == 26\">Тренеры</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 26\">\n                <trainers class=\"integrated\"></trainers>\n            </div>\n\n            <h3 *ngIf=\"selectedPageId == 19\">Номера</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 19\">\n                <rooms class=\"integrated\"></rooms>\n            </div>\n\n\n            <h3>Список секций</h3>\n            <div class=\"sections-selector\" *ngIf=\"selectedPageFieldsSections\">\n                <div *ngFor=\"let section of selectedPageFieldsSections.values; index as sectionNumber;\"\n                     (click)=\"selectSection(sectionNumber)\" [class.selected]=\"sectionNumber === selectedSectionNumber\" class=\"item\">\n                    {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}\n                    <div class=\"delete\" click-stop-propagation (click)=\"deleteSectionWithConfirm('sectionsParams', sectionNumber)\"><i class=\"fa fa-close\"></i></div>\n                </div>\n                <div class=\"sections-panel toolbar-element\" *ngIf=\"selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'\">\n                    <div class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                        <div dropdownToggle aria-controls=\"dropdown-basic\">\n                            <i class=\"fa fa-plus\"></i>\n                        </div>\n                        <ul id=\"dropdown-triggers-manual\" *dropdownMenu class=\"dropdown-menu\"\n                            role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                            <li *ngFor=\"let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']\" role=\"menuitem\">\n                                <a class=\"dropdown-item\" (click)=\"appendSection('sectionsParams', sectionType)\">\n                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}\n                                </a>\n                            </li>\n                        </ul>\n                        <div (click)=\"reorder()\"><i class=\"fa fa-bars\"></i></div>\n                    </div>\n                </div>\n            </div>\n\n            <h3>Общие настройки</h3>\n            <div (click)=\"selectOther()\"  class=\"general-info\">\n                <div class=\"item\" [class.selected]=\"selectOtherParams === true\">Общие настройки</div>\n            </div>\n\n            <div class=\"module-panel\" *ngIf=\"selectedPageFields !== null\">\n                <button (click)=\"save()\" class=\"ripple module-control-button-element default\">Сохранить</button>\n                <a href=\"{{currentPage.url}}\" target=\"_blank\"><button class=\"ripple module-control-button-element\">Просмотр</button></a>\n                <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n            </div>\n        </div>\n        <div class=\"module-content-element\">\n            <accordion *ngIf=\"selectOtherParams == true\">\n                <accordion-group heading=\"Параметры страницы\">\n                    {{currentPage.url}}\n                </accordion-group>\n            </accordion>\n            <page-editor *ngIf=\"selectOtherParams == true && sectionsInited\"\n                         [params]=\"selectedPageFieldsOther.params\"\n                         [values]=\"selectedPageFieldsOther.values\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n            <page-editor *ngIf=\"selectedSectionNumber !== null && sectionsInited\"\n                         [params]=\"selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]\"\n                         [values]=\"selectedPageFieldsSections.values[selectedSectionNumber]\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n        </div>\n    </div>\n</div>\n<ng-template #confirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить страницу?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n<ng-template #sectionConfirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить секцию?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами секции</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"pageFieldsSectionsOrder\"\n            [(ngModel)]=\"pageFieldsSectionsOrder\"\n            itemClass=\"sortable-item\"\n            itemActiveClass=\"sortable-item-active\"\n            placeholderItem=\"Drag here\"\n            placeholderClass=\"placeholderStyle\"\n            wrapperClass=\"sortable-wrapper\"\n            fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -2149,7 +2303,7 @@ var PagesComponent = /** @class */ (function (_super) {
         var _this = this;
         this.pageService.getPageFields(pageId, this.language)
             .subscribe(function (page) {
-            console.log('Initing section!');
+            //console.log('Initing section!');
             _this.initSectionsAndOther(page);
             _this.selectedPageFields = page;
             if (unload) {
@@ -2200,8 +2354,28 @@ var PagesComponent = /** @class */ (function (_super) {
         this.selectedPageFields.values[fieldName].push(newSection);
         this.initSectionsAndOther(this.selectedPageFields);
     };
-    PagesComponent.prototype.initSectionsAndOther = function (pageFields) {
-        this.processLoadedState();
+    PagesComponent.prototype.deleteSectionWithConfirm = function (fieldName, sectionNumber) {
+        var _this = this;
+        if (fieldName === void 0) { fieldName = 'sectionsParams'; }
+        this.modalRef = this.modalService.show(this.sectionConfirmationDialog);
+        this.confirmationResult.subscribe(function (result) {
+            if (result === true) {
+                _this.deleteSection(fieldName, sectionNumber);
+                _this.modalRef.hide();
+            }
+        });
+    };
+    PagesComponent.prototype.deleteSection = function (fieldName, sectionNumber) {
+        if (fieldName === void 0) { fieldName = 'sectionsParams'; }
+        this.selectedPageFields.values[fieldName].splice(sectionNumber, 1);
+        this.selectedSectionNumber = null;
+        this.initSectionsAndOther(this.selectedPageFields);
+    };
+    PagesComponent.prototype.initSectionsAndOther = function (pageFields, process) {
+        if (process === void 0) { process = true; }
+        if (process) {
+            this.processLoadedState();
+        }
         this.selectedPageFieldsOther = {
             params: {},
             values: []
@@ -2222,7 +2396,7 @@ var PagesComponent = /** @class */ (function (_super) {
                     var section = _a[_i];
                     var sectionType = section.type;
                     var sectionName = pageFields.params[key]['instancesLabels'][sectionType];
-                    console.log(sectionName);
+                    //console.log(sectionName);
                     this.pageFieldsSectionsOrder.push({
                         id: orderId,
                         name: sectionName
@@ -2256,8 +2430,28 @@ var PagesComponent = /** @class */ (function (_super) {
         }
         return result;
     };
+    PagesComponent.prototype.validatePageFieldsValues = function (params, values) {
+        for (var key in params) {
+            if (params[key].type !== 'composite') {
+                if (params[key].required === 1 && !values[key]) {
+                    return false;
+                }
+            }
+            else {
+                for (var _i = 0, _a = values[key]; _i < _a.length; _i++) {
+                    var section = _a[_i];
+                    if (!this.validatePageFieldsValues(params[key]['availableInstances'][section.type], section)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    };
     PagesComponent.prototype.save = function () {
-        //for (let section)
+        if (!this.validatePageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values)) {
+            return;
+        }
         this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values), this.language)
             .subscribe();
     };
@@ -2324,6 +2518,10 @@ var PagesComponent = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('confirmationDialog'),
         __metadata("design:type", Object)
     ], PagesComponent.prototype, "confirmationDialog", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('sectionConfirmationDialog'),
+        __metadata("design:type", Object)
+    ], PagesComponent.prototype, "sectionConfirmationDialog", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('reorderDialog'),
         __metadata("design:type", Object)
@@ -2438,10 +2636,10 @@ var RoomEditorComponent = /** @class */ (function () {
         this.newImageFile = null;
     };
     RoomEditorComponent.prototype.fileOver = function (event) {
-        console.log(event);
+        //console.log(event);
     };
     RoomEditorComponent.prototype.fileLeave = function (event) {
-        console.log(event);
+        //console.log(event);
     };
     RoomEditorComponent.prototype.ngOnInit = function () {
         this.room = null;
@@ -2741,7 +2939,7 @@ module.exports = "select {\n  margin: 10px;\n  width: -webkit-fill-available;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<select [(ngModel)]=\"selectedDomain\" class=\"form-control form-control-lg\">\n  <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n</select>\n<div *ngFor='let groupTitle in groupedSettings[selectedDomain]' class='navbar-selector-item' (click)=\"loadGroup(groupTitle)\"\n     [ngClass]=\"{'active':groupTitle==selectedGroupTitle}\"> {{groupTitle}} </div>"
+module.exports = "<select [(ngModel)]=\"selectedDomain\" class=\"form-control form-control-lg\" *ngIf=\"domains !== null\">\n  <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n</select>\n<div *ngIf=\"groupedSettings !== null\">\n  <div *ngFor='let groupTitle in groupedSettings[selectedDomain]' class='navbar-selector-item' (click)=\"loadGroup(groupTitle)\"\n       [ngClass]=\"{'active':groupTitle==selectedGroupTitle}\"> {{groupTitle}} </div>\n</div>\n"
 
 /***/ }),
 
@@ -2779,6 +2977,8 @@ var SettingsListComponent = /** @class */ (function () {
         this.pageService = pageService;
         this.selectItemService = selectItemService;
         this.settingsService = settingsService;
+        this.groupedSettings = null;
+        this.domains = null;
         this.settingsLoaded = false;
         this.domainsLoaded = false;
         this.selectedDomain = 1;
@@ -2951,8 +3151,8 @@ var SettingsComponent = /** @class */ (function () {
                         _this.initialValues[item.id] = item.value;
                     }
                 }
-                console.log('ivaules:');
-                console.log(_this.initialValues);
+                //console.log('ivaules:');
+                //console.log(this.initialValues);
             }
         });
     }
@@ -3340,10 +3540,10 @@ var TrainerEditorComponent = /** @class */ (function () {
         this.newImageFile = null;
     };
     TrainerEditorComponent.prototype.fileOver = function (event) {
-        console.log(event);
+        //console.log(event);
     };
     TrainerEditorComponent.prototype.fileLeave = function (event) {
-        console.log(event);
+        //console.log(event);
     };
     TrainerEditorComponent.prototype.ngOnInit = function () {
         this.trainer = null;
@@ -3542,7 +3742,7 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: true
 };
 
 
