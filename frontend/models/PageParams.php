@@ -9,6 +9,7 @@
 namespace frontend\models;
 
 use common\models\Image;
+use frontend\components\DocCommentParser;
 use frontend\components\LanguageHelper;
 use frontend\models\cms\logic\DataProviderConfiguration;
 use frontend\models\pages\SectionParams;
@@ -260,28 +261,26 @@ class PageParams
         foreach ($properties as $item) {
             $comment = $item->getDocComment();
 
-            preg_match('/@type\s+(.+)\s?\n/', $comment, $typeMatch);
-            preg_match('/@title\s+(.+)\s?\n/', $comment, $titleMatch);
-            preg_match('/@default(\s+(.+)\s?)?\n/', $comment, $defaultMatch);
-            preg_match('/@separated.?\n/', $comment, $separatedMatch);
-            preg_match('/@tab\s+\[(.+)\]\s?\n/', $comment, $tabMatch);
+            $commentParser = new DocCommentParser($comment);
 
-            $typeStr = isset($typeMatch[1]) ? $typeMatch[1] : '';
-
-            $title     = isset($titleMatch[1]) ? $titleMatch[1] : '';
-            $default   = isset($defaultMatch[1]) ? $defaultMatch[1] : '';
-            $separated = isset($separatedMatch[0]) ? true : false;
-            $tabTitle  = isset($tabMatch[1]) ? $tabMatch[1] : false;
+            $typeStr      = $commentParser->type;
+            $itemTitleKey = $commentParser->itemTitleKey;
+            $title        = $commentParser->title;
+            $default      = $commentParser->default;
+            $separated    = $commentParser->separated;
+            $required     = $commentParser->required;
+            $tabTitle     = $commentParser->tab;
 
             preg_match('/\(([a-zA-Z\|]*)\)\[\]/', $typeStr, $multiple);
             preg_match('/select\s?\((.*)\)/u', $typeStr, $select);
+
             if (count($multiple) === 0 && !count($select)) {
                 if (ParamField::checkType($typeStr) && !$onlyComposite) {
-                    $pageFields->addField($item->name, $typeStr, $title, $default, $separated, $tabTitle);
+                    $pageFields->addField($item->name, $typeStr, $title, $default, $separated, $required, $tabTitle);
                 }
             } else if (count($select)) {
                 $options = explode('|', $select[1]);
-                $pageFields->addField($item->name, ParamField::TYPE_SELECT, $title, $default, $separated, $tabTitle, $options);
+                $pageFields->addField($item->name, ParamField::TYPE_SELECT, $title, $default, $separated, $required, $tabTitle, $options);
             } else {
                 $classes = explode('|', $multiple[1]);
                 $multiplePageFields = [];
@@ -296,7 +295,7 @@ class PageParams
                     $multiplePageFields[$params->{$params->varyingField()}] = $asObj ? $params : $params->toPageFieldsArr($asObj);
                 }
 
-                $pageFields->addCompositeField($item->name, true, $multiplePageFields, $tabTitle);
+                $pageFields->addCompositeField($item->name, true, $title, $itemTitleKey, $multiplePageFields, $tabTitle);
             }
         }
 
@@ -304,7 +303,7 @@ class PageParams
         if (count(static::getDataProviders())) {
             foreach (static::getDataProviders() as $cfg) {
                 // todo сделать нормальный title
-                $pageFields->addField($cfg->getProviderName(), ParamField::TYPE_SELECT, $cfg->getProviderName(), '[]', false, 'Провайдеры данных', $cfg->getAllModelIds());
+                $pageFields->addField($cfg->getProviderName(), ParamField::TYPE_SELECT, $cfg->getProviderName(), '[]', false, false, 'Провайдеры данных', $cfg->getAllModelIds());
             }
         }
 

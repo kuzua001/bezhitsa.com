@@ -14,7 +14,7 @@ export class NgForIn<T> extends NgForOf<T> implements OnChanges {
     @Input() ngForIn: any;
 
     ngOnChanges(changes: NgForInChanges): void {
-        console.log("hello");
+        //console.log("hello");
         if (changes.ngForIn) {
             this.ngForOf = Object.keys(this.ngForIn) as Array<any>;
 
@@ -22,8 +22,8 @@ export class NgForIn<T> extends NgForOf<T> implements OnChanges {
             const currentValue = Object.keys(change.currentValue);
             const previousValue = change.previousValue ? Object.keys(change.previousValue) : undefined;
 
-            console.log(currentValue);
-            console.log(previousValue);
+            //console.log(currentValue);
+            //console.log(previousValue);
 
             changes.ngForOf =  new SimpleChange(previousValue, currentValue, change.firstChange);
 

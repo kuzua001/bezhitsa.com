@@ -23,10 +23,10 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
 
   public logToggle($event, key: string)
   {
-      console.log('Accrodion toggle event!');
-      console.log(key);
-      console.log(this.uniqKey);
-      console.log($event);
+      //console.log('Accrodion toggle event!');
+      //console.log(key);
+      //console.log(this.uniqKey);
+      //console.log($event);
   }
 
   public reorder(key: string) {
@@ -80,44 +80,6 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
     this.initGroupedParamsInfo();
   }
 
-  public prepareInstance(instanceParams, sectionType: string, fieldName: string) {
-      let newSection = {
-          sectionType: sectionType,
-          type: sectionType,
-          sectionTypeName: this.params[fieldName]['instancesLabels'][sectionType]
-      };
-
-      for (let key in instanceParams) {
-          if (instanceParams[key].type !== 'composite') {
-              newSection[key] = instanceParams[key].default;
-          } else {
-              newSection[key] = [];
-          }
-      }
-
-      return newSection;
-  }
-
-  public deleteInstanceWithConfirm(key: string, instanceIndex: number) {
-      this.deleteInstance(key, instanceIndex);
-  }
-
-  public deleteInstance(key: string, instanceIndex: number) {
-      this.values[key].splice(instanceIndex, 1);
-      console.log(this.values[key].length);
-      console.log(this.values[key]);
-  }
-
-  public appendInstance(key: string, instanceType: string) {
-      console.log(key);
-      console.log(instanceType);
-
-      let newInstance = this.prepareInstance(this.params[key]['availableInstances'][instanceType], instanceType, key);
-
-      this.values[key].push(newInstance);
-
-  }
-
   initGroupedParamsInfo() {
     this.groupedParamsSet = {};
     this.notGroupdParams = {};
@@ -139,8 +101,6 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
           this.groupedParamsSet[title].values[key] = param;
       }
     }
-
-    console.log(this.notGroupdParams);
 
     this.paramsHasGroups = paramsHasGroups;
   }

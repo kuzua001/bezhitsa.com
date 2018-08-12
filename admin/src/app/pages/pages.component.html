@@ -18,7 +18,7 @@
                 <div *ngFor="let section of selectedPageFieldsSections.values; index as sectionNumber;"
                      (click)="selectSection(sectionNumber)" [class.selected]="sectionNumber === selectedSectionNumber" class="item">
                     {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}
-                    <div class="delete" (click)="deleteSectionWithConfirm()"></div>
+                    <div class="delete" click-stop-propagation (click)="deleteSectionWithConfirm('sectionsParams', sectionNumber)"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="sections-panel toolbar-element" *ngIf="selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'">
                     <div class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
@@ -83,6 +83,23 @@
         <button type="button" class="btn btn-secondary" (click)="onCancel()">Нет</button>
     </div>
 </ng-template>
+
+<ng-template #sectionConfirmationDialog class="alert-box">
+    <div class="modal-header">
+        <h4 class="modal-title">Подтвердите действиe</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Удалить секцию?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Нет</button>
+    </div>
+</ng-template>
+
 
 <ng-template #reorderDialog>
     <div class="modal-header">

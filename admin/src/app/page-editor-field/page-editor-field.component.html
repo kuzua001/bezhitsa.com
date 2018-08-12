@@ -1,5 +1,10 @@
 <div class="field">
-  <div class="title"><label for="{{uniqId}}">{{title}}</label></div>
+  <div class="title">
+    <b *ngIf="params.required === 1">
+      <label for="{{uniqId}}">{{title}}</label>
+    </b>
+    <label *ngIf="params.required !== 1" for="{{uniqId}}">{{title}}</label>
+  </div>
   <div [ngSwitch]="params.type" class="content" [class.inline]="params.type === 'checkbox'">
     <div *ngSwitchCase="'string'">
       <input id={{uniqId}} type="text" [(ngModel)]="valueSet[valueKey]">
@@ -19,8 +24,23 @@
       <input id={{uniqId}} type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
     </div>
     <div *ngSwitchCase="'image'">
-      <img *ngIf="imageSrc !== null" width="200px" src="//hotel/{{imageSrc}}">
-      <app-image-chooser (selectedImageId)="selectImage($event)"></app-image-chooser>
+      <img *ngIf="imageSrc && imageSrc.length" width="200px" src="//hotel/{{imageSrc}}" (click)="openChooser()">
+      <button *ngIf="!(imageSrc && imageSrc.length)" (click)="openChooser()">Выбор</button>
+
+      <ng-template #imageChooser>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Выберите изображение</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-image-chooser #imageChooser (selectedImageId)="selectImage($event)"></app-image-chooser>
+          <button class="btn btn-primary" (click)="selectItemService.emitImageChooserEvent(); modalRef.hide();">Выбор</button>
+          <button class="btn btn-danger" (click)="modalRef.hide()">отмена</button>
+        </div>
+      </ng-template>
+
     </div>
   </div>
 </div>

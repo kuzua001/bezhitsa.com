@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ivan
+ * User: ivan\
  * Date: 8/25/17
  * Time: 1:17 AM
  */
@@ -14,9 +14,18 @@ use frontend\models\PageParams;
 class SliderItemParams extends PageParams
 {
     /**
+     * @var $image string
+     * @title Изображение
+     * @default
+     * @type image
+     * @required
+     */
+    public $image;
+
+    /**
      * @var $tabTitle string
      * @title Заголовок таба
-     * @default Заголово
+     * @default Заголовок
      * @type string
      */
     public $tabTitle;
@@ -29,16 +38,6 @@ class SliderItemParams extends PageParams
      * @type textarea
      */
     public $tabContent;
-
-
-    /**
-     * @var $image string
-     * @title Изображение
-     * @default
-     * @type image
-     */
-    public $image;
-
 
     /**
      * @var $hasCard boolean

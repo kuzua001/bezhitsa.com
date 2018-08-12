@@ -42,6 +42,7 @@ export class PagesComponent extends State implements OnInit {
     language: number = 1;
 
 	@ViewChild('confirmationDialog') confirmationDialog;
+	@ViewChild('sectionConfirmationDialog') sectionConfirmationDialog;
 	@ViewChild('reorderDialog') reorderDialog;
     modalRef: BsModalRef;
 
@@ -108,7 +109,7 @@ export class PagesComponent extends State implements OnInit {
     loadPage(pageId: number, unload: boolean) {
 		this.pageService.getPageFields(pageId, this.language)
 			.subscribe(page => {
-				console.log('Initing section!');
+				//console.log('Initing section!');
                 this.initSectionsAndOther(page);
 				this.selectedPageFields = page;
 
@@ -172,10 +173,29 @@ export class PagesComponent extends State implements OnInit {
 	    this.initSectionsAndOther(this.selectedPageFields);
     }
 
+    public deleteSectionWithConfirm(fieldName: string = 'sectionsParams', sectionNumber: number) {
+        this.modalRef = this.modalService.show(this.sectionConfirmationDialog);
+        this.confirmationResult.subscribe(result => {
+            if (result === true) {
+                this.deleteSection(fieldName, sectionNumber);
+                this.modalRef.hide();
+            }
+        });
+	}
+
+	private deleteSection(fieldName: string = 'sectionsParams', sectionNumber: number) {
+        this.selectedPageFields.values[fieldName].splice(sectionNumber, 1);
+
+        this.selectedSectionNumber = null;
+        this.initSectionsAndOther(this.selectedPageFields);
+	}
+
     private sectionsInited = false;
 
-    initSectionsAndOther(pageFields: PageFields) {
-        this.processLoadedState();
+    initSectionsAndOther(pageFields: PageFields, process: boolean = true) {
+    	if (process) {
+            this.processLoadedState();
+		}
 
         this.selectedPageFieldsOther = {
         	params: {},
@@ -199,7 +219,7 @@ export class PagesComponent extends State implements OnInit {
     			for (let section of pageFields.values['sectionsParams']) {
     			    let sectionType = section.type;
     			    let sectionName = pageFields.params[key]['instancesLabels'][sectionType];
-    			    console.log(sectionName);
+    			    //console.log(sectionName);
 
                     this.pageFieldsSectionsOrder.push({
                         id: orderId,
@@ -237,8 +257,28 @@ export class PagesComponent extends State implements OnInit {
 		return result;
 	}
 
+	validatePageFieldsValues(params, values): boolean {
+    	for (let key in params) {
+    		if (params[key].type !== 'composite') {
+                if (params[key].required === 1 && !values[key]) {
+                    return false;
+                }
+			} else {
+                for (let section of values[key]) {
+                    if (!this.validatePageFieldsValues(params[key]['availableInstances'][section.type], section)) {
+                    	return false;
+					}
+                }
+			}
+		}
+
+		return true;
+	}
+
 	save(): void {
-	    //for (let section)
+		if (!this.validatePageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values)) {
+			return;
+		}
 
 	    this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values), this.language)
             .subscribe();

@@ -13,8 +13,8 @@ import {SettingsService} from "../settings.service";
     styleUrls: ['./settings-list.component.css']
 })
 export class SettingsListComponent implements OnInit {
-    groupedSettings: any;
-    domains: Domain[];
+    groupedSettings: any = null;
+    domains: Domain[] = null;
 
     settingsLoaded: boolean = false;
     domainsLoaded: boolean = false;

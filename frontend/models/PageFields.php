@@ -32,7 +32,7 @@ class PageFields extends Object
         return $this->params;
     }
 
-    public function addField($key, $type, $title = '', $default = '', $separated = false, $tabTitle = '', $options = [])
+    public function addField($key, $type, $title = '', $default = '', $separated = false, $required = false, $tabTitle = '', $options = [])
     {
         $this->params[$key] = [
             'key'       => $key,
@@ -40,7 +40,8 @@ class PageFields extends Object
             'title'     => $title,
             'default'   => $default,
             'separated' => $separated,
-            'tabTitle'  => $tabTitle
+            'tabTitle'  => $tabTitle,
+            'required'  => $required,
         ];
 
         if (count($options)) {
@@ -56,10 +57,12 @@ class PageFields extends Object
     /**
      * @param       $key
      * @param       $isArr
+     * @param       $title string
+     * @param       $itemTitleKey string
      * @param       $tabTitle
      * @param       $availableInstances (PageFields)[]
      */
-    public function addCompositeField($key, $isArr, array $availableInstances, $tabTitle = '') {
+    public function addCompositeField($key, $isArr, $title, $itemTitleKey, array $availableInstances, $tabTitle = '') {
         $labels = [];
 
         foreach ($availableInstances as $type => $instance) {
@@ -68,6 +71,8 @@ class PageFields extends Object
 
         $this->params[$key] = [
             'key'  => $key,
+            'title' => $title,
+            'itemTitleKey' => $itemTitleKey,
             'type' => $isArr ? self::TYPE_COMPOSITE : self::TYPE_COMPOSITE_ARR,
             'availableInstances' => $availableInstances,
             'instancesLabels' => $labels,
@@ -77,10 +82,6 @@ class PageFields extends Object
 
     public function __toString()
     {
-
-        //var_dump(PageParams::getValuesWithTypes($this->values));
-        //exit();
-
         return json_encode((object) [
             'params' => $this->params,
             'values' => PageParams::getValuesWithTypes($this->values)

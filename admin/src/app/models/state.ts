@@ -7,7 +7,7 @@ export class State {
 
     public setStateProperty(propertyName: string, value: any)
     {
-        console.log('setting');
+        //console.log('setting');
         this.componentState[propertyName] = value;
         localStorage.setItem(this.componentName, JSON.stringify(Object.assign({}, this.componentState)));
     }

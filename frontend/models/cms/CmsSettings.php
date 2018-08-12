@@ -79,6 +79,6 @@ class CmsSettings extends \yii\db\ActiveRecord
             self::initSettings();
         }
 
-        return self::$loadedSettings[$siteId];
+        return isset(self::$loadedSettings[$siteId]) ? self::$loadedSettings[$siteId] : [];
     }
 }

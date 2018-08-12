@@ -82,7 +82,7 @@ export class PagesListComponent extends State implements OnInit {
                 this.groupedPages[page.domain_id].push(page);
             }
 
-            console.log(this.groupedPages);
+            //console.log(this.groupedPages);
         }
     };
 

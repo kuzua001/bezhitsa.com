@@ -26,6 +26,7 @@ class SectionParams extends PageParams implements NamedTypeInterface
         Section::TYPE_ABOUT_PAGE             => 'Об отеле/фитнесе/ресторане',
         Section::TYPE_TRAINERS_LIST          => 'Список тренеров',
         Section::TYPE_TEXT_PAGE              => 'Текстовая секция',
+        Section::TYPE_BIG_SLIDER             => 'Большой слайдер',
         SliderItemParams::TYPE_SLIDE         => 'Слайд',
         SectionBgSizeParams::TYPE_SECTION_BG => 'Фон секции',
     ];

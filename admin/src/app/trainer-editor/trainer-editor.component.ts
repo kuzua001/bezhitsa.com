@@ -96,11 +96,11 @@ export class TrainerEditorComponent implements OnInit {
   }
 
   public fileOver(event) {
-      console.log(event);
+      //console.log(event);
   }
 
   public fileLeave(event) {
-      console.log(event);
+      //console.log(event);
   }
 
 

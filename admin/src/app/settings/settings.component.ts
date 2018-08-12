@@ -35,8 +35,8 @@ export class SettingsComponent implements OnInit {
                 		this.initialValues[item.id] = item.value;
 					}
 				}
-                console.log('ivaules:');
-                console.log(this.initialValues);
+                //console.log('ivaules:');
+                //console.log(this.initialValues);
             }
         });
 	}

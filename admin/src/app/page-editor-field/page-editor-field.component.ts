@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AppHelper} from "../components/app-helper";
 import {ModelService} from "../model.service";
 import {Image} from "../models/image";
+import {BsModalService} from "ngx-bootstrap";
+import {SelectItemService} from "../select-item.service";
 
 @Component({
     selector: 'app-page-editor-field',
@@ -11,9 +13,23 @@ import {Image} from "../models/image";
 export class PageEditorFieldComponent implements OnInit {
     private uniqId;
 
-    constructor(private modelService: ModelService) {
+    private modalRef;
+
+    @ViewChild('imageChooser') imageChooser;
+
+    constructor(
+        private modelService: ModelService,
+        private modalService: BsModalService,
+        private selectItemService: SelectItemService
+    ) {
         this.uniqId = AppHelper.uuid();
     }
+
+    openChooser()
+    {
+        this.modalRef = this.modalService.show(this.imageChooser);
+    }
+
 
     @Input() valueSet: any;
     @Input() valueKey: any;
@@ -21,7 +37,7 @@ export class PageEditorFieldComponent implements OnInit {
     @Input() params: any;
 
 
-    private imageSrc;
+    private imageSrc = null;
 
     public selectImage(image: Image)
     {
@@ -40,14 +56,14 @@ export class PageEditorFieldComponent implements OnInit {
     private reloadImageSrc()
     {
         this.modelService.getImage(this.valueSet[this.valueKey]).subscribe((image) => {
-            console.log('image obtained!');
+            //console.log('image obtained!');
             this.imageSrc = image.filename;
         });
     }
 
     ngOnInit() {
         if (this.params.type === 'image') {
-            console.log('azazaza');
+            //console.log('azazaza');
             this.reloadImageSrc();
         }
     }

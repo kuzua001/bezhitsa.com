@@ -14,6 +14,8 @@ use frontend\widgets\section\Section;
 
 class SliderTabsSectionParams extends SectionParams
 {
+    const TYPE_SLIDES = 'slides';
+
 
     protected $sectionType  = Section::TYPE_SLIDER_TABS;
     protected $sectionClass = 'events';
@@ -39,13 +41,14 @@ class SliderTabsSectionParams extends SectionParams
     /**
      * @var $slides (SliderItemParams)[]
      * @title Слайды
+     * @itemTitleKey tabTitle
      * @type (SliderItemParams)[]
      */
     public $slides;
 
     /**
      * @var $bgColor string
-     * @title Цвет в формате #ffffff
+     * @title Общий цвет секции
      * @type color
      */
     public $bgColor;

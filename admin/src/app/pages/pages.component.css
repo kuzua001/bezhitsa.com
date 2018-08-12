@@ -38,9 +38,22 @@
   height: 35px;
   line-height: 35px;
   padding-left: 10px;
+  position: relative;
+}
+.sections-selector .item:not(.selected) .delete,
+.general-info .item:not(.selected) .delete,
+.items-block .item:not(.selected) .delete {
+  display: none;
 }
 .sections-selector .item.selected,
 .general-info .item.selected,
 .items-block .item.selected {
   background-color: #eee;
+}
+.sections-selector .item.selected .delete,
+.general-info .item.selected .delete,
+.items-block .item.selected .delete {
+  position: absolute;
+  top: 0;
+  right: 10px;
 }

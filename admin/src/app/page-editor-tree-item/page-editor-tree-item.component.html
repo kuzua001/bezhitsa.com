@@ -1,0 +1,39 @@
+<div [ngSwitch]="params[key].type">
+  <div *ngSwitchCase="'composite'">
+    <h3>{{params[key].title}}</h3>
+    <div class="instances">
+      <div *ngFor="let section of values[key]; let i = index;" class="instance-item">
+        <div class="instance-toolbar">
+          <span class="close" (click)="deleteInstanceWithConfirm(key, i)"><i class="fa fa-close"></i></span>
+        </div>
+        <page-editor [uniqKey]="uniqKey + '_' + key" [params]="params[key]['availableInstances'][section.type]" [values]="section"></page-editor>
+      </div>
+      <div class="toolbar">
+        <div class="empty-wrapper" [ngSwitch]="(params[key]['availableInstances'] | values).length === 1">
+          <button *ngSwitchCase="true" dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic" #item value="{{(params[key]['availableInstances'] | keys)[0]}}" (click)="appendInstance(key, item.value)">
+            Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class="fa fa-plus"></i>
+          </button>
+          <div *ngSwitchCase="false" class="btn-group" dropdown #dropdown="bs-dropdown" [autoClose]="true">
+            <button dropdownToggle type="button" class="btn btn-primary" aria-controls="dropdown-basic">
+              Добавить секцию <i class="fa fa-plus"></i>
+            </button>
+            <ul *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-triggers-manual">
+              <li *ngFor="let instanceType in params[key]['availableInstances']" role="menuitem">
+                <a class="dropdown-item" (click)="appendInstance(key, instanceType)">
+                  {{params[key]['instancesLabels'][instanceType]}}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button *ngIf="values[key].length > 1" type="button" class="btn btn-primary" (click)="reorder()">
+          Поменять местами
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchDefault>
+    <app-page-editor-field [title]="params[key].title" [params]="params[key]" [valueSet]="values" [valueKey]="key"></app-page-editor-field>
+  </div>
+</div>
