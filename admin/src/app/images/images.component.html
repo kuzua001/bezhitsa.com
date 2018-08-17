@@ -9,7 +9,7 @@
           </div>
       </div>
       <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image, image.getOrientation)">
-        <img #imagesList src="//hotel/{{image.filename}}" (load)="initImageOrientation(i)">
+        <img #imagesList src="/{{image.filename}}" (load)="initImageOrientation(i)">
         <div class="short-description">
           {{image.description | wordCountLimit: 3 }}
         </div>

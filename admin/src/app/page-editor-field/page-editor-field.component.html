@@ -24,7 +24,7 @@
       <input id={{uniqId}} type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
     </div>
     <div *ngSwitchCase="'image'">
-      <img *ngIf="imageSrc && imageSrc.length" width="200px" src="//hotel/{{imageSrc}}" (click)="openChooser()">
+      <img *ngIf="imageSrc && imageSrc.length" width="200px" src="/{{imageSrc}}" (click)="openChooser()">
       <button *ngIf="!(imageSrc && imageSrc.length)" (click)="openChooser()">Выбор</button>
 
       <ng-template #imageChooser>

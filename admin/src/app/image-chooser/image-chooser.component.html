@@ -8,7 +8,7 @@
                 <div class="images">
                     <div class="content module-editor" *ngIf="images !== null">
                         <div *ngFor="let image of images; let i = index;" class="image-card" (click)="markImage(i)">
-                            <img #imagesList src="//hotel/{{image.filename}}" (load)="detectOrientation(i)">
+                            <img #imagesList src="/{{image.filename}}" (load)="detectOrientation(i)">
                             <div class="short-description">
                                 {{image.description | wordCountLimit: 3 }}
                             </div>
