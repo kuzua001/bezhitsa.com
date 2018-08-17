@@ -52,7 +52,7 @@ export class CustomImageCropperComponent implements OnInit {
         }));
 
     private loadPreviewData(image: CmsImage) {
-        this.toDataURL('//hotel/' + image.filename).then(data => {
+        this.toDataURL('/' + image.filename).then(data => {
             this.editingImageObject.src = data.toString();
             let that = this;
             this.editingImageObject.addEventListener("load", function(){

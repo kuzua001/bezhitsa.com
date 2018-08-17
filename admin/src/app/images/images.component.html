@@ -31,7 +31,7 @@
 
           <div class="left-part">
             <div [ngSwitch]="imageDataForUpdateEditing === null">
-              <img src="//hotel/{{editingImage.filename}}" class="image-for-crop" *ngSwitchCase="true">
+              <img src="/{{editingImage.filename}}" class="image-for-crop" *ngSwitchCase="true">
               <img src="{{imageDataForUpdateEditing.content}}" class="image-for-crop" *ngSwitchCase="false">
             </div>
           </div>
