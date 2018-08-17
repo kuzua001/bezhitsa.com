@@ -9,8 +9,8 @@ export class SelectItemService {
   private _event = new Subject();
   event$ = this._event.asObservable();
 
-  emitEventOfType(type: SelectItemEvent.Type) {
-    this.emit(new SelectItemEvent(type, {}));
+  emitEventOfType(type: SelectItemEvent.Type, options: any = {}) {
+    this.emit(new SelectItemEvent(type, options));
   }
 
   emitImageChooserEvent() {

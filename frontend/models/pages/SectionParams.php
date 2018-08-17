@@ -142,6 +142,7 @@ class SectionParams extends PageParams implements NamedTypeInterface
     /**
      * @var $bgItems SectionBgSizeParams[]
      * @title Параметры фона
+     * @itemTitleKey viewportSize
      * @tab [Параметры секции]
      * @type (SectionBgSizeParams)[]
      */

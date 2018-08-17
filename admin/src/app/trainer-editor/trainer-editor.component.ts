@@ -6,7 +6,7 @@ import {ModelService} from "../model.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {ReadFile} from 'ngx-file-helpers';
 import {MenuService} from "../menu.service";
-import {Image} from "../models/image";
+import {CmsImage} from "../models/cms-image";
 
 
 @Component({
@@ -45,7 +45,7 @@ export class TrainerEditorComponent implements OnInit {
 
   }
 
-  selectImage(image: Image) {
+  selectImage(image: CmsImage) {
       this.trainer.img_id = image.id;
       this.trainer.img_src = image.filename;
   }

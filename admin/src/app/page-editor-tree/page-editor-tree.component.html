@@ -1,17 +1,17 @@
 <accordion *ngIf="paramsHasGroups" class="super">
-    <accordion-group *ngFor="let group in groupedParamsSet" heading="{{groupedParamsSet[group].title}}" style="color: #f00" (isOpenChange)="logToggle($event, group)">
+    <accordion-group *ngFor="let group in groupedParamsSet" heading="{{groupedParamsSet[group].title}}" style="color: #f00" [isOpen]="false" (isOpenChange)="logToggle($event, group)">
         <div *ngFor="let key in groupedParamsSet[group].values">
             <app-page-editor-tree-item [key]="key" [params]="params" [values]="values" [parent]="this" [uniqKey]="uniqKey"></app-page-editor-tree-item>
         </div>
     </accordion-group>
-    <accordion-group *ngIf="(notGroupdParams | json) !== '{}'" heading="Содержимое блока" (isOpenChange)="logToggle($event, 'nogroup')">
+    <accordion-group *ngIf="(notGroupdParams | json) !== '{}'" heading="Содержимое блока - {{generalName}} - {{itemTitle}}" [isOpen]="false" (isOpenChange)="logToggle($event, 'nogroup')">
         <div *ngFor="let key in notGroupdParams">
             <app-page-editor-tree-item [key]="key" [params]="params" [values]="values" [parent]="this" [uniqKey]="uniqKey"></app-page-editor-tree-item>
         </div>
     </accordion-group>
 </accordion>
 <accordion  *ngIf="!paramsHasGroups">
-    <accordion-group heading="Содержимое блока" [isOpen]="true" (isOpenChange)="logToggle($event, 'nogroup')">
+    <accordion-group heading="Содержимое блока - {{generalName}} - {{itemTitle}}" [isOpen]="false" (isOpenChange)="logToggle($event, 'nogroup')">
         <div *ngFor="let key in notGroupdParams">
             <app-page-editor-tree-item [key]="key" [params]="params" [values]="values" [parent]="this" [uniqKey]="uniqKey"></app-page-editor-tree-item>
         </div>

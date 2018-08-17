@@ -8,8 +8,8 @@
             <button accept="image/*">Browse</button>
           </div>
       </div>
-      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image)">
-        <img #imagesList src="//hotel/{{image.filename}}" (load)="detectOrientation(i)">
+      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image, image.getOrientation)">
+        <img #imagesList src="//hotel/{{image.filename}}" (load)="initImageOrientation(i)">
         <div class="short-description">
           {{image.description | wordCountLimit: 3 }}
         </div>
@@ -24,26 +24,72 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <section>
-      <div [ngSwitch]="imageDataForUpdateEditing === null">
-        <img src="//hotel/{{editingImage.filename}}" class="image-for-crop" *ngSwitchCase="true">
-        <img src="{{imageDataForUpdateEditing.content}}" class="image-for-crop" *ngSwitchCase="false">
-      </div>
+  <div class="modal-body image-editor-element" [class.vertical]="editingImage.getOrientation">
+    <tabset>
+      <tab heading="Общие настройки" id="redactor-tab">
+        <section class="redactor" [class.vertical]="editingImage.getOrientation">
 
-      <div class="update-image" accept="image/*" ngxFileDropzone (fileDrop)="droppedForUpdate($event)" ngxFilePicker (filePick)="droppedForUpdate($event)">
-        Заменить изображение.<br>
-        <i class="fa fa-plus"></i><br>
-        <button accept="image/*">Выбор</button>
-      </div>
+          <div class="left-part">
+            <div [ngSwitch]="imageDataForUpdateEditing === null">
+              <img src="//hotel/{{editingImage.filename}}" class="image-for-crop" *ngSwitchCase="true">
+              <img src="{{imageDataForUpdateEditing.content}}" class="image-for-crop" *ngSwitchCase="false">
+            </div>
+          </div>
 
-      <div class="cropper-zone">
+          <div class="right-part">
+            <div class="update-image" accept="image/*" ngxFileDropzone (fileDrop)="droppedForUpdate($event)" ngxFilePicker (filePick)="droppedForUpdate($event)">
+              Заменить изображение.<br>
+              <i class="fa fa-plus"></i><br>
+              <button accept="image/*">Выбор</button>
+            </div>
 
-      </div>
-    </section>
-    <section>
-      <button class="btn btn-primary" (click)="modalRef.hide()">отмена</button>
-      <button class="btn btn-success" (click)="delete()">сохранить</button>
-    </section>
+            <textarea [(ngModel)]="editingImage.description"></textarea>
+
+            <div class="tags-list">
+              <div class="tag" *ngFor="let tag of editingImage.getTags()">
+                {{ tag }}
+                <i class="fa fa-close close" (click)="removeTag(tag)"></i>
+              </div>
+              <div *ngIf="tagAddingMode === false" class="tag plus" (click)="setTagEditingMode(true)">+</div>
+              <input *ngIf="tagAddingMode === true" #newTag class="tag input" autofocus="true" (keyup.enter)="addTag(newTag.value)" (blur)="setTagEditingMode(false)">
+            </div>
+
+            <div class="type" *ngIf="imageTypes !== null">
+              Тип фото: <select [(ngModel)]="editingImage.image_type_id" class="form-control form-control-inline">
+                <option value="null">Не выбран</option>
+                <option *ngFor="let type of imageTypes" value="{{type.id}}">
+                  {{ type.name }}
+                </option>
+              </select>
+            </div>
+
+            <section>
+              <button class="ripple module-control-button-element delete" (click)="modalRef.hide()">отмена</button>
+              <button class="ripple module-control-button-element default" (click)="saveEditingImage()">сохранить</button>
+            </section>
+          </div>
+
+          <div class="cropper-zone">
+
+          </div>
+        </section>
+      </tab>
+      <tab heading="Превью" id="preview-tab">
+        <section class="preview-editor-element">
+
+          <nav class="preview-selector" *ngIf="editingImage.image_type_id !== null">
+            <a (click)="selectPreview(preview)" *ngFor="let preview of getEditingImagePreviews().previewSettings" [class.selected]="currentPreview != null && preview.id === currentPreview.id">
+             Превью {{preview.width}} x {{preview.height}}
+            </a>
+          </nav>
+          <div innerHTML={{currentPreview.description}}></div>
+
+          <div *ngIf="currentPreview !== null">
+            <app-image-cropper [hidden]="preview.id !== currentPreview.id" *ngFor="let preview of getEditingImagePreviews().previewSettings" [aspectRatio]="preview.width / preview.height" [image]="editingImage"></app-image-cropper>
+          </div>
+
+        </section>
+      </tab>
+    </tabset>
   </div>
 </ng-template>

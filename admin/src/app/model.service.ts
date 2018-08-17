@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, Subject, pipe} from 'rxjs';
 import {Trainer} from "./models/trainer";
-import {Image} from "./models/image";
+import {CmsImage} from "./models/cms-image";
 import {ReadFileImpl} from "ngx-file-helpers/src/read-file-impl";
 import {ReadFile} from "ngx-file-helpers";
 import {Room} from "./models/room";
 import {LanguageService} from "./services/language.service";
+import {ImageType} from "./models/image-type";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -84,26 +85,27 @@ export class ModelService {
 
     //images
 
-    public getImages(): Observable<Image[]> {
-        return this.getModelListing<Image>(Image.getApiMethodName());
+    public getImages(): Observable<CmsImage[]> {
+        return this.getModelListing<CmsImage>(CmsImage.getApiMethodName());
     }
 
-    public getImage(id: number): Observable<Image> {
-        return this.http.get<Image>(this.baseUrl + Image.getApiMethodName(id));
+    public getImage(id: number): Observable<CmsImage> {
+        return this.http.get<CmsImage>(this.baseUrl + CmsImage.getApiMethodName(id));
     }
 
 
-    public saveImage(image: Image) {
-        return this.http.put(this.baseUrl + Image.getApiMethodName() + '/' + image.id, image)
+    public saveImage(image: CmsImage) {
+        image.beforeSave();
+        return this.http.put(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id, image)
             .subscribe();
     }
 
-    public deleteImage(image: Image) {
-        return this.http.delete(this.baseUrl + Image.getApiMethodName() + '/' + image.id);
+    public deleteImage(image: CmsImage) {
+        return this.http.delete(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id);
     }
 
     public createImage(image: ReadFile, callback: Function) {
-        return this.http.post(this.baseUrl + Image.getApiMethodName(), {
+        return this.http.post(this.baseUrl + CmsImage.getApiMethodName(), {
             content: image.content,
             filename: image.name
         }, httpOptions)
@@ -114,8 +116,8 @@ export class ModelService {
             });
     }
 
-    public updateImage(imageData: ReadFile, image: Image, callback: Function) {
-        return this.http.put(this.baseUrl + Image.getApiMethodName() + '/' + image.id, {
+    public updateImage(imageData: ReadFile, image: CmsImage, callback: Function) {
+        return this.http.put(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id, {
             content: imageData.content,
             filename: imageData.name
         }, httpOptions)
@@ -124,6 +126,11 @@ export class ModelService {
                     callback(response);
                 }
             });
+    }
+
+    // image types
+    public getImageTypes()  {
+        return this.getModelListing<ImageType>(ImageType.getApiMethodName());
     }
 
     //common

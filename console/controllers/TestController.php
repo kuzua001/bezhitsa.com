@@ -9,6 +9,7 @@
 namespace console\controllers;
 
 use common\models\Image;
+use common\models\ImageType;
 use frontend\components\LanguageHelper;
 use frontend\models\cms\CmsSettings;
 use frontend\components\grabbers\ControllerMetadataGrabber;
@@ -37,6 +38,15 @@ use \Gumlet\ImageResize;
 
 class TestController extends Controller
 {
+
+    public function actionPreviewConvert()
+    {
+        $type = ImageType::find()->one();
+        /** @var $type ImageType */
+        $type->previewSettings[0]->width = 300;
+        $type->save();
+    }
+
     /**
      * @param $filePath
      * @return Image

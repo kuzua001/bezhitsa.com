@@ -56,6 +56,7 @@ return [
                         'trainer'    => 'api/trainer',
                         'room'       => 'api/room',
                         'images'     => 'api/images',
+                        'imageTypes' => 'api/image-types',
                         'pageFields' => 'api/page-fields',
                         'settings'   => 'api/settings',
                         'actions'    => 'api/actions',

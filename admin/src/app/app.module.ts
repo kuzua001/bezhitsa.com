@@ -40,7 +40,8 @@ import {SettingsService} from "./settings.service";
 import {SettingsComponent} from "./settings/settings.component";
 import {ClickStopPropagation} from "./click-stop-propogation.directive";
 import { PageEditorTreeItemComponent } from './page-editor-tree-item/page-editor-tree-item.component';
-
+import { ImageCropperComponent, CropperSettings } from 'ng2-img-cropper';
+import { CustomImageCropperComponent } from './image-cropper/image-cropper.component';
 
 @NgModule({
     declarations: [
@@ -66,7 +67,9 @@ import { PageEditorTreeItemComponent } from './page-editor-tree-item/page-editor
         NgForIn,
         PageEditorFieldComponent,
         ClickStopPropagation,
-        PageEditorTreeItemComponent
+        PageEditorTreeItemComponent,
+        ImageCropperComponent,
+        CustomImageCropperComponent
     ],
     imports: [
         BrowserModule,

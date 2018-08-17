@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AppHelper} from "../components/app-helper";
 import {ModelService} from "../model.service";
-import {Image} from "../models/image";
+import {CmsImage} from "../models/cms-image";
 import {BsModalService} from "ngx-bootstrap";
 import {SelectItemService} from "../select-item.service";
 
@@ -39,7 +39,7 @@ export class PageEditorFieldComponent implements OnInit {
 
     private imageSrc = null;
 
-    public selectImage(image: Image)
+    public selectImage(image: CmsImage)
     {
         this.valueSet[this.valueKey] = image.id;
         this.imageSrc = image.filename;

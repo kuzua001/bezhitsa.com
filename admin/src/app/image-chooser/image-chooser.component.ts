@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChildren} from '@angular/core';
-import {Image} from "../models/image";
+import {CmsImage} from "../models/cms-image";
 import {ModelService} from "../model.service";
 import {SelectItemService} from "../select-item.service";
 import {SelectItemEvent} from "../models/select-item-event";
@@ -13,15 +13,15 @@ export class ImageChooserComponent implements OnInit {
 
     @ViewChildren('imagesList') imageList;
 
-    private images: Image[];
+    private images: CmsImage[];
 
     @Input() multiple: boolean = false;
 
     preSelectedImageId = null;
     preSelectedImageIds = [];
 
-    @Output() selectedImageId = new EventEmitter<Image>();
-    @Output() selectedImageIds = new EventEmitter<Array<Image>>();
+    @Output() selectedImageId = new EventEmitter<CmsImage>();
+    @Output() selectedImageIds = new EventEmitter<Array<CmsImage>>();
 
     constructor(
         private modelService: ModelService,

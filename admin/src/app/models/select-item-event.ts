@@ -23,6 +23,7 @@ export namespace SelectItemEvent {
         RoomClose,
 		LanguageChange,
 		ImageChooserApply,
-		CloseAllSelectedItems
+		CloseAllSelectedItems,
+		ChangeAspectRatio,
 	}
 }

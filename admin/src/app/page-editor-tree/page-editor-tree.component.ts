@@ -13,6 +13,8 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
   @Input() params: any;
   @Input() values: any;
   @Input() uniqKey: string;
+  @Input() generalName: string;
+  @Input() itemTitle: string;
 
   paramsHasGroups: boolean;
   groupedParamsSet: any;

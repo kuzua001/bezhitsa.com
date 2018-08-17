@@ -20,6 +20,20 @@ export class PageEditorTreeItemComponent implements OnInit {
     ngOnInit() {
     }
 
+    public getSectionGeneralName(section: any)
+    {
+        return this.params[this.key]['instancesLabels'][section.type];
+    }
+
+    public getSectionTitle(section: any)
+    {
+        if (this.params[this.key].itemTitleKey) {
+            return section[this.params[this.key].itemTitleKey];
+        }
+
+        return null;
+    }
+
     public prepareInstance(instanceParams, sectionType: string, fieldName: string) {
         let newSection = {
             sectionType: sectionType,

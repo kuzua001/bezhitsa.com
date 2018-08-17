@@ -55,6 +55,7 @@ class ImagesController extends ApiController
     {
         $actions = parent::actions();
         $actions['create']['class'] = 'backend\controllers\api\images\CustomCreateAction';
+        $actions['update']['class'] = 'backend\controllers\api\images\CustomUpdateAction';
         $actions['index']['class'] = 'backend\controllers\api\images\CustomIndexAction';
 
         return $actions;

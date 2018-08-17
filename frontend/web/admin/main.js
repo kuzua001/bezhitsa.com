@@ -118,7 +118,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n* {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 60px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n}\n.admin-content-wrapper {\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element:last-child {\n  flex: 1 1;\n  margin-right: 0;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n"
+module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n* {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 60px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n}\n.admin-content-wrapper {\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element:last-child {\n  flex: 1 1;\n  margin-right: 0;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\n"
 
 /***/ }),
 
@@ -262,12 +262,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
 /* harmony import */ var _click_stop_propogation_directive__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./click-stop-propogation.directive */ "./src/app/click-stop-propogation.directive.ts");
 /* harmony import */ var _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./page-editor-tree-item/page-editor-tree-item.component */ "./src/app/page-editor-tree-item/page-editor-tree-item.component.ts");
+/* harmony import */ var ng2_img_cropper__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ng2-img-cropper */ "./node_modules/ng2-img-cropper/index.js");
+/* harmony import */ var _image_cropper_image_cropper_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./image-cropper/image-cropper.component */ "./src/app/image-cropper/image-cropper.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -336,7 +340,9 @@ var AppModule = /** @class */ (function () {
                 _ng_for_in_directive__WEBPACK_IMPORTED_MODULE_27__["NgForIn"],
                 _page_editor_field_page_editor_field_component__WEBPACK_IMPORTED_MODULE_29__["PageEditorFieldComponent"],
                 _click_stop_propogation_directive__WEBPACK_IMPORTED_MODULE_37__["ClickStopPropagation"],
-                _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_38__["PageEditorTreeItemComponent"]
+                _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_38__["PageEditorTreeItemComponent"],
+                ng2_img_cropper__WEBPACK_IMPORTED_MODULE_39__["ImageCropperComponent"],
+                _image_cropper_image_cropper_component__WEBPACK_IMPORTED_MODULE_40__["CustomImageCropperComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -729,6 +735,129 @@ var ImageChooserComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/image-cropper/image-cropper.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/image-cropper/image-cropper.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/image-cropper/image-cropper.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/image-cropper/image-cropper.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<img-cropper #cropper [image]=\"{}\" [settings]=\"cropperSettings\"></img-cropper>"
+
+/***/ }),
+
+/***/ "./src/app/image-cropper/image-cropper.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/image-cropper/image-cropper.component.ts ***!
+  \**********************************************************/
+/*! exports provided: CustomImageCropperComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomImageCropperComponent", function() { return CustomImageCropperComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/cms-image */ "./src/app/models/cms-image.ts");
+/* harmony import */ var ngx_img_cropper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-img-cropper */ "./node_modules/ngx-img-cropper/index.js");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CustomImageCropperComponent = /** @class */ (function () {
+    function CustomImageCropperComponent(selectItemService) {
+        this.selectItemService = selectItemService;
+        this.imageWidth = null;
+        this.imageHeight = null;
+        this.editingImageObject = new Image();
+        this.toDataURL = function (url) { return fetch(url)
+            .then(function (response) { return response.blob(); })
+            .then(function (blob) { return new Promise(function (resolve, reject) {
+            var reader = new FileReader();
+            reader.onloadend = function () { return resolve(reader.result); };
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+        }); }); };
+        this.cropperSettings = new ngx_img_cropper__WEBPACK_IMPORTED_MODULE_2__["CropperSettings"]();
+        this.cropperSettings.preserveSize = true;
+        this.cropperSettings.noFileInput = true;
+        this.cropperSettings.cropOnResize = false;
+        this.cropperSettings.minWidth = 500;
+        this.cropperSettings.minHeight = 500;
+        this.cropperSettings.keepAspect = true;
+    }
+    CustomImageCropperComponent.prototype.loadPreviewData = function (image) {
+        var _this = this;
+        this.toDataURL('//hotel/' + image.filename).then(function (data) {
+            _this.editingImageObject.src = data.toString();
+            var that = _this;
+            _this.editingImageObject.addEventListener("load", function () {
+                console.log(this.naturalWidth + ' x ' + this.naturalHeight);
+                that.imageWidth = this.naturalWidth;
+                that.imageHeight = this.naturalHeight;
+                that.updateCropperSettings();
+            });
+        });
+    };
+    CustomImageCropperComponent.prototype.updateCropperSettings = function () {
+        var imageAspectRatio = this.imageWidth / this.imageHeight;
+        this.cropper.cropper.resizeCanvas(650, 650 / imageAspectRatio);
+        this.cropperSettings.minWidth = this.imageWidth / 5;
+        this.cropperSettings.minHeight = this.imageHeight / 5;
+        this.cropper.cropper.setImage(this.editingImageObject);
+    };
+    CustomImageCropperComponent.prototype.ngOnInit = function () {
+        this.cropperSettings.width = 100;
+        this.cropperSettings.height = 100 / this.aspectRatio;
+        this.loadPreviewData(this.image);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_cms_image__WEBPACK_IMPORTED_MODULE_1__["CmsImage"])
+    ], CustomImageCropperComponent.prototype, "image", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], CustomImageCropperComponent.prototype, "aspectRatio", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('cropper'),
+        __metadata("design:type", ngx_img_cropper__WEBPACK_IMPORTED_MODULE_2__["ImageCropperComponent"])
+    ], CustomImageCropperComponent.prototype, "cropper", void 0);
+    CustomImageCropperComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-image-cropper',
+            template: __webpack_require__(/*! ./image-cropper.component.html */ "./src/app/image-cropper/image-cropper.component.html"),
+            styles: [__webpack_require__(/*! ./image-cropper.component.css */ "./src/app/image-cropper/image-cropper.component.css")]
+        }),
+        __metadata("design:paramtypes", [_select_item_service__WEBPACK_IMPORTED_MODULE_3__["SelectItemService"]])
+    ], CustomImageCropperComponent);
+    return CustomImageCropperComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/images/images.component.css":
 /*!*********************************************!*\
   !*** ./src/app/images/images.component.css ***!
@@ -736,7 +865,7 @@ var ImageChooserComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.image-card {\n  display: inline-block;\n  width: 12.5%;\n  padding: 2%;\n  padding-top: 12.5%;\n  overflow: hidden;\n  position: relative;\n  height: 0;\n}\n.image-card img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n}\n.image-card img.landscape {\n  height: 96%!important;\n}\n.image-card img.portrait {\n  width: 96%!important;\n}\n.image-card .new-image {\n  border: 3px dashed #0D47A1;\n  position: absolute;\n  top: 2%;\n  left: 2%;\n  right: 2%;\n  bottom: 2%;\n}\n.image-card .short-description {\n  position: absolute;\n  bottom: 0;\n}\n[ngxFileDropzone] {\n  text-align: center;\n}\n.image-for-crop {\n  width: 100%;\n}\n"
+module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.image-card {\n  display: inline-block;\n  width: 12.5%;\n  padding: 2%;\n  padding-top: 12.5%;\n  overflow: hidden;\n  position: relative;\n  height: 0;\n}\n.image-card img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n}\n.image-card img.landscape {\n  height: 96%!important;\n}\n.image-card img.portrait {\n  width: 96%!important;\n}\n.image-card .new-image {\n  border: 3px dashed #0D47A1;\n  position: absolute;\n  top: 2%;\n  left: 2%;\n  right: 2%;\n  bottom: 2%;\n}\n.image-card .short-description {\n  position: absolute;\n  bottom: 0;\n}\n[ngxFileDropzone] {\n  text-align: center;\n}\n.image-for-crop {\n  width: 100%;\n}\n.tags-list .tag {\n  border-radius: 18px;\n  background-color: #f8efc0;\n  color: #000;\n  padding: 5px;\n  margin: 0 4px;\n  padding-left: 10px;\n  padding-right: 20px;\n  display: inline-block;\n  position: relative;\n  margin-bottom: 8px;\n}\n.tags-list .tag .close {\n  top: 11px;\n  right: 6px;\n  font-size: 0.7em;\n  position: absolute;\n}\n.tags-list .tag.plus {\n  padding: 5px 12.34px!important;\n  cursor: pointer;\n}\n.tags-list .tag.input {\n  border: none;\n  padding-left: 10px;\n}\n.tags-list .tag.input:focus {\n  outline: none;\n}\n.image-editor-element .update-image {\n  width: 100%;\n  border: 2px dashed #a7a7a7;\n  padding: 10px;\n  margin-bottom: 16px;\n}\n.image-editor-element textarea {\n  width: 100%;\n  margin-bottom: 9px;\n}\n.image-editor-element .tags-list {\n  margin-bottom: 16px;\n}\n.image-editor-element .tags-list .tag:first-child {\n  margin-left: 0;\n}\n.image-editor-element .redactor.vertical .left-part {\n  vertical-align: top;\n  max-width: 200px;\n  display: inline-block;\n  margin-right: 16px;\n  float: left;\n}\n.image-editor-element .redactor.vertical .right-part {\n  vertical-align: top;\n  overflow: hidden;\n}\nsection {\n  margin-top: 16px;\n}\n.preview-selector a {\n  border-radius: 20px;\n  margin: 10px 5px 10px 5px;\n  background: none;\n  padding: 3px 10px;\n  cursor: pointer;\n  display: inline-block;\n}\n.preview-selector a:first-child {\n  margin-left: 0;\n}\n.preview-selector a.selected {\n  background-color: #f8efc0;\n}\n"
 
 /***/ }),
 
@@ -747,7 +876,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"images\">\n    <div class=\"content module-editor module-editor-full\" *ngIf=\"images !== null\">\n      <div class=\"image-card\">\n          <div class=\"new-image\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"dropped($event)\" ngxFilePicker (filePick)=\"dropped($event)\">\n            Drop a file in this zone.<br>\n            <i class=\"fa fa-plus\"></i><br>\n            <button accept=\"image/*\">Browse</button>\n          </div>\n      </div>\n      <div *ngFor=\"let image of images; let i = index;\" class=\"image-card\" (click)=\"openEditor(image)\">\n        <img #imagesList src=\"//hotel/{{image.filename}}\" (load)=\"detectOrientation(i)\">\n        <div class=\"short-description\">\n          {{image.description | wordCountLimit: 3 }}\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<ng-template #imageEditor>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Настроить создание превью</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <section>\n      <div [ngSwitch]=\"imageDataForUpdateEditing === null\">\n        <img src=\"//hotel/{{editingImage.filename}}\" class=\"image-for-crop\" *ngSwitchCase=\"true\">\n        <img src=\"{{imageDataForUpdateEditing.content}}\" class=\"image-for-crop\" *ngSwitchCase=\"false\">\n      </div>\n\n      <div class=\"update-image\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"droppedForUpdate($event)\" ngxFilePicker (filePick)=\"droppedForUpdate($event)\">\n        Заменить изображение.<br>\n        <i class=\"fa fa-plus\"></i><br>\n        <button accept=\"image/*\">Выбор</button>\n      </div>\n\n      <div class=\"cropper-zone\">\n\n      </div>\n    </section>\n    <section>\n      <button class=\"btn btn-primary\" (click)=\"modalRef.hide()\">отмена</button>\n      <button class=\"btn btn-success\" (click)=\"delete()\">сохранить</button>\n    </section>\n  </div>\n</ng-template>"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"images\">\n    <div class=\"content module-editor module-editor-full\" *ngIf=\"images !== null\">\n      <div class=\"image-card\">\n          <div class=\"new-image\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"dropped($event)\" ngxFilePicker (filePick)=\"dropped($event)\">\n            Drop a file in this zone.<br>\n            <i class=\"fa fa-plus\"></i><br>\n            <button accept=\"image/*\">Browse</button>\n          </div>\n      </div>\n      <div *ngFor=\"let image of images; let i = index;\" class=\"image-card\" (click)=\"openEditor(image, image.getOrientation)\">\n        <img #imagesList src=\"//hotel/{{image.filename}}\" (load)=\"initImageOrientation(i)\">\n        <div class=\"short-description\">\n          {{image.description | wordCountLimit: 3 }}\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<ng-template #imageEditor>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Настроить создание превью</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body image-editor-element\" [class.vertical]=\"editingImage.getOrientation\">\n    <tabset>\n      <tab heading=\"Общие настройки\" id=\"redactor-tab\">\n        <section class=\"redactor\" [class.vertical]=\"editingImage.getOrientation\">\n\n          <div class=\"left-part\">\n            <div [ngSwitch]=\"imageDataForUpdateEditing === null\">\n              <img src=\"//hotel/{{editingImage.filename}}\" class=\"image-for-crop\" *ngSwitchCase=\"true\">\n              <img src=\"{{imageDataForUpdateEditing.content}}\" class=\"image-for-crop\" *ngSwitchCase=\"false\">\n            </div>\n          </div>\n\n          <div class=\"right-part\">\n            <div class=\"update-image\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"droppedForUpdate($event)\" ngxFilePicker (filePick)=\"droppedForUpdate($event)\">\n              Заменить изображение.<br>\n              <i class=\"fa fa-plus\"></i><br>\n              <button accept=\"image/*\">Выбор</button>\n            </div>\n\n            <textarea [(ngModel)]=\"editingImage.description\"></textarea>\n\n            <div class=\"tags-list\">\n              <div class=\"tag\" *ngFor=\"let tag of editingImage.getTags()\">\n                {{ tag }}\n                <i class=\"fa fa-close close\" (click)=\"removeTag(tag)\"></i>\n              </div>\n              <div *ngIf=\"tagAddingMode === false\" class=\"tag plus\" (click)=\"setTagEditingMode(true)\">+</div>\n              <input *ngIf=\"tagAddingMode === true\" #newTag class=\"tag input\" autofocus=\"true\" (keyup.enter)=\"addTag(newTag.value)\" (blur)=\"setTagEditingMode(false)\">\n            </div>\n\n            <div class=\"type\" *ngIf=\"imageTypes !== null\">\n              Тип фото: <select [(ngModel)]=\"editingImage.image_type_id\" class=\"form-control form-control-inline\">\n                <option value=\"null\">Не выбран</option>\n                <option *ngFor=\"let type of imageTypes\" value=\"{{type.id}}\">\n                  {{ type.name }}\n                </option>\n              </select>\n            </div>\n\n            <section>\n              <button class=\"ripple module-control-button-element delete\" (click)=\"modalRef.hide()\">отмена</button>\n              <button class=\"ripple module-control-button-element default\" (click)=\"saveEditingImage()\">сохранить</button>\n            </section>\n          </div>\n\n          <div class=\"cropper-zone\">\n\n          </div>\n        </section>\n      </tab>\n      <tab heading=\"Превью\" id=\"preview-tab\">\n        <section class=\"preview-editor-element\">\n\n          <nav class=\"preview-selector\" *ngIf=\"editingImage.image_type_id !== null\">\n            <a (click)=\"selectPreview(preview)\" *ngFor=\"let preview of getEditingImagePreviews().previewSettings\" [class.selected]=\"currentPreview != null && preview.id === currentPreview.id\">\n             Превью {{preview.width}} x {{preview.height}}\n            </a>\n          </nav>\n          <div innerHTML={{currentPreview.description}}></div>\n\n          <div *ngIf=\"currentPreview !== null\">\n            <app-image-cropper [hidden]=\"preview.id !== currentPreview.id\" *ngFor=\"let preview of getEditingImagePreviews().previewSettings\" [aspectRatio]=\"preview.width / preview.height\" [image]=\"editingImage\"></app-image-cropper>\n          </div>\n\n        </section>\n      </tab>\n    </tabset>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -763,7 +892,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImagesComponent", function() { return ImagesComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
-/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/cms-image */ "./src/app/models/cms-image.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -776,33 +906,84 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ImagesComponent = /** @class */ (function () {
     function ImagesComponent(modelService, modalService) {
         this.modelService = modelService;
         this.modalService = modalService;
+        this.currentPreview = null;
+        this.tagAddingMode = false;
+        this.imageTypes = null;
         this.imageDataForUpdateEditing = null;
     }
-    ImagesComponent.prototype.openEditor = function (image) {
-        this.editingImage = image;
-        this.modalRef = this.modalService.show(this.imageEditor);
+    ImagesComponent.prototype.loadImageTypes = function () {
+        var _this = this;
+        this.modelService.getImageTypes().subscribe(function (types) {
+            _this.imageTypes = types;
+        });
+    };
+    ImagesComponent.prototype.openEditor = function (image, orientation) {
+        this.editingImage = _models_cms_image__WEBPACK_IMPORTED_MODULE_2__["CmsImage"].fromRaw(image);
+        if (this.imageTypes !== null) {
+            var previews = this.getEditingImagePreviews();
+            if (previews && previews.previewSettings[0]) {
+                this.selectPreview(previews.previewSettings[0]);
+            }
+        }
+        this.modalRef = this.modalService.show(this.imageEditor, { 'class': (orientation ? 'vertical' : '') });
+    };
+    ImagesComponent.prototype.calcAspectRatio = function (preview) {
+        return preview.width / preview.height;
+    };
+    ImagesComponent.prototype.getEditingImagePreviews = function () {
+        var _this = this;
+        return this.imageTypes.find(function (t) { return t.id == _this.editingImage.image_type_id; });
+    };
+    ImagesComponent.prototype.getAspectRatio = function () {
+        return this.currentPreview.width / this.currentPreview.height;
+    };
+    ImagesComponent.prototype.selectPreview = function (preview) {
+        this.currentPreview = preview;
+    };
+    ImagesComponent.prototype.saveEditingImage = function () {
+        this.modelService.saveImage(this.editingImage);
+    };
+    ImagesComponent.prototype.setTagEditingMode = function (mode) {
+        this.tagAddingMode = mode;
+        if (mode) {
+            $('.tag.input').get(0).focus();
+        }
+    };
+    ImagesComponent.prototype.removeTag = function (tag) {
+        this.editingImage.removeTag(tag);
+    };
+    ImagesComponent.prototype.addTag = function (tag) {
+        this.editingImage.addTag(tag);
+        this.setTagEditingMode(false);
     };
     ImagesComponent.prototype.loadImages = function () {
         var _this = this;
         this.modelService.getImages().subscribe(function (images) {
+            images.forEach(function (rawImage, index) { images[index] = _models_cms_image__WEBPACK_IMPORTED_MODULE_2__["CmsImage"].fromRaw(rawImage); });
             _this.images = images;
         });
     };
     ImagesComponent.prototype.ngOnInit = function () {
         this.loadImages();
+        this.loadImageTypes();
     };
-    ImagesComponent.prototype.detectOrientation = function (i) {
+    ImagesComponent.prototype.initImageOrientation = function (i) {
+        var imageObject = this.images[i];
         var image = this.imageList.toArray()[i].nativeElement;
+        var orientation = false;
         if (image.naturalWidth > image.naturalHeight) {
             image.classList.add('landscape');
         }
         else if (image.naturalWidth < image.naturalHeight) {
             image.classList.add('portrait');
+            orientation = true;
         }
+        imageObject.setupOrientationInfo(orientation);
     };
     ImagesComponent.prototype.dropped = function ($event) {
         var _this = this;
@@ -824,6 +1005,10 @@ var ImagesComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('imageEditor'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])
     ], ImagesComponent.prototype, "imageEditor", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('newTag'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ImagesComponent.prototype, "newTag", void 0);
     ImagesComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-images',
@@ -831,7 +1016,7 @@ var ImagesComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./images.component.css */ "./src/app/images/images.component.css")]
         }),
         __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_1__["ModelService"],
-            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__["BsModalService"]])
+            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsModalService"]])
     ], ImagesComponent);
     return ImagesComponent;
 }());
@@ -908,9 +1093,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _models_trainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/trainer */ "./src/app/models/trainer.ts");
-/* harmony import */ var _models_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/image */ "./src/app/models/image.ts");
+/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/cms-image */ "./src/app/models/cms-image.ts");
 /* harmony import */ var _models_room__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/room */ "./src/app/models/room.ts");
 /* harmony import */ var _services_language_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/language.service */ "./src/app/services/language.service.ts");
+/* harmony import */ var _models_image_type__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/image-type */ "./src/app/models/image-type.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -920,6 +1106,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -982,20 +1169,21 @@ var ModelService = /** @class */ (function () {
     };
     //images
     ModelService.prototype.getImages = function () {
-        return this.getModelListing(_models_image__WEBPACK_IMPORTED_MODULE_3__["Image"].getApiMethodName());
+        return this.getModelListing(_models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName());
     };
     ModelService.prototype.getImage = function (id) {
-        return this.http.get(this.baseUrl + _models_image__WEBPACK_IMPORTED_MODULE_3__["Image"].getApiMethodName(id));
+        return this.http.get(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName(id));
     };
     ModelService.prototype.saveImage = function (image) {
-        return this.http.put(this.baseUrl + _models_image__WEBPACK_IMPORTED_MODULE_3__["Image"].getApiMethodName() + '/' + image.id, image)
+        image.beforeSave();
+        return this.http.put(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName() + '/' + image.id, image)
             .subscribe();
     };
     ModelService.prototype.deleteImage = function (image) {
-        return this.http.delete(this.baseUrl + _models_image__WEBPACK_IMPORTED_MODULE_3__["Image"].getApiMethodName() + '/' + image.id);
+        return this.http.delete(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName() + '/' + image.id);
     };
     ModelService.prototype.createImage = function (image, callback) {
-        return this.http.post(this.baseUrl + _models_image__WEBPACK_IMPORTED_MODULE_3__["Image"].getApiMethodName(), {
+        return this.http.post(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName(), {
             content: image.content,
             filename: image.name
         }, httpOptions)
@@ -1006,7 +1194,7 @@ var ModelService = /** @class */ (function () {
         });
     };
     ModelService.prototype.updateImage = function (imageData, image, callback) {
-        return this.http.put(this.baseUrl + _models_image__WEBPACK_IMPORTED_MODULE_3__["Image"].getApiMethodName() + '/' + image.id, {
+        return this.http.put(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName() + '/' + image.id, {
             content: imageData.content,
             filename: imageData.name
         }, httpOptions)
@@ -1015,6 +1203,10 @@ var ModelService = /** @class */ (function () {
                 callback(response);
             }
         });
+    };
+    // image types
+    ModelService.prototype.getImageTypes = function () {
+        return this.getModelListing(_models_image_type__WEBPACK_IMPORTED_MODULE_6__["ImageType"].getApiMethodName());
     };
     //common
     ModelService.prototype.getModelListing = function (apiMethod) {
@@ -1067,16 +1259,16 @@ var BaseApiModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/models/image.ts":
-/*!*********************************!*\
-  !*** ./src/app/models/image.ts ***!
-  \*********************************/
-/*! exports provided: Image */
+/***/ "./src/app/models/cms-image.ts":
+/*!*************************************!*\
+  !*** ./src/app/models/cms-image.ts ***!
+  \*************************************/
+/*! exports provided: CmsImage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Image", function() { return Image; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CmsImage", function() { return CmsImage; });
 /* harmony import */ var _base_api_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-api-model */ "./src/app/models/base-api-model.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -1089,13 +1281,84 @@ var __extends = (undefined && undefined.__extends) || (function () {
     };
 })();
 
-var Image = /** @class */ (function (_super) {
-    __extends(Image, _super);
-    function Image() {
+var CmsImage = /** @class */ (function (_super) {
+    __extends(CmsImage, _super);
+    function CmsImage() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.orientation = false;
+        _this.tags = null;
+        return _this;
+    }
+    Object.defineProperty(CmsImage.prototype, "getOrientation", {
+        get: function () {
+            return this.orientation;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CmsImage.prototype.setupOrientationInfo = function (orientation) {
+        this.orientation = orientation;
+    };
+    CmsImage.prototype.init = function () {
+        this.tags = JSON.parse(this.tags_json);
+    };
+    CmsImage.prototype.beforeSave = function () {
+        this.tags_json = JSON.stringify(this.tags);
+    };
+    CmsImage.fromRaw = function (rawImage) {
+        return Object.assign(new CmsImage(), rawImage);
+    };
+    CmsImage.prototype.addTag = function (tag) {
+        if (this.tags.find(function (t) { return t === tag; }) === undefined) {
+            this.tags.push(tag);
+        }
+    };
+    CmsImage.prototype.removeTag = function (tag) {
+        this.tags = this.tags.filter(function (t) { return t !== tag; });
+    };
+    CmsImage.prototype.getTags = function () {
+        if (this.tags === null) {
+            this.init();
+        }
+        return this.tags;
+    };
+    CmsImage.apiMethodName = 'images';
+    return CmsImage;
+}(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/image-type.ts":
+/*!**************************************!*\
+  !*** ./src/app/models/image-type.ts ***!
+  \**************************************/
+/*! exports provided: ImageType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageType", function() { return ImageType; });
+/* harmony import */ var _base_api_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-api-model */ "./src/app/models/base-api-model.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var ImageType = /** @class */ (function (_super) {
+    __extends(ImageType, _super);
+    function ImageType() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Image.apiMethodName = 'images';
-    return Image;
+    ImageType.apiMethodName = 'imageTypes';
+    return ImageType;
 }(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
 
 
@@ -1206,6 +1469,7 @@ var SelectItemEvent = /** @class */ (function () {
         Type[Type["LanguageChange"] = 8] = "LanguageChange";
         Type[Type["ImageChooserApply"] = 9] = "ImageChooserApply";
         Type[Type["CloseAllSelectedItems"] = 10] = "CloseAllSelectedItems";
+        Type[Type["ChangeAspectRatio"] = 11] = "ChangeAspectRatio";
     })(Type = SelectItemEvent.Type || (SelectItemEvent.Type = {}));
 })(SelectItemEvent || (SelectItemEvent = {}));
 
@@ -1601,7 +1865,7 @@ module.exports = ".toolbar button {\n  margin: 0 5px;\n}\n.instances {\n  positi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [ngSwitch]=\"params[key].type\">\n  <div *ngSwitchCase=\"'composite'\">\n    <h3>{{params[key].title}}</h3>\n    <div class=\"instances\">\n      <div *ngFor=\"let section of values[key]; let i = index;\" class=\"instance-item\">\n        <div class=\"instance-toolbar\">\n          <span class=\"close\" (click)=\"deleteInstanceWithConfirm(key, i)\"><i class=\"fa fa-close\"></i></span>\n        </div>\n        <page-editor [uniqKey]=\"uniqKey + '_' + key\" [params]=\"params[key]['availableInstances'][section.type]\" [values]=\"section\"></page-editor>\n      </div>\n      <div class=\"toolbar\">\n        <div class=\"empty-wrapper\" [ngSwitch]=\"(params[key]['availableInstances'] | values).length === 1\">\n          <button *ngSwitchCase=\"true\" dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\" #item value=\"{{(params[key]['availableInstances'] | keys)[0]}}\" (click)=\"appendInstance(key, item.value)\">\n            Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class=\"fa fa-plus\"></i>\n          </button>\n          <div *ngSwitchCase=\"false\" class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n            <button dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\">\n              Добавить секцию <i class=\"fa fa-plus\"></i>\n            </button>\n            <ul *dropdownMenu class=\"dropdown-menu\"\n                role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n              <li *ngFor=\"let instanceType in params[key]['availableInstances']\" role=\"menuitem\">\n                <a class=\"dropdown-item\" (click)=\"appendInstance(key, instanceType)\">\n                  {{params[key]['instancesLabels'][instanceType]}}\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <button *ngIf=\"values[key].length > 1\" type=\"button\" class=\"btn btn-primary\" (click)=\"reorder()\">\n          Поменять местами\n        </button>\n      </div>\n    </div>\n  </div>\n  <div *ngSwitchDefault>\n    <app-page-editor-field [title]=\"params[key].title\" [params]=\"params[key]\" [valueSet]=\"values\" [valueKey]=\"key\"></app-page-editor-field>\n  </div>\n</div>"
+module.exports = "<div [ngSwitch]=\"params[key].type\">\n  <div *ngSwitchCase=\"'composite'\">\n    <h3>{{params[key].title}}</h3>\n    <div class=\"instances\">\n      <div *ngFor=\"let section of values[key]; let i = index;\" class=\"instance-item\">\n        <div class=\"instance-toolbar\">\n          <span class=\"close\" (click)=\"deleteInstanceWithConfirm(key, i)\"><i class=\"fa fa-close\"></i></span>\n        </div>\n        <page-editor\n                [generalName]=\"getSectionGeneralName(section)\"\n                [itemTitle]=\"getSectionTitle(section)\"\n                [uniqKey]=\"uniqKey + '_' + key\"\n                [params]=\"params[key]['availableInstances'][section.type]\"\n                [values]=\"section\">\n        </page-editor>\n      </div>\n      <div class=\"toolbar\">\n        <div class=\"empty-wrapper\" [ngSwitch]=\"(params[key]['availableInstances'] | values).length === 1\">\n          <button *ngSwitchCase=\"true\" dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\" #item value=\"{{(params[key]['availableInstances'] | keys)[0]}}\" (click)=\"appendInstance(key, item.value)\">\n            Добавить {{(params[key]['instancesLabels'] | values)[0] | lowercase }}<i class=\"fa fa-plus\"></i>\n          </button>\n          <div *ngSwitchCase=\"false\" class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n            <button dropdownToggle type=\"button\" class=\"btn btn-primary\" aria-controls=\"dropdown-basic\">\n              Добавить секцию <i class=\"fa fa-plus\"></i>\n            </button>\n            <ul *dropdownMenu class=\"dropdown-menu\"\n                role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n              <li *ngFor=\"let instanceType in params[key]['availableInstances']\" role=\"menuitem\">\n                <a class=\"dropdown-item\" (click)=\"appendInstance(key, instanceType)\">\n                  {{params[key]['instancesLabels'][instanceType]}}\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n        <button *ngIf=\"values[key].length > 1\" type=\"button\" class=\"btn btn-primary\" (click)=\"reorder()\">\n          Поменять местами\n        </button>\n      </div>\n    </div>\n  </div>\n  <div *ngSwitchDefault>\n    <app-page-editor-field [title]=\"params[key].title\" [params]=\"params[key]\" [valueSet]=\"values\" [valueKey]=\"key\"></app-page-editor-field>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1632,6 +1896,15 @@ var PageEditorTreeItemComponent = /** @class */ (function () {
     function PageEditorTreeItemComponent() {
     }
     PageEditorTreeItemComponent.prototype.ngOnInit = function () {
+    };
+    PageEditorTreeItemComponent.prototype.getSectionGeneralName = function (section) {
+        return this.params[this.key]['instancesLabels'][section.type];
+    };
+    PageEditorTreeItemComponent.prototype.getSectionTitle = function (section) {
+        if (this.params[this.key].itemTitleKey) {
+            return section[this.params[this.key].itemTitleKey];
+        }
+        return null;
     };
     PageEditorTreeItemComponent.prototype.prepareInstance = function (instanceParams, sectionType, fieldName) {
         var newSection = {
@@ -1719,7 +1992,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<accordion *ngIf=\"paramsHasGroups\" class=\"super\">\n    <accordion-group *ngFor=\"let group in groupedParamsSet\" heading=\"{{groupedParamsSet[group].title}}\" style=\"color: #f00\" (isOpenChange)=\"logToggle($event, group)\">\n        <div *ngFor=\"let key in groupedParamsSet[group].values\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n    <accordion-group *ngIf=\"(notGroupdParams | json) !== '{}'\" heading=\"Содержимое блока\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<accordion  *ngIf=\"!paramsHasGroups\">\n    <accordion-group heading=\"Содержимое блока\" [isOpen]=\"true\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <i class=\"fa fa-close\"></i>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"selectedInstanceOrder\"\n                     [(ngModel)]=\"selectedInstanceOrder\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>"
+module.exports = "<accordion *ngIf=\"paramsHasGroups\" class=\"super\">\n    <accordion-group *ngFor=\"let group in groupedParamsSet\" heading=\"{{groupedParamsSet[group].title}}\" style=\"color: #f00\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, group)\">\n        <div *ngFor=\"let key in groupedParamsSet[group].values\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n    <accordion-group *ngIf=\"(notGroupdParams | json) !== '{}'\" heading=\"Содержимое блока - {{generalName}} - {{itemTitle}}\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<accordion  *ngIf=\"!paramsHasGroups\">\n    <accordion-group heading=\"Содержимое блока - {{generalName}} - {{itemTitle}}\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <i class=\"fa fa-close\"></i>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"selectedInstanceOrder\"\n                     [(ngModel)]=\"selectedInstanceOrder\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>"
 
 /***/ }),
 
@@ -1827,6 +2100,14 @@ var PageEditorTreeComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
     ], PageEditorTreeComponent.prototype, "uniqKey", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], PageEditorTreeComponent.prototype, "generalName", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], PageEditorTreeComponent.prototype, "itemTitle", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('reorderDialog'),
         __metadata("design:type", Object)
@@ -2847,8 +3128,9 @@ var SelectItemService = /** @class */ (function () {
         this._event = new rxjs_Subject__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
         this.event$ = this._event.asObservable();
     }
-    SelectItemService.prototype.emitEventOfType = function (type) {
-        this.emit(new _models_select_item_event__WEBPACK_IMPORTED_MODULE_2__["SelectItemEvent"](type, {}));
+    SelectItemService.prototype.emitEventOfType = function (type, options) {
+        if (options === void 0) { options = {}; }
+        this.emit(new _models_select_item_event__WEBPACK_IMPORTED_MODULE_2__["SelectItemEvent"](type, options));
     };
     SelectItemService.prototype.emitImageChooserEvent = function () {
         this.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_2__["SelectItemEvent"].Type.ImageChooserApply);
