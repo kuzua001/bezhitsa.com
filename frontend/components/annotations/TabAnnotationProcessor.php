@@ -14,4 +14,13 @@ class TabAnnotationProcessor extends SimpleAnnotationParser
     {
         parent::__construct('tab');
     }
+
+    public function getValue($line)
+    {
+        $value = parent::getValue($line);
+        $value =  str_replace('[', '', $value);
+        $value =  str_replace(']', '', $value);
+
+        return $value;
+    }
 }

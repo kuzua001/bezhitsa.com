@@ -24,8 +24,8 @@
 
     <div class="field">
       <span class="label">Изображение</span>
-      <img width="200px" src="/{{trainer.img_src}}">
-      <button (click)="openModal(imageChoose, {class: 'large-popup'})">Browse</button>
+      <img width="200px" *ngIf="trainer.img_src" (click)="openModal(imageChoose, {class: 'large-popup'})" src="/{{trainer.img_src}}">
+      <button *ngIf="!trainer.img_src" (click)="openModal(imageChoose, {class: 'large-popup'})">Browse</button>
     </div>
 
     <div class="field">

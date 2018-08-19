@@ -44,8 +44,8 @@
             </div>
 
             <div class="module-panel" *ngIf="selectedPageFields !== null">
-                <button (click)="save()" class="ripple module-control-button-element default">Сохранить</button>
-                <a href="{{currentPage.url}}" target="_blank"><button class="ripple module-control-button-element">Просмотр</button></a>
+                <button (click)="save()" class="save ripple module-control-button-element default">Сохранить</button>
+                <a href="{{currentPage.url}}" target="_blank"><button class="view ripple module-control-button-element">Просмотр</button></a>
                 <button (click)="deleteWithConfirm()" class="ripple module-control-button-element delete">Удалить</button>
             </div>
         </div>

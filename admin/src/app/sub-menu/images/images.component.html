@@ -1,0 +1,36 @@
+<div *ngIf="imageFilters !== null" (click)="blurProcessing($event)">
+    <div class="filter-group">
+        Тип:
+        <select [(ngModel)]="filter.selectedType" class="form-control form-control-lg" (ngModelChange)="applyFilter()">
+            <option selected [value]="null">Любой</option>
+            <option *ngFor='let type of imageFilters.types' [value]="type.id">{{type.name}}</option>
+        </select>
+    </div>
+    <div class="filter-group">
+        Теги:
+        <div>
+            <div class="input-wrapper">
+                <input class="form-control form-control-lg" (click)="showAvailableTags()" [(ngModel)]="tagsFilter"
+                       (keydown.arrowup)="decreaseSelectedTagIndex()"
+                       (keydown.arrowdown)="increaseSelectedTagIndex()"
+                       (keyup.enter)="selectTag()"
+                       [focus]="focusEventEmitter" id="tags-input"
+                >
+                <div class="tags-list-box" id="tags-list-box" *ngIf="showTagsBox">
+                    <div class="tag" [class.selected]="i === selectedTagIndex" *ngFor="let tag of getFilteredTags; let i = index;" (mouseup)="selectTag(tag)" (mouseenter)="setSelectedTagIndex(i)">
+                        {{ tag }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="selected-tags-list">
+            <div class="tag" *ngFor="let tag of filter.selectedTags">
+                {{ tag }}
+                <i class="fa fa-close close" (click)="unselectTag(tag)"></i>
+            </div>
+        </div>
+    </div>
+    <div class="filter-group">
+        Показывать подписи<input type="checkbox" [(ngModel)]="filter.showDescriptions" (ngModelChange)="applyFilter()">
+    </div>
+</div>

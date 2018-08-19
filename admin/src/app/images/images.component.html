@@ -1,22 +1,29 @@
 <div class="wrapper">
   <div class="images">
-    <div class="content module-editor module-editor-full" *ngIf="images !== null">
+    <div class="content module-editor module-editor-full" [class.show-descriptions]="showDescriptions" *ngIf="images !== null">
       <div class="image-card">
-          <div class="new-image" accept="image/*" ngxFileDropzone (fileDrop)="dropped($event)" ngxFilePicker (filePick)="dropped($event)">
-            Drop a file in this zone.<br>
-            <i class="fa fa-plus"></i><br>
-            <button accept="image/*">Browse</button>
+          <div class="new-image image-wrapper" accept="image/*" ngxFileDropzone (fileDrop)="dropped($event)" ngxFilePicker (filePick)="dropped($event)">
+            Добавьте фото<br>
+            <i class="plus"></i><br>
           </div>
       </div>
-      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image, image.getOrientation)">
-        <img #imagesList src="/{{image.filename}}" (load)="initImageOrientation(i)">
-        <div class="short-description">
-          {{image.description | wordCountLimit: 3 }}
+      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image, image.getOrientation)" [hidden]="i >= limit">
+        <div class='image-card-wrapper' *ngIf="i < limit;">
+          <img #imagesList src="/{{image.filename}}" (load)="initImageOrientation(i)">
+          <div class="short-description">
+            {{image.description | wordCountLimit: 15 }}
+          </div>
+        </div>
+      </div>
+      <div class="image-card" (click)="loadMore()" *ngIf="limit < images.length">
+        <div class="load-more image-wrapper">
+          Показать<br>ещё
         </div>
       </div>
     </div>
   </div>
 </div>
+<div #bottom></div>
 <ng-template #imageEditor>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Настроить создание превью</h4>
@@ -24,7 +31,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body image-editor-element" [class.vertical]="editingImage.getOrientation">
+  <div class="modal-body image-editor-element" [class.vertical]="editingImage.getOrientation" *ngIf="editingImage !== null">
     <tabset>
       <tab heading="Общие настройки" id="redactor-tab">
         <section class="redactor" [class.vertical]="editingImage.getOrientation">
@@ -51,7 +58,12 @@
                 <i class="fa fa-close close" (click)="removeTag(tag)"></i>
               </div>
               <div *ngIf="tagAddingMode === false" class="tag plus" (click)="setTagEditingMode(true)">+</div>
-              <input *ngIf="tagAddingMode === true" #newTag class="tag input" autofocus="true" (keyup.enter)="addTag(newTag.value)" (blur)="setTagEditingMode(false)">
+              <input *ngIf="tagAddingMode === true"
+                     #newTag class="tag input"
+                     [focus]="focusEventEmitter"
+                     (keyup.enter)="addTag(newTag.value)"
+                     (keyup.space)="addTag(newTag.value, true);newTag.value = '';"
+                     (blur)="setTagEditingMode(false)">
             </div>
 
             <div class="type" *ngIf="imageTypes !== null">

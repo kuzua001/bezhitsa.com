@@ -1,4 +1,6 @@
 import {BaseApiModel} from "./base-api-model";
+import {SelectItemService} from "../select-item.service";
+import {SelectItemEvent} from "./select-item-event";
 
 export class CmsImage extends BaseApiModel {
     protected static apiMethodName = 'images';
@@ -44,6 +46,10 @@ export class CmsImage extends BaseApiModel {
     }
 
     public addTag(tag: string) {
+        if (this.tags === null) {
+            this.tags = [];
+        }
+
         if (this.tags.find(t => t === tag) === undefined) {
             this.tags.push(tag);
         }

@@ -22,7 +22,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Часть заголовка под логотипом (гранд отель, фитнес и т.д.)
      * @default гранд отель
      * @type string
-     * @tab [Содержимое блока]
      */
     public $mainHeaderTypePart;
 
@@ -31,7 +30,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Заголовок приветствия
      * @default Добро пожаловать!
      * @type string
-     * @tab [Содержимое блока]
      */
     public $greetingHeader;
 
@@ -39,7 +37,6 @@ class HotelMainSectionParams extends SectionParams
      * @var $greetingContent string
      * @title Текст приветствия
      * @default Получите удовольствие, выбрав восхитительную атмосферу премиум комплекса «Бежица».
-     * @tab [Содержимое блока]
      * @type textarea
      */
     public $greetingContent;
@@ -49,7 +46,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Первая часть центрального заголовка
      * @default Ваш
      * @type string
-     * @tab [Содержимое блока]
      */
     public $sloganFirst;
 
@@ -58,7 +54,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Вторая часть центрального заголовка
      * @default изысканный и комфортный отдых
      * @type string
-     * @tab [Содержимое блока]
      */
     public $sloganSecond;
 
@@ -67,7 +62,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Третья часть центрального заголовка2
      * @default МИРОВОГО КЛАССА
      * @type string
-     * @tab [Содержимое блока]
      */
     public $sloganThird;
 
@@ -76,7 +70,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Первый заголовок
      * @default МИРОВОГО КЛАССА
      * @type string
-     * @tab [Содержимое блока]
      */
     public $title1;
 
@@ -85,7 +78,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Второй заголовок
      * @default МИРОВОГО КЛАССА
      * @type string
-     * @tab [Содержимое блока]
      */
     public $title2;
 
@@ -94,7 +86,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Третий заголовок
      * @default МИРОВОГО КЛАССА
      * @type string
-     * @tab [Содержимое блока]
      */
     public $title3;
 
@@ -103,7 +94,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Четвертый заголовок
      * @default МИРОВОГО КЛАССА
      * @type string
-     * @tab [Содержимое блока]
      */
     public $title4;
 
@@ -112,7 +102,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Пятый заголовок
      * @default МИРОВОГО КЛАССА
      * @type string
-     * @tab [Содержимое блока]
      */
     public $title5;
 
@@ -121,7 +110,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Первый текст
      * @default МИРОВОГО КЛАССА
      * @type textarea
-     * @tab [Содержимое блока]
      */
     public $text1;
 
@@ -130,7 +118,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Второй текст
      * @default МИРОВОГО КЛАССА
      * @type textarea
-     * @tab [Содержимое блока]
      */
     public $text2;
 
@@ -139,7 +126,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Третий текст
      * @default МИРОВОГО КЛАССА
      * @type textarea
-     * @tab [Содержимое блока]
      */
     public $text3;
 
@@ -148,7 +134,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Четвертый текст
      * @default МИРОВОГО КЛАССА
      * @type textarea
-     * @tab [Содержимое блока]
      */
     public $text4;
 
@@ -157,7 +142,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Пятый текст
      * @default МИРОВОГО КЛАССА
      * @type textarea
-     * @tab [Содержимое блока]
      */
     public $text5;
 
@@ -166,7 +150,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Адрес отеля
      * @default
      * @type textarea
-     * @tab [Содержимое блока]
      */
     public $address;
 
@@ -175,7 +158,6 @@ class HotelMainSectionParams extends SectionParams
      * @title Телефон отеля
      * @default
      * @type string
-     * @tab [Содержимое блока]
      */
     public $phone;
 }

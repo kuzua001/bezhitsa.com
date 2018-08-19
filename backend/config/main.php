@@ -42,6 +42,7 @@ return [
             'errorAction' => 'site/error',
         ],
 
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -49,23 +50,24 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
-                        'users'      => 'api/user',
-                        'texts'      => 'api/text',
-                        'page'       => 'api/page',
-                        'domain'     => 'api/domain',
-                        'trainer'    => 'api/trainer',
-                        'room'       => 'api/room',
-                        'images'     => 'api/images',
-                        'imageTypes' => 'api/image-types',
-                        'pageFields' => 'api/page-fields',
-                        'settings'   => 'api/settings',
-                        'actions'    => 'api/actions',
-                        'pageTypes'  => 'api/page-types',
+                        'users'        => 'api/user',
+                        'texts'        => 'api/text',
+                        'page'         => 'api/page',
+                        'domain'       => 'api/domain',
+                        'trainer'      => 'api/trainer',
+                        'room'         => 'api/room',
+                        'images'       => 'api/images',
+                        'imageTypes'   => 'api/image-types',
+                        'pageFields'   => 'api/page-fields',
+                        'settings'     => 'api/settings',
+                        'actions'      => 'api/actions',
+                        'pageTypes'    => 'api/page-types',
                     ],
                     'prefix' => 'api'
                 ],
                 'api/files' => 'api/files',
                 'reorder'   => 'api/reorder',
+                'api/filters' => 'data/filters',
                 [
                     'pattern' => 'page/edit/<pageId:\d+>',
                     'route' => 'dynamic/page-edit',

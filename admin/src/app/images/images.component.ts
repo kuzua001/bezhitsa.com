@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewChildren} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, TemplateRef, ViewChild, ViewChildren} from '@angular/core';
 import {ModelService} from "../model.service";
 import {CmsImage} from "../models/cms-image";
 import {ReadFileImpl} from "ngx-file-helpers/src/read-file-impl";
@@ -9,7 +9,8 @@ import {Preview} from "../models/preview";
 import {CropperSettings, ImageCropperComponent} from "ng2-img-cropper";
 import {SelectItemService} from "../select-item.service";
 import {SelectItemEvent} from "../models/select-item-event";
-
+import { ScrollToService } from 'ng2-scroll-to-el';
+import {ImageFilter} from "../models/image-filter";
 
 declare var $: any;
 
@@ -20,7 +21,7 @@ declare var $: any;
 })
 export class ImagesComponent implements OnInit {
 
-    private images: CmsImage[];
+    private images: CmsImage[] = null;
 
     imageDataForUpdateEditing: ReadFile;
 
@@ -32,16 +33,29 @@ export class ImagesComponent implements OnInit {
 
     modalRef: BsModalRef;
 
+    public focusEventEmitter = new EventEmitter<boolean>();
 
     private imageTypes: Array<ImageType> = null;
+
+    private showDescriptions: boolean = false;
 
     @ViewChildren('imagesList') imageList;
     @ViewChild('imageEditor') imageEditor: TemplateRef<any>;
     @ViewChild('newTag') newTag: ElementRef;
+    @ViewChild('bottom') bottom: ElementRef;
 
     constructor(private modelService: ModelService,
-                private modalService: BsModalService) {
+                private modalService: BsModalService,
+                private selectItemService: SelectItemService,
+                private scrollService: ScrollToService) {
         this.imageDataForUpdateEditing = null;
+        this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
+           if (event.itemType === SelectItemEvent.Type.ApplyFilter) {
+               const filter: ImageFilter = event.payload.filter;
+               this.showDescriptions = filter.showDescriptions;
+               this.loadImages(filter);
+           }
+        });
     }
 
     private loadImageTypes()
@@ -52,7 +66,7 @@ export class ImagesComponent implements OnInit {
     }
 
     openEditor(image: CmsImage, orientation: boolean) {
-        this.editingImage = CmsImage.fromRaw(image);
+        this.editingImage = image;
 
         if (this.imageTypes !== null) {
             const previews = this.getEditingImagePreviews();
@@ -63,7 +77,6 @@ export class ImagesComponent implements OnInit {
 
         this.modalRef = this.modalService.show(this.imageEditor, {'class' : (orientation ? 'vertical' : '')});
     }
-
 
     public calcAspectRatio(preview: Preview)
     {
@@ -92,22 +105,25 @@ export class ImagesComponent implements OnInit {
 
     private setTagEditingMode(mode: boolean) {
         this.tagAddingMode = mode;
-        if (mode) {
-            $('.tag.input').get(0).focus();
-        }
+        setTimeout(() => {
+            this.focusEventEmitter.emit(mode);
+        }, 10);
     }
 
     private removeTag(tag: string) {
         this.editingImage.removeTag(tag);
     }
 
-    private addTag(tag: string) {
+    private addTag(tag: string, keepInput: boolean = false) {
         this.editingImage.addTag(tag);
-        this.setTagEditingMode(false);
+        this.selectItemService.emitEventOfType(SelectItemEvent.Type.NewTag, {tag : tag});
+        if (!keepInput) {
+            this.setTagEditingMode(false);
+        }
     }
 
-    private loadImages() {
-        this.modelService.getImages().subscribe(images => {
+    private loadImages(filter: ImageFilter = null) {
+        this.modelService.getImages(filter).subscribe(images => {
             images.forEach((rawImage, index) => {images[index] = CmsImage.fromRaw(rawImage);});
             this.images = images;
         });
@@ -116,6 +132,17 @@ export class ImagesComponent implements OnInit {
     ngOnInit() {
         this.loadImages();
         this.loadImageTypes();
+    }
+
+    private limit = 19;
+
+    public loadMore()
+    {
+        if (this.images && this.limit < this.images.length) {
+            this.limit += 14;
+        }
+
+        this.scrollService.scrollTo(this.bottom.nativeElement);
     }
 
     public initImageOrientation(i: number) {

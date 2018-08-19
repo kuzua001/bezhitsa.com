@@ -15,6 +15,7 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
   @Input() uniqKey: string;
   @Input() generalName: string;
   @Input() itemTitle: string;
+  @Input() level: number = 0;
 
   paramsHasGroups: boolean;
   groupedParamsSet: any;
@@ -29,6 +30,11 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
       //console.log(key);
       //console.log(this.uniqKey);
       //console.log($event);
+  }
+
+  public get getHeading()
+  {
+      return this.level == 0 ? 'Содержимое блока' : this.itemTitle;
   }
 
   public reorder(key: string) {

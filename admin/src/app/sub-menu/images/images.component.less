@@ -1,0 +1,65 @@
+@import "../../mixins";
+
+:host {
+  width: 100%;
+  display: block;
+  position: relative;
+  text-align: left;
+  padding: 10px;
+}
+
+
+.input-wrapper {
+  position: relative;
+
+  input {
+    width: 100%;
+    border-color: #ced4da;
+
+  }
+
+  .tags-list-box {
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    .tag {
+      &.selected {
+        background-color: #e1e1e1;
+      }
+
+      padding: 5px;
+      padding-left: 10px;
+    }
+  }
+}
+
+.selected-tags-list {
+  margin-top: 10px;
+  .tag {
+    border-radius: 18px;
+    background-color: #f8efc0;
+    color: #000;
+    padding: 5px;
+    margin: 0 4px;
+    padding-left: 10px;
+    padding-right: 20px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 8px;
+
+    .close {
+      top: 11px;
+      right: 6px;
+      font-size: 0.7em;
+      position: absolute;
+    }
+  }
+}
+
+.filter-group:not(:last-child) {
+  margin-bottom: 15px;
+}

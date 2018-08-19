@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, Subject, pipe} from 'rxjs';
 import {Trainer} from "./models/trainer";
 import {CmsImage} from "./models/cms-image";
@@ -8,6 +8,11 @@ import {ReadFile} from "ngx-file-helpers";
 import {Room} from "./models/room";
 import {LanguageService} from "./services/language.service";
 import {ImageType} from "./models/image-type";
+import {ImageFilters} from "./models/image-filters";
+import {ImageFilter} from "./models/image-filter";
+import {HttpParamsOptions} from "@angular/common/http/src/params";
+import {SelectItemEvent} from "./models/select-item-event";
+import {SelectItemService} from "./select-item.service";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -23,7 +28,8 @@ export class ModelService {
 
     constructor(
         private http: HttpClient,
-        private languageService: LanguageService
+        private languageService: LanguageService,
+        private selectItemService: SelectItemService
     ) {
         Trainer.setupLanguageService(this.languageService);
         Room.setupLanguageService(this.languageService);
@@ -83,10 +89,29 @@ export class ModelService {
         return this.http.post<Trainer>(this.baseUrl + Trainer.getApiMethodName(), trainer, httpOptions);
     }
 
+    // image filters
+
+    public getImageFilters(): Observable<ImageFilters> {
+        return this.http.get<ImageFilters>(this.baseUrl + ImageFilters.getApiMethodName());
+    }
+
+
     //images
 
-    public getImages(): Observable<CmsImage[]> {
-        return this.getModelListing<CmsImage>(CmsImage.getApiMethodName());
+    public getImages(filter: ImageFilter = null): Observable<CmsImage[]> {
+
+        let options = {};
+
+        if (filter !== null) {
+            let params = {
+                selectedType : filter.selectedType,
+                tags : filter.selectedTags.join(',')
+            };
+            const httpParams: HttpParamsOptions = { fromObject: params as HttpParamsOptions } as HttpParamsOptions;
+            options = { params: new HttpParams(httpParams) };
+        }
+
+        return this.http.get<CmsImage[]>(this.baseUrl + CmsImage.getApiMethodName(), options);
     }
 
     public getImage(id: number): Observable<CmsImage> {
@@ -97,7 +122,9 @@ export class ModelService {
     public saveImage(image: CmsImage) {
         image.beforeSave();
         return this.http.put(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id, image)
-            .subscribe();
+            .subscribe(() => {
+                this.selectItemService.emitEventOfType(SelectItemEvent.Type.RefreshTags);
+        });
     }
 
     public deleteImage(image: CmsImage) {

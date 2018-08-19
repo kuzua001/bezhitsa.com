@@ -59,6 +59,17 @@ class Image extends ActiveRecord implements HasSrc
         return $result;
     }
 
+    public static function findAllTags()
+    {
+        $tags = [];
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand('SELECT tags_json from ' . self::tableName() . ' where tags_json is not null and tags_json != \'null\'');
+        foreach ($command->queryColumn() as $tagsJson) {
+            $tags = array_unique (array_merge($tags, json_decode($tagsJson)));
+        }
+        return $tags;
+    }
+
     private function parseImageFilename()
     {
         $this->imageName = pathinfo($this->filename, PATHINFO_FILENAME);

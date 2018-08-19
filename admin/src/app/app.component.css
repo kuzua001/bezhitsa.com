@@ -183,7 +183,7 @@ body app-root {
   position: relative;
   flex: 1 1;
   margin-left: 250px;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 header.admin-header {
   background-color: #000;
@@ -193,6 +193,7 @@ header.admin-header {
   position: fixed;
   left: 0;
   z-index: 90;
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);
 }
 .admin-content-wrapper {
   background-color: #dcdcdc;
@@ -251,6 +252,13 @@ header.admin-header {
   display: inline-flex;
   flex-direction: row;
   width: 100%;
+}
+.page-editor .module-panel .save {
+  margin-right: 0!important;
+}
+.page-editor .module-panel .view {
+  margin: 0 10px;
+  padding: 8px;
 }
 .module-content-element {
   position: absolute;
@@ -335,4 +343,19 @@ rooms:not(.integrated) .module-editor {
 .modal-dialog {
   width: min-content;
   min-width: 500px;
+}
+select.form-control,
+input.form-control {
+  border-radius: 0!important;
+  height: 30px!important;
+  padding: 0!important;
+  padding-left: 6px!important;
+}
+select.form-control:focus,
+input.form-control:focus {
+  border-color: #ced4da;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
 }

@@ -3,6 +3,7 @@ import { MenuItem } from './models/menu-item';
 import { SubMenuPages } from "./models/sub-menu-pages";
 import {SubMenuSettingsComponent} from "./sub-menu/settings/settings.component";
 import {SubMenuSettings} from "./models/sub-menu-settings";
+import {SubMenuImages} from "./models/sub-menu-images";
 
 @Injectable()
 export class MenuService {
@@ -16,7 +17,7 @@ export class MenuService {
 
   constructor() {
     this.menuItems = [];
-    this.menuItems.push( new MenuItem('images', 'Изображения', null));
+    this.menuItems.push( new MenuItem('images', 'Изображения', new SubMenuImages()));
     this.menuItems.push( new MenuItem('pages', 'Страницы', new SubMenuPages()));
     this.menuItems.push( new MenuItem('trainers', 'Тренеры', null));
     this.menuItems.push( new MenuItem('rooms', 'Номера', null));

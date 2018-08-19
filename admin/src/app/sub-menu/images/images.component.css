@@ -1,0 +1,69 @@
+.bordered-section {
+  border: 1px solid #444;
+  margin: 5px;
+}
+.shadowed {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+}
+.put-right {
+  position: absolute;
+  right: 11px;
+  left: 350px;
+  top: 17px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+:host {
+  width: 100%;
+  display: block;
+  position: relative;
+  text-align: left;
+  padding: 10px;
+}
+.input-wrapper {
+  position: relative;
+}
+.input-wrapper input {
+  width: 100%;
+  border-color: #ced4da;
+}
+.input-wrapper .tags-list-box {
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  width: 100%;
+  margin-top: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.input-wrapper .tags-list-box .tag {
+  padding: 5px;
+  padding-left: 10px;
+}
+.input-wrapper .tags-list-box .tag.selected {
+  background-color: #e1e1e1;
+}
+.selected-tags-list {
+  margin-top: 10px;
+}
+.selected-tags-list .tag {
+  border-radius: 18px;
+  background-color: #f8efc0;
+  color: #000;
+  padding: 5px;
+  margin: 0 4px;
+  padding-left: 10px;
+  padding-right: 20px;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 8px;
+}
+.selected-tags-list .tag .close {
+  top: 11px;
+  right: 6px;
+  font-size: 0.7em;
+  position: absolute;
+}
+.filter-group:not(:last-child) {
+  margin-bottom: 15px;
+}

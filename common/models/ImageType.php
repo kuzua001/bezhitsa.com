@@ -32,6 +32,14 @@ class ImageType extends ActiveRecord
         return 'cms_image_types';
     }
 
+    public static function findAllShort()
+    {
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand('SELECT id, name from ' . self::tableName());
+
+        return $command->queryAll();
+    }
+
     /**
      * @return Preview[]
      */

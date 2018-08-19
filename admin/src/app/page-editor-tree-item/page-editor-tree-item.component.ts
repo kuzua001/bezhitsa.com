@@ -11,6 +11,7 @@ export class PageEditorTreeItemComponent implements OnInit {
     @Input() key:    any;
     @Input() values: any;
     @Input() uniqKey: string;
+    @Input() level: number = 1;
     @Input() parent: PageEditorTreeComponent;
 
 
@@ -67,7 +68,8 @@ export class PageEditorTreeItemComponent implements OnInit {
         //console.log(this.values[key]);
     }
 
-    public appendInstance(key: string, instanceType: string) {
+    public appendInstance(key: string) {
+        let instanceType = Object.keys(this.params[key]['availableInstances'])[0];
         //console.log(key);
         //console.log(instanceType);
 

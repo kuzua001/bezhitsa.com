@@ -42,6 +42,9 @@ import {ClickStopPropagation} from "./click-stop-propogation.directive";
 import { PageEditorTreeItemComponent } from './page-editor-tree-item/page-editor-tree-item.component';
 import { ImageCropperComponent, CropperSettings } from 'ng2-img-cropper';
 import { CustomImageCropperComponent } from './image-cropper/image-cropper.component';
+import {SubMenuImagesComponent} from "./sub-menu/images/images.component";
+import { FocusDirective } from './focus.directive';
+import { ScrollToModule } from 'ng2-scroll-to-el';
 
 @NgModule({
     declarations: [
@@ -56,6 +59,7 @@ import { CustomImageCropperComponent } from './image-cropper/image-cropper.compo
         SubMenuComponent,
         SubMenuPagesComponent,
         SubMenuSettingsComponent,
+        SubMenuImagesComponent,
         PagesListComponent,
         SettingsListComponent,
         TrainerEditorComponent,
@@ -69,7 +73,8 @@ import { CustomImageCropperComponent } from './image-cropper/image-cropper.compo
         ClickStopPropagation,
         PageEditorTreeItemComponent,
         ImageCropperComponent,
-        CustomImageCropperComponent
+        CustomImageCropperComponent,
+        FocusDirective
     ],
     imports: [
         BrowserModule,
@@ -100,7 +105,8 @@ import { CustomImageCropperComponent } from './image-cropper/image-cropper.compo
         TabsModule.forRoot(),
         AccordionModule.forRoot(),
         SortableModule.forRoot(),
-        ColorPickerModule
+        ColorPickerModule,
+        ScrollToModule.forRoot()
     ],
     providers: [
         PagesService, MenuService, SelectItemService, ModelService, LanguageService, SettingsService
