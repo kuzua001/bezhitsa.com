@@ -20,6 +20,7 @@ class ContactsSectionParams extends SectionParams
     /**
      * @var $contactsItems;
      * @title Списки контактной информации
+     * @itemTitleKey headerTypePart
      * @type (ContactsItemParams)[]
      */
     public $contactsItems;

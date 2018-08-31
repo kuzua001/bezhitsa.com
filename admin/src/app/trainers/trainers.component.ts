@@ -6,6 +6,7 @@ import {SelectItemService} from "../select-item.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {State} from "../models/state";
 import {bindToComponentState} from "../storage";
+import {PagesService} from "../pages.service";
 
 @Component({
     selector: 'trainers',
@@ -15,6 +16,8 @@ import {bindToComponentState} from "../storage";
 export class TrainersComponent extends State implements OnInit {
 
     @ViewChild('trainersList') trainersContainer: any;
+
+    static DETAIL_TRAINER_PAGE_ID = 29;
 
     modalRef: BsModalRef;
 
@@ -28,7 +31,29 @@ export class TrainersComponent extends State implements OnInit {
             this[key] = state[key];
         }
 
-        this.loadTrainer(this.trainers.find(t => t.id == this.selectedTrainer.id), true);
+        if (this.selectedTrainer !== null && this.trainers) {
+            this.loadTrainer(this.trainers.find(t => t.id == this.selectedTrainer.id), true);
+        }
+    }
+
+    detailPage = null;
+
+    getTrainerPageUrl(trainer: Trainer)
+    {
+        if (!trainer.alias || !trainer.alias.trim()) {
+            return null;
+        }
+
+        if (this.detailPage === null) {
+            this.pagesService.getPage(TrainersComponent.DETAIL_TRAINER_PAGE_ID).subscribe((page) => {
+               this.detailPage = page;
+            });
+        } else {
+            let aliasRegex = /<alias:(.*)>/gi;
+            return this.detailPage.url.replace(aliasRegex, trainer.alias);
+        }
+
+        return null;
     }
 
     reorderApply() {
@@ -43,6 +68,7 @@ export class TrainersComponent extends State implements OnInit {
     public newTrainer: Trainer;
 
     constructor(private modelService: ModelService,
+                private pagesService: PagesService,
                 private selectItemService: SelectItemService,
                 private modalService: BsModalService,) {
         super();

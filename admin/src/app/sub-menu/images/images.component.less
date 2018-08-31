@@ -1,11 +1,42 @@
 @import "../../mixins";
 
 :host {
-  width: 100%;
-  display: block;
-  position: relative;
-  text-align: left;
-  padding: 10px;
+  & > div:not(.inline) {
+    width: 100%;
+    display: block;
+    position: relative;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .inline {
+    display: inline-block;
+
+    .selected-tags-list {
+      margin-top: 0!important;
+    }
+
+    .filter-group {
+      display: inline-block;
+      vertical-align: top;
+      height: 40px;
+      padding: 10px;
+
+      .field-wrapper {
+        display: block;
+      }
+
+      .selected-tags-list,
+      .field-wrapper :not(.tag),
+      .selected-tags-list * {
+        display: inline-block;
+      }
+
+      .tags-list-box {
+        top: 30px;
+      }
+    }
+  }
 }
 
 

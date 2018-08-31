@@ -5,6 +5,9 @@ import {MenuService} from "./menu.service";
 import {MenuItem} from "./models/menu-item";
 import {SelectItemService} from "./select-item.service";
 import {SelectItemEvent} from "./models/select-item-event";
+import * as $ from 'jquery';
+import {NotificationService} from "./notification.service";
+import {NotificationEvent} from "./models/notification-event";
 
 
 @Component({
@@ -23,7 +26,22 @@ export class AppComponent {
       private router: Router,
       private menuService: MenuService,
       private selectItemService: SelectItemService,
+      private notificationService: NotificationService
   ) {
+      this.notificationService.onError((event: NotificationEvent) => {
+         AppComponent.showErrorAlert(event.message);
+      });
+  }
+
+  private hideAlert()
+  {
+      $('.alert-element').hide();
+  }
+
+  private static showErrorAlert(message: string)
+  {
+      $('.alert-element .message').text(message);
+      $('.alert-element').show();
   }
 
   toggleLanguage()

@@ -10,6 +10,7 @@ import {Subject} from "rxjs/Subject";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {State} from "../models/state";
 import {bindToComponentState} from "../storage";
+import {NotificationService} from "../notification.service";
 
 @Component({
   selector: 'app-pages',
@@ -57,7 +58,8 @@ export class PagesComponent extends State implements OnInit {
 		private pageService: PagesService,
 		private selectItemService: SelectItemService,
         private modalService: BsModalService,
-        private ref: ChangeDetectorRef
+        private ref: ChangeDetectorRef,
+		private notificationService: NotificationService
 	) {
 
 		super();
@@ -277,12 +279,21 @@ export class PagesComponent extends State implements OnInit {
 
 	save(): void {
 		if (!this.validatePageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values)) {
+			this.notificationService.error("Невозможно сохранить страницу, заполните обязательные поля");
 			return;
 		}
+
+		this.copyOtherParamsChanges();
 
 	    this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values), this.language)
             .subscribe();
     }
+
+    private copyOtherParamsChanges() {
+        for (let key in this.selectedPageFieldsOther.values) {
+            this.selectedPageFields.values[key] = this.selectedPageFieldsOther.values[key];
+        }
+	}
 
 
     deleteWithConfirm(): void {

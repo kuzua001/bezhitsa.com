@@ -34,7 +34,7 @@ foreach ($sectionParams->slides as $i => $slide) {
 					<ul class="slides">
 						<li ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
 							<div class="wrapper">
-								<img src="{{slide.image}}">
+								<img ng-src="{{slide.image}}">
 								<div ng-if="slide.hasCard" class="caption left-align">
 									<h3 class="elegant-title-element small black-text">
 										<span class="first">{{slide.cardTitleFirst}}</span>
@@ -71,7 +71,7 @@ foreach ($sectionParams->slides as $i => $slide) {
 		<ul class="slides">
 			<li ng-repeat="slide in slider.slides">
 				<div class="wrapper">
-					<img src="{{slide.image }}">
+					<img ng-src="{{slide.image}}">
 				</div>
 				<div class="elegant-card-element">
 					<div class="tab-list-element">

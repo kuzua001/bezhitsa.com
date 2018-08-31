@@ -4,6 +4,8 @@ import {ModelService} from "../model.service";
 import {CmsImage} from "../models/cms-image";
 import {BsModalService} from "ngx-bootstrap";
 import {SelectItemService} from "../select-item.service";
+import {ImageChooserPopupComponent} from "../image-chooser-popup/image-chooser-popup.component";
+//import {CustomCheckBoxModel} from "angular-custom-checkbox";
 
 @Component({
     selector: 'app-page-editor-field',
@@ -15,7 +17,17 @@ export class PageEditorFieldComponent implements OnInit {
 
     private modalRef;
 
-    @ViewChild('imageChooser') imageChooser;
+    /*get checkboxSettings() {
+        let result = new CustomCheckBoxModel();
+        result.color = 'p-success';
+        result.colorHex = '#F500FF';
+        result.rounded = true;
+        result.icon = 'mdi mdi-check';
+
+        return result;
+    }*/
+
+    @ViewChild('imageChooser') imageChooser: ImageChooserPopupComponent;
 
     constructor(
         private modelService: ModelService,
@@ -27,7 +39,7 @@ export class PageEditorFieldComponent implements OnInit {
 
     openChooser()
     {
-        this.modalRef = this.modalService.show(this.imageChooser);
+        this.imageChooser.showPopup();
     }
 
 

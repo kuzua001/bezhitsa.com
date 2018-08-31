@@ -19,6 +19,9 @@
   padding: 10px 20px;
   height: 43px;
 }
+.object-list-element li h2 i {
+  float: right;
+}
 .object-name {
   font-size: 17px;
   overflow: hidden;

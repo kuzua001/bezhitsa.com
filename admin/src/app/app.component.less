@@ -15,18 +15,23 @@ div.menu ul {
     list-style: none;
 }
 
+body, html {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
 
     app-root {
         display: flex;
-        min-height: 100vh;
+        height: 100%;
         flex-direction: column;
     }
 }
 
 .module-wrapper-element {
+    min-height: 100vh;
     position: relative;
     flex: 1 1;
 
@@ -46,7 +51,29 @@ header.admin-header {
     box-shadow: 0 0 22px rgba(0,0,0,0.5);
 }
 
+.alert-element {
+    position: fixed;
+    right: 10px;
+    top: 60px;
+    width: 200px;
+    background-color: #eee;
+    z-index: 999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+
+    .message {
+        padding: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+}
+
 .admin-content-wrapper  {
+    height: 100%;
     background-color: #dcdcdc;
     overflow: hidden;
     flex: 1 0 auto;
@@ -57,6 +84,7 @@ header.admin-header {
         display: flex;
         flex-direction: row;
         width: 100%;
+        height: 100%;
 
         &> .menu {
             flex: 0 0;
@@ -186,15 +214,21 @@ header.admin-header {
         color: #fff;
     }
 
-    &.delete {
+    &.cancel {
         background-color: #888;
         color: #fff;
     }
 
-    &:last-child {
-        flex: 1 1;
-        margin-right: 0;
+
+    &.delete {
+        background-color: #bd0e0e;
+        color: #fff;
     }
+
+    //&:last-child {
+    //    flex: 1 1;
+    //    margin-right: 0;
+    //}
 }
 
 .page-editor {
@@ -248,4 +282,31 @@ input.form-control {
         -o-box-shadow: none;
         box-shadow: none;
     }
+}
+
+input.color {
+    display: inline-block;
+    width: 30px!important;
+    height: 30px;
+    outline: none;
+    border: 2px solid #757575;
+    border-radius: 2px;
+}
+
+.modal-dialog.image-chooser-popup {
+    width: 90%!important;
+    max-width: none!important;
+}
+
+mat-checkbox {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.mat-checkbox-checked.mat-primary .mat-checkbox-background, .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {
+    background-color: #4a90e2!important;
+}
+
+.trumbowyg-box {
+    margin-top: 0!important;
 }

@@ -6,10 +6,18 @@
 
 .instances {
   position: relative;
-  border: 2px solid #aaa;
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,0.1);
+
+  .toolbar-element {
+    background-color: transparent!important;
+    div{
+      background-color: transparent!important;
+    }
+  }
 
   .instance-item {
     position: relative;
@@ -24,6 +32,13 @@
       top: 0;
       right: 5px;
       z-index: 90;
+
+      .close {
+        top: 13px;
+        position: absolute;
+        right: 8px;
+        font-size: 17px;
+      }
     }
   }
 }

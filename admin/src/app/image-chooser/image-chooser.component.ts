@@ -1,8 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChildren} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewChildren} from '@angular/core';
 import {CmsImage} from "../models/cms-image";
 import {ModelService} from "../model.service";
 import {SelectItemService} from "../select-item.service";
 import {SelectItemEvent} from "../models/select-item-event";
+import {ImageFilter} from "../models/image-filter";
+import {ScrollToService} from "ng2-scroll-to-el";
+import {ImageType} from "../models/image-type";
 
 @Component({
   selector: 'app-image-chooser',
@@ -15,17 +18,26 @@ export class ImageChooserComponent implements OnInit {
 
     private images: CmsImage[];
 
-    @Input() multiple: boolean = false;
 
     preSelectedImageId = null;
     preSelectedImageIds = [];
 
+    @ViewChild('bottom') bottom: ElementRef;
+
+    private limit: number = 10;
+
+    @Input() multiple: boolean = false;
+    @Input() fixedImageTypeId: number = null;
+
     @Output() selectedImageId = new EventEmitter<CmsImage>();
     @Output() selectedImageIds = new EventEmitter<Array<CmsImage>>();
+
+
 
     constructor(
         private modelService: ModelService,
         private selectItemService: SelectItemService,
+        private scrollService: ScrollToService
     )
     {
         this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
@@ -42,6 +54,27 @@ export class ImageChooserComponent implements OnInit {
                 }
             }
         });
+
+        this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
+            if (event.itemType === SelectItemEvent.Type.ApplyFilter) {
+                const filter: ImageFilter = event.payload.filter;
+                this.loadImages(filter);
+            }
+        });
+    }
+
+    public dropped($event)
+    {
+
+    }
+
+    public loadMore()
+    {
+        if (this.images && this.limit < this.images.length) {
+            this.limit += 14;
+        }
+
+        this.scrollService.scrollTo(this.bottom.nativeElement);
     }
 
     public markImage(i: number)
@@ -70,9 +103,14 @@ export class ImageChooserComponent implements OnInit {
         }
     }
 
-    private loadImages()
-    {
-        this.modelService.getImages().subscribe(images => {
+    private loadImages(filter: ImageFilter = null) {
+        if (this.fixedImageTypeId !== null) {
+            filter.selectedType = new ImageType();
+            filter.selectedType.id = 1;//this.fixedImageTypeId;
+        }
+
+        this.modelService.getImages(filter).subscribe(images => {
+            images.forEach((rawImage, index) => {images[index] = CmsImage.fromRaw(rawImage);});
             this.images = images;
         });
     }

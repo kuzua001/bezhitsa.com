@@ -118,7 +118,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n* {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  min-height: 100vh;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 50px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);\n}\n.admin-content-wrapper {\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.page-editor .module-panel .save {\n  margin-right: 0!important;\n}\n.page-editor .module-panel .view {\n  margin: 0 10px;\n  padding: 8px;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element:last-child {\n  flex: 1 1;\n  margin-right: 0;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\nselect.form-control,\ninput.form-control {\n  border-radius: 0!important;\n  height: 30px!important;\n  padding: 0!important;\n  padding-left: 6px!important;\n}\nselect.form-control:focus,\ninput.form-control:focus {\n  border-color: #ced4da;\n  -o-box-shadow: none;\n  box-shadow: none;\n}\n"
+module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n*:not(.fa) {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody,\nhtml {\n  min-height: 100%;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  min-height: 100vh;\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 50px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);\n}\n.alert-element {\n  position: fixed;\n  right: 10px;\n  top: 60px;\n  width: 200px;\n  background-color: #eee;\n  z-index: 999;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.alert-element .message {\n  padding: 10px;\n}\n.alert-element .close {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.admin-content-wrapper {\n  height: 100%;\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.page-editor .module-panel .save {\n  margin-right: 0!important;\n}\n.page-editor .module-panel .view {\n  margin: 0 10px;\n  padding: 8px;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.cancel {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #bd0e0e;\n  color: #fff;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\nselect.form-control,\ninput.form-control {\n  border-radius: 0!important;\n  height: 30px!important;\n  padding: 0!important;\n  padding-left: 6px!important;\n}\nselect.form-control:focus,\ninput.form-control:focus {\n  border-color: #ced4da;\n  -o-box-shadow: none;\n  box-shadow: none;\n}\ninput.color {\n  display: inline-block;\n  width: 30px!important;\n  height: 30px;\n  outline: none;\n  border: 2px solid #757575;\n  border-radius: 2px;\n}\n.modal-dialog.image-chooser-popup {\n  width: 90%!important;\n  max-width: none!important;\n}\nmat-checkbox {\n  margin-right: 10px;\n  margin-left: 10px;\n}\n.mat-checkbox-checked.mat-primary .mat-checkbox-background,\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {\n  background-color: #4a90e2!important;\n}\n.trumbowyg-box {\n  margin-top: 0!important;\n}\n"
 
 /***/ }),
 
@@ -129,7 +129,7 @@ module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<header class=\"admin-header\">\n  <div class=\"row\">\n    <div class=\"col-md-8\">\n      <a class=\"header-logo\" href=\"\" title=\"beshitza.ru\">\n        <img src=\"assets/img/logo_header.jpg\">\n      </a>\n    </div>\n    <div class=\"col-md-2\">\n      <span class=\"language-selector-label\">RU</span>\n      <label class=\"switch\">\n        <input type=\"checkbox\" class=\"switch\" id=\"switch-language\" [ngModel]=\"languageEn\"  (change)=\"toggleLanguage()\">\n        <span class=\"slider round\"></span>\n      </label>\n      <span class=\"language-selector-label\">EN</span>\n    </div>\n    <div class=\"col-md-2\">\n    </div>\n  </div>\n</header>\n<section class=\"admin-content-wrapper\">\n  <div class=\"wrapper\">\n    <div class=\"admin-menu-element\">\n      <nav>\n        <ul class=\"menu-items\">\n          <li *ngFor=\"let item of getMenuItems()\" class=\"menu-selector-item\">\n            <a routerLinkActive=\"active\" routerLink=\"{{item.getPath()}}\">{{item.getName()}}</a>\n            <div class=\"sub-menu-items\">\n              <sub-menu [subMenu]=\"item.getSubmenu()\"></sub-menu>\n            </div>\n          </li>\n        </ul>\n      </nav>\n    </div>\n    <div class=\"module-wrapper-element\">\n      <header>\n      </header>\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</section>"
+module.exports = "<div class=\"alert-element\">\n  <div class=\"message\">\n  </div>\n  <span class=\"close\" (click)=\"hideAlert()\">\n    <i class=\"fa fa-close\"></i>\n  </span>\n</div>\n<header class=\"admin-header\">\n  <div class=\"row\">\n    <div class=\"col-md-8\">\n      <a class=\"header-logo\" href=\"\" title=\"beshitza.ru\">\n        <img src=\"assets/img/logo_header.jpg\">\n      </a>\n    </div>\n    <div class=\"col-md-2\">\n      <span class=\"language-selector-label\">RU</span>\n      <label class=\"switch\">\n        <input type=\"checkbox\" class=\"switch\" id=\"switch-language\" [ngModel]=\"languageEn\"  (change)=\"toggleLanguage()\">\n        <span class=\"slider round\"></span>\n      </label>\n      <span class=\"language-selector-label\">EN</span>\n    </div>\n    <div class=\"col-md-2\">\n    </div>\n  </div>\n</header>\n<section class=\"admin-content-wrapper\">\n  <div class=\"wrapper\">\n    <div class=\"admin-menu-element\">\n      <nav>\n        <ul class=\"menu-items\">\n          <li *ngFor=\"let item of getMenuItems()\" class=\"menu-selector-item\">\n            <a routerLinkActive=\"active\" routerLink=\"{{item.getPath()}}\">{{item.getName()}}</a>\n            <div class=\"sub-menu-items\">\n              <sub-menu [subMenu]=\"item.getSubmenu()\"></sub-menu>\n            </div>\n          </li>\n        </ul>\n      </nav>\n    </div>\n    <div class=\"module-wrapper-element\">\n      <header>\n      </header>\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -149,6 +149,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menu.service */ "./src/app/menu.service.ts");
 /* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./select-item.service */ "./src/app/select-item.service.ts");
 /* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./notification.service */ "./src/app/notification.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -164,17 +167,31 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(route, router, menuService, selectItemService) {
+    function AppComponent(route, router, menuService, selectItemService, notificationService) {
         this.route = route;
         this.router = router;
         this.menuService = menuService;
         this.selectItemService = selectItemService;
+        this.notificationService = notificationService;
         this.title = 'Админка';
         this.currentMenuContent = null;
         this.currentRoute = null;
         this.languageEn = false;
+        this.notificationService.onError(function (event) {
+            AppComponent_1.showErrorAlert(event.message);
+        });
     }
+    AppComponent_1 = AppComponent;
+    AppComponent.prototype.hideAlert = function () {
+        jquery__WEBPACK_IMPORTED_MODULE_6__('.alert-element').hide();
+    };
+    AppComponent.showErrorAlert = function (message) {
+        jquery__WEBPACK_IMPORTED_MODULE_6__('.alert-element .message').text(message);
+        jquery__WEBPACK_IMPORTED_MODULE_6__('.alert-element').show();
+    };
     AppComponent.prototype.toggleLanguage = function () {
         this.languageEn = !this.languageEn;
         this.selectItemService.emit(new _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__["SelectItemEvent"](_models_select_item_event__WEBPACK_IMPORTED_MODULE_5__["SelectItemEvent"].Type.LanguageChange, {
@@ -195,7 +212,7 @@ var AppComponent = /** @class */ (function () {
             }
         });
     };
-    AppComponent = __decorate([
+    AppComponent = AppComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
@@ -204,9 +221,11 @@ var AppComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _menu_service__WEBPACK_IMPORTED_MODULE_3__["MenuService"],
-            _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"]])
+            _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"],
+            _notification_service__WEBPACK_IMPORTED_MODULE_7__["NotificationService"]])
     ], AppComponent);
     return AppComponent;
+    var AppComponent_1;
 }());
 
 
@@ -267,6 +286,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sub_menu_images_images_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./sub-menu/images/images.component */ "./src/app/sub-menu/images/images.component.ts");
 /* harmony import */ var _focus_directive__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./focus.directive */ "./src/app/focus.directive.ts");
 /* harmony import */ var ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ng2-scroll-to-el */ "./node_modules/ng2-scroll-to-el/index.js");
+/* harmony import */ var _image_chooser_popup_image_chooser_popup_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./image-chooser-popup/image-chooser-popup.component */ "./src/app/image-chooser-popup/image-chooser-popup.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -318,6 +339,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+//import { CustomCheckboxModule } from 'angular-custom-checkbox';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -350,7 +374,8 @@ var AppModule = /** @class */ (function () {
                 _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_38__["PageEditorTreeItemComponent"],
                 ng2_img_cropper__WEBPACK_IMPORTED_MODULE_39__["ImageCropperComponent"],
                 _image_cropper_image_cropper_component__WEBPACK_IMPORTED_MODULE_40__["CustomImageCropperComponent"],
-                _focus_directive__WEBPACK_IMPORTED_MODULE_42__["FocusDirective"]
+                _focus_directive__WEBPACK_IMPORTED_MODULE_42__["FocusDirective"],
+                _image_chooser_popup_image_chooser_popup_component__WEBPACK_IMPORTED_MODULE_44__["ImageChooserPopupComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -382,7 +407,8 @@ var AppModule = /** @class */ (function () {
                 ngx_bootstrap_accordion__WEBPACK_IMPORTED_MODULE_28__["AccordionModule"].forRoot(),
                 ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["SortableModule"].forRoot(),
                 ngx_color_picker__WEBPACK_IMPORTED_MODULE_30__["ColorPickerModule"],
-                ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_43__["ScrollToModule"].forRoot()
+                ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_43__["ScrollToModule"].forRoot(),
+                _angular_material__WEBPACK_IMPORTED_MODULE_45__["MatCheckboxModule"],
             ],
             providers: [
                 _pages_service__WEBPACK_IMPORTED_MODULE_6__["PagesService"], _menu_service__WEBPACK_IMPORTED_MODULE_8__["MenuService"], _select_item_service__WEBPACK_IMPORTED_MODULE_19__["SelectItemService"], _model_service__WEBPACK_IMPORTED_MODULE_7__["ModelService"], _services_language_service__WEBPACK_IMPORTED_MODULE_33__["LanguageService"], _settings_service__WEBPACK_IMPORTED_MODULE_35__["SettingsService"]
@@ -450,7 +476,7 @@ var ClickStopPropagation = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".object-editor {\n  padding: 0 10px;\n  position: relative;\n}\n.object-editor:not(.active) .close {\n  display: none;\n}\n.object-editor .field * {\n  vertical-align: top;\n  margin-bottom: 10px;\n}\n.object-editor .field .label {\n  width: 120px;\n  text-align: left;\n  margin-right: 20px;\n  display: inline-block;\n}\n.object-editor .close,\n.object-editor .cancel {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n.image-picker {\n  position: relative;\n}\n.image-picker .img-crop img {\n  width: 400px;\n}\n.image-picker [ngxfiledropzone] {\n  border: 5px dashed #eee;\n  padding: 50px;\n  text-align: center;\n  display: inline-block;\n  margin-left: 10px;\n}\n"
+module.exports = ".object-editor {\n  padding: 10px 10px;\n  position: relative;\n}\n.object-editor:not(.active) .close {\n  display: none;\n}\n.object-editor .field * {\n  vertical-align: top;\n  margin-bottom: 10px;\n}\n.object-editor .field .label {\n  width: 120px;\n  text-align: left;\n  margin-right: 20px;\n  display: inline-block;\n}\n.object-editor .field input[type=text] {\n  width: 300px;\n}\n.object-editor .close,\n.object-editor .cancel {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n.image-picker {\n  position: relative;\n}\n.image-picker .img-crop img {\n  width: 400px;\n}\n.image-picker [ngxfiledropzone] {\n  border: 5px dashed #eee;\n  padding: 50px;\n  text-align: center;\n  display: inline-block;\n  margin-left: 10px;\n}\n"
 
 /***/ }),
 
@@ -461,7 +487,7 @@ module.exports = ".object-editor {\n  padding: 0 10px;\n  position: relative;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "::-webkit-scrollbar {\n  width: 0px;\n  /* remove scrollbar space */\n  background: transparent;\n  /* optional: just make scrollbar invisible */\n}\n/* optional: show position indicator in red */\n::-webkit-scrollbar-thumb {\n  background: #FF0000;\n}\n.object-list-element {\n  padding: 0;\n  max-height: 70vh;\n  overflow-y: scroll;\n  min-width: 200px;\n}\n.object-list-element li {\n  list-style: none;\n  padding: 10px 20px;\n  height: 43px;\n}\n.object-name {\n  font-size: 17px;\n  overflow: hidden;\n}\n.object-id {\n  float: left;\n  margin-right: 8px;\n}\n.object-item.active {\n  background-color: #eee;\n}\n"
+module.exports = "::-webkit-scrollbar {\n  width: 0px;\n  /* remove scrollbar space */\n  background: transparent;\n  /* optional: just make scrollbar invisible */\n}\n/* optional: show position indicator in red */\n::-webkit-scrollbar-thumb {\n  background: #FF0000;\n}\n.object-list-element {\n  padding: 0;\n  max-height: 70vh;\n  overflow-y: scroll;\n  min-width: 200px;\n}\n.object-list-element li {\n  list-style: none;\n  padding: 10px 20px;\n  height: 43px;\n}\n.object-list-element li h2 i {\n  float: right;\n}\n.object-name {\n  font-size: 17px;\n  overflow: hidden;\n}\n.object-id {\n  float: left;\n  margin-right: 8px;\n}\n.object-item.active {\n  background-color: #eee;\n}\n"
 
 /***/ }),
 
@@ -663,6 +689,114 @@ var FocusDirective = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/image-chooser-popup/image-chooser-popup.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/image-chooser-popup/image-chooser-popup.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "h4 {\n  display: inline-block;\n}\n.modal-dialog {\n  overflow-y: initial !important;\n}\n.modal-body {\n  height: 70vh;\n  overflow-y: auto;\n}\n.modal-header > div:first-child {\n  flex: 1 1;\n}\n.modal-header > div:first-child * {\n  vertical-align: bottom;\n}\n.modal-header > div:first-child h4 {\n  margin-right: 10px;\n}\n.modal-header > div:first-child :nth-child(2) {\n  height: 68px;\n  display: inline-block;\n}\n.modal-footer {\n  text-align: right;\n}\n.toolbar {\n  display: inline-block;\n  width: 300px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/image-chooser-popup/image-chooser-popup.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/image-chooser-popup/image-chooser-popup.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-template #imageChooser>\n  <div class=\"modal-header\">\n    <div class=\"pull-left\">\n      <h4 class=\"modal-title\">Выберите изображение</h4>\n      <sub-menu-images [inline]=\"true\" [showShowTitles]=\"false\" [fixedImageTypeId]=\"fixedImageTypeId\"></sub-menu-images>\n    </div>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <app-images\n            [selectionMode]=\"true\"\n            [fixedImageTypeId]=\"fixedImageTypeId\"\n            [multiple]=\"multiple\"\n            (selectedImageId)=\"outputImageId($event)\" (selectedImageIds)=\"outputImageIds($event)\"></app-images>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"toolbar\">\n      <button class=\"ripple module-control-button-element default\" (click)=\"selectItemService.emitImageChooserEvent(); closePopup()\">Выбор</button>\n      <button class=\"ripple module-control-button-element delete\" (click)=\"closePopup()\">отмена</button>\n    </div>\n  </div>\n</ng-template>"
+
+/***/ }),
+
+/***/ "./src/app/image-chooser-popup/image-chooser-popup.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/image-chooser-popup/image-chooser-popup.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: ImageChooserPopupComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageChooserPopupComponent", function() { return ImageChooserPopupComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ImageChooserPopupComponent = /** @class */ (function () {
+    function ImageChooserPopupComponent(modalService, selectItemService) {
+        this.modalService = modalService;
+        this.selectItemService = selectItemService;
+        this.multiple = false;
+        this.fixedImageTypeId = null;
+        this.selectedImageId = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.selectedImageIds = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    ImageChooserPopupComponent.prototype.showPopup = function () {
+        this.modalRef = this.modalService.show(this.imageChooser, {
+            class: 'image-chooser-popup'
+        });
+    };
+    ImageChooserPopupComponent.prototype.closePopup = function () {
+        this.modalRef.hide();
+    };
+    ImageChooserPopupComponent.prototype.outputImageId = function (imageId) {
+        this.selectedImageId.emit(imageId);
+    };
+    ImageChooserPopupComponent.prototype.outputImageIds = function (imageIds) {
+        this.selectedImageId.emit(imageIds);
+    };
+    ImageChooserPopupComponent.prototype.ngOnInit = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], ImageChooserPopupComponent.prototype, "multiple", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], ImageChooserPopupComponent.prototype, "fixedImageTypeId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], ImageChooserPopupComponent.prototype, "selectedImageId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], ImageChooserPopupComponent.prototype, "selectedImageIds", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('imageChooser'),
+        __metadata("design:type", Object)
+    ], ImageChooserPopupComponent.prototype, "imageChooser", void 0);
+    ImageChooserPopupComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-image-chooser-popup',
+            template: __webpack_require__(/*! ./image-chooser-popup.component.html */ "./src/app/image-chooser-popup/image-chooser-popup.component.html"),
+            styles: [__webpack_require__(/*! ./image-chooser-popup.component.css */ "./src/app/image-chooser-popup/image-chooser-popup.component.css")],
+        }),
+        __metadata("design:paramtypes", [ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__["BsModalService"],
+            _select_item_service__WEBPACK_IMPORTED_MODULE_2__["SelectItemService"]])
+    ], ImageChooserPopupComponent);
+    return ImageChooserPopupComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/image-chooser/image-chooser.component.css":
 /*!***********************************************************!*\
   !*** ./src/app/image-chooser/image-chooser.component.css ***!
@@ -681,7 +815,7 @@ module.exports = ":host .tick {\n  position: absolute;\n  top: 10px;\n  right: 1
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"image-chooser-element\">\n    <div>\n        <tabset>\n            <tab heading=\"Загрузите новый\" id=\"tab1\">\n\n            </tab>\n            <tab heading=\"Выбор из медиатеки\">\n                <div class=\"images\">\n                    <div class=\"content module-editor\" *ngIf=\"images !== null\">\n                        <div *ngFor=\"let image of images; let i = index;\" class=\"image-card\" (click)=\"markImage(i)\">\n                            <img #imagesList src=\"/{{image.filename}}\" (load)=\"detectOrientation(i)\">\n                            <div class=\"short-description\">\n                                {{image.description | wordCountLimit: 3 }}\n                            </div>\n                            <div class=\"tick\" [class.ticked]=\"multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id\"></div>\n                        </div>\n                    </div>\n                </div>\n            </tab>\n        </tabset>\n    </div>\n</div>"
+module.exports = "<div class=\"image-chooser-element\">\n    <div>\n        <div class=\"images\">\n            <div class=\"content module-editor\" *ngIf=\"images !== null\">\n\n                <div class=\"image-card\">\n                    <div class=\"new-image image-wrapper\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"dropped($event)\" ngxFilePicker (filePick)=\"dropped($event)\">\n                        Добавьте фото<br>\n                        <i class=\"plus\"></i><br>\n                    </div>\n                </div>\n\n                <div *ngFor=\"let image of images; let i = index;\" class=\"image-card\" (click)=\"markImage(i)\" [hidden]=\"i >= limit\">\n                    <div class='image-card-wrapper' *ngIf=\"i < limit;\">\n                        <img #imagesList src=\"/{{image.filename}}\" (load)=\"detectOrientation(i)\">\n                        <div class=\"short-description\">\n                            {{image.description | wordCountLimit: 15 }}\n                        </div>\n                    </div>\n                    <div class=\"tick\" [class.ticked]=\"multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id\"></div>\n                </div>\n\n                <div class=\"image-card\" (click)=\"loadMore()\" *ngIf=\"limit < images.length\">\n                    <div class=\"load-more image-wrapper\">\n                        Показать<br>ещё\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<div #bottom></div>"
 
 /***/ }),
 
@@ -696,9 +830,12 @@ module.exports = "<div class=\"image-chooser-element\">\n    <div>\n        <tab
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImageChooserComponent", function() { return ImageChooserComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
-/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
-/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/cms-image */ "./src/app/models/cms-image.ts");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ng2-scroll-to-el */ "./node_modules/ng2-scroll-to-el/index.js");
+/* harmony import */ var _models_image_type__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/image-type */ "./src/app/models/image-type.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -712,18 +849,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var ImageChooserComponent = /** @class */ (function () {
-    function ImageChooserComponent(modelService, selectItemService) {
+    function ImageChooserComponent(modelService, selectItemService, scrollService) {
         var _this = this;
         this.modelService = modelService;
         this.selectItemService = selectItemService;
-        this.multiple = false;
+        this.scrollService = scrollService;
         this.preSelectedImageId = null;
         this.preSelectedImageIds = [];
+        this.limit = 10;
+        this.multiple = false;
+        this.fixedImageTypeId = null;
         this.selectedImageId = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.selectedImageIds = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.selectItemService.event$.subscribe(function (event) {
-            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_3__["SelectItemEvent"].Type.ImageChooserApply) {
+            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__["SelectItemEvent"].Type.ImageChooserApply) {
                 if (_this.multiple) {
                     var result = [];
                     var _loop_1 = function (imageId) {
@@ -741,7 +884,21 @@ var ImageChooserComponent = /** @class */ (function () {
                 }
             }
         });
+        this.selectItemService.event$.subscribe(function (event) {
+            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__["SelectItemEvent"].Type.ApplyFilter) {
+                var filter = event.payload.filter;
+                _this.loadImages(filter);
+            }
+        });
     }
+    ImageChooserComponent.prototype.dropped = function ($event) {
+    };
+    ImageChooserComponent.prototype.loadMore = function () {
+        if (this.images && this.limit < this.images.length) {
+            this.limit += 14;
+        }
+        this.scrollService.scrollTo(this.bottom.nativeElement);
+    };
     ImageChooserComponent.prototype.markImage = function (i) {
         var imageId = this.images[i].id;
         if (this.multiple) {
@@ -765,9 +922,15 @@ var ImageChooserComponent = /** @class */ (function () {
             image.classList.add('portrait');
         }
     };
-    ImageChooserComponent.prototype.loadImages = function () {
+    ImageChooserComponent.prototype.loadImages = function (filter) {
         var _this = this;
-        this.modelService.getImages().subscribe(function (images) {
+        if (filter === void 0) { filter = null; }
+        if (this.fixedImageTypeId !== null) {
+            filter.selectedType = new _models_image_type__WEBPACK_IMPORTED_MODULE_6__["ImageType"]();
+            filter.selectedType.id = 1; //this.fixedImageTypeId;
+        }
+        this.modelService.getImages(filter).subscribe(function (images) {
+            images.forEach(function (rawImage, index) { images[index] = _models_cms_image__WEBPACK_IMPORTED_MODULE_1__["CmsImage"].fromRaw(rawImage); });
             _this.images = images;
         });
     };
@@ -779,9 +942,17 @@ var ImageChooserComponent = /** @class */ (function () {
         __metadata("design:type", Object)
     ], ImageChooserComponent.prototype, "imageList", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('bottom'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ImageChooserComponent.prototype, "bottom", void 0);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
     ], ImageChooserComponent.prototype, "multiple", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], ImageChooserComponent.prototype, "fixedImageTypeId", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
@@ -796,8 +967,9 @@ var ImageChooserComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./image-chooser.component.html */ "./src/app/image-chooser/image-chooser.component.html"),
             styles: [__webpack_require__(/*! ./image-chooser.component.css */ "./src/app/image-chooser/image-chooser.component.css"), __webpack_require__(/*! ../images/images.component.css */ "./src/app/images/images.component.css")]
         }),
-        __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_1__["ModelService"],
-            _select_item_service__WEBPACK_IMPORTED_MODULE_2__["SelectItemService"]])
+        __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_2__["ModelService"],
+            _select_item_service__WEBPACK_IMPORTED_MODULE_3__["SelectItemService"],
+            ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_5__["ScrollToService"]])
     ], ImageChooserComponent);
     return ImageChooserComponent;
 }());
@@ -936,7 +1108,7 @@ var CustomImageCropperComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n:host .module-editor {\n  background: none;\n  padding: 8px;\n}\n:host .module-editor:not(.show-descriptions) .short-description {\n  display: none;\n}\n:host .module-editor.show-descriptions .image-card {\n  padding-top: 14.5%;\n}\n.image-card {\n  display: inline-block;\n  width: 11.5%;\n  padding-top: 11.5%;\n  position: relative;\n  margin: 0.5%;\n}\n.image-card:hover .short-description {\n  height: initial;\n  white-space: initial;\n  line-height: 22px;\n  padding: 13px;\n  padding-left: 12px;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card .plus {\n  width: 31px;\n  height: 31px;\n  position: relative;\n  background: url(/admin/assets/icons/plus.svg) no-repeat;\n  font-size: 0;\n  margin-top: 11px;\n}\n.image-card .image-card-wrapper {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n}\n.image-card:before {\n  position: absolute;\n  z-index: -1;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n}\n.image-card img.landscape {\n  height: 100%!important;\n}\n.image-card img.portrait {\n  width: 100%!important;\n}\n.image-card .new-image,\n.image-card .load-more {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n}\n.image-card .short-description {\n  position: absolute;\n  bottom: 0;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 100%;\n  overflow: hidden;\n  padding: 12px;\n  background-color: #fff;\n  box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.3);\n}\n[ngxFileDropzone] {\n  text-align: center;\n}\n.image-for-crop {\n  width: 100%;\n}\n.tags-list .tag {\n  border-radius: 18px;\n  background-color: #f8efc0;\n  color: #000;\n  padding: 5px;\n  margin: 0 4px;\n  padding-left: 10px;\n  padding-right: 20px;\n  display: inline-block;\n  position: relative;\n  margin-bottom: 8px;\n}\n.tags-list .tag .close {\n  top: 11px;\n  right: 6px;\n  font-size: 0.7em;\n  position: absolute;\n}\n.tags-list .tag.plus {\n  padding: 5px 12.34px!important;\n  cursor: pointer;\n}\n.tags-list .tag.input {\n  border: none;\n  padding-left: 10px;\n}\n.tags-list .tag.input:focus {\n  outline: none;\n}\n.image-editor-element .update-image {\n  width: 100%;\n  border: 2px dashed #a7a7a7;\n  padding: 10px;\n  margin-bottom: 16px;\n}\n.image-editor-element textarea {\n  width: 100%;\n  margin-bottom: 9px;\n}\n.image-editor-element .tags-list {\n  margin-bottom: 16px;\n}\n.image-editor-element .tags-list .tag:first-child {\n  margin-left: 0;\n}\n.image-editor-element .redactor.vertical .left-part {\n  vertical-align: top;\n  max-width: 200px;\n  display: inline-block;\n  margin-right: 16px;\n  float: left;\n}\n.image-editor-element .redactor.vertical .right-part {\n  vertical-align: top;\n  overflow: hidden;\n}\nsection {\n  margin-top: 16px;\n}\n.preview-selector a {\n  border-radius: 20px;\n  margin: 10px 5px 10px 5px;\n  background: none;\n  padding: 3px 10px;\n  cursor: pointer;\n  display: inline-block;\n}\n.preview-selector a:first-child {\n  margin-left: 0;\n}\n.preview-selector a.selected {\n  background-color: #f8efc0;\n}\n"
+module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n:host {\n  height: 100%;\n  overflow: hidden;\n}\n:host .module-editor {\n  background: none;\n  padding: 8px;\n}\n:host .module-editor:not(.show-descriptions) .short-description {\n  display: none;\n}\n:host .module-editor.show-descriptions .image-card {\n  padding-top: 14.5%;\n}\n.tick {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  width: 15px;\n  height: 15px;\n  border: 1px solid #000;\n  background-color: #fff;\n}\n.tick.ticked:after {\n  content: '';\n  position: absolute;\n  width: 10px;\n  height: 10px;\n  top: 2px;\n  left: 2px;\n  border-radius: 5px;\n  background-color: #000;\n}\n.wrapper {\n  height: 100%;\n}\n.wrapper.one .image-card {\n  width: 99%;\n  padding-top: 99%;\n}\n.wrapper.two .image-card {\n  width: 49%;\n  padding-top: 49%;\n}\n.wrapper.four .image-card {\n  width: 24%;\n  padding-top: 24%;\n}\n.image-card {\n  display: inline-block;\n  width: 11.5%;\n  padding-top: 11.5%;\n  position: relative;\n  margin: 0.5%;\n}\n.image-card:hover .short-description {\n  height: initial;\n  white-space: initial;\n  line-height: 22px;\n  padding: 13px;\n  padding-left: 12px;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card .plus {\n  width: 31px;\n  height: 31px;\n  position: relative;\n  background: url(/admin/assets/icons/plus.svg) no-repeat;\n  font-size: 0;\n  margin-top: 11px;\n  display: block;\n}\n.image-card.ticked .image-card-wrapper:after {\n  position: absolute;\n  content: '';\n  width: 100%;\n  height: 100%;\n  border: 4px solid #4a90e2;\n  display: block;\n}\n.image-card .image-card-wrapper {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  box-sizing: border-box;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n}\n.image-card img.landscape {\n  height: 100%!important;\n}\n.image-card img.portrait {\n  width: 100%!important;\n}\n.image-card .new-image,\n.image-card .load-more {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n}\n.image-card .short-description {\n  position: absolute;\n  bottom: 0;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 100%;\n  overflow: hidden;\n  padding: 12px;\n  background-color: #fff;\n  box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.3);\n}\n[ngxFileDropzone] {\n  text-align: center;\n}\n.image-for-crop {\n  width: 100%;\n}\n.tags-list .tag {\n  border-radius: 18px;\n  background-color: #f8efc0;\n  color: #000;\n  padding: 5px;\n  margin: 0 4px;\n  padding-left: 10px;\n  padding-right: 20px;\n  display: inline-block;\n  position: relative;\n  margin-bottom: 8px;\n}\n.tags-list .tag .close {\n  top: 11px;\n  right: 6px;\n  font-size: 0.7em;\n  position: absolute;\n}\n.tags-list .tag.plus {\n  padding: 5px 12.34px!important;\n  cursor: pointer;\n}\n.tags-list .tag.input {\n  border: none;\n  padding-left: 10px;\n}\n.tags-list .tag.input:focus {\n  outline: none;\n}\n.image-editor-element .update-image {\n  position: relative;\n  text-align: center;\n  margin: 17px 0;\n}\n.image-editor-element .update-image .wrapper {\n  padding: 10px;\n}\n.image-editor-element .update-image .plus {\n  width: 31px;\n  height: 31px;\n  position: relative;\n  background: url(/admin/assets/icons/plus.svg) no-repeat;\n  font-size: 0;\n  margin-top: 11px;\n  display: inline-block;\n}\n.image-editor-element .update-image:before {\n  position: absolute;\n  top: 2px;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.2);\n}\n.image-editor-element textarea {\n  width: 100%;\n  margin-bottom: 9px;\n}\n.image-editor-element .tags-list {\n  margin-bottom: 16px;\n}\n.image-editor-element .tags-list .tag:first-child {\n  margin-left: 0;\n}\n.image-editor-element .redactor {\n  margin-top: 0;\n}\n.image-editor-element .redactor.vertical .left-part {\n  vertical-align: top;\n  max-width: 200px;\n  display: inline-block;\n  margin-right: 16px;\n  float: left;\n}\n.image-editor-element .redactor.vertical .right-part {\n  vertical-align: top;\n  overflow: hidden;\n  padding: 0 9px;\n}\n.image-editor-element .redactor.vertical .right-part .update-image {\n  margin-top: 0!important;\n}\n.image-editor-element .redactor:not(.vertical) .right-part {\n  margin-top: 17px;\n}\nsection {\n  margin-top: 16px;\n}\n.preview-selector a {\n  border-radius: 20px;\n  margin: 10px 5px 10px 5px;\n  background: none;\n  padding: 3px 10px;\n  cursor: pointer;\n  display: inline-block;\n}\n.preview-selector a:first-child {\n  margin-left: 0;\n}\n.preview-selector a.selected {\n  background-color: #f8efc0;\n}\n"
 
 /***/ }),
 
@@ -947,7 +1119,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"images\">\n    <div class=\"content module-editor module-editor-full\" [class.show-descriptions]=\"showDescriptions\" *ngIf=\"images !== null\">\n      <div class=\"image-card\">\n          <div class=\"new-image image-wrapper\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"dropped($event)\" ngxFilePicker (filePick)=\"dropped($event)\">\n            Добавьте фото<br>\n            <i class=\"plus\"></i><br>\n          </div>\n      </div>\n      <div *ngFor=\"let image of images; let i = index;\" class=\"image-card\" (click)=\"openEditor(image, image.getOrientation)\" [hidden]=\"i >= limit\">\n        <div class='image-card-wrapper' *ngIf=\"i < limit;\">\n          <img #imagesList src=\"/{{image.filename}}\" (load)=\"initImageOrientation(i)\">\n          <div class=\"short-description\">\n            {{image.description | wordCountLimit: 15 }}\n          </div>\n        </div>\n      </div>\n      <div class=\"image-card\" (click)=\"loadMore()\" *ngIf=\"limit < images.length\">\n        <div class=\"load-more image-wrapper\">\n          Показать<br>ещё\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div #bottom></div>\n<ng-template #imageEditor>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Настроить создание превью</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body image-editor-element\" [class.vertical]=\"editingImage.getOrientation\" *ngIf=\"editingImage !== null\">\n    <tabset>\n      <tab heading=\"Общие настройки\" id=\"redactor-tab\">\n        <section class=\"redactor\" [class.vertical]=\"editingImage.getOrientation\">\n\n          <div class=\"left-part\">\n            <div [ngSwitch]=\"imageDataForUpdateEditing === null\">\n              <img src=\"/{{editingImage.filename}}\" class=\"image-for-crop\" *ngSwitchCase=\"true\">\n              <img src=\"{{imageDataForUpdateEditing.content}}\" class=\"image-for-crop\" *ngSwitchCase=\"false\">\n            </div>\n          </div>\n\n          <div class=\"right-part\">\n            <div class=\"update-image\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"droppedForUpdate($event)\" ngxFilePicker (filePick)=\"droppedForUpdate($event)\">\n              Заменить изображение.<br>\n              <i class=\"fa fa-plus\"></i><br>\n              <button accept=\"image/*\">Выбор</button>\n            </div>\n\n            <textarea [(ngModel)]=\"editingImage.description\"></textarea>\n\n            <div class=\"tags-list\">\n              <div class=\"tag\" *ngFor=\"let tag of editingImage.getTags()\">\n                {{ tag }}\n                <i class=\"fa fa-close close\" (click)=\"removeTag(tag)\"></i>\n              </div>\n              <div *ngIf=\"tagAddingMode === false\" class=\"tag plus\" (click)=\"setTagEditingMode(true)\">+</div>\n              <input *ngIf=\"tagAddingMode === true\"\n                     #newTag class=\"tag input\"\n                     [focus]=\"focusEventEmitter\"\n                     (keyup.enter)=\"addTag(newTag.value)\"\n                     (keyup.space)=\"addTag(newTag.value, true);newTag.value = '';\"\n                     (blur)=\"setTagEditingMode(false)\">\n            </div>\n\n            <div class=\"type\" *ngIf=\"imageTypes !== null\">\n              Тип фото: <select [(ngModel)]=\"editingImage.image_type_id\" class=\"form-control form-control-inline\">\n                <option value=\"null\">Не выбран</option>\n                <option *ngFor=\"let type of imageTypes\" value=\"{{type.id}}\">\n                  {{ type.name }}\n                </option>\n              </select>\n            </div>\n\n            <section>\n              <button class=\"ripple module-control-button-element delete\" (click)=\"modalRef.hide()\">отмена</button>\n              <button class=\"ripple module-control-button-element default\" (click)=\"saveEditingImage()\">сохранить</button>\n            </section>\n          </div>\n\n          <div class=\"cropper-zone\">\n\n          </div>\n        </section>\n      </tab>\n      <tab heading=\"Превью\" id=\"preview-tab\">\n        <section class=\"preview-editor-element\">\n\n          <nav class=\"preview-selector\" *ngIf=\"editingImage.image_type_id !== null\">\n            <a (click)=\"selectPreview(preview)\" *ngFor=\"let preview of getEditingImagePreviews().previewSettings\" [class.selected]=\"currentPreview != null && preview.id === currentPreview.id\">\n             Превью {{preview.width}} x {{preview.height}}\n            </a>\n          </nav>\n          <div innerHTML={{currentPreview.description}}></div>\n\n          <div *ngIf=\"currentPreview !== null\">\n            <app-image-cropper [hidden]=\"preview.id !== currentPreview.id\" *ngFor=\"let preview of getEditingImagePreviews().previewSettings\" [aspectRatio]=\"preview.width / preview.height\" [image]=\"editingImage\"></app-image-cropper>\n          </div>\n\n        </section>\n      </tab>\n    </tabset>\n  </div>\n</ng-template>"
+module.exports = "<div #wrapper (window:resize)=\"onResize($event)\" [class]=\"getWrapperClass()\">\n  <div class=\"images\">\n    <!--infiniteScroll-->\n    <!--[infiniteScrollDistance]=\"2\"-->\n    <!--[infiniteScrollThrottle]=\"50\"-->\n    <!--[infiniteScrollContainer]=\"'body'\"-->\n    <!--(scrolled)=\"loadMore()\"-->\n    <div class=\"content module-editor module-editor-full\" [class.show-descriptions]=\"showDescriptions\" *ngIf=\"images !== null\">\n      <div class=\"image-card\">\n          <div class=\"new-image image-wrapper\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"dropped($event)\" ngxFilePicker (filePick)=\"dropped($event)\">\n            Добавьте фото<br>\n            <i class=\"plus\"></i><br>\n          </div>\n      </div>\n      <div *ngFor=\"let image of images; let i = index;\"\n           class=\"image-card\"\n           (click)=\"this.selectionMode ? markImage(i) : openEditor(image, image.getOrientation)\"\n           [class.ticked]=\"multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id\"\n           [hidden]=\"i >= limit\"\n      >\n        <div class='image-card-wrapper' *ngIf=\"i < limit;\">\n          <img #imagesList src=\"/{{image.filename}}\" (load)=\"initImageOrientation(i)\">\n          <div class=\"short-description\">\n            {{image.description | wordCountLimit: 15 }}\n          </div>\n        </div>\n      </div>\n      <div class=\"image-card\" (click)=\"loadMore()\" *ngIf=\"limit < images.length\">\n        <div class=\"load-more image-wrapper\">\n          Показать<br>ещё\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div #bottom></div>\n<ng-template #confirmDelete class=\"alert-box\">\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\">Подтвердите действиe</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    Удалить фото?\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"ripple module-control-button-element delete\" (click)=\"onConfirmDelete()\">Да</button>\n    <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"onCancelDelete()\">Нет</button>\n  </div>\n</ng-template>\n\n<ng-template #imageEditor>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Настройки фото</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body image-editor-element\" [class.vertical]=\"editingImage.getOrientation\" *ngIf=\"editingImage !== null\">\n    <!--<tabset>-->\n      <!--<tab heading=\"Общие настройки\" id=\"redactor-tab\">-->\n        <section class=\"redactor\" [class.vertical]=\"editingImage.getOrientation\">\n\n          <div class=\"left-part\">\n            <div [ngSwitch]=\"imageDataForUpdateEditing === null\">\n              <img src=\"/{{editingImage.filename}}\" class=\"image-for-crop\" *ngSwitchCase=\"true\">\n              <img src=\"{{imageDataForUpdateEditing.content}}\" class=\"image-for-crop\" *ngSwitchCase=\"false\">\n            </div>\n          </div>\n\n          <div class=\"right-part\">\n            <div class=\"update-image\" accept=\"image/*\" ngxFileDropzone (fileDrop)=\"droppedForUpdate($event)\" ngxFilePicker (filePick)=\"droppedForUpdate($event)\">\n                <div class=\"wrapper\">\n                  Заменить фото<br>\n                  <i class=\"plus\"></i>\n                </div>\n            </div>\n\n            <textarea [(ngModel)]=\"editingImage.description\"></textarea>\n\n            <div class=\"tags-list\">\n              <div class=\"tag\" *ngFor=\"let tag of editingImage.getTags()\">\n                {{ tag }}\n                <i class=\"fa fa-close close\" (click)=\"removeTag(tag)\"></i>\n              </div>\n              <div *ngIf=\"tagAddingMode === false\" class=\"tag plus\" (click)=\"setTagEditingMode(true)\">+</div>\n              <input *ngIf=\"tagAddingMode === true\"\n                     #newTag class=\"tag input\"\n                     [focus]=\"focusEventEmitter\"\n                     (keyup.enter)=\"addTag(newTag.value)\"\n                     (keyup.space)=\"addTag(newTag.value, true);newTag.value = '';\"\n                     (blur)=\"setTagEditingMode(false)\">\n            </div>\n\n            <div class=\"type\" *ngIf=\"imageTypes !== null\">\n              Тип фото: <select [(ngModel)]=\"editingImage.image_type_id\" class=\"form-control form-control-inline\">\n                <option value=\"null\">Не выбран</option>\n                <option *ngFor=\"let type of imageTypes\" value=\"{{type.id}}\">\n                  {{ type.name }}\n                </option>\n              </select>\n            </div>\n\n            <section>\n              <button class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">отмена</button>\n              <button class=\"ripple module-control-button-element default\" (click)=\"saveEditingImage()\">сохранить</button>\n              <button class=\"ripple module-control-button-element delete\" (click)=\"deleteEditingImageWithConfirm()\">удалить</button>\n            </section>\n          </div>\n\n          <div class=\"cropper-zone\">\n\n          </div>\n        </section>\n      <!--</tab>-->\n      <!--<tab heading=\"Превью\" id=\"preview-tab\">-->\n        <!--<section class=\"preview-editor-element\">-->\n\n          <!--<nav class=\"preview-selector\" *ngIf=\"editingImage.image_type_id !== null\">-->\n            <!--<a (click)=\"selectPreview(preview)\" *ngFor=\"let preview of getEditingImagePreviews().previewSettings\" [class.selected]=\"currentPreview != null && preview.id === currentPreview.id\">-->\n             <!--Превью {{preview.width}} x {{preview.height}}-->\n            <!--</a>-->\n          <!--</nav>-->\n          <!--<div innerHTML={{currentPreview.description}}></div>-->\n\n          <!--<div *ngIf=\"currentPreview !== null\">-->\n            <!--<app-image-cropper [hidden]=\"preview.id !== currentPreview.id\" *ngFor=\"let preview of getEditingImagePreviews().previewSettings\" [aspectRatio]=\"preview.width / preview.height\" [image]=\"editingImage\"></app-image-cropper>-->\n          <!--</div>-->\n\n        <!--</section>-->\n      <!--</tab>-->\n    <!--</tabset>-->\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -965,9 +1137,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
 /* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/cms-image */ "./src/app/models/cms-image.ts");
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
-/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
-/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
-/* harmony import */ var ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng2-scroll-to-el */ "./node_modules/ng2-scroll-to-el/index.js");
+/* harmony import */ var _models_image_type__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/image-type */ "./src/app/models/image-type.ts");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ng2-scroll-to-el */ "./node_modules/ng2-scroll-to-el/index.js");
+/* harmony import */ var _models_image_filter__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../models/image-filter */ "./src/app/models/image-filter.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -984,6 +1158,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var ImagesComponent = /** @class */ (function () {
     function ImagesComponent(modelService, modalService, selectItemService, scrollService) {
         var _this = this;
@@ -991,22 +1167,112 @@ var ImagesComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.selectItemService = selectItemService;
         this.scrollService = scrollService;
+        this.selectionMode = false;
+        this.multiple = false;
+        this.fixedImageTypeId = null;
+        this.selectedImageId = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.selectedImageIds = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.images = null;
+        this.imageDataForUpdateEditing = null;
         this.currentPreview = null;
         this.tagAddingMode = false;
         this.focusEventEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.imageTypes = null;
         this.showDescriptions = false;
-        this.limit = 19;
+        this.preSelectedImageId = null;
+        this.preSelectedImageIds = [];
+        this.actualSize = null;
+        this.limit = 50;
         this.imageDataForUpdateEditing = null;
+        this.filter = new _models_image_filter__WEBPACK_IMPORTED_MODULE_8__["ImageFilter"]();
         this.selectItemService.event$.subscribe(function (event) {
-            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__["SelectItemEvent"].Type.ApplyFilter) {
-                var filter = event.payload.filter;
-                _this.showDescriptions = filter.showDescriptions;
-                _this.loadImages(filter);
+            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_6__["SelectItemEvent"].Type.ApplyFilter) {
+                _this.filter = event.payload.filter;
+                _this.showDescriptions = _this.filter.showDescriptions;
+                _this.loadImages(_this.filter);
+            }
+        });
+        this.selectItemService.event$.subscribe(function (event) {
+            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_6__["SelectItemEvent"].Type.ImageChooserApply) {
+                if (_this.multiple) {
+                    var result = [];
+                    var _loop_1 = function (imageId) {
+                        if (!_this.preSelectedImageIds[imageId])
+                            return "continue";
+                        result.push(_this.images.find(function (i) { return i.id === Number(imageId); }));
+                    };
+                    for (var imageId in _this.preSelectedImageIds) {
+                        _loop_1(imageId);
+                    }
+                    _this.selectedImageIds.emit(result);
+                }
+                else {
+                    _this.selectedImageId.emit(_this.images.find(function (i) { return i.id === Number(_this.preSelectedImageId); }));
+                }
             }
         });
     }
+    ImagesComponent.prototype.onResize = function ($event) {
+        this.actualSize = this.wrapper.nativeElement.offsetWidth;
+        console.log(this.actualSize);
+    };
+    ImagesComponent.prototype.loadMore = function () {
+        if (this.images && this.limit < this.images.length) {
+            this.limit += 14;
+        }
+        this.scrollService.scrollTo(this.bottom.nativeElement);
+    };
+    ImagesComponent.prototype.markImage = function (i) {
+        var imageId = this.images[i].id;
+        if (this.multiple) {
+            if (this.preSelectedImageIds[imageId] === undefined) {
+                this.preSelectedImageIds[imageId] = true;
+            }
+            else {
+                this.preSelectedImageIds[imageId] = !this.preSelectedImageIds[imageId];
+            }
+        }
+        else {
+            this.preSelectedImageId = imageId;
+        }
+    };
+    ImagesComponent.prototype.detectOrientation = function (i) {
+        var image = this.imageList.toArray()[i].nativeElement;
+        if (image.naturalWidth > image.naturalHeight) {
+            image.classList.add('landscape');
+        }
+        else if (image.naturalWidth < image.naturalHeight) {
+            image.classList.add('portrait');
+        }
+    };
+    ImagesComponent.prototype.loadImages = function (filter) {
+        var _this = this;
+        if (filter === void 0) { filter = null; }
+        if (this.fixedImageTypeId !== null && filter !== null) {
+            filter.selectedType = new _models_image_type__WEBPACK_IMPORTED_MODULE_4__["ImageType"]();
+            filter.selectedType.id = 1; //this.fixedImageTypeId;
+        }
+        this.modelService.getImages(filter).subscribe(function (images) {
+            images.forEach(function (rawImage, index) { images[index] = _models_cms_image__WEBPACK_IMPORTED_MODULE_2__["CmsImage"].fromRaw(rawImage); });
+            _this.images = images.reverse();
+        });
+    };
+    ImagesComponent.prototype.getWrapperClass = function () {
+        var result = 'wrapper';
+        if (this.actualSize < 400) {
+            result += ' one';
+        }
+        if (this.actualSize >= 400 && this.actualSize < 900) {
+            result += ' two';
+        }
+        if (this.actualSize >= 900 && this.actualSize < 1200) {
+            result += ' four';
+        }
+        if (this.actualSize >= 1200) {
+            result += ' eight';
+        }
+        return result;
+    };
     ImagesComponent.prototype.loadImageTypes = function () {
         var _this = this;
         this.modelService.getImageTypes().subscribe(function (types) {
@@ -1037,7 +1303,29 @@ var ImagesComponent = /** @class */ (function () {
         this.currentPreview = preview;
     };
     ImagesComponent.prototype.saveEditingImage = function () {
-        this.modelService.saveImage(this.editingImage);
+        var _this = this;
+        this.modelService.saveImage(this.editingImage, this.imageDataForUpdateEditing, function (newImage) {
+            var index = _this.images.findIndex(function (i) { return i.id === newImage.id; });
+            _this.images[index] = _models_cms_image__WEBPACK_IMPORTED_MODULE_2__["CmsImage"].fromRaw(newImage);
+        });
+    };
+    ImagesComponent.prototype.onConfirmDelete = function () {
+        this.deleteEditingImage();
+        this.modalRefConfirm.hide();
+    };
+    ImagesComponent.prototype.onCancelDelete = function () {
+        this.modalRefConfirm.hide();
+    };
+    ImagesComponent.prototype.deleteEditingImageWithConfirm = function () {
+        this.modalRefConfirm = this.modalService.show(this.confirmDelete);
+    };
+    ImagesComponent.prototype.deleteEditingImage = function () {
+        var _this = this;
+        this.modelService.deleteImage(this.editingImage).subscribe(function () {
+            _this.modalRef.hide();
+            _this.images = _this.images.filter(function (i) { return i.id !== _this.editingImage.id; });
+            _this.editingImage = null;
+        });
     };
     ImagesComponent.prototype.setTagEditingMode = function (mode) {
         var _this = this;
@@ -1052,28 +1340,15 @@ var ImagesComponent = /** @class */ (function () {
     ImagesComponent.prototype.addTag = function (tag, keepInput) {
         if (keepInput === void 0) { keepInput = false; }
         this.editingImage.addTag(tag);
-        this.selectItemService.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_5__["SelectItemEvent"].Type.NewTag, { tag: tag });
+        this.selectItemService.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_6__["SelectItemEvent"].Type.NewTag, { tag: tag });
         if (!keepInput) {
             this.setTagEditingMode(false);
         }
     };
-    ImagesComponent.prototype.loadImages = function (filter) {
-        var _this = this;
-        if (filter === void 0) { filter = null; }
-        this.modelService.getImages(filter).subscribe(function (images) {
-            images.forEach(function (rawImage, index) { images[index] = _models_cms_image__WEBPACK_IMPORTED_MODULE_2__["CmsImage"].fromRaw(rawImage); });
-            _this.images = images;
-        });
-    };
     ImagesComponent.prototype.ngOnInit = function () {
         this.loadImages();
         this.loadImageTypes();
-    };
-    ImagesComponent.prototype.loadMore = function () {
-        if (this.images && this.limit < this.images.length) {
-            this.limit += 14;
-        }
-        this.scrollService.scrollTo(this.bottom.nativeElement);
+        this.actualSize = this.wrapper.nativeElement.offsetWidth;
     };
     ImagesComponent.prototype.initImageOrientation = function (i) {
         var imageObject = this.images[i];
@@ -1091,15 +1366,40 @@ var ImagesComponent = /** @class */ (function () {
     ImagesComponent.prototype.dropped = function ($event) {
         var _this = this;
         var content = $event.content;
-        this.modelService.createImage($event, function (response) {
+        this.modelService.createImage($event, this.filter, function (response) {
             if (response.status === 'success') {
-                _this.images.unshift(response.image);
+                var image = _models_cms_image__WEBPACK_IMPORTED_MODULE_2__["CmsImage"].fromRaw(response.image);
+                _this.images.unshift(image);
             }
         });
     };
     ImagesComponent.prototype.droppedForUpdate = function ($event) {
-        this.imageDataForUpdateEditing = $event;
+        console.log($event);
+        this.imageDataForUpdateEditing = {
+            content: $event.content,
+            name: $event.name
+        };
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], ImagesComponent.prototype, "selectionMode", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], ImagesComponent.prototype, "multiple", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], ImagesComponent.prototype, "fixedImageTypeId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], ImagesComponent.prototype, "selectedImageId", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], ImagesComponent.prototype, "selectedImageIds", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChildren"])('imagesList'),
         __metadata("design:type", Object)
@@ -1109,6 +1409,10 @@ var ImagesComponent = /** @class */ (function () {
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])
     ], ImagesComponent.prototype, "imageEditor", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('confirmDelete'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ImagesComponent.prototype, "confirmDelete", void 0);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('newTag'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
     ], ImagesComponent.prototype, "newTag", void 0);
@@ -1116,6 +1420,10 @@ var ImagesComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('bottom'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
     ], ImagesComponent.prototype, "bottom", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('wrapper'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], ImagesComponent.prototype, "wrapper", void 0);
     ImagesComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-images',
@@ -1124,8 +1432,8 @@ var ImagesComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_1__["ModelService"],
             ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsModalService"],
-            _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"],
-            ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_6__["ScrollToService"]])
+            _select_item_service__WEBPACK_IMPORTED_MODULE_5__["SelectItemService"],
+            ng2_scroll_to_el__WEBPACK_IMPORTED_MODULE_7__["ScrollToService"]])
     ], ImagesComponent);
     return ImagesComponent;
 }());
@@ -1203,14 +1511,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModelService", function() { return ModelService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _models_trainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/trainer */ "./src/app/models/trainer.ts");
-/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./models/cms-image */ "./src/app/models/cms-image.ts");
-/* harmony import */ var _models_room__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/room */ "./src/app/models/room.ts");
-/* harmony import */ var _services_language_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/language.service */ "./src/app/services/language.service.ts");
-/* harmony import */ var _models_image_type__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/image-type */ "./src/app/models/image-type.ts");
-/* harmony import */ var _models_image_filters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./models/image-filters */ "./src/app/models/image-filters.ts");
-/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/select-item-event */ "./src/app/models/select-item-event.ts");
-/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var rxjs_Observable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/Observable */ "./node_modules/rxjs-compat/_esm5/Observable.js");
+/* harmony import */ var rxjs_add_observable_forkJoin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/observable/forkJoin */ "./node_modules/rxjs-compat/_esm5/add/observable/forkJoin.js");
+/* harmony import */ var _models_trainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/trainer */ "./src/app/models/trainer.ts");
+/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./models/cms-image */ "./src/app/models/cms-image.ts");
+/* harmony import */ var _models_room__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./models/room */ "./src/app/models/room.ts");
+/* harmony import */ var _services_language_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/language.service */ "./src/app/services/language.service.ts");
+/* harmony import */ var _models_image_type__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./models/image-type */ "./src/app/models/image-type.ts");
+/* harmony import */ var _models_image_filters__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/image-filters */ "./src/app/models/image-filters.ts");
+/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./select-item.service */ "./src/app/select-item.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1220,6 +1530,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -1242,8 +1554,8 @@ var ModelService = /** @class */ (function () {
         this.languageService = languageService;
         this.selectItemService = selectItemService;
         this.baseUrl = '/api/';
-        _models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"].setupLanguageService(this.languageService);
-        _models_room__WEBPACK_IMPORTED_MODULE_4__["Room"].setupLanguageService(this.languageService);
+        _models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].setupLanguageService(this.languageService);
+        _models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].setupLanguageService(this.languageService);
     }
     ModelService.prototype.reorderApply = function (modelName, modelList) {
         var order = {};
@@ -1259,37 +1571,46 @@ var ModelService = /** @class */ (function () {
     };
     //rooms
     ModelService.prototype.getRooms = function () {
-        return this.getModelListing(_models_room__WEBPACK_IMPORTED_MODULE_4__["Room"].getApiMethodName());
+        return this.getModelListing(_models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].getApiMethodName());
     };
     ModelService.prototype.saveRoom = function (room) {
-        return this.http.put(this.baseUrl + _models_room__WEBPACK_IMPORTED_MODULE_4__["Room"].getApiMethodName(room.id), room.forSave())
+        return this.http.put(this.baseUrl + _models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].getApiMethodName(room.id), room.forSave())
             .subscribe();
     };
     ModelService.prototype.deleteRoom = function (room) {
-        return this.http.delete(this.baseUrl + _models_room__WEBPACK_IMPORTED_MODULE_4__["Room"].getApiMethodName(room.id));
+        return this.http.delete(this.baseUrl + _models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].getApiMethodName(room.id));
     };
     ModelService.prototype.createRoom = function (room) {
-        return this.http.post(this.baseUrl + _models_room__WEBPACK_IMPORTED_MODULE_4__["Room"].getApiMethodName(), room, httpOptions);
+        return this.http.post(this.baseUrl + _models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].getApiMethodName(), room, httpOptions);
     };
     //trainers
     ModelService.prototype.getTrainers = function () {
-        return this.getModelListing(_models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"].getApiMethodName());
+        return this.getModelListing(_models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].getApiMethodName());
     };
     ModelService.prototype.saveTrainer = function (trainer) {
-        return this.http.put(this.baseUrl + _models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"].getApiMethodName(trainer.id), trainer.forSave())
+        return this.http.put(this.baseUrl + _models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].getApiMethodName(trainer.id), trainer.forSave())
             .subscribe();
     };
     ModelService.prototype.deleteTrainer = function (trainer) {
-        return this.http.delete(this.baseUrl + _models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"].getApiMethodName() + '/' + trainer.id);
+        return this.http.delete(this.baseUrl + _models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].getApiMethodName(trainer.id));
     };
     ModelService.prototype.createTrainer = function (trainer) {
-        return this.http.post(this.baseUrl + _models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"].getApiMethodName(), trainer, httpOptions);
+        return this.http.post(this.baseUrl + _models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].getApiMethodName(), trainer, httpOptions);
     };
     // image filters
     ModelService.prototype.getImageFilters = function () {
-        return this.http.get(this.baseUrl + _models_image_filters__WEBPACK_IMPORTED_MODULE_7__["ImageFilters"].getApiMethodName());
+        return this.http.get(this.baseUrl + _models_image_filters__WEBPACK_IMPORTED_MODULE_9__["ImageFilters"].getApiMethodName());
     };
     //images
+    ModelService.prototype.getRoomImages = function (room) {
+        var _this = this;
+        var images = [];
+        var tasks$ = [];
+        room.image_ids.split(',').forEach(function (id) {
+            tasks$.push(_this.getImage(parseInt(id)));
+        });
+        return rxjs_Observable__WEBPACK_IMPORTED_MODULE_2__["Observable"].forkJoin(tasks$);
+    };
     ModelService.prototype.getImages = function (filter) {
         if (filter === void 0) { filter = null; }
         var options = {};
@@ -1301,26 +1622,33 @@ var ModelService = /** @class */ (function () {
             var httpParams = { fromObject: params };
             options = { params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"](httpParams) };
         }
-        return this.http.get(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName(), options);
+        return this.http.get(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].getApiMethodName(), options);
     };
     ModelService.prototype.getImage = function (id) {
-        return this.http.get(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName(id));
+        return this.http.get(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].getApiMethodName(id));
     };
-    ModelService.prototype.saveImage = function (image) {
+    ModelService.prototype.saveImage = function (image, data, callback) {
         var _this = this;
         image.beforeSave();
-        return this.http.put(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName() + '/' + image.id, image)
-            .subscribe(function () {
-            _this.selectItemService.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_8__["SelectItemEvent"].Type.RefreshTags);
+        if (data !== null) {
+            image.data = data;
+        }
+        return this.http.put(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].getApiMethodName() + '/' + image.id, image)
+            .subscribe(function (data) {
+            _this.selectItemService.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_10__["SelectItemEvent"].Type.RefreshTags);
+            if (callback instanceof Function) {
+                callback(data);
+            }
         });
     };
     ModelService.prototype.deleteImage = function (image) {
-        return this.http.delete(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName() + '/' + image.id);
+        return this.http.delete(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].getApiMethodName() + '/' + image.id);
     };
-    ModelService.prototype.createImage = function (image, callback) {
-        return this.http.post(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName(), {
+    ModelService.prototype.createImage = function (image, filter, callback) {
+        return this.http.post(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].getApiMethodName(), {
             content: image.content,
-            filename: image.name
+            filename: image.name,
+            filter: filter
         }, httpOptions)
             .subscribe(function (response) {
             if (callback instanceof Function) {
@@ -1329,7 +1657,7 @@ var ModelService = /** @class */ (function () {
         });
     };
     ModelService.prototype.updateImage = function (imageData, image, callback) {
-        return this.http.put(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_3__["CmsImage"].getApiMethodName() + '/' + image.id, {
+        return this.http.put(this.baseUrl + _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].getApiMethodName() + '/' + image.id, {
             content: imageData.content,
             filename: imageData.name
         }, httpOptions)
@@ -1341,7 +1669,7 @@ var ModelService = /** @class */ (function () {
     };
     // image types
     ModelService.prototype.getImageTypes = function () {
-        return this.getModelListing(_models_image_type__WEBPACK_IMPORTED_MODULE_6__["ImageType"].getApiMethodName());
+        return this.getModelListing(_models_image_type__WEBPACK_IMPORTED_MODULE_8__["ImageType"].getApiMethodName());
     };
     //common
     ModelService.prototype.getModelListing = function (apiMethod) {
@@ -1353,8 +1681,8 @@ var ModelService = /** @class */ (function () {
     ModelService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
-            _services_language_service__WEBPACK_IMPORTED_MODULE_5__["LanguageService"],
-            _select_item_service__WEBPACK_IMPORTED_MODULE_9__["SelectItemService"]])
+            _services_language_service__WEBPACK_IMPORTED_MODULE_7__["LanguageService"],
+            _select_item_service__WEBPACK_IMPORTED_MODULE_11__["SelectItemService"]])
     ], ModelService);
     return ModelService;
 }());
@@ -1591,6 +1919,37 @@ var MenuItem = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/notification-event.ts":
+/*!**********************************************!*\
+  !*** ./src/app/models/notification-event.ts ***!
+  \**********************************************/
+/*! exports provided: NotificationEvent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationEvent", function() { return NotificationEvent; });
+var NotificationEvent = /** @class */ (function () {
+    function NotificationEvent(status, message, payload) {
+        this.status = status;
+        this.message = message;
+        this.payload = payload;
+    }
+    return NotificationEvent;
+}());
+
+(function (NotificationEvent) {
+    var Status;
+    (function (Status) {
+        Status[Status["Error"] = 0] = "Error";
+        Status[Status["Success"] = 1] = "Success";
+        Status[Status["Warning"] = 2] = "Warning";
+    })(Status = NotificationEvent.Status || (NotificationEvent.Status = {}));
+})(NotificationEvent || (NotificationEvent = {}));
+
+
+/***/ }),
+
 /***/ "./src/app/models/room.ts":
 /*!********************************!*\
   !*** ./src/app/models/room.ts ***!
@@ -1615,8 +1974,11 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 var Room = /** @class */ (function (_super) {
     __extends(Room, _super);
-    function Room() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Room(modelService) {
+        var _this = _super.call(this) || this;
+        _this.modelService = modelService;
+        _this.images = [];
+        return _this;
     }
     Room.prototype.forSave = function () {
         var result = Object.assign({}, this);
@@ -1960,6 +2322,59 @@ var NgForIn = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/notification.service.ts":
+/*!*****************************************!*\
+  !*** ./src/app/notification.service.ts ***!
+  \*****************************************/
+/*! exports provided: NotificationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationService", function() { return NotificationService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs_Subject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/Subject */ "./node_modules/rxjs-compat/_esm5/Subject.js");
+/* harmony import */ var _models_notification_event__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./models/notification-event */ "./src/app/models/notification-event.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var NotificationService = /** @class */ (function () {
+    function NotificationService() {
+        this._event = new rxjs_Subject__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.event$ = this._event.asObservable();
+    }
+    NotificationService.prototype.error = function (message, payload) {
+        if (payload === void 0) { payload = {}; }
+        this.emit(new _models_notification_event__WEBPACK_IMPORTED_MODULE_2__["NotificationEvent"](_models_notification_event__WEBPACK_IMPORTED_MODULE_2__["NotificationEvent"].Status.Error, message, payload));
+    };
+    NotificationService.prototype.onError = function (callback) {
+        this.event$.subscribe(function (event) {
+            if (event.status === _models_notification_event__WEBPACK_IMPORTED_MODULE_2__["NotificationEvent"].Status.Error) {
+                callback(event);
+            }
+        });
+    };
+    NotificationService.prototype.emit = function (event) {
+        this._event.next(event);
+    };
+    NotificationService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], NotificationService);
+    return NotificationService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/page-editor-field/page-editor-field.component.css":
 /*!*******************************************************************!*\
   !*** ./src/app/page-editor-field/page-editor-field.component.css ***!
@@ -1967,7 +2382,7 @@ var NgForIn = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host .inline {\n  display: inline-block;\n}\n:host .title {\n  display: inline-block;\n  vertical-align: top;\n}\n:host .content input:not([type=checkbox]) {\n  width: 50%;\n  display: block;\n}\n:host .fr-box.fr-inline {\n  border: 1px solid #d4d4d4;\n  margin: 5px;\n  padding: 5px;\n  color: #000;\n}\n"
+module.exports = ":host {\n  display: block;\n  margin-bottom: 15px;\n}\n:host .inline {\n  display: inline-block;\n  margin-left: 10px;\n}\n:host .inline input.color {\n  position: relative;\n  top: -3px;\n}\n:host .title {\n  display: inline-block;\n  vertical-align: top;\n}\n:host .content input:not([type=checkbox]) {\n  width: 100%;\n  display: block;\n}\n:host .content input[type=text] {\n  width: 300px;\n}\n:host .fr-box.fr-inline {\n  border: 1px solid #d4d4d4;\n  margin: 5px;\n  padding: 5px;\n  color: #000;\n}\n"
 
 /***/ }),
 
@@ -1978,7 +2393,7 @@ module.exports = ":host .inline {\n  display: inline-block;\n}\n:host .title {\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"field\">\n  <div class=\"title\">\n    <b *ngIf=\"params.required === 1\">\n      <label for=\"{{uniqId}}\">{{title}}</label>\n    </b>\n    <label *ngIf=\"params.required !== 1\" for=\"{{uniqId}}\">{{title}}</label>\n  </div>\n  <div [ngSwitch]=\"params.type\" class=\"content\" [class.inline]=\"params.type === 'checkbox'\">\n    <div *ngSwitchCase=\"'string'\">\n      <input id={{uniqId}} type=\"text\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'select'\">\n      <select id={{uniqId}} type=\"checkbox\" [(ngModel)]=\"valueSet[valueKey]\">\n        <option *ngFor=\"let option in params.options\" [value]=\"option\">{{params.options[option]}}</option>\n      </select>\n    </div>\n    <div *ngSwitchCase=\"'checkbox'\">\n      <input id={{uniqId}} type=\"checkbox\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'textarea'\">\n      <textarea id={{uniqId}} ngxTrumbowygEditor name=\"editorDirective\" [(ngModel)]=\"valueSet[valueKey]\"></textarea>\n    </div>\n    <div *ngSwitchCase=\"'color'\">\n      <input id={{uniqId}} type=\"text\" (colorPickerChange)=\"setVal($event)\" [colorPicker]=\"valueSet[valueKey]\" [style.background]=\"valueSet[valueKey]\" [cpOutputFormat]=\"hex\"/>\n    </div>\n    <div *ngSwitchCase=\"'image'\">\n      <img *ngIf=\"imageSrc && imageSrc.length\" width=\"200px\" src=\"/{{imageSrc}}\" (click)=\"openChooser()\">\n      <button *ngIf=\"!(imageSrc && imageSrc.length)\" (click)=\"openChooser()\">Выбор</button>\n\n      <ng-template #imageChooser>\n        <div class=\"modal-header\">\n          <h4 class=\"modal-title pull-left\">Выберите изображение</h4>\n          <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <div class=\"modal-body\">\n          <app-image-chooser #imageChooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n          <button class=\"btn btn-primary\" (click)=\"selectItemService.emitImageChooserEvent(); modalRef.hide();\">Выбор</button>\n          <button class=\"btn btn-danger\" (click)=\"modalRef.hide()\">отмена</button>\n        </div>\n      </ng-template>\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"field\">\n  <div class=\"title\">\n    <b *ngIf=\"params.required === 1\">\n      <label for=\"{{uniqId}}\">{{title}}</label>\n    </b>\n    <label *ngIf=\"params.required !== 1\" for=\"{{uniqId}}\">{{title}}</label>\n  </div>\n  <div [ngSwitch]=\"params.type\" class=\"content\" [class.inline]=\"params.type === 'checkbox' || params.type === 'color'\">\n    <div *ngSwitchCase=\"'string'\">\n      <input id={{uniqId}} type=\"text\" [(ngModel)]=\"valueSet[valueKey]\">\n    </div>\n    <div *ngSwitchCase=\"'select'\">\n      <select id={{uniqId}} [(ngModel)]=\"valueSet[valueKey]\">\n        <option *ngFor=\"let option in params.options\" [value]=\"option\">{{params.options[option]}}</option>\n      </select>\n    </div>\n    <div *ngSwitchCase=\"'checkbox'\">\n      <mat-checkbox id={{uniqId}} [(ngModel)]=\"valueSet[valueKey]\" [color]=\"'primary'\"></mat-checkbox>\n    </div>\n    <div *ngSwitchCase=\"'textarea'\">\n      <textarea id={{uniqId}} ngxTrumbowygEditor name=\"editorDirective\" [(ngModel)]=\"valueSet[valueKey]\"></textarea>\n    </div>\n    <div *ngSwitchCase=\"'color'\">\n      <input class=\"color\" id={{uniqId}} type=\"text\" (colorPickerChange)=\"setVal($event)\" [colorPicker]=\"valueSet[valueKey]\" [style.background]=\"valueSet[valueKey]\" [cpOutputFormat]=\"hex\"/>\n    </div>\n    <div *ngSwitchCase=\"'image'\">\n      <img *ngIf=\"imageSrc && imageSrc.length\" width=\"200px\" src=\"/{{imageSrc}}\" (click)=\"openChooser()\">\n      <button *ngIf=\"!(imageSrc && imageSrc.length)\" (click)=\"openChooser()\">Выбор</button>\n\n      <app-image-chooser-popup #imageChooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser-popup>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1997,6 +2412,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
 /* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var _image_chooser_popup_image_chooser_popup_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../image-chooser-popup/image-chooser-popup.component */ "./src/app/image-chooser-popup/image-chooser-popup.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2011,6 +2427,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+//import {CustomCheckBoxModel} from "angular-custom-checkbox";
 var PageEditorFieldComponent = /** @class */ (function () {
     function PageEditorFieldComponent(modelService, modalService, selectItemService) {
         this.modelService = modelService;
@@ -2023,7 +2441,7 @@ var PageEditorFieldComponent = /** @class */ (function () {
         this.uniqId = _components_app_helper__WEBPACK_IMPORTED_MODULE_1__["AppHelper"].uuid();
     }
     PageEditorFieldComponent.prototype.openChooser = function () {
-        this.modalRef = this.modalService.show(this.imageChooser);
+        this.imageChooser.showPopup();
     };
     PageEditorFieldComponent.prototype.selectImage = function (image) {
         this.valueSet[this.valueKey] = image.id;
@@ -2047,7 +2465,7 @@ var PageEditorFieldComponent = /** @class */ (function () {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('imageChooser'),
-        __metadata("design:type", Object)
+        __metadata("design:type", _image_chooser_popup_image_chooser_popup_component__WEBPACK_IMPORTED_MODULE_5__["ImageChooserPopupComponent"])
     ], PageEditorFieldComponent.prototype, "imageChooser", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -2089,7 +2507,7 @@ var PageEditorFieldComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".toolbar button {\n  margin: 0 5px;\n}\n.instances {\n  position: relative;\n  border: 2px solid #aaa;\n  border-radius: 5px;\n  padding: 5px;\n  margin: 5px;\n}\n.instances .instance-item {\n  position: relative;\n}\n.instances .instance-item .toolbar {\n  display: block;\n  overflow: hidden;\n}\n.instances .instance-item .instance-toolbar {\n  position: absolute;\n  top: 0;\n  right: 5px;\n  z-index: 90;\n}\n.composite-field-items {\n  padding-right: 30px;\n}\n.composite-field-items .item {\n  width: 100%;\n  height: 20px;\n  padding: 10px;\n  border-radius: 10px;\n  background-color: rgba(247, 231, 213, 0.64);\n  margin-bottom: 5px;\n}\n.empty-wrapper {\n  display: inline-block;\n}\n"
+module.exports = ".toolbar button {\n  margin: 0 5px;\n}\n.instances {\n  position: relative;\n  border-radius: 5px;\n  padding: 5px;\n  margin: 5px;\n  margin-bottom: 15px;\n  background-color: rgba(0, 0, 0, 0.1);\n}\n.instances .toolbar-element {\n  background-color: transparent!important;\n}\n.instances .toolbar-element div {\n  background-color: transparent!important;\n}\n.instances .instance-item {\n  position: relative;\n}\n.instances .instance-item .toolbar {\n  display: block;\n  overflow: hidden;\n}\n.instances .instance-item .instance-toolbar {\n  position: absolute;\n  top: 0;\n  right: 5px;\n  z-index: 90;\n}\n.instances .instance-item .instance-toolbar .close {\n  top: 13px;\n  position: absolute;\n  right: 8px;\n  font-size: 17px;\n}\n.composite-field-items {\n  padding-right: 30px;\n}\n.composite-field-items .item {\n  width: 100%;\n  height: 20px;\n  padding: 10px;\n  border-radius: 10px;\n  background-color: rgba(247, 231, 213, 0.64);\n  margin-bottom: 5px;\n}\n.empty-wrapper {\n  display: inline-block;\n}\n"
 
 /***/ }),
 
@@ -2131,16 +2549,50 @@ var PageEditorTreeItemComponent = /** @class */ (function () {
     function PageEditorTreeItemComponent() {
         this.level = 1;
     }
+    PageEditorTreeItemComponent_1 = PageEditorTreeItemComponent;
     PageEditorTreeItemComponent.prototype.ngOnInit = function () {
     };
     PageEditorTreeItemComponent.prototype.getSectionGeneralName = function (section) {
         return this.params[this.key]['instancesLabels'][section.type];
     };
     PageEditorTreeItemComponent.prototype.getSectionTitle = function (section) {
-        if (this.params[this.key].itemTitleKey) {
-            return section[this.params[this.key].itemTitleKey];
+        return PageEditorTreeItemComponent_1.obtainSectionTitle(this.params, this.key, section);
+    };
+    PageEditorTreeItemComponent.obtainSectionTitle = function (params, key, section) {
+        if (params[key] && params[key].itemTitleKey) {
+            var fieldName = params[key].itemTitleKey;
+            var result = void 0;
+            var itemTitleFieldType = null;
+            try {
+                var subsectionType = section.type;
+                itemTitleFieldType = params[key].availableInstances[subsectionType][fieldName].type;
+                switch (itemTitleFieldType) {
+                    case 'select':
+                        try {
+                            var subsectionType_1 = section.type;
+                            var fieldValue = section[fieldName];
+                            var options = params[key].availableInstances[subsectionType_1][fieldName].options;
+                            result = options[fieldValue];
+                        }
+                        catch (e) {
+                            var subsectionTypeName = section.sectionTypeName ? section.sectionTypeName : '';
+                            result = 'Не выбрано';
+                            if (subsectionTypeName) {
+                                result += ' :' + subsectionTypeName;
+                            }
+                        }
+                        break;
+                    case 'string':
+                        result = section[fieldName];
+                        break;
+                }
+            }
+            catch (e) {
+                result = 'Нет названия';
+            }
+            return result ? result : 'Без названия';
         }
-        return null;
+        return 'Без названия';
     };
     PageEditorTreeItemComponent.prototype.prepareInstance = function (instanceParams, sectionType, fieldName) {
         var newSection = {
@@ -2200,7 +2652,7 @@ var PageEditorTreeItemComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", _page_editor_tree_page_editor_tree_component__WEBPACK_IMPORTED_MODULE_1__["PageEditorTreeComponent"])
     ], PageEditorTreeItemComponent.prototype, "parent", void 0);
-    PageEditorTreeItemComponent = __decorate([
+    PageEditorTreeItemComponent = PageEditorTreeItemComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-page-editor-tree-item',
             template: __webpack_require__(/*! ./page-editor-tree-item.component.html */ "./src/app/page-editor-tree-item/page-editor-tree-item.component.html"),
@@ -2209,6 +2661,7 @@ var PageEditorTreeItemComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], PageEditorTreeItemComponent);
     return PageEditorTreeItemComponent;
+    var PageEditorTreeItemComponent_1;
 }());
 
 
@@ -2233,7 +2686,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<accordion  *ngIf=\"!paramsHasGroups\">\n    <accordion-group heading=\"{{getHeading}}\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [level]=\"level\" [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<accordion *ngIf=\"paramsHasGroups\" class=\"super\">\n    <accordion-group *ngIf=\"(notGroupdParams | json) !== '{}'\" heading=\"{{getHeading}}\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [level]=\"level\" [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n    <accordion-group *ngFor=\"let group in groupedParamsSet\" heading=\"{{groupedParamsSet[group].title}}\" style=\"color: #f00\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, group)\">\n        <div *ngFor=\"let key in groupedParamsSet[group].values\">\n            <app-page-editor-tree-item [level]=\"level\" [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <i class=\"fa fa-close\"></i>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"selectedInstanceOrder\"\n                     [(ngModel)]=\"selectedInstanceOrder\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>"
+module.exports = "<accordion  *ngIf=\"!paramsHasGroups\">\n    <accordion-group heading=\"{{getHeading}}\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [level]=\"level\" [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<accordion *ngIf=\"paramsHasGroups\" class=\"super\">\n    <accordion-group *ngIf=\"(notGroupdParams | json) !== '{}'\" heading=\"{{getHeading}}\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, 'nogroup')\">\n        <div *ngFor=\"let key in notGroupdParams\">\n            <app-page-editor-tree-item [level]=\"level\" [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n    <accordion-group *ngFor=\"let group in groupedParamsSet\" heading=\"{{groupedParamsSet[group].title}}\" style=\"color: #f00\" [isOpen]=\"false\" (isOpenChange)=\"logToggle($event, group)\">\n        <div *ngFor=\"let key in groupedParamsSet[group].values\">\n            <app-page-editor-tree-item [level]=\"level\" [key]=\"key\" [params]=\"params\" [values]=\"values\" [parent]=\"this\" [uniqKey]=\"uniqKey\"></app-page-editor-tree-item>\n        </div>\n    </accordion-group>\n</accordion>\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <i class=\"fa fa-close\"></i>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"selectedInstanceOrder\"\n                     [(ngModel)]=\"selectedInstanceOrder\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>"
 
 /***/ }),
 
@@ -2250,6 +2703,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../page-editor-tree-item/page-editor-tree-item.component */ "./src/app/page-editor-tree-item/page-editor-tree-item.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2259,6 +2713,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -2292,7 +2747,7 @@ var PageEditorTreeComponent = /** @class */ (function () {
             var instance = _a[_i];
             this.selectedInstanceOrder.push({
                 id: orderId,
-                name: this.params[key]['instancesLabels'][instance.type]
+                name: _page_editor_tree_item_page_editor_tree_item_component__WEBPACK_IMPORTED_MODULE_3__["PageEditorTreeItemComponent"].obtainSectionTitle(this.params, key, instance)
             });
             orderId++;
         }
@@ -2674,6 +3129,9 @@ var PagesService = /** @class */ (function () {
     PagesService.prototype.getPages = function () {
         return this.http.get(this.pagesUrl);
     };
+    PagesService.prototype.getPage = function (pageId) {
+        return this.http.get(this.pagesUrl + '/' + pageId);
+    };
     PagesService.prototype.getPageFields = function (pageId, language) {
         return this.http.get(this.pageFieldsUrl + '/' + pageId + '?lang=' + language);
     };
@@ -2721,7 +3179,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-editor\">\n    <div class=\"wrapper\">\n\n        <div class=\"module-menu-element\" *ngIf=\"selectedPageId !== null\">\n            <h3 *ngIf=\"selectedPageId == 26\">Тренеры</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 26\">\n                <trainers class=\"integrated\"></trainers>\n            </div>\n\n            <h3 *ngIf=\"selectedPageId == 19\">Номера</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 19\">\n                <rooms class=\"integrated\"></rooms>\n            </div>\n\n\n            <h3>Список секций</h3>\n            <div class=\"sections-selector\" *ngIf=\"selectedPageFieldsSections\">\n                <div *ngFor=\"let section of selectedPageFieldsSections.values; index as sectionNumber;\"\n                     (click)=\"selectSection(sectionNumber)\" [class.selected]=\"sectionNumber === selectedSectionNumber\" class=\"item\">\n                    {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}\n                    <div class=\"delete\" click-stop-propagation (click)=\"deleteSectionWithConfirm('sectionsParams', sectionNumber)\"><i class=\"fa fa-close\"></i></div>\n                </div>\n                <div class=\"sections-panel toolbar-element\" *ngIf=\"selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'\">\n                    <div class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                        <div dropdownToggle aria-controls=\"dropdown-basic\">\n                            <i class=\"fa fa-plus\"></i>\n                        </div>\n                        <ul id=\"dropdown-triggers-manual\" *dropdownMenu class=\"dropdown-menu\"\n                            role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                            <li *ngFor=\"let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']\" role=\"menuitem\">\n                                <a class=\"dropdown-item\" (click)=\"appendSection('sectionsParams', sectionType)\">\n                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}\n                                </a>\n                            </li>\n                        </ul>\n                        <div (click)=\"reorder()\"><i class=\"fa fa-bars\"></i></div>\n                    </div>\n                </div>\n            </div>\n\n            <h3>Общие настройки</h3>\n            <div (click)=\"selectOther()\"  class=\"general-info\">\n                <div class=\"item\" [class.selected]=\"selectOtherParams === true\">Общие настройки</div>\n            </div>\n\n            <div class=\"module-panel\" *ngIf=\"selectedPageFields !== null\">\n                <button (click)=\"save()\" class=\"save ripple module-control-button-element default\">Сохранить</button>\n                <a href=\"{{currentPage.url}}\" target=\"_blank\"><button class=\"view ripple module-control-button-element\">Просмотр</button></a>\n                <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n            </div>\n        </div>\n        <div class=\"module-content-element\">\n            <accordion *ngIf=\"selectOtherParams == true\">\n                <accordion-group heading=\"Параметры страницы\">\n                    {{currentPage.url}}\n                </accordion-group>\n            </accordion>\n            <page-editor *ngIf=\"selectOtherParams == true && sectionsInited\"\n                         [params]=\"selectedPageFieldsOther.params\"\n                         [values]=\"selectedPageFieldsOther.values\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n            <page-editor *ngIf=\"selectedSectionNumber !== null && sectionsInited\"\n                         [params]=\"selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]\"\n                         [values]=\"selectedPageFieldsSections.values[selectedSectionNumber]\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n        </div>\n    </div>\n</div>\n<ng-template #confirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить страницу?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n<ng-template #sectionConfirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить секцию?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами секции</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"pageFieldsSectionsOrder\"\n            [(ngModel)]=\"pageFieldsSectionsOrder\"\n            itemClass=\"sortable-item\"\n            itemActiveClass=\"sortable-item-active\"\n            placeholderItem=\"Drag here\"\n            placeholderClass=\"placeholderStyle\"\n            wrapperClass=\"sortable-wrapper\"\n            fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
+module.exports = "<div class=\"page-editor\">\n    <div class=\"wrapper\">\n\n        <div class=\"module-menu-element\" *ngIf=\"selectedPageId !== null\">\n            <h3 *ngIf=\"selectedPageId == 26\">Тренеры</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 26\">\n                <trainers class=\"integrated\"></trainers>\n            </div>\n\n            <h3 *ngIf=\"selectedPageId == 19\">Номера</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 19\">\n                <rooms class=\"integrated\"></rooms>\n            </div>\n\n\n            <h3>Список секций</h3>\n            <div class=\"sections-selector\" *ngIf=\"selectedPageFieldsSections\">\n                <div *ngFor=\"let section of selectedPageFieldsSections.values; index as sectionNumber;\"\n                     (click)=\"selectSection(sectionNumber)\" [class.selected]=\"sectionNumber === selectedSectionNumber\" class=\"item\">\n                    {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}\n                    <div class=\"delete\" click-stop-propagation (click)=\"deleteSectionWithConfirm('sectionsParams', sectionNumber)\"><i class=\"fa fa-close\"></i></div>\n                </div>\n                <div class=\"sections-panel toolbar-element\" *ngIf=\"selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'\">\n                    <div class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                        <div dropdownToggle aria-controls=\"dropdown-basic\">\n                            <i class=\"fa fa-plus\"></i>\n                        </div>\n                        <ul id=\"dropdown-triggers-manual\" *dropdownMenu class=\"dropdown-menu\"\n                            role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                            <li *ngFor=\"let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']\" role=\"menuitem\">\n                                <a class=\"dropdown-item\" (click)=\"appendSection('sectionsParams', sectionType)\">\n                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}\n                                </a>\n                            </li>\n                        </ul>\n                        <div (click)=\"reorder()\"><i class=\"fa fa-bars\"></i></div>\n                    </div>\n                </div>\n            </div>\n\n            <h3>Общие настройки</h3>\n            <div (click)=\"selectOther()\"  class=\"general-info\">\n                <div class=\"item\" [class.selected]=\"selectOtherParams === true\">Общие настройки</div>\n            </div>\n\n            <div class=\"module-panel\" *ngIf=\"selectedPageFields !== null\">\n                <button (click)=\"save()\" class=\"save ripple module-control-button-element default\">Сохранить</button>\n                <a href=\"{{currentPage.url}}\" target=\"_blank\"><button class=\"view ripple module-control-button-element\">Просмотр</button></a>\n                <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n            </div>\n        </div>\n        <div class=\"module-content-element\">\n            <accordion *ngIf=\"selectOtherParams == true\">\n                <accordion-group heading=\"Параметры страницы\">\n                    {{currentPage.url}}\n                </accordion-group>\n            </accordion>\n            <page-editor *ngIf=\"selectOtherParams == true && sectionsInited\"\n                         [params]=\"selectedPageFieldsOther.params\"\n                         [values]=\"selectedPageFieldsOther.values\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n            <page-editor *ngIf=\"selectedSectionNumber !== null && sectionsInited\"\n                         [params]=\"selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]\"\n                         [values]=\"selectedPageFieldsSections.values[selectedSectionNumber]\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n        </div>\n    </div>\n</div>\n<ng-template #confirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить страницу?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n<ng-template #sectionConfirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить секцию?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами секции</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"pageFieldsSectionsOrder\"\n            [(ngModel)]=\"pageFieldsSectionsOrder\"\n            itemClass=\"sortable-item\"\n            itemActiveClass=\"sortable-item-active\"\n            placeholderItem=\"Drag here\"\n            placeholderClass=\"placeholderStyle\"\n            wrapperClass=\"sortable-wrapper\"\n            fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -2743,6 +3201,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
 /* harmony import */ var _models_state__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/state */ "./src/app/models/state.ts");
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../storage */ "./src/app/storage.ts");
+/* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notification.service */ "./src/app/notification.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2770,14 +3229,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var PagesComponent = /** @class */ (function (_super) {
     __extends(PagesComponent, _super);
-    function PagesComponent(pageService, selectItemService, modalService, ref) {
+    function PagesComponent(pageService, selectItemService, modalService, ref, notificationService) {
         var _this = _super.call(this) || this;
         _this.pageService = pageService;
         _this.selectItemService = selectItemService;
         _this.modalService = modalService;
         _this.ref = ref;
+        _this.notificationService = notificationService;
         _this.domainsLoaded = false;
         _this.pagesLoaded = false;
         _this.selectedDomain = 1;
@@ -2984,10 +3445,17 @@ var PagesComponent = /** @class */ (function (_super) {
     };
     PagesComponent.prototype.save = function () {
         if (!this.validatePageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values)) {
+            this.notificationService.error("Невозможно сохранить страницу, заполните обязательные поля");
             return;
         }
+        this.copyOtherParamsChanges();
         this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values), this.language)
             .subscribe();
+    };
+    PagesComponent.prototype.copyOtherParamsChanges = function () {
+        for (var key in this.selectedPageFieldsOther.values) {
+            this.selectedPageFields.values[key] = this.selectedPageFieldsOther.values[key];
+        }
     };
     PagesComponent.prototype.deleteWithConfirm = function () {
         var _this = this;
@@ -3069,7 +3537,8 @@ var PagesComponent = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_pages_service__WEBPACK_IMPORTED_MODULE_1__["PagesService"],
             _select_item_service__WEBPACK_IMPORTED_MODULE_2__["SelectItemService"],
             ngx_bootstrap__WEBPACK_IMPORTED_MODULE_5__["BsModalService"],
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"],
+            _notification_service__WEBPACK_IMPORTED_MODULE_8__["NotificationService"]])
     ], PagesComponent);
     return PagesComponent;
 }(_models_state__WEBPACK_IMPORTED_MODULE_6__["State"]));
@@ -3085,7 +3554,7 @@ var PagesComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"object-editor\" [ngClass]=\"{active: room !== null}\">\n  <div class=\"close\" (click)=\"close()\">\n    <i class=\"fa fa-window-close\" aria-hidden=\"true\"></i>\n  </div>\n  <div *ngIf=\"room !== null\">\n    <div class=\"field name\">\n      <span class=\"label\">Название комнаты</span>\n      <input type=\"text\" [(ngModel)]=\"room.title\">\n    </div>\n\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"btn btn-success\" (click)=\"save()\">Save</button>\n      <button type=\"button\" class=\"btn btn-danger\" (click)=\"openModal(confirmDelete)\">Delete</button>\n    </div>\n  </div>\n</div>\n<ng-template #imageChoose>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Выберите изображение</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <app-image-chooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n    <button class=\"btn btn-primary\">выбор</button>\n    <button class=\"btn btn-danger\" (click)=\"modalRef.hide()\">отмена</button>\n  </div>\n</ng-template>\n<ng-template #confirmDelete>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Вы точно хотите удалить этот номер?</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <button class=\"btn btn-primary\" (click)=\"modalRef.hide()\">отмена</button>\n    <button class=\"btn btn-danger\" (click)=\"delete()\">да, удалить</button>\n  </div>\n</ng-template>"
+module.exports = "<div class=\"object-editor\" [ngClass]=\"{active: room !== null}\">\n  <div class=\"close\" (click)=\"close()\">\n    <i class=\"fa fa-window-close\" aria-hidden=\"true\"></i>\n  </div>\n  <div *ngIf=\"room !== null\">\n    <div class=\"field name\">\n      <span class=\"label\">Название комнаты</span>\n      <input type=\"text\" [(ngModel)]=\"room.title\">\n    </div>\n\n    <div class=\"field images\">\n      <span class=\"label\">Изображения</span>\n      <img *ngFor=\"let image of getImages()\" [src]=\"'/' + image.filename\">\n    </div>\n\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"btn btn-success\" (click)=\"save()\">Save</button>\n      <button type=\"button\" class=\"btn btn-danger\" (click)=\"openModal(confirmDelete)\">Delete</button>\n    </div>\n  </div>\n</div>\n<ng-template #imageChoose>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Выберите изображение</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <app-image-chooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n    <button class=\"btn btn-primary\">выбор</button>\n    <button class=\"btn btn-danger\" (click)=\"modalRef.hide()\">отмена</button>\n  </div>\n</ng-template>\n<ng-template #confirmDelete>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Вы точно хотите удалить этот номер?</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <button class=\"btn btn-primary\" (click)=\"modalRef.hide()\">отмена</button>\n    <button class=\"btn btn-danger\" (click)=\"delete()\">да, удалить</button>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -3105,6 +3574,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
 /* harmony import */ var _models_room__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/room */ "./src/app/models/room.ts");
+/* harmony import */ var _models_cms_image__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/cms-image */ "./src/app/models/cms-image.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3120,21 +3590,34 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var RoomEditorComponent = /** @class */ (function () {
     function RoomEditorComponent(selectItemService, modelService, modalService) {
         var _this = this;
         this.selectItemService = selectItemService;
         this.modelService = modelService;
         this.modalService = modalService;
+        this.roomImages = null;
         selectItemService.event$.subscribe(function (event) {
             if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_1__["SelectItemEvent"].Type.RoomSelect) {
                 _this.room = event.payload.room;
+                _this.roomImages = null;
                 if (!event.payload.initial) {
                     _this.selectItemService.emitCloseAll('room');
                 }
             }
         });
     }
+    RoomEditorComponent.prototype.getImages = function () {
+        var _this = this;
+        if (this.roomImages === null) {
+            this.roomImages = [];
+            this.modelService.getRoomImages(this.room).subscribe(function (images) {
+                images.forEach(function (i) { _this.roomImages.push(_models_cms_image__WEBPACK_IMPORTED_MODULE_6__["CmsImage"].fromRaw(i)); });
+            });
+        }
+        return this.roomImages;
+    };
     RoomEditorComponent.prototype.openModal = function (template) {
         this.modalRef = this.modalService.show(template);
     };
@@ -3259,7 +3742,7 @@ var RoomsComponent = /** @class */ (function (_super) {
         _this.modelService = modelService;
         _this.selectItemService = selectItemService;
         _this.modalService = modalService;
-        _this.newRoom = new _models_room__WEBPACK_IMPORTED_MODULE_2__["Room"]();
+        _this.newRoom = new _models_room__WEBPACK_IMPORTED_MODULE_2__["Room"](_this.modelService);
         selectItemService.event$.subscribe(function (event) {
             if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_3__["SelectItemEvent"].Type.LanguageChange) {
                 _this.loadRooms(true);
@@ -3287,7 +3770,9 @@ var RoomsComponent = /** @class */ (function (_super) {
         for (var key in state) {
             this[key] = state[key];
         }
-        this.loadRoom(this.rooms.find(function (r) { return r.id == _this.selectedRoom.id; }), true);
+        if (this.selectedRoom !== null && this.rooms) {
+            this.loadRoom(this.rooms.find(function (r) { return r.id == _this.selectedRoom.id; }), true);
+        }
     };
     RoomsComponent.prototype.loadRooms = function (force) {
         var _this = this;
@@ -3322,7 +3807,7 @@ var RoomsComponent = /** @class */ (function (_super) {
             _this.rooms.push(room);
             _this.loadRoom(room);
             _this.modalRef.hide();
-            _this.newRoom = new _models_room__WEBPACK_IMPORTED_MODULE_2__["Room"]();
+            _this.newRoom = new _models_room__WEBPACK_IMPORTED_MODULE_2__["Room"](_this.modelService);
             _this.roomsContainer.scrollTop = _this.roomsContainer.scrollHeight;
         });
     };
@@ -3474,7 +3959,7 @@ module.exports = "select {\n  margin: 10px;\n  width: -webkit-fill-available;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<select [(ngModel)]=\"selectedDomain\" class=\"form-control form-control-lg\" *ngIf=\"domains !== null\">\n  <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n</select>\n<div *ngIf=\"groupedSettings !== null\">\n  <div *ngFor='let groupTitle in groupedSettings[selectedDomain]' class='navbar-selector-item' (click)=\"loadGroup(groupTitle)\"\n       [ngClass]=\"{'active':groupTitle==selectedGroupTitle}\"> {{groupTitle}} </div>\n</div>\n"
+module.exports = "<select [(ngModel)]=\"selectedDomain\" class=\"form-control form-control-lg\" *ngIf=\"domains !== null\">\n  <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n</select>\n<div *ngIf=\"groupedSettings !== null && groupedSettings[selectedDomain] !== undefined\">\n  <div *ngFor='let groupTitle in groupedSettings[selectedDomain]' class='navbar-selector-item' (click)=\"loadGroup(groupTitle)\"\n       [ngClass]=\"{'active':groupTitle==selectedGroupTitle}\"> {{groupTitle}} </div>\n</div>"
 
 /***/ }),
 
@@ -3763,7 +4248,7 @@ function getFromLocalStorage(key) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n:host {\n  width: 100%;\n  display: block;\n  position: relative;\n  text-align: left;\n  padding: 10px;\n}\n.input-wrapper {\n  position: relative;\n}\n.input-wrapper input {\n  width: 100%;\n  border-color: #ced4da;\n}\n.input-wrapper .tags-list-box {\n  position: absolute;\n  z-index: 99;\n  left: 0;\n  width: 100%;\n  margin-top: 5px;\n  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);\n  background-color: #fff;\n}\n.input-wrapper .tags-list-box .tag {\n  padding: 5px;\n  padding-left: 10px;\n}\n.input-wrapper .tags-list-box .tag.selected {\n  background-color: #e1e1e1;\n}\n.selected-tags-list {\n  margin-top: 10px;\n}\n.selected-tags-list .tag {\n  border-radius: 18px;\n  background-color: #f8efc0;\n  color: #000;\n  padding: 5px;\n  margin: 0 4px;\n  padding-left: 10px;\n  padding-right: 20px;\n  display: inline-block;\n  position: relative;\n  margin-bottom: 8px;\n}\n.selected-tags-list .tag .close {\n  top: 11px;\n  right: 6px;\n  font-size: 0.7em;\n  position: absolute;\n}\n.filter-group:not(:last-child) {\n  margin-bottom: 15px;\n}\n"
+module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n:host > div:not(.inline) {\n  width: 100%;\n  display: block;\n  position: relative;\n  text-align: left;\n  padding: 10px;\n}\n:host .inline {\n  display: inline-block;\n}\n:host .inline .selected-tags-list {\n  margin-top: 0!important;\n}\n:host .inline .filter-group {\n  display: inline-block;\n  vertical-align: top;\n  height: 40px;\n  padding: 10px;\n}\n:host .inline .filter-group .field-wrapper {\n  display: block;\n}\n:host .inline .filter-group .selected-tags-list,\n:host .inline .filter-group .field-wrapper :not(.tag),\n:host .inline .filter-group .selected-tags-list * {\n  display: inline-block;\n}\n:host .inline .filter-group .tags-list-box {\n  top: 30px;\n}\n.input-wrapper {\n  position: relative;\n}\n.input-wrapper input {\n  width: 100%;\n  border-color: #ced4da;\n}\n.input-wrapper .tags-list-box {\n  position: absolute;\n  z-index: 99;\n  left: 0;\n  width: 100%;\n  margin-top: 5px;\n  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);\n  background-color: #fff;\n}\n.input-wrapper .tags-list-box .tag {\n  padding: 5px;\n  padding-left: 10px;\n}\n.input-wrapper .tags-list-box .tag.selected {\n  background-color: #e1e1e1;\n}\n.selected-tags-list {\n  margin-top: 10px;\n}\n.selected-tags-list .tag {\n  border-radius: 18px;\n  background-color: #f8efc0;\n  color: #000;\n  padding: 5px;\n  margin: 0 4px;\n  padding-left: 10px;\n  padding-right: 20px;\n  display: inline-block;\n  position: relative;\n  margin-bottom: 8px;\n}\n.selected-tags-list .tag .close {\n  top: 11px;\n  right: 6px;\n  font-size: 0.7em;\n  position: absolute;\n}\n.filter-group:not(:last-child) {\n  margin-bottom: 15px;\n}\n"
 
 /***/ }),
 
@@ -3774,7 +4259,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"imageFilters !== null\" (click)=\"blurProcessing($event)\">\n    <div class=\"filter-group\">\n        Тип:\n        <select [(ngModel)]=\"filter.selectedType\" class=\"form-control form-control-lg\" (ngModelChange)=\"applyFilter()\">\n            <option selected [value]=\"null\">Любой</option>\n            <option *ngFor='let type of imageFilters.types' [value]=\"type.id\">{{type.name}}</option>\n        </select>\n    </div>\n    <div class=\"filter-group\">\n        Теги:\n        <div>\n            <div class=\"input-wrapper\">\n                <input class=\"form-control form-control-lg\" (click)=\"showAvailableTags()\" [(ngModel)]=\"tagsFilter\"\n                       (keydown.arrowup)=\"decreaseSelectedTagIndex()\"\n                       (keydown.arrowdown)=\"increaseSelectedTagIndex()\"\n                       (keyup.enter)=\"selectTag()\"\n                       [focus]=\"focusEventEmitter\" id=\"tags-input\"\n                >\n                <div class=\"tags-list-box\" id=\"tags-list-box\" *ngIf=\"showTagsBox\">\n                    <div class=\"tag\" [class.selected]=\"i === selectedTagIndex\" *ngFor=\"let tag of getFilteredTags; let i = index;\" (mouseup)=\"selectTag(tag)\" (mouseenter)=\"setSelectedTagIndex(i)\">\n                        {{ tag }}\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"selected-tags-list\">\n            <div class=\"tag\" *ngFor=\"let tag of filter.selectedTags\">\n                {{ tag }}\n                <i class=\"fa fa-close close\" (click)=\"unselectTag(tag)\"></i>\n            </div>\n        </div>\n    </div>\n    <div class=\"filter-group\">\n        Показывать подписи<input type=\"checkbox\" [(ngModel)]=\"filter.showDescriptions\" (ngModelChange)=\"applyFilter()\">\n    </div>\n</div>\n"
+module.exports = "<div *ngIf=\"imageFilters !== null\" (click)=\"blurProcessing($event)\" [class.inline]=\"inline\">\n    <div class=\"filter-group\">\n        Тип:\n        <select *ngIf=\"fixedImageTypeId ===  null\" [(ngModel)]=\"filter.selectedType\" class=\"form-control form-control-lg field-wrapper\" (ngModelChange)=\"applyFilter()\">\n            <option selected [value]=\"null\">Любой</option>\n            <option *ngFor='let type of imageFilters.types' [value]=\"type.id\">{{type.name}}</option>\n        </select>\n        <ng-template *ngIf=\"fixedImageTypeId !== null\">{{fixedImageTypeId}}</ng-template>\n    </div>\n    <div class=\"filter-group\">\n        Теги:\n        <div class=\"field-wrapper\">\n            <div class=\"input-wrapper\">\n                <input class=\"form-control form-control-lg\" (click)=\"showAvailableTags()\" [(ngModel)]=\"tagsFilter\"\n                       (keydown.arrowup)=\"decreaseSelectedTagIndex()\"\n                       (keydown.arrowdown)=\"increaseSelectedTagIndex()\"\n                       (keyup.enter)=\"selectTag()\"\n                       [focus]=\"focusEventEmitter\" id=\"tags-input\"\n                >\n                <div class=\"tags-list-box\" id=\"tags-list-box\" *ngIf=\"showTagsBox\">\n                    <div class=\"tag\" [class.selected]=\"i === selectedTagIndex\" *ngFor=\"let tag of getFilteredTags; let i = index;\" (mouseup)=\"selectTag(tag)\" (mouseenter)=\"setSelectedTagIndex(i)\">\n                        {{ tag }}\n                    </div>\n                </div>\n            </div>\n            <div class=\"selected-tags-list\">\n                <div class=\"tag\" *ngFor=\"let tag of filter.selectedTags\">\n                    {{ tag }}\n                    <i class=\"fa fa-close close\" (click)=\"unselectTag(tag)\"></i>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"filter-group\" *ngIf=\"showShowTitles\">\n        Показывать подписи<mat-checkbox [color]=\"'primary'\" [(ngModel)]=\"filter.showDescriptions\" (ngModelChange)=\"applyFilter()\"></mat-checkbox>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -3829,6 +4314,9 @@ var SubMenuImagesComponent = /** @class */ (function (_super) {
         _this.showTagsBox = false;
         _this.selectedTagIndex = 0;
         _this.focusEventEmitter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        _this.inline = false;
+        _this.showShowTitles = true;
+        _this.fixedImageTypeId = null;
         _this.imageFilters = null;
         _this.filter = new _models_image_filter__WEBPACK_IMPORTED_MODULE_5__["ImageFilter"]();
         _this.filter.selectedTags = [];
@@ -3944,6 +4432,18 @@ var SubMenuImagesComponent = /** @class */ (function (_super) {
     SubMenuImagesComponent.prototype.ngOnInit = function () {
         this.loadImageFilters();
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], SubMenuImagesComponent.prototype, "inline", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], SubMenuImagesComponent.prototype, "showShowTitles", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], SubMenuImagesComponent.prototype, "fixedImageTypeId", void 0);
     SubMenuImagesComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'sub-menu-images',
@@ -4183,7 +4683,7 @@ var SubMenuComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"object-editor\" [ngClass]=\"{active: trainer !== null}\">\n  <div class=\"close\" (click)=\"close()\">\n    <i class=\"fa fa-window-close\" aria-hidden=\"true\"></i>\n  </div>\n  <div *ngIf=\"trainer !== null\">\n    <div class=\"field name\">\n      <span class=\"label\">Имя тренера</span>\n      <input type=\"text\" [(ngModel)]=\"trainer.name\">\n    </div>\n\n    <div class=\"field vk\">\n      <span class=\"label\"><input type=\"checkbox\" [checked]=\"trainer.has_vk\" (change)=\"trainer.has_vk = 1 - trainer.has_vk\"> <a target=\"_blank\" href=\"{{trainer.vk_link}}\">VK</a></span>\n      <input type=\"text\" [(ngModel)]=\"trainer.vk_link\" [disabled]=\"!trainer.has_vk\">\n    </div>\n    <div class=\"field fb\">\n      <span class=\"label\"><input type=\"checkbox\" [checked]=\"trainer.has_fb\" (change)=\"trainer.has_fb = 1 - trainer.has_fb\"> <a target=\"_blank\" href=\"{{trainer.fb_link}}\">FB</a></span>\n      <input type=\"text\" [(ngModel)]=\"trainer.fb_link\" [disabled]=\"!trainer.has_fb\">\n    </div>\n    <div class=\"field inst\">\n      <span class=\"label\"><input type=\"checkbox\" [checked]=\"trainer.has_inst\" (change)=\"trainer.has_inst = 1 - trainer.has_inst\"> <a target=\"_blank\" href=\"{{trainer.inst_link}}\">Insta</a></span>\n      <input type=\"text\" [(ngModel)]=\"trainer.inst_link\" [disabled]=\"!trainer.has_inst\">\n    </div>\n\n\n    <div class=\"field\">\n      <span class=\"label\">Изображение</span>\n      <img width=\"200px\" *ngIf=\"trainer.img_src\" (click)=\"openModal(imageChoose, {class: 'large-popup'})\" src=\"/{{trainer.img_src}}\">\n      <button *ngIf=\"!trainer.img_src\" (click)=\"openModal(imageChoose, {class: 'large-popup'})\">Browse</button>\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">Должность</span>\n      <input [(ngModel)]=\"trainer.position\">\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">В 2 строки</span>\n      <span [ngSwitch]=\"language\">\n          <input *ngSwitchCase=\"1\" type=\"checkbox\" [(ngModel)]=\"trainer.two_lines_position\">\n          <input *ngSwitchCase=\"2\" type=\"checkbox\" [(ngModel)]=\"trainer.two_lines_position_en\">\n      </span>\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">Описание</span>\n      <textarea ngxTrumbowygEditor [(ngModel)]=\"trainer.description\"></textarea>\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">Путь URL</span>\n      <input [(ngModel)]=\"trainer.alias\">\n    </div>\n\n\n    <div class=\"buttons\">\n      <button class=\"ripple module-control-button-element default\" (click)=\"save()\">Сохранить</button>\n      <button class=\"ripple module-control-button-element delete\" (click)=\"openModal(confirmDelete)\">Удалить</button>\n    </div>\n  </div>\n</div>\n<ng-template #imageChoose>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Выберите изображение</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <app-image-chooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n    <button class=\"btn btn-primary\" (click)=\"selectItemService.emitImageChooserEvent(); modalRef.hide();\">выбор</button>\n    <button class=\"btn btn-danger\" (click)=\"modalRef.hide()\">отмена</button>\n  </div>\n</ng-template>\n<ng-template #confirmDelete>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Вы точно хотите удалить этого тренера?</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <button class=\"btn btn-primary\" (click)=\"modalRef.hide()\">отмена</button>\n    <button class=\"btn btn-danger\" (click)=\"delete()\">да, удалить</button>\n  </div>\n</ng-template>"
+module.exports = "<div class=\"object-editor\" [ngClass]=\"{active: trainer !== null}\">\n  <div class=\"close\" (click)=\"close()\">\n    <i class=\"fa fa-window-close\" aria-hidden=\"true\"></i>\n  </div>\n  <div *ngIf=\"trainer !== null\">\n    <div class=\"field name\">\n      <span class=\"label\">Имя тренера</span>\n      <input type=\"text\" [(ngModel)]=\"trainer.name\">\n    </div>\n\n    <div class=\"field vk\">\n      <span class=\"label\"><mat-checkbox [color]=\"'primary'\" [checked]=\"trainer.has_vk\" (change)=\"trainer.has_vk = 1 - trainer.has_vk\"></mat-checkbox> <a target=\"_blank\" href=\"{{trainer.vk_link}}\">VK</a></span>\n      <input type=\"text\" [(ngModel)]=\"trainer.vk_link\" [disabled]=\"!trainer.has_vk\">\n    </div>\n    <div class=\"field fb\">\n      <span class=\"label\"><mat-checkbox [color]=\"'primary'\" [checked]=\"trainer.has_fb\" (change)=\"trainer.has_fb = 1 - trainer.has_fb\"></mat-checkbox> <a target=\"_blank\" href=\"{{trainer.fb_link}}\">FB</a></span>\n      <input type=\"text\" [(ngModel)]=\"trainer.fb_link\" [disabled]=\"!trainer.has_fb\">\n    </div>\n    <div class=\"field inst\">\n      <span class=\"label\"><mat-checkbox [color]=\"'primary'\" [checked]=\"trainer.has_inst\" (change)=\"trainer.has_inst = 1 - trainer.has_inst\"></mat-checkbox> <a target=\"_blank\" href=\"{{trainer.inst_link}}\">Insta</a></span>\n      <input type=\"text\" [(ngModel)]=\"trainer.inst_link\" [disabled]=\"!trainer.has_inst\">\n    </div>\n\n\n    <div class=\"field\">\n      <span class=\"label\">Изображение</span>\n      <img width=\"200px\" *ngIf=\"trainer.img_src\" (click)=\"chooser.showPopup()\" src=\"/{{trainer.img_src}}\">\n      <button *ngIf=\"!trainer.img_src\" (click)=\"chooser.showPopup()\">Browse</button>\n      <app-image-chooser-popup #chooser (selectedImageId)=\"selectImage($event)\" [multiple]=\"false\" [fixedImageTypeId]=\"1\"></app-image-chooser-popup>\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">Должность</span>\n      <input type=\"text\" [(ngModel)]=\"trainer.position\">\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">В 2 строки</span>\n      <span [ngSwitch]=\"language\">\n        <mat-checkbox [color]=\"'primary'\" *ngSwitchCase=\"1\" [(ngModel)]=\"trainer.two_lines_position\"></mat-checkbox>\n        <mat-checkbox [color]=\"'primary'\" *ngSwitchCase=\"2\" [(ngModel)]=\"trainer.two_lines_position_en\"></mat-checkbox>\n      </span>\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">Описание</span>\n      <textarea ngxTrumbowygEditor [(ngModel)]=\"trainer.description\"></textarea>\n    </div>\n\n    <div class=\"field\">\n      <span class=\"label\">Путь URL</span>\n      <input type=\"text\" [(ngModel)]=\"trainer.alias\">\n    </div>\n\n\n    <div class=\"buttons\">\n      <button class=\"ripple module-control-button-element default\" (click)=\"save()\">Сохранить</button>\n      <button class=\"ripple module-control-button-element delete\" (click)=\"openModal(confirmDelete)\">Удалить</button>\n    </div>\n  </div>\n</div>\n<ng-template #confirmDelete>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Вы точно хотите удалить этого тренера?</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <button class=\"btn btn-primary\" (click)=\"modalRef.hide()\">отмена</button>\n    <button class=\"btn btn-danger\" (click)=\"delete()\">да, удалить</button>\n  </div>\n</ng-template>"
 
 /***/ }),
 
@@ -4312,7 +4812,7 @@ var TrainerEditorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\">\n    <div class=\"module-list\">\n        <ul class=\"object-list-element\" *ngIf=\"trainers !== null\" [ngClass]=\"{active: selectedTrainer !== null}\" #trainersList>\n            <li class=\"object-item\" *ngFor=\"let trainer of trainers\" (click)=\"loadTrainer(trainer)\" [ngClass]=\"{active: this.selectedTrainer && trainer.id == selectedTrainer.id}\">\n                <h2 class=\"object-name\">{{trainer.name | wordCountLimit: 2 }}</h2>\n            </li>\n        </ul>\n        <div class=\"toolbar-element\">\n            <div (click)=\"openModal(createTrainer)\"><i class=\"fa fa-plus\"></i></div>\n            <div (click)=\"openModal(reorderTrainers)\"><i class=\"fa fa-bars\"></i></div>\n        </div>\n    </div>\n    <div class=\"module-editor module-editor-visible\" [ngClass]=\"{'visible': selectedTrainer != null}\">\n        <trainer-editor></trainer-editor>\n    </div>\n</div>\n<ng-template #reorderTrainers>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"trainers\"\n                     [(ngModel)]=\"trainers\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply();modalRef.hide();\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n\n<ng-template #createTrainer>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title pull-left\">Создать нового тренера</h4>\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <div>\n            Введите имя вашего любимого тренера:\n        </div>\n        <div>\n            <input type=\"text\" #newTrainerName>\n        </div>\n        <div>\n            <button class=\"btn btn-primary\" (click)=\"createNewTrainer(newTrainerName.value)\">создать</button>\n        </div>\n    </div>\n</ng-template>"
+module.exports = "<div class=\"content\">\n    <div class=\"module-list\">\n        <ul class=\"object-list-element\" *ngIf=\"trainers !== null\" [ngClass]=\"{active: selectedTrainer !== null}\" #trainersList>\n            <li class=\"object-item\" *ngFor=\"let trainer of trainers\" (click)=\"loadTrainer(trainer)\" [ngClass]=\"{active: this.selectedTrainer && trainer.id == selectedTrainer.id}\">\n                <h2 class=\"object-name\">\n                    {{trainer.name | wordCountLimit: 2 }}\n                    <a *ngIf=\"getTrainerPageUrl(trainer) !== null\" [href]=\"getTrainerPageUrl(trainer)\" target=\"_blank\"><i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n                </h2>\n            </li>\n        </ul>\n        <div class=\"toolbar-element\">\n            <div (click)=\"openModal(createTrainer)\"><i class=\"fa fa-plus\"></i></div>\n            <div (click)=\"openModal(reorderTrainers)\"><i class=\"fa fa-bars\"></i></div>\n        </div>\n    </div>\n    <div class=\"module-editor module-editor-visible\" [ngClass]=\"{'visible': selectedTrainer != null}\">\n        <trainer-editor></trainer-editor>\n    </div>\n</div>\n<ng-template #reorderTrainers>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"trainers\"\n                     [(ngModel)]=\"trainers\"\n                     itemClass=\"sortable-item\"\n                     itemActiveClass=\"sortable-item-active\"\n                     placeholderItem=\"Drag here\"\n                     placeholderClass=\"placeholderStyle\"\n                     wrapperClass=\"sortable-wrapper\"\n                     fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"reorderApply();modalRef.hide();\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n\n<ng-template #createTrainer>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title pull-left\">Создать нового тренера</h4>\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <div>\n            Введите имя вашего любимого тренера:\n        </div>\n        <div>\n            <input type=\"text\" #newTrainerName>\n        </div>\n        <div>\n            <button class=\"btn btn-primary\" (click)=\"createNewTrainer(newTrainerName.value)\">создать</button>\n        </div>\n    </div>\n</ng-template>"
 
 /***/ }),
 
@@ -4334,6 +4834,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
 /* harmony import */ var _models_state__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/state */ "./src/app/models/state.ts");
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../storage */ "./src/app/storage.ts");
+/* harmony import */ var _pages_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages.service */ "./src/app/pages.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4361,13 +4862,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var TrainersComponent = /** @class */ (function (_super) {
     __extends(TrainersComponent, _super);
-    function TrainersComponent(modelService, selectItemService, modalService) {
+    function TrainersComponent(modelService, pagesService, selectItemService, modalService) {
         var _this = _super.call(this) || this;
         _this.modelService = modelService;
+        _this.pagesService = pagesService;
         _this.selectItemService = selectItemService;
         _this.modalService = modalService;
+        _this.detailPage = null;
         _this.newTrainer = new _models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"]();
         selectItemService.event$.subscribe(function (event) {
             if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_3__["SelectItemEvent"].Type.TrainerRemove) {
@@ -4384,6 +4888,7 @@ var TrainersComponent = /** @class */ (function (_super) {
         });
         return _this;
     }
+    TrainersComponent_1 = TrainersComponent;
     TrainersComponent.prototype.openModal = function (template) {
         this.modalRef = this.modalService.show(template);
     };
@@ -4393,7 +4898,25 @@ var TrainersComponent = /** @class */ (function (_super) {
         for (var key in state) {
             this[key] = state[key];
         }
-        this.loadTrainer(this.trainers.find(function (t) { return t.id == _this.selectedTrainer.id; }), true);
+        if (this.selectedTrainer !== null && this.trainers) {
+            this.loadTrainer(this.trainers.find(function (t) { return t.id == _this.selectedTrainer.id; }), true);
+        }
+    };
+    TrainersComponent.prototype.getTrainerPageUrl = function (trainer) {
+        var _this = this;
+        if (!trainer.alias || !trainer.alias.trim()) {
+            return null;
+        }
+        if (this.detailPage === null) {
+            this.pagesService.getPage(TrainersComponent_1.DETAIL_TRAINER_PAGE_ID).subscribe(function (page) {
+                _this.detailPage = page;
+            });
+        }
+        else {
+            var aliasRegex = /<alias:(.*)>/gi;
+            return this.detailPage.url.replace(aliasRegex, trainer.alias);
+        }
+        return null;
     };
     TrainersComponent.prototype.reorderApply = function () {
         this.modelService.reorderApply('trainer', this.trainers);
@@ -4441,6 +4964,7 @@ var TrainersComponent = /** @class */ (function (_super) {
     TrainersComponent.prototype.ngOnInit = function () {
         this.loadTrainers();
     };
+    TrainersComponent.DETAIL_TRAINER_PAGE_ID = 29;
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('trainersList'),
         __metadata("design:type", Object)
@@ -4449,17 +4973,19 @@ var TrainersComponent = /** @class */ (function (_super) {
         _storage__WEBPACK_IMPORTED_MODULE_7__["bindToComponentState"],
         __metadata("design:type", _models_trainer__WEBPACK_IMPORTED_MODULE_2__["Trainer"])
     ], TrainersComponent.prototype, "selectedTrainer", void 0);
-    TrainersComponent = __decorate([
+    TrainersComponent = TrainersComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'trainers',
             template: __webpack_require__(/*! ./trainers.component.html */ "./src/app/trainers/trainers.component.html"),
             styles: [__webpack_require__(/*! ../common/object-list.component.css */ "./src/app/common/object-list.component.css")],
         }),
         __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_1__["ModelService"],
+            _pages_service__WEBPACK_IMPORTED_MODULE_8__["PagesService"],
             _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"],
             ngx_bootstrap__WEBPACK_IMPORTED_MODULE_5__["BsModalService"]])
     ], TrainersComponent);
     return TrainersComponent;
+    var TrainersComponent_1;
 }(_models_state__WEBPACK_IMPORTED_MODULE_6__["State"]));
 
 

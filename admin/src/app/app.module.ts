@@ -1,9 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
-
 import {ModalModule, SortableModule, TabsModule} from 'ngx-bootstrap';
-
 import {AppComponent} from './app.component';
 import {PagesComponent} from './pages/pages.component';
 import {PagesService} from './pages.service';
@@ -45,6 +43,9 @@ import { CustomImageCropperComponent } from './image-cropper/image-cropper.compo
 import {SubMenuImagesComponent} from "./sub-menu/images/images.component";
 import { FocusDirective } from './focus.directive';
 import { ScrollToModule } from 'ng2-scroll-to-el';
+import { ImageChooserPopupComponent } from './image-chooser-popup/image-chooser-popup.component';
+import {MatCheckboxModule} from "@angular/material";
+//import { CustomCheckboxModule } from 'angular-custom-checkbox';
 
 @NgModule({
     declarations: [
@@ -74,7 +75,8 @@ import { ScrollToModule } from 'ng2-scroll-to-el';
         PageEditorTreeItemComponent,
         ImageCropperComponent,
         CustomImageCropperComponent,
-        FocusDirective
+        FocusDirective,
+        ImageChooserPopupComponent,
     ],
     imports: [
         BrowserModule,
@@ -106,7 +108,8 @@ import { ScrollToModule } from 'ng2-scroll-to-el';
         AccordionModule.forRoot(),
         SortableModule.forRoot(),
         ColorPickerModule,
-        ScrollToModule.forRoot()
+        ScrollToModule.forRoot(),
+        MatCheckboxModule,
     ],
     providers: [
         PagesService, MenuService, SelectItemService, ModelService, LanguageService, SettingsService

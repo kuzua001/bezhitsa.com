@@ -5,42 +5,29 @@
     </b>
     <label *ngIf="params.required !== 1" for="{{uniqId}}">{{title}}</label>
   </div>
-  <div [ngSwitch]="params.type" class="content" [class.inline]="params.type === 'checkbox'">
+  <div [ngSwitch]="params.type" class="content" [class.inline]="params.type === 'checkbox' || params.type === 'color'">
     <div *ngSwitchCase="'string'">
       <input id={{uniqId}} type="text" [(ngModel)]="valueSet[valueKey]">
     </div>
     <div *ngSwitchCase="'select'">
-      <select id={{uniqId}} type="checkbox" [(ngModel)]="valueSet[valueKey]">
+      <select id={{uniqId}} [(ngModel)]="valueSet[valueKey]">
         <option *ngFor="let option in params.options" [value]="option">{{params.options[option]}}</option>
       </select>
     </div>
     <div *ngSwitchCase="'checkbox'">
-      <input id={{uniqId}} type="checkbox" [(ngModel)]="valueSet[valueKey]">
+      <mat-checkbox id={{uniqId}} [(ngModel)]="valueSet[valueKey]" [color]="'primary'"></mat-checkbox>
     </div>
     <div *ngSwitchCase="'textarea'">
       <textarea id={{uniqId}} ngxTrumbowygEditor name="editorDirective" [(ngModel)]="valueSet[valueKey]"></textarea>
     </div>
     <div *ngSwitchCase="'color'">
-      <input id={{uniqId}} type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
+      <input class="color" id={{uniqId}} type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
     </div>
     <div *ngSwitchCase="'image'">
       <img *ngIf="imageSrc && imageSrc.length" width="200px" src="/{{imageSrc}}" (click)="openChooser()">
       <button *ngIf="!(imageSrc && imageSrc.length)" (click)="openChooser()">Выбор</button>
 
-      <ng-template #imageChooser>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Выберите изображение</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <app-image-chooser #imageChooser (selectedImageId)="selectImage($event)"></app-image-chooser>
-          <button class="btn btn-primary" (click)="selectItemService.emitImageChooserEvent(); modalRef.hide();">Выбор</button>
-          <button class="btn btn-danger" (click)="modalRef.hide()">отмена</button>
-        </div>
-      </ng-template>
-
+      <app-image-chooser-popup #imageChooser (selectedImageId)="selectImage($event)"></app-image-chooser-popup>
     </div>
   </div>
 </div>

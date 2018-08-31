@@ -19,19 +19,9 @@ use yii\rest\CreateAction;
 class CustomCreateAction extends CreateAction
 {
 
-    public function run()
+    public static function createFileFromContent($content, $fileName)
     {
-        if ($this->checkAccess) {
-            call_user_func($this->checkAccess, $this->id);
-        }
-
-        $result = [];
-
-        $content  = Yii::$app->request->post('content');
-        $filename = Yii::$app->request->post('filename');
-        $nameWoExt = pathinfo($filename, PATHINFO_FILENAME);
-
-
+        $nameWoExt = pathinfo($fileName, PATHINFO_FILENAME);
 
         if (preg_match('/^data:image\/(\w+);base64,/', $content, $type)) {
             $data = substr($content, strpos($content, ',') + 1);
@@ -58,9 +48,35 @@ class CustomCreateAction extends CreateAction
 
         }
 
+        return Image::createName($nameWoExt, $type);
+    }
+
+    public function run()
+    {
+        if ($this->checkAccess) {
+            call_user_func($this->checkAccess, $this->id);
+        }
+
+        $content  = Yii::$app->request->post('content');
+        $filename = Yii::$app->request->post('filename');
+        $filter   = Yii::$app->request->post('filter');
+
+
+
         $img = new Image();
-        $img->filename = Image::createName($nameWoExt, $type);
+        $img->filename = self::createFileFromContent($content, $filename);
         $img->description = 'test';
+
+        if ($filter !== null) {
+            if (isset($filter['selectedType']) && $filter['selectedType'] > 0) {
+                $img->image_type_id = $filter['selectedType'];
+            }
+
+            if (isset($filter['selectedTags'])) {
+                $img->tags_json = json_encode($filter['selectedTags'], JSON_UNESCAPED_UNICODE);
+            }
+        }
+
         $img->save();
 
         return [

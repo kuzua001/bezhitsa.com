@@ -1,0 +1,24 @@
+<ng-template #imageChooser>
+  <div class="modal-header">
+    <div class="pull-left">
+      <h4 class="modal-title">Выберите изображение</h4>
+      <sub-menu-images [inline]="true" [showShowTitles]="false" [fixedImageTypeId]="fixedImageTypeId"></sub-menu-images>
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-images
+            [selectionMode]="true"
+            [fixedImageTypeId]="fixedImageTypeId"
+            [multiple]="multiple"
+            (selectedImageId)="outputImageId($event)" (selectedImageIds)="outputImageIds($event)"></app-images>
+  </div>
+  <div class="modal-footer">
+    <div class="toolbar">
+      <button class="ripple module-control-button-element default" (click)="selectItemService.emitImageChooserEvent(); closePopup()">Выбор</button>
+      <button class="ripple module-control-button-element delete" (click)="closePopup()">отмена</button>
+    </div>
+  </div>
+</ng-template>

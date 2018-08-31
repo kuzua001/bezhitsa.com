@@ -1,22 +1,32 @@
 <div class="image-chooser-element">
     <div>
-        <tabset>
-            <tab heading="Загрузите новый" id="tab1">
+        <div class="images">
+            <div class="content module-editor" *ngIf="images !== null">
 
-            </tab>
-            <tab heading="Выбор из медиатеки">
-                <div class="images">
-                    <div class="content module-editor" *ngIf="images !== null">
-                        <div *ngFor="let image of images; let i = index;" class="image-card" (click)="markImage(i)">
-                            <img #imagesList src="/{{image.filename}}" (load)="detectOrientation(i)">
-                            <div class="short-description">
-                                {{image.description | wordCountLimit: 3 }}
-                            </div>
-                            <div class="tick" [class.ticked]="multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id"></div>
-                        </div>
+                <div class="image-card">
+                    <div class="new-image image-wrapper" accept="image/*" ngxFileDropzone (fileDrop)="dropped($event)" ngxFilePicker (filePick)="dropped($event)">
+                        Добавьте фото<br>
+                        <i class="plus"></i><br>
                     </div>
                 </div>
-            </tab>
-        </tabset>
+
+                <div *ngFor="let image of images; let i = index;" class="image-card" (click)="markImage(i)" [hidden]="i >= limit">
+                    <div class='image-card-wrapper' *ngIf="i < limit;">
+                        <img #imagesList src="/{{image.filename}}" (load)="detectOrientation(i)">
+                        <div class="short-description">
+                            {{image.description | wordCountLimit: 15 }}
+                        </div>
+                    </div>
+                    <div class="tick" [class.ticked]="multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id"></div>
+                </div>
+
+                <div class="image-card" (click)="loadMore()" *ngIf="limit < images.length">
+                    <div class="load-more image-wrapper">
+                        Показать<br>ещё
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<div #bottom></div>

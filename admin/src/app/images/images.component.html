@@ -1,5 +1,10 @@
-<div class="wrapper">
+<div #wrapper (window:resize)="onResize($event)" [class]="getWrapperClass()">
   <div class="images">
+    <!--infiniteScroll-->
+    <!--[infiniteScrollDistance]="2"-->
+    <!--[infiniteScrollThrottle]="50"-->
+    <!--[infiniteScrollContainer]="'body'"-->
+    <!--(scrolled)="loadMore()"-->
     <div class="content module-editor module-editor-full" [class.show-descriptions]="showDescriptions" *ngIf="images !== null">
       <div class="image-card">
           <div class="new-image image-wrapper" accept="image/*" ngxFileDropzone (fileDrop)="dropped($event)" ngxFilePicker (filePick)="dropped($event)">
@@ -7,7 +12,12 @@
             <i class="plus"></i><br>
           </div>
       </div>
-      <div *ngFor="let image of images; let i = index;" class="image-card" (click)="openEditor(image, image.getOrientation)" [hidden]="i >= limit">
+      <div *ngFor="let image of images; let i = index;"
+           class="image-card"
+           (click)="this.selectionMode ? markImage(i) : openEditor(image, image.getOrientation)"
+           [class.ticked]="multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id"
+           [hidden]="i >= limit"
+      >
         <div class='image-card-wrapper' *ngIf="i < limit;">
           <img #imagesList src="/{{image.filename}}" (load)="initImageOrientation(i)">
           <div class="short-description">
@@ -24,16 +34,32 @@
   </div>
 </div>
 <div #bottom></div>
+<ng-template #confirmDelete class="alert-box">
+  <div class="modal-header">
+    <h4 class="modal-title">Подтвердите действиe</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Удалить фото?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="ripple module-control-button-element delete" (click)="onConfirmDelete()">Да</button>
+    <button type="button" class="ripple module-control-button-element cancel" (click)="onCancelDelete()">Нет</button>
+  </div>
+</ng-template>
+
 <ng-template #imageEditor>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Настроить создание превью</h4>
+    <h4 class="modal-title pull-left">Настройки фото</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body image-editor-element" [class.vertical]="editingImage.getOrientation" *ngIf="editingImage !== null">
-    <tabset>
-      <tab heading="Общие настройки" id="redactor-tab">
+    <!--<tabset>-->
+      <!--<tab heading="Общие настройки" id="redactor-tab">-->
         <section class="redactor" [class.vertical]="editingImage.getOrientation">
 
           <div class="left-part">
@@ -45,9 +71,10 @@
 
           <div class="right-part">
             <div class="update-image" accept="image/*" ngxFileDropzone (fileDrop)="droppedForUpdate($event)" ngxFilePicker (filePick)="droppedForUpdate($event)">
-              Заменить изображение.<br>
-              <i class="fa fa-plus"></i><br>
-              <button accept="image/*">Выбор</button>
+                <div class="wrapper">
+                  Заменить фото<br>
+                  <i class="plus"></i>
+                </div>
             </div>
 
             <textarea [(ngModel)]="editingImage.description"></textarea>
@@ -76,8 +103,9 @@
             </div>
 
             <section>
-              <button class="ripple module-control-button-element delete" (click)="modalRef.hide()">отмена</button>
+              <button class="ripple module-control-button-element cancel" (click)="modalRef.hide()">отмена</button>
               <button class="ripple module-control-button-element default" (click)="saveEditingImage()">сохранить</button>
+              <button class="ripple module-control-button-element delete" (click)="deleteEditingImageWithConfirm()">удалить</button>
             </section>
           </div>
 
@@ -85,23 +113,23 @@
 
           </div>
         </section>
-      </tab>
-      <tab heading="Превью" id="preview-tab">
-        <section class="preview-editor-element">
+      <!--</tab>-->
+      <!--<tab heading="Превью" id="preview-tab">-->
+        <!--<section class="preview-editor-element">-->
 
-          <nav class="preview-selector" *ngIf="editingImage.image_type_id !== null">
-            <a (click)="selectPreview(preview)" *ngFor="let preview of getEditingImagePreviews().previewSettings" [class.selected]="currentPreview != null && preview.id === currentPreview.id">
-             Превью {{preview.width}} x {{preview.height}}
-            </a>
-          </nav>
-          <div innerHTML={{currentPreview.description}}></div>
+          <!--<nav class="preview-selector" *ngIf="editingImage.image_type_id !== null">-->
+            <!--<a (click)="selectPreview(preview)" *ngFor="let preview of getEditingImagePreviews().previewSettings" [class.selected]="currentPreview != null && preview.id === currentPreview.id">-->
+             <!--Превью {{preview.width}} x {{preview.height}}-->
+            <!--</a>-->
+          <!--</nav>-->
+          <!--<div innerHTML={{currentPreview.description}}></div>-->
 
-          <div *ngIf="currentPreview !== null">
-            <app-image-cropper [hidden]="preview.id !== currentPreview.id" *ngFor="let preview of getEditingImagePreviews().previewSettings" [aspectRatio]="preview.width / preview.height" [image]="editingImage"></app-image-cropper>
-          </div>
+          <!--<div *ngIf="currentPreview !== null">-->
+            <!--<app-image-cropper [hidden]="preview.id !== currentPreview.id" *ngFor="let preview of getEditingImagePreviews().previewSettings" [aspectRatio]="preview.width / preview.height" [image]="editingImage"></app-image-cropper>-->
+          <!--</div>-->
 
-        </section>
-      </tab>
-    </tabset>
+        <!--</section>-->
+      <!--</tab>-->
+    <!--</tabset>-->
   </div>
 </ng-template>

@@ -5,6 +5,7 @@ import {ModelService} from "../model.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {ReadFile} from 'ngx-file-helpers';
 import {Room} from "../models/room";
+import {CmsImage} from "../models/cms-image";
 
 
 @Component({
@@ -28,12 +29,28 @@ export class RoomEditorComponent implements OnInit {
       selectItemService.event$.subscribe((event: SelectItemEvent) => {
           if (event.itemType === SelectItemEvent.Type.RoomSelect) {
               this.room = event.payload.room;
+              this.roomImages = null;
               if (!event.payload.initial) {
                   this.selectItemService.emitCloseAll('room');
               }
           }
       });
 
+  }
+
+  private roomImages = null;
+
+  public getImages() {
+      if (this.roomImages === null) {
+          this.roomImages = [];
+          this.modelService.getRoomImages(this.room).subscribe(
+              (images) => {
+                  images.forEach(i => {this.roomImages.push(CmsImage.fromRaw(i));})
+              }
+          );
+      }
+
+      return this.roomImages;
   }
 
   openModal(template: TemplateRef<any>) {

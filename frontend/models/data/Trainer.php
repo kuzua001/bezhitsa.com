@@ -76,6 +76,7 @@ class Trainer extends ActiveRecord implements HasUrl, HasSrc
             'inst_link',
             'alias',
             'two_lines_position',
+            'two_lines_position_en',
             'img_id',
             'img_src',
             'n',
@@ -101,6 +102,7 @@ class Trainer extends ActiveRecord implements HasUrl, HasSrc
             'default' => [
                 'id',
                 'name',
+                'alias',
                 'position',
                 'description',
                 'vk_link',
@@ -111,6 +113,8 @@ class Trainer extends ActiveRecord implements HasUrl, HasSrc
                 'has_vk',
                 'has_fb',
                 'has_inst',
+                'two_lines_position',
+                'two_lines_position_en',
             ]
         ];
     }

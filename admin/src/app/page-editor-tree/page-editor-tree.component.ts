@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnChanges, TemplateRef, ViewChild} from '@angu
 import {FormBuilder} from '@angular/forms';
 import {PageFields} from "../models/page-fields.interface";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {PageEditorTreeItemComponent} from "../page-editor-tree-item/page-editor-tree-item.component";
 
 @Component({
   selector: 'page-editor',
@@ -50,7 +51,7 @@ export class PageEditorTreeComponent implements OnInit, OnChanges {
       for (let instance of this.values[key]) {
           this.selectedInstanceOrder.push({
               id: orderId,
-              name: this.params[key]['instancesLabels'][instance.type]
+              name: PageEditorTreeItemComponent.obtainSectionTitle(this.params, key, instance)
           });
           orderId ++;
       }

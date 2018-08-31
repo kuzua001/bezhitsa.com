@@ -30,7 +30,9 @@ export class RoomsComponent extends State implements OnInit {
             this[key] = state[key];
         }
 
-        this.loadRoom(this.rooms.find(r => r.id == this.selectedRoom.id), true);
+        if (this.selectedRoom !== null && this.rooms) {
+            this.loadRoom(this.rooms.find(r => r.id == this.selectedRoom.id), true);
+        }
     }
 
     @bindToComponentState
@@ -42,7 +44,7 @@ export class RoomsComponent extends State implements OnInit {
                 private selectItemService: SelectItemService,
                 private modalService: BsModalService) {
         super();
-        this.newRoom = new Room();
+        this.newRoom = new Room(this.modelService);
 
         selectItemService.event$.subscribe((event: SelectItemEvent) => {
             if (event.itemType === SelectItemEvent.Type.LanguageChange) {
@@ -96,7 +98,7 @@ export class RoomsComponent extends State implements OnInit {
             this.rooms.push(room as Room);
             this.loadRoom(room as Room);
             this.modalRef.hide();
-            this.newRoom = new Room();
+            this.newRoom = new Room(this.modelService);
             this.roomsContainer.scrollTop = this.roomsContainer.scrollHeight;
         });
     }

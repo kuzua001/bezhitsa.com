@@ -13,12 +13,35 @@
   max-height: 100%;
   overflow-y: auto;
 }
-:host {
+:host > div:not(.inline) {
   width: 100%;
   display: block;
   position: relative;
   text-align: left;
   padding: 10px;
+}
+:host .inline {
+  display: inline-block;
+}
+:host .inline .selected-tags-list {
+  margin-top: 0!important;
+}
+:host .inline .filter-group {
+  display: inline-block;
+  vertical-align: top;
+  height: 40px;
+  padding: 10px;
+}
+:host .inline .filter-group .field-wrapper {
+  display: block;
+}
+:host .inline .filter-group .selected-tags-list,
+:host .inline .filter-group .field-wrapper :not(.tag),
+:host .inline .filter-group .selected-tags-list * {
+  display: inline-block;
+}
+:host .inline .filter-group .tags-list-box {
+  top: 30px;
 }
 .input-wrapper {
   position: relative;

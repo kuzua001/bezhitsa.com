@@ -28,8 +28,9 @@ class CustomUpdateAction extends UpdateAction
      */
     public function run($id)
     {
-        /* @var $model ActiveRecord */
+        /* @var $model ActiveRecord |Image*/
         $model = $this->findModel($id);
+
 
         if ($this->checkAccess) {
             call_user_func($this->checkAccess, $this->id, $model);
@@ -37,6 +38,15 @@ class CustomUpdateAction extends UpdateAction
 
         $model->scenario = $this->scenario;
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
+
+        $data = Yii::$app->request->post('data', null);
+        if ($data !== null) {
+            $content = $data['content'];
+            $fileName = $data['name'];
+            $newFileName = CustomCreateAction::createFileFromContent($content, $fileName);
+            $model->filename  = $newFileName;
+        }
+
         if ($model->save() === false && !$model->hasErrors()) {
             throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
         }

@@ -1,14 +1,15 @@
-<div *ngIf="imageFilters !== null" (click)="blurProcessing($event)">
+<div *ngIf="imageFilters !== null" (click)="blurProcessing($event)" [class.inline]="inline">
     <div class="filter-group">
         Тип:
-        <select [(ngModel)]="filter.selectedType" class="form-control form-control-lg" (ngModelChange)="applyFilter()">
+        <select *ngIf="fixedImageTypeId ===  null" [(ngModel)]="filter.selectedType" class="form-control form-control-lg field-wrapper" (ngModelChange)="applyFilter()">
             <option selected [value]="null">Любой</option>
             <option *ngFor='let type of imageFilters.types' [value]="type.id">{{type.name}}</option>
         </select>
+        <ng-template *ngIf="fixedImageTypeId !== null">{{fixedImageTypeId}}</ng-template>
     </div>
     <div class="filter-group">
         Теги:
-        <div>
+        <div class="field-wrapper">
             <div class="input-wrapper">
                 <input class="form-control form-control-lg" (click)="showAvailableTags()" [(ngModel)]="tagsFilter"
                        (keydown.arrowup)="decreaseSelectedTagIndex()"
@@ -22,15 +23,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="selected-tags-list">
-            <div class="tag" *ngFor="let tag of filter.selectedTags">
-                {{ tag }}
-                <i class="fa fa-close close" (click)="unselectTag(tag)"></i>
+            <div class="selected-tags-list">
+                <div class="tag" *ngFor="let tag of filter.selectedTags">
+                    {{ tag }}
+                    <i class="fa fa-close close" (click)="unselectTag(tag)"></i>
+                </div>
             </div>
         </div>
     </div>
-    <div class="filter-group">
-        Показывать подписи<input type="checkbox" [(ngModel)]="filter.showDescriptions" (ngModelChange)="applyFilter()">
+    <div class="filter-group" *ngIf="showShowTitles">
+        Показывать подписи<mat-checkbox [color]="'primary'" [(ngModel)]="filter.showDescriptions" (ngModelChange)="applyFilter()"></mat-checkbox>
     </div>
 </div>

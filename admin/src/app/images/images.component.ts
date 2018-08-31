@@ -1,4 +1,7 @@
-import {Component, ElementRef, EventEmitter, OnInit, TemplateRef, ViewChild, ViewChildren} from '@angular/core';
+import {
+    Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild,
+    ViewChildren
+} from '@angular/core';
 import {ModelService} from "../model.service";
 import {CmsImage} from "../models/cms-image";
 import {ReadFileImpl} from "ngx-file-helpers/src/read-file-impl";
@@ -21,9 +24,18 @@ declare var $: any;
 })
 export class ImagesComponent implements OnInit {
 
+    @Input() selectionMode: boolean = false;
+
+    @Input() multiple: boolean = false;
+    @Input() fixedImageTypeId: number = null;
+
+
+    @Output() selectedImageId = new EventEmitter<CmsImage>();
+    @Output() selectedImageIds = new EventEmitter<Array<CmsImage>>();
+
     private images: CmsImage[] = null;
 
-    imageDataForUpdateEditing: ReadFile;
+    imageDataForUpdateEditing: any = null;
 
     editingImage: CmsImage | null;
 
@@ -33,30 +45,139 @@ export class ImagesComponent implements OnInit {
 
     modalRef: BsModalRef;
 
+    modalRefConfirm: BsModalRef;
+
     public focusEventEmitter = new EventEmitter<boolean>();
 
     private imageTypes: Array<ImageType> = null;
 
     private showDescriptions: boolean = false;
 
+    preSelectedImageId = null;
+    preSelectedImageIds = [];
+
     @ViewChildren('imagesList') imageList;
     @ViewChild('imageEditor') imageEditor: TemplateRef<any>;
+    @ViewChild('confirmDelete') confirmDelete: ElementRef;
     @ViewChild('newTag') newTag: ElementRef;
     @ViewChild('bottom') bottom: ElementRef;
+    @ViewChild('wrapper') wrapper: ElementRef;
+
+    private actualSize: number = null;
+
+    onResize($event)
+    {
+        this.actualSize = this.wrapper.nativeElement.offsetWidth;
+        console.log(this.actualSize);
+    }
+
+    public loadMore()
+    {
+        if (this.images && this.limit < this.images.length) {
+            this.limit += 14;
+        }
+
+        this.scrollService.scrollTo(this.bottom.nativeElement);
+    }
+
+    public markImage(i: number)
+    {
+        let imageId = this.images[i].id;
+
+        if (this.multiple) {
+            if (this.preSelectedImageIds[imageId] === undefined) {
+                this.preSelectedImageIds[imageId] = true;
+            } else {
+                this.preSelectedImageIds[imageId] = !this.preSelectedImageIds[imageId];
+            }
+        } else {
+            this.preSelectedImageId = imageId;
+        }
+    }
+
+    public detectOrientation(i: number)
+    {
+        let image = this.imageList.toArray()[i].nativeElement;
+
+        if (image.naturalWidth > image.naturalHeight) {
+            image.classList.add('landscape');
+        } else if (image.naturalWidth < image.naturalHeight) {
+            image.classList.add('portrait');
+        }
+    }
+
+    private loadImages(filter: ImageFilter = null) {
+        if (this.fixedImageTypeId !== null && filter !== null) {
+            filter.selectedType = new ImageType();
+            filter.selectedType.id = 1;//this.fixedImageTypeId;
+        }
+
+        this.modelService.getImages(filter).subscribe(images => {
+            images.forEach((rawImage, index) => {images[index] = CmsImage.fromRaw(rawImage);});
+            this.images = images.reverse();
+        });
+    }
+
+    public getWrapperClass(): string
+    {
+        let result = 'wrapper';
+
+        if (this.actualSize < 400)
+        {
+            result += ' one';
+        }
+
+        if (this.actualSize >= 400 && this.actualSize < 900)
+        {
+            result +=  ' two';
+        }
+
+        if (this.actualSize >= 900 && this.actualSize < 1200)
+        {
+            result +=  ' four';
+        }
+
+        if (this.actualSize >= 1200)
+        {
+            result +=  ' eight';
+        }
+
+        return result;
+    }
+
+    private filter;
 
     constructor(private modelService: ModelService,
                 private modalService: BsModalService,
                 private selectItemService: SelectItemService,
                 private scrollService: ScrollToService) {
         this.imageDataForUpdateEditing = null;
+        this.filter = new ImageFilter();
+
         this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
            if (event.itemType === SelectItemEvent.Type.ApplyFilter) {
-               const filter: ImageFilter = event.payload.filter;
-               this.showDescriptions = filter.showDescriptions;
-               this.loadImages(filter);
+               this.filter = event.payload.filter;
+               this.showDescriptions = this.filter.showDescriptions;
+               this.loadImages(this.filter);
            }
         });
+
+        this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
+            if (event.itemType === SelectItemEvent.Type.ImageChooserApply) {
+                if (this.multiple) {
+                    const result = [];
+                    for (let imageId in this.preSelectedImageIds) {
+                        if (!this.preSelectedImageIds[imageId]) continue;
+                        result.push(this.images.find(i => i.id === Number(imageId)));
+                    }
+                    this.selectedImageIds.emit(result);
+                } else {
+                    this.selectedImageId.emit(this.images.find(i => i.id === Number(this.preSelectedImageId)));
+                }
+            }
+        });
     }
+
 
     private loadImageTypes()
     {
@@ -100,7 +221,34 @@ export class ImagesComponent implements OnInit {
 
     private saveEditingImage()
     {
-        this.modelService.saveImage(this.editingImage);
+        this.modelService.saveImage(this.editingImage, this.imageDataForUpdateEditing, (newImage: CmsImage) => {
+            let index = this.images.findIndex(i => i.id === newImage.id);
+            this.images[index] = CmsImage.fromRaw(newImage);
+        });
+    }
+
+    public onConfirmDelete(): void {
+        this.deleteEditingImage();
+        this.modalRefConfirm.hide();
+    }
+
+    public onCancelDelete(): void {
+        this.modalRefConfirm.hide();
+    }
+
+
+    deleteEditingImageWithConfirm()
+    {
+        this.modalRefConfirm = this.modalService.show(this.confirmDelete);
+    }
+
+    private deleteEditingImage()
+    {
+        this.modelService.deleteImage(this.editingImage).subscribe(() => {
+            this.modalRef.hide();
+            this.images = this.images.filter(i => i.id !== this.editingImage.id);
+            this.editingImage = null;
+        });
     }
 
     private setTagEditingMode(mode: boolean) {
@@ -122,28 +270,13 @@ export class ImagesComponent implements OnInit {
         }
     }
 
-    private loadImages(filter: ImageFilter = null) {
-        this.modelService.getImages(filter).subscribe(images => {
-            images.forEach((rawImage, index) => {images[index] = CmsImage.fromRaw(rawImage);});
-            this.images = images;
-        });
-    }
-
     ngOnInit() {
         this.loadImages();
         this.loadImageTypes();
+        this.actualSize = this.wrapper.nativeElement.offsetWidth;
     }
 
-    private limit = 19;
-
-    public loadMore()
-    {
-        if (this.images && this.limit < this.images.length) {
-            this.limit += 14;
-        }
-
-        this.scrollService.scrollTo(this.bottom.nativeElement);
-    }
+    private limit = 50;
 
     public initImageOrientation(i: number) {
         let imageObject = this.images[i];
@@ -163,14 +296,19 @@ export class ImagesComponent implements OnInit {
 
     public dropped($event: ReadFile) {
         let content = $event.content;
-        this.modelService.createImage($event, (response) => {
+        this.modelService.createImage($event, this.filter, (response) => {
             if (response.status === 'success') {
-                this.images.unshift(response.image);
+                let image = CmsImage.fromRaw(response.image);
+                this.images.unshift(image);
             }
         });
     }
 
     public droppedForUpdate($event: ReadFile) {
-        this.imageDataForUpdateEditing = $event;
+        console.log($event);
+        this.imageDataForUpdateEditing = {
+            content: $event.content,
+            name: $event.name
+        };
     }
 }

@@ -1,0 +1,38 @@
+h4 {
+    display: inline-block;
+}
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+
+.modal-body{
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    &>div:first-child {
+        flex: 1 1;
+        * {
+            vertical-align: bottom;
+        }
+
+        h4 {
+            margin-right: 10px;
+        }
+
+        :nth-child(2) {
+            height: 68px;
+            display: inline-block;
+        }
+    }
+}
+
+.modal-footer {
+    text-align: right;
+}
+.toolbar {
+    display: inline-block;
+    width: 300px;
+}

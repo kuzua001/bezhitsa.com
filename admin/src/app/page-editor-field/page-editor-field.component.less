@@ -1,7 +1,16 @@
 :host {
 
+    display: block;
+    margin-bottom: 15px;
+
     .inline {
         display: inline-block;
+        margin-left: 10px;
+
+        input.color {
+            position: relative;;
+            top: -3px;
+        }
     }
 
     .title {
@@ -12,8 +21,12 @@
     .content {
 
         input:not([type=checkbox]) {
-            width: 50%;
+            width: 100%;
             display: block;
+        }
+
+        input[type=text] {
+            width: 300px;
         }
     }
 

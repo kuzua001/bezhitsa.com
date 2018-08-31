@@ -9,35 +9,36 @@
     </div>
 
     <div class="field vk">
-      <span class="label"><input type="checkbox" [checked]="trainer.has_vk" (change)="trainer.has_vk = 1 - trainer.has_vk"> <a target="_blank" href="{{trainer.vk_link}}">VK</a></span>
+      <span class="label"><mat-checkbox [color]="'primary'" [checked]="trainer.has_vk" (change)="trainer.has_vk = 1 - trainer.has_vk"></mat-checkbox> <a target="_blank" href="{{trainer.vk_link}}">VK</a></span>
       <input type="text" [(ngModel)]="trainer.vk_link" [disabled]="!trainer.has_vk">
     </div>
     <div class="field fb">
-      <span class="label"><input type="checkbox" [checked]="trainer.has_fb" (change)="trainer.has_fb = 1 - trainer.has_fb"> <a target="_blank" href="{{trainer.fb_link}}">FB</a></span>
+      <span class="label"><mat-checkbox [color]="'primary'" [checked]="trainer.has_fb" (change)="trainer.has_fb = 1 - trainer.has_fb"></mat-checkbox> <a target="_blank" href="{{trainer.fb_link}}">FB</a></span>
       <input type="text" [(ngModel)]="trainer.fb_link" [disabled]="!trainer.has_fb">
     </div>
     <div class="field inst">
-      <span class="label"><input type="checkbox" [checked]="trainer.has_inst" (change)="trainer.has_inst = 1 - trainer.has_inst"> <a target="_blank" href="{{trainer.inst_link}}">Insta</a></span>
+      <span class="label"><mat-checkbox [color]="'primary'" [checked]="trainer.has_inst" (change)="trainer.has_inst = 1 - trainer.has_inst"></mat-checkbox> <a target="_blank" href="{{trainer.inst_link}}">Insta</a></span>
       <input type="text" [(ngModel)]="trainer.inst_link" [disabled]="!trainer.has_inst">
     </div>
 
 
     <div class="field">
       <span class="label">Изображение</span>
-      <img width="200px" *ngIf="trainer.img_src" (click)="openModal(imageChoose, {class: 'large-popup'})" src="/{{trainer.img_src}}">
-      <button *ngIf="!trainer.img_src" (click)="openModal(imageChoose, {class: 'large-popup'})">Browse</button>
+      <img width="200px" *ngIf="trainer.img_src" (click)="chooser.showPopup()" src="/{{trainer.img_src}}">
+      <button *ngIf="!trainer.img_src" (click)="chooser.showPopup()">Browse</button>
+      <app-image-chooser-popup #chooser (selectedImageId)="selectImage($event)" [multiple]="false" [fixedImageTypeId]="1"></app-image-chooser-popup>
     </div>
 
     <div class="field">
       <span class="label">Должность</span>
-      <input [(ngModel)]="trainer.position">
+      <input type="text" [(ngModel)]="trainer.position">
     </div>
 
     <div class="field">
       <span class="label">В 2 строки</span>
       <span [ngSwitch]="language">
-          <input *ngSwitchCase="1" type="checkbox" [(ngModel)]="trainer.two_lines_position">
-          <input *ngSwitchCase="2" type="checkbox" [(ngModel)]="trainer.two_lines_position_en">
+        <mat-checkbox [color]="'primary'" *ngSwitchCase="1" [(ngModel)]="trainer.two_lines_position"></mat-checkbox>
+        <mat-checkbox [color]="'primary'" *ngSwitchCase="2" [(ngModel)]="trainer.two_lines_position_en"></mat-checkbox>
       </span>
     </div>
 
@@ -48,7 +49,7 @@
 
     <div class="field">
       <span class="label">Путь URL</span>
-      <input [(ngModel)]="trainer.alias">
+      <input type="text" [(ngModel)]="trainer.alias">
     </div>
 
 
@@ -58,19 +59,6 @@
     </div>
   </div>
 </div>
-<ng-template #imageChoose>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Выберите изображение</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-image-chooser (selectedImageId)="selectImage($event)"></app-image-chooser>
-    <button class="btn btn-primary" (click)="selectItemService.emitImageChooserEvent(); modalRef.hide();">выбор</button>
-    <button class="btn btn-danger" (click)="modalRef.hide()">отмена</button>
-  </div>
-</ng-template>
 <ng-template #confirmDelete>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Вы точно хотите удалить этого тренера?</h4>

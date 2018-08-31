@@ -1,13 +1,25 @@
+:host {
+  display: block;
+  margin-bottom: 15px;
+}
 :host .inline {
   display: inline-block;
+  margin-left: 10px;
+}
+:host .inline input.color {
+  position: relative;
+  top: -3px;
 }
 :host .title {
   display: inline-block;
   vertical-align: top;
 }
 :host .content input:not([type=checkbox]) {
-  width: 50%;
+  width: 100%;
   display: block;
+}
+:host .content input[type=text] {
+  width: 300px;
 }
 :host .fr-box.fr-inline {
   border: 1px solid #d4d4d4;

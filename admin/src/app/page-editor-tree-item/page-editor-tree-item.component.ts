@@ -28,11 +28,50 @@ export class PageEditorTreeItemComponent implements OnInit {
 
     public getSectionTitle(section: any)
     {
-        if (this.params[this.key].itemTitleKey) {
-            return section[this.params[this.key].itemTitleKey];
+        return PageEditorTreeItemComponent.obtainSectionTitle(this.params, this.key, section);
+    }
+
+
+    public static obtainSectionTitle(params, key, section: any)
+    {
+        if (params[key] && params[key].itemTitleKey) {
+            let fieldName = params[key].itemTitleKey;
+            let result;
+
+            let itemTitleFieldType = null;
+            try {
+                let subsectionType = section.type;
+                itemTitleFieldType = params[key].availableInstances[subsectionType][fieldName].type;
+
+                switch (itemTitleFieldType) {
+                    case 'select':
+                        try {
+                            let subsectionType = section.type;
+                            let fieldValue = section[fieldName];
+                            let options = params[key].availableInstances[subsectionType][fieldName].options;
+
+                            result = options[fieldValue];
+                        } catch (e) {
+                            let subsectionTypeName = section.sectionTypeName ? section.sectionTypeName : '';
+                            result = 'Не выбрано';
+                            if (subsectionTypeName) {
+                                result += ' :' + subsectionTypeName;
+                            }
+                        }
+                        break;
+                    case 'string':
+                        result = section[fieldName];
+                        break;
+                }
+            } catch (e) {
+                result = 'Нет названия';
+            }
+
+
+            return result ? result : 'Без названия';
         }
 
-        return null;
+        return 'Без названия';
     }
 
     public prepareInstance(instanceParams, sectionType: string, fieldName: string) {

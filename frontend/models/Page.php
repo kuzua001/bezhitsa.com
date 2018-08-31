@@ -169,7 +169,7 @@ class Page extends ActiveRecord
      */
     public function beforeSave($insert)
     {
-        echo "Saving page: " . $this->id . "\n";
+        //echo "Saving page: " . $this->id . "\n";
 
         if (parent::beforeSave($insert)) {
             if (!is_null($this->pageParams)) {

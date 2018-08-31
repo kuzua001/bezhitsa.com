@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable, Subject, pipe} from 'rxjs';
+import { Observable as ObservableInt} from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 import {Trainer} from "./models/trainer";
 import {CmsImage} from "./models/cms-image";
 import {ReadFileImpl} from "ngx-file-helpers/src/read-file-impl";
@@ -82,7 +84,7 @@ export class ModelService {
     }
 
     public deleteTrainer(trainer: Trainer) {
-        return this.http.delete(this.baseUrl + Trainer.getApiMethodName() + '/' + trainer.id);
+        return this.http.delete(this.baseUrl + Trainer.getApiMethodName(trainer.id));
     }
 
     public createTrainer(trainer: Trainer): Observable<Object> {
@@ -97,6 +99,19 @@ export class ModelService {
 
 
     //images
+
+    public getRoomImages(room: Room): Observable<CmsImage[]> {
+        let images = [];
+        let tasks$ = [];
+
+
+        room.image_ids.split(',').forEach((id) => {
+            tasks$.push(this.getImage(parseInt(id)));
+        });
+
+        return ObservableInt.forkJoin(tasks$);
+    }
+
 
     public getImages(filter: ImageFilter = null): Observable<CmsImage[]> {
 
@@ -119,11 +134,19 @@ export class ModelService {
     }
 
 
-    public saveImage(image: CmsImage) {
+    public saveImage(image: any, data: ReadFile|null, callback?: Function) {
         image.beforeSave();
+
+        if (data !== null) {
+            image.data = data;
+        }
+
         return this.http.put(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id, image)
-            .subscribe(() => {
+            .subscribe((data: CmsImage) => {
                 this.selectItemService.emitEventOfType(SelectItemEvent.Type.RefreshTags);
+                if (callback instanceof Function) {
+                    callback(data);
+                }
         });
     }
 
@@ -131,10 +154,11 @@ export class ModelService {
         return this.http.delete(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id);
     }
 
-    public createImage(image: ReadFile, callback: Function) {
+    public createImage(image: ReadFile, filter: ImageFilter|null, callback: Function) {
         return this.http.post(this.baseUrl + CmsImage.getApiMethodName(), {
             content: image.content,
-            filename: image.name
+            filename: image.name,
+            filter: filter
         }, httpOptions)
             .subscribe(response => {
                 if (callback instanceof Function) {

@@ -40,7 +40,7 @@
 		<div class="form-vertical">
 			<div class="page-options form-group checkbox">
 				<label for="enabled-checkbox">Опубликован?</label>
-				<input id="enabled-checkbox" type="checkbox" [checked]="currentPage.is_enabled" (change)="pageEnableToggle()"/>
+				<mat-checkbox [color]="'primary'" id="enabled-checkbox" [checked]="currentPage.is_enabled" (change)="pageEnableToggle()"></mat-checkbox>
 			</div>
 			<div class="fields form-group" interfaceElement></div>
 		</div>

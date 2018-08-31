@@ -1,4 +1,6 @@
 <?php
+
+use common\models\Image;
 use frontend\models\Page;
 use frontend\widgets\buttons\DetailButton;
 use frontend\models\pages\AboutSectionParams;
@@ -11,7 +13,12 @@ $widget = $this->context;
 /**
  * @var AboutSectionParams $sectionParams
  */
+
 $sectionParams = $widget->sectionParams;
+foreach ($sectionParams->slides as $i => $slide) {
+    $sectionParams->slides[$i]->image = Image::id($slide->image)->getSrc(true);
+}
+
 ?>
 <div class="row slider-group">
 	<div class="col-lg-12">
@@ -20,7 +27,7 @@ $sectionParams = $widget->sectionParams;
 				<ul class="slides sticky-content">
 					<li ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
 						<div class="wrapper">
-							<img src="{{slide.image}}">
+							<img ng-src="{{slide.image}}">
 							<div ng-if="slide.hasCard" class="caption left-align">
 								<h3 class="elegant-title-element small black-text">
 									<span class="first">{{slide.cardTitleFirst}}</span>
@@ -51,7 +58,7 @@ $sectionParams = $widget->sectionParams;
 			</div>
 			<slick class="mobile-only" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
 				<div ng-repeat="slide in slider.slides" ng-cloak ng-class="{active:slider.currentSlide == $index,previous:slider.previousSlide == $index}">
-					<img src="{{slide.image}}">
+					<img ng-src="{{slide.image}}">
 				</div>
 			</slick>
 		</div>
