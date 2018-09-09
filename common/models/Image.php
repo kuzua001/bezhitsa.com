@@ -8,6 +8,7 @@
 
 namespace common\models;
 
+use frontend\components\TranslatableTrait;
 use frontend\interfaces\models\HasSrc;
 use Yii;
 use yii\db\ActiveRecord;
@@ -32,6 +33,8 @@ use \Gumlet\ImageResize;
  */
 class Image extends ActiveRecord implements HasSrc
 {
+    use TranslatableTrait;
+
     private static $baseImagesPath = 'uploads/images/';
 
     const DEFAULT_TEMPLATE = '{NAME}_{SIZE}.{EXT}';
@@ -44,9 +47,17 @@ class Image extends ActiveRecord implements HasSrc
 
     private $imageExt;
 
+    protected function translateFields()
+    {
+        return [
+            'description'
+        ];
+    }
+
     public function afterFind()
     {
         $this->parseImageFilename();
+        $this->loadTranslations();
         parent::afterFind();
     }
 
@@ -116,26 +127,16 @@ class Image extends ActiveRecord implements HasSrc
 
 
     /**
-     * @param ActiveRecord $model
-     * @param $property
-     * @return array|Image|null|ActiveRecord
+     * @return array|Image
      */
-    public static function getInstance(ActiveRecord $model, $property) {
+    public static function noImage() {
         $result = new self();
         $result->filename = '/no_image.png';
-
-        $imageId = $model->canGetProperty($property) ? $model->$property : null;
-        if ($imageId !== null) {
-            $item = self::id($imageId);
-            if ($item !== null) {
-                $result = $item;
-            }
-        }
 
         return $result;
     }
 
-    public function getSrc($full = false) {
+    public function getSrc($full = true) {
         if ($full) {
             return '/' . ltrim($this->filename, '/');
         }

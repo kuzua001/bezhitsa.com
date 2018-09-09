@@ -1,11 +1,13 @@
-<div class="settings-container">
-    <div class="settings-sub-group" *ngFor="let subGroupTitle in groupSettings">
-        <header>{{subGroupTitle}}</header>
-        <section class="settings-list">
-            <div *ngFor="let item of groupSettings[subGroupTitle]">
-                <app-page-editor-field [title]="item.key" [params]="item" [valueSet]="item" [valueKey]="'value'"></app-page-editor-field>
-            </div>
-        </section>
-    </div>
-    <button (click)="save()">save</button>
+<div class="settings-container" *ngIf="groupSettings">
+    <accordion [closeOthers]="true" class="settings-sub-group">
+        <accordion-group heading="{{subGroupTitle}}" *ngFor="let subGroupTitle in groupSettings">
+            <section class="settings-list">
+                <div *ngFor="let item of groupSettings[subGroupTitle]">
+                    <app-page-editor-field-extended *ngIf="isExtended(item)" [title]="item.header" [params]="item" [valueSet]="item" [valueKey]="'value'"></app-page-editor-field-extended>
+                    <app-page-editor-field *ngIf="!isExtended(item)" [title]="item.header" [params]="item" [valueSet]="item" [valueKey]="'value'"></app-page-editor-field>
+                </div>
+            </section>
+            <button (click)="save()"class="ripple module-control-button-element default">Сохранить</button>
+        </accordion-group>
+    </accordion>
 </div>

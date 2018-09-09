@@ -22,7 +22,7 @@ class SectionParams extends PageParams implements NamedTypeInterface
         Section::TYPE_FITNESS_SCHEDULE       => 'Секция фитнеса с раписанием',
         Section::TYPE_FITNESS_STYLE          => 'Секция фитнес - стиль жизни',
         Section::TYPE_HOTEL_SERVICE          => 'Секция отеля сервис',
-        Section::TYPE_SLIDER_TABS            => 'Информационный слайдер',
+        Section::TYPE_SLIDER_TABS            => 'Слайдер',
         Section::TYPE_ABOUT_PAGE             => 'Об отеле/фитнесе/ресторане',
         Section::TYPE_TRAINERS_LIST          => 'Список тренеров',
         Section::TYPE_TEXT_PAGE              => 'Текстовая секция',

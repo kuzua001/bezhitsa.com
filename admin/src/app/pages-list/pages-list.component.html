@@ -1,7 +1,10 @@
 <select [(ngModel)]="selectedDomain" class="form-control form-control-lg">
   <option *ngFor='let domain of domains' [value]="domain.id">{{domain.title}}</option>
 </select>
-<div *ngFor='let page of groupedPages[selectedDomain]' class='navbar-selector-item' (click)="loadPage(page)" [ngClass]="{'active':page.id==selectedPageId}"> {{page.name}} </div>
+<div *ngFor='let page of groupedPages[selectedDomain]' class='navbar-selector-item' (click)="loadPage(page)" [ngClass]="{'active':page.id==selectedPageId}">
+  {{page.name}}
+  <a *ngIf="page.url" [href]="page.url" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+</div>
 <div class="toolbar-element">
   <div (click)="openModal(createPage)"><i class="fa fa-plus"></i></div>
 </div>

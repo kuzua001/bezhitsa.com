@@ -38,17 +38,13 @@ export class TrainersComponent extends State implements OnInit {
 
     detailPage = null;
 
-    getTrainerPageUrl(trainer: Trainer)
+    public getTrainerPageUrl(trainer: Trainer)
     {
         if (!trainer.alias || !trainer.alias.trim()) {
             return null;
         }
 
-        if (this.detailPage === null) {
-            this.pagesService.getPage(TrainersComponent.DETAIL_TRAINER_PAGE_ID).subscribe((page) => {
-               this.detailPage = page;
-            });
-        } else {
+        if (this.detailPage !== null) {
             let aliasRegex = /<alias:(.*)>/gi;
             return this.detailPage.url.replace(aliasRegex, trainer.alias);
         }
@@ -131,7 +127,14 @@ export class TrainersComponent extends State implements OnInit {
         });
     }
 
+    private loadDetailPage() {
+        this.pagesService.getPage(TrainersComponent.DETAIL_TRAINER_PAGE_ID).subscribe((page) => {
+            this.detailPage = page;
+        });
+    }
+
     ngOnInit() {
         this.loadTrainers();
+        this.loadDetailPage();
     }
 }

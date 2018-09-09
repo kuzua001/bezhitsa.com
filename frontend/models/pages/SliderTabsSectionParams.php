@@ -20,6 +20,17 @@ class SliderTabsSectionParams extends SectionParams
     protected $sectionType  = Section::TYPE_SLIDER_TABS;
     protected $sectionClass = 'events';
 
+
+    /**
+     * Harcoded field for making sence
+     * @var $adminTitle string
+     * @title Подпись блока (для информативности в меню слева)
+     * @default без названия
+     * @type string
+     * @tab [Параметры секции]
+     */
+    public $adminTitle;
+
     /**
      * @var $detailButtonText string
      * @title Текст кнопки подробнее

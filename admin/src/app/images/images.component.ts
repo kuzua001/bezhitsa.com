@@ -27,7 +27,6 @@ export class ImagesComponent implements OnInit {
     @Input() selectionMode: boolean = false;
 
     @Input() multiple: boolean = false;
-    @Input() fixedImageTypeId: number = null;
 
 
     @Output() selectedImageId = new EventEmitter<CmsImage>();
@@ -53,8 +52,11 @@ export class ImagesComponent implements OnInit {
 
     private showDescriptions: boolean = false;
 
-    preSelectedImageId = null;
-    preSelectedImageIds = [];
+    preSelectedImageMap = null;
+    preSelectedImagesMap = [];
+
+    @Input()
+    preSelectedImageIds: Array<number> = [];
 
     @ViewChildren('imagesList') imageList;
     @ViewChild('imageEditor') imageEditor: TemplateRef<any>;
@@ -85,13 +87,13 @@ export class ImagesComponent implements OnInit {
         let imageId = this.images[i].id;
 
         if (this.multiple) {
-            if (this.preSelectedImageIds[imageId] === undefined) {
-                this.preSelectedImageIds[imageId] = true;
+            if (this.preSelectedImagesMap[imageId] === undefined) {
+                this.preSelectedImagesMap[imageId] = true;
             } else {
-                this.preSelectedImageIds[imageId] = !this.preSelectedImageIds[imageId];
+                this.preSelectedImagesMap[imageId] = !this.preSelectedImagesMap[imageId];
             }
         } else {
-            this.preSelectedImageId = imageId;
+            this.preSelectedImageMap = imageId;
         }
     }
 
@@ -106,10 +108,15 @@ export class ImagesComponent implements OnInit {
         }
     }
 
-    private loadImages(filter: ImageFilter = null) {
-        if (this.fixedImageTypeId !== null && filter !== null) {
-            filter.selectedType = new ImageType();
-            filter.selectedType.id = 1;//this.fixedImageTypeId;
+    @Input()
+    initiallyFilterByTypeId: number | null = null;
+
+    private loadImages(filter: ImageFilter = null, force: boolean = false) {
+
+        if (this.initiallyFilterByTypeId && filter === null) {
+            filter = new ImageFilter();
+            filter.selectedTags = [];
+            filter.selectedType = this.imageTypes.find(t => t.id === this.initiallyFilterByTypeId);
         }
 
         this.modelService.getImages(filter).subscribe(images => {
@@ -158,31 +165,38 @@ export class ImagesComponent implements OnInit {
            if (event.itemType === SelectItemEvent.Type.ApplyFilter) {
                this.filter = event.payload.filter;
                this.showDescriptions = this.filter.showDescriptions;
+               console.log(this.filter);
                this.loadImages(this.filter);
-           }
-        });
-
-        this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
-            if (event.itemType === SelectItemEvent.Type.ImageChooserApply) {
+           } else if (event.itemType === SelectItemEvent.Type.LanguageChange) {
+                this.loadImages(this.filter, true);
+            } else if (event.itemType === SelectItemEvent.Type.ImageChooserApply) {
                 if (this.multiple) {
                     const result = [];
-                    for (let imageId in this.preSelectedImageIds) {
-                        if (!this.preSelectedImageIds[imageId]) continue;
-                        result.push(this.images.find(i => i.id === Number(imageId)));
+                    for (let imageId in this.preSelectedImagesMap) {
+                        if (!this.preSelectedImagesMap[imageId]) continue;
+                        let image = this.images.find(i => i.id === Number(imageId));
+                        if (image !== undefined) {
+                            result.push(image);
+                        }
                     }
-                    this.selectedImageIds.emit(result);
+                    if (result.length) {
+                        this.selectedImageIds.emit(result);
+                    }
                 } else {
-                    this.selectedImageId.emit(this.images.find(i => i.id === Number(this.preSelectedImageId)));
+                    let image = this.images.find(i => i.id === Number(this.preSelectedImageMap));
+                    if (image !== undefined) {
+                        this.selectedImageId.emit(image);
+                    }
                 }
             }
         });
     }
 
-
-    private loadImageTypes()
+    private load()
     {
         this.modelService.getImageTypes().subscribe(types => {
             this.imageTypes = types;
+            this.loadImages();
         });
     }
 
@@ -271,9 +285,14 @@ export class ImagesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadImages();
-        this.loadImageTypes();
+        this.load();
         this.actualSize = this.wrapper.nativeElement.offsetWidth;
+
+        console.log(this.preSelectedImageIds);
+
+        for (let id of this.preSelectedImageIds) {
+            this.preSelectedImagesMap[id] = true;
+        }
     }
 
     private limit = 50;

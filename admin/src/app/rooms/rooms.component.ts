@@ -6,6 +6,10 @@ import {SelectItemService} from "../select-item.service";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {State} from "../models/state";
 import {bindToComponentState} from "../storage";
+import {Trainer} from "../models/trainer";
+import {TrainersComponent} from "../trainers/trainers.component";
+import {Page} from "../models/page.interface";
+import {PagesService} from "../pages.service";
 
 @Component({
     selector: 'rooms',
@@ -14,12 +18,19 @@ import {bindToComponentState} from "../storage";
 })
 export class RoomsComponent extends State implements OnInit {
 
+    static DETAIL_ROOM_PAGE_ID = 28;
+
     @ViewChild('roomsList') roomsContainer: any;
 
     modalRef: BsModalRef;
 
     openModal(template: TemplateRef<any>) {
         this.modalRef = this.modalService.show(template);
+    }
+
+    closeModal()
+    {
+        this.modalRef.hide();
     }
 
     public rooms: Room[];
@@ -42,9 +53,10 @@ export class RoomsComponent extends State implements OnInit {
 
     constructor(private modelService: ModelService,
                 private selectItemService: SelectItemService,
-                private modalService: BsModalService) {
+                private modalService: BsModalService,
+                private pagesService: PagesService) {
         super();
-        this.newRoom = new Room(this.modelService);
+        this.newRoom = new Room();
 
         selectItemService.event$.subscribe((event: SelectItemEvent) => {
             if (event.itemType === SelectItemEvent.Type.LanguageChange) {
@@ -61,9 +73,16 @@ export class RoomsComponent extends State implements OnInit {
         });
     }
 
+    reorderApply() {
+        this.modelService.reorderApply('room', this.rooms);
+    }
+
     private loadRooms(force: boolean = false) {
         this.modelService.getRooms().subscribe(rooms => {
-            this.rooms = rooms;
+            rooms.sort((a, b) => {
+                return a.n - b.n
+            });
+            this.rooms = rooms.map(room => Room.fromRaw(room));
             this.processLoadedState();
             if (force) {
                 if (this.selectedRoom !== null) {
@@ -98,12 +117,34 @@ export class RoomsComponent extends State implements OnInit {
             this.rooms.push(room as Room);
             this.loadRoom(room as Room);
             this.modalRef.hide();
-            this.newRoom = new Room(this.modelService);
+            this.newRoom = new Room();
             this.roomsContainer.scrollTop = this.roomsContainer.scrollHeight;
+        });
+    }
+
+    private detailPage: Page | null = null;
+
+    public getRoomPageUrl(room) {
+        if (!room.alias || !room.alias.trim()) {
+            return null;
+        }
+
+        if (this.detailPage !== null) {
+            let aliasRegex = /<alias:(.*)>/gi;
+            return this.detailPage.url.replace(aliasRegex, room.alias);
+        }
+
+        return null;
+    }
+
+    private loadDetailPage() {
+        this.pagesService.getPage(RoomsComponent.DETAIL_ROOM_PAGE_ID).subscribe((page) => {
+            this.detailPage = page;
         });
     }
 
     ngOnInit() {
         this.loadRooms();
+        this.loadDetailPage();
     }
 }

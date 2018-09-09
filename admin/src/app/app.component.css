@@ -369,6 +369,9 @@ rooms:not(.integrated) .module-editor {
   width: min-content;
   min-width: 500px;
 }
+.fast-image-editor-popup .modal-body {
+  height: auto!important;
+}
 select.form-control,
 input.form-control {
   border-radius: 0!important;
@@ -406,4 +409,31 @@ mat-checkbox {
 }
 .trumbowyg-box {
   margin-top: 0!important;
+}
+.textarea-field .trumbowyg-box {
+  min-height: 0;
+  height: 200px;
+}
+.sortable-item-unset {
+  display: unset;
+}
+.sortable-item-active img {
+  display: none;
+}
+.sortable-item-active .image-card-wrapper {
+  background-image: url('/assets/img/anyimage.png');
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.2;
+}
+textarea {
+  width: 100%;
+}
+.sindu_dragger table {
+  background: none!important;
+}
+.field.description .trumbowyg-box,
+.field.description .trumbowyg-editor {
+  min-height: auto!important;
 }

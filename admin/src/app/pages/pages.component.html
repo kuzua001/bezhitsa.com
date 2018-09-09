@@ -17,7 +17,7 @@
             <div class="sections-selector" *ngIf="selectedPageFieldsSections">
                 <div *ngFor="let section of selectedPageFieldsSections.values; index as sectionNumber;"
                      (click)="selectSection(sectionNumber)" [class.selected]="sectionNumber === selectedSectionNumber" class="item">
-                    {{selectedPageFieldsSections.values[sectionNumber].sectionTypeName}}
+                    {{getSectionTitle(sectionNumber)}}
                     <div class="delete" click-stop-propagation (click)="deleteSectionWithConfirm('sectionsParams', sectionNumber)"><i class="fa fa-close"></i></div>
                 </div>
                 <div class="sections-panel toolbar-element" *ngIf="selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'">
@@ -45,7 +45,6 @@
 
             <div class="module-panel" *ngIf="selectedPageFields !== null">
                 <button (click)="save()" class="save ripple module-control-button-element default">Сохранить</button>
-                <a href="{{currentPage.url}}" target="_blank"><button class="view ripple module-control-button-element">Просмотр</button></a>
                 <button (click)="deleteWithConfirm()" class="ripple module-control-button-element delete">Удалить</button>
             </div>
         </div>

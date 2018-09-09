@@ -35,6 +35,7 @@ export class ModelService {
     ) {
         Trainer.setupLanguageService(this.languageService);
         Room.setupLanguageService(this.languageService);
+        CmsImage.setupLanguageService(this.languageService);
     }
 
     public reorderApply(modelName: string, modelList: any[])
@@ -100,26 +101,28 @@ export class ModelService {
 
     //images
 
-    public getRoomImages(room: Room): Observable<CmsImage[]> {
+    public getRoomImages(room: Room): Observable<CmsImage[]> | null {
         let images = [];
         let tasks$ = [];
 
-
-        room.image_ids.split(',').forEach((id) => {
-            tasks$.push(this.getImage(parseInt(id)));
+        room.image_ids.split(',').forEach((idStr) => {
+            let id = parseInt(idStr);
+            if (id) {
+                tasks$.push(this.getImage(id));
+            }
         });
 
-        return ObservableInt.forkJoin(tasks$);
+        return tasks$.length ? ObservableInt.forkJoin(tasks$) : null;
     }
 
 
-    public getImages(filter: ImageFilter = null): Observable<CmsImage[]> {
+    public getImages(filter: ImageFilter|null = null): Observable<CmsImage[]> {
 
         let options = {};
 
         if (filter !== null) {
             let params = {
-                selectedType : filter.selectedType,
+                selectedType : filter.selectedType ? filter.selectedType.id : '',
                 tags : filter.selectedTags.join(',')
             };
             const httpParams: HttpParamsOptions = { fromObject: params as HttpParamsOptions } as HttpParamsOptions;
@@ -141,7 +144,7 @@ export class ModelService {
             image.data = data;
         }
 
-        return this.http.put(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id, image)
+        return this.http.put(this.baseUrl + CmsImage.getApiMethodName(image.id), image)
             .subscribe((data: CmsImage) => {
                 this.selectItemService.emitEventOfType(SelectItemEvent.Type.RefreshTags);
                 if (callback instanceof Function) {
@@ -151,7 +154,7 @@ export class ModelService {
     }
 
     public deleteImage(image: CmsImage) {
-        return this.http.delete(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id);
+        return this.http.delete(this.baseUrl + CmsImage.getApiMethodName(image.id));
     }
 
     public createImage(image: ReadFile, filter: ImageFilter|null, callback: Function) {
@@ -168,7 +171,7 @@ export class ModelService {
     }
 
     public updateImage(imageData: ReadFile, image: CmsImage, callback: Function) {
-        return this.http.put(this.baseUrl + CmsImage.getApiMethodName() + '/' + image.id, {
+        return this.http.put(this.baseUrl + CmsImage.getApiMethodName(image.id), {
             content: imageData.content,
             filename: imageData.name
         }, httpOptions)

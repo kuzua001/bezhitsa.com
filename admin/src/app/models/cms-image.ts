@@ -5,6 +5,8 @@ import {SelectItemEvent} from "./select-item-event";
 export class CmsImage extends BaseApiModel {
     protected static apiMethodName = 'images';
 
+    protected static passLang = true;
+
     public id: number;
     public image_type_id: number;
     public width: number;

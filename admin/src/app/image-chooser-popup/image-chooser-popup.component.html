@@ -1,7 +1,6 @@
 <ng-template #imageChooser>
   <div class="modal-header">
     <div class="pull-left">
-      <h4 class="modal-title">Выберите изображение</h4>
       <sub-menu-images [inline]="true" [showShowTitles]="false" [fixedImageTypeId]="fixedImageTypeId"></sub-menu-images>
     </div>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -10,15 +9,32 @@
   </div>
   <div class="modal-body">
     <app-images
+            [preSelectedImageIds]="preSelectedImageIds"
+            [initiallyFilterByTypeId]="fixedImageTypeId"
             [selectionMode]="true"
-            [fixedImageTypeId]="fixedImageTypeId"
             [multiple]="multiple"
             (selectedImageId)="outputImageId($event)" (selectedImageIds)="outputImageIds($event)"></app-images>
   </div>
   <div class="modal-footer">
     <div class="toolbar">
-      <button class="ripple module-control-button-element default" (click)="selectItemService.emitImageChooserEvent(); closePopup()">Выбор</button>
-      <button class="ripple module-control-button-element delete" (click)="closePopup()">отмена</button>
+      <button class="ripple module-control-button-element default" (click)="imageChoose(); closePopup()">Выбор</button>
+      <button class="ripple module-control-button-element delete" (click)="closePopup()">Отмена</button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #fastImageEditor>
+  <div class="modal-header">
+    <h4>Описание фотографии в слайдере</h4>
+  </div>
+  <div class="modal-body">
+    <label>Описание:</label>
+    <input [(ngModel)]="editingImage.description">
+  </div>
+
+  <div class="modal-footer">
+    <div class="toolbar">
+      <button class="ripple module-control-button-element default" (click)="this.saveEditingImage();">Сохранить</button>
+      <button class="ripple module-control-button-element delete" (click)="closePopup()">Отмена</button>
     </div>
   </div>
 </ng-template>

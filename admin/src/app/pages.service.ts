@@ -27,8 +27,8 @@ export class PagesService {
         return this.http.get<Page[]>(this.pagesUrl);
     }
 
-    getPage(pageId: number): Observable<Page[]> {
-        return this.http.get<Page[]>(this.pagesUrl  + '/' + pageId);
+    getPage(pageId: number): Observable<Page> {
+        return this.http.get<Page>(this.pagesUrl  + '/' + pageId);
     }
 
     getPageFields(pageId: number, language: number): Observable<PageFields> {

@@ -13,7 +13,7 @@ $widget = $this->context;
  * @var \frontend\models\pages\HotelServiceSectionParams $sectionParams
  */
 $sectionParams = $widget->sectionParams;
-$rooms = Room::find()->limit(4)->all();
+$rooms = Room::find()->where('published = 1')->limit(4)->all();
 
 /**
  * @var $rooms Room[]
@@ -93,6 +93,11 @@ $rooms = Room::find()->limit(4)->all();
 	<div class="col-lg-8 col-md-12 col-sm-12 rooms-list-element hidden-xs hidden-sm">
 		<div class="row ">
 			<?php foreach ($rooms as $i => $item) { ?>
+                <?php
+                if ($item->getMainImage() === null) {
+                    continue;
+                }
+                ?>
 				<div class="col-lg-6 col-md-6 col-sm-12">
 					<a href="<?= $item->getUrl() ?>">
 						<div class="room-card-element">
@@ -126,6 +131,11 @@ $rooms = Room::find()->limit(4)->all();
 	</div>
 	<slick class="hidden-md hidden-lg hidden-xl full-width" infininte slides-to-show="1" slides-to-scroll="1" center-padding="10%" center-mode="true" arrows="false">
         <?php foreach ($rooms as $item) { ?>
+            <?php
+            if ($item->getMainImage() === null) {
+                continue;
+            }
+            ?>
 			<div class="col-lg-4 col-md-6">
 				<a href="<?= $item->getUrl() ?>">
 					<div class="room-card-element">

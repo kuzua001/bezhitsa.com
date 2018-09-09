@@ -7,6 +7,7 @@ import {TrainersComponent} from "./trainers/trainers.component";
 import {RoomsComponent} from "./rooms/rooms.component";
 import {SettingsListComponent} from "./settings-list/settings-list.component";
 import {SettingsComponent} from "./settings/settings.component";
+import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.component";
 
 const routes: Routes = [
     {
@@ -40,6 +41,13 @@ const routes: Routes = [
         component: RoomsComponent,
         data : {
             name: 'Номера'
+        }
+    },
+    {
+        path: 'trainings',
+        component: TrainingsEditorComponent,
+        data : {
+            name: 'Тренировки'
         }
     },
     {

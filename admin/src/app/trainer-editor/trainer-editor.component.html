@@ -52,6 +52,10 @@
       <input type="text" [(ngModel)]="trainer.alias">
     </div>
 
+    <div class="field published">
+      <span class="label">Опубликован</span>
+      <mat-checkbox [color]="'primary'" [(ngModel)]="trainer.published"></mat-checkbox>
+    </div>
 
     <div class="buttons">
       <button class="ripple module-control-button-element default" (click)="save()">Сохранить</button>
@@ -67,7 +71,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <button class="btn btn-primary" (click)="modalRef.hide()">отмена</button>
-    <button class="btn btn-danger" (click)="delete()">да, удалить</button>
+    <div class="buttons">
+      <button class="ripple module-control-button-element cancel" (click)="modalRef.hide()">отмена</button>
+      <button class="ripple module-control-button-element delete" (click)="delete()">да, удалить</button>
+    </div>
   </div>
 </ng-template>

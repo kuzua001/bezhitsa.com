@@ -8,6 +8,9 @@ h4 {
   height: 70vh;
   overflow-y: auto;
 }
+.modal-body label {
+  margin-right: 10px;
+}
 .modal-header > div:first-child {
   flex: 1 1;
 }

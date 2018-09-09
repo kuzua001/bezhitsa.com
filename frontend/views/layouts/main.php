@@ -57,7 +57,7 @@ $domainId = AppHelper::getDomain()->domain;
 				]) ?>
 				<?= $content ?>
 			</div>
-			<?php if ($lang === LanguageHelper::LANG_RU) { ?>
+      <?php if ($lang === LanguageHelper::LANG_RU) { ?>
         <?= $this->render("//partial/bottom_ru") ?>
       <?php } else if ($lang === LanguageHelper::LANG_EN) { ?>
         <?= $this->render("//partial/bottom_en") ?>

@@ -36,6 +36,7 @@ use frontend\models\Domain;
  * @property $has_vk                boolean
  * @property $has_fb                boolean
  * @property $has_insta             boolean
+ * @property $published             boolean
  * @package frontend\models
  */
 class Trainer extends ActiveRecord implements HasUrl, HasSrc
@@ -83,6 +84,7 @@ class Trainer extends ActiveRecord implements HasUrl, HasSrc
             'has_vk',
             'has_fb',
             'has_inst',
+            'published',
         ];
     }
 
@@ -115,6 +117,7 @@ class Trainer extends ActiveRecord implements HasUrl, HasSrc
                 'has_inst',
                 'two_lines_position',
                 'two_lines_position_en',
+                'published',
             ]
         ];
     }

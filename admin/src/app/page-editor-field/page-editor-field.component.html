@@ -20,6 +20,9 @@
     <div *ngSwitchCase="'textarea'">
       <textarea id={{uniqId}} ngxTrumbowygEditor name="editorDirective" [(ngModel)]="valueSet[valueKey]"></textarea>
     </div>
+    <div *ngSwitchCase="'script'">
+      <textarea id={{uniqId}} name="editorDirective" [(ngModel)]="valueSet[valueKey]"></textarea>
+    </div>
     <div *ngSwitchCase="'color'">
       <input class="color" id={{uniqId}} type="text" (colorPickerChange)="setVal($event)" [colorPicker]="valueSet[valueKey]" [style.background]="valueSet[valueKey]" [cpOutputFormat]="hex"/>
     </div>

@@ -103,12 +103,7 @@ export class ImageChooserComponent implements OnInit {
         }
     }
 
-    private loadImages(filter: ImageFilter = null) {
-        if (this.fixedImageTypeId !== null) {
-            filter.selectedType = new ImageType();
-            filter.selectedType.id = 1;//this.fixedImageTypeId;
-        }
-
+    private loadImages(filter: ImageFilter|null = null) {
         this.modelService.getImages(filter).subscribe(images => {
             images.forEach((rawImage, index) => {images[index] = CmsImage.fromRaw(rawImage);});
             this.images = images;

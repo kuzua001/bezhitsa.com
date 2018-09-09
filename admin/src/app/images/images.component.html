@@ -15,7 +15,7 @@
       <div *ngFor="let image of images; let i = index;"
            class="image-card"
            (click)="this.selectionMode ? markImage(i) : openEditor(image, image.getOrientation)"
-           [class.ticked]="multiple ? preSelectedImageIds[image.id] : preSelectedImageId === image.id"
+           [class.ticked]="multiple ? preSelectedImagesMap[image.id] : preSelectedImageMap === image.id"
            [hidden]="i >= limit"
       >
         <div class='image-card-wrapper' *ngIf="i < limit;">

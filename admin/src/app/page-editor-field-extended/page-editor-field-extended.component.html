@@ -1,0 +1,60 @@
+<div class="field">
+  <h2 class="title">{{title}}</h2>
+  <div [ngSwitch]="params.type" class="content">
+    <div *ngSwitchCase="'simple_json_list'">
+      <table id="{{uniqId}}">
+        <thead>
+          <tr>
+            <th *ngFor="let key in params.options" [hidden]="getFieldExtra(key)['titleRow'] === false">{{params.options[key]}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of getRows; let i = index;">
+            <td *ngFor="let key in params.options" [class]="getFieldExtra(key)['class'] ? getFieldExtra(key)['class'] : ''">
+
+              <span class="title" *ngIf="getFieldExtra(key)['titleRow'] === false">
+                {{params.options[key]}}
+              </span>
+              <div [ngSwitch]="getFieldType(key)">
+                <input *ngSwitchCase="'string'" type="text" [(ngModel)]="row[key]" (change)="updateJsonField()">
+                <textarea *ngSwitchCase="'textarea'" ngxTrumbowygEditor name="editorDirective" [(ngModel)]="row[key]" (ngModelChange)="updateJsonField()"></textarea>
+                <select *ngSwitchCase="'select'" [(ngModel)]="row[key]" (change)="updateJsonField()">
+                  <option *ngFor="let value in getFieldOptions(key)" value="{{value}}">{{getFieldOptions(key)[value]}}</option>
+                </select>
+                <div *ngSwitchCase="'link'" class="link-input">
+                  <input [(ngModel)]="row[key]" (change)="updateJsonField()" placeholder="http://yandex.ru">
+                  <a target="_blank" [href]="row[key]"><i class="fa fa-external-link"></i></a>
+                </div>
+              </div>
+
+            </td>
+            <td>
+              <span class="handle"><i class="fa fa-bars"></i></span>
+              <span class="close" (click)="deleteJsonRow(i)"><i class="fa fa-trash"></i></span>
+            </td>
+          </tr>
+          <tr colspan="0">
+           <td><span class="add" (click)="addJsonRow()"><i class="fa fa-plus"></i></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngSwitchCase="'simple_json'">
+      <div *ngFor="let key in params.options">
+        {{params.options[key]}}
+        <div [ngSwitch]="getFieldType(key)">
+          <input *ngSwitchCase="'string'" type="text" [(ngModel)]="jsonData[key]" (change)="updateJsonField()">
+          <textarea *ngSwitchCase="'textarea'" ngxTrumbowygEditor name="editorDirective" [(ngModel)]="jsonData[key]" (ngModelChange)="updateJsonField()"></textarea>
+          <select *ngSwitchCase="'select'" [(ngModel)]="jsonData[key]" (change)="updateJsonField()">
+            <option *ngFor="let value in getFieldOptions(key)" value="{{value}}">{{getFieldOptions(key)[value]}}</option>
+          </select>
+          <div *ngSwitchCase="'link'" class="link-input">
+            <input [(ngModel)]="jsonData[key]" (change)="updateJsonField()" placeholder="http://yandex.ru">
+            <a target="_blank" [href]="jsonData[key]">{{jsonData[key]}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

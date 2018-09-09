@@ -45,6 +45,8 @@ import { FocusDirective } from './focus.directive';
 import { ScrollToModule } from 'ng2-scroll-to-el';
 import { ImageChooserPopupComponent } from './image-chooser-popup/image-chooser-popup.component';
 import {MatCheckboxModule} from "@angular/material";
+import {PageEditorFieldExtendedComponent} from "./page-editor-field-extended/page-editor-field-extended.component";
+import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.component";
 //import { CustomCheckboxModule } from 'angular-custom-checkbox';
 
 @NgModule({
@@ -71,12 +73,14 @@ import {MatCheckboxModule} from "@angular/material";
         ImageChooserComponent,
         NgForIn,
         PageEditorFieldComponent,
+        PageEditorFieldExtendedComponent,
         ClickStopPropagation,
         PageEditorTreeItemComponent,
         ImageCropperComponent,
         CustomImageCropperComponent,
         FocusDirective,
         ImageChooserPopupComponent,
+        TrainingsEditorComponent
     ],
     imports: [
         BrowserModule,
@@ -84,23 +88,7 @@ import {MatCheckboxModule} from "@angular/material";
         ReactiveFormsModule,
         AppRoutingModule,
         HttpClientModule,
-        NgxTrumbowygModule.withConfig({
-            lang: 'ru',
-            svgPath: 'assets/icons/icons.svg',
-            removeformatPasted: true,
-            autogrow: true,
-            btns: [
-                ['formatting'],
-                ['strong', 'em', 'del'],
-                ['superscript', 'subscript'],
-                ['link'],
-                ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                ['unorderedList', 'orderedList'],
-                ['horizontalRule'],
-                ['removeformat'],
-                ['fullscreen']
-            ]
-        }),
+        NgxTrumbowygModule.withConfig(AppModule.editorOptions),
         ModalModule.forRoot(),
         FileHelpersModule,
         BsDropdownModule.forRoot(),
@@ -118,4 +106,20 @@ import {MatCheckboxModule} from "@angular/material";
     exports: [ModalModule]
 })
 export class AppModule {
+    public static editorOptions = {
+        lang: 'ru',
+        svgPath: 'assets/icons/icons.svg',
+        removeformatPasted: true,
+        autogrow: true,
+        btns: [
+            ['formatting'],
+            ['strong', 'em', 'del'],
+            ['superscript', 'subscript'],
+            ['link'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat']
+        ]
+    };
 }

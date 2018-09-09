@@ -8,6 +8,7 @@
 
 namespace frontend\models\data;
 
+use common\models\Image;
 use frontend\components\HasManySrcTrait;
 use frontend\components\LanguageHelper;
 use frontend\components\TranslatableTrait;
@@ -26,11 +27,16 @@ use frontend\interfaces\models\HasUrl;
  * @property $title        string
  * @property $text         string
  * @property $alias        string
+ * @property $n            integer
+ * @property $published    boolean
  * @package frontend\models
  */
 class Room extends ActiveRecord implements HasUrl
 {
-    use TranslatableTrait;
+    use TranslatableTrait {
+        beforeSave as public traitBeforeSave;
+    }
+
     use HasManySrcTrait;
 
     public function afterFind()
@@ -110,22 +116,22 @@ class Room extends ActiveRecord implements HasUrl
         ]
     ];
 
-    /**
-     * Получить все изображения номера
-     * @return array|ActiveRecord[]|RoomImage[]
-     */
-    public function getImages()
+    public function beforeSave($insert)
     {
-        return $this->hasMany(RoomImage::className(), ['room_id' => 'id'])->all();
+        $this->image_ids = trim($this->image_ids, ',');
+        return $this->traitBeforeSave($insert);
     }
+
 
     /**
      * Получить главное изображение номера
-     * @return array|null|ActiveRecord|RoomImage
+     * @return array|null|ActiveRecord|Image
      */
     public function getMainImage()
     {
-        return $this->hasMany(RoomImage::className(), ['room_id' => 'id'])->where('is_main = 1')->one();
+        $images = $this->getImagesList();
+
+        return !empty($images) ? $images[0] : Image::noImage();
     }
 
     /**
@@ -135,7 +141,7 @@ class Room extends ActiveRecord implements HasUrl
     public function getSlides()
     {
         $slides = [];
-        $images = $this->getImages();
+        $images = $this->getImagesList();
         foreach ($images as $img) {
             $slides[] = [
                 'image' => $img->getSrc(),
@@ -218,14 +224,16 @@ class Room extends ActiveRecord implements HasUrl
             'title',
             'text',
             'alias',
-            'tl_room_type'
+            'tl_room_type',
+            'n',
+            'published'
         ];
     }
 
     public function scenarios()
     {
         return [
-            'default' => ['id', 'url', 'action_id', 'title', 'image_ids', 'is_enabled', 'pages_id', 'domain_id', 'alias', 'tl_room_type']
+            'default' => ['id', 'url', 'action_id', 'title', 'text', 'image_ids', 'is_enabled', 'pages_id', 'domain_id', 'alias', 'tl_room_type', 'n', 'published']
         ];
     }
 }

@@ -6,6 +6,7 @@ import {ImageFilters} from "../../models/image-filters";
 import {SelectItemService} from "../../select-item.service";
 import {SelectItemEvent} from "../../models/select-item-event";
 import {ImageFilter} from "../../models/image-filter";
+import {ImageType} from "../../models/image-type";
 
 
 @Component({
@@ -33,6 +34,10 @@ export class SubMenuImagesComponent extends SubMenuComponent {
 
     @Input()
     fixedImageTypeId: number = null;
+
+    fixedTypeName: string = null;
+
+    private selectedTypeId: number = 0;
 
     private isTagSelected(tag: string): boolean {
         return !!this.filter.selectedTags.find(t => t === tag);
@@ -72,6 +77,15 @@ export class SubMenuImagesComponent extends SubMenuComponent {
     }
 
     public applyFilter() {
+        if (this.fixedImageTypeId !== null) {
+            this.filter.selectedType = this.imageFilters.types.find(t => t.id == this.fixedImageTypeId);
+        } else {
+            console.log(this.selectedTypeId);
+            this.filter.selectedType = (this.selectedTypeId ? this.imageFilters.types.find(t => t.id == this.selectedTypeId) : null);
+        }
+
+        console.log(this.filter);
+
         this.selectItemService.emitEventOfType(SelectItemEvent.Type.ApplyFilter, {
             'filter': this.filter
         });
@@ -145,6 +159,10 @@ export class SubMenuImagesComponent extends SubMenuComponent {
     private loadImageFilters() {
         this.modelService.getImageFilters().subscribe((filters) => {
             this.imageFilters = filters;
+            if (this.fixedImageTypeId !== null) {
+                let fixedType = this.imageFilters.types.find(t => t.id == this.fixedImageTypeId);
+                this.fixedTypeName = fixedType.name;
+            }
             if (this.filter.selectedTags.length) {
                 let oldSelectedTags = Object.assign({}, this.filter.selectedTags);
                 this.filter.selectedTags = this.filter.selectedTags.filter(tag => {

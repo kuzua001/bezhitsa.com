@@ -16,8 +16,14 @@ trait HasManySrcTrait
     protected $imagesField = 'image_ids';
 
     public function getImagesList() {
-        $ids = explode(',', $this->{$this->imagesField});
+        $ids = explode(',', trim($this->{$this->imagesField}, ','));
+        /** @var Image[] $images */
         $images = Image::find()->where(['in', 'id', $ids])->all();
+            usort($images, function($a, $b) use ($ids) {
+            $aIndex = array_search($a->id, $ids);
+            $bIndex = array_search($b->id, $ids);
+            return $aIndex > $bIndex;
+        });
 
         return $images;
     }

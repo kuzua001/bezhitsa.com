@@ -29,7 +29,7 @@ class CustomUpdateAction extends UpdateAction
     public function run($id)
     {
         /* @var $model ActiveRecord |Image*/
-        $model = $this->findModel($id);
+        $model = Image::id($id);
 
 
         if ($this->checkAccess) {

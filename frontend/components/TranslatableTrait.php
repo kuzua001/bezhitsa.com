@@ -43,6 +43,10 @@ trait TranslatableTrait
         $lang = LanguageHelper::getCurrentLanguage();
         if (intval($lang) !== LanguageHelper::getDefaultLanguage()) {
             foreach ($this->translateFields() as $field) {
+                if (!isset($this->$field) || !isset($this->oldAttributes[$field])) {
+                    continue;
+                }
+
                 $this->$field = $this->oldAttributes[$field];
             }
         }

@@ -83,16 +83,6 @@ use frontend\models\pages\SliderTabsSectionParams;
                                             <?= Yii::t('app/labels', 'от'); ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб'); ?>
 										</div>
 									</section>
-									<!--<footer>
-										<div class="property-item-element">
-											<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
-											<span class="property-description"><?= $item->getBedTitle() ?></span>
-										</div>
-										<div class="property-item-element">
-											<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
-											<span class="property-description"><?= $item->getPersonTitle() ?></span>
-										</div>
-									</footer>-->
 								</div>
 							</a>
 						</div>

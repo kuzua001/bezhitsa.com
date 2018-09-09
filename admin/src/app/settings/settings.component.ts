@@ -51,6 +51,13 @@ export class SettingsComponent implements OnInit {
         }
 	}
 
+	public isExtended(item: any)
+	{
+		return item.type &&
+			(item.type == 'simple_json_list' ||
+			item.type == 'simple_json');
+	}
+
 	ngOnInit() {
 
 	}

@@ -2,7 +2,10 @@
     <div class="module-list">
         <ul class="object-list-element" *ngIf="rooms !== null" [ngClass]="{active: selectedRoom !== null}" #trainersList>
             <li class="object-item" *ngFor="let room of rooms" (click)="loadRoom(room)" [ngClass]="{active: this.selectedRoom && room.id == selectedRoom.id}">
-                <h2 class="object-name">{{room.title | wordCountLimit: 2 }}</h2>
+                <h2 class="object-name">
+                    {{room.title | wordCountLimit: 2 }}
+                    <a *ngIf="getRoomPageUrl(room) !== null" [href]="getRoomPageUrl(room)" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                </h2>
             </li>
         </ul>
         <div class="toolbar-element">
@@ -16,20 +19,49 @@
 </div>
 <ng-template #createRoom>
     <div class="modal-header">
-        <h4 class="modal-title pull-left">Создание нового номера</h4>
+        <h4 class="modal-title pull-left">Создать нового номера</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <div>
-            Введите название номера:
-        </div>
+        <label>
+            Название:
+        </label>
         <div>
             <input type="text" #newRoomName>
         </div>
-        <div>
-            <button class="btn btn-primary" (click)="createNewRoom(newRoomName.value)">создать</button>
+    </div>
+    <div class="modal-footer">
+        <div class="buttons">
+            <button type="button" class="ripple module-control-button-element default" (click)="createNewRoom(newRoomName.value)">Создать</button>
+            <button type="button" class="ripple module-control-button-element delete" (click)="closeModal()">Отмена</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #reorderRooms>
+    <div class="modal-header">
+        <h4 class="modal-title">Поменять местами</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <bs-sortable *ngIf="rooms"
+                     [(ngModel)]="rooms"
+                     itemClass="sortable-item"
+                     itemActiveClass="sortable-item-active"
+                     placeholderItem="Drag here"
+                     placeholderClass="placeholderStyle"
+                     wrapperClass="sortable-wrapper"
+                     fieldName="title"
+        ></bs-sortable>
+    </div>
+    <div class="modal-footer">
+        <div class="buttons">
+            <button type="button" class="ripple module-control-button-element save" (click)="reorderApply();modalRef.hide();">Да</button>
+            <button type="button" class="ripple module-control-button-element cancel" (click)="modalRef.hide()">Отмена</button>
         </div>
     </div>
 </ng-template>

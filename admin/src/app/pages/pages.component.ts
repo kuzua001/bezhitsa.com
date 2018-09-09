@@ -11,6 +11,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {State} from "../models/state";
 import {bindToComponentState} from "../storage";
 import {NotificationService} from "../notification.service";
+import {PageEditorTreeItemComponent} from "../page-editor-tree-item/page-editor-tree-item.component";
 
 @Component({
   selector: 'app-pages',
@@ -18,6 +19,9 @@ import {NotificationService} from "../notification.service";
   styleUrls: ['./pages.component.css'],
 })
 export class PagesComponent extends State implements OnInit {
+
+	static ADMIN_TITLE_FIELD = 'adminTitle';
+
 	groupedPages: object[][];
 	pages:   Page[];
 	domains: Domain[];
@@ -220,8 +224,7 @@ export class PagesComponent extends State implements OnInit {
 				};
     			for (let section of pageFields.values['sectionsParams']) {
     			    let sectionType = section.type;
-    			    let sectionName = pageFields.params[key]['instancesLabels'][sectionType];
-    			    //console.log(sectionName);
+    			    let sectionName = this.getSectionTitle(orderId);
 
                     this.pageFieldsSectionsOrder.push({
                         id: orderId,
@@ -293,6 +296,18 @@ export class PagesComponent extends State implements OnInit {
         for (let key in this.selectedPageFieldsOther.values) {
             this.selectedPageFields.values[key] = this.selectedPageFieldsOther.values[key];
         }
+	}
+
+	public getSectionTitle(sectionNumber: number)
+	{
+		let sectionValues = this.selectedPageFieldsSections.values[sectionNumber];
+		let name = sectionValues.sectionTypeName;
+
+        if (sectionValues[PagesComponent.ADMIN_TITLE_FIELD]) {
+            name = name + ' - ' + sectionValues[PagesComponent.ADMIN_TITLE_FIELD];
+        }
+
+        return name;
 	}
 
 

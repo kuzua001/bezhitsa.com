@@ -1,7 +1,7 @@
 <select [(ngModel)]="selectedDomain" class="form-control form-control-lg" *ngIf="domains !== null">
   <option *ngFor='let domain of domains' [value]="domain.id">{{domain.title}}</option>
 </select>
-<div *ngIf="groupedSettings !== null && groupedSettings[selectedDomain] !== undefined">
+<div *ngIf="groupedSettings !== null && groupedSettings[selectedDomain]">
   <div *ngFor='let groupTitle in groupedSettings[selectedDomain]' class='navbar-selector-item' (click)="loadGroup(groupTitle)"
        [ngClass]="{'active':groupTitle==selectedGroupTitle}"> {{groupTitle}} </div>
 </div>

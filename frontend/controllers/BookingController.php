@@ -12,7 +12,7 @@ class BookingController extends CmsController
 
     public function actionList()
     {
-        $rooms = Room::find()->all();
+        $rooms = Room::find()->where('published = 1')->all();
         return $this->render('list.php', [
             'page'  => $this->page,
             'rooms' => $rooms,
@@ -21,8 +21,8 @@ class BookingController extends CmsController
 
     public function actionItem($alias)
     {
-        $rooms = Room::find()->all();
-        $item = Room::find()->where('alias = :alias', [
+        $rooms = Room::find()->where('published = 1')->all();
+        $item = Room::find()->where('alias = :alias and published = 1', [
             ':alias' => $alias
         ])->one();
 

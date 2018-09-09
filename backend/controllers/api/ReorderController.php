@@ -20,6 +20,7 @@ class ReorderController extends Controller
 {
     private static $models = [
         'trainer' => 'frontend\models\data\Trainer',
+        'room' => 'frontend\models\data\Room',
     ];
 
     protected function verbs() {

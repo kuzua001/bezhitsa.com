@@ -22,17 +22,21 @@ export class Room extends BaseApiModel {
     public text: string;
     public alias: string;
     public tl_room_type: number;
+    public n: number;
+    public published: number;
 
     private images = [];
 
-    public constructor(private modelService: ModelService) {
-        super();
+    public static fromRaw(rawRoom: any): Room {
+        return Object.assign(new Room(), rawRoom);
     }
 
-
-
+    public setImages(images: Array<CmsImage>) {
+        this.images = images;
+    }
 
     public forSave(): any {
+        this.image_ids = this.images.map(i => i.id).join(',');
         let result = Object.assign({}, this);
         return result;
     }

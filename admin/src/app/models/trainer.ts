@@ -21,6 +21,7 @@ export class Trainer extends BaseApiModel {
     public has_vk: number;
     public has_fb: number;
     public has_inst: number;
+    public published: number;
 
     public forSave(): any {
         let result = Object.assign({}, this);

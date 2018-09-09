@@ -1,11 +1,11 @@
 <div *ngIf="imageFilters !== null" (click)="blurProcessing($event)" [class.inline]="inline">
     <div class="filter-group">
-        Тип:
-        <select *ngIf="fixedImageTypeId ===  null" [(ngModel)]="filter.selectedType" class="form-control form-control-lg field-wrapper" (ngModelChange)="applyFilter()">
-            <option selected [value]="null">Любой</option>
+        Тип фото:
+        <select *ngIf="fixedImageTypeId === null" [(ngModel)]="selectedTypeId" class="form-control form-control-lg field-wrapper" (ngModelChange)="applyFilter()">
+            <option selected [value]="0">Любой</option>
             <option *ngFor='let type of imageFilters.types' [value]="type.id">{{type.name}}</option>
         </select>
-        <ng-template *ngIf="fixedImageTypeId !== null">{{fixedImageTypeId}}</ng-template>
+        <div *ngIf="fixedImageTypeId !== null">{{fixedTypeName}}</div>
     </div>
     <div class="filter-group">
         Теги:

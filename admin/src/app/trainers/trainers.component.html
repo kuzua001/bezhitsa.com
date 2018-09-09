@@ -4,7 +4,7 @@
             <li class="object-item" *ngFor="let trainer of trainers" (click)="loadTrainer(trainer)" [ngClass]="{active: this.selectedTrainer && trainer.id == selectedTrainer.id}">
                 <h2 class="object-name">
                     {{trainer.name | wordCountLimit: 2 }}
-                    <a *ngIf="getTrainerPageUrl(trainer) !== null" [href]="getTrainerPageUrl(trainer)" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                    <a *ngIf="detailPage !== null && getTrainerPageUrl(trainer) !== null" [href]="getTrainerPageUrl(trainer)" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a>
                 </h2>
             </li>
         </ul>
@@ -36,8 +36,8 @@
         ></bs-sortable>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="reorderApply();modalRef.hide();">Да</button>
-        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отмена</button>
+        <button type="button" class="save ripple module-control-button-element default" (click)="reorderApply();modalRef.hide();">Да</button>
+        <button type="button" class="ripple module-control-button-element cancel" (click)="modalRef.hide()">Отмена</button>
     </div>
 </ng-template>
 
@@ -49,14 +49,17 @@
         </button>
     </div>
     <div class="modal-body">
-        <div>
-            Введите имя вашего любимого тренера:
-        </div>
+        <label>
+            Имя:
+        </label>
         <div>
             <input type="text" #newTrainerName>
         </div>
-        <div>
-            <button class="btn btn-primary" (click)="createNewTrainer(newTrainerName.value)">создать</button>
+    </div>
+    <div class="modal-footer">
+        <div class="buttons">
+            <button type="button" class="ripple module-control-button-element default" (click)="createNewTrainer(newTrainerName.value)">Создать</button>
+            <button type="button" class="ripple module-control-button-element cancel" (click)="modalRef.hide()">Отмена</button>
         </div>
     </div>
 </ng-template>

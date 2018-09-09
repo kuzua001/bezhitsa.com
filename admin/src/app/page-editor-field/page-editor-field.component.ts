@@ -51,6 +51,47 @@ export class PageEditorFieldComponent implements OnInit {
 
     private imageSrc = null;
 
+    private jsonData = null;
+
+    public getRows()
+    {
+        if (this.jsonData === null) {
+            this.jsonData = JSON.parse(this.valueSet[this.valueKey]);
+        }
+
+        return this.jsonData && this.jsonData.length ? this.jsonData : [];
+    }
+
+    public updateJsonField()
+    {
+        this.valueSet[this.valueKey] = JSON.stringify(this.jsonData);
+    }
+
+    public addJsonRow()
+    {
+        if (!this.jsonData) {
+            this.jsonData = [];
+        }
+
+        try {
+            let newRow = Object.assign({}, this.params.options);
+            Object.keys(newRow).forEach(key => {newRow[key] = '';});
+            console.log(newRow);
+            this.jsonData.push(newRow);
+        } finally {
+        }
+    }
+
+
+    public deleteJsonRow(index: number)
+    {
+        try {
+            let data = this.jsonData;
+            this.jsonData = data.filter(item => data.indexOf(item) !== index);
+        } finally {
+        }
+    }
+
     public selectImage(image: CmsImage)
     {
         this.valueSet[this.valueKey] = image.id;

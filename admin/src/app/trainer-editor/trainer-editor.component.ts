@@ -10,102 +10,98 @@ import {CmsImage} from "../models/cms-image";
 
 
 @Component({
-  selector: 'trainer-editor',
-  templateUrl: './trainer-editor.component.html',
-  styleUrls: ['../common/object-editor.component.css'],
+    selector: 'trainer-editor',
+    templateUrl: './trainer-editor.component.html',
+    styleUrls: ['../common/object-editor.component.css'],
 })
 export class TrainerEditorComponent implements OnInit {
 
-  modalRef: BsModalRef;
+    modalRef: BsModalRef;
 
-  public trainer: Trainer;
+    public trainer: Trainer;
 
-  public newImageFile: ReadFile;
+    public newImageFile: ReadFile;
 
-  private language: number = 1;
+    private language: number = 1;
 
-  constructor(
-      private selectItemService: SelectItemService,
-      private modelService: ModelService,
-      private modalService: BsModalService,
-  ) {
+    constructor(private selectItemService: SelectItemService,
+                private modelService: ModelService,
+                private modalService: BsModalService,) {
 
-      this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
-          if (event.itemType === SelectItemEvent.Type.TrainerSelect) {
-              this.trainer = event.payload.trainer;
-              if (!event.payload.initial) {
-                  this.selectItemService.emitCloseAll('trainer');
-              }
-          } else if (event.itemType === SelectItemEvent.Type.CloseAllSelectedItems && event.payload.model !== 'trainer') {
-              this.close();
-          } else if (event.itemType === SelectItemEvent.Type.LanguageChange) {
-              this.language = event.payload.language;
-          }
-      });
+        this.selectItemService.event$.subscribe((event: SelectItemEvent) => {
+            if (event.itemType === SelectItemEvent.Type.TrainerSelect) {
+                this.trainer = event.payload.trainer;
+                if (!event.payload.initial) {
+                    this.selectItemService.emitCloseAll('trainer');
+                }
+            } else if (event.itemType === SelectItemEvent.Type.CloseAllSelectedItems && event.payload.model !== 'trainer') {
+                this.close();
+            } else if (event.itemType === SelectItemEvent.Type.LanguageChange) {
+                this.language = event.payload.language;
+            }
+        });
 
-  }
+    }
 
-  selectImage(image: CmsImage) {
-      this.trainer.img_id = image.id;
-      this.trainer.img_src = image.filename;
-  }
+    selectImage(image: CmsImage) {
+        this.trainer.img_id = image.id;
+        this.trainer.img_src = image.filename;
+    }
 
-  openModal(template: TemplateRef<any>, options) {
-      this.modalRef = this.modalService.show(template, options);
-  }
+    openModal(template: TemplateRef<any>, options) {
+        this.modalRef = this.modalService.show(template, options);
+    }
 
-  public close() {
-      if (this.trainer !== null) {
-          this.selectItemService.emit(
-              new SelectItemEvent(SelectItemEvent.Type.TrainerClose, {
-                  trainerId: this.trainer.id
-              })
-          );
-      }
+    public close() {
+        if (this.trainer !== null) {
+            this.selectItemService.emit(
+                new SelectItemEvent(SelectItemEvent.Type.TrainerClose, {
+                    trainerId: this.trainer.id
+                })
+            );
+        }
 
-      this.trainer = null;
-  }
+        this.trainer = null;
+    }
 
-  public save()
-  {
-      let trainerItem = Object.setPrototypeOf(this.trainer, Trainer.prototype);
-      this.modelService.saveTrainer(trainerItem);
-  }
+    public save() {
+        let trainerItem = Object.setPrototypeOf(this.trainer, Trainer.prototype);
+        this.modelService.saveTrainer(trainerItem);
+    }
 
-  public delete()
-  {
-      this.modelService.deleteTrainer(this.trainer)
-          .subscribe(() => {
-              let trainerId = this.trainer.id;
-              this.trainer = null;
-              this.modalRef.hide();
-              this.selectItemService.emit(
-                  new SelectItemEvent(SelectItemEvent.Type.RoomRemove, {
-                      trainerId: trainerId
-                  }));
-          });
-  }
+    public delete() {
+        this.modelService.deleteTrainer(this.trainer)
+            .subscribe(() => {
+                let trainerId = this.trainer.id;
+                this.trainer = null;
+                this.modalRef.hide();
+                this.selectItemService.emit(
+                    new SelectItemEvent(SelectItemEvent.Type.RoomRemove, {
+                        trainerId: trainerId
+                    }));
+            });
+    }
 
-  public dropped(file: ReadFile) {
-      this.newImageFile = file;
-      //this.cropper.setImage(this.newImageFile.content);
-  }
+    public dropped(file: ReadFile) {
+        this.newImageFile = file;
+        //this.cropper.setImage(this.newImageFile.content);
+    }
 
-  public cancelImage() {
-      this.newImageFile = null;
-  }
+    public cancelImage() {
+        this.newImageFile = null;
+    }
 
-  public fileOver(event) {
-      //console.log(event);
-  }
+    public fileOver(event) {
+        //console.log(event);
+    }
 
-  public fileLeave(event) {
-      //console.log(event);
-  }
+    public fileLeave(event) {
+        //console.log(event);
+    }
 
 
-  ngOnInit() {
-    this.trainer = null;
-    this.newImageFile = null;
-  }
+    ngOnInit() {
+        this.trainer = null;
+        this.newImageFile = null;
+    }
 }

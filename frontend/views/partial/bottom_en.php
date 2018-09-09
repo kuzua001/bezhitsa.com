@@ -1,6 +1,13 @@
 <?php
 use frontend\components\LanguageHelper;
 use \frontend\components\AppHelper;
+use frontend\models\cms\CmsSettings;
+
+$links = CmsSettings::getValueArr(AppHelper::getDomain()->id,'FOOTER_LINKS_EN');
+$title = CmsSettings::getValueArr(AppHelper::getDomain()->id,'TITLE');
+$popups = CmsSettings::getValueArr(AppHelper::getDomain()->id,'FOOTER_POPUPS_EN');
+$copyright = CmsSettings::getValueArr(AppHelper::getDomain()->id,'COPYRIGHT');
+$icons = CmsSettings::getValueArr(AppHelper::getDomain()->id,'ICONS');
 ?>
 <footer>
 	<div class="content-wrapper">
@@ -15,26 +22,28 @@ use \frontend\components\AppHelper;
 						</p>
 					</div>
 				</div>
-				<div class="col-md-6 footer-col">
-					<nav class="scrollto-links">
-						<a href="http://bezhitsa.com/en">Hotel</a>
-						<a href="http://bzrest.ru/en">Restaurant</a>
-						<a href="http://bzfit.ru/en">Fitness club</a>
-					</nav>
-				</div>
+                <div class="col-md-6 footer-col">
+                    <nav class="scrollto-links">
+                        <?php foreach ($links as $link) { ?>
+                            <a href="<?= $link['link']?>"><?= $link['name']?></a>
+                        <?php } ?>
+                    </nav>
+                </div>
 				<div class="col-md-3 footer-col">
-					<?= $this->render('social_icons'); ?>
+					<?= $this->render('social_icons', [
+					        'icons' => $icons
+                    ]); ?>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-md-push-3 footer-col">
 					<nav class="legislation-links">
-						<a href="#">Terms</a>
-						<a href="#">Availability info</a>
-						<a href="#">Cookie Consent</a>
+                        <?php foreach ($popups as $popup) { ?>
+                            <a href="#" data-target="<?= $popup['id'] ?>"><?= $popup['name']?></a>
+                        <?php } ?>
 					</nav>
 					<div class="copyright">
-						© 2018 Bezhitsa, Inc. All rights reserved.
+                        © 2018 <?= $copyright['en'] ?>.
 					</div>
 				</div>
 			</div>
