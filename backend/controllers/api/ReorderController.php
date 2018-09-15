@@ -19,8 +19,10 @@ use backend\models\UploadForm;
 class ReorderController extends Controller
 {
     private static $models = [
+        'trainingActivityType' => 'frontend\models\data\TrainingActivityType',
         'trainer' => 'frontend\models\data\Trainer',
         'room' => 'frontend\models\data\Room',
+        'restaurantMenu' => 'frontend\models\data\RestaurantMenu'
     ];
 
     protected function verbs() {

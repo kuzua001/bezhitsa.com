@@ -7,6 +7,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {ReadFile} from 'ngx-file-helpers';
 import {MenuService} from "../menu.service";
 import {CmsImage} from "../models/cms-image";
+import {TrainingActivity} from "../models/training-activity";
 
 
 @Component({
@@ -40,7 +41,6 @@ export class TrainerEditorComponent implements OnInit {
                 this.language = event.payload.language;
             }
         });
-
     }
 
     selectImage(image: CmsImage) {

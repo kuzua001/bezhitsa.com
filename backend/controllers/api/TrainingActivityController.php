@@ -28,4 +28,12 @@ class TrainingActivityController extends ApiController
         return $behaviors;
     }
 
+    public function actions()
+    {
+        $actions = parent::actions();
+        $actions['index']['class'] = 'backend\controllers\api\activity\CustomIndexAction';
+
+        return $actions;
+    }
+
 }

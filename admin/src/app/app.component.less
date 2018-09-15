@@ -238,7 +238,8 @@ header.admin-header {
 }
 
 trainers:not(.integrated),
-rooms:not(.integrated) {
+rooms:not(.integrated),
+trainings:not(.integrated) {
     .module-list {
         float: left;
         margin-left: 10px;
@@ -313,6 +314,11 @@ mat-checkbox {
 
 .trumbowyg-box {
     margin-top: 0!important;
+    border: 1px solid #a9a9a9!important;
+}
+
+.trumbowyg-button-pane {
+    background: #eeeeee!important;
 }
 
 .textarea-field {
@@ -349,8 +355,14 @@ textarea {
     background: none!important;
 }
 
-.field.description {
+
+.field.description,
+.settings .field {
     .trumbowyg-box, .trumbowyg-editor {
         min-height: auto!important;
     }
+}
+
+color-picker {
+    z-index: 10;
 }

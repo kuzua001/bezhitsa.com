@@ -1,0 +1,64 @@
+<div class="content">
+  <div class="module-list">
+    <ul class="object-list-element" *ngIf="activityTypes !== null" [class.active]="selectedActivityType !== null" #trainingsList>
+      <li class="object-item" *ngFor="let activityType of activityTypes" (click)="loadActivityType(activityType)" [ngClass]="{active: this.selectedActivityType && activityType.id == selectedActivityType.id}">
+        <h2 class="object-name">
+          {{activityType.title | wordCountLimit: 2 }}
+          </h2>
+      </li>
+    </ul>
+    <div class="toolbar-element">
+      <div (click)="openModal(createActivityType)"><i class="fa fa-plus"></i></div>
+      <div (click)="openModal(reorderActivityTypes)"><i class="fa fa-bars"></i></div>
+    </div>
+  </div>
+  <div class="module-editor module-editor-visible nobg" [ngClass]="{'visible': selectedActivityType != null}">
+    <trainings-editor [activityType]="selectedActivityType"></trainings-editor>
+  </div>
+</div>
+<ng-template #reorderActivityTypes>
+  <div class="modal-header">
+    <h4 class="modal-title">Поменять местами</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <bs-sortable *ngIf="activityTypes"
+                 [(ngModel)]="activityTypes"
+                 itemClass="sortable-item"
+                 itemActiveClass="sortable-item-active"
+                 placeholderItem="Drag here"
+                 placeholderClass="placeholderStyle"
+                 wrapperClass="sortable-wrapper"
+                 fieldName="title"
+    ></bs-sortable>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="save ripple module-control-button-element default" (click)="reorderApply();modalRef.hide();">Да</button>
+    <button type="button" class="ripple module-control-button-element cancel" (click)="modalRef.hide()">Отмена</button>
+  </div>
+</ng-template>
+
+<ng-template #createActivityType>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Создать новый тип тренировок</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label>
+      Заголовок:
+    </label>
+    <div>
+      <input type="text" #newActivityTypeName>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="buttons">
+      <button type="button" class="ripple module-control-button-element default" (click)="createNewActivityType(newActivityTypeName.value)">Создать</button>
+      <button type="button" class="ripple module-control-button-element cancel" (click)="modalRef.hide()">Отмена</button>
+    </div>
+  </div>
+</ng-template>

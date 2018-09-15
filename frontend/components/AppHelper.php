@@ -15,11 +15,11 @@ use yii\helpers\Html;
 
 class AppHelper
 {
-    const FOOTER_LINK_VK = 1;
-    const FOOTER_LINK_OK = 2;
-    const FOOTER_LINK_FB = 3;
-    const FOOTER_LINK_IN = 4;
-    const FOOTER_LINK_TA = 5;
+    const FOOTER_LINK_VK = '1';
+    const FOOTER_LINK_OK = '2';
+    const FOOTER_LINK_FB = '3';
+    const FOOTER_LINK_IN = '4';
+    const FOOTER_LINK_TA = '5';
 
     private static $_domainLinks = null;
 

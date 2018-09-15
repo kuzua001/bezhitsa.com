@@ -98,7 +98,7 @@ class FitnessController extends CmsController
 
         //exit();
 
-        $activityTypes = TrainingActivityType::find()->all();
+        $activityTypes = TrainingActivityType::find()->orderBy('n')->all();
 
         return $this->render('schedule.php', [
             'page'          => $this->page,

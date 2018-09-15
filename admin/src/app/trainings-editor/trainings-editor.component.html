@@ -1,107 +1,82 @@
-<div class="object-editor" [ngClass]="{active: room !== null}">
-  <div class="close" (click)="close()">
-    <i class="fa fa-window-close" aria-hidden="true"></i>
-  </div>
-  <div *ngIf="room !== null">
-    <div class="field name">
-      <span class="label">Название комнаты</span>
-      <input type="text" [(ngModel)]="room.title">
-    </div>
-
-    <div class="field price">
-      <span class="label">Цена</span>
-      <input type="text" [(ngModel)]="room.price_from">
-    </div>
-
-    <div class="field square">
-      <span class="label">Площадь</span>
-      <input type="text" [(ngModel)]="room.square">
-    </div>
-
-    <div class="field description">
-      <span class="label">Описание комнаты</span>
-      <textarea ngxTrumbowygEditor [(ngModel)]="room.text" [options]="editorOptions"></textarea>
-    </div>
-
-    <div class="field images">
-      <span class="label">Изображения</span>
-
-      <div *ngIf="roomImages.length === 0">
-        <div class="image-card" (click)="chooser.showPopup()">
-          <div class="new-image image-wrapper">
-            Добавить еще<br>
-            <i class="plus"></i><br>
-          </div>
+<div *ngIf="isReady()">
+    <div class="settings training-card" *ngIf="activityType !== null">
+        <h2>Настройки</h2>
+        <div class="field">
+            <label>Заголовок</label>
+            <div class="input">
+                <input [(ngModel)]="activityType.title">
+            </div>
         </div>
-      </div>
-
-      <ng-template #imageTemplate let-item="item" let-index="index">
-        <div class="image-card" (click)="chooser.showPopup()" *ngIf="index === 0">
-          <div class="new-image image-wrapper">
-            Добавить еще<br>
-            <i class="plus"></i><br>
-          </div>
+        <div class="field">
+            <label>Краткий заголовок</label>
+            <div class="input">
+                <input [(ngModel)]="activityType.short_title">
+            </div>
         </div>
-        <div class="image-card" (click)="chooser.showFastEditor(item.value)">
-          <div class="image-card-wrapper">
-            <img #imagesList [src]="'/' + item.value.filename" (load)="detectOrientation(index)">
-          </div>
-          <span class="delete" (click)="removeImage(item.value)">
+        <div class="field">
+            <label>Описание</label>
+            <div class="input">
+                <textarea ngxTrumbowygEditor  [options]="editorOptions" [(ngModel)]="activityType.description"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <label>Цвет</label>
+            <div class="input">
+                <input class="color"(colorPickerChange)="setColor($event)" [colorPicker]="activityType.color" [style.background]="activityType.color" [cpOutputFormat]="hex">
+            </div>
+        </div>
+        <div class="actions">
+            <button (click)="save()" class="save ripple module-control-button-element default">Сохранить</button>
+            <button (click)="deleteWithConfirm()" class="ripple module-control-button-element delete">Удалить</button>
+        </div>
+    </div>
+    <div *ngFor="let activity of activities" [class]="'training-card activity-' + activity.id" (dblclick)="initEditingCard(activity)">
+        <div [ngSwitch]="isEditing(activity) && !isCreatingNew()">
+            <div *ngSwitchCase="false">
+                <div class="contents">
+                    <h2>{{activity.title}}</h2>
+                    {{activity.description}}
+                </div>
+                <span class="close" (click)="removeActivity(activity)">
+                    <i class="fa fa-close"></i>
+                </span>
+            </div>
+            <div *ngSwitchCase="true">
+                <div class="contents">
+                    <h2><input placeholder="Заголовок вида тренировок" [focus]="autofocus" [(ngModel)]="activity.title" (blur)="leaveField('title', activity)"></h2>
+                    <textarea placeholder="Описание" [(ngModel)]="activity.description" (blur)="leaveField('description', activity)"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isCreatingNew()" class="training-card">
+        <div class="contents">
+            <h2><input placeholder="Заголовок вида тренировок" [focus]="autofocus" [(ngModel)]="newActivity.title"></h2>
+            <textarea placeholder="Описание" [(ngModel)]="newActivity.description"></textarea>
+            <button (click)="createNew()">добавить</button>
+        </div>
+        <span class="close" (click)="closeNewActivity()">
             <i class="fa fa-close"></i>
-          </span>
+        </span>
+    </div>
+    <div class="training-card" (click)="createEditingCard()">
+        <div class="toolbar-element">
+            <div><i class="fa fa-plus"></i></div>
         </div>
-      </ng-template>
-
-      <bs-sortable #sortable
-              [(ngModel)]="roomImages"
-              [itemTemplate]="imageTemplate"
-              itemClass="sortable-item-unset"
-              itemActiveClass="sortable-item-active"
-      ></bs-sortable>
-
-      <app-image-chooser-popup #chooser (selectedImageIds)="appendImages($event)" [multiple]="true"></app-image-chooser-popup>
     </div>
-
-    <div class="field alias">
-      <span class="label">Путь URL</span>
-      <input type="text" [(ngModel)]="room.alias">
-    </div>
-
-    <div class="field published">
-      <span class="label">Опубликован</span>
-      <mat-checkbox [color]="'primary'" [(ngModel)]="room.published"></mat-checkbox>
-    </div>
-
-    <div class="buttons">
-      <button type="button" class="ripple module-control-button-element default" (click)="save()">Сохранить</button>
-      <button type="button" class="ripple module-control-button-element delete" (click)="openModal(confirmDelete)">Удалить</button>
-    </div>
-  </div>
 </div>
-<ng-template #imageChoose>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Выберите изображение</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-image-chooser (selectedImageId)="selectImage($event)"></app-image-chooser>
-    <button class="btn btn-primary">выбор</button>
-    <button class="btn btn-danger" (click)="modalRef.hide()">отмена</button>
-  </div>
-</ng-template>
+
 <ng-template #confirmDelete>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Вы точно хотите удалить этот номер?</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="buttons">
-      <button class="ripple module-control-button-element cancel" (click)="modalRef.hide()">отмена</button>
-      <button class="ripple module-control-button-element delete" (click)="delete()">да, удалить</button>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Вы точно хотите удалить тип тренировок?</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closePopup()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-  </div>
+    <div class="modal-footer">
+        <div class="buttons">
+            <button type="button" class="ripple module-control-button-element delete" (click)="delete()">Удалить</button>
+            <button type="button" class="ripple module-control-button-element cancel" (click)="closePopup()">Отмена</button>
+        </div>
+    </div>
 </ng-template>

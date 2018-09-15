@@ -98,3 +98,61 @@
   background-color: #fff;
   box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.3);
 }
+@font-face {
+  font-family: 'Acrom-Regular';
+  src: url('/assets/fonts/Acrom-Regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/Acrom-Regular.otf') format('opentype'), url('/assets/fonts/Acrom-Regular.woff') format('woff'), url('/assets/fonts/Acrom-Regular.ttf') format('truetype'), url('/assets/fonts/Acrom-Regular.svg#Acrom-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Acrom-Medium';
+  src: url('/assets/fonts/Acrom-Medium.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/Acrom-Medium.otf') format('opentype'), url('/assets/fonts/Acrom-Medium.woff') format('woff'), url('/assets/fonts/Acrom-Medium.ttf') format('truetype'), url('/assets/fonts/Acrom-Medium.svg#Acrom-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Acrom-Bold';
+  src: url('/assets/fonts/Acrom-Bold/Acrom-Bold.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/Acrom-Bold/Acrom-Bold.otf') format('opentype'), url('/assets/fonts/Acrom-Bold/Acrom-Bold.woff') format('woff'), url('/assets/fonts/Acrom-Bold/Acrom-Bold.ttf') format('truetype'), url('/assets/fonts/Acrom-Bold/Acrom-Bold.svg#Acrom-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Acrom-Light';
+  src: url('/assets/fonts/Acrom-Light/Acrom-Light.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/Acrom-Light/Acrom-Light.otf') format('opentype'), url('/assets/fonts/Acrom-Light/Acrom-Light.woff') format('woff'), url('/assets/fonts/Acrom-Light/Acrom-Light.ttf') format('truetype'), url('/assets/fonts/Acrom-Light/Acrom-Light.svg#Acrom-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.training-card {
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 10px;
+  position: relative;
+}
+.training-card.settings h2 {
+  font-family: "Acrom-Bold", sans-serif;
+}
+.training-card.settings .field {
+  margin-bottom: 10px;
+  position: relative;
+}
+.training-card.settings .field label {
+  padding-top: 2px;
+  float: left;
+}
+.training-card.settings .field .input {
+  padding-left: 150px;
+}
+.training-card h2 {
+  font-family: "Acrom-Light", sans-serif;
+}
+.training-card:not(:hover) .close {
+  display: none;
+}
+.training-card .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}

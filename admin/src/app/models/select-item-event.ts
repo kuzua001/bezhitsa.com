@@ -20,6 +20,7 @@ export namespace SelectItemEvent {
 		TrainerClose,
         RoomSelect,
         RoomRemove,
+        TrainingItemTypeRemove,
         RoomClose,
 		LanguageChange,
 		ImageChooserApply,

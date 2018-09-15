@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class WordCountLimit implements PipeTransform {
     transform(value: string, count: number): string {
-        return value.split(" ").slice(0, count).join(" ");
+        return value ? value.split(" ").slice(0, count).join(" ") : '';
     }
 }

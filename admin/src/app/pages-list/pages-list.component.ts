@@ -41,7 +41,9 @@ export class PagesListComponent extends State implements OnInit {
             this[key] = state[key];
         }
 
-        this.loadPage(this.pages.find(p => p.id == this.selectedPageId), true);
+        if (this.pages) {
+            this.loadPage(this.pages.find(p => p.id == this.selectedPageId), true);
+        }
     }
 
     modalRef: BsModalRef;

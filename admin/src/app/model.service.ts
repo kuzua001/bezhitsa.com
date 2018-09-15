@@ -15,6 +15,9 @@ import {ImageFilter} from "./models/image-filter";
 import {HttpParamsOptions} from "@angular/common/http/src/params";
 import {SelectItemEvent} from "./models/select-item-event";
 import {SelectItemService} from "./select-item.service";
+import {TrainingActivity} from "./models/training-activity";
+import {TrainingActivityType} from "./models/training-activity-type";
+import {RestaurantMenu} from "./models/restaurant-menu";
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -34,6 +37,8 @@ export class ModelService {
         private selectItemService: SelectItemService
     ) {
         Trainer.setupLanguageService(this.languageService);
+        TrainingActivity.setupLanguageService(this.languageService);
+        TrainingActivityType.setupLanguageService(this.languageService);
         Room.setupLanguageService(this.languageService);
         CmsImage.setupLanguageService(this.languageService);
     }
@@ -185,6 +190,45 @@ export class ModelService {
     // image types
     public getImageTypes()  {
         return this.getModelListing<ImageType>(ImageType.getApiMethodName());
+    }
+
+    // training activity types
+    public getTrainingActivityTypes()  {
+        return this.getModelListing<TrainingActivityType>(TrainingActivityType.getApiMethodName());
+    }
+
+    public createTrainingActivityType(trainingActivityType: TrainingActivityType)  {
+        return this.http.post<TrainingActivityType>(this.baseUrl + TrainingActivityType.getApiMethodName(), trainingActivityType, httpOptions);
+    }
+
+    public updateTrainingActivityType(trainingActivityType: TrainingActivityType)  {
+        return this.http.put<TrainingActivityType>(this.baseUrl + TrainingActivityType.getApiMethodName(trainingActivityType.id), trainingActivityType);
+    }
+
+    public deleteTrainingActivityType(trainingActivityType: TrainingActivityType)  {
+        return this.http.delete<TrainingActivityType>(this.baseUrl + TrainingActivityType.getApiMethodName(trainingActivityType.id));
+    }
+
+    // training activities
+    public getTrainingActivitiesByType(typeId: number)  {
+        return this.getModelListing<TrainingActivity>(TrainingActivity.getApiMethodName(null, new Map().set('type_id', typeId)));
+    }
+
+    public createTrainingActivity(trainingActivity: TrainingActivity)  {
+        return this.http.post<TrainingActivity>(this.baseUrl + TrainingActivity.getApiMethodName(), trainingActivity, httpOptions);
+    }
+
+    public updateTrainingActivity(trainingActivity: TrainingActivity)  {
+        return this.http.put<TrainingActivity>(this.baseUrl + TrainingActivity.getApiMethodName(trainingActivity.id), trainingActivity);
+    }
+
+    public deleteTrainingActivity(trainingActivity: TrainingActivity)  {
+        return this.http.delete<TrainingActivity>(this.baseUrl + TrainingActivity.getApiMethodName(trainingActivity.id));
+    }
+
+    // menu
+    public getRestaurantMenu()  {
+        return this.getModelListing<RestaurantMenu>(RestaurantMenu.getApiMethodName());
     }
 
     //common

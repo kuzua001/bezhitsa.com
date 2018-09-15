@@ -113,16 +113,6 @@ $rooms = Room::find()->where('published = 1')->limit(4)->all();
                                     <?= Yii::t('app/units', 'от') ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб') ?>
 								</div>
 							</section>
-							<!--<footer>
-								<div class="property-item-element">
-									<i class="property-icon <?= $item->getBedIconClass() ?>"></i>
-									<span class="property-description"><?= $item->getBedTitle() ?></span>
-								</div>
-								<div class="property-item-element">
-									<i class="property-icon <?= $item->getPersonIconClass() ?>"></i>
-									<span class="property-description"><?= $item->getPersonTitle() ?></span>
-								</div>
-							</footer>-->
 						</div>
 					</a>
 				</div>
@@ -151,16 +141,6 @@ $rooms = Room::find()->where('published = 1')->limit(4)->all();
                                 <?= Yii::t('app/units', 'от') ?> <span class="price"><?= $item->price_from ?></span> <?= Yii::t('app/units', 'руб') ?>
 							</div>
 						</section>
-						<!--<footer>
-							<div class="property-item-element">
-								<i class="property-icon one-bed"></i>
-								<span class="property-description"><?= $item->getBedTitle() ?></span>
-							</div>
-							<div class="property-item-element">
-								<i class="property-icon two-people"></i>
-								<span class="property-description"><?= $item->getPersonTitle() ?></span>
-							</div>
-						</footer>-->
 					</div>
 				</a>
 			</div>

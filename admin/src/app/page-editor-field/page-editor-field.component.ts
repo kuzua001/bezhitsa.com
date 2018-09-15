@@ -17,16 +17,6 @@ export class PageEditorFieldComponent implements OnInit {
 
     private modalRef;
 
-    /*get checkboxSettings() {
-        let result = new CustomCheckBoxModel();
-        result.color = 'p-success';
-        result.colorHex = '#F500FF';
-        result.rounded = true;
-        result.icon = 'mdi mdi-check';
-
-        return result;
-    }*/
-
     @ViewChild('imageChooser') imageChooser: ImageChooserPopupComponent;
 
     constructor(

@@ -18,6 +18,7 @@ use yii\db\ActiveRecord;
  * @property $color string
  * @property $description string
  * @property $short_title string
+ * @property $n int
  * @package frontend\models\data
  */
 class TrainingActivityType extends ActiveRecord
@@ -42,5 +43,24 @@ class TrainingActivityType extends ActiveRecord
     public function getActivities()
     {
         return $this->hasMany(TrainingActivity::className(), ['type_id' => 'id'])->all();
+    }
+
+    public function scenarios()
+    {
+        return [
+            'default' => $this->fields()
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'title',
+            'color',
+            'description',
+            'short_title',
+            'n',
+        ];
     }
 }

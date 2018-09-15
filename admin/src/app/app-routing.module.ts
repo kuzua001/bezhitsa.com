@@ -8,6 +8,9 @@ import {RoomsComponent} from "./rooms/rooms.component";
 import {SettingsListComponent} from "./settings-list/settings-list.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.component";
+import {TrainingsComponent} from "./trainings/trainings.component";
+import {RestaurantMenu} from "./models/restaurant-menu";
+import {RestaurantMenuComponent} from "./menu/menu.component";
 
 const routes: Routes = [
     {
@@ -45,9 +48,16 @@ const routes: Routes = [
     },
     {
         path: 'trainings',
-        component: TrainingsEditorComponent,
+        component: TrainingsComponent,
         data : {
             name: 'Тренировки'
+        }
+    },
+    {
+        path: 'restaurant',
+        component: RestaurantMenuComponent,
+        data : {
+            name: 'Меню ресторана'
         }
     },
     {

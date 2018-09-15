@@ -5,10 +5,8 @@
         <?php
             $linkType = $icon['type'];
         ?>
-        <?php if (($footerLink = AppHelper::getFooterLink($linkType)) !== null) { ?>
-            <a target="_blank" href="<?= $icon['link'] ?>">
-                <img src="<?= AppHelper::getFooterIconSrc($linkType)?>">
-            </a>
-        <?php } ?>
+        <a target="_blank" href="<?= $icon['link'] ?>">
+            <img src="<?= AppHelper::getFooterIconSrc($linkType)?>">
+        </a>
     <?php } ?>
 </nav>

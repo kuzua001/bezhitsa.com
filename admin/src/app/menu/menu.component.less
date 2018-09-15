@@ -1,0 +1,145 @@
+@desktop-min-width: 1200px;
+
+.restaurant-menu-element {
+
+  .item {
+    margin-bottom: 10px;
+
+    @media screen and (min-width: @desktop-min-width) {
+      //min-height: 70px;
+    }
+    > div {
+      display: flex;
+      flex-direction: row;
+      .description {
+        line-height: 21px;
+        flex: 0 auto;
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .price {
+        flex: 1 1;
+        text-align: right;
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        padding-right: 10px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .tab-list {
+    h3 {
+      font-family: 'Acrom-Light', sans-serif;
+    }
+  }
+
+  &.mobile {
+    margin-bottom: 18px;
+    background-color: #fff;
+    padding: 5px;
+
+    &>section > header {
+      text-align: center;
+      padding: 10px;
+      background-color: #f9f1dc;
+      font-size: 20px;
+      color: #000;
+      text-transform: uppercase;
+      font-family: 'Acrom-Light', sans-serif;
+    }
+
+    .menu-category {
+      padding-left: 10px;
+      .item {
+
+        .description {
+          font-size: 15px;
+          color: #000;
+        }
+
+        .price {
+          font-size: 15px;
+          color: #000;
+          line-height: 20px;
+        }
+      }
+
+      .title {
+        text-transform: uppercase;
+        font-size: 22px;
+        margin: 15px 0;
+        color: #000;
+        font-family: 'Acrom-Regular', sans-serif;
+        text-align: center;
+        margin-left: -10px;
+      }
+    }
+  }
+
+  &.desktop {
+    background-color: #fff;
+    padding: 12px;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: @desktop-min-width) {
+      header li {
+        height: 55px;
+        line-height: 55px;
+        padding: 0!important;
+      }
+    }
+
+
+    .tab-list {
+      white-space: nowrap;
+      font-size: 0;
+
+      li {
+        display: inline-block;
+        width: 33.3%;
+        text-align: center;
+        padding: 10px;
+        background-color: #eae5cf;
+        font-size: 20px;
+        color: #000;
+        text-transform: uppercase;
+
+
+        &.active {
+          background-color: #f9f1dc;
+          color: #000;
+        }
+      }
+    }
+
+    .content {
+      .tab:not(.active) {
+        display: none;
+      }
+
+      .tab {
+        overflow: hidden;
+      }
+
+      .menu-category {
+        width: 33.3%;
+        display: inline-block;
+        color: #000;
+        font-size: 18px;
+        padding: 20px 0;
+        padding-top: 35px;
+        vertical-align: top;
+        float: right;
+
+        .title {
+          text-transform: uppercase;
+          font-size: 22px;
+          margin-bottom: 25px;
+          font-family: 'Acrom-Regular', sans-serif;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,9 @@ use yii\db\ActiveRecord;
  */
 class TrainingActivity extends ActiveRecord
 {
-    use TranslatableTrait;
+    use TranslatableTrait {
+        beforeSave as public traitBeforeSave;
+    }
 
     /**
      * Классы тренировок
@@ -43,6 +45,10 @@ class TrainingActivity extends ActiveRecord
         $this->loadTranslations();
     }
 
+    public function beforeSave($insert)
+    {
+        return $this->traitBeforeSave($insert);
+    }
 
     /**
      * Возвращает класс для класса тренировка
@@ -61,5 +67,23 @@ class TrainingActivity extends ActiveRecord
     public function getActivityType()
     {
         return $this->hasOne(TrainingActivityType::className(), ['id' => 'type_id'])->one();
+    }
+
+    public function scenarios()
+    {
+        return [
+            'default' => $this->fields()
+        ];
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'type_id',
+            'title',
+            'description',
+            'training_class',
+        ];
     }
 }

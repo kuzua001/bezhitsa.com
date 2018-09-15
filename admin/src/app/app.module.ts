@@ -38,7 +38,7 @@ import {SettingsService} from "./settings.service";
 import {SettingsComponent} from "./settings/settings.component";
 import {ClickStopPropagation} from "./click-stop-propogation.directive";
 import { PageEditorTreeItemComponent } from './page-editor-tree-item/page-editor-tree-item.component';
-import { ImageCropperComponent, CropperSettings } from 'ng2-img-cropper';
+import { ImageCropperComponent } from 'ng2-img-cropper';
 import { CustomImageCropperComponent } from './image-cropper/image-cropper.component';
 import {SubMenuImagesComponent} from "./sub-menu/images/images.component";
 import { FocusDirective } from './focus.directive';
@@ -47,7 +47,8 @@ import { ImageChooserPopupComponent } from './image-chooser-popup/image-chooser-
 import {MatCheckboxModule} from "@angular/material";
 import {PageEditorFieldExtendedComponent} from "./page-editor-field-extended/page-editor-field-extended.component";
 import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.component";
-//import { CustomCheckboxModule } from 'angular-custom-checkbox';
+import {TrainingsComponent} from "./trainings/trainings.component";
+import {RestaurantMenuComponent} from "./menu/menu.component";
 
 @NgModule({
     declarations: [
@@ -80,7 +81,9 @@ import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.comp
         CustomImageCropperComponent,
         FocusDirective,
         ImageChooserPopupComponent,
-        TrainingsEditorComponent
+        TrainingsEditorComponent,
+        TrainingsComponent,
+        RestaurantMenuComponent
     ],
     imports: [
         BrowserModule,

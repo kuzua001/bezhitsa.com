@@ -40,13 +40,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _trainers_trainers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./trainers/trainers.component */ "./src/app/trainers/trainers.component.ts");
 /* harmony import */ var _rooms_rooms_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./rooms/rooms.component */ "./src/app/rooms/rooms.component.ts");
 /* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
-/* harmony import */ var _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./trainings-editor/trainings-editor.component */ "./src/app/trainings-editor/trainings-editor.component.ts");
+/* harmony import */ var _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./trainings/trainings.component */ "./src/app/trainings/trainings.component.ts");
+/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -91,9 +93,16 @@ var routes = [
     },
     {
         path: 'trainings',
-        component: _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_7__["TrainingsEditorComponent"],
+        component: _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_7__["TrainingsComponent"],
         data: {
             name: 'Тренировки'
+        }
+    },
+    {
+        path: 'restaurant',
+        component: _menu_menu_component__WEBPACK_IMPORTED_MODULE_8__["RestaurantMenuComponent"],
+        data: {
+            name: 'Меню ресторана'
         }
     },
     {
@@ -127,7 +136,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n*:not(.fa) {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody,\nhtml {\n  min-height: 100%;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  min-height: 100vh;\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 50px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);\n}\n.alert-element {\n  position: fixed;\n  right: 10px;\n  top: 60px;\n  width: 200px;\n  background-color: #eee;\n  z-index: 999;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.alert-element .message {\n  padding: 10px;\n}\n.alert-element .close {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.admin-content-wrapper {\n  height: 100%;\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.page-editor .module-panel .save {\n  margin-right: 0!important;\n}\n.page-editor .module-panel .view {\n  margin: 0 10px;\n  padding: 8px;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.cancel {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #bd0e0e;\n  color: #fff;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\n.fast-image-editor-popup .modal-body {\n  height: auto!important;\n}\nselect.form-control,\ninput.form-control {\n  border-radius: 0!important;\n  height: 30px!important;\n  padding: 0!important;\n  padding-left: 6px!important;\n}\nselect.form-control:focus,\ninput.form-control:focus {\n  border-color: #ced4da;\n  -o-box-shadow: none;\n  box-shadow: none;\n}\ninput.color {\n  display: inline-block;\n  width: 30px!important;\n  height: 30px;\n  outline: none;\n  border: 2px solid #757575;\n  border-radius: 2px;\n}\n.modal-dialog.image-chooser-popup {\n  width: 90%!important;\n  max-width: none!important;\n}\nmat-checkbox {\n  margin-right: 10px;\n  margin-left: 10px;\n}\n.mat-checkbox-checked.mat-primary .mat-checkbox-background,\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {\n  background-color: #4a90e2!important;\n}\n.trumbowyg-box {\n  margin-top: 0!important;\n}\n.textarea-field .trumbowyg-box {\n  min-height: 0;\n  height: 200px;\n}\n.sortable-item-unset {\n  display: unset;\n}\n.sortable-item-active img {\n  display: none;\n}\n.sortable-item-active .image-card-wrapper {\n  background-image: url('/admin/assets/img/anyimage.png');\n  background-size: 80% 80%;\n  background-repeat: no-repeat;\n  background-position: center;\n  opacity: 0.2;\n}\ntextarea {\n  width: 100%;\n}\n.sindu_dragger table {\n  background: none!important;\n}\n.field.description .trumbowyg-box,\n.field.description .trumbowyg-editor {\n  min-height: auto!important;\n}\n"
+module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n*:not(.fa) {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody,\nhtml {\n  min-height: 100%;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  min-height: 100vh;\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 50px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);\n}\n.alert-element {\n  position: fixed;\n  right: 10px;\n  top: 60px;\n  width: 200px;\n  background-color: #eee;\n  z-index: 999;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.alert-element .message {\n  padding: 10px;\n}\n.alert-element .close {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.admin-content-wrapper {\n  height: 100%;\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.page-editor .module-panel .save {\n  margin-right: 0!important;\n}\n.page-editor .module-panel .view {\n  margin: 0 10px;\n  padding: 8px;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.cancel {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #bd0e0e;\n  color: #fff;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list,\ntrainings:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor,\ntrainings:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\n.fast-image-editor-popup .modal-body {\n  height: auto!important;\n}\nselect.form-control,\ninput.form-control {\n  border-radius: 0!important;\n  height: 30px!important;\n  padding: 0!important;\n  padding-left: 6px!important;\n}\nselect.form-control:focus,\ninput.form-control:focus {\n  border-color: #ced4da;\n  -o-box-shadow: none;\n  box-shadow: none;\n}\ninput.color {\n  display: inline-block;\n  width: 30px!important;\n  height: 30px;\n  outline: none;\n  border: 2px solid #757575;\n  border-radius: 2px;\n}\n.modal-dialog.image-chooser-popup {\n  width: 90%!important;\n  max-width: none!important;\n}\nmat-checkbox {\n  margin-right: 10px;\n  margin-left: 10px;\n}\n.mat-checkbox-checked.mat-primary .mat-checkbox-background,\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {\n  background-color: #4a90e2!important;\n}\n.trumbowyg-box {\n  margin-top: 0!important;\n  border: 1px solid #a9a9a9!important;\n}\n.trumbowyg-button-pane {\n  background: #eeeeee!important;\n}\n.textarea-field .trumbowyg-box {\n  min-height: 0;\n  height: 200px;\n}\n.sortable-item-unset {\n  display: unset;\n}\n.sortable-item-active img {\n  display: none;\n}\n.sortable-item-active .image-card-wrapper {\n  background-image: url('/admin/assets/img/anyimage.png');\n  background-size: 80% 80%;\n  background-repeat: no-repeat;\n  background-position: center;\n  opacity: 0.2;\n}\ntextarea {\n  width: 100%;\n}\n.sindu_dragger table {\n  background: none!important;\n}\n.field.description .trumbowyg-box,\n.settings .field .trumbowyg-box,\n.field.description .trumbowyg-editor,\n.settings .field .trumbowyg-editor {\n  min-height: auto!important;\n}\ncolor-picker {\n  z-index: 10;\n}\n"
 
 /***/ }),
 
@@ -299,6 +308,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _page_editor_field_extended_page_editor_field_extended_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./page-editor-field-extended/page-editor-field-extended.component */ "./src/app/page-editor-field-extended/page-editor-field-extended.component.ts");
 /* harmony import */ var _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./trainings-editor/trainings-editor.component */ "./src/app/trainings-editor/trainings-editor.component.ts");
+/* harmony import */ var _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./trainings/trainings.component */ "./src/app/trainings/trainings.component.ts");
+/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -354,7 +365,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-//import { CustomCheckboxModule } from 'angular-custom-checkbox';
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -407,7 +419,9 @@ var AppModule = /** @class */ (function () {
                 _image_cropper_image_cropper_component__WEBPACK_IMPORTED_MODULE_40__["CustomImageCropperComponent"],
                 _focus_directive__WEBPACK_IMPORTED_MODULE_42__["FocusDirective"],
                 _image_chooser_popup_image_chooser_popup_component__WEBPACK_IMPORTED_MODULE_44__["ImageChooserPopupComponent"],
-                _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_47__["TrainingsEditorComponent"]
+                _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_47__["TrainingsEditorComponent"],
+                _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_48__["TrainingsComponent"],
+                _menu_menu_component__WEBPACK_IMPORTED_MODULE_49__["RestaurantMenuComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -630,7 +644,7 @@ var WordCountLimit = /** @class */ (function () {
     function WordCountLimit() {
     }
     WordCountLimit.prototype.transform = function (value, count) {
-        return value.split(" ").slice(0, count).join(" ");
+        return value ? value.split(" ").slice(0, count).join(" ") : '';
     };
     WordCountLimit = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
@@ -676,13 +690,11 @@ var FocusDirective = /** @class */ (function () {
     FocusDirective.prototype.ngOnInit = function () {
         var _this = this;
         this.focusEvent.subscribe(function (event) {
-            console.log(event);
             switch (event) {
                 case true:
                     _this.renderer.invokeElementMethod(_this.element.nativeElement, 'focus', []);
                     break;
                 case false:
-                    console.log('bluring');
                     _this.renderer.invokeElementMethod(_this.element.nativeElement, 'blur', []);
                     break;
             }
@@ -1565,6 +1577,7 @@ var MenuService = /** @class */ (function () {
         this.menuItems.push(new _models_menu_item__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]('trainers', 'Тренеры', null));
         this.menuItems.push(new _models_menu_item__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]('rooms', 'Номера', null));
         this.menuItems.push(new _models_menu_item__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]('trainings', 'Тренировки', null));
+        this.menuItems.push(new _models_menu_item__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]('restaurant', 'Меню ресторана', null));
         this.menuItems.push(new _models_menu_item__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]('settings', 'Настройки', new _models_sub_menu_settings__WEBPACK_IMPORTED_MODULE_3__["SubMenuSettings"]()));
     }
     MenuService.prototype.getItems = function () {
@@ -1575,6 +1588,165 @@ var MenuService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], MenuService);
     return MenuService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/menu/menu.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/menu/menu.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".restaurant-menu-element .item {\n  margin-bottom: 10px;\n}\n@media screen and (min-width: 1200px) {\n}\n.restaurant-menu-element .item > div {\n  display: flex;\n  flex-direction: row;\n}\n.restaurant-menu-element .item > div .description {\n  line-height: 21px;\n  flex: 0 auto;\n  font-size: 15px;\n  font-family: 'Open Sans', sans-serif;\n}\n.restaurant-menu-element .item > div .price {\n  flex: 1 1;\n  text-align: right;\n  font-size: 15px;\n  font-family: 'Open Sans', sans-serif;\n  padding-right: 10px;\n  line-height: 20px;\n}\n.restaurant-menu-element .tab-list h3 {\n  font-family: 'Acrom-Light', sans-serif;\n}\n.restaurant-menu-element.mobile {\n  margin-bottom: 18px;\n  background-color: #fff;\n  padding: 5px;\n}\n.restaurant-menu-element.mobile > section > header {\n  text-align: center;\n  padding: 10px;\n  background-color: #f9f1dc;\n  font-size: 20px;\n  color: #000;\n  text-transform: uppercase;\n  font-family: 'Acrom-Light', sans-serif;\n}\n.restaurant-menu-element.mobile .menu-category {\n  padding-left: 10px;\n}\n.restaurant-menu-element.mobile .menu-category .item .description {\n  font-size: 15px;\n  color: #000;\n}\n.restaurant-menu-element.mobile .menu-category .item .price {\n  font-size: 15px;\n  color: #000;\n  line-height: 20px;\n}\n.restaurant-menu-element.mobile .menu-category .title {\n  text-transform: uppercase;\n  font-size: 22px;\n  margin: 15px 0;\n  color: #000;\n  font-family: 'Acrom-Regular', sans-serif;\n  text-align: center;\n  margin-left: -10px;\n}\n.restaurant-menu-element.desktop {\n  background-color: #fff;\n  padding: 12px;\n  margin-bottom: 30px;\n}\n@media screen and (min-width: 1200px) {\n  .restaurant-menu-element.desktop header li {\n    height: 55px;\n    line-height: 55px;\n    padding: 0!important;\n  }\n}\n.restaurant-menu-element.desktop .tab-list {\n  white-space: nowrap;\n  font-size: 0;\n}\n.restaurant-menu-element.desktop .tab-list li {\n  display: inline-block;\n  width: 33.3%;\n  text-align: center;\n  padding: 10px;\n  background-color: #eae5cf;\n  font-size: 20px;\n  color: #000;\n  text-transform: uppercase;\n}\n.restaurant-menu-element.desktop .tab-list li.active {\n  background-color: #f9f1dc;\n  color: #000;\n}\n.restaurant-menu-element.desktop .content .tab:not(.active) {\n  display: none;\n}\n.restaurant-menu-element.desktop .content .tab {\n  overflow: hidden;\n}\n.restaurant-menu-element.desktop .content .menu-category {\n  width: 33.3%;\n  display: inline-block;\n  color: #000;\n  font-size: 18px;\n  padding: 20px 0;\n  padding-top: 35px;\n  vertical-align: top;\n  float: right;\n}\n.restaurant-menu-element.desktop .content .menu-category .title {\n  text-transform: uppercase;\n  font-size: 22px;\n  margin-bottom: 25px;\n  font-family: 'Acrom-Regular', sans-serif;\n  text-align: center;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/menu/menu.component.html":
+/*!******************************************!*\
+  !*** ./src/app/menu/menu.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content\" *ngIf=\"isReady()\">\n  <div class=\"restaurant-menu-element desktop ng-scope\" ng-controller=\"TabsController as tabs\" ng-init=\"tabs.activeTabIndex = 1\">\n    <header>\n      <ul class=\"tab-list\">\n        <li (click)=\"setActiveTabIndex(catId)\" *ngFor=\"let catId of getCategories()\" [class.active]=\"isActive(catId)\" role=\"button\" tabindex=\"0\" class=\"active\" style=\"\">\n          <h3>{{getCategoryName(catId)}}</h3>\n        </li>\n      </ul>\n    </header>\n    <section class=\"content\">\n      <div class=\"tab active\" [class.active]=\"isActive(n)\" *ngFor=\"let n of [1,2,3]\">\n        <div class=\"menu-category\" *ngFor=\"let menuCategoryTitle of getMenuCategories(n)\">\n          <div class=\"title\">{{menuCategoryTitle}}</div>\n          <div class=\"item\" *ngFor=\"let item of getCategoryItems(n, menuCategoryTitle)\" (dblclick)=\"openEditItemPopup(item)\">\n            <div>\n              <div class=\"description\">{{item.title}}<span class=\"sizes\">{{item.size}}</span></div><div class=\"price\">{{item.price}}р.</div>\n            </div>\n          </div>\n          <button (click)=\"openNewItemPopup(n, menuCategoryTitle)\">Добавить</button>\n        </div>\n      </div>\n    </section>\n  </div>\n</div>\n\n<ng-template #newItemPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новый тип тренировок</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"field\">\n      <label>Название</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.title\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Цена</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.price\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Кол-во</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.size\">\n      </div>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"addItem()\">Создать</button>\n      <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n    </div>\n  </div>\n</ng-template>\n\n<ng-template #editItemPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новый тип тренировок</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"field\">\n      <label>Название</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.title\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Цена</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.price\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Кол-во</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.size\">\n      </div>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"closePopup()\">Применить</button>\n    </div>\n  </div>\n</ng-template>"
+
+/***/ }),
+
+/***/ "./src/app/menu/menu.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/menu/menu.component.ts ***!
+  \****************************************/
+/*! exports provided: RestaurantMenuComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RestaurantMenuComponent", function() { return RestaurantMenuComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/restaurant-menu */ "./src/app/models/restaurant-menu.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var RestaurantMenuComponent = /** @class */ (function () {
+    function RestaurantMenuComponent(modelService, modalService, selectItemService) {
+        var _this = this;
+        this.modelService = modelService;
+        this.modalService = modalService;
+        this.selectItemService = selectItemService;
+        this.menuItems = null;
+        this.selectedTabId = 1;
+        this.selectItemService.event$.subscribe(function (e) {
+            if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__["SelectItemEvent"].Type.TrainingItemTypeRemove) {
+                _this.menuItems = _this.menuItems.filter(function (a) { return a.id !== e.payload.activityTypeId; });
+            }
+            else if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__["SelectItemEvent"].Type.LanguageChange) {
+                _this.loadMenuItems(true);
+            }
+        });
+    }
+    RestaurantMenuComponent.prototype.openNewItemPopup = function (catId, catTitle) {
+        this.newItem = _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].fromRaw({
+            menu_type: catId,
+            category_title: catTitle,
+            title: 'Новое блюдо',
+            price: 555,
+            size: ''
+        });
+        this.openModal(this.newItemPopup);
+    };
+    RestaurantMenuComponent.prototype.openEditItemPopup = function (item) {
+        this.editingItem = item;
+        this.openModal(this.editItemPopup);
+    };
+    RestaurantMenuComponent.prototype.addItem = function () {
+        this.menuItems.push(this.newItem);
+        this.closePopup();
+    };
+    RestaurantMenuComponent.prototype.getMenuCategories = function (catId) {
+        return Array.from(new Set(this.menuItems
+            .filter(function (i) { return i.menu_type == catId; })
+            .map(function (item) { return item.category_title; })));
+    };
+    RestaurantMenuComponent.prototype.getCategoryItems = function (catId, catTitle) {
+        return this.menuItems
+            .filter(function (i) { return i.menu_type == catId && i.category_title === catTitle; });
+    };
+    RestaurantMenuComponent.prototype.getCategories = function () {
+        return _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].getCategories();
+    };
+    RestaurantMenuComponent.prototype.getCategoryName = function (catId) {
+        return _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].getMenuCategoryNameById(catId);
+    };
+    RestaurantMenuComponent.prototype.isActive = function (id) {
+        return this.selectedTabId === id;
+    };
+    RestaurantMenuComponent.prototype.setActiveTabIndex = function (id) {
+        this.selectedTabId = id;
+    };
+    RestaurantMenuComponent.prototype.isReady = function () {
+        return this.menuItems !== null;
+    };
+    RestaurantMenuComponent.prototype.openModal = function (template) {
+        this.modalRef = this.modalService.show(template);
+    };
+    RestaurantMenuComponent.prototype.closePopup = function () {
+        this.modalRef.hide();
+    };
+    RestaurantMenuComponent.prototype.reorderApply = function () {
+        this.modelService.reorderApply('restaurantMenu', this.menuItems);
+    };
+    RestaurantMenuComponent.prototype.loadMenuItems = function (force) {
+        var _this = this;
+        if (force === void 0) { force = false; }
+        this.modelService.getRestaurantMenu().subscribe(function (menuItems) {
+            menuItems.sort(function (a, b) {
+                return a.n - b.n;
+            });
+            _this.menuItems = menuItems.map(function (a) { return _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].fromRaw(a); });
+        });
+    };
+    RestaurantMenuComponent.prototype.ngOnInit = function () {
+        this.loadMenuItems();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('newItemPopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "newItemPopup", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('editItemPopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "editItemPopup", void 0);
+    RestaurantMenuComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-restaurant-menu',
+            template: __webpack_require__(/*! ./menu.component.html */ "./src/app/menu/menu.component.html"),
+            styles: [__webpack_require__(/*! ../common/object-list.component.css */ "./src/app/common/object-list.component.css"), __webpack_require__(/*! ./menu.component.css */ "./src/app/menu/menu.component.css")],
+        }),
+        __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_1__["ModelService"],
+            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_2__["BsModalService"],
+            _select_item_service__WEBPACK_IMPORTED_MODULE_3__["SelectItemService"]])
+    ], RestaurantMenuComponent);
+    return RestaurantMenuComponent;
 }());
 
 
@@ -1603,6 +1775,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_image_filters__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./models/image-filters */ "./src/app/models/image-filters.ts");
 /* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./models/select-item-event */ "./src/app/models/select-item-event.ts");
 /* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var _models_training_activity__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./models/training-activity */ "./src/app/models/training-activity.ts");
+/* harmony import */ var _models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./models/training-activity-type */ "./src/app/models/training-activity-type.ts");
+/* harmony import */ var _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./models/restaurant-menu */ "./src/app/models/restaurant-menu.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1634,6 +1809,9 @@ var __values = (undefined && undefined.__values) || function (o) {
 
 
 
+
+
+
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
         'Content-Type': 'application/json',
@@ -1647,6 +1825,8 @@ var ModelService = /** @class */ (function () {
         this.selectItemService = selectItemService;
         this.baseUrl = '/api/';
         _models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].setupLanguageService(this.languageService);
+        _models_training_activity__WEBPACK_IMPORTED_MODULE_12__["TrainingActivity"].setupLanguageService(this.languageService);
+        _models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__["TrainingActivityType"].setupLanguageService(this.languageService);
         _models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].setupLanguageService(this.languageService);
         _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].setupLanguageService(this.languageService);
     }
@@ -1777,6 +1957,36 @@ var ModelService = /** @class */ (function () {
     ModelService.prototype.getImageTypes = function () {
         return this.getModelListing(_models_image_type__WEBPACK_IMPORTED_MODULE_8__["ImageType"].getApiMethodName());
     };
+    // training activity types
+    ModelService.prototype.getTrainingActivityTypes = function () {
+        return this.getModelListing(_models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__["TrainingActivityType"].getApiMethodName());
+    };
+    ModelService.prototype.createTrainingActivityType = function (trainingActivityType) {
+        return this.http.post(this.baseUrl + _models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__["TrainingActivityType"].getApiMethodName(), trainingActivityType, httpOptions);
+    };
+    ModelService.prototype.updateTrainingActivityType = function (trainingActivityType) {
+        return this.http.put(this.baseUrl + _models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__["TrainingActivityType"].getApiMethodName(trainingActivityType.id), trainingActivityType);
+    };
+    ModelService.prototype.deleteTrainingActivityType = function (trainingActivityType) {
+        return this.http.delete(this.baseUrl + _models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__["TrainingActivityType"].getApiMethodName(trainingActivityType.id));
+    };
+    // training activities
+    ModelService.prototype.getTrainingActivitiesByType = function (typeId) {
+        return this.getModelListing(_models_training_activity__WEBPACK_IMPORTED_MODULE_12__["TrainingActivity"].getApiMethodName(null, new Map().set('type_id', typeId)));
+    };
+    ModelService.prototype.createTrainingActivity = function (trainingActivity) {
+        return this.http.post(this.baseUrl + _models_training_activity__WEBPACK_IMPORTED_MODULE_12__["TrainingActivity"].getApiMethodName(), trainingActivity, httpOptions);
+    };
+    ModelService.prototype.updateTrainingActivity = function (trainingActivity) {
+        return this.http.put(this.baseUrl + _models_training_activity__WEBPACK_IMPORTED_MODULE_12__["TrainingActivity"].getApiMethodName(trainingActivity.id), trainingActivity);
+    };
+    ModelService.prototype.deleteTrainingActivity = function (trainingActivity) {
+        return this.http.delete(this.baseUrl + _models_training_activity__WEBPACK_IMPORTED_MODULE_12__["TrainingActivity"].getApiMethodName(trainingActivity.id));
+    };
+    // menu
+    ModelService.prototype.getRestaurantMenu = function () {
+        return this.getModelListing(_models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiMethodName());
+    };
     //common
     ModelService.prototype.getModelListing = function (apiMethod) {
         return this.http.get(this.baseUrl + apiMethod);
@@ -1813,10 +2023,18 @@ var BaseApiModel = /** @class */ (function () {
     BaseApiModel.setupLanguageService = function (languageService) {
         this.languageService = languageService;
     };
-    BaseApiModel.getApiMethodName = function (id) {
+    BaseApiModel.getApiMethodName = function (id, params) {
         var result = this.apiMethodName + (id ? ('/' + id) : '');
+        if (!params) {
+            params = new Map();
+        }
         if (this.passLang && this.languageService) {
-            result += '?lang=' + this.languageService.getLanguage();
+            params.set('lang', this.languageService.getLanguage().toString());
+        }
+        if (params && params.size) {
+            var parts_1 = [];
+            params.forEach(function (value, key) { return parts_1.push(key + '=' + value); });
+            result += '?' + parts_1.join('&');
         }
         return result;
     };
@@ -2060,6 +2278,65 @@ var NotificationEvent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/restaurant-menu.ts":
+/*!*******************************************!*\
+  !*** ./src/app/models/restaurant-menu.ts ***!
+  \*******************************************/
+/*! exports provided: RestaurantMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RestaurantMenu", function() { return RestaurantMenu; });
+/* harmony import */ var _base_api_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-api-model */ "./src/app/models/base-api-model.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var RestaurantMenu = /** @class */ (function (_super) {
+    __extends(RestaurantMenu, _super);
+    function RestaurantMenu() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    RestaurantMenu.getCategories = function () {
+        return [
+            this.ID_MENU_MAIN,
+            this.ID_MENU_BANKET,
+            this.ID_MENU_BAR
+        ];
+    };
+    RestaurantMenu.getMenuCategoryNameById = function (catId) {
+        switch (catId) {
+            case this.ID_MENU_MAIN:
+                return 'Основное меню';
+            case this.ID_MENU_BANKET:
+                return 'Банкетное меню';
+            case this.ID_MENU_BAR:
+                return 'Барная карта';
+        }
+    };
+    RestaurantMenu.fromRaw = function (raw) {
+        return Object.assign(new RestaurantMenu(), raw);
+    };
+    RestaurantMenu.ID_MENU_MAIN = 1;
+    RestaurantMenu.ID_MENU_BANKET = 2;
+    RestaurantMenu.ID_MENU_BAR = 3;
+    RestaurantMenu.apiMethodName = 'menu';
+    RestaurantMenu.passLang = true;
+    return RestaurantMenu;
+}(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/room.ts":
 /*!********************************!*\
   !*** ./src/app/models/room.ts ***!
@@ -2137,14 +2414,15 @@ var SelectItemEvent = /** @class */ (function () {
         Type[Type["TrainerClose"] = 4] = "TrainerClose";
         Type[Type["RoomSelect"] = 5] = "RoomSelect";
         Type[Type["RoomRemove"] = 6] = "RoomRemove";
-        Type[Type["RoomClose"] = 7] = "RoomClose";
-        Type[Type["LanguageChange"] = 8] = "LanguageChange";
-        Type[Type["ImageChooserApply"] = 9] = "ImageChooserApply";
-        Type[Type["NewTag"] = 10] = "NewTag";
-        Type[Type["RefreshTags"] = 11] = "RefreshTags";
-        Type[Type["CloseAllSelectedItems"] = 12] = "CloseAllSelectedItems";
-        Type[Type["ChangeAspectRatio"] = 13] = "ChangeAspectRatio";
-        Type[Type["ApplyFilter"] = 14] = "ApplyFilter";
+        Type[Type["TrainingItemTypeRemove"] = 7] = "TrainingItemTypeRemove";
+        Type[Type["RoomClose"] = 8] = "RoomClose";
+        Type[Type["LanguageChange"] = 9] = "LanguageChange";
+        Type[Type["ImageChooserApply"] = 10] = "ImageChooserApply";
+        Type[Type["NewTag"] = 11] = "NewTag";
+        Type[Type["RefreshTags"] = 12] = "RefreshTags";
+        Type[Type["CloseAllSelectedItems"] = 13] = "CloseAllSelectedItems";
+        Type[Type["ChangeAspectRatio"] = 14] = "ChangeAspectRatio";
+        Type[Type["ApplyFilter"] = 15] = "ApplyFilter";
     })(Type = SelectItemEvent.Type || (SelectItemEvent.Type = {}));
 })(SelectItemEvent || (SelectItemEvent = {}));
 
@@ -2365,6 +2643,84 @@ var Trainer = /** @class */ (function (_super) {
     Trainer.apiMethodName = 'trainer';
     Trainer.passLang = true;
     return Trainer;
+}(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/training-activity-type.ts":
+/*!**************************************************!*\
+  !*** ./src/app/models/training-activity-type.ts ***!
+  \**************************************************/
+/*! exports provided: TrainingActivityType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainingActivityType", function() { return TrainingActivityType; });
+/* harmony import */ var _base_api_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-api-model */ "./src/app/models/base-api-model.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var TrainingActivityType = /** @class */ (function (_super) {
+    __extends(TrainingActivityType, _super);
+    function TrainingActivityType() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TrainingActivityType.fromRaw = function (raw) {
+        return Object.assign(new TrainingActivityType(), raw);
+    };
+    TrainingActivityType.apiMethodName = 'trainingActivityType';
+    TrainingActivityType.passLang = true;
+    return TrainingActivityType;
+}(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/training-activity.ts":
+/*!*********************************************!*\
+  !*** ./src/app/models/training-activity.ts ***!
+  \*********************************************/
+/*! exports provided: TrainingActivity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainingActivity", function() { return TrainingActivity; });
+/* harmony import */ var _base_api_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base-api-model */ "./src/app/models/base-api-model.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var TrainingActivity = /** @class */ (function (_super) {
+    __extends(TrainingActivity, _super);
+    function TrainingActivity() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TrainingActivity.fromRaw = function (raw) {
+        return Object.assign(new TrainingActivity(), raw);
+    };
+    TrainingActivity.apiMethodName = 'trainingActivity';
+    TrainingActivity.passLang = true;
+    return TrainingActivity;
 }(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
 
 
@@ -3363,7 +3719,9 @@ var PagesListComponent = /** @class */ (function (_super) {
         for (var key in state) {
             this[key] = state[key];
         }
-        this.loadPage(this.pages.find(function (p) { return p.id == _this.selectedPageId; }), true);
+        if (this.pages) {
+            this.loadPage(this.pages.find(function (p) { return p.id == _this.selectedPageId; }), true);
+        }
     };
     PagesListComponent.prototype.loadPage = function (page, initial) {
         if (initial === void 0) { initial = false; }
@@ -5598,7 +5956,7 @@ var TrainersComponent = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".image-card {\n  display: inline-block;\n  width: 11.5%;\n  padding-top: 11.5%;\n  position: relative;\n  margin: 0.5%;\n}\n.image-card:hover .short-description {\n  height: initial;\n  white-space: initial;\n  line-height: 22px;\n  padding: 13px;\n  padding-left: 12px;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card .plus {\n  width: 31px;\n  height: 31px;\n  position: relative;\n  background: url(/admin/assets/icons/plus.svg) no-repeat;\n  font-size: 0;\n  margin-top: 11px;\n  display: block;\n}\n.image-card.ticked .image-card-wrapper:after {\n  position: absolute;\n  content: '';\n  width: 100%;\n  height: 100%;\n  border: 4px solid #4a90e2;\n  display: block;\n}\n.image-card .image-card-wrapper {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  box-sizing: border-box;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n}\n.image-card img.landscape {\n  height: 100%!important;\n}\n.image-card img.portrait {\n  width: 100%!important;\n}\n.image-card .new-image,\n.image-card .load-more {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n}\n.image-card .short-description {\n  position: absolute;\n  bottom: 0;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 100%;\n  overflow: hidden;\n  padding: 12px;\n  background-color: #fff;\n  box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.3);\n}\n"
+module.exports = ".image-card {\n  display: inline-block;\n  width: 11.5%;\n  padding-top: 11.5%;\n  position: relative;\n  margin: 0.5%;\n}\n.image-card:hover .short-description {\n  height: initial;\n  white-space: initial;\n  line-height: 22px;\n  padding: 13px;\n  padding-left: 12px;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card .plus {\n  width: 31px;\n  height: 31px;\n  position: relative;\n  background: url(/admin/assets/icons/plus.svg) no-repeat;\n  font-size: 0;\n  margin-top: 11px;\n  display: block;\n}\n.image-card.ticked .image-card-wrapper:after {\n  position: absolute;\n  content: '';\n  width: 100%;\n  height: 100%;\n  border: 4px solid #4a90e2;\n  display: block;\n}\n.image-card .image-card-wrapper {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  box-sizing: border-box;\n}\n.image-card:before {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n  bottom: 0;\n  left: 5px;\n  content: \"\";\n  border-radius: 6px;\n  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.4);\n}\n.image-card img {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateY(-50%) translateX(-50%);\n          transform: translateY(-50%) translateX(-50%);\n}\n.image-card img.landscape {\n  height: 100%!important;\n}\n.image-card img.portrait {\n  width: 100%!important;\n}\n.image-card .new-image,\n.image-card .load-more {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #fff;\n  border-radius: 6px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n}\n.image-card .short-description {\n  position: absolute;\n  bottom: 0;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  width: 100%;\n  overflow: hidden;\n  padding: 12px;\n  background-color: #fff;\n  box-shadow: 0 -4px 7px rgba(0, 0, 0, 0.3);\n}\n@font-face {\n  font-family: 'Acrom-Regular';\n  src: url('/admin/assets/fonts/Acrom-Regular.eot?#iefix') format('embedded-opentype'), url('/admin/assets/fonts/Acrom-Regular.otf') format('opentype'), url('/admin/assets/fonts/Acrom-Regular.woff') format('woff'), url('/admin/assets/fonts/Acrom-Regular.ttf') format('truetype'), url('/admin/assets/fonts/Acrom-Regular.svg#Acrom-Regular') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Acrom-Medium';\n  src: url('/admin/assets/fonts/Acrom-Medium.eot?#iefix') format('embedded-opentype'), url('/admin/assets/fonts/Acrom-Medium.otf') format('opentype'), url('/admin/assets/fonts/Acrom-Medium.woff') format('woff'), url('/admin/assets/fonts/Acrom-Medium.ttf') format('truetype'), url('/admin/assets/fonts/Acrom-Medium.svg#Acrom-Medium') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Acrom-Bold';\n  src: url('/admin/assets/fonts/Acrom-Bold/Acrom-Bold.eot?#iefix') format('embedded-opentype'), url('/admin/assets/fonts/Acrom-Bold/Acrom-Bold.otf') format('opentype'), url('/admin/assets/fonts/Acrom-Bold/Acrom-Bold.woff') format('woff'), url('/admin/assets/fonts/Acrom-Bold/Acrom-Bold.ttf') format('truetype'), url('/admin/assets/fonts/Acrom-Bold/Acrom-Bold.svg#Acrom-Bold') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n@font-face {\n  font-family: 'Acrom-Light';\n  src: url('/admin/assets/fonts/Acrom-Light/Acrom-Light.eot?#iefix') format('embedded-opentype'), url('/admin/assets/fonts/Acrom-Light/Acrom-Light.otf') format('opentype'), url('/admin/assets/fonts/Acrom-Light/Acrom-Light.woff') format('woff'), url('/admin/assets/fonts/Acrom-Light/Acrom-Light.ttf') format('truetype'), url('/admin/assets/fonts/Acrom-Light/Acrom-Light.svg#Acrom-Light') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n.training-card {\n  margin: 10px;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);\n  background-color: #fff;\n  padding: 10px;\n  position: relative;\n}\n.training-card.settings h2 {\n  font-family: \"Acrom-Bold\", sans-serif;\n}\n.training-card.settings .field {\n  margin-bottom: 10px;\n  position: relative;\n}\n.training-card.settings .field label {\n  padding-top: 2px;\n  float: left;\n}\n.training-card.settings .field .input {\n  padding-left: 150px;\n}\n.training-card h2 {\n  font-family: \"Acrom-Light\", sans-serif;\n}\n.training-card:not(:hover) .close {\n  display: none;\n}\n.training-card .close {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  font-size: 20px;\n  cursor: pointer;\n}\n"
 
 /***/ }),
 
@@ -5609,7 +5967,7 @@ module.exports = ".image-card {\n  display: inline-block;\n  width: 11.5%;\n  pa
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"object-editor\" [ngClass]=\"{active: room !== null}\">\n  <div class=\"close\" (click)=\"close()\">\n    <i class=\"fa fa-window-close\" aria-hidden=\"true\"></i>\n  </div>\n  <div *ngIf=\"room !== null\">\n    <div class=\"field name\">\n      <span class=\"label\">Название комнаты</span>\n      <input type=\"text\" [(ngModel)]=\"room.title\">\n    </div>\n\n    <div class=\"field price\">\n      <span class=\"label\">Цена</span>\n      <input type=\"text\" [(ngModel)]=\"room.price_from\">\n    </div>\n\n    <div class=\"field square\">\n      <span class=\"label\">Площадь</span>\n      <input type=\"text\" [(ngModel)]=\"room.square\">\n    </div>\n\n    <div class=\"field description\">\n      <span class=\"label\">Описание комнаты</span>\n      <textarea ngxTrumbowygEditor [(ngModel)]=\"room.text\" [options]=\"editorOptions\"></textarea>\n    </div>\n\n    <div class=\"field images\">\n      <span class=\"label\">Изображения</span>\n\n      <div *ngIf=\"roomImages.length === 0\">\n        <div class=\"image-card\" (click)=\"chooser.showPopup()\">\n          <div class=\"new-image image-wrapper\">\n            Добавить еще<br>\n            <i class=\"plus\"></i><br>\n          </div>\n        </div>\n      </div>\n\n      <ng-template #imageTemplate let-item=\"item\" let-index=\"index\">\n        <div class=\"image-card\" (click)=\"chooser.showPopup()\" *ngIf=\"index === 0\">\n          <div class=\"new-image image-wrapper\">\n            Добавить еще<br>\n            <i class=\"plus\"></i><br>\n          </div>\n        </div>\n        <div class=\"image-card\" (click)=\"chooser.showFastEditor(item.value)\">\n          <div class=\"image-card-wrapper\">\n            <img #imagesList [src]=\"'/' + item.value.filename\" (load)=\"detectOrientation(index)\">\n          </div>\n          <span class=\"delete\" (click)=\"removeImage(item.value)\">\n            <i class=\"fa fa-close\"></i>\n          </span>\n        </div>\n      </ng-template>\n\n      <bs-sortable #sortable\n              [(ngModel)]=\"roomImages\"\n              [itemTemplate]=\"imageTemplate\"\n              itemClass=\"sortable-item-unset\"\n              itemActiveClass=\"sortable-item-active\"\n      ></bs-sortable>\n\n      <app-image-chooser-popup #chooser (selectedImageIds)=\"appendImages($event)\" [multiple]=\"true\"></app-image-chooser-popup>\n    </div>\n\n    <div class=\"field alias\">\n      <span class=\"label\">Путь URL</span>\n      <input type=\"text\" [(ngModel)]=\"room.alias\">\n    </div>\n\n    <div class=\"field published\">\n      <span class=\"label\">Опубликован</span>\n      <mat-checkbox [color]=\"'primary'\" [(ngModel)]=\"room.published\"></mat-checkbox>\n    </div>\n\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"save()\">Сохранить</button>\n      <button type=\"button\" class=\"ripple module-control-button-element delete\" (click)=\"openModal(confirmDelete)\">Удалить</button>\n    </div>\n  </div>\n</div>\n<ng-template #imageChoose>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Выберите изображение</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <app-image-chooser (selectedImageId)=\"selectImage($event)\"></app-image-chooser>\n    <button class=\"btn btn-primary\">выбор</button>\n    <button class=\"btn btn-danger\" (click)=\"modalRef.hide()\">отмена</button>\n  </div>\n</ng-template>\n<ng-template #confirmDelete>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Вы точно хотите удалить этот номер?</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"buttons\">\n      <button class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">отмена</button>\n      <button class=\"ripple module-control-button-element delete\" (click)=\"delete()\">да, удалить</button>\n    </div>\n  </div>\n</ng-template>"
+module.exports = "<div *ngIf=\"isReady()\">\n    <div class=\"settings training-card\" *ngIf=\"activityType !== null\">\n        <h2>Настройки</h2>\n        <div class=\"field\">\n            <label>Заголовок</label>\n            <div class=\"input\">\n                <input [(ngModel)]=\"activityType.title\">\n            </div>\n        </div>\n        <div class=\"field\">\n            <label>Краткий заголовок</label>\n            <div class=\"input\">\n                <input [(ngModel)]=\"activityType.short_title\">\n            </div>\n        </div>\n        <div class=\"field\">\n            <label>Описание</label>\n            <div class=\"input\">\n                <textarea ngxTrumbowygEditor  [options]=\"editorOptions\" [(ngModel)]=\"activityType.description\"></textarea>\n            </div>\n        </div>\n        <div class=\"field\">\n            <label>Цвет</label>\n            <div class=\"input\">\n                <input class=\"color\"(colorPickerChange)=\"setColor($event)\" [colorPicker]=\"activityType.color\" [style.background]=\"activityType.color\" [cpOutputFormat]=\"hex\">\n            </div>\n        </div>\n        <div class=\"actions\">\n            <button (click)=\"save()\" class=\"save ripple module-control-button-element default\">Сохранить</button>\n            <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n        </div>\n    </div>\n    <div *ngFor=\"let activity of activities\" [class]=\"'training-card activity-' + activity.id\" (dblclick)=\"initEditingCard(activity)\">\n        <div [ngSwitch]=\"isEditing(activity) && !isCreatingNew()\">\n            <div *ngSwitchCase=\"false\">\n                <div class=\"contents\">\n                    <h2>{{activity.title}}</h2>\n                    {{activity.description}}\n                </div>\n                <span class=\"close\" (click)=\"removeActivity(activity)\">\n                    <i class=\"fa fa-close\"></i>\n                </span>\n            </div>\n            <div *ngSwitchCase=\"true\">\n                <div class=\"contents\">\n                    <h2><input placeholder=\"Заголовок вида тренировок\" [focus]=\"autofocus\" [(ngModel)]=\"activity.title\" (blur)=\"leaveField('title', activity)\"></h2>\n                    <textarea placeholder=\"Описание\" [(ngModel)]=\"activity.description\" (blur)=\"leaveField('description', activity)\"></textarea>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div *ngIf=\"isCreatingNew()\" class=\"training-card\">\n        <div class=\"contents\">\n            <h2><input placeholder=\"Заголовок вида тренировок\" [focus]=\"autofocus\" [(ngModel)]=\"newActivity.title\"></h2>\n            <textarea placeholder=\"Описание\" [(ngModel)]=\"newActivity.description\"></textarea>\n            <button (click)=\"createNew()\">добавить</button>\n        </div>\n        <span class=\"close\" (click)=\"closeNewActivity()\">\n            <i class=\"fa fa-close\"></i>\n        </span>\n    </div>\n    <div class=\"training-card\" (click)=\"createEditingCard()\">\n        <div class=\"toolbar-element\">\n            <div><i class=\"fa fa-plus\"></i></div>\n        </div>\n    </div>\n</div>\n\n<ng-template #confirmDelete>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title pull-left\">Вы точно хотите удалить тип тренировок?</h4>\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"closePopup()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"buttons\">\n            <button type=\"button\" class=\"ripple module-control-button-element delete\" (click)=\"delete()\">Удалить</button>\n            <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n        </div>\n    </div>\n</ng-template>"
 
 /***/ }),
 
@@ -5627,6 +5985,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
 /* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _models_training_activity_type__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/training-activity-type */ "./src/app/models/training-activity-type.ts");
+/* harmony import */ var _models_training_activity__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/training-activity */ "./src/app/models/training-activity.ts");
+/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../app.module */ "./src/app/app.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5640,12 +6004,165 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
+
+
 var TrainingsEditorComponent = /** @class */ (function () {
     function TrainingsEditorComponent(selectItemService, modelService, modalService) {
+        var _this = this;
         this.selectItemService = selectItemService;
         this.modelService = modelService;
         this.modalService = modalService;
+        this.activityType = null;
+        this.currentEditingId = 0;
+        this.activities = null;
+        this.newActivity = null;
+        this.autofocus = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](true);
+        this.editorOptions = _app_module__WEBPACK_IMPORTED_MODULE_8__["AppModule"].editorOptions;
+        this.autofocus.emit(true);
+        this.selectItemService.event$.subscribe(function (event) {
+            if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_6__["SelectItemEvent"].Type.LanguageChange) {
+                _this.reloadComponentState();
+            }
+        });
+        this.editorOptions.btns = [
+            ['strong', 'em', 'del'],
+            ['link'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+        ];
     }
+    TrainingsEditorComponent.prototype.deleteWithConfirm = function () {
+        this.showPopup(this.confirmDelete);
+    };
+    TrainingsEditorComponent.prototype.delete = function () {
+        var _this = this;
+        this.modelService.deleteTrainingActivityType(this.activityType)
+            .subscribe(function () {
+            _this.selectItemService.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_6__["SelectItemEvent"].Type.TrainingItemTypeRemove, {
+                activityTypeId: _this.activityType.id
+            });
+            _this.closePopup();
+        });
+    };
+    TrainingsEditorComponent.prototype.save = function () {
+        this.modelService.updateTrainingActivityType(this.activityType)
+            .subscribe();
+    };
+    TrainingsEditorComponent.prototype.setColor = function (color) {
+        if (this.activityType) {
+            this.activityType.color = color;
+        }
+    };
+    TrainingsEditorComponent.prototype.leaveField = function (fieldName, activity) {
+        if (activity === void 0) { activity = null; }
+        this.checkFields(activity);
+    };
+    TrainingsEditorComponent.prototype.createEditingCard = function () {
+        this.newActivity = new _models_training_activity__WEBPACK_IMPORTED_MODULE_5__["TrainingActivity"]();
+        this.newActivity.type_id = this.activityType.id;
+        this.makeAutofocus();
+    };
+    TrainingsEditorComponent.prototype.showPopup = function (target) {
+        this.modalRef = this.modalService.show(target);
+    };
+    TrainingsEditorComponent.prototype.closePopup = function () {
+        this.modalRef.hide();
+    };
+    TrainingsEditorComponent.prototype.isReady = function () {
+        return this.activities !== null;
+    };
+    TrainingsEditorComponent.prototype.ngOnChanges = function () {
+        this.reloadComponentState();
+    };
+    TrainingsEditorComponent.prototype.closeNewActivity = function () {
+        this.newActivity = null;
+    };
+    TrainingsEditorComponent.prototype.closeEditor = function () {
+        this.currentEditingId = 0;
+    };
+    TrainingsEditorComponent.prototype.isEditing = function (activity) {
+        return this.currentEditingId === activity.id;
+    };
+    TrainingsEditorComponent.prototype.initEditingCard = function (activity) {
+        this.currentEditingId = activity.id;
+        this.closeNewActivity();
+        this.makeAutofocus();
+    };
+    TrainingsEditorComponent.prototype.removeActivity = function (activity) {
+        var _this = this;
+        this.modelService
+            .deleteTrainingActivity(activity)
+            .subscribe(function () {
+            _this.activities = _this.activities.filter(function (a) { return a.id !== activity.id; });
+        });
+    };
+    TrainingsEditorComponent.prototype.isCreatingNew = function () {
+        return this.newActivity !== null;
+    };
+    TrainingsEditorComponent.prototype.createNew = function () {
+        var _this = this;
+        this.modelService.createTrainingActivity(this.newActivity)
+            .subscribe(function (activity) {
+            _this.activities.push(activity);
+            _this.closeNewActivity();
+        });
+    };
+    TrainingsEditorComponent.prototype.reloadComponentState = function () {
+        if (this.activityType !== null) {
+            this.initActivitiesList();
+        }
+    };
+    TrainingsEditorComponent.prototype.makeAutofocus = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.autofocus.emit(true);
+        }, 10);
+    };
+    TrainingsEditorComponent.prototype.checkFields = function (activity) {
+        var _this = this;
+        setTimeout(function () {
+            var count = jquery__WEBPACK_IMPORTED_MODULE_7__('[class*=activity-' + activity.id + '] input:focus').length +
+                jquery__WEBPACK_IMPORTED_MODULE_7__('[class*=activity-' + activity.id + '] textarea:focus').length;
+            if (count === 0) {
+                _this.applyEditingCard(activity);
+            }
+        }, 20);
+    };
+    TrainingsEditorComponent.prototype.applyEditingCard = function (activity) {
+        var _this = this;
+        if (activity.title && activity.description) {
+            this.modelService.updateTrainingActivity(activity)
+                .subscribe(function (activity) {
+                _this.closeEditor();
+            });
+        }
+        else {
+            this.closeEditor();
+        }
+    };
+    TrainingsEditorComponent.prototype.initActivitiesList = function () {
+        var _this = this;
+        var activityTypeId = this.activityType.id;
+        this.modelService
+            .getTrainingActivitiesByType(activityTypeId)
+            .subscribe(function (activities) {
+            _this.activities = activities.map(function (a) { return _models_training_activity__WEBPACK_IMPORTED_MODULE_5__["TrainingActivity"].fromRaw(a); });
+        }, function (error) {
+            console.log('Error loading activities of type ' + activityTypeId);
+            _this.activities = null;
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", _models_training_activity_type__WEBPACK_IMPORTED_MODULE_4__["TrainingActivityType"])
+    ], TrainingsEditorComponent.prototype, "activityType", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('confirmDelete'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])
+    ], TrainingsEditorComponent.prototype, "confirmDelete", void 0);
     TrainingsEditorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'trainings-editor',
@@ -5657,6 +6174,132 @@ var TrainingsEditorComponent = /** @class */ (function () {
             ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsModalService"]])
     ], TrainingsEditorComponent);
     return TrainingsEditorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/trainings/trainings.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/trainings/trainings.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".module-editor.nobg {\n  background: none!important;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/trainings/trainings.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/trainings/trainings.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content\">\n  <div class=\"module-list\">\n    <ul class=\"object-list-element\" *ngIf=\"activityTypes !== null\" [class.active]=\"selectedActivityType !== null\" #trainingsList>\n      <li class=\"object-item\" *ngFor=\"let activityType of activityTypes\" (click)=\"loadActivityType(activityType)\" [ngClass]=\"{active: this.selectedActivityType && activityType.id == selectedActivityType.id}\">\n        <h2 class=\"object-name\">\n          {{activityType.title | wordCountLimit: 2 }}\n          </h2>\n      </li>\n    </ul>\n    <div class=\"toolbar-element\">\n      <div (click)=\"openModal(createActivityType)\"><i class=\"fa fa-plus\"></i></div>\n      <div (click)=\"openModal(reorderActivityTypes)\"><i class=\"fa fa-bars\"></i></div>\n    </div>\n  </div>\n  <div class=\"module-editor module-editor-visible nobg\" [ngClass]=\"{'visible': selectedActivityType != null}\">\n    <trainings-editor [activityType]=\"selectedActivityType\"></trainings-editor>\n  </div>\n</div>\n<ng-template #reorderActivityTypes>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\">Поменять местами</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <bs-sortable *ngIf=\"activityTypes\"\n                 [(ngModel)]=\"activityTypes\"\n                 itemClass=\"sortable-item\"\n                 itemActiveClass=\"sortable-item-active\"\n                 placeholderItem=\"Drag here\"\n                 placeholderClass=\"placeholderStyle\"\n                 wrapperClass=\"sortable-wrapper\"\n                 fieldName=\"title\"\n    ></bs-sortable>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"save ripple module-control-button-element default\" (click)=\"reorderApply();modalRef.hide();\">Да</button>\n    <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n  </div>\n</ng-template>\n\n<ng-template #createActivityType>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новый тип тренировок</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <label>\n      Заголовок:\n    </label>\n    <div>\n      <input type=\"text\" #newActivityTypeName>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"createNewActivityType(newActivityTypeName.value)\">Создать</button>\n      <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n  </div>\n</ng-template>"
+
+/***/ }),
+
+/***/ "./src/app/trainings/trainings.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/trainings/trainings.component.ts ***!
+  \**************************************************/
+/*! exports provided: TrainingsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrainingsComponent", function() { return TrainingsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
+/* harmony import */ var _models_training_activity_type__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/training-activity-type */ "./src/app/models/training-activity-type.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
+/* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var TrainingsComponent = /** @class */ (function () {
+    function TrainingsComponent(modelService, modalService, selectItemService) {
+        var _this = this;
+        this.modelService = modelService;
+        this.modalService = modalService;
+        this.selectItemService = selectItemService;
+        this.activityTypes = null;
+        this.selectedActivityType = null;
+        this.selectItemService.event$.subscribe(function (e) {
+            if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__["SelectItemEvent"].Type.TrainingItemTypeRemove) {
+                _this.selectedActivityType = null;
+                _this.activityTypes = _this.activityTypes.filter(function (a) { return a.id !== e.payload.activityTypeId; });
+            }
+            else if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_5__["SelectItemEvent"].Type.LanguageChange) {
+                _this.loadActivities(true);
+            }
+        });
+    }
+    TrainingsComponent.prototype.openModal = function (template) {
+        this.modalRef = this.modalService.show(template);
+    };
+    TrainingsComponent.prototype.loadActivities = function (force) {
+        var _this = this;
+        if (force === void 0) { force = false; }
+        this.modelService.getTrainingActivityTypes().subscribe(function (activityTypes) {
+            activityTypes.sort(function (a, b) {
+                return a.n - b.n;
+            });
+            _this.activityTypes = activityTypes.map(function (a) { return _models_training_activity_type__WEBPACK_IMPORTED_MODULE_2__["TrainingActivityType"].fromRaw(a); });
+            if (force) {
+                if (_this.selectedActivityType !== null) {
+                    var loadActivityTypeId_1 = _this.selectedActivityType.id;
+                    _this.selectedActivityType = _this.activityTypes.find(function (t) { return t.id == loadActivityTypeId_1; });
+                    _this.loadActivityType(_this.selectedActivityType);
+                }
+            }
+        });
+    };
+    TrainingsComponent.prototype.ngOnInit = function () {
+        this.loadActivities();
+    };
+    TrainingsComponent.prototype.reorderApply = function () {
+        this.modelService.reorderApply('trainingActivityType', this.activityTypes);
+    };
+    TrainingsComponent.prototype.createNewActivityType = function (name) {
+        var _this = this;
+        var newActivityType = new _models_training_activity_type__WEBPACK_IMPORTED_MODULE_2__["TrainingActivityType"]();
+        newActivityType.short_title = name;
+        this.modelService.createTrainingActivityType(newActivityType).subscribe(function (activityType) {
+            console.log(activityType);
+            _this.activityTypes.push(activityType);
+        });
+    };
+    TrainingsComponent.prototype.loadActivityType = function (activityType) {
+        this.selectedActivityType = activityType;
+    };
+    TrainingsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'trainings',
+            template: __webpack_require__(/*! ./trainings.component.html */ "./src/app/trainings/trainings.component.html"),
+            styles: [__webpack_require__(/*! ../common/object-list.component.css */ "./src/app/common/object-list.component.css"), __webpack_require__(/*! ./trainings.component.css */ "./src/app/trainings/trainings.component.css")],
+        }),
+        __metadata("design:paramtypes", [_model_service__WEBPACK_IMPORTED_MODULE_1__["ModelService"],
+            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsModalService"],
+            _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"]])
+    ], TrainingsComponent);
+    return TrainingsComponent;
 }());
 
 

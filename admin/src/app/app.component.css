@@ -346,13 +346,15 @@ header.admin-header {
   overflow-y: auto;
 }
 trainers:not(.integrated) .module-list,
-rooms:not(.integrated) .module-list {
+rooms:not(.integrated) .module-list,
+trainings:not(.integrated) .module-list {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
 }
 trainers:not(.integrated) .module-editor,
-rooms:not(.integrated) .module-editor {
+rooms:not(.integrated) .module-editor,
+trainings:not(.integrated) .module-editor {
   overflow: hidden;
 }
 .modal-dialog.vertical {
@@ -409,6 +411,10 @@ mat-checkbox {
 }
 .trumbowyg-box {
   margin-top: 0!important;
+  border: 1px solid #a9a9a9!important;
+}
+.trumbowyg-button-pane {
+  background: #eeeeee!important;
 }
 .textarea-field .trumbowyg-box {
   min-height: 0;
@@ -434,6 +440,11 @@ textarea {
   background: none!important;
 }
 .field.description .trumbowyg-box,
-.field.description .trumbowyg-editor {
+.settings .field .trumbowyg-box,
+.field.description .trumbowyg-editor,
+.settings .field .trumbowyg-editor {
   min-height: auto!important;
+}
+color-picker {
+  z-index: 10;
 }
