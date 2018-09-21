@@ -42,7 +42,7 @@ class LandingController extends CmsController
 
     public function actionErrorHandler()
     {
-        $errorPage = Page::id(57);
+        $errorPage = Page::id(43);
         return $this->render('index', ['page' => $errorPage]);
     }
 }

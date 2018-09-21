@@ -4,7 +4,6 @@ use \frontend\components\AppHelper;
 use frontend\models\cms\CmsSettings;
 
 $links = CmsSettings::getValueArr(AppHelper::getDomain()->id,'FOOTER_LINKS_EN');
-$title = CmsSettings::getValueArr(AppHelper::getDomain()->id,'TITLE');
 $popups = CmsSettings::getValueArr(AppHelper::getDomain()->id,'FOOTER_POPUPS_EN');
 $copyright = CmsSettings::getValueArr(AppHelper::getDomain()->id,'COPYRIGHT');
 $icons = CmsSettings::getValueArr(AppHelper::getDomain()->id,'ICONS');

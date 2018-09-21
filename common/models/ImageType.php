@@ -51,10 +51,10 @@ class ImageType extends ActiveRecord
     public function afterFind()
     {
         parent::afterFind();
-        $rawSettings = json_decode($this->previews_settings_json, true);
-        foreach ($rawSettings as $i => $item) {
-            $this->previewSettings[] = new Preview($item['x'], $item['y'], isset($item['description']) ? $item['description'] : '', $i);
-        }
+//        $rawSettings = json_decode($this->previews_settings_json, true);
+//        foreach ($rawSettings as $i => $item) {
+//            $this->previewSettings[] = new Preview($item['x'], $item['y'], isset($item['description']) ? $item['description'] : '', $i);
+//        }
     }
 
     public function beforeSave($insert)

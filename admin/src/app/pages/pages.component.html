@@ -51,6 +51,9 @@
         <div class="module-content-element">
             <accordion *ngIf="selectOtherParams == true">
                 <accordion-group heading="Параметры страницы">
+                    <div class="field title">
+                        ID страницы: {{currentPage.id}}
+                    </div>
                     <div class="field">
                         <div class="title"><label for="editor-page-name">Название</label></div>
                         <div class="content">
