@@ -10,24 +10,17 @@ namespace backend\controllers\api;
 use frontend\components\LanguageHelper;
 use Yii;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use \yii\rest\ActiveController;
 use \yii\data\ActiveDataProvider;
+use yii\web\HttpException;
+use yii\web\Response;
+use yii\web\UnauthorizedHttpException;
 
 
 class ApiController extends ActiveController
 {
-
-//    public function afterAction($action, $result)
-//    {
-//        $result =  parent::afterAction($action, $result);
-//        /** @var ActiveDataProvider $result */
-//        $result->pagination = new Pagination([
-//            'pageSizeLimit' => [0, 1],
-//        ]);
-//
-//        return $result;
-//    }
 
     protected function verbs()
     {
@@ -40,23 +33,47 @@ class ApiController extends ActiveController
         ];
     }
 
+    /**
+     * @param $action
+     * @return bool
+     * @throws HttpException
+     * @throws \Exception
+     * @throws \yii\web\BadRequestHttpException
+     */
     public function beforeAction($action)
     {
+        $result =  parent::beforeAction($action);
+
         $lang = Yii::$app->request->get('lang');
 
         if (!empty($lang)) {
-            LanguageHelper::setCurrentLanguage($lang);
+            try {
+                LanguageHelper::setCurrentLanguage($lang);
+            } catch (yii\base\Exception $e) {
+                throw new HttpException(400, $e->getMessage());
+            }
+
         }
 
-        return parent::beforeAction($action);
+        return $result;
     }
-
 
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['corsFilter' ] = [
-            'class' => \yii\filters\Cors::className(),
+
+        $behaviors ['access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+
+            ],
+            'denyCallback' => function ($rule, $action) {
+                throw new UnauthorizedHttpException('You are not allowed to access this page');
+            }
         ];
 
         $behaviors['contentNegotiator'] = [
@@ -70,18 +87,6 @@ class ApiController extends ActiveController
             'class' => VerbFilter::className(),
             'actions' => $this->verbs(),
         ];
-
-       /* $behaviors['access'] = [
-            'class' => \yii\filters\AccessControl::className(),
-            'only' => ['create', 'update', 'delete'],
-            'rules' => [
-                [
-                    'actions' => ['create', 'update', 'delete'],
-                    'allow' => true,
-                    'roles' => ['@'],
-                ],
-            ],
-        ]; */
 
         // В это место мы будем добавлять поведения (читай ниже)
         return $behaviors;

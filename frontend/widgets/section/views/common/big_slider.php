@@ -73,3 +73,17 @@ foreach ($sectionParams->slides as $i => $slide) {
 		</div>
 	</div>
 </div>
+<?php if ($sectionParams->hasDetailButton) { ?>
+    <div class="row more-row">
+        <div class="col-lg-12 center">
+            <?= DetailButton::widget([
+                'hasDetailButton'  => $sectionParams->hasDetailButton,
+                'detailButtonText' => $sectionParams->detailButtonText,
+                'detailButtonLink' => $sectionParams->detailButtonLink,
+                'isColored'        => $sectionParams->detailButtonIsColored,
+                'bgColor'          => $sectionParams->detailButtonBgColor,
+                'blackText'        => true,
+            ]); ?>
+        </div>
+    </div>
+<?php } ?>

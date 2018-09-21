@@ -51,7 +51,30 @@
         <div class="module-content-element">
             <accordion *ngIf="selectOtherParams == true">
                 <accordion-group heading="Параметры страницы">
-                    {{currentPage.url}}
+                    <div class="field">
+                        <div class="title"><label for="editor-page-name">Название</label></div>
+                        <div class="content">
+                            <input id="editor-page-name" [(ngModel)]="currentPage.name">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="title"><label for="editor-page-url">URL</label></div>
+                        <div class="content">
+                            <input id="editor-page-url" [(ngModel)]="currentPage.url">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="title"><label for="editor-page-published">Опубликована</label></div>
+                        <div class="content">
+                            <mat-checkbox [color]="'primary'" id="editor-page-published" [(ngModel)]="currentPage.is_enabled"></mat-checkbox>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="title"><label for="editor-page-show">Показывать в меню</label></div>
+                        <div class="content">
+                            <mat-checkbox [color]="'primary'" id="editor-page-show" [(ngModel)]="currentPage.show_in_menu"></mat-checkbox>
+                        </div>
+                    </div>
                 </accordion-group>
             </accordion>
             <page-editor *ngIf="selectOtherParams == true && sectionsInited"
@@ -78,8 +101,8 @@
         Удалить страницу?
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Да</button>
-        <button type="button" class="btn btn-secondary" (click)="onCancel()">Нет</button>
+        <button type="button" class="btn btn-secondary" (click)="delete()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Нет</button>
     </div>
 </ng-template>
 
@@ -94,8 +117,8 @@
         Удалить секцию?
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="onConfirm()">Да</button>
-        <button type="button" class="btn btn-secondary" (click)="onCancel()">Нет</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteSection()">Да</button>
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Нет</button>
     </div>
 </ng-template>
 

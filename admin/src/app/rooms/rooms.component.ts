@@ -73,7 +73,7 @@ export class RoomsComponent extends State implements OnInit {
         });
     }
 
-    reorderApply() {
+    public reorderApply() {
         this.modelService.reorderApply('room', this.rooms);
     }
 

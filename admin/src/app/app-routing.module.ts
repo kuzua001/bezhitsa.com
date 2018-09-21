@@ -11,6 +11,8 @@ import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.comp
 import {TrainingsComponent} from "./trainings/trainings.component";
 import {RestaurantMenu} from "./models/restaurant-menu";
 import {RestaurantMenuComponent} from "./menu/menu.component";
+import {LoginComponent} from "./login/login.component";
+import {NeedAuthGuard} from "./need-auth-guard";
 
 const routes: Routes = [
     {
@@ -23,7 +25,8 @@ const routes: Routes = [
         component: ImagesComponent,
         data : {
             name: 'Изображения'
-        }
+        },
+        canActivate: [NeedAuthGuard]
     },
     {
         path: 'pages',
@@ -31,42 +34,52 @@ const routes: Routes = [
         data : {
             name: 'Страницы'
         },
+        canActivate: [NeedAuthGuard]
     },
     {
         path: 'trainers',
         component: TrainersComponent,
         data : {
             name: 'Тренеры'
-        }
+        },
+        canActivate: [NeedAuthGuard]
     },
     {
         path: 'rooms',
         component: RoomsComponent,
         data : {
             name: 'Номера'
-        }
+        },
+        canActivate: [NeedAuthGuard]
     },
     {
         path: 'trainings',
         component: TrainingsComponent,
         data : {
             name: 'Тренировки'
-        }
+        },
+        canActivate: [NeedAuthGuard]
     },
     {
         path: 'restaurant',
         component: RestaurantMenuComponent,
         data : {
             name: 'Меню ресторана'
-        }
+        },
+        canActivate: [NeedAuthGuard]
     },
     {
         path: 'settings',
         component: SettingsComponent,
         data : {
             name: 'Настройки'
-        }
-    }
+        },
+        canActivate: [NeedAuthGuard]
+    },
+    { path: 'login', component: LoginComponent },
+
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

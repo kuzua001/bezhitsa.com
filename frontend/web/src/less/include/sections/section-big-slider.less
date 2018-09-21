@@ -1,0 +1,44 @@
+@import '../sizes';
+
+section.big-slider {
+
+	slick {
+		@media screen and (max-width: @menu-max-width-1) {
+			margin: 5px 0;
+		}
+
+		img {
+			width: 75vw;
+		}
+
+		.slick-slide {
+			overflow: hidden;
+			margin: 10px;
+		}
+
+		.wrapper {
+			max-height: 50vw;
+			overflow: hidden;
+		}
+
+	}
+
+	.content-wrapper {
+
+		.centered-title-element {
+			margin-top: 30px;
+			margin-bottom: 30px;
+
+			@media screen and (max-width: @menu-max-width-1) {
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+		}
+
+		.container {
+			@media screen and (min-width: @desktop-min-width) {
+				width: 75%;
+			}
+		}
+	}
+}

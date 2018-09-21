@@ -11,6 +11,7 @@ import {Action} from "../models/action";
 import {PageType} from "../models/page-type";
 import {bindToComponentState} from "../storage";
 import {State} from "../models/state";
+import {ModelService} from "../model.service";
 
 @Component({
     selector: 'pages-list',
@@ -18,7 +19,7 @@ import {State} from "../models/state";
     styleUrls: ['./pages-list.component.css']
 })
 export class PagesListComponent extends State implements OnInit {
-    groupedPages: object[][];
+    groupedPages: Page[][];
     pages: Page[];
     domains: Domain[];
     actions: Action[];
@@ -60,6 +61,10 @@ export class PagesListComponent extends State implements OnInit {
         ));
     }
 
+    reorderApply() {
+        this.modelService.reorderApply('page', this.groupedPages[this.selectedDomain]);
+    }
+
     findDomainById(domainId) {
         return this.domains.find(d => d.id == domainId);
     }
@@ -70,11 +75,19 @@ export class PagesListComponent extends State implements OnInit {
 
     constructor(private pageService: PagesService,
                 private selectItemService: SelectItemService,
-                private modalService: BsModalService) {
+                private modalService: BsModalService,
+                private modelService: ModelService) {
         super();
+        this.selectItemService.event$.subscribe((e: SelectItemEvent) => {
+            if (e.itemType === SelectItemEvent.Type.PageRemove) {
+                this.pages = this.pages.filter(p => p.id !== e.payload.pageId);
+                this.groupPages();
+            }
+        });
     }
 
     groupPages(): void {
+        this.groupedPages = [];
         if (this.domainsLoaded && this.pagesLoaded) {
             for (let page of this.pages) {
                 if (this.groupedPages[page.domain_id] === undefined) {
@@ -83,26 +96,24 @@ export class PagesListComponent extends State implements OnInit {
 
                 this.groupedPages[page.domain_id].push(page);
             }
+        }
 
-            //console.log(this.groupedPages);
+        for (let domainId in this.groupedPages) {
+            this.groupedPages[domainId] = this.groupedPages[domainId].sort((a: Page, b: Page) => {return a.order - b.order});
         }
     };
 
     createNewPage(
         name: string,
         domainId: number,
-        pageTypeId: number,
         showInMenu: boolean,
-        url: string,
-        actionId: number
+        url: string
     ): void {
         this.pageService.createPage({
            'name' : name,
            'domain_id' : domainId,
-           'pages_id' : pageTypeId,
            'show_in_menu' : showInMenu,
-           'url' : url,
-           'action_id' : actionId,
+           'url' : url
         }).subscribe(page => {
             this.groupedPages[page.domain_id].push(page);
             this.selectedDomain = domainId;

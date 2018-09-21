@@ -166,7 +166,7 @@ class TestController extends Controller
     public function actionIndex()
     {
 
-        $page = Page::id(18);
+        $page = Page::id(57);
 
 
         $json = '{
@@ -226,8 +226,11 @@ class TestController extends Controller
 //        $page->save();
 
 
-        $page->pageParams->initFromArray(json_decode($json, true));
-        $page->save();
+        var_dump($page->pageParams);
+        var_dump($page);
+
+        //$page->pageParams->initFromArray(json_decode($json, true));
+        //$page->save();
 
         print_r($page);
     }

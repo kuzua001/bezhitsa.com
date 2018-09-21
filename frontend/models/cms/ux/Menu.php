@@ -110,6 +110,9 @@ class Menu extends ActiveRecord implements MenuInterface
 
                 usort($childPages, function(Page $a, Page $b) { return $a->order > $b->order; });
                 foreach ($childPages as $page) {
+                    if ($page->show_in_menu == 0) {
+                        continue;
+                    }
                     // $item->href это GET-параметры url'а, которые используются в том случае, когда элемент меню ссылается на страницу
                     // в CMS, а не просто на абстрактный ресурс, при этом к его url добавляются эти GET-параметры, например в качестве
                     // UTM-меток. У дочерних эелемнтов, которые получены автоматически UTM будут такими же как и у родителя.

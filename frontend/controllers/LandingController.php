@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Faker\Provider\Base;
 use frontend\components\AppHelper;
+use frontend\models\Page;
 use frontend\models\PageParams;
 use frontend\models\pages\LandingPage;
 use frontend\models\pages\SectionParams;
@@ -24,6 +25,10 @@ class LandingController extends CmsController
         /** @var $page LandingPage */
         $page = $this->page;
 
+        if (empty($page->pageParams->sectionsParams)) {
+            return '#fff';
+        }
+
         $lastSection = end($page->pageParams->sectionsParams);
         /** @var $lastSection SectionParams */
         return $lastSection->bgColor;
@@ -33,5 +38,11 @@ class LandingController extends CmsController
     public function actionIndex()
     {
         return $this->render('index.php', ['page' => $this->page]);
+    }
+
+    public function actionErrorHandler()
+    {
+        $errorPage = Page::id(57);
+        return $this->render('index', ['page' => $errorPage]);
     }
 }

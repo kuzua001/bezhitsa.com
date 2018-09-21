@@ -15,7 +15,7 @@ use frontend\widgets\section\Section;
 class BigSliderSectionParams extends SliderTabsSectionParams
 {
     protected $sectionType  = Section::TYPE_BIG_SLIDER;
-    protected $sectionClass = 'booking'; //wtf???
+    protected $sectionClass = 'big-slider'; //wtf???
 
     /**
      * @var $title

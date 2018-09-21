@@ -25,8 +25,8 @@ export class OrderController {
 			let payload = {
 				'trainer_id' : this.trainerId,
 				'name' : form.name.$viewValue,
-				'phone' : form.name.$viewValue,
-				'email' : form.name.$viewValue,
+				'phone' : form.phone.$viewValue,
+				'email' : form.email.$viewValue,
 			};
 
 			jQuery.post({

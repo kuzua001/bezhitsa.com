@@ -39,6 +39,10 @@ export class PagesService {
         return this.http.put(this.pageFieldsUrl + '/' + pageId + '?lang=' + language, pageFields);
     }
 
+    savePage(page: Page, language: number) {
+        return this.http.put(this.pagesUrl + '/' + page.id + '?lang=' + language, page);
+    }
+
     deletePage(pageId: number) {
         return this.http.delete(this.pagesUrl + '/' + pageId);
     }

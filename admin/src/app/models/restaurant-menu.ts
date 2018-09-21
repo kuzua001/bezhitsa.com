@@ -28,6 +28,8 @@ export class RestaurantMenu extends BaseApiModel {
 
     protected static apiMethodName = 'menu';
 
+
+
     protected static passLang = true;
 
     public id: number;
@@ -37,6 +39,14 @@ export class RestaurantMenu extends BaseApiModel {
     public price: number;
     public size: number;
     public n: number;
+
+    public static getApiBulkMethodName(actionName, params?: Map<string, string>)
+    {
+        this.apiMethodName = 'menu-bulk/' + actionName;
+        let res = this.getApiMethodName(null, params);
+        this.apiMethodName = 'menu';
+        return res;
+    }
 
 
     public static fromRaw(raw: any): RestaurantMenu {

@@ -8,6 +8,7 @@
 
 namespace frontend\components;
 
+use Exception;
 use frontend\models\Domain;
 use frontend\models\Texts;
 use yii;
@@ -44,13 +45,14 @@ class LanguageHelper
     /**
      * Устанавливает текущий язык всего приложения
      * @param $language
+     * @throws Exception
      */
     public static function setCurrentLanguage($language) {
         if (isset(self::$allowedLanguages[$language])) {
             self::$currentLanguage = $language;
             \Yii::$app->language = self::getCurrentLanguageCode();
         } else {
-            throw new Exception('Указан недопустимый язык');
+            throw new yii\base\Exception('Указан недопустимый язык');
         }
     }
 

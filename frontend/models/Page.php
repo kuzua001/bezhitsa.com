@@ -118,8 +118,21 @@ class Page extends ActiveRecord
         }
     }
 
-    public static function create($name, $domainId, $pagesId, $showInMenu, $url, $actionId)
+    public static function create($name, $domainId, $showInMenu, $url)
     {
+        switch ($domainId) {
+            case Domain::DOMAIN_HOTEL_ID:
+                $pagesId = 2;
+                break;
+            case Domain::DOMAIN_FITNESS_ID:
+                $pagesId = 2;
+                break;
+            case Domain::DOMAIN_RESTAURANT_ID:
+                $pagesId = 2;
+                break;
+        }
+        $actionId = 37;
+
         $pageClassName = MetadataExtractor::getClassName(MetadataExtractor::PAGES_MAPPING, $pagesId);
 
         /** @var Page $page */

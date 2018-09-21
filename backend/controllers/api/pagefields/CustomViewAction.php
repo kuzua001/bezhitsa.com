@@ -11,21 +11,29 @@ namespace backend\controllers\api\pagefields;
 use frontend\components\LanguageHelper;
 use frontend\models\Page;
 use Yii;
+use yii\base\Exception;
 use yii\base\Object;
 use yii\rest\ViewAction;
+use yii\web\HttpException;
 
 class CustomViewAction extends ViewAction
 {
     /**
-     * Displays a model.
-     * @param string $id the primary key of the model.
-     * @return \yii\Object the model being displayed
+     * @param string $id
+     * @return \frontend\models\PageFields|null|\yii\db\ActiveRecordInterface
+     * @throws HttpException
+     * @throws \Exception
      */
     public function run($id)
     {
         $request = Yii::$app->request;
         $langId = $request->get('lang', LanguageHelper::getDefaultLanguage());
-        LanguageHelper::setCurrentLanguage($langId);
+        try {
+            LanguageHelper::setCurrentLanguage($langId);
+        } catch (Exception $e) {
+            throw new HttpException(400, $e->getMessage());
+        }
+
 
         $page = Page::id($id);
 

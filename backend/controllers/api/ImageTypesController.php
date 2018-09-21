@@ -21,7 +21,6 @@ class ImageTypesController extends ApiController
 {
     public $modelClass = 'common\models\ImageType';
 
-
     protected function verbs() {
         return [
             'index' => [ 'GET' ],

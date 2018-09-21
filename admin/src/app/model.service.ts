@@ -39,6 +39,7 @@ export class ModelService {
         Trainer.setupLanguageService(this.languageService);
         TrainingActivity.setupLanguageService(this.languageService);
         TrainingActivityType.setupLanguageService(this.languageService);
+        RestaurantMenu.setupLanguageService(this.languageService);
         Room.setupLanguageService(this.languageService);
         CmsImage.setupLanguageService(this.languageService);
     }
@@ -52,6 +53,18 @@ export class ModelService {
             let id = item['id'];
             order[id] = n;
             n ++;
+        }
+
+        return this.http.post(this.baseUrl + 'reorder?model=' + modelName, {order: order}, httpOptions)
+            .subscribe();
+    }
+
+    public reorderApplyByN(modelName: string, modelList: any[]) {
+        let order = {};
+
+        for (let item of modelList) {
+            let id = item['id'];
+            order[id] = item['n'];
         }
 
         return this.http.post(this.baseUrl + 'reorder?model=' + modelName, {order: order}, httpOptions)
@@ -229,6 +242,29 @@ export class ModelService {
     // menu
     public getRestaurantMenu()  {
         return this.getModelListing<RestaurantMenu>(RestaurantMenu.getApiMethodName());
+    }
+
+    public deleteRestaurantMenuItem(item: RestaurantMenu)  {
+        return this.http.delete<RestaurantMenu>(this.baseUrl + RestaurantMenu.getApiMethodName(item.id));
+    }
+
+    public updateRestaurantMenuItem(item: RestaurantMenu)  {
+        return this.http.put<RestaurantMenu>(this.baseUrl + RestaurantMenu.getApiMethodName(item.id), item);
+    }
+
+    public deleteRestaurantMenuCategory(catTitle: string)  {
+        return this.http.delete<RestaurantMenu>(this.baseUrl + RestaurantMenu.getApiBulkMethodName('delete', new Map().set('catTitle', catTitle)));
+    }
+
+    public renameRestaurantMenuCategory(catTitle: string, newTitle: string)  {
+        return this.http.put<RestaurantMenu>(this.baseUrl + RestaurantMenu.getApiBulkMethodName('rename', new Map().set('catTitle', catTitle)), {
+            oldTitle: catTitle,
+            newTitle: newTitle
+        });
+    }
+
+    public createRestaurantMenuItem(item: RestaurantMenu)  {
+        return this.http.post<RestaurantMenu>(this.baseUrl + RestaurantMenu.getApiMethodName(item.id), item, httpOptions);
     }
 
     //common

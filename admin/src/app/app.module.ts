@@ -49,6 +49,8 @@ import {PageEditorFieldExtendedComponent} from "./page-editor-field-extended/pag
 import {TrainingsEditorComponent} from "./trainings-editor/trainings-editor.component";
 import {TrainingsComponent} from "./trainings/trainings.component";
 import {RestaurantMenuComponent} from "./menu/menu.component";
+import { LoginComponent } from './login/login.component';
+import {NeedAuthGuard} from "./need-auth-guard";
 
 @NgModule({
     declarations: [
@@ -83,7 +85,8 @@ import {RestaurantMenuComponent} from "./menu/menu.component";
         ImageChooserPopupComponent,
         TrainingsEditorComponent,
         TrainingsComponent,
-        RestaurantMenuComponent
+        RestaurantMenuComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -103,7 +106,7 @@ import {RestaurantMenuComponent} from "./menu/menu.component";
         MatCheckboxModule,
     ],
     providers: [
-        PagesService, MenuService, SelectItemService, ModelService, LanguageService, SettingsService
+        PagesService, MenuService, SelectItemService, ModelService, LanguageService, SettingsService, NeedAuthGuard
     ],
     bootstrap: [AppComponent],
     exports: [ModalModule]

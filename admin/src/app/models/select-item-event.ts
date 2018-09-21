@@ -14,6 +14,7 @@ export class SelectItemEvent {
 export namespace SelectItemEvent {
 	export enum Type {
 		Page,
+		PageRemove,
         SettingsGroup,
 		TrainerSelect,
 		TrainerRemove,

@@ -76,7 +76,7 @@ export class TrainerEditorComponent implements OnInit {
                 this.trainer = null;
                 this.modalRef.hide();
                 this.selectItemService.emit(
-                    new SelectItemEvent(SelectItemEvent.Type.RoomRemove, {
+                    new SelectItemEvent(SelectItemEvent.Type.TrainerRemove, {
                         trainerId: trainerId
                     }));
             });

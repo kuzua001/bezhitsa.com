@@ -10,8 +10,10 @@ namespace backend\controllers\api;
 
 use frontend\models\data\Trainer;
 use yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\UnauthorizedHttpException;
 use yii\web\UploadedFile;
 use yii\web\Response;
 use backend\models\UploadForm;
@@ -22,8 +24,20 @@ class ReorderController extends Controller
         'trainingActivityType' => 'frontend\models\data\TrainingActivityType',
         'trainer' => 'frontend\models\data\Trainer',
         'room' => 'frontend\models\data\Room',
+        'page' => 'frontend\models\Page',
         'restaurantMenu' => 'frontend\models\data\RestaurantMenu'
     ];
+
+    private static $fields = [
+        'page' => 'order'
+    ];
+
+    const DEFAULT_FIELD = 'n';
+
+    protected static function getOrderField($modelKey)
+    {
+        return isset(self::$fields[$modelKey]) ? self::$fields[$modelKey] : self::DEFAULT_FIELD;
+    }
 
     protected function verbs() {
         return [
@@ -36,16 +50,25 @@ class ReorderController extends Controller
 
     public function behaviors()
     {
-        $behaviors = [];
+        $behaviors = parent::behaviors();
 
-        $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::className(),
-            'cors'  => [
-                'Origin'                           => ['*'],
-                'Access-Control-Request-Method' => ['POST', 'OPTIONS'],
-                'Access-Control-Request-Headers' => ['Origin', 'X-Requested-With', 'Content-Type', 'accept', 'Authorization'],
-                'Access-Control-Allow-Credentials' => true,
-            ]
+        $behaviors ['access'] = [
+            'class' => AccessControl::className(),
+            'rules' => [
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+
+            ],
+            'denyCallback' => function ($rule, $action) {
+                throw new UnauthorizedHttpException('You are not allowed to access this page');
+            }
+        ];
+
+        $behaviors['verbFilter'] = [
+            'class' => VerbFilter::className(),
+            'actions' => $this->verbs(),
         ];
 
         $behaviors['verbs'] = [
@@ -68,7 +91,7 @@ class ReorderController extends Controller
                 /** @var yii\db\ActiveRecord $item */
                 $item = $modelClass::find()->where(['id' => $id])->one();
                 //var_dump($item);
-                $item->n = $n;
+                $item->{self::getOrderField($modelKey)} = $n;
                 $item->save();
             }
         }

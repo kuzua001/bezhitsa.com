@@ -41,8 +41,6 @@ export class PagesComponent extends State implements OnInit {
 
     @bindToComponentState
 	selectOtherParams: boolean;
-
-    confirmationResult: Subject<boolean>;
 	
     language: number = 1;
 
@@ -142,16 +140,6 @@ export class PagesComponent extends State implements OnInit {
 	    this.modalRef.hide();
     }
 
-    public onConfirm(): void {
-        this.confirmationResult.next(true);
-        this.modalRef.hide();
-    }
-
-    public onCancel(): void {
-        this.confirmationResult.next(false);
-        this.modalRef.hide();
-    }
-
 
     public prepareSectionInstance(sectionInstance, sectionType: string, fieldName: string) {
         let newSection = {
@@ -179,21 +167,22 @@ export class PagesComponent extends State implements OnInit {
 	    this.initSectionsAndOther(this.selectedPageFields);
     }
 
+    private deleteSectionFieldName = null;
+    private deleteSectionNumber = null;
+
     public deleteSectionWithConfirm(fieldName: string = 'sectionsParams', sectionNumber: number) {
-        this.modalRef = this.modalService.show(this.sectionConfirmationDialog);
-        this.confirmationResult.subscribe(result => {
-            if (result === true) {
-                this.deleteSection(fieldName, sectionNumber);
-                this.modalRef.hide();
-            }
-        });
+        this.deleteSectionFieldName = fieldName;
+        this.deleteSectionNumber = sectionNumber
+    	this.modalRef = this.modalService.show(this.sectionConfirmationDialog);
 	}
 
-	private deleteSection(fieldName: string = 'sectionsParams', sectionNumber: number) {
+	public deleteSection() {
+    	let fieldName = this.deleteSectionFieldName;
+    	let sectionNumber = this.deleteSectionNumber;
         this.selectedPageFields.values[fieldName].splice(sectionNumber, 1);
-
         this.selectedSectionNumber = null;
         this.initSectionsAndOther(this.selectedPageFields);
+        this.modalRef.hide();
 	}
 
     private sectionsInited = false;
@@ -288,6 +277,8 @@ export class PagesComponent extends State implements OnInit {
 
 		this.copyOtherParamsChanges();
 
+		this.pageService.savePage(this.currentPage, this.language).subscribe();
+
 	    this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values), this.language)
             .subscribe();
     }
@@ -313,20 +304,22 @@ export class PagesComponent extends State implements OnInit {
 
     deleteWithConfirm(): void {
         this.modalRef = this.modalService.show(this.confirmationDialog);
-        this.confirmationResult.subscribe(result => {
-            if (result === true) {
-            	this.delete();
-			}
-        });
 	}
 
     reorder(): void {
         this.modalRef = this.modalService.show(this.reorderDialog);
     }
 
-    delete(): void {
+    public delete(): void {
 		this.pageService.deletePage(this.selectedPageId)
-			.subscribe();
+			.subscribe(() => {
+				this.pages = this.pages.filter(p => p.id !== this.selectedPageId);
+				this.selectItemService.emitEventOfType(SelectItemEvent.Type.PageRemove, {
+					pageId: this.selectedPageId
+				});
+                this.selectedPageId = null;
+                this.modalRef.hide();
+			});
     }
 
 	groupPages(): void {
@@ -361,7 +354,6 @@ export class PagesComponent extends State implements OnInit {
 	}
 
 	ngOnInit() {
-        this.confirmationResult = new Subject();
 		this.getPages();
 		this.getDomains();
 		this.groupedPages = [];

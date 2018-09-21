@@ -3,20 +3,35 @@
     <header>
       <ul class="tab-list">
         <li (click)="setActiveTabIndex(catId)" *ngFor="let catId of getCategories()" [class.active]="isActive(catId)" role="button" tabindex="0" class="active" style="">
-          <h3>{{getCategoryName(catId)}}</h3>
+          <h3>
+            {{getCategoryName(catId)}}
+            <span *ngIf="isActive(catId) && isEditingAllowed()" (click)="openNewTitlePopup(catId)">
+              <i class="fa fa-plus"></i>
+            </span>
+            <span *ngIf="isActive(catId)" (click)="openReorderTitlesPopup(catId)">
+              <i class="fa fa-bars"></i>
+            </span>
+          </h3>
         </li>
       </ul>
     </header>
     <section class="content">
       <div class="tab active" [class.active]="isActive(n)" *ngFor="let n of [1,2,3]">
         <div class="menu-category" *ngFor="let menuCategoryTitle of getMenuCategories(n)">
-          <div class="title">{{menuCategoryTitle}}</div>
+          <div class="title" (dblclick)="openEditTitlePopup(menuCategoryTitle)">{{menuCategoryTitle}}</div>
           <div class="item" *ngFor="let item of getCategoryItems(n, menuCategoryTitle)" (dblclick)="openEditItemPopup(item)">
             <div>
               <div class="description">{{item.title}}<span class="sizes">{{item.size}}</span></div><div class="price">{{item.price}}р.</div>
             </div>
           </div>
-          <button (click)="openNewItemPopup(n, menuCategoryTitle)">Добавить</button>
+          <div class="toolbar-element">
+            <div (click)="openNewItemPopup(n, menuCategoryTitle)" *ngIf="isEditingAllowed()">
+              <i class="fa fa-plus"></i>
+            </div>
+            <div (click)="openReorderPopup(n, menuCategoryTitle)">
+              <i class="fa fa-bars"></i>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -24,13 +39,21 @@
 </div>
 
 <ng-template #newItemPopup>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Создать новый тип тренировок</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+  <div class="modal-header" [ngSwitch]="isCreatingNewCategory()">
+      <h4 *ngSwitchCase="false" class="modal-title pull-left">Добавить блюдо в меню</h4>
+      <h4 *ngSwitchCase="true" class="modal-title pull-left">Добавить категорию и блюдо в меню</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closePopup()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
+    <div class="field" *ngIf="isCreatingNewCategory()">
+      <label>Название категории</label>
+      <div class="input">
+        <input autofocus placeholder='введите название' type="text" [(ngModel)]="newItem.category_title">
+      </div>
+    </div>
+
     <div class="field">
       <label>Название</label>
       <div class="input">
@@ -58,10 +81,84 @@
   </div>
 </ng-template>
 
+<ng-template #reorderItemPopup>
+  <div class="modal-header">
+    <h4 class="modal-title">Поменять местами</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <bs-sortable *ngIf="itemsToSort"
+                 [(ngModel)]="itemsToSort"
+                 itemClass="sortable-item"
+                 itemActiveClass="sortable-item-active"
+                 placeholderItem="Drag here"
+                 placeholderClass="placeholderStyle"
+                 wrapperClass="sortable-wrapper"
+                 fieldName="title"
+    ></bs-sortable>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="save ripple module-control-button-element default" (click)="reorderApply();">Да</button>
+    <button type="button" class="ripple module-control-button-element cancel" (click)="closePopup()">Отмена</button>
+  </div>
+</ng-template>
+
+
+<ng-template #reorderTitlePopup>
+  <div class="modal-header">
+    <h4 class="modal-title">Поменять местами</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <bs-sortable *ngIf="titlesToSort"
+                 [(ngModel)]="titlesToSort"
+                 itemClass="sortable-item"
+                 itemActiveClass="sortable-item-active"
+                 placeholderItem="Drag here"
+                 placeholderClass="placeholderStyle"
+                 wrapperClass="sortable-wrapper"
+    ></bs-sortable>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="save ripple module-control-button-element default" (click)="reorderTitleApply();">Да</button>
+    <button type="button" class="ripple module-control-button-element cancel" (click)="closePopup()">Отмена</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteItemConfirmPopup>
+  <div class="modal-header">
+    <h4 class="modal-title">Точно удалить?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="save ripple module-control-button-element default" (click)="deleteItem();">Да</button>
+    <button type="button" class="ripple module-control-button-element cancel" (click)="closePopup()">Отмена</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteCategoryConfirmPopup>
+    <div class="modal-header">
+        <h4 class="modal-title">Точно удалить?</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closePopup()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="save ripple module-control-button-element default" (click)="deleteCategory();">Да</button>
+        <button type="button" class="ripple module-control-button-element cancel" (click)="closePopup()">Отмена</button>
+    </div>
+</ng-template>
+
 <ng-template #editItemPopup>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Создать новый тип тренировок</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <h4 class="modal-title pull-left">Редактировать блюдо в меню</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closePopup()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -87,7 +184,32 @@
   </div>
   <div class="modal-footer">
     <div class="buttons">
-      <button type="button" class="ripple module-control-button-element default" (click)="closePopup()">Применить</button>
+      <button type="button" class="ripple module-control-button-element default" (click)="apply()">Применить</button>
+      <button type="button" class="ripple module-control-button-element delete" (click)="deleteItemWithConfirm(editingItem)">Удалить</button>
     </div>
   </div>
+</ng-template>
+
+
+<ng-template #editTitlePopup>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Действия над категорией</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closePopup()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="field">
+            <label>Название категории</label>
+            <div class="input">
+                <input type="text" [(ngModel)]="editingTitle">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="buttons">
+            <button type="button" class="ripple module-control-button-element default" (click)="changeTitle()">Переименовать</button>
+            <button type="button" class="ripple module-control-button-element delete" (click)="deleteCategoryWithConfirm()">Удалить</button>
+        </div>
+    </div>
 </ng-template>

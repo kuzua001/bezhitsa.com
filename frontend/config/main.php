@@ -25,6 +25,18 @@ return [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',
         ],
+        'mailer' => [
+            'class' => \yii\swiftmailer\Mailer::class,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.yandex.ru',
+                'username' => 'testfit@bezhitsa.com',
+                'password' => 'wr8GpdH3uc',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -44,7 +56,7 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'landing/error-handler',
         ],
 
         'urlManager' => [

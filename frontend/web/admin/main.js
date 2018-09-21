@@ -42,12 +42,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_settings_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/settings.component */ "./src/app/settings/settings.component.ts");
 /* harmony import */ var _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./trainings/trainings.component */ "./src/app/trainings/trainings.component.ts");
 /* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _need_auth_guard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./need-auth-guard */ "./src/app/need-auth-guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -68,7 +72,8 @@ var routes = [
         component: _images_images_component__WEBPACK_IMPORTED_MODULE_3__["ImagesComponent"],
         data: {
             name: 'Изображения'
-        }
+        },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
     },
     {
         path: 'pages',
@@ -76,42 +81,51 @@ var routes = [
         data: {
             name: 'Страницы'
         },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
     },
     {
         path: 'trainers',
         component: _trainers_trainers_component__WEBPACK_IMPORTED_MODULE_4__["TrainersComponent"],
         data: {
             name: 'Тренеры'
-        }
+        },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
     },
     {
         path: 'rooms',
         component: _rooms_rooms_component__WEBPACK_IMPORTED_MODULE_5__["RoomsComponent"],
         data: {
             name: 'Номера'
-        }
+        },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
     },
     {
         path: 'trainings',
         component: _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_7__["TrainingsComponent"],
         data: {
             name: 'Тренировки'
-        }
+        },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
     },
     {
         path: 'restaurant',
         component: _menu_menu_component__WEBPACK_IMPORTED_MODULE_8__["RestaurantMenuComponent"],
         data: {
             name: 'Меню ресторана'
-        }
+        },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
     },
     {
         path: 'settings',
         component: _settings_settings_component__WEBPACK_IMPORTED_MODULE_6__["SettingsComponent"],
         data: {
             name: 'Настройки'
-        }
-    }
+        },
+        canActivate: [_need_auth_guard__WEBPACK_IMPORTED_MODULE_10__["NeedAuthGuard"]]
+    },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] },
+    // otherwise redirect to home
+    { path: '**', redirectTo: '' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -136,7 +150,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n*:not(.fa) {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody,\nhtml {\n  min-height: 100%;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  min-height: 100vh;\n  position: relative;\n  flex: 1 1;\n  margin-left: 250px;\n  margin-top: 50px;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);\n}\n.alert-element {\n  position: fixed;\n  right: 10px;\n  top: 60px;\n  width: 200px;\n  background-color: #eee;\n  z-index: 999;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.alert-element .message {\n  padding: 10px;\n}\n.alert-element .close {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.admin-content-wrapper {\n  height: 100%;\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.page-editor .module-panel .save {\n  margin-right: 0!important;\n}\n.page-editor .module-panel .view {\n  margin: 0 10px;\n  padding: 8px;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.cancel {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #bd0e0e;\n  color: #fff;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list,\ntrainings:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor,\ntrainings:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\n.fast-image-editor-popup .modal-body {\n  height: auto!important;\n}\nselect.form-control,\ninput.form-control {\n  border-radius: 0!important;\n  height: 30px!important;\n  padding: 0!important;\n  padding-left: 6px!important;\n}\nselect.form-control:focus,\ninput.form-control:focus {\n  border-color: #ced4da;\n  -o-box-shadow: none;\n  box-shadow: none;\n}\ninput.color {\n  display: inline-block;\n  width: 30px!important;\n  height: 30px;\n  outline: none;\n  border: 2px solid #757575;\n  border-radius: 2px;\n}\n.modal-dialog.image-chooser-popup {\n  width: 90%!important;\n  max-width: none!important;\n}\nmat-checkbox {\n  margin-right: 10px;\n  margin-left: 10px;\n}\n.mat-checkbox-checked.mat-primary .mat-checkbox-background,\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {\n  background-color: #4a90e2!important;\n}\n.trumbowyg-box {\n  margin-top: 0!important;\n  border: 1px solid #a9a9a9!important;\n}\n.trumbowyg-button-pane {\n  background: #eeeeee!important;\n}\n.textarea-field .trumbowyg-box {\n  min-height: 0;\n  height: 200px;\n}\n.sortable-item-unset {\n  display: unset;\n}\n.sortable-item-active img {\n  display: none;\n}\n.sortable-item-active .image-card-wrapper {\n  background-image: url('/admin/assets/img/anyimage.png');\n  background-size: 80% 80%;\n  background-repeat: no-repeat;\n  background-position: center;\n  opacity: 0.2;\n}\ntextarea {\n  width: 100%;\n}\n.sindu_dragger table {\n  background: none!important;\n}\n.field.description .trumbowyg-box,\n.settings .field .trumbowyg-box,\n.field.description .trumbowyg-editor,\n.settings .field .trumbowyg-editor {\n  min-height: auto!important;\n}\ncolor-picker {\n  z-index: 10;\n}\n"
+module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.sub-menu {\n  background-color: #fff;\n  position: relative;\n}\n.sub-menu .navbar-selector-item {\n  border: none!important;\n}\n.triangle.top {\n  top: 0;\n  right: 50%;\n  position: absolute;\n  content: '';\n  display: block;\n  width: 10px;\n  height: 10px;\n  background: #fff;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg);\n  z-index: 1;\n  margin-top: calc(-10px/2);\n}\n.sub-menu-items {\n  display: none;\n}\n.active + .sub-menu-items {\n  display: initial;\n}\n.menu-items {\n  padding-left: 0;\n  background-color: #eee;\n}\n.menu-items li {\n  text-align: center;\n}\n.menu-items li a {\n  color: #444;\n  width: 100%;\n}\n.menu-items li a.active {\n  background-color: #bbb;\n}\nh1 {\n  color: #369;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 250%;\n}\nh2,\nh3 {\n  color: #444;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody,\ninput[text],\nbutton {\n  color: #888;\n  font-family: Cambria, Georgia;\n}\n/* everywhere else */\n*:not(.fa) {\n  font-family: Arial, Helvetica, sans-serif;\n}\nnav a {\n  text-decoration: none;\n  display: inline-block;\n  background-color: #eee;\n}\nnav a:visited,\na:link {\n  color: #607D8B;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #CFD8DC;\n}\nnav a.active {\n  color: #039be5;\n}\n.card-header {\n  padding: .15rem .15rem!important;\n}\n.btn-link {\n  text-decoration: none!important;\n  color: #444!important;\n}\naccordion-group .panel.card {\n  margin-bottom: 10px;\n}\n.bordered-section {\n  border: 1px solid #444;\n  margin: 5px;\n}\n.shadowed {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.put-right {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.toolbar-element {\n  background-color: #fff;\n  text-align: center;\n}\n.toolbar-element div {\n  display: inline-block;\n  border: none;\n  background-color: #fff;\n  padding: 5px;\n}\n.toolbar-element div i {\n  color: #0D47A1;\n  width: 31px;\n  height: 31px;\n  position: relative;\n}\n.toolbar-element div i:before {\n  display: none;\n}\n.toolbar-element div i.fa-plus {\n  background: url('/admin/assets/icons/plus.svg') no-repeat;\n}\n.toolbar-element div i.fa-bars {\n  background: url('/admin/assets/icons/bars.svg') no-repeat 0 3px;\n}\n.module-list {\n  background: #fff;\n}\n.module-list .trainers-list-element,\n.module-list .toolbar-element {\n  display: block;\n}\n.module-editor {\n  background: #fff;\n}\n.module-editor.module-editor-visible:not(.visible) {\n  display: none;\n}\n/* The switch - the box around the slider */\n.switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 34px;\n}\n.switch input {\n  display: none;\n}\n.switch .slider {\n  position: absolute;\n  cursor: pointer;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background-color: #ccc;\n  transition: .4s;\n}\n.switch .slider:before {\n  position: absolute;\n  content: \"\";\n  height: 26px;\n  width: 26px;\n  left: 4px;\n  bottom: 4px;\n  background-color: white;\n  transition: .4s;\n}\n.switch .slider.round {\n  border-radius: 34px;\n}\n.switch .slider.round:before {\n  border-radius: 50%;\n}\n.switch input:checked + .slider {\n  background-color: #97a0a7;\n}\n.switch input:focus + .slider {\n  box-shadow: 0 0 1px #97a0a7;\n}\n.switch input:checked + .slider:before {\n  -webkit-transform: translateX(26px);\n  transform: translateX(26px);\n}\n.ripple {\n  background-position: center;\n  transition: background 0.8s;\n}\n.ripple:hover {\n  background: rgba(255, 255, 255, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.3) 1%) center / 15000%;\n}\n.ripple:active {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-size: 100%;\n  transition: background 0s;\n}\n/**\nбабахаем все стили прямо сюда, временно, разумеется\n*/\ndiv.menu ul {\n  list-style: none;\n}\nbody,\nhtml {\n  min-height: 100%;\n}\nbody {\n  margin: 0;\n  padding: 0;\n}\nbody app-root {\n  display: flex;\n  height: 100%;\n  flex-direction: column;\n}\n.module-wrapper-element {\n  min-height: 100vh;\n  position: relative;\n  flex: 1 1;\n}\n.module-wrapper-element:not(.login) {\n  margin-left: 250px;\n  margin-top: 50px;\n}\n.module-wrapper-element.login {\n  background: url('/admin/assets/img/login_form_bg.png') no-repeat;\n  background-size: cover;\n  display: inline-flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nheader.admin-header {\n  background-color: #000;\n  height: 50px;\n  right: 0;\n  top: 0;\n  position: fixed;\n  left: 0;\n  z-index: 90;\n  box-shadow: 0 0 22px rgba(0, 0, 0, 0.5);\n}\n.alert-element {\n  position: fixed;\n  right: 10px;\n  top: 60px;\n  width: 200px;\n  background-color: #eee;\n  z-index: 999;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);\n  display: none;\n}\n.alert-element .message {\n  padding: 10px;\n}\n.alert-element .close {\n  position: absolute;\n  top: 5px;\n  right: 5px;\n}\n.admin-content-wrapper {\n  height: 100%;\n  background-color: #dcdcdc;\n  overflow: hidden;\n  flex: 1 0 auto;\n  z-index: 1;\n  display: flex;\n}\n.admin-content-wrapper > .wrapper {\n  display: flex;\n  flex-direction: row;\n  width: 100%;\n  height: 100%;\n}\n.admin-content-wrapper > .wrapper > .menu {\n  flex: 0 0;\n}\n.admin-content-wrapper > .wrapper > .content {\n  flex: 1 1;\n}\n.admin-content-wrapper .wrapper .menu {\n  height: 100%;\n  background-color: #eee;\n  min-width: 200px;\n  float: left;\n}\n.navbar-selector-item {\n  border-bottom: 1px solid #444;\n  padding: 10px 20px;\n  text-align: left;\n}\n.navbar-selector-item:first-of-type {\n  border-top: 1px solid #444;\n}\n.navbar-selector-item.active {\n  position: relative;\n  background-color: #c5c5c5;\n}\n.menu-selector-item a {\n  padding: 10px 20px;\n  background-color: #d6d6d6;\n}\n.module-menu-element {\n  width: 320px;\n}\n.module-menu-element > div:not(.module-panel) {\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-menu-element h3 {\n  font-size: 20px;\n  margin-left: 16px;\n  margin-top: 24px;\n}\n.module-menu-element .module-panel {\n  margin-top: 10px;\n  margin-left: 15px;\n  display: inline-flex;\n  flex-direction: row;\n  width: 100%;\n}\n.page-editor .module-panel .save {\n  margin-right: 0!important;\n}\n.page-editor .module-panel .view {\n  margin: 0 10px;\n  padding: 8px;\n}\n.module-content-element {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\n.large-popup {\n  width: 80%;\n  max-width: none;\n}\n.admin-menu-element {\n  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);\n  left: 0;\n  top: 50px;\n  bottom: 0;\n  position: fixed;\n  width: 250px;\n  z-index: 90;\n}\n.switch {\n  top: 6px;\n}\n.language-selector-label {\n  display: inline-block;\n  top: -12px;\n  position: relative;\n  margin: 0 10px;\n}\n.language-selector {\n  height: 50px;\n  display: inline-block;\n  vertical-align: top;\n}\n.user-area {\n  height: 50px;\n  display: inline-block;\n  position: relative;\n  line-height: 50px;\n  vertical-align: top;\n  margin: 0 18px;\n  cursor: pointer;\n}\n.module-control-button-element {\n  background-color: #fff;\n  border: none;\n  height: 52px;\n  padding: 0 20px;\n  margin-right: 18px;\n  flex: 0 0;\n  color: #000;\n  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);\n}\n.module-control-button-element.default {\n  background-color: #4a90e2;\n  color: #fff;\n}\n.module-control-button-element.cancel {\n  background-color: #888;\n  color: #fff;\n}\n.module-control-button-element.delete {\n  background-color: #bd0e0e;\n  color: #fff;\n}\n.page-editor .module-editor {\n  position: absolute;\n  right: 11px;\n  left: 350px;\n  top: 17px;\n  max-height: 100%;\n  overflow-y: auto;\n}\ntrainers:not(.integrated) .module-list,\nrooms:not(.integrated) .module-list,\ntrainings:not(.integrated) .module-list {\n  float: left;\n  margin-left: 10px;\n  margin-right: 10px;\n}\ntrainers:not(.integrated) .module-editor,\nrooms:not(.integrated) .module-editor,\ntrainings:not(.integrated) .module-editor {\n  overflow: hidden;\n}\n.modal-dialog.vertical {\n  min-width: 700px!important;\n}\n[hidden] {\n  display: none !important;\n}\n.form-control-inline {\n  width: initial;\n  display: inline-block;\n}\n.modal-dialog {\n  width: -webkit-min-content;\n  width: -moz-min-content;\n  width: min-content;\n  min-width: 500px;\n}\n.fast-image-editor-popup .modal-body {\n  height: auto!important;\n}\nselect.form-control,\ninput.form-control {\n  border-radius: 0!important;\n  height: 30px!important;\n  padding: 0!important;\n  padding-left: 6px!important;\n}\nselect.form-control:focus,\ninput.form-control:focus {\n  border-color: #ced4da;\n  -o-box-shadow: none;\n  box-shadow: none;\n}\ninput.color {\n  display: inline-block;\n  width: 30px!important;\n  height: 30px;\n  outline: none;\n  border: 2px solid #757575;\n  border-radius: 2px;\n}\n.modal-dialog.image-chooser-popup {\n  width: 90%!important;\n  max-width: none!important;\n}\nmat-checkbox {\n  margin-right: 10px;\n  margin-left: 10px;\n}\n.mat-checkbox-checked.mat-primary .mat-checkbox-background,\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {\n  background-color: #4a90e2!important;\n}\n.trumbowyg-box {\n  margin-top: 0!important;\n  border: 1px solid #a9a9a9!important;\n}\n.trumbowyg-button-pane {\n  background: #eeeeee!important;\n}\n.textarea-field .trumbowyg-box {\n  min-height: 0;\n  height: 200px;\n}\n.sortable-item-unset {\n  display: unset;\n}\n.sortable-item-active img {\n  display: none;\n}\n.sortable-item-active .image-card-wrapper {\n  background-image: url('/admin/assets/img/anyimage.png');\n  background-size: 80% 80%;\n  background-repeat: no-repeat;\n  background-position: center;\n  opacity: 0.2;\n}\ntextarea {\n  width: 100%;\n}\n.sindu_dragger table {\n  background: none!important;\n}\n.field.description .trumbowyg-box,\n.settings .field .trumbowyg-box,\n.field.description .trumbowyg-editor,\n.settings .field .trumbowyg-editor {\n  min-height: auto!important;\n}\ncolor-picker {\n  z-index: 10;\n}\n.language-selector {\n  white-space: nowrap;\n}\n"
 
 /***/ }),
 
@@ -147,7 +161,7 @@ module.exports = "/* Application-wide Styles */\n.bordered-section {\n  border: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"alert-element\">\n  <div class=\"message\">\n  </div>\n  <span class=\"close\" (click)=\"hideAlert()\">\n    <i class=\"fa fa-close\"></i>\n  </span>\n</div>\n<header class=\"admin-header\">\n  <div class=\"row\">\n    <div class=\"col-md-8\">\n      <a class=\"header-logo\" href=\"\" title=\"beshitza.ru\">\n        <img src=\"assets/img/logo_header.jpg\">\n      </a>\n    </div>\n    <div class=\"col-md-2\">\n      <span class=\"language-selector-label\">RU</span>\n      <label class=\"switch\">\n        <input type=\"checkbox\" class=\"switch\" id=\"switch-language\" [ngModel]=\"languageEn\"  (change)=\"toggleLanguage()\">\n        <span class=\"slider round\"></span>\n      </label>\n      <span class=\"language-selector-label\">EN</span>\n    </div>\n    <div class=\"col-md-2\">\n    </div>\n  </div>\n</header>\n<section class=\"admin-content-wrapper\">\n  <div class=\"wrapper\">\n    <div class=\"admin-menu-element\">\n      <nav>\n        <ul class=\"menu-items\">\n          <li *ngFor=\"let item of getMenuItems()\" class=\"menu-selector-item\">\n            <a routerLinkActive=\"active\" routerLink=\"{{item.getPath()}}\">{{item.getName()}}</a>\n            <div class=\"sub-menu-items\">\n              <sub-menu [subMenu]=\"item.getSubmenu()\"></sub-menu>\n            </div>\n          </li>\n        </ul>\n      </nav>\n    </div>\n    <div class=\"module-wrapper-element\">\n      <header>\n      </header>\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</section>"
+module.exports = "<div class=\"alert-element\">\n    <div class=\"message\">\n    </div>\n    <span class=\"close\" (click)=\"hideAlert()\">\n    <i class=\"fa fa-close\"></i>\n  </span>\n</div>\n<header class=\"admin-header\" *ngIf=\"isAuthorized()\">\n    <div class=\"row\">\n        <div class=\"col-md-8 col-sm-6 col-6\">\n            <a class=\"header-logo\" href=\"\" title=\"beshitza.ru\">\n                <img src=\"assets/img/logo_header.jpg\">\n            </a>\n        </div>\n        <div class=\"col-md-4 col-sm-6 col-6 text-right\">\n            <span class=\"language-selector\">\n                <span class=\"language-selector-label\">RU</span>\n                <label class=\"switch\">\n                    <input type=\"checkbox\" class=\"switch\" id=\"switch-language\" [ngModel]=\"languageEn\"\n                           (change)=\"toggleLanguage()\">\n                    <span class=\"slider round\"></span>\n                </label>\n                <span class=\"language-selector-label\">EN</span>\n            </span>\n            <span class=\"user-area\">\n                <b>{{getUserName() | titlecase}}</b>, <span (click)=\"logout()\">выйти</span>\n            </span>\n        </div>\n    </div>\n</header>\n<section class=\"admin-content-wrapper\">\n    <div class=\"wrapper\">\n        <div class=\"admin-menu-element\" *ngIf=\"isAuthorized()\">\n            <nav>\n                <ul class=\"menu-items\">\n                    <li *ngFor=\"let item of getMenuItems()\" class=\"menu-selector-item\">\n                        <a routerLinkActive=\"active\" routerLink=\"{{item.getPath()}}\">{{item.getName()}}</a>\n                        <div class=\"sub-menu-items\">\n                            <sub-menu [subMenu]=\"item.getSubmenu()\"></sub-menu>\n                        </div>\n                    </li>\n                </ul>\n            </nav>\n        </div>\n        <div class=\"module-wrapper-element\" [class.login]=\"!isAuthorized()\">\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n</section>"
 
 /***/ }),
 
@@ -170,6 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./notification.service */ "./src/app/notification.service.ts");
+/* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./authentication.service */ "./src/app/authentication.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -187,13 +202,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(route, router, menuService, selectItemService, notificationService) {
+    function AppComponent(route, router, menuService, selectItemService, notificationService, auth) {
         this.route = route;
         this.router = router;
         this.menuService = menuService;
         this.selectItemService = selectItemService;
         this.notificationService = notificationService;
+        this.auth = auth;
         this.title = 'Админка';
         this.currentMenuContent = null;
         this.currentRoute = null;
@@ -201,10 +218,20 @@ var AppComponent = /** @class */ (function () {
         this.notificationService.onError(function (event) {
             AppComponent_1.showErrorAlert(event.message);
         });
+        this.auth.checkAuth();
     }
     AppComponent_1 = AppComponent;
+    AppComponent.prototype.isAuthorized = function () {
+        return this.auth.isAuthenticated();
+    };
     AppComponent.prototype.hideAlert = function () {
         jquery__WEBPACK_IMPORTED_MODULE_6__('.alert-element').hide();
+    };
+    AppComponent.prototype.getUserName = function () {
+        return this.auth.getUserName();
+    };
+    AppComponent.prototype.logout = function () {
+        this.auth.logout();
     };
     AppComponent.showErrorAlert = function (message) {
         jquery__WEBPACK_IMPORTED_MODULE_6__('.alert-element .message').text(message);
@@ -240,7 +267,8 @@ var AppComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
             _menu_service__WEBPACK_IMPORTED_MODULE_3__["MenuService"],
             _select_item_service__WEBPACK_IMPORTED_MODULE_4__["SelectItemService"],
-            _notification_service__WEBPACK_IMPORTED_MODULE_7__["NotificationService"]])
+            _notification_service__WEBPACK_IMPORTED_MODULE_7__["NotificationService"],
+            _authentication_service__WEBPACK_IMPORTED_MODULE_8__["AuthenticationService"]])
     ], AppComponent);
     return AppComponent;
     var AppComponent_1;
@@ -310,12 +338,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./trainings-editor/trainings-editor.component */ "./src/app/trainings-editor/trainings-editor.component.ts");
 /* harmony import */ var _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./trainings/trainings.component */ "./src/app/trainings/trainings.component.ts");
 /* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _need_auth_guard__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./need-auth-guard */ "./src/app/need-auth-guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -421,7 +453,8 @@ var AppModule = /** @class */ (function () {
                 _image_chooser_popup_image_chooser_popup_component__WEBPACK_IMPORTED_MODULE_44__["ImageChooserPopupComponent"],
                 _trainings_editor_trainings_editor_component__WEBPACK_IMPORTED_MODULE_47__["TrainingsEditorComponent"],
                 _trainings_trainings_component__WEBPACK_IMPORTED_MODULE_48__["TrainingsComponent"],
-                _menu_menu_component__WEBPACK_IMPORTED_MODULE_49__["RestaurantMenuComponent"]
+                _menu_menu_component__WEBPACK_IMPORTED_MODULE_49__["RestaurantMenuComponent"],
+                _login_login_component__WEBPACK_IMPORTED_MODULE_50__["LoginComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -441,7 +474,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_45__["MatCheckboxModule"],
             ],
             providers: [
-                _pages_service__WEBPACK_IMPORTED_MODULE_6__["PagesService"], _menu_service__WEBPACK_IMPORTED_MODULE_8__["MenuService"], _select_item_service__WEBPACK_IMPORTED_MODULE_19__["SelectItemService"], _model_service__WEBPACK_IMPORTED_MODULE_7__["ModelService"], _services_language_service__WEBPACK_IMPORTED_MODULE_33__["LanguageService"], _settings_service__WEBPACK_IMPORTED_MODULE_35__["SettingsService"]
+                _pages_service__WEBPACK_IMPORTED_MODULE_6__["PagesService"], _menu_service__WEBPACK_IMPORTED_MODULE_8__["MenuService"], _select_item_service__WEBPACK_IMPORTED_MODULE_19__["SelectItemService"], _model_service__WEBPACK_IMPORTED_MODULE_7__["ModelService"], _services_language_service__WEBPACK_IMPORTED_MODULE_33__["LanguageService"], _settings_service__WEBPACK_IMPORTED_MODULE_35__["SettingsService"], _need_auth_guard__WEBPACK_IMPORTED_MODULE_51__["NeedAuthGuard"]
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
             exports: [ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalModule"]]
@@ -449,6 +482,88 @@ var AppModule = /** @class */ (function () {
     ], AppModule);
     return AppModule;
     var AppModule_1;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/authentication.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/authentication.service.ts ***!
+  \*******************************************/
+/*! exports provided: AuthenticationService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthenticationService", function() { return AuthenticationService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AuthenticationService = /** @class */ (function () {
+    function AuthenticationService(http, router) {
+        this.http = http;
+        this.router = router;
+        this.baseUrl = '/api';
+    }
+    AuthenticationService.prototype.isAuthenticated = function () {
+        return !!localStorage.getItem('userName');
+    };
+    AuthenticationService.prototype.getUserName = function () {
+        return localStorage.getItem('userName');
+    };
+    AuthenticationService.prototype.cleanUserDataAnddRedirect = function () {
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userEmail');
+        this.router.navigateByUrl(this.router.createUrlTree(['/login']));
+    };
+    AuthenticationService.prototype.checkAuth = function () {
+        /* this.http.get<any>(`${this.baseUrl}/auth`, {})
+             .subscribe(authData => {
+                 // login successful if there's a jwt token in the response
+                 if (authData.status === 'success' && authData.auth === false) {
+                     this.cleanUserDataAnddRedirect();
+                 }
+             });*/
+    };
+    AuthenticationService.prototype.login = function (username, password) {
+        return this.http.post(this.baseUrl + "/login", { username: username, password: password })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (authData) {
+            // login successful if there's a jwt token in the response
+            if (authData.status === 'success' && authData.auth === true) {
+                localStorage.setItem('userName', authData.userName);
+                localStorage.setItem('userEmail', authData.userEmail);
+            }
+            return authData;
+        }));
+    };
+    AuthenticationService.prototype.logout = function () {
+        var _this = this;
+        return this.http.post(this.baseUrl + "/logout", {})
+            .subscribe(function () {
+            _this.cleanUserDataAnddRedirect();
+        });
+    };
+    AuthenticationService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({ providedIn: 'root' }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], AuthenticationService);
+    return AuthenticationService;
 }());
 
 
@@ -518,7 +633,7 @@ module.exports = ".object-editor {\n  padding: 10px 10px;\n  position: relative;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "::-webkit-scrollbar {\n  width: 0px;\n  /* remove scrollbar space */\n  background: transparent;\n  /* optional: just make scrollbar invisible */\n}\n/* optional: show position indicator in red */\n::-webkit-scrollbar-thumb {\n  background: #FF0000;\n}\n.object-list-element {\n  padding: 0;\n  max-height: 70vh;\n  overflow-y: scroll;\n  min-width: 200px;\n}\n.object-list-element li {\n  list-style: none;\n  padding: 10px 20px;\n  height: 43px;\n}\n.object-list-element li h2 i {\n  float: right;\n}\n.object-name {\n  font-size: 17px;\n  overflow: hidden;\n}\n.object-id {\n  float: left;\n  margin-right: 8px;\n}\n.object-item.active {\n  background-color: #eee;\n}\n"
+module.exports = "::-webkit-scrollbar {\n  width: 0px;\n  /* remove scrollbar space */\n  background: transparent;\n  /* optional: just make scrollbar invisible */\n}\n/* optional: show position indicator in red */\n::-webkit-scrollbar-thumb {\n  background: #FF0000;\n}\n.object-list-element {\n  padding: 0;\n  max-height: 70vh;\n  overflow-y: scroll;\n  min-width: 200px;\n  width: 250px;\n}\n.object-list-element li {\n  list-style: none;\n  padding: 10px 20px;\n  height: 43px;\n}\n.object-list-element li h2 i {\n  float: right;\n}\n.object-name {\n  font-size: 17px;\n  overflow: hidden;\n}\n.object-id {\n  float: left;\n  margin-right: 8px;\n}\n.object-item.active {\n  background-color: #eee;\n}\n"
 
 /***/ }),
 
@@ -1535,6 +1650,121 @@ var ImagesComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/login/login.component.css":
+/*!*******************************************!*\
+  !*** ./src/app/login/login.component.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ":host {\n  position: relative;\n  display: block;\n}\n.login-form {\n  padding: 30px 50px;\n  box-sizing: content-box;\n  width: 400px;\n  margin: 0 auto;\n  background: #E0E0E0;\n  box-shadow: 0 0 27px 0 rgba(142, 127, 127, 0.5);\n  border-radius: 6px;\n  font-family: Lora, sans-serif;\n  font-size: 26px;\n  color: #E0E0E0;\n  text-align: center;\n}\n.login-form .login-logo {\n  width: 95px;\n  margin-bottom: 21px;\n  display: inline-block;\n}\n.login-form .invalid-feedback {\n  position: absolute;\n  background: #fff;\n  border: 1px solid #f00;\n  width: 195px;\n  right: -210px;\n  top: 7px;\n  padding: 0 10px;\n}\n.login-form input {\n  height: 52px!important;\n  padding-left: 18px!important;\n}\n.login-form .field {\n  margin-bottom: 2px;\n  position: relative;\n}\n.login-form button {\n  background: #6681E1;\n  box-shadow: 2px 2px 9px 0 rgba(0, 0, 0, 0.5);\n  /* LOGIN: */\n  font-family: Lora, sans-serif;\n  font-size: 26px;\n  color: #E0E0E0;\n  text-align: center;\n  padding: 5px 50px;\n  border-radius: 1px;\n  margin-top: 28px;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.html":
+/*!********************************************!*\
+  !*** ./src/app/login/login.component.html ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"login-form\">\n  <img src=\"assets/img/logo.png\" class=\"login-logo\">\n  <form [formGroup]=\"loginForm\" (ngSubmit)=\"onSubmit()\">\n    <div class=\"field\">\n      <input placeholder=\"login\" id=\"username\" type=\"text\" formControlName=\"username\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.username.errors }\" />\n      <div *ngIf=\"submitted && f.username.errors\" class=\"invalid-feedback\">\n        <div *ngIf=\"f.username.errors.required\">Введите логин</div>\n      </div>\n    </div>\n    <div class=\"field\">\n      <input placeholder=\"password\" id=\"password\" type=\"password\" formControlName=\"password\" class=\"form-control\" [ngClass]=\"{ 'is-invalid': submitted && f.password.errors }\" />\n      <div *ngIf=\"submitted && f.password.errors\" class=\"invalid-feedback\">\n        <div *ngIf=\"f.password.errors.required\">Введите пароль</div>\n      </div>\n    </div>\n    <div class=\"field\">\n      <button [disabled]=\"loading\" class=\"btn btn-primary\">ВОЙТИ</button>\n      <img *ngIf=\"loading\" src=\"data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==\" />\n    </div>\n    <div *ngIf=\"error\" class=\"alert alert-danger\">{{error}}</div>\n  </form>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/login/login.component.ts":
+/*!******************************************!*\
+  !*** ./src/app/login/login.component.ts ***!
+  \******************************************/
+/*! exports provided: LoginComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../authentication.service */ "./src/app/authentication.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(formBuilder, route, router, authenticationService) {
+        this.formBuilder = formBuilder;
+        this.route = route;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.loading = false;
+        this.submitted = false;
+        this.error = '';
+    }
+    LoginComponent.prototype.isAuthorized = function () {
+        return this.authenticationService.isAuthenticated();
+    };
+    LoginComponent.prototype.ngOnInit = function () {
+        this.loginForm = this.formBuilder.group({
+            username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]
+        });
+        // reset login status
+        this.authenticationService.logout();
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    };
+    Object.defineProperty(LoginComponent.prototype, "f", {
+        // convenience getter for easy access to form fields
+        get: function () { return this.loginForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    LoginComponent.prototype.onSubmit = function () {
+        var _this = this;
+        this.submitted = true;
+        // stop here if form is invalid
+        if (this.loginForm.invalid) {
+            return;
+        }
+        this.loading = true;
+        this.authenticationService.login(this.f.username.value, this.f.password.value)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
+            .subscribe(function (data) {
+            _this.router.navigate([_this.returnUrl]);
+        }, function (error) {
+            _this.error = error;
+            _this.loading = false;
+        });
+    };
+    LoginComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
+            selector: 'app-login',
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _authentication_service__WEBPACK_IMPORTED_MODULE_4__["AuthenticationService"]])
+    ], LoginComponent);
+    return LoginComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/menu.service.ts":
 /*!*********************************!*\
   !*** ./src/app/menu.service.ts ***!
@@ -1601,7 +1831,7 @@ var MenuService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".restaurant-menu-element .item {\n  margin-bottom: 10px;\n}\n@media screen and (min-width: 1200px) {\n}\n.restaurant-menu-element .item > div {\n  display: flex;\n  flex-direction: row;\n}\n.restaurant-menu-element .item > div .description {\n  line-height: 21px;\n  flex: 0 auto;\n  font-size: 15px;\n  font-family: 'Open Sans', sans-serif;\n}\n.restaurant-menu-element .item > div .price {\n  flex: 1 1;\n  text-align: right;\n  font-size: 15px;\n  font-family: 'Open Sans', sans-serif;\n  padding-right: 10px;\n  line-height: 20px;\n}\n.restaurant-menu-element .tab-list h3 {\n  font-family: 'Acrom-Light', sans-serif;\n}\n.restaurant-menu-element.mobile {\n  margin-bottom: 18px;\n  background-color: #fff;\n  padding: 5px;\n}\n.restaurant-menu-element.mobile > section > header {\n  text-align: center;\n  padding: 10px;\n  background-color: #f9f1dc;\n  font-size: 20px;\n  color: #000;\n  text-transform: uppercase;\n  font-family: 'Acrom-Light', sans-serif;\n}\n.restaurant-menu-element.mobile .menu-category {\n  padding-left: 10px;\n}\n.restaurant-menu-element.mobile .menu-category .item .description {\n  font-size: 15px;\n  color: #000;\n}\n.restaurant-menu-element.mobile .menu-category .item .price {\n  font-size: 15px;\n  color: #000;\n  line-height: 20px;\n}\n.restaurant-menu-element.mobile .menu-category .title {\n  text-transform: uppercase;\n  font-size: 22px;\n  margin: 15px 0;\n  color: #000;\n  font-family: 'Acrom-Regular', sans-serif;\n  text-align: center;\n  margin-left: -10px;\n}\n.restaurant-menu-element.desktop {\n  background-color: #fff;\n  padding: 12px;\n  margin-bottom: 30px;\n}\n@media screen and (min-width: 1200px) {\n  .restaurant-menu-element.desktop header li {\n    height: 55px;\n    line-height: 55px;\n    padding: 0!important;\n  }\n}\n.restaurant-menu-element.desktop .tab-list {\n  white-space: nowrap;\n  font-size: 0;\n}\n.restaurant-menu-element.desktop .tab-list li {\n  display: inline-block;\n  width: 33.3%;\n  text-align: center;\n  padding: 10px;\n  background-color: #eae5cf;\n  font-size: 20px;\n  color: #000;\n  text-transform: uppercase;\n}\n.restaurant-menu-element.desktop .tab-list li.active {\n  background-color: #f9f1dc;\n  color: #000;\n}\n.restaurant-menu-element.desktop .content .tab:not(.active) {\n  display: none;\n}\n.restaurant-menu-element.desktop .content .tab {\n  overflow: hidden;\n}\n.restaurant-menu-element.desktop .content .menu-category {\n  width: 33.3%;\n  display: inline-block;\n  color: #000;\n  font-size: 18px;\n  padding: 20px 0;\n  padding-top: 35px;\n  vertical-align: top;\n  float: right;\n}\n.restaurant-menu-element.desktop .content .menu-category .title {\n  text-transform: uppercase;\n  font-size: 22px;\n  margin-bottom: 25px;\n  font-family: 'Acrom-Regular', sans-serif;\n  text-align: center;\n}\n"
+module.exports = ".restaurant-menu-element .item {\n  margin-bottom: 10px;\n}\n@media screen and (min-width: 1200px) {\n}\n.restaurant-menu-element .item > div {\n  display: flex;\n  flex-direction: row;\n}\n.restaurant-menu-element .item > div .description {\n  line-height: 21px;\n  flex: 0 auto;\n  font-size: 15px;\n  font-family: 'Open Sans', sans-serif;\n}\n.restaurant-menu-element .item > div .price {\n  flex: 1 1;\n  text-align: right;\n  font-size: 15px;\n  font-family: 'Open Sans', sans-serif;\n  padding-right: 10px;\n  line-height: 20px;\n}\n.restaurant-menu-element .tab-list h3 {\n  font-family: 'Acrom-Light', sans-serif;\n}\n.restaurant-menu-element.mobile {\n  margin-bottom: 18px;\n  background-color: #fff;\n  padding: 5px;\n}\n.restaurant-menu-element.mobile > section > header {\n  text-align: center;\n  padding: 10px;\n  background-color: #f9f1dc;\n  font-size: 20px;\n  color: #000;\n  text-transform: uppercase;\n  font-family: 'Acrom-Light', sans-serif;\n}\n.restaurant-menu-element.mobile .menu-category {\n  padding-left: 10px;\n}\n.restaurant-menu-element.mobile .menu-category .item .description {\n  font-size: 15px;\n  color: #000;\n}\n.restaurant-menu-element.mobile .menu-category .item .price {\n  font-size: 15px;\n  color: #000;\n  line-height: 20px;\n}\n.restaurant-menu-element.mobile .menu-category .title {\n  text-transform: uppercase;\n  font-size: 22px;\n  margin: 15px 0;\n  color: #000;\n  font-family: 'Acrom-Regular', sans-serif;\n  text-align: center;\n  margin-left: -10px;\n}\n.restaurant-menu-element.desktop {\n  background-color: #fff;\n  padding: 12px;\n  margin-bottom: 30px;\n}\n@media screen and (min-width: 1200px) {\n  .restaurant-menu-element.desktop header li {\n    height: 55px;\n    line-height: 55px;\n    padding: 0!important;\n  }\n}\n.restaurant-menu-element.desktop .tab-list {\n  white-space: nowrap;\n  font-size: 0;\n}\n.restaurant-menu-element.desktop .tab-list li {\n  display: inline-block;\n  width: 33.3%;\n  text-align: center;\n  padding: 10px;\n  background-color: #eae5cf;\n  font-size: 20px;\n  color: #000;\n  text-transform: uppercase;\n}\n.restaurant-menu-element.desktop .tab-list li.active {\n  background-color: #f9f1dc;\n  color: #000;\n}\n.restaurant-menu-element.desktop .content .tab:not(.active) {\n  display: none;\n}\n.restaurant-menu-element.desktop .content .tab {\n  overflow: hidden;\n}\n.restaurant-menu-element.desktop .content .menu-category {\n  width: 33.3%;\n  display: inline-block;\n  color: #000;\n  font-size: 18px;\n  padding: 20px 0;\n  padding-top: 35px;\n  vertical-align: top;\n  float: left;\n}\n.restaurant-menu-element.desktop .content .menu-category .title {\n  text-transform: uppercase;\n  font-size: 22px;\n  margin-bottom: 25px;\n  font-family: 'Acrom-Regular', sans-serif;\n  text-align: center;\n}\n"
 
 /***/ }),
 
@@ -1612,7 +1842,7 @@ module.exports = ".restaurant-menu-element .item {\n  margin-bottom: 10px;\n}\n@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\" *ngIf=\"isReady()\">\n  <div class=\"restaurant-menu-element desktop ng-scope\" ng-controller=\"TabsController as tabs\" ng-init=\"tabs.activeTabIndex = 1\">\n    <header>\n      <ul class=\"tab-list\">\n        <li (click)=\"setActiveTabIndex(catId)\" *ngFor=\"let catId of getCategories()\" [class.active]=\"isActive(catId)\" role=\"button\" tabindex=\"0\" class=\"active\" style=\"\">\n          <h3>{{getCategoryName(catId)}}</h3>\n        </li>\n      </ul>\n    </header>\n    <section class=\"content\">\n      <div class=\"tab active\" [class.active]=\"isActive(n)\" *ngFor=\"let n of [1,2,3]\">\n        <div class=\"menu-category\" *ngFor=\"let menuCategoryTitle of getMenuCategories(n)\">\n          <div class=\"title\">{{menuCategoryTitle}}</div>\n          <div class=\"item\" *ngFor=\"let item of getCategoryItems(n, menuCategoryTitle)\" (dblclick)=\"openEditItemPopup(item)\">\n            <div>\n              <div class=\"description\">{{item.title}}<span class=\"sizes\">{{item.size}}</span></div><div class=\"price\">{{item.price}}р.</div>\n            </div>\n          </div>\n          <button (click)=\"openNewItemPopup(n, menuCategoryTitle)\">Добавить</button>\n        </div>\n      </div>\n    </section>\n  </div>\n</div>\n\n<ng-template #newItemPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новый тип тренировок</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"field\">\n      <label>Название</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.title\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Цена</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.price\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Кол-во</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.size\">\n      </div>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"addItem()\">Создать</button>\n      <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n    </div>\n  </div>\n</ng-template>\n\n<ng-template #editItemPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новый тип тренировок</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"field\">\n      <label>Название</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.title\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Цена</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.price\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Кол-во</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.size\">\n      </div>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"closePopup()\">Применить</button>\n    </div>\n  </div>\n</ng-template>"
+module.exports = "<div class=\"content\" *ngIf=\"isReady()\">\n  <div class=\"restaurant-menu-element desktop ng-scope\" ng-controller=\"TabsController as tabs\" ng-init=\"tabs.activeTabIndex = 1\">\n    <header>\n      <ul class=\"tab-list\">\n        <li (click)=\"setActiveTabIndex(catId)\" *ngFor=\"let catId of getCategories()\" [class.active]=\"isActive(catId)\" role=\"button\" tabindex=\"0\" class=\"active\" style=\"\">\n          <h3>\n            {{getCategoryName(catId)}}\n            <span *ngIf=\"isActive(catId) && isEditingAllowed()\" (click)=\"openNewTitlePopup(catId)\">\n              <i class=\"fa fa-plus\"></i>\n            </span>\n            <span *ngIf=\"isActive(catId)\" (click)=\"openReorderTitlesPopup(catId)\">\n              <i class=\"fa fa-bars\"></i>\n            </span>\n          </h3>\n        </li>\n      </ul>\n    </header>\n    <section class=\"content\">\n      <div class=\"tab active\" [class.active]=\"isActive(n)\" *ngFor=\"let n of [1,2,3]\">\n        <div class=\"menu-category\" *ngFor=\"let menuCategoryTitle of getMenuCategories(n)\">\n          <div class=\"title\" (dblclick)=\"openEditTitlePopup(menuCategoryTitle)\">{{menuCategoryTitle}}</div>\n          <div class=\"item\" *ngFor=\"let item of getCategoryItems(n, menuCategoryTitle)\" (dblclick)=\"openEditItemPopup(item)\">\n            <div>\n              <div class=\"description\">{{item.title}}<span class=\"sizes\">{{item.size}}</span></div><div class=\"price\">{{item.price}}р.</div>\n            </div>\n          </div>\n          <div class=\"toolbar-element\">\n            <div (click)=\"openNewItemPopup(n, menuCategoryTitle)\" *ngIf=\"isEditingAllowed()\">\n              <i class=\"fa fa-plus\"></i>\n            </div>\n            <div (click)=\"openReorderPopup(n, menuCategoryTitle)\">\n              <i class=\"fa fa-bars\"></i>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  </div>\n</div>\n\n<ng-template #newItemPopup>\n  <div class=\"modal-header\" [ngSwitch]=\"isCreatingNewCategory()\">\n      <h4 *ngSwitchCase=\"false\" class=\"modal-title pull-left\">Добавить блюдо в меню</h4>\n      <h4 *ngSwitchCase=\"true\" class=\"modal-title pull-left\">Добавить категорию и блюдо в меню</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"closePopup()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"field\" *ngIf=\"isCreatingNewCategory()\">\n      <label>Название категории</label>\n      <div class=\"input\">\n        <input autofocus placeholder='введите название' type=\"text\" [(ngModel)]=\"newItem.category_title\">\n      </div>\n    </div>\n\n    <div class=\"field\">\n      <label>Название</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.title\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Цена</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.price\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Кол-во</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"newItem.size\">\n      </div>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"addItem()\">Создать</button>\n      <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n    </div>\n  </div>\n</ng-template>\n\n<ng-template #reorderItemPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\">Поменять местами</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closePopup()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <bs-sortable *ngIf=\"itemsToSort\"\n                 [(ngModel)]=\"itemsToSort\"\n                 itemClass=\"sortable-item\"\n                 itemActiveClass=\"sortable-item-active\"\n                 placeholderItem=\"Drag here\"\n                 placeholderClass=\"placeholderStyle\"\n                 wrapperClass=\"sortable-wrapper\"\n                 fieldName=\"title\"\n    ></bs-sortable>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"save ripple module-control-button-element default\" (click)=\"reorderApply();\">Да</button>\n    <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n  </div>\n</ng-template>\n\n\n<ng-template #reorderTitlePopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\">Поменять местами</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closePopup()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <bs-sortable *ngIf=\"titlesToSort\"\n                 [(ngModel)]=\"titlesToSort\"\n                 itemClass=\"sortable-item\"\n                 itemActiveClass=\"sortable-item-active\"\n                 placeholderItem=\"Drag here\"\n                 placeholderClass=\"placeholderStyle\"\n                 wrapperClass=\"sortable-wrapper\"\n    ></bs-sortable>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"save ripple module-control-button-element default\" (click)=\"reorderTitleApply();\">Да</button>\n    <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n  </div>\n</ng-template>\n\n<ng-template #deleteItemConfirmPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\">Точно удалить?</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closePopup()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"save ripple module-control-button-element default\" (click)=\"deleteItem();\">Да</button>\n    <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n  </div>\n</ng-template>\n\n<ng-template #deleteCategoryConfirmPopup>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Точно удалить?</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closePopup()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"save ripple module-control-button-element default\" (click)=\"deleteCategory();\">Да</button>\n        <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"closePopup()\">Отмена</button>\n    </div>\n</ng-template>\n\n<ng-template #editItemPopup>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Редактировать блюдо в меню</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"closePopup()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div class=\"field\">\n      <label>Название</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.title\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Цена</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.price\">\n      </div>\n    </div>\n    <div class=\"field\">\n      <label>Кол-во</label>\n      <div class=\"input\">\n        <input type=\"text\" [(ngModel)]=\"editingItem.size\">\n      </div>\n    </div>\n  </div>\n  <div class=\"modal-footer\">\n    <div class=\"buttons\">\n      <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"apply()\">Применить</button>\n      <button type=\"button\" class=\"ripple module-control-button-element delete\" (click)=\"deleteItemWithConfirm(editingItem)\">Удалить</button>\n    </div>\n  </div>\n</ng-template>\n\n\n<ng-template #editTitlePopup>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title pull-left\">Действия над категорией</h4>\n        <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"closePopup()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <div class=\"field\">\n            <label>Название категории</label>\n            <div class=\"input\">\n                <input type=\"text\" [(ngModel)]=\"editingTitle\">\n            </div>\n        </div>\n    </div>\n    <div class=\"modal-footer\">\n        <div class=\"buttons\">\n            <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"changeTitle()\">Переименовать</button>\n            <button type=\"button\" class=\"ripple module-control-button-element delete\" (click)=\"deleteCategoryWithConfirm()\">Удалить</button>\n        </div>\n    </div>\n</ng-template>"
 
 /***/ }),
 
@@ -1641,6 +1871,26 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
 
 
 
@@ -1654,17 +1904,103 @@ var RestaurantMenuComponent = /** @class */ (function () {
         this.modalService = modalService;
         this.selectItemService = selectItemService;
         this.menuItems = null;
+        this.itemsToSort = [];
+        this.titlesToSort = [];
+        this.editingTitle = null;
+        this.editingTitleOld = null;
         this.selectedTabId = 1;
+        this.modalRefs = [];
+        this.itemToDelete = null;
+        this.isNewCategory = false;
         this.selectItemService.event$.subscribe(function (e) {
             if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__["SelectItemEvent"].Type.TrainingItemTypeRemove) {
                 _this.menuItems = _this.menuItems.filter(function (a) { return a.id !== e.payload.activityTypeId; });
             }
             else if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_4__["SelectItemEvent"].Type.LanguageChange) {
                 _this.loadMenuItems(true);
+                _this.language = e.payload.language;
             }
         });
     }
-    RestaurantMenuComponent.prototype.openNewItemPopup = function (catId, catTitle) {
+    RestaurantMenuComponent.prototype.isEditingAllowed = function () {
+        return this.language != 2;
+    };
+    RestaurantMenuComponent.prototype.openNewTitlePopup = function (catId) {
+        this.openNewItemPopup(catId, '', true);
+    };
+    RestaurantMenuComponent.prototype.isCreatingNewCategory = function () {
+        return this.isNewCategory;
+    };
+    RestaurantMenuComponent.prototype.changeTitle = function () {
+        var _this = this;
+        this.modelService
+            .renameRestaurantMenuCategory(this.editingTitleOld, this.editingTitle)
+            .subscribe(function () {
+            _this.menuItems
+                .filter(function (i) { return i.category_title === _this.editingTitleOld; })
+                .forEach(function (item) {
+                item.category_title = _this.editingTitle;
+            });
+            _this.closeAllPopups();
+        }, function () { });
+    };
+    RestaurantMenuComponent.prototype.deleteCategory = function () {
+        var _this = this;
+        this.modelService
+            .deleteRestaurantMenuCategory(this.editingTitleOld)
+            .subscribe(function () {
+            _this.menuItems = _this.menuItems.filter(function (i) { return i.category_title !== _this.editingTitleOld; });
+            _this.closeAllPopups();
+        }, function () { });
+    };
+    RestaurantMenuComponent.prototype.deleteCategoryWithConfirm = function () {
+        this.openModal(this.deleteCategoryConfirmPopup);
+    };
+    RestaurantMenuComponent.prototype.reorderTitleApply = function () {
+        var _this = this;
+        var currentItems = this.menuItems.filter(function (i) { return i.menu_type === _this.selectedTabId; });
+        currentItems.forEach(function (item) {
+            item.n = item.n % 1000 + _this.titlesToSort.indexOf(item.category_title) * 1000;
+            item.n = item.n % 1000 + _this.titlesToSort.indexOf(item.category_title) * 1000;
+        });
+        this.menuItems.sort(function (a, b) { return a.n - b.n; });
+        this.modelService.reorderApplyByN('restaurantMenu', currentItems);
+        this.closeAllPopups();
+    };
+    RestaurantMenuComponent.prototype.openReorderTitlesPopup = function (catId) {
+        this.titlesToSort = this.getMenuCategories(catId);
+        this.openModal(this.reorderTitlePopup);
+    };
+    RestaurantMenuComponent.prototype.openReorderPopup = function (catId, catTitle) {
+        this.itemsToSort = this.getCategoryItems(catId, catTitle);
+        this.openModal(this.reorderItemPopup);
+    };
+    RestaurantMenuComponent.prototype.apply = function () {
+        var _this = this;
+        this.modelService
+            .updateRestaurantMenuItem(this.editingItem)
+            .subscribe(function () {
+            _this.closeAllPopups();
+        });
+    };
+    RestaurantMenuComponent.prototype.deleteItemWithConfirm = function (item) {
+        this.itemToDelete = item;
+        this.openModal(this.deleteItemConfirmPopup);
+    };
+    RestaurantMenuComponent.prototype.deleteItem = function () {
+        var _this = this;
+        this.modelService
+            .deleteRestaurantMenuItem(this.itemToDelete)
+            .subscribe(function () {
+            _this.menuItems = _this.menuItems.filter(function (i) { return i.id !== _this.itemToDelete.id; });
+            _this.itemToDelete = null;
+            _this.closeAllPopups();
+        });
+    };
+    RestaurantMenuComponent.prototype.openNewItemPopup = function (catId, catTitle, isNewCategory) {
+        if (catTitle === void 0) { catTitle = ''; }
+        if (isNewCategory === void 0) { isNewCategory = false; }
+        this.isNewCategory = isNewCategory;
         this.newItem = _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].fromRaw({
             menu_type: catId,
             category_title: catTitle,
@@ -1678,9 +2014,25 @@ var RestaurantMenuComponent = /** @class */ (function () {
         this.editingItem = item;
         this.openModal(this.editItemPopup);
     };
+    RestaurantMenuComponent.prototype.openEditTitlePopup = function (title) {
+        this.editingTitle = title;
+        this.editingTitleOld = title;
+        this.openModal(this.editTitlePopup);
+    };
     RestaurantMenuComponent.prototype.addItem = function () {
-        this.menuItems.push(this.newItem);
-        this.closePopup();
+        var _this = this;
+        var newN = this.getMenuCategories(this.selectedTabId).length * 1000;
+        if (!this.isNewCategory) {
+            newN = Math.max.apply(Math, __spread(this.menuItems.filter(function (i) { return i.category_title == _this.newItem.category_title; }).map(function (i) { return i.n; }))) + 1;
+        }
+        this.isNewCategory = false;
+        this.newItem.n = newN;
+        this.modelService
+            .createRestaurantMenuItem(this.newItem)
+            .subscribe(function (item) {
+            _this.menuItems.push(item);
+            _this.closePopup();
+        });
     };
     RestaurantMenuComponent.prototype.getMenuCategories = function (catId) {
         return Array.from(new Set(this.menuItems
@@ -1689,7 +2041,8 @@ var RestaurantMenuComponent = /** @class */ (function () {
     };
     RestaurantMenuComponent.prototype.getCategoryItems = function (catId, catTitle) {
         return this.menuItems
-            .filter(function (i) { return i.menu_type == catId && i.category_title === catTitle; });
+            .filter(function (i) { return i.menu_type == catId && i.category_title === catTitle; })
+            .sort(function (a, b) { return a.n - b.n; });
     };
     RestaurantMenuComponent.prototype.getCategories = function () {
         return _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].getCategories();
@@ -1707,13 +2060,29 @@ var RestaurantMenuComponent = /** @class */ (function () {
         return this.menuItems !== null;
     };
     RestaurantMenuComponent.prototype.openModal = function (template) {
-        this.modalRef = this.modalService.show(template);
+        this.modalRefs.push(this.modalService.show(template));
     };
     RestaurantMenuComponent.prototype.closePopup = function () {
-        this.modalRef.hide();
+        this.modalRefs[this.modalRefs.length - 1].hide();
+        if (this.modalRefs.length > 0) {
+            this.modalRefs.splice(-1, 1);
+        }
     };
     RestaurantMenuComponent.prototype.reorderApply = function () {
-        this.modelService.reorderApply('restaurantMenu', this.menuItems);
+        var _this = this;
+        var data = [];
+        this.itemsToSort.forEach(function (item, index) {
+            var dataItem = _this.menuItems.find(function (i) { return i.id === item.id; });
+            dataItem.n = index + Math.round(dataItem.n / 1000) * 1000;
+            data.push(dataItem);
+        });
+        this.modelService.reorderApplyByN('restaurantMenu', data);
+        this.closeAllPopups();
+    };
+    RestaurantMenuComponent.prototype.closeAllPopups = function () {
+        while (this.modalRefs.length) {
+            this.closePopup();
+        }
     };
     RestaurantMenuComponent.prototype.loadMenuItems = function (force) {
         var _this = this;
@@ -1722,7 +2091,10 @@ var RestaurantMenuComponent = /** @class */ (function () {
             menuItems.sort(function (a, b) {
                 return a.n - b.n;
             });
-            _this.menuItems = menuItems.map(function (a) { return _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].fromRaw(a); });
+            _this.menuItems = menuItems
+                .map(function (a) { return _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_5__["RestaurantMenu"].fromRaw(a); })
+                .sort(function (a, b) { return a.n - b.n; });
+            _this.titlesToSort = _this.getMenuCategories(_this.selectedTabId);
         });
     };
     RestaurantMenuComponent.prototype.ngOnInit = function () {
@@ -1736,6 +2108,26 @@ var RestaurantMenuComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('editItemPopup'),
         __metadata("design:type", Object)
     ], RestaurantMenuComponent.prototype, "editItemPopup", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('reorderItemPopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "reorderItemPopup", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('editTitlePopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "editTitlePopup", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('reorderTitlePopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "reorderTitlePopup", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('deleteItemConfirmPopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "deleteItemConfirmPopup", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('deleteCategoryConfirmPopup'),
+        __metadata("design:type", Object)
+    ], RestaurantMenuComponent.prototype, "deleteCategoryConfirmPopup", void 0);
     RestaurantMenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-restaurant-menu',
@@ -1827,6 +2219,7 @@ var ModelService = /** @class */ (function () {
         _models_trainer__WEBPACK_IMPORTED_MODULE_4__["Trainer"].setupLanguageService(this.languageService);
         _models_training_activity__WEBPACK_IMPORTED_MODULE_12__["TrainingActivity"].setupLanguageService(this.languageService);
         _models_training_activity_type__WEBPACK_IMPORTED_MODULE_13__["TrainingActivityType"].setupLanguageService(this.languageService);
+        _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].setupLanguageService(this.languageService);
         _models_room__WEBPACK_IMPORTED_MODULE_6__["Room"].setupLanguageService(this.languageService);
         _models_cms_image__WEBPACK_IMPORTED_MODULE_5__["CmsImage"].setupLanguageService(this.languageService);
     }
@@ -1851,6 +2244,26 @@ var ModelService = /** @class */ (function () {
         return this.http.post(this.baseUrl + 'reorder?model=' + modelName, { order: order }, httpOptions)
             .subscribe();
         var e_1, _a;
+    };
+    ModelService.prototype.reorderApplyByN = function (modelName, modelList) {
+        var order = {};
+        try {
+            for (var modelList_2 = __values(modelList), modelList_2_1 = modelList_2.next(); !modelList_2_1.done; modelList_2_1 = modelList_2.next()) {
+                var item = modelList_2_1.value;
+                var id = item['id'];
+                order[id] = item['n'];
+            }
+        }
+        catch (e_2_1) { e_2 = { error: e_2_1 }; }
+        finally {
+            try {
+                if (modelList_2_1 && !modelList_2_1.done && (_a = modelList_2.return)) _a.call(modelList_2);
+            }
+            finally { if (e_2) throw e_2.error; }
+        }
+        return this.http.post(this.baseUrl + 'reorder?model=' + modelName, { order: order }, httpOptions)
+            .subscribe();
+        var e_2, _a;
     };
     //rooms
     ModelService.prototype.getRooms = function () {
@@ -1986,6 +2399,24 @@ var ModelService = /** @class */ (function () {
     // menu
     ModelService.prototype.getRestaurantMenu = function () {
         return this.getModelListing(_models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiMethodName());
+    };
+    ModelService.prototype.deleteRestaurantMenuItem = function (item) {
+        return this.http.delete(this.baseUrl + _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiMethodName(item.id));
+    };
+    ModelService.prototype.updateRestaurantMenuItem = function (item) {
+        return this.http.put(this.baseUrl + _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiMethodName(item.id), item);
+    };
+    ModelService.prototype.deleteRestaurantMenuCategory = function (catTitle) {
+        return this.http.delete(this.baseUrl + _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiBulkMethodName('delete', new Map().set('catTitle', catTitle)));
+    };
+    ModelService.prototype.renameRestaurantMenuCategory = function (catTitle, newTitle) {
+        return this.http.put(this.baseUrl + _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiBulkMethodName('rename', new Map().set('catTitle', catTitle)), {
+            oldTitle: catTitle,
+            newTitle: newTitle
+        });
+    };
+    ModelService.prototype.createRestaurantMenuItem = function (item) {
+        return this.http.post(this.baseUrl + _models_restaurant_menu__WEBPACK_IMPORTED_MODULE_14__["RestaurantMenu"].getApiMethodName(item.id), item, httpOptions);
     };
     //common
     ModelService.prototype.getModelListing = function (apiMethod) {
@@ -2322,6 +2753,12 @@ var RestaurantMenu = /** @class */ (function (_super) {
                 return 'Барная карта';
         }
     };
+    RestaurantMenu.getApiBulkMethodName = function (actionName, params) {
+        this.apiMethodName = 'menu-bulk/' + actionName;
+        var res = this.getApiMethodName(null, params);
+        this.apiMethodName = 'menu';
+        return res;
+    };
     RestaurantMenu.fromRaw = function (raw) {
         return Object.assign(new RestaurantMenu(), raw);
     };
@@ -2408,21 +2845,22 @@ var SelectItemEvent = /** @class */ (function () {
     var Type;
     (function (Type) {
         Type[Type["Page"] = 0] = "Page";
-        Type[Type["SettingsGroup"] = 1] = "SettingsGroup";
-        Type[Type["TrainerSelect"] = 2] = "TrainerSelect";
-        Type[Type["TrainerRemove"] = 3] = "TrainerRemove";
-        Type[Type["TrainerClose"] = 4] = "TrainerClose";
-        Type[Type["RoomSelect"] = 5] = "RoomSelect";
-        Type[Type["RoomRemove"] = 6] = "RoomRemove";
-        Type[Type["TrainingItemTypeRemove"] = 7] = "TrainingItemTypeRemove";
-        Type[Type["RoomClose"] = 8] = "RoomClose";
-        Type[Type["LanguageChange"] = 9] = "LanguageChange";
-        Type[Type["ImageChooserApply"] = 10] = "ImageChooserApply";
-        Type[Type["NewTag"] = 11] = "NewTag";
-        Type[Type["RefreshTags"] = 12] = "RefreshTags";
-        Type[Type["CloseAllSelectedItems"] = 13] = "CloseAllSelectedItems";
-        Type[Type["ChangeAspectRatio"] = 14] = "ChangeAspectRatio";
-        Type[Type["ApplyFilter"] = 15] = "ApplyFilter";
+        Type[Type["PageRemove"] = 1] = "PageRemove";
+        Type[Type["SettingsGroup"] = 2] = "SettingsGroup";
+        Type[Type["TrainerSelect"] = 3] = "TrainerSelect";
+        Type[Type["TrainerRemove"] = 4] = "TrainerRemove";
+        Type[Type["TrainerClose"] = 5] = "TrainerClose";
+        Type[Type["RoomSelect"] = 6] = "RoomSelect";
+        Type[Type["RoomRemove"] = 7] = "RoomRemove";
+        Type[Type["TrainingItemTypeRemove"] = 8] = "TrainingItemTypeRemove";
+        Type[Type["RoomClose"] = 9] = "RoomClose";
+        Type[Type["LanguageChange"] = 10] = "LanguageChange";
+        Type[Type["ImageChooserApply"] = 11] = "ImageChooserApply";
+        Type[Type["NewTag"] = 12] = "NewTag";
+        Type[Type["RefreshTags"] = 13] = "RefreshTags";
+        Type[Type["CloseAllSelectedItems"] = 14] = "CloseAllSelectedItems";
+        Type[Type["ChangeAspectRatio"] = 15] = "ChangeAspectRatio";
+        Type[Type["ApplyFilter"] = 16] = "ApplyFilter";
     })(Type = SelectItemEvent.Type || (SelectItemEvent.Type = {}));
 })(SelectItemEvent || (SelectItemEvent = {}));
 
@@ -2722,6 +3160,59 @@ var TrainingActivity = /** @class */ (function (_super) {
     TrainingActivity.passLang = true;
     return TrainingActivity;
 }(_base_api_model__WEBPACK_IMPORTED_MODULE_0__["BaseApiModel"]));
+
+
+
+/***/ }),
+
+/***/ "./src/app/need-auth-guard.ts":
+/*!************************************!*\
+  !*** ./src/app/need-auth-guard.ts ***!
+  \************************************/
+/*! exports provided: NeedAuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NeedAuthGuard", function() { return NeedAuthGuard; });
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _authentication_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./authentication.service */ "./src/app/authentication.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var NeedAuthGuard = /** @class */ (function () {
+    function NeedAuthGuard(auth, router) {
+        this.auth = auth;
+        this.router = router;
+    }
+    NeedAuthGuard.prototype.canActivate = function (route, state) {
+        var redirectUrl = route['_routerState']['url'];
+        if (this.auth.isAuthenticated()) {
+            return true;
+        }
+        this.router.navigateByUrl(this.router.createUrlTree(['/login'], {
+            queryParams: {
+                redirectUrl: redirectUrl
+            }
+        }));
+        return false;
+    };
+    NeedAuthGuard = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        __metadata("design:paramtypes", [_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"], _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]])
+    ], NeedAuthGuard);
+    return NeedAuthGuard;
+}());
 
 
 
@@ -3645,7 +4136,7 @@ module.exports = "select {\n  margin: 10px;\n  width: -webkit-fill-available;\n}
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<select [(ngModel)]=\"selectedDomain\" class=\"form-control form-control-lg\">\n  <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n</select>\n<div *ngFor='let page of groupedPages[selectedDomain]' class='navbar-selector-item' (click)=\"loadPage(page)\" [ngClass]=\"{'active':page.id==selectedPageId}\">\n  {{page.name}}\n  <a *ngIf=\"page.url\" [href]=\"page.url\" target=\"_blank\"><i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n</div>\n<div class=\"toolbar-element\">\n  <div (click)=\"openModal(createPage)\"><i class=\"fa fa-plus\"></i></div>\n</div>\n<ng-template #createPage>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новую страницу</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div>\n      Введите название страницы:\n    </div>\n    <div>\n      <input type=\"text\" #newPageName>\n    </div>\n    <div>\n      Выберите домен:\n    </div>\n    <div>\n      <select #newPageDomain class=\"form-control form-control-lg\" [value]=\"selectedDomain\">\n        <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n      </select>\n    </div>\n    <div>\n      Введите url:\n    </div>\n    <div>\n      {{findDomainById(newPageDomain.value).base_url}}\n      <input type=\"text\" #newPageUrl>\n    </div>\n    <div>\n      Показывать в меню:\n    </div>\n    <div>\n      <input type=\"checkbox\" #showInMenu>\n    </div>\n    <div>\n      Выберите тип содержимого:\n    </div>\n    <div>\n      <select #newPagePageType class=\"form-control form-control-lg\">\n        <option *ngFor='let pageType of pageTypes' [value]=\"pageType.id\">{{pageType.name}}</option>\n      </select>\n    </div>\n    <div>\n      Выберите способ отображения:\n    </div>\n    <div>\n      <select #newPageAction class=\"form-control form-control-lg\">\n        <option *ngFor='let action of actions' [value]=\"action.id\">{{action.name}}</option>\n      </select>\n    </div>\n\n    <div>\n      <button class=\"btn btn-primary\"\n        (click)=\"createNewPage(newPageName.value, newPageDomain.value, newPagePageType.value, showInMenu.value, newPageUrl.value, newPageAction.value); modalRef.hide();\">создать</button>\n    </div>\n  </div>\n</ng-template>"
+module.exports = "<select [(ngModel)]=\"selectedDomain\" class=\"form-control form-control-lg\">\n  <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n</select>\n<div *ngFor='let page of groupedPages[selectedDomain]' class='navbar-selector-item' (click)=\"loadPage(page)\" [ngClass]=\"{'active':page.id==selectedPageId}\">\n  {{page.name}}\n  <a *ngIf=\"page.url\" [href]=\"page.url\" target=\"_blank\"><i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a>\n</div>\n<div class=\"toolbar-element\">\n  <div (click)=\"openModal(createPage)\"><i class=\"fa fa-plus\"></i></div>\n  <div (click)=\"openModal(reorderPages)\"><i class=\"fa fa-bars\"></i></div>\n</div>\n<ng-template #createPage>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Создать новую страницу</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <div>\n      Введите название страницы:\n    </div>\n    <div>\n      <input type=\"text\" #newPageName>\n    </div>\n    <div>\n      Выберите домен:\n    </div>\n    <div>\n      <select #newPageDomain class=\"form-control form-control-lg\" [value]=\"selectedDomain\">\n        <option *ngFor='let domain of domains' [value]=\"domain.id\">{{domain.title}}</option>\n      </select>\n    </div>\n    <div>\n      Введите url:\n    </div>\n    <div>\n      {{findDomainById(newPageDomain.value).base_url}}\n      <input type=\"text\" #newPageUrl>\n    </div>\n    <div>\n      Показывать в меню:\n    </div>\n    <div>\n      <input type=\"checkbox\" #showInMenu>\n    </div>\n\n\n    <div>\n      <button class=\"btn btn-primary\"\n        (click)=\"createNewPage(newPageName.value, newPageDomain.value, showInMenu.value, newPageUrl.value); modalRef.hide();\">создать</button>\n    </div>\n  </div>\n</ng-template>\n\n<ng-template #reorderPages>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title\">Поменять местами</h4>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <bs-sortable *ngIf=\"groupedPages[selectedDomain]\"\n                 [(ngModel)]=\"groupedPages[selectedDomain]\"\n                 itemClass=\"sortable-item\"\n                 itemActiveClass=\"sortable-item-active\"\n                 placeholderItem=\"Drag here\"\n                 placeholderClass=\"placeholderStyle\"\n                 wrapperClass=\"sortable-wrapper\"\n                 fieldName=\"name\"\n    ></bs-sortable>\n  </div>\n  <div class=\"modal-footer\">\n    <button type=\"button\" class=\"save ripple module-control-button-element default\" (click)=\"reorderApply();modalRef.hide();\">Да</button>\n    <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n  </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -3666,6 +4157,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../storage */ "./src/app/storage.ts");
 /* harmony import */ var _models_state__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/state */ "./src/app/models/state.ts");
+/* harmony import */ var _model_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../model.service */ "./src/app/model.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3702,15 +4194,23 @@ var __values = (undefined && undefined.__values) || function (o) {
 
 
 
+
 var PagesListComponent = /** @class */ (function (_super) {
     __extends(PagesListComponent, _super);
-    function PagesListComponent(pageService, selectItemService, modalService) {
+    function PagesListComponent(pageService, selectItemService, modalService, modelService) {
         var _this = _super.call(this) || this;
         _this.pageService = pageService;
         _this.selectItemService = selectItemService;
         _this.modalService = modalService;
+        _this.modelService = modelService;
         _this.domainsLoaded = false;
         _this.pagesLoaded = false;
+        _this.selectItemService.event$.subscribe(function (e) {
+            if (e.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_2__["SelectItemEvent"].Type.PageRemove) {
+                _this.pages = _this.pages.filter(function (p) { return p.id !== e.payload.pageId; });
+                _this.groupPages();
+            }
+        });
         return _this;
     }
     PagesListComponent.prototype.processLoadedState = function () {
@@ -3732,6 +4232,9 @@ var PagesListComponent = /** @class */ (function (_super) {
             initial: initial
         }));
     };
+    PagesListComponent.prototype.reorderApply = function () {
+        this.modelService.reorderApply('page', this.groupedPages[this.selectedDomain]);
+    };
     PagesListComponent.prototype.findDomainById = function (domainId) {
         return this.domains.find(function (d) { return d.id == domainId; });
     };
@@ -3739,6 +4242,7 @@ var PagesListComponent = /** @class */ (function (_super) {
         this.modalRef = this.modalService.show(template, options);
     };
     PagesListComponent.prototype.groupPages = function () {
+        this.groupedPages = [];
         if (this.domainsLoaded && this.pagesLoaded) {
             try {
                 for (var _a = __values(this.pages), _b = _a.next(); !_b.done; _b = _a.next()) {
@@ -3756,20 +4260,20 @@ var PagesListComponent = /** @class */ (function (_super) {
                 }
                 finally { if (e_1) throw e_1.error; }
             }
-            //console.log(this.groupedPages);
+        }
+        for (var domainId in this.groupedPages) {
+            this.groupedPages[domainId] = this.groupedPages[domainId].sort(function (a, b) { return a.order - b.order; });
         }
         var e_1, _c;
     };
     ;
-    PagesListComponent.prototype.createNewPage = function (name, domainId, pageTypeId, showInMenu, url, actionId) {
+    PagesListComponent.prototype.createNewPage = function (name, domainId, showInMenu, url) {
         var _this = this;
         this.pageService.createPage({
             'name': name,
             'domain_id': domainId,
-            'pages_id': pageTypeId,
             'show_in_menu': showInMenu,
-            'url': url,
-            'action_id': actionId,
+            'url': url
         }).subscribe(function (page) {
             _this.groupedPages[page.domain_id].push(page);
             _this.selectedDomain = domainId;
@@ -3832,7 +4336,8 @@ var PagesListComponent = /** @class */ (function (_super) {
         }),
         __metadata("design:paramtypes", [_pages_service__WEBPACK_IMPORTED_MODULE_1__["PagesService"],
             _select_item_service__WEBPACK_IMPORTED_MODULE_3__["SelectItemService"],
-            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_4__["BsModalService"]])
+            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_4__["BsModalService"],
+            _model_service__WEBPACK_IMPORTED_MODULE_7__["ModelService"]])
     ], PagesListComponent);
     return PagesListComponent;
 }(_models_state__WEBPACK_IMPORTED_MODULE_6__["State"]));
@@ -3888,6 +4393,9 @@ var PagesService = /** @class */ (function () {
     PagesService.prototype.savePageFields = function (pageId, pageFields, language) {
         return this.http.put(this.pageFieldsUrl + '/' + pageId + '?lang=' + language, pageFields);
     };
+    PagesService.prototype.savePage = function (page, language) {
+        return this.http.put(this.pagesUrl + '/' + page.id + '?lang=' + language, page);
+    };
     PagesService.prototype.deletePage = function (pageId) {
         return this.http.delete(this.pagesUrl + '/' + pageId);
     };
@@ -3929,7 +4437,7 @@ module.exports = ".bordered-section {\n  border: 1px solid #444;\n  margin: 5px;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-editor\">\n    <div class=\"wrapper\">\n\n        <div class=\"module-menu-element\" *ngIf=\"selectedPageId !== null\">\n            <h3 *ngIf=\"selectedPageId == 26\">Тренеры</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 26\">\n                <trainers class=\"integrated\"></trainers>\n            </div>\n\n            <h3 *ngIf=\"selectedPageId == 19\">Номера</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 19\">\n                <rooms class=\"integrated\"></rooms>\n            </div>\n\n\n            <h3>Список секций</h3>\n            <div class=\"sections-selector\" *ngIf=\"selectedPageFieldsSections\">\n                <div *ngFor=\"let section of selectedPageFieldsSections.values; index as sectionNumber;\"\n                     (click)=\"selectSection(sectionNumber)\" [class.selected]=\"sectionNumber === selectedSectionNumber\" class=\"item\">\n                    {{getSectionTitle(sectionNumber)}}\n                    <div class=\"delete\" click-stop-propagation (click)=\"deleteSectionWithConfirm('sectionsParams', sectionNumber)\"><i class=\"fa fa-close\"></i></div>\n                </div>\n                <div class=\"sections-panel toolbar-element\" *ngIf=\"selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'\">\n                    <div class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                        <div dropdownToggle aria-controls=\"dropdown-basic\">\n                            <i class=\"fa fa-plus\"></i>\n                        </div>\n                        <ul id=\"dropdown-triggers-manual\" *dropdownMenu class=\"dropdown-menu\"\n                            role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                            <li *ngFor=\"let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']\" role=\"menuitem\">\n                                <a class=\"dropdown-item\" (click)=\"appendSection('sectionsParams', sectionType)\">\n                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}\n                                </a>\n                            </li>\n                        </ul>\n                        <div (click)=\"reorder()\"><i class=\"fa fa-bars\"></i></div>\n                    </div>\n                </div>\n            </div>\n\n            <h3>Общие настройки</h3>\n            <div (click)=\"selectOther()\"  class=\"general-info\">\n                <div class=\"item\" [class.selected]=\"selectOtherParams === true\">Общие настройки</div>\n            </div>\n\n            <div class=\"module-panel\" *ngIf=\"selectedPageFields !== null\">\n                <button (click)=\"save()\" class=\"save ripple module-control-button-element default\">Сохранить</button>\n                <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n            </div>\n        </div>\n        <div class=\"module-content-element\">\n            <accordion *ngIf=\"selectOtherParams == true\">\n                <accordion-group heading=\"Параметры страницы\">\n                    {{currentPage.url}}\n                </accordion-group>\n            </accordion>\n            <page-editor *ngIf=\"selectOtherParams == true && sectionsInited\"\n                         [params]=\"selectedPageFieldsOther.params\"\n                         [values]=\"selectedPageFieldsOther.values\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n            <page-editor *ngIf=\"selectedSectionNumber !== null && sectionsInited\"\n                         [params]=\"selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]\"\n                         [values]=\"selectedPageFieldsSections.values[selectedSectionNumber]\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n        </div>\n    </div>\n</div>\n<ng-template #confirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить страницу?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n<ng-template #sectionConfirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить секцию?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onConfirm()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"onCancel()\">Нет</button>\n    </div>\n</ng-template>\n\n\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами секции</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"pageFieldsSectionsOrder\"\n            [(ngModel)]=\"pageFieldsSectionsOrder\"\n            itemClass=\"sortable-item\"\n            itemActiveClass=\"sortable-item-active\"\n            placeholderItem=\"Drag here\"\n            placeholderClass=\"placeholderStyle\"\n            wrapperClass=\"sortable-wrapper\"\n            fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
+module.exports = "<div class=\"page-editor\">\n    <div class=\"wrapper\">\n\n        <div class=\"module-menu-element\" *ngIf=\"selectedPageId !== null\">\n            <h3 *ngIf=\"selectedPageId == 26\">Тренеры</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 26\">\n                <trainers class=\"integrated\"></trainers>\n            </div>\n\n            <h3 *ngIf=\"selectedPageId == 19\">Номера</h3>\n            <div class=\"items-block\" *ngIf=\"selectedPageId == 19\">\n                <rooms class=\"integrated\"></rooms>\n            </div>\n\n\n            <h3>Список секций</h3>\n            <div class=\"sections-selector\" *ngIf=\"selectedPageFieldsSections\">\n                <div *ngFor=\"let section of selectedPageFieldsSections.values; index as sectionNumber;\"\n                     (click)=\"selectSection(sectionNumber)\" [class.selected]=\"sectionNumber === selectedSectionNumber\" class=\"item\">\n                    {{getSectionTitle(sectionNumber)}}\n                    <div class=\"delete\" click-stop-propagation (click)=\"deleteSectionWithConfirm('sectionsParams', sectionNumber)\"><i class=\"fa fa-close\"></i></div>\n                </div>\n                <div class=\"sections-panel toolbar-element\" *ngIf=\"selectedPageFields.params['sectionsParams'] !== undefined && (selectedPageFields.params['sectionsParams']['availableInstances'] | json) != '{}'\">\n                    <div class=\"btn-group\" dropdown #dropdown=\"bs-dropdown\" [autoClose]=\"true\">\n                        <div dropdownToggle aria-controls=\"dropdown-basic\">\n                            <i class=\"fa fa-plus\"></i>\n                        </div>\n                        <ul id=\"dropdown-triggers-manual\" *dropdownMenu class=\"dropdown-menu\"\n                            role=\"menu\" aria-labelledby=\"button-triggers-manual\">\n                            <li *ngFor=\"let sectionType in selectedPageFields.params['sectionsParams']['availableInstances']\" role=\"menuitem\">\n                                <a class=\"dropdown-item\" (click)=\"appendSection('sectionsParams', sectionType)\">\n                                    {{selectedPageFields.params['sectionsParams']['instancesLabels'][sectionType]}}\n                                </a>\n                            </li>\n                        </ul>\n                        <div (click)=\"reorder()\"><i class=\"fa fa-bars\"></i></div>\n                    </div>\n                </div>\n            </div>\n\n            <h3>Общие настройки</h3>\n            <div (click)=\"selectOther()\"  class=\"general-info\">\n                <div class=\"item\" [class.selected]=\"selectOtherParams === true\">Общие настройки</div>\n            </div>\n\n            <div class=\"module-panel\" *ngIf=\"selectedPageFields !== null\">\n                <button (click)=\"save()\" class=\"save ripple module-control-button-element default\">Сохранить</button>\n                <button (click)=\"deleteWithConfirm()\" class=\"ripple module-control-button-element delete\">Удалить</button>\n            </div>\n        </div>\n        <div class=\"module-content-element\">\n            <accordion *ngIf=\"selectOtherParams == true\">\n                <accordion-group heading=\"Параметры страницы\">\n                    <div class=\"field\">\n                        <div class=\"title\"><label for=\"editor-page-name\">Название</label></div>\n                        <div class=\"content\">\n                            <input id=\"editor-page-name\" [(ngModel)]=\"currentPage.name\">\n                        </div>\n                    </div>\n                    <div class=\"field\">\n                        <div class=\"title\"><label for=\"editor-page-url\">URL</label></div>\n                        <div class=\"content\">\n                            <input id=\"editor-page-url\" [(ngModel)]=\"currentPage.url\">\n                        </div>\n                    </div>\n                    <div class=\"field\">\n                        <div class=\"title\"><label for=\"editor-page-published\">Опубликована</label></div>\n                        <div class=\"content\">\n                            <mat-checkbox [color]=\"'primary'\" id=\"editor-page-published\" [(ngModel)]=\"currentPage.is_enabled\"></mat-checkbox>\n                        </div>\n                    </div>\n                    <div class=\"field\">\n                        <div class=\"title\"><label for=\"editor-page-show\">Показывать в меню</label></div>\n                        <div class=\"content\">\n                            <mat-checkbox [color]=\"'primary'\" id=\"editor-page-show\" [(ngModel)]=\"currentPage.show_in_menu\"></mat-checkbox>\n                        </div>\n                    </div>\n                </accordion-group>\n            </accordion>\n            <page-editor *ngIf=\"selectOtherParams == true && sectionsInited\"\n                         [params]=\"selectedPageFieldsOther.params\"\n                         [values]=\"selectedPageFieldsOther.values\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n            <page-editor *ngIf=\"selectedSectionNumber !== null && sectionsInited\"\n                         [params]=\"selectedPageFieldsSections.params['availableInstances'][selectedPageFieldsSections.values[selectedSectionNumber].type]\"\n                         [values]=\"selectedPageFieldsSections.values[selectedSectionNumber]\"\n                         [uniqKey]=\"'root'\">\n            </page-editor>\n        </div>\n    </div>\n</div>\n<ng-template #confirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить страницу?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"delete()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Нет</button>\n    </div>\n</ng-template>\n\n<ng-template #sectionConfirmationDialog class=\"alert-box\">\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Подтвердите действиe</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        Удалить секцию?\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"deleteSection()\">Да</button>\n        <button type=\"button\" class=\"btn btn-secondary\" (click)=\"modalRef.hide()\">Нет</button>\n    </div>\n</ng-template>\n\n\n<ng-template #reorderDialog>\n    <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Поменять местами секции</h4>\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n            <span aria-hidden=\"true\">&times;</span>\n        </button>\n    </div>\n    <div class=\"modal-body\">\n        <bs-sortable *ngIf=\"pageFieldsSectionsOrder\"\n            [(ngModel)]=\"pageFieldsSectionsOrder\"\n            itemClass=\"sortable-item\"\n            itemActiveClass=\"sortable-item-active\"\n            placeholderItem=\"Drag here\"\n            placeholderClass=\"placeholderStyle\"\n            wrapperClass=\"sortable-wrapper\"\n            fieldName=\"name\"\n        ></bs-sortable>\n    </div>\n    <div class=\"modal-footer\">\n        <button type=\"button\" class=\"ripple module-control-button-element default\" (click)=\"reorderApply()\">Да</button>\n        <button type=\"button\" class=\"ripple module-control-button-element cancel\" (click)=\"modalRef.hide()\">Отмена</button>\n    </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -3947,11 +4455,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages.service */ "./src/app/pages.service.ts");
 /* harmony import */ var _select_item_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../select-item.service */ "./src/app/select-item.service.ts");
 /* harmony import */ var _models_select_item_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/select-item-event */ "./src/app/models/select-item-event.ts");
-/* harmony import */ var rxjs_Subject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/Subject */ "./node_modules/rxjs-compat/_esm5/Subject.js");
-/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
-/* harmony import */ var _models_state__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/state */ "./src/app/models/state.ts");
-/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../storage */ "./src/app/storage.ts");
-/* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../notification.service */ "./src/app/notification.service.ts");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/index.js");
+/* harmony import */ var _models_state__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../models/state */ "./src/app/models/state.ts");
+/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../storage */ "./src/app/storage.ts");
+/* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../notification.service */ "./src/app/notification.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3989,7 +4496,6 @@ var __values = (undefined && undefined.__values) || function (o) {
 
 
 
-
 var PagesComponent = /** @class */ (function (_super) {
     __extends(PagesComponent, _super);
     function PagesComponent(pageService, selectItemService, modalService, ref, notificationService) {
@@ -4005,6 +4511,8 @@ var PagesComponent = /** @class */ (function (_super) {
         _this.selectedPageId = null;
         _this.selectedPageFields = null;
         _this.language = 1;
+        _this.deleteSectionFieldName = null;
+        _this.deleteSectionNumber = null;
         _this.sectionsInited = false;
         selectItemService.event$.subscribe(function (event) {
             if (event.itemType === _models_select_item_event__WEBPACK_IMPORTED_MODULE_3__["SelectItemEvent"].Type.LanguageChange) {
@@ -4080,14 +4588,6 @@ var PagesComponent = /** @class */ (function (_super) {
         this.selectedPageFieldsSections.values = orderedSections;
         this.modalRef.hide();
     };
-    PagesComponent.prototype.onConfirm = function () {
-        this.confirmationResult.next(true);
-        this.modalRef.hide();
-    };
-    PagesComponent.prototype.onCancel = function () {
-        this.confirmationResult.next(false);
-        this.modalRef.hide();
-    };
     PagesComponent.prototype.prepareSectionInstance = function (sectionInstance, sectionType, fieldName) {
         var newSection = {
             sectionType: sectionType,
@@ -4111,21 +4611,18 @@ var PagesComponent = /** @class */ (function (_super) {
         this.initSectionsAndOther(this.selectedPageFields);
     };
     PagesComponent.prototype.deleteSectionWithConfirm = function (fieldName, sectionNumber) {
-        var _this = this;
         if (fieldName === void 0) { fieldName = 'sectionsParams'; }
+        this.deleteSectionFieldName = fieldName;
+        this.deleteSectionNumber = sectionNumber;
         this.modalRef = this.modalService.show(this.sectionConfirmationDialog);
-        this.confirmationResult.subscribe(function (result) {
-            if (result === true) {
-                _this.deleteSection(fieldName, sectionNumber);
-                _this.modalRef.hide();
-            }
-        });
     };
-    PagesComponent.prototype.deleteSection = function (fieldName, sectionNumber) {
-        if (fieldName === void 0) { fieldName = 'sectionsParams'; }
+    PagesComponent.prototype.deleteSection = function () {
+        var fieldName = this.deleteSectionFieldName;
+        var sectionNumber = this.deleteSectionNumber;
         this.selectedPageFields.values[fieldName].splice(sectionNumber, 1);
         this.selectedSectionNumber = null;
         this.initSectionsAndOther(this.selectedPageFields);
+        this.modalRef.hide();
     };
     PagesComponent.prototype.initSectionsAndOther = function (pageFields, process) {
         if (process === void 0) { process = true; }
@@ -4239,6 +4736,7 @@ var PagesComponent = /** @class */ (function (_super) {
             return;
         }
         this.copyOtherParamsChanges();
+        this.pageService.savePage(this.currentPage, this.language).subscribe();
         this.pageService.savePageFields(this.selectedPageId, this.getPageFieldsValues(this.selectedPageFields.params, this.selectedPageFields.values), this.language)
             .subscribe();
     };
@@ -4256,20 +4754,22 @@ var PagesComponent = /** @class */ (function (_super) {
         return name;
     };
     PagesComponent.prototype.deleteWithConfirm = function () {
-        var _this = this;
         this.modalRef = this.modalService.show(this.confirmationDialog);
-        this.confirmationResult.subscribe(function (result) {
-            if (result === true) {
-                _this.delete();
-            }
-        });
     };
     PagesComponent.prototype.reorder = function () {
         this.modalRef = this.modalService.show(this.reorderDialog);
     };
     PagesComponent.prototype.delete = function () {
+        var _this = this;
         this.pageService.deletePage(this.selectedPageId)
-            .subscribe();
+            .subscribe(function () {
+            _this.pages = _this.pages.filter(function (p) { return p.id !== _this.selectedPageId; });
+            _this.selectItemService.emitEventOfType(_models_select_item_event__WEBPACK_IMPORTED_MODULE_3__["SelectItemEvent"].Type.PageRemove, {
+                pageId: _this.selectedPageId
+            });
+            _this.selectedPageId = null;
+            _this.modalRef.hide();
+        });
     };
     PagesComponent.prototype.groupPages = function () {
         if (this.domainsLoaded && this.pagesLoaded) {
@@ -4311,18 +4811,17 @@ var PagesComponent = /** @class */ (function (_super) {
         });
     };
     PagesComponent.prototype.ngOnInit = function () {
-        this.confirmationResult = new rxjs_Subject__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.getPages();
         this.getDomains();
         this.groupedPages = [];
     };
     PagesComponent.ADMIN_TITLE_FIELD = 'adminTitle';
     __decorate([
-        _storage__WEBPACK_IMPORTED_MODULE_7__["bindToComponentState"],
+        _storage__WEBPACK_IMPORTED_MODULE_6__["bindToComponentState"],
         __metadata("design:type", Number)
     ], PagesComponent.prototype, "selectedSectionNumber", void 0);
     __decorate([
-        _storage__WEBPACK_IMPORTED_MODULE_7__["bindToComponentState"],
+        _storage__WEBPACK_IMPORTED_MODULE_6__["bindToComponentState"],
         __metadata("design:type", Boolean)
     ], PagesComponent.prototype, "selectOtherParams", void 0);
     __decorate([
@@ -4345,13 +4844,13 @@ var PagesComponent = /** @class */ (function (_super) {
         }),
         __metadata("design:paramtypes", [_pages_service__WEBPACK_IMPORTED_MODULE_1__["PagesService"],
             _select_item_service__WEBPACK_IMPORTED_MODULE_2__["SelectItemService"],
-            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_5__["BsModalService"],
+            ngx_bootstrap__WEBPACK_IMPORTED_MODULE_4__["BsModalService"],
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"],
-            _notification_service__WEBPACK_IMPORTED_MODULE_8__["NotificationService"]])
+            _notification_service__WEBPACK_IMPORTED_MODULE_7__["NotificationService"]])
     ], PagesComponent);
     return PagesComponent;
     var PagesComponent_1;
-}(_models_state__WEBPACK_IMPORTED_MODULE_6__["State"]));
+}(_models_state__WEBPACK_IMPORTED_MODULE_5__["State"]));
 
 
 
@@ -5722,7 +6221,7 @@ var TrainerEditorComponent = /** @class */ (function () {
             var trainerId = _this.trainer.id;
             _this.trainer = null;
             _this.modalRef.hide();
-            _this.selectItemService.emit(new _models_select_item_event__WEBPACK_IMPORTED_MODULE_1__["SelectItemEvent"](_models_select_item_event__WEBPACK_IMPORTED_MODULE_1__["SelectItemEvent"].Type.RoomRemove, {
+            _this.selectItemService.emit(new _models_select_item_event__WEBPACK_IMPORTED_MODULE_1__["SelectItemEvent"](_models_select_item_event__WEBPACK_IMPORTED_MODULE_1__["SelectItemEvent"].Type.TrainerRemove, {
                 trainerId: trainerId
             }));
         });

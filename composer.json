@@ -21,7 +21,8 @@
         "codemix/yii2-localeurls": "^1.4",
         "yiisoft/yii2-debug": "*",
         "skeeks/yii2-assets-auto-compress": "*",
-        "gumlet/php-image-resize": "1.9.*"
+        "gumlet/php-image-resize": "1.9.*",
+        "damirka/yii2-jwt": "v0.2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

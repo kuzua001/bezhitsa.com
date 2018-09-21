@@ -22,7 +22,7 @@ return [
         ],
         'user' => [
             'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'session' => [
@@ -39,7 +39,7 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error/error',
         ],
 
 
@@ -68,8 +68,10 @@ return [
                     ],
                     'prefix' => 'api'
                 ],
-                'api/files' => 'api/files',
-                'reorder'   => 'api/reorder',
+                'api/login'   => 'auth/login',
+                'api/logout'  => 'auth/logout',
+                'api/auth'    => 'auth/index',
+                'api/files'   => 'api/files',
                 'api/filters' => 'data/filters',
                 [
                     'pattern' => 'page/edit/<pageId:\d+>',

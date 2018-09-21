@@ -9,20 +9,12 @@
 namespace frontend\controllers;
 
 use frontend\components\AppHelper;
+use frontend\models\cms\CmsSettings;
 use frontend\models\data\FitnessOrder;
+use frontend\models\data\Trainer;
+use frontend\models\Domain;
 use yii\web\Controller;
 use yii;
-
-// Yii2 cache
-// Yii2 cache invalidation
-// Yii2 dependency injection (compomnents)
-// Ajax npost get examples
-// CSRF validation mechanizm
-// Jquery fadeIn/fadeOut, css tranzition
-// CSS display none;
-// twitter bootstrap
-// yii2 User model authorization
-// todo yii2 RBAC
 
 class AjaxController extends Controller
 {
@@ -54,13 +46,28 @@ class AjaxController extends Controller
             $order->phone = $phone;
             $order->email = $email;
             $order->trainer_id = $trainerId;
+            $trainer = Trainer::find()->where(['id' => $trainerId])->one();
             $order->ts_created = time();
             $order->save();
             $result = [
                 'status' => 'success',
                 'order_id' => $order->id,
-                'message' => 'Ваша заявка блабла бла',
+                'message' => '',
             ];
+
+            $recipients = CmsSettings::getValueArr(Domain::DOMAIN_FITNESS_ID,'EMAIL_LIST');
+            $subject = CmsSettings::getValue(Domain::DOMAIN_FITNESS_ID,'EMAIL_SUBJECT');
+            $from = 'testfit@bezhitsa.com';
+
+            foreach ($recipients as $item) {
+                $to = $item['email'];
+                Yii::$app->mailer->compose('fitness/email', ['order' => $order, 'trainer' => $trainer])
+                    ->setFrom($from)
+                    ->setTo($to)
+                    ->setSubject($subject)
+                    ->send();
+            }
+
         } catch (yii\db\Exception $ex) {
             $result = [
                 'status' => 'error'

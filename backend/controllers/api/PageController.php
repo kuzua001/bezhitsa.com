@@ -13,7 +13,8 @@ class PageController extends ApiController
         return [
             'index' => [ 'GET' ],
             'update' => [ 'PUT' ],
-            'create' => ['POST']
+            'create' => ['POST'],
+            'delete' => ['DELETE']
         ];
     }
 
@@ -26,7 +27,8 @@ class PageController extends ApiController
             'actions' => [
                 'index'  => ['get'],
                 'update' => ['put'],
-                'create' => ['post']
+                'create' => ['post'],
+                'delete' => ['delete']
             ],
         ];
 

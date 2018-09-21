@@ -75,7 +75,11 @@ class CmsController extends Controller
 
     public function beforeAction($action)
     {
-        $url        = Url::to();
+        $actionName = $this->action->id;
+        if ($actionName === 'error-handler') {
+            Yii::$app->getModule('debug')->instance->allowedIPs = [];
+            return $action;
+        }
 
         if (!isset(Yii::$app->request->queryParams['pageId'])) {
             throw new yii\web\NotFoundHttpException();

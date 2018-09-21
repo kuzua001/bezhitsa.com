@@ -1,47 +1,49 @@
 <div class="alert-element">
-  <div class="message">
-  </div>
-  <span class="close" (click)="hideAlert()">
+    <div class="message">
+    </div>
+    <span class="close" (click)="hideAlert()">
     <i class="fa fa-close"></i>
   </span>
 </div>
-<header class="admin-header">
-  <div class="row">
-    <div class="col-md-8">
-      <a class="header-logo" href="" title="beshitza.ru">
-        <img src="assets/img/logo_header.jpg">
-      </a>
+<header class="admin-header" *ngIf="isAuthorized()">
+    <div class="row">
+        <div class="col-md-8 col-sm-6 col-6">
+            <a class="header-logo" href="" title="beshitza.ru">
+                <img src="assets/img/logo_header.jpg">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-6 text-right">
+            <span class="language-selector">
+                <span class="language-selector-label">RU</span>
+                <label class="switch">
+                    <input type="checkbox" class="switch" id="switch-language" [ngModel]="languageEn"
+                           (change)="toggleLanguage()">
+                    <span class="slider round"></span>
+                </label>
+                <span class="language-selector-label">EN</span>
+            </span>
+            <span class="user-area">
+                <b>{{getUserName() | titlecase}}</b>, <span (click)="logout()">выйти</span>
+            </span>
+        </div>
     </div>
-    <div class="col-md-2">
-      <span class="language-selector-label">RU</span>
-      <label class="switch">
-        <input type="checkbox" class="switch" id="switch-language" [ngModel]="languageEn"  (change)="toggleLanguage()">
-        <span class="slider round"></span>
-      </label>
-      <span class="language-selector-label">EN</span>
-    </div>
-    <div class="col-md-2">
-    </div>
-  </div>
 </header>
 <section class="admin-content-wrapper">
-  <div class="wrapper">
-    <div class="admin-menu-element">
-      <nav>
-        <ul class="menu-items">
-          <li *ngFor="let item of getMenuItems()" class="menu-selector-item">
-            <a routerLinkActive="active" routerLink="{{item.getPath()}}">{{item.getName()}}</a>
-            <div class="sub-menu-items">
-              <sub-menu [subMenu]="item.getSubmenu()"></sub-menu>
-            </div>
-          </li>
-        </ul>
-      </nav>
+    <div class="wrapper">
+        <div class="admin-menu-element" *ngIf="isAuthorized()">
+            <nav>
+                <ul class="menu-items">
+                    <li *ngFor="let item of getMenuItems()" class="menu-selector-item">
+                        <a routerLinkActive="active" routerLink="{{item.getPath()}}">{{item.getName()}}</a>
+                        <div class="sub-menu-items">
+                            <sub-menu [subMenu]="item.getSubmenu()"></sub-menu>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="module-wrapper-element" [class.login]="!isAuthorized()">
+            <router-outlet></router-outlet>
+        </div>
     </div>
-    <div class="module-wrapper-element">
-      <header>
-      </header>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
 </section>

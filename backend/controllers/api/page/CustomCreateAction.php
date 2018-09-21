@@ -26,13 +26,11 @@ class CustomCreateAction extends CreateAction
     {
         $name       = Yii::$app->request->post('name');
         $domainId   = Yii::$app->request->post('domain_id');
-        $pagesId    = Yii::$app->request->post('pages_id');
         $showInMenu = Yii::$app->request->post('show_in_menu');
         $url        = Yii::$app->request->post('url');
-        $actionId   = Yii::$app->request->post('action_id');
 
 
-        $page = Page::create($name, $domainId, $pagesId, $showInMenu, $url, $actionId);
+        $page = Page::create($name, $domainId, $showInMenu, $url);
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         return $page;
