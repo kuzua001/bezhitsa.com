@@ -31,8 +31,8 @@ class AuthController extends Controller
         ];
         try {
             if (!Yii::$app->user->isGuest) {
-                $userData['userName'] = (Yii::$app->getUser()->getIdentity())->username;
-                $userData['userEmail'] = (Yii::$app->getUser()->getIdentity())->email;
+                $userData['userName'] = Yii::$app->getUser()->getIdentity()->username;
+                $userData['userEmail'] = Yii::$app->getUser()->getIdentity()->email;
             }
         } catch (\Exception $e) {
             return ['status' => 'error'];
