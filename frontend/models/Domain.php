@@ -48,7 +48,7 @@ class Domain extends ActiveRecord
      *
      * @return mixed|string
      */
-    public function getCanonicalUrl($url, $href = '', $lang = LanguageHelper::LANG_RU)
+    public function getCanonicalUrl($url, $href = '', $lang = LanguageHelper::LANG_RU, $enforce = false)
     {
         $url = '/' . ltrim($url, '/');
 
@@ -56,7 +56,18 @@ class Domain extends ActiveRecord
             $url = str_replace($this->base_url, '', $url);
         }
 
-        $url = 'https://' . $this->domain . '/' . (($lang != LanguageHelper::getDefaultLanguage()) ? LanguageHelper::getLanguageCode($lang) . '/' : ''). ltrim($url, '/') . $href;
+        if ($enforce) {
+            $domain = str_replace("//", "/", $this->domain . $this->base_url);
+        } else {
+            $domain = $this->domain;
+        }
+
+
+        $url = 'https://' . str_replace("//", "/",
+                $domain . '/' .
+                (($lang != LanguageHelper::getDefaultLanguage()) ?
+                    LanguageHelper::getLanguageCode($lang) . '/' : '')
+                . ltrim($url, '/') . $href);
         return $url;
     }
 }

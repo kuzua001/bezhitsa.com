@@ -101,21 +101,34 @@ class TestController extends Controller
 
     }
 
+
+    public function actionImagesFixTest()
+    {
+        $page = Page::id(44);
+        $page->save(false);
+    }
+
     public function actionImagesFixRooms()
     {
         $rooms = Room::find()->all();
+
         foreach ($rooms as $room) {
-            /** @var Room $room */
-            $slides = $room->getSlides();
+
+            /** @var $room Room **/
+            $oldImages = RoomImage::find()->where(['room_id' => $room->id])->all();
             $ids = [];
-            foreach ($slides as $slide) {
-                $imagePath = Yii::getAlias('@frontend/web'. $slide['image']);
-                $description = $slide['description'];
-                $img = $this->convertFileToImage($imagePath, $description);
+            foreach ($oldImages as $image) {
+                /** @var $image RoomImage $img */
+                $img = new Image();
+                $img->filename = 'uploads/rooms/' . $image->img;
+                $img->description = $image->description;
+                $img->image_type_id = 2;
+                $img->save();
                 $ids[] = $img->id;
             }
             $room->image_ids = implode(',', $ids);
             $room->save();
+
         }
 
     }
@@ -145,93 +158,9 @@ class TestController extends Controller
     }
 
 
-    public function actionMenu()
-    {
-        var_dump(Page::id(20)->getMenu());
-    }
-
-
-    public function actionTestTrainers()
-    {
-        $page = Page::id(26);
-        print_r($page->pageParams);
-    }
-
     public function actionTest()
     {
         CmsSettings::initSettings();
     }
 
-
-    public function actionIndex()
-    {
-
-        $page = Page::id(57);
-
-
-        $json = '{
-  "sectionsParams": {
-    "0": {
-      "mainHeaderTypePart": "гранд отель",
-      "greetingHeader": "Добро пожаловать!",
-      "greetingContent": "Получите удовольствие, выбрав восхитительную атмосферу премиум комплекса «Бежица».",
-      "sloganFirst": "Ваш",
-      "sloganSecond": "изысканный и комфортный отдых",
-      "sloganThird": "МИРОВОГО КЛАССА",
-      "title": "",
-      "type": "hotel_main"
-    },
-    "1": {
-      "slides": {
-        "0": {
-          "tabTitle": "Ресторан \"Бежица\"",
-          "tabContent": "<p style=\"\n    text-align: justify;\n\">\n\t\t\t\t\t\t\t\t\t\tГастрономическая кухня базируется на использовании сезонных продуктов от приватных фермеров и современных кулинарных техниках.<br>\n\t\t\t\t\t\t\t\t\t\tРесторан предлагает блюда, в которых переосмыслена старинная рецептура, а знакомые вкусы открываются в оригинальных текстурах, формах и сочетаниях.\n\t\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t\t<em>\n\t\t\t\t\t\t\t\t\t\t\tИдеально для изысканного банкета или свадебного торжества!\n\t\t\t\t\t\t\t\t\t\t</em>\n\t\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t\t\t<p class=\"increased-margin\">\n\t\t\t\t\t\t\t\t\t\tШеф-повар –&nbsp;Фёдор Гадалов.\n\t\t\t\t\t\t\t\t\t</p>",
-          "type": "simple_slide"
-        },
-        "1": {
-          "tabTitle": "Лобби бар",
-          "tabContent": "<p style=\"\n    text-align: justify;\n\">\n\t\t\t\t\t\t\t\t\t\tГастрономическая кухня базируется на использовании сезонных продуктов от приватных фермеров и современных кулинарных техниках.<br>\n\t\t\t\t\t\t\t\t\t\tРесторан предлагает блюда, в которых переосмыслена старинная рецептура, а знакомые вкусы открываются в оригинальных текстурах, формах и сочетаниях.\n\t\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t\t\t<em>\n\t\t\t\t\t\t\t\t\t\t\tИдеально для изысканного банкета или свадебного торжества!\n\t\t\t\t\t\t\t\t\t\t</em>\n\t\t\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t\t\t<p class=\"increased-margin\">\n\t\t\t\t\t\t\t\t\t\tШеф-повар –&nbsp;Фёдор Гадалов.\n\t\t\t\t\t\t\t\t\t</p>",
-          "type": "simple_slide"
-        }
-      },
-      "detailButtonText": "Узнать больше",
-      "title": "Мероприятия и свадьбы",
-      "type": "slider_tabs"
-    }
-  },
-  "isEnabled": false
-}';
-
-//        /**
-//         * @var LandingPage $page
-//         */
-//        $mainSectionParams = new HotelMainSectionParams();
-//        $mainSectionParams->mainHeaderTypePart = 'гранд отель';
-//        $mainSectionParams->greetingHeader     = 'Добро пожаловать!';
-//        $mainSectionParams->greetingContent    = 'Получите удовольствие, выбрав восхитительную атмосферу премиум комплекса «Бежица».';
-//        $mainSectionParams->sloganFirst        = 'Ваш';
-//        $mainSectionParams->sloganSecond       = 'изысканный и комфортный отдых';
-//        $mainSectionParams->sloganThird        = 'МИРОВОГО КЛАССА';
-//
-//
-//
-//
-//
-//  //      var_dump($mainSectionParams->toPageFields());
-//
-//        $page->pageParams->emptySections();
-//        $page->pageParams->addSection($mainSectionParams);
-//       // $page->pageParams->addSection($sliderTabsSectionParams);
-//
-//        $page->save();
-
-
-        var_dump($page->pageParams);
-        var_dump($page);
-
-        //$page->pageParams->initFromArray(json_decode($json, true));
-        //$page->save();
-
-        print_r($page);
-    }
 }

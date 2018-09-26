@@ -47,6 +47,8 @@ class Image extends ActiveRecord implements HasSrc
 
     private $imageExt;
 
+    private $tags;
+
     protected function translateFields()
     {
         return [
@@ -58,7 +60,14 @@ class Image extends ActiveRecord implements HasSrc
     {
         $this->parseImageFilename();
         $this->loadTranslations();
+        $this->tags = json_decode($this->tags);
         parent::afterFind();
+    }
+
+    public function beforeSave($insert)
+    {
+        $this->tags_json = json_encode($this->tags, JSON_UNESCAPED_UNICODE);
+        return parent::beforeSave($insert);
     }
 
     private function createNameFromTemplate($template, $x = 0, $y = 0)
@@ -68,6 +77,12 @@ class Image extends ActiveRecord implements HasSrc
         $result = str_replace('{' . self::SIZE_PLACEHOLDER . '}', $x . 'x' . $y, $result);
 
         return $result;
+    }
+
+    public function addTag($tag)
+    {
+        $this->tags[] = $tag;
+        $this->tags = array_unique($this->tags);
     }
 
     public static function findAllTags()

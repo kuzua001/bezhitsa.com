@@ -33,7 +33,6 @@ export class ImageChooserComponent implements OnInit {
     @Output() selectedImageIds = new EventEmitter<Array<CmsImage>>();
 
 
-
     constructor(
         private modelService: ModelService,
         private selectItemService: SelectItemService,

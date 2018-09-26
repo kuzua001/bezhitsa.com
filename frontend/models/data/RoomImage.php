@@ -17,7 +17,7 @@ use frontend\interfaces\models\HasSrc;
  * @property $img string
  * @property $is_main boolean
  * @property $room_id integer
- * @property $descrpition string
+ * @property $description string
  * @package frontend\models
  */
 class RoomImage extends ActiveRecord implements HasSrc
@@ -31,6 +31,7 @@ class RoomImage extends ActiveRecord implements HasSrc
             'img',
             'is_main',
             'room_id',
+            'description'
         ];
     }
 

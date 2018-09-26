@@ -120,7 +120,10 @@ export class ImagesComponent implements OnInit {
         }
 
         this.modelService.getImages(filter).subscribe(images => {
-            images.forEach((rawImage, index) => {images[index] = CmsImage.fromRaw(rawImage);});
+            images.forEach((rawImage, index) => {
+                let image = CmsImage.fromRaw(rawImage);
+                images[index] = image;
+            });
             this.images = images.reverse();
         });
     }

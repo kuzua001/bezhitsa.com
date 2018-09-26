@@ -14,6 +14,7 @@ use frontend\components\LanguageHelper;
 use frontend\models\cms\logic\DataProviderConfiguration;
 use frontend\models\pages\SectionParams;
 use frontend\models\pages\SliderItemParams;
+use ReflectionClass;
 use Yii;
 use yii\base\UnknownPropertyException;
 use yii\data\ActiveDataProvider;
@@ -255,7 +256,7 @@ class PageParams
     public function toPageFields($asObj = false, $onlyComposite = false)
     {
         $pageFields = new PageFields();
-        $rc         = new \ReflectionClass(get_called_class());
+        $rc         = new ReflectionClass(get_called_class());
         $properties = $rc->getProperties();
 
         foreach ($properties as $item) {

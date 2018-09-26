@@ -153,12 +153,14 @@ export class SubMenuImagesComponent extends SubMenuComponent {
             if (event.itemType === SelectItemEvent.Type.RefreshTags) {
                 this.loadImageFilters();
             }
+
         });
     }
 
     private loadImageFilters() {
         this.modelService.getImageFilters().subscribe((filters) => {
             this.imageFilters = filters;
+
             if (this.fixedImageTypeId !== null) {
                 let fixedType = this.imageFilters.types.find(t => t.id == this.fixedImageTypeId);
                 this.fixedTypeName = fixedType.name;

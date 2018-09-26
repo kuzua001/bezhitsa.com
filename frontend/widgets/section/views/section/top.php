@@ -19,7 +19,11 @@ $bgItems       = !empty($sectionParams->bgItems) ? $sectionParams->bgItems : [];
 $bgData        = [];
 
 foreach ($bgItems as $item) {
+    if (!$item->image) {
+        continue;
+    }
     $imageId = $item->image;
+
     $img = Image::id($imageId);
 	$bgData[] = ['(max-width: ' . $item->getViewportWidh() .'px)', $img->getSrc(true)];
 	if ($item === end($bgItems)) {
