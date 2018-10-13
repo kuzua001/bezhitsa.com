@@ -301,6 +301,11 @@ export class PagesComponent extends State implements OnInit {
         return name;
 	}
 
+    public canDeletePage(): boolean {
+    	let canNotDelete = Array.apply(null, {length: 47}).map(Number.call, Number);
+    	return canNotDelete.indexOf(this.selectedPageId) === -1;
+	}
+
 
     deleteWithConfirm(): void {
         this.modalRef = this.modalService.show(this.confirmationDialog);

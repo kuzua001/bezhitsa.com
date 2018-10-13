@@ -121,7 +121,7 @@ class MenuItem extends ActiveRecord implements MenuItemInterface
         if ($this->is_external) {
             $domain = Domain::findOne($page->domain_id);
 
-            $url = $domain->getCanonicalUrl($url, $this->href, $lang, true);
+            $url = $domain->getCanonicalUrl($url, $this->href, $lang, false);
         }
 
         return $url;

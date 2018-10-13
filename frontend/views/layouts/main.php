@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use frontend\components\LanguageHelper;
+use frontend\models\cms\CmsSettings;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -16,7 +17,8 @@ use \frontend\models\Domain;
 AppAsset::register($this);
 $lang = LanguageHelper::getCurrentLanguage();
 $langCode = LanguageHelper::getCurrentLanguageCode();
-$domainId = AppHelper::getDomain()->domain;
+$domainId = AppHelper::getDomain()->id;
+$analytics = CmsSettings::getValue($domainId,'ANALYTICS');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -59,6 +61,12 @@ $domainId = AppHelper::getDomain()->domain;
 				]) ?>
 				<?= $content ?>
 			</div>
+
+
+        <?php if ($analytics)  { ?>
+            <?= $analytics ?>
+        <?php } ?>
+
       <?php if ($lang === LanguageHelper::LANG_RU) { ?>
         <?= $this->render("//partial/bottom_ru") ?>
       <?php } else if ($lang === LanguageHelper::LANG_EN) { ?>

@@ -13,6 +13,12 @@
   max-height: 100%;
   overflow-y: auto;
 }
+.page-editor .module-panel {
+  display: block;
+}
+.page-editor .module-panel .delete {
+  margin-left: 10px;
+}
 .sections-selector,
 .general-info,
 .items-block {

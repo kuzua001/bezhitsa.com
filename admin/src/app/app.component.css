@@ -284,16 +284,8 @@ header.admin-header {
 .module-menu-element .module-panel {
   margin-top: 10px;
   margin-left: 15px;
-  display: inline-flex;
-  flex-direction: row;
+  display: block;
   width: 100%;
-}
-.page-editor .module-panel .save {
-  margin-right: 0!important;
-}
-.page-editor .module-panel .view {
-  margin: 0 10px;
-  padding: 8px;
 }
 .module-content-element {
   position: absolute;

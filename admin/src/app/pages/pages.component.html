@@ -45,7 +45,7 @@
 
             <div class="module-panel" *ngIf="selectedPageFields !== null">
                 <button (click)="save()" class="save ripple module-control-button-element default">Сохранить</button>
-                <button (click)="deleteWithConfirm()" class="ripple module-control-button-element delete">Удалить</button>
+                <button  *ngIf="canDeletePage()" (click)="deleteWithConfirm()" class="ripple module-control-button-element delete">Удалить</button>
             </div>
         </div>
         <div class="module-content-element">

@@ -15,10 +15,10 @@ $icons = CmsSettings::getValueArr(AppHelper::getDomain()->id,'ICONS');
             <div class="row indent">
                 <div class="col-md-3 footer-col">
                     <div class="logo-wrapper">
-                        <img class="logo" src="/img/logo_small.png">
+                        <img class="logo" src="/img/svg/main_logo.svg">
                         <p class="title">
                             <span class="name">Bezhitsa</span>
-                            <span class="type">гранд отель</span>
+                            <span class="type"><?= $title['ru'] ?></span>
                         </p>
                     </div>
                 </div>
@@ -39,9 +39,31 @@ $icons = CmsSettings::getValueArr(AppHelper::getDomain()->id,'ICONS');
                 <div class="col-md-6 col-md-push-3 footer-col">
                     <nav class="legislation-links">
                         <?php foreach ($popups as $popup) { ?>
-                            <a href="#" data-target="<?= $popup['id'] ?>"><?= $popup['name']?></a>
+                            <span data-toggle="modal" data-target="#<?= $popup['id']?>"><?= $popup['name']?></span>
                         <?php } ?>
                     </nav>
+                    <div>
+                        <?php foreach ($popups as $popup) { ?>
+                            <div class="modal" tabindex="-1" role="dialog" id="<?= $popup['id']?>">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"><?= $popup['name'] ?></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <?= $popup['content'] ?>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
                     <div class="copyright">
                         © 2018 <?= $copyright['ru'] ?>.
                     </div>

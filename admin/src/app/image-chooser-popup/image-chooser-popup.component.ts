@@ -37,6 +37,11 @@ export class ImageChooserPopupComponent implements OnInit {
         });
     }
 
+    public getCanonicalUrl(url: string)
+    {
+        return '/' + url.replace(/^\/|\/$/g, '');
+    }
+
     public saveEditingImage()
     {
         let self = this;

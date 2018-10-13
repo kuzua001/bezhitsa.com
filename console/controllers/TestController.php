@@ -10,6 +10,7 @@ namespace console\controllers;
 
 use common\models\Image;
 use common\models\ImageType;
+use common\models\User;
 use frontend\components\LanguageHelper;
 use frontend\models\cms\CmsSettings;
 use frontend\components\grabbers\ControllerMetadataGrabber;
@@ -155,6 +156,14 @@ class TestController extends Controller
         $mapper->addGrabber(new ModelMetadataGrabber());
         //$mapper->addGrabber(new PagesMetadataGrabber());
         $mapper->updateAll();
+    }
+
+    public function actionAddUser($user, $password)
+    {
+        $u = new User();
+        $u->username = $user;
+        $u->password_hash = \Yii::$app->security->generatePasswordHash($password);
+        $u->save();
     }
 
 

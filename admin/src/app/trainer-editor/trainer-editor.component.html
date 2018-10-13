@@ -24,7 +24,7 @@
 
     <div class="field">
       <span class="label">Изображение</span>
-      <img width="200px" *ngIf="trainer.img_src" (click)="chooser.showPopup()" src="{{trainer.img_src}}">
+      <img width="200px" *ngIf="trainer.img_src" (click)="chooser.showPopup()" [src]="chooser.getCanonicalUrl(trainer.img_src)">
       <button *ngIf="!trainer.img_src" (click)="chooser.showPopup()">Browse</button>
       <app-image-chooser-popup #chooser (selectedImageId)="selectImage($event)" [multiple]="false" [fixedImageTypeId]="1"></app-image-chooser-popup>
     </div>
